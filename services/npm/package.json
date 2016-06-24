@@ -1,0 +1,30 @@
+{
+  "name": "only",
+  "version": "0.1.0",
+  "description": "fair",
+  "main": "main.js",
+  "scripts": {
+    "de": "git add . --all&&git commit -m update&&git push",
+    "dev": "jsdoc2md main.js > READMEsecond.md",
+    "test": "mocha --timeout 15000 test.js"
+  },
+  "author": "self_refactor",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/selfrefactor/only.git"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "babel-register": "^6.9.0",
+    "babel-runtime": "*",
+    "ramda": "*",
+    "fs-extra": "*",
+    "express-react-views": "*",
+    "express-session": "*"
+  },
+  "devDependencies": {
+    "unexpected": "*",
+    "webpack": "*",
+    "webpack-dev-server": "*"
+  }
+}

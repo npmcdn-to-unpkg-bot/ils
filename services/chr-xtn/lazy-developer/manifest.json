@@ -1,0 +1,43 @@
+{
+    "name": "German-English Translation",
+    "version": "1.0.0",
+    "manifest_version": 2,
+    "description": "German-English Translation",
+    "icons": {
+        "16": "images/de.png",
+        "128": "images/de.png"
+    },
+    "content_scripts": [{
+        "matches": [
+            "http://*/*",
+            "https://*/*"
+        ],
+        "css": [
+            "only.css"
+        ],
+        "js": [
+            "scripts/keypress.js",
+            "contentScript.js"
+        ],
+        "run_at": "document_end",
+        "all_frames": true
+    }],
+    "default_locale": "en",
+    "permissions": [
+        "activeTab",
+        "tabs",
+        "background",
+        "clipboardRead",
+        "clipboardWrite",
+        "storage",
+        "history",
+        "management",
+        "http://*/*",
+        "https://*/*",
+        "desktopCapture",
+        "notifications",
+        "tabCapture",
+        "experimental",
+        "contextMenus"
+    ]
+}

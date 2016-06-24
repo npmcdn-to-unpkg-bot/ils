@@ -1,0 +1,582 @@
+{
+  "GermanOverallRaw": {
+    "wenn": {
+      "deEnFourth": [
+        {
+          "dePart": "wenn",
+          "enPart": "if"
+        },
+        {
+          "dePart": "wenn",
+          "enPart": "when"
+        },
+        {
+          "dePart": "wenn",
+          "enPart": "once"
+        },
+        {
+          "dePart": "wenn",
+          "enPart": "provided"
+        }
+      ],
+      "synonymFirst": [
+        {
+          "dePart": "angenommen",
+          "enPart": "wenn"
+        },
+        {
+          "dePart": "falls",
+          "enPart": "wenn"
+        },
+        {
+          "dePart": "für den Fall",
+          "enPart": "wenn"
+        },
+        {
+          "dePart": "für den Fall, dass",
+          "enPart": "wenn"
+        },
+        {
+          "dePart": "gegebenenfalls",
+          "enPart": "wenn"
+        },
+        {
+          "dePart": "gesetzt",
+          "enPart": "wenn"
+        },
+        {
+          "dePart": "gesetzt den Fall",
+          "enPart": "wenn"
+        },
+        {
+          "dePart": "im Falle",
+          "enPart": "wenn"
+        },
+        {
+          "dePart": "insofern",
+          "enPart": "wenn"
+        },
+        {
+          "dePart": "sofern",
+          "enPart": "wenn"
+        },
+        {
+          "dePart": "vorausgesetzt",
+          "enPart": "wenn"
+        },
+        {
+          "dePart": "wofern",
+          "enPart": "wenn"
+        }
+      ],
+      "synonymFourth": [
+        {
+          "dePart": "wenn",
+          "enPart": "if"
+        },
+        {
+          "dePart": "ob",
+          "enPart": "if"
+        },
+        {
+          "dePart": "falls",
+          "enPart": "if"
+        },
+        {
+          "dePart": "insofern",
+          "enPart": "if"
+        },
+        {
+          "dePart": "insoweit",
+          "enPart": "if"
+        },
+        {
+          "dePart": "für den Fall, dass",
+          "enPart": "if"
+        },
+        {
+          "dePart": "wenn",
+          "enPart": "when"
+        },
+        {
+          "dePart": "als",
+          "enPart": "when"
+        },
+        {
+          "dePart": "wo",
+          "enPart": "when"
+        },
+        {
+          "dePart": "wie",
+          "enPart": "when"
+        },
+        {
+          "dePart": "wobei",
+          "enPart": "when"
+        },
+        {
+          "dePart": "wenn",
+          "enPart": "once"
+        },
+        {
+          "dePart": "nachdem",
+          "enPart": "once"
+        },
+        {
+          "dePart": "als",
+          "enPart": "once"
+        },
+        {
+          "dePart": "sofern",
+          "enPart": "provided"
+        },
+        {
+          "dePart": "vorausgesetzt",
+          "enPart": "provided"
+        },
+        {
+          "dePart": "wenn",
+          "enPart": "provided"
+        },
+        {
+          "dePart": "unter der Bedingung",
+          "enPart": "provided"
+        }
+      ],
+      "phraseFirst": [
+        {
+          "dePart": "immer wenn",
+          "enPart": "whenever"
+        },
+        {
+          "dePart": "jedes Mal, wenn das Telefon läutet",
+          "enPart": "every time the telephone rings"
+        },
+        {
+          "dePart": "wenn ich einmal groß bin",
+          "enPart": "when I grow up"
+        },
+        {
+          "dePart": "wenn du erst einmal dort bist",
+          "enPart": "once you’re there"
+        },
+        {
+          "dePart": "wenn schon!",
+          "enPart": "so what?"
+        },
+        {
+          "dePart": "wenn er nicht gewesen wäre",
+          "enPart": "if it hadn’t been for him"
+        },
+        {
+          "dePart": "wenn ich das gewusst hätte",
+          "enPart": "if I had known (that), had I known (that)"
+        },
+        {
+          "dePart": "wenn das so ist",
+          "enPart": "if that’s the case"
+        },
+        {
+          "dePart": "wenn das Wörtchen wenn nicht wär …",
+          "enPart": "if!"
+        },
+        {
+          "dePart": "außer wenn",
+          "enPart": "unless, except if"
+        },
+        {
+          "dePart": "wenn man ihn so reden hört",
+          "enPart": "to hear him talk"
+        },
+        {
+          "dePart": "und wenn du noch so sehr bittest",
+          "enPart": "you can plead as much as you like"
+        },
+        {
+          "dePart": "wenn nicht heute, so doch morgen",
+          "enPart": "if not today then tomorrow"
+        },
+        {
+          "dePart": "wenn ich das wüsste",
+          "enPart": "I wish I knew"
+        },
+        {
+          "dePart": "wenn man bedenkt, dass …",
+          "enPart": "when you think that …"
+        },
+        {
+          "dePart": "wenn du das sagst, wird’s wohl stimmen",
+          "enPart": "if you say so"
+        },
+        {
+          "dePart": "wenn es schon sein muss, dann gleich",
+          "enPart": "if it’s got to be done let’s get it over with"
+        },
+        {
+          "dePart": "wenn nichts dazwischenkommt",
+          "enPart": "unless something crops up"
+        },
+        {
+          "dePart": "wenn nicht, dann eben nicht",
+          "enPart": "well, we may as well forget about that"
+        },
+        {
+          "dePart": "wenn man nach … urteilt",
+          "enPart": "judging by …"
+        },
+        {
+          "dePart": "es war ein neuer, wenn auch langsamer Versuch",
+          "enPart": "it was a new, albeit if slow, attempt"
+        },
+        {
+          "dePart": "wenn auch noch so klein",
+          "enPart": "however small"
+        },
+        {
+          "dePart": "wenn doch nur",
+          "enPart": "if only"
+        },
+        {
+          "dePart": "ohne Wenn und Aber",
+          "enPart": "unconditionally"
+        },
+        {
+          "dePart": "ohne Wenn und Aber",
+          "enPart": "no ifs or buts!"
+        }
+      ],
+      "phraseSecond": [
+        {
+          "dePart": "wenn er nicht gewesen wäre, hätte ich meine Stelle verloren",
+          "enPart": "if it had not been for him, I'd have lost my job"
+        },
+        {
+          "dePart": "selbst or und wenn",
+          "enPart": "even if"
+        },
+        {
+          "dePart": "wenn ... auch ...",
+          "enPart": "even though or if ..."
+        },
+        {
+          "dePart": "wenn er auch noch so dumm sein mag, ...",
+          "enPart": "however stupid he may be, ..."
+        },
+        {
+          "dePart": "wenn auch!",
+          "enPart": "even so!"
+        },
+        {
+          "dePart": "es ist nicht gut, wenn man mit vollem Magen schwimmt",
+          "enPart": "it's not good to swim on a full stomach"
+        },
+        {
+          "dePart": "wenn man bedenkt, dass ...",
+          "enPart": "when you consider that ..."
+        },
+        {
+          "dePart": "wenn wir erst das neue Haus haben",
+          "enPart": "once we get the new house"
+        },
+        {
+          "dePart": "wenn ich doch or nur  or bloß ...",
+          "enPart": "if only I ..."
+        },
+        {
+          "dePart": "wenn er nur da wäre!",
+          "enPart": "if only he were here!"
+        },
+        {
+          "dePart": "es ist, als or wie  (informal) wenn ...",
+          "enPart": "it's as if ..."
+        },
+        {
+          "dePart": "außer wenn",
+          "enPart": "except if"
+        },
+        {
+          "dePart": "jedes Mal or immer wenn",
+          "enPart": "whenever"
+        },
+        {
+          "dePart": "außer wenn",
+          "enPart": "except when"
+        },
+        {
+          "dePart": "(die (plural) or das) Wenn und Aber",
+          "enPart": "(the) ifs and buts"
+        },
+        {
+          "dePart": "ohne Wenn und Aber",
+          "enPart": "without any ifs and buts"
+        }
+      ]
+    }
+  },
+  "GermanOverall": {
+    "wenn": {
+      "translation": [
+        {
+          "dePart": "wenn",
+          "enPart": "if, when, once, provided"
+        }
+      ],
+      "related": [
+        {
+          "dePart": "als",
+          "enPart": "when"
+        },
+        {
+          "dePart": "falls",
+          "enPart": "if"
+        },
+        {
+          "dePart": "für den Fall, dass",
+          "enPart": "if"
+        },
+        {
+          "dePart": "insofern",
+          "enPart": "if"
+        },
+        {
+          "dePart": "insoweit",
+          "enPart": "if"
+        },
+        {
+          "dePart": "nachdem",
+          "enPart": "once"
+        },
+        {
+          "dePart": "ob",
+          "enPart": "if"
+        },
+        {
+          "dePart": "sofern",
+          "enPart": "provided"
+        },
+        {
+          "dePart": "unter der Bedingung",
+          "enPart": "provided"
+        },
+        {
+          "dePart": "vorausgesetzt",
+          "enPart": "provided"
+        },
+        {
+          "dePart": "wenn",
+          "enPart": "gesetzt"
+        },
+        {
+          "dePart": "wenn",
+          "enPart": "wofern"
+        },
+        {
+          "dePart": "wenn",
+          "enPart": "if"
+        },
+        {
+          "dePart": "wenn",
+          "enPart": "falls"
+        },
+        {
+          "dePart": "wenn",
+          "enPart": "insofern"
+        },
+        {
+          "dePart": "wenn",
+          "enPart": "im Falle"
+        },
+        {
+          "dePart": "wenn",
+          "enPart": "gesetzt den Fall"
+        },
+        {
+          "dePart": "wenn",
+          "enPart": "vorausgesetzt"
+        },
+        {
+          "dePart": "wenn",
+          "enPart": "gegebenenfalls"
+        },
+        {
+          "dePart": "wenn",
+          "enPart": "sofern"
+        },
+        {
+          "dePart": "wenn",
+          "enPart": "für den Fall"
+        },
+        {
+          "dePart": "wenn",
+          "enPart": "für den Fall, dass"
+        },
+        {
+          "dePart": "wenn",
+          "enPart": "angenommen"
+        },
+        {
+          "dePart": "wie",
+          "enPart": "when"
+        },
+        {
+          "dePart": "wo",
+          "enPart": "when"
+        },
+        {
+          "dePart": "wobei",
+          "enPart": "when"
+        }
+      ],
+      "examples": [
+        {
+          "dePart": "(die (plural) or das) Wenn und Aber",
+          "enPart": "(the) ifs and buts"
+        },
+        {
+          "dePart": "außer wenn",
+          "enPart": "unless, except if"
+        },
+        {
+          "dePart": "es ist nicht gut, wenn man mit vollem Magen schwimmt",
+          "enPart": "it's not good to swim on a full stomach"
+        },
+        {
+          "dePart": "es ist, als or wie  (informal) wenn ...",
+          "enPart": "it's as if ..."
+        },
+        {
+          "dePart": "es war ein neuer, wenn auch langsamer Versuch",
+          "enPart": "it was a new, albeit if slow, attempt"
+        },
+        {
+          "dePart": "immer wenn",
+          "enPart": "whenever"
+        },
+        {
+          "dePart": "jedes Mal or immer wenn",
+          "enPart": "whenever"
+        },
+        {
+          "dePart": "jedes Mal, wenn das Telefon läutet",
+          "enPart": "every time the telephone rings"
+        },
+        {
+          "dePart": "ohne Wenn und Aber",
+          "enPart": "unconditionally"
+        },
+        {
+          "dePart": "selbst or und wenn",
+          "enPart": "even if"
+        },
+        {
+          "dePart": "und wenn du noch so sehr bittest",
+          "enPart": "you can plead as much as you like"
+        },
+        {
+          "dePart": "wenn ... auch ...",
+          "enPart": "even though or if ..."
+        },
+        {
+          "dePart": "wenn auch noch so klein",
+          "enPart": "however small"
+        },
+        {
+          "dePart": "wenn auch!",
+          "enPart": "even so!"
+        },
+        {
+          "dePart": "wenn das so ist",
+          "enPart": "if that’s the case"
+        },
+        {
+          "dePart": "wenn das Wörtchen wenn nicht wär …",
+          "enPart": "if!"
+        },
+        {
+          "dePart": "wenn doch nur",
+          "enPart": "if only"
+        },
+        {
+          "dePart": "wenn du das sagst, wird’s wohl stimmen",
+          "enPart": "if you say so"
+        },
+        {
+          "dePart": "wenn du erst einmal dort bist",
+          "enPart": "once you’re there"
+        },
+        {
+          "dePart": "wenn er auch noch so dumm sein mag, ...",
+          "enPart": "however stupid he may be, ..."
+        },
+        {
+          "dePart": "wenn er nicht gewesen wäre",
+          "enPart": "if it hadn’t been for him"
+        },
+        {
+          "dePart": "wenn er nicht gewesen wäre, hätte ich meine Stelle verloren",
+          "enPart": "if it had not been for him, I'd have lost my job"
+        },
+        {
+          "dePart": "wenn er nur da wäre!",
+          "enPart": "if only he were here!"
+        },
+        {
+          "dePart": "wenn es schon sein muss, dann gleich",
+          "enPart": "if it’s got to be done let’s get it over with"
+        },
+        {
+          "dePart": "wenn ich das gewusst hätte",
+          "enPart": "if I had known (that), had I known (that)"
+        },
+        {
+          "dePart": "wenn ich das wüsste",
+          "enPart": "I wish I knew"
+        },
+        {
+          "dePart": "wenn ich doch or nur  or bloß ...",
+          "enPart": "if only I ..."
+        },
+        {
+          "dePart": "wenn ich einmal groß bin",
+          "enPart": "when I grow up"
+        },
+        {
+          "dePart": "wenn man bedenkt, dass ...",
+          "enPart": "when you consider that ..."
+        },
+        {
+          "dePart": "wenn man bedenkt, dass …",
+          "enPart": "when you think that …"
+        },
+        {
+          "dePart": "wenn man ihn so reden hört",
+          "enPart": "to hear him talk"
+        },
+        {
+          "dePart": "wenn man nach … urteilt",
+          "enPart": "judging by …"
+        },
+        {
+          "dePart": "wenn nicht heute, so doch morgen",
+          "enPart": "if not today then tomorrow"
+        },
+        {
+          "dePart": "wenn nicht, dann eben nicht",
+          "enPart": "well, we may as well forget about that"
+        },
+        {
+          "dePart": "wenn nichts dazwischenkommt",
+          "enPart": "unless something crops up"
+        },
+        {
+          "dePart": "wenn schon!",
+          "enPart": "so what?"
+        },
+        {
+          "dePart": "wenn wir erst das neue Haus haben",
+          "enPart": "once we get the new house"
+        }
+      ]
+    }
+  }
+}
