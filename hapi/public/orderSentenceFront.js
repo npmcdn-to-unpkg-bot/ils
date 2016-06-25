@@ -157,6 +157,11 @@ var singleHeight = Math.floor(winHeightIs / 100);
 var outerHalf = Math.floor(winWidthIs / 2);
 var outerQuorter = Math.floor(winWidthIs / 4);
 
+function isUniq(obj) {
+    var arr = R.split(" ", obj.dePart);
+    return R.uniq(arr).length === arr.length;
+}
+
 function randomSeed() {
     var text = "";
     var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -183,25 +188,32 @@ var firstData = {
 };
 
 var secondData = {
-    dePart: "Die intelligente und die schöne Frau kann die Welt verändern",
-    enPart: "The smart and the beautiful woman can change the world"
-};
-var thirdData = {
     dePart: "Die unnötige Komplexität getötet die Katze",
     enPart: "The unnecessary complexity killed the cat"
 };
-var dataArrRaw = [firstData, secondData, thirdData];
+var dataArrRaw = [firstData, secondData];
 var dataArr = shuffle(dataArrRaw);
 var currentId = void 0;
 var visibleStyle = {
+    fontSize: singleHeight * 4 + "px",
     visibility: "visible",
-    padding: "10px",
+    paddingLeft: "5px",
+    paddingRight: "5px",
     cursor: "pointer"
 };
 var hiddenStyle = {
+    fontSize: singleHeight * 4 + "px",
     visibility: "hidden",
-    padding: "10px",
+    paddingLeft: "5px",
+    paddingRight: "5px",
     cursor: "pointer"
+};
+
+var buttonStyle = {
+    fontSize: singleHeight * 2 + "px",
+    paddingTop: singleHeight * 2 + "px",
+    paddingLeft: "0px",
+    paddingRight: "0px"
 };
 
 var Only = function (_Component) {
@@ -235,6 +247,21 @@ var Only = function (_Component) {
         value: function componentDidMount() {
             var _this2 = this;
 
+            var self = this;
+            reqwest({
+                url: "/db.json",
+                method: "get",
+                error: function error(err) {
+                    console.log(err);
+                },
+                success: function success(incoming) {
+                    _this2.setState({
+                        globalData: shuffle(R.filter(isUniq, incoming.data))
+                    }, function () {
+                        console.log(_this2.state);
+                    });
+                }
+            });
             emitter.on("init", function () {
                 var hiddenArrRaw = R.split(" ", _this2.state.data.dePart);
                 var visibleArrRaw = R.split(" ", _this2.state.data.dePart);
@@ -257,7 +284,8 @@ var Only = function (_Component) {
                     fontSize: "20px",
                     backgroundColor: "#CFD8DC",
                     color: "#546E7A",
-                    paddingLeft: singleWidth * 5 + "px"
+                    paddingLeft: singleWidth * 5 + "px",
+                    paddingRight: singleWidth * 5 + "px"
                 };
                 _this2.setState({
                     visibleArr: visibleArr,
@@ -354,7 +382,6 @@ var Only = function (_Component) {
                 return null;
             }
             currentId = event.currentTarget.id;
-            console.log(currentId, this.state.hiddenArr[this.state.index].name);
             if (currentId === this.state.hiddenArr[this.state.index].name) {
                 if (this.state.index + 1 === this.state.hiddenArr.length) {
                     emitter.emit("last word");
@@ -387,7 +414,7 @@ var Only = function (_Component) {
                     { className: "columns box" },
                     _react2.default.createElement(
                         "div",
-                        { className: "column is-half is-offset-one-quarter has-text-centered" },
+                        { className: "column is-10 is-offset-1 has-text-centered" },
                         this.state.visibleArr.map(function (val) {
                             return _react2.default.createElement(
                                 "span",
@@ -402,27 +429,31 @@ var Only = function (_Component) {
                     { className: "columns box" },
                     _react2.default.createElement(
                         "div",
-                        { className: "column is-half is-offset-one-quarter has-text-centered" },
+                        { className: "column is-10 is-offset-1 has-text-centered" },
                         this.state.hiddenArr.map(function (val) {
                             return _react2.default.createElement(
                                 "span",
                                 { style: val.customStyle, key: randomSeed(), id: val.name + "-hidden" },
                                 val.name
                             );
-                        }),
+                        })
+                    ),
+                    _react2.default.createElement(
+                        "div",
+                        { style: buttonStyle, className: "column" },
                         _react2.default.createElement(
                             "a",
-                            { className: this.state.buttonStyle + " is-pulled-right", onClick: this.willHandleButton },
+                            { className: this.state.buttonStyle, onClick: this.willHandleButton },
                             this.state.buttonText
                         )
                     )
                 ),
                 _react2.default.createElement(
                     "div",
-                    { className: "columns box" },
+                    { className: "columns box is-hidden-mobile" },
                     _react2.default.createElement(
                         "div",
-                        { className: "column is-half is-offset-one-quarter has-text-centered" },
+                        { className: "column is-half is-offset-one-quarter" },
                         _react2.default.createElement(
                             "div",
                             { style: this.state.memeStyleContainer },

@@ -25,7 +25,7 @@ class Exported extends Component {
               </head>
               <body>
                  <div className="bigContainer">
-                     <div className="columns is-mobile has-text-centered">
+                     <div className="columns is-hidden-mobile has-text-centered">
                        <div className="column is-half is-offset-one-quarter has-text-centered">
                            <span className="is-text-centered navItem"><a className="button is-normal" href="/" rel="nofollow">Home</a></span>
                            <span className="is-text-centered navItem"><a className="button is-normal" href="/#" rel="nofollow">Blog</a></span>

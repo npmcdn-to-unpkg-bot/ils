@@ -1,43 +1,15 @@
 "use strict"
 import React,{ Component } from"react"
-import* as R from"ramda"
+import * as R from "ramda"
+
 import ramjet from "ramjet"
-let emitter = new Events()
+const reqwest  = require("reqwest")
+import J from "../common.js"
+
+
 let initOnce = R.once(()=>{
-    emitter.emit("init")
+    J.emitter.emit("init")
 })
-
-const winWidthIs = window.innerWidth * 1
-const winHeightIs = window.innerHeight * 1
-
-const singleWidth = Math.floor(winWidthIs / 100)
-const fontSizeIs = Math.floor(singleWidth * 2.5)
-const singleHeight = Math.floor(winHeightIs / 100)
-
-const outerHalf = Math.floor(winWidthIs / 2)
-const outerQuorter = Math.floor(winWidthIs / 4)
-
-function randomSeed() {
-    var text = ""
-    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
-
-    for(var i = 0; i < 5; i++)
-        text += possible.charAt(Math.floor(Math.random() * possible.length))
-
-    return text
-}
-
-function shuffle(array) {
-    let counter = array.length
-    while (counter > 0) {
-        let index = Math.floor(Math.random() * counter)
-        counter--
-        let temp = array[counter]
-        array[counter] = array[index]
-        array[index] = temp
-    }
-    return array
-}
 
 let firstData = {
     dePart:"Ich brauche mehr Zeit diese Frage zu antworten",
@@ -53,16 +25,19 @@ let thirdData = {
     enPart:"The unnecessary complexity killed the cat"
 }
 let dataArrRaw = [firstData,secondData,thirdData]
-let dataArr = shuffle(dataArrRaw)
+let dataArr = J.shuffle(dataArrRaw)
 let currentId
+
 let visibleStyle = {
     visibility: "visible",
-    padding: "10px",
+    paddingLeft: "5px",
+    paddingRight: "5px",
     cursor: "pointer"
 }
 let hiddenStyle = {
     visibility: "hidden",
-    padding: "10px",
+    paddingLeft: "5px",
+    paddingRight: "5px",
     cursor: "pointer"
 }
 
@@ -77,10 +52,11 @@ export default class App extends Component {
             globalIndex: 0,
             memeStyle:{},
             memeStyleContainer:{},
+            memeStyleContainerMobile:{},
             visibleArr: [],
             hiddenArr: [],
-            buttonText: "Show Answer",
-            buttonStyle: "button"
+            buttonText: J.buttonText,
+            buttonStyle: J.bulButtonInit
         }
         this.willHandleClick = this.willHandleClick.bind(this)
         this.willHandleButton = this.willHandleButton.bind(this)
@@ -99,22 +75,30 @@ export default class App extends Component {
                 visibleArr.push({name: val, visibilityState: true, customStyle: visibleStyle})
             })
             let imageUrl = `https://unsplash.it/${outerHalf}/${singleHeight * 40}/?random&more=${randomSeed()}`
+            let imageUrlMobile = `https://unsplash.it/${winWidthIs}/${singleHeight * 50}/?random&more=${randomSeed()}`
             let memeStyleContainer = {
 		      backgroundImage: `url(${imageUrl})`,
                width:`${outerHalf}px`,
                 height: `${singleHeight * 40}px`
             }
+            let memeStyleContainerMobile = {
+		      backgroundImage: `url(${imageUrlMobile})`,
+               width:`${winWidthIs}px`,
+                height: `${singleHeight * 50}px`
+            }
             let memeStyle = {
                 fontSize: "20px",
                 backgroundColor: "#CFD8DC",
                 color: "#546E7A",
-                paddingLeft:`${singleWidth * 5}px`
+                paddingLeft:`${singleWidth * 5}px`,
+                paddingRight:`${singleWidth * 5}px`
             }
             this.setState({
                 visibleArr: visibleArr,
                 hiddenArr: hiddenArr,
                 memeStyle: memeStyle,
                 memeStyleContainer: memeStyleContainer,
+                memeStyleContainerMobile: memeStyleContainerMobile,
                 buttonText: "Show Answer",
                 buttonStyle: "button"
             })
@@ -135,6 +119,8 @@ export default class App extends Component {
                 name: hiddenArrFuture[futureDestinationIndex].name,
                 customStyle: visibleStyle
             }
+            console.log(elementSource.getBoundingClientRect())
+            console.log(elementDestination.getBoundingClientRect())
             setTimeout(()=>{
                 this.setState({
                     visibleArr: visibleArrFuture,
@@ -190,6 +176,7 @@ export default class App extends Component {
                 index: 0,
                 memeStyle:{},
                 memeStyleContainer:{},
+                memeStyleContainerMobile:{},
                 visibleArr: [],
                 hiddenArr: []
             }, ()=>{
@@ -202,8 +189,8 @@ export default class App extends Component {
         if(this.state.flagReady){
             return null
         }
+        J.imMap.set("currentId", event.currentTarget.id)
         currentId = event.currentTarget.id
-        console.log(currentId,this.state.hiddenArr[this.state.index].name)
         if(currentId===this.state.hiddenArr[this.state.index].name){
             if(this.state.index+1===this.state.hiddenArr.length){
                 emitter.emit("last word")
@@ -225,7 +212,7 @@ export default class App extends Component {
     render () {
         return(
     <div className="onlyContainer">
-        <div className="columns box">
+        <div className="columns box is-hidden-mobile">
             <div className="column is-half is-offset-one-quarter has-text-centered" >
                 {
                     this.state.visibleArr.map((val)=>{
@@ -234,17 +221,19 @@ export default class App extends Component {
             }
             </div>
         </div>
-        <div className="columns box">
+        <div className="columns box is-hidden-mobile">
             <div className="column is-half is-offset-one-quarter has-text-centered" >
                 {
                     this.state.hiddenArr.map((val)=>{
                     return <span style={val.customStyle} key={randomSeed()} id={`${val.name}-hidden`} >{val.name}</span>
                 })
             }
-            <a className={`${this.state.buttonStyle} is-pulled-right`} onClick={this.willHandleButton}>{this.state.buttonText}</a>
+            </div>
+            <div className="column">
+                <a className={`${this.state.buttonStyle}`} onClick={this.willHandleButton}>{this.state.buttonText}</a>
             </div>
         </div>
-        <div className="columns box">
+        <div className="columns box is-hidden-mobile">
             <div className="column is-half is-offset-one-quarter has-text-centered" >
              <div style={this.state.memeStyleContainer} >
                 <div style={this.state.memeStyle} className="has-text-centered">
@@ -255,22 +244,4 @@ export default class App extends Component {
         </div>
 	</div>
     )}
-}
-
-function Events(target) {
-    let events = {},empty = []
-    target = target || this
-    target.on = function(type,func,ctx) {
-        (events[ type ] = events[ type ] || []).push([func,ctx])
-    }
-    target.off = function(type,func) {
-        type || (events = {})
-        var list = events[ type ] || empty,
-            i = list.length = func ? list.length : 0
-        while(i--) func == list[ i ][ 0 ] && list.splice(i,1)
-    }
-    target.emit = function(type) {
-        let e = events[ type ] || empty,list = e.length > 0 ? e.slice(0,e.length) : e,i = 0,j
-        while(j = list[ i++ ]) j[ 0 ].apply(j[ 1 ],empty.slice.call(arguments,1))
-    }
 }

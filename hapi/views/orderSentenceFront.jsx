@@ -5,7 +5,6 @@ import * as R from"ramda"
 import ramjet from "ramjet"
 const reqwest  = require("reqwest")
 
-
 let emitter = new Events()
 let initOnce = R.once(()=>{
     emitter.emit("init")
@@ -20,6 +19,11 @@ const singleHeight = Math.floor(winHeightIs / 100)
 
 const outerHalf = Math.floor(winWidthIs / 2)
 const outerQuorter = Math.floor(winWidthIs / 4)
+
+function isUniq(obj){
+	let arr = R.split(" ",obj.dePart)
+	return R.uniq(arr).length===arr.length
+}
 
 function randomSeed(){
     var text = "";
@@ -48,26 +52,34 @@ let firstData = {
 }
 
 let secondData = {
-    dePart:"Die intelligente und die schöne Frau kann die Welt verändern",
-    enPart:"The smart and the beautiful woman can change the world"
-}
-let thirdData = {
     dePart:"Die unnötige Komplexität getötet die Katze",
     enPart:"The unnecessary complexity killed the cat"
 }
-let dataArrRaw = [firstData,secondData,thirdData]
+let dataArrRaw = [firstData,secondData]
 let dataArr = shuffle(dataArrRaw)
 let currentId
 let visibleStyle = {
+    fontSize: `${singleHeight*4}px`,
     visibility: "visible",
-    padding: "10px",
+    paddingLeft: "5px",
+    paddingRight: "5px",
     cursor: "pointer"
 }
 let hiddenStyle = {
+    fontSize: `${singleHeight*4}px`,
     visibility: "hidden",
-    padding: "10px",
+    paddingLeft: "5px",
+    paddingRight: "5px",
     cursor: "pointer"
 }
+
+let buttonStyle = {
+    fontSize: `${singleHeight*2}px`,
+    paddingTop: `${singleHeight*2}px`,
+    paddingLeft: "0px",
+    paddingRight: "0px"
+}
+
 
 class Only extends Component {
     constructor (props) {
@@ -89,6 +101,19 @@ class Only extends Component {
         this.willHandleButton = this.willHandleButton.bind(this)
     }
     componentDidMount() {
+        let self = this
+        reqwest({
+			url:     "/db.json",
+			method:  "get",
+			error:  (err) => { console.log(err)},
+			success: (incoming) => {
+                this.setState({
+                    globalData: shuffle(R.filter(isUniq, incoming.data))
+                },()=>{
+                    console.log(this.state)
+                })
+			}
+		})
         emitter.on("init",()=>{
             let hiddenArrRaw = R.split(" ",this.state.data.dePart)
             let visibleArrRaw = R.split(" ",this.state.data.dePart)
@@ -103,15 +128,16 @@ class Only extends Component {
             })
             let imageUrl = `https://unsplash.it/${outerHalf}/${singleHeight * 40}/?random&more=${randomSeed()}`
             let memeStyleContainer = {
-		      backgroundImage: `url(${imageUrl})`,
-               width:`${outerHalf}px`,
+                backgroundImage: `url(${imageUrl})`,
+                width:`${outerHalf}px`,
                 height: `${singleHeight * 40}px`
             }
             let memeStyle = {
                 fontSize: "20px",
                 backgroundColor: "#CFD8DC",
                 color: "#546E7A",
-                paddingLeft:`${singleWidth * 5}px`
+                paddingLeft:`${singleWidth * 5}px`,
+                paddingRight:`${singleWidth * 5}px`
             }
             this.setState({
                 visibleArr: visibleArr,
@@ -206,7 +232,6 @@ class Only extends Component {
             return null
         }
         currentId = event.currentTarget.id
-        console.log(currentId,this.state.hiddenArr[this.state.index].name)
         if(currentId===this.state.hiddenArr[this.state.index].name){
             if(this.state.index+1===this.state.hiddenArr.length){
                 emitter.emit("last word")
@@ -229,7 +254,7 @@ class Only extends Component {
         return(
     <div className="onlyContainer">
         <div className="columns box">
-            <div className="column is-half is-offset-one-quarter has-text-centered" >
+            <div className="column is-10 is-offset-1 has-text-centered" >
                 {
                     this.state.visibleArr.map((val)=>{
                     return <span style={val.customStyle} key={randomSeed()} id={val.name} onClick={this.willHandleClick}>{val.name}</span>
@@ -238,22 +263,24 @@ class Only extends Component {
             </div>
         </div>
         <div className="columns box">
-            <div className="column is-half is-offset-one-quarter has-text-centered" >
+            <div className="column is-10 is-offset-1 has-text-centered" >
                 {
                     this.state.hiddenArr.map((val)=>{
                     return <span style={val.customStyle} key={randomSeed()} id={`${val.name}-hidden`} >{val.name}</span>
                 })
             }
-            <a className={`${this.state.buttonStyle} is-pulled-right`} onClick={this.willHandleButton}>{this.state.buttonText}</a>
+            </div>
+            <div style={buttonStyle} className="column">
+                <a className={this.state.buttonStyle} onClick={this.willHandleButton}>{this.state.buttonText}</a>
             </div>
         </div>
-        <div className="columns box">
-            <div className="column is-half is-offset-one-quarter has-text-centered" >
-             <div style={this.state.memeStyleContainer} >
-                <div style={this.state.memeStyle} className="has-text-centered">
-                    {this.state.data.enPart}
+        <div className="columns box is-hidden-mobile">
+            <div className="column is-half is-offset-one-quarter" >
+                <div style={this.state.memeStyleContainer} >
+                    <div style={this.state.memeStyle} className="has-text-centered">
+                        {this.state.data.enPart}
+                    </div>
                 </div>
-            </div>
             </div>
         </div>
 	</div>

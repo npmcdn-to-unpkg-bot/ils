@@ -31,7 +31,7 @@ var processFn = function () {
                         return _context.abrupt("return", iMeanNothing);
 
                     case 9:
-                        if (!(filepath.includes(".jsx") && filepath.includes("services"))) {
+                        if (!(filepath.includes(".jsx") && (filepath.includes("services") || filepath.includes("hot")))) {
                             _context.next = 16;
                             break;
                         }
@@ -128,7 +128,7 @@ var negativeWordArr = ["node_modules", "eslint", ".log", "git", ".json", "App.js
 var filterFn = J.anyFn(negativeWordArr);
 
 var watcher = sane(__dirname, {
-    glob: ["**/*.jsx", "**/*.js", "hapi/public/css/*.less", "!node_modules/**/*", "!tmp/**/*", "!hot/**/*"],
+    glob: ["**/*.jsx", "**/*.js", "*.less", "!node_modules/**/*", "!tmp/**/*"],
     poll: true,
     watchman: false,
     dot: false

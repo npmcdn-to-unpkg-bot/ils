@@ -1,3 +1,53 @@
-.container{
-    background-color: #545454;
+.watchMe {
+  animation-duration: 0.5s;
+  animation-name: slidein;
+  animation-iteration-count: 1;
+}
+
+.transitionElement {
+  animation: pulse 5s 1;
+}
+
+@keyframes pulse {
+  0% {
+    background-color: #001F3F;
+  }
+  100% {
+    background-color: #FF4136;
+  }
+}
+
+@keyframes pulseSecond {
+  0%, 100% {
+    background-color: yellow;
+  }
+  50% {
+    background-color: red;
+  }
+}
+
+.transitionElementSecond {
+  animation-name: stretch;
+  animation-duration: 1.5s;
+  animation-timing-function: ease-out;
+  animation-delay: 0;
+  animation-direction: alternate;
+  animation-iteration-count: infinite;
+  animation-fill-mode: none;
+  animation-play-state: running;
+}
+
+.slidein {
+  -moz-animation-duration: 3s;
+  -webkit-animation-duration: 3s;
+  animation-duration: 3s;
+  -moz-animation-name: slidein;
+  -webkit-animation-name: slidein;
+  animation-name: slidein;
+  -moz-animation-iteration-count: 3;
+  -webkit-animation-iteration-count: 3;
+  animation-iteration-count: 3;
+  -moz-animation-direction: alternate;
+  -webkit-animation-direction: alternate;
+  animation-direction: alternate;
 }
