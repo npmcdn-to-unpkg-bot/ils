@@ -8,4 +8,11 @@ function main() {
         })
     })
 }
+function deploy(){
+    return new Promise((resolve)=>{
+        generateSitemap.main().then(()=>{
+            common.saveLog("sitemap generated")
+        })
+    })
+}
 module.exports.main = main
