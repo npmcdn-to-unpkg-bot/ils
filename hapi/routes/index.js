@@ -47,7 +47,7 @@ router.get("/orderSentence", function (req, res) {
 
 router.post("/catchDailyHook", function (req, res) {
     if (req.body.password === env.getEnv("mainPassword")) {
-        dailyTask.main()
+        dailyTask.deploy().then(console.log)
         res.send("success")
     } else {
         res.send("fail")
@@ -56,7 +56,7 @@ router.post("/catchDailyHook", function (req, res) {
 
 router.post("/catchDailyHookRoot", function (req, res) {
     if (req.body.password === env.getEnv("mainPassword")) {
-        dailyTask.main()
+        dailyTask.deployRoot().then(console.log)
         res.send("success")
     } else {
         res.send("fail")

@@ -2,6 +2,19 @@
 The current code base of my project in progress
 
 # Naming convention patterns
+- "awaited*" - can be used in context of await keyword
+```
+let awaited = await willRunCommand("ls")
+```
+- "promised" - wrapped promise
+- "state" - rich man's "temp" value. Avoid use in React code
+
+- "*Raw" shows that the variable will take one more step before reaching clean state
+
+```
+let stateRaw = JSON.parse(data)
+let state = R.replace(",","",stateRaw)
+```
 
 - "incoming"||"incoming*"||"data" - is never set, always used as single result from a function or as function argument
 data should be first to use, unless it is a async data call and thus "incoming" pattern becomes more relevant

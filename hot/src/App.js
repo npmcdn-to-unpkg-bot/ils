@@ -1,7 +1,6 @@
 "use strict"
 import React,{ Component } from"react"
 import * as R from "ramda"
-
 import ramjet from "ramjet"
 const reqwest  = require("reqwest")
 import J from "../common.js"

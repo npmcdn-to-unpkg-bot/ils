@@ -6,7 +6,7 @@
   "scripts": {
     "stop": "node zStart",
     "de": "git add . --all&&git commit -m update&&git push",
-    "deploy": "node zDeploy.js",
+    "deploy": "node zDeployStart.js",
     "aws": "node zDeployAws.js",
     "prod": "pm2 kill&&pm2 start hapi/start.js",
     "admin": "pm2 kill&&pm2 start admin/start.js",
