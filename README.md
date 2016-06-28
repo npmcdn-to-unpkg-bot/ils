@@ -2,6 +2,9 @@
 The current code base of my project in progress
 
 # Naming convention patterns
+- "main" - if JSON act as a holder for array of objects, then use "main" as the single object property
+- width comes before height 
+
 - "awaited*" - can be used in context of await keyword
 ```
 let awaited = await willRunCommand("ls")

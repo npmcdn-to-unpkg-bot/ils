@@ -10,6 +10,7 @@ const singleHeight = divide(winHeightIs, 100)
 let imMap = Immutable.Map({})
 let imList = Immutable.List([])
 
+
 function divide(incomingNumber = 1, divideBy = 1) {
     return Math.floor(R.divide(incomingNumber, divideBy))
 }
@@ -63,10 +64,19 @@ function Events(target) {
     }
 }
 
+function isUniq(obj, prop){
+	let arr = R.split(" ",obj[prop])
+	return R.uniq(arr).length===arr.length
+}
+
+
 module.exports.bulButtonInit = "button"
-module.exports.buttonText = "Show Answer"
+module.exports.bulButtonNext = "button is-success"
+module.exports.buttonTextShowAnswer = "Show Answer"
+module.exports.buttonTextNext = "Next"
 module.exports.bulMobile = "is-hidden-desktop-only is-hidden-tablet-only is-hidden-widescreen"
 
+module.exports.isUniq = isUniq
 module.exports.emitter = emitter
 module.exports.divide = divide
 module.exports.getHeightPx = getHeightPx
