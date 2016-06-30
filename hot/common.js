@@ -1,15 +1,11 @@
 "use strict"
 const R = require("ramda")
-const Immutable = require("immutable")
+//const Immutable = require("immutable")
 const winWidthIs = window.innerWidth
 const winHeightIs = window.innerHeight
 
 const singleWidth = divide(winWidthIs, 100)
 const singleHeight = divide(winHeightIs, 100)
-
-let imMap = Immutable.Map({})
-let imList = Immutable.List([])
-
 
 function divide(incomingNumber = 1, divideBy = 1) {
     return Math.floor(R.divide(incomingNumber, divideBy))
@@ -29,7 +25,7 @@ function randomSeed() {
     for (let i = 0; i < 3; i++) {
         willReturn += data.charAt(Math.floor(Math.random() * data.length))
     }
-    return texwillReturnt
+    return willReturn
 }
 
 function shuffle(array) {
@@ -64,9 +60,9 @@ function Events(target) {
     }
 }
 
-function isUniq(obj, prop){
-	let arr = R.split(" ",obj[prop])
-	return R.uniq(arr).length===arr.length
+function isUniq(obj) {
+    let arr = R.split(" ", obj[ "dePart" ])
+    return R.uniq(arr).length === arr.length
 }
 
 
@@ -76,6 +72,7 @@ module.exports.buttonTextShowAnswer = "Show Answer"
 module.exports.buttonTextNext = "Next"
 module.exports.bulMobile = "is-hidden-desktop-only is-hidden-tablet-only is-hidden-widescreen"
 
+module.exports.shuffle = shuffle
 module.exports.isUniq = isUniq
 module.exports.emitter = emitter
 module.exports.divide = divide
@@ -84,5 +81,3 @@ module.exports.getWidthPx = getWidthPx
 module.exports.randomSeed = randomSeed
 module.exports.winWidthIs = winWidthIs
 module.exports.winHeightIs = winHeightIs
-module.exports.imMap = imMap
-module.exports.imList = imList

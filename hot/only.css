@@ -1,13 +1,31 @@
+.memeContainer {
+  width: 50%;
+  height: 40%;
+}
+.meme {
+  font-size: 20px;
+  background-color: #CFD8DC;
+  color: #546E7A;
+}
+.paddingLR {
+  padding-left: 5px;
+  padding-right: 5px;
+  cursor: pointer;
+}
+.isHidden {
+  visibility: hidden;
+}
+.isVisible {
+  visibility: visible;
+}
 .watchMe {
   animation-duration: 0.5s;
   animation-name: slidein;
   animation-iteration-count: 1;
 }
-
 .transitionElement {
   animation: pulse 5s 1;
 }
-
 @keyframes pulse {
   0% {
     background-color: #001F3F;
@@ -16,16 +34,6 @@
     background-color: #FF4136;
   }
 }
-
-@keyframes pulseSecond {
-  0%, 100% {
-    background-color: yellow;
-  }
-  50% {
-    background-color: red;
-  }
-}
-
 .transitionElementSecond {
   animation-name: stretch;
   animation-duration: 1.5s;
@@ -36,18 +44,4 @@
   animation-fill-mode: none;
   animation-play-state: running;
 }
-
-.slidein {
-  -moz-animation-duration: 3s;
-  -webkit-animation-duration: 3s;
-  animation-duration: 3s;
-  -moz-animation-name: slidein;
-  -webkit-animation-name: slidein;
-  animation-name: slidein;
-  -moz-animation-iteration-count: 3;
-  -webkit-animation-iteration-count: 3;
-  animation-iteration-count: 3;
-  -moz-animation-direction: alternate;
-  -webkit-animation-direction: alternate;
-  animation-direction: alternate;
-}
+/* usage: .transform-translate(100px, 100px); */

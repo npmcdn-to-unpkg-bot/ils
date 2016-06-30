@@ -10,7 +10,19 @@ const session = require("express-session")
 let routes = require("./routes/index.js")
 
 let app = express()
-
+app.get("/*", (request, response, next) => {
+    let headerHost = request.headers.host
+    let hostname = (request.headers.host.match(/:/g)) ? request.headers.host.slice(0, request.headers.host.indexOf(":")) : request.headers.host
+    if (headerHost.indexOf("www") > -1) {
+        response.writeHead(301, {
+            "Location": "http://ilearnsmarter.com" + request.url,
+            "Expires": (new Date).toGMTString()
+        })
+        response.end()
+    } else {
+        next()
+    }
+})
 app.use(compression())
 app.set("view cache", true)
 app.set("views", __dirname + "/views")

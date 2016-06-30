@@ -1,5 +1,9 @@
 "use strict";
 
+var _typeof2 = require("babel-runtime/helpers/typeof");
+
+var _typeof3 = _interopRequireDefault(_typeof2);
+
 var _regenerator = require("babel-runtime/regenerator");
 
 var _regenerator2 = _interopRequireDefault(_regenerator);
@@ -91,8 +95,12 @@ router.get("/", function (req, res) {
     res.send("index");
 });
 
+router.post("/test", function (req, res) {
+    res.send(JSON.stringify((0, _typeof3.default)(req.ip)));
+});
+
 router.post("/blog", function (req, res) {
-    if (J.getIp(req).includes("127.0.0.1")) {
+    if (req.ip.includes("127.0.0.1")) {
         willPublish(req.body.keyword, req.body.content).then(function () {
             res.send("was published");
         });

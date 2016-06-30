@@ -1,7 +1,7 @@
 "use strict"
 const J = require("./common")
 
-let commands = ["pm2 kill","git pull", "pm2 start hapi/start.js", "pm2 start admin/start.js"]
+let commands = ["pm2 kill", "git pull", "pm2 start hapi/start.js"]
 
 async function mainAsync() {
     let awaited
@@ -11,4 +11,3 @@ async function mainAsync() {
     return awaited
 }
 mainAsync().then(J.lg)
-

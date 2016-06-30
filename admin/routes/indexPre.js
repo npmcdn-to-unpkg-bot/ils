@@ -42,8 +42,12 @@ router.get("/", (req, res) => {
     res.send("index")
 })
 
+router.post("/test", (req, res) =>{
+    res.send(JSON.stringify(typeof req.ip))
+})
+
 router.post("/blog", (req, res) =>{
-    if (J.getIp(req).includes("127.0.0.1")) {
+    if (req.ip.includes("127.0.0.1")) {
         willPublish(req.body.keyword, req.body.content).then(()=>{
             res.send("was published")
         })
@@ -51,7 +55,6 @@ router.post("/blog", (req, res) =>{
         res.send("index")
     }
 })
-
 
 router.post("/read", (req, res)=> {
     J.log(word, "word")

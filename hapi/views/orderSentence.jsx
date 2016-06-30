@@ -1,6 +1,6 @@
 "use strict"
 import React,{ Component } from"react"
-var DefaultLayout = require("./defaultAnimated.jsx")
+var DefaultLayout = require("./defaultAnimate.jsx")
 
 let WillExport = React.createClass({
     render: function() {

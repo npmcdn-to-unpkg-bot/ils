@@ -19,91 +19,111 @@ var processFn = function () {
                         commands = factoryCommands(filepath);
 
                         if (!filepath.includes("Front.jsx")) {
-                            _context.next = 9;
+                            _context.next = 10;
                             break;
                         }
 
-                        _context.next = 5;
+                        J.log("babelify");
+                        _context.next = 6;
                         return willRunFixedCommand(commands.babelifyHapi);
 
-                    case 5:
+                    case 6:
                         iMeanNothing = _context.sent;
                         return _context.abrupt("return", iMeanNothing);
 
-                    case 9:
+                    case 10:
                         if (!(filepath.includes(".jsx") && (filepath.includes("services") || filepath.includes("hot")))) {
-                            _context.next = 16;
+                            _context.next = 18;
                             break;
                         }
 
-                        _context.next = 12;
+                        J.log("babelify");
+                        _context.next = 14;
                         return willRunFixedCommand(commands.babelify);
 
-                    case 12:
+                    case 14:
                         iMeanNothing = _context.sent;
                         return _context.abrupt("return", iMeanNothing);
 
-                    case 16:
+                    case 18:
                         if (!(filepath.includes(".jsx") && filepath.includes("fth"))) {
-                            _context.next = 23;
+                            _context.next = 26;
                             break;
                         }
 
-                        _context.next = 19;
+                        J.log("babelify");
+                        _context.next = 22;
                         return willRunFixedCommand(commands.babelify);
 
-                    case 19:
+                    case 22:
                         iMeanNothing = _context.sent;
                         return _context.abrupt("return", iMeanNothing);
-
-                    case 23:
-                        if (!filepath.includes("Pre.js")) {
-                            _context.next = 33;
-                            break;
-                        }
-
-                        _context.next = 26;
-                        return willRunFixedCommand(commands.babel);
 
                     case 26:
-                        iMeanNothing = _context.sent;
-                        _context.next = 29;
-                        return willRunFixedCommand(commands.lint);
-
-                    case 29:
-                        iMeanNothing = _context.sent;
-                        return _context.abrupt("return", iMeanNothing);
-
-                    case 33:
-                        if (!filepath.includes(".less")) {
-                            _context.next = 40;
+                        if (!filepath.includes(".jsx")) {
+                            _context.next = 34;
                             break;
                         }
 
-                        _context.next = 36;
+                        J.log("lint react");
+                        _context.next = 30;
+                        return willRunFixedCommand(commands.lint);
+
+                    case 30:
+                        iMeanNothing = _context.sent;
+                        return _context.abrupt("return", iMeanNothing);
+
+                    case 34:
+                        if (!filepath.includes("Pre.js")) {
+                            _context.next = 45;
+                            break;
+                        }
+
+                        J.log("babel lint");
+                        _context.next = 38;
+                        return willRunFixedCommand(commands.babel);
+
+                    case 38:
+                        iMeanNothing = _context.sent;
+                        _context.next = 41;
+                        return willRunFixedCommand(commands.lint);
+
+                    case 41:
+                        iMeanNothing = _context.sent;
+                        return _context.abrupt("return", iMeanNothing);
+
+                    case 45:
+                        if (!filepath.includes(".less")) {
+                            _context.next = 53;
+                            break;
+                        }
+
+                        J.log("less");
+                        _context.next = 49;
                         return willRunFixedCommand(commands.less);
 
-                    case 36:
+                    case 49:
                         iMeanNothing = _context.sent;
                         return _context.abrupt("return", iMeanNothing);
 
-                    case 40:
-                        if (!(filepath.includes(".js") && !filepath.includes(".jsx"))) {
-                            _context.next = 47;
+                    case 53:
+                        if (!filepath.includes(".js")) {
+                            _context.next = 61;
                             break;
                         }
 
-                        _context.next = 43;
+                        J.log("lint");
+                        _context.next = 57;
                         return willRunFixedCommand(commands.lint);
 
-                    case 43:
+                    case 57:
                         iMeanNothing = _context.sent;
                         return _context.abrupt("return", iMeanNothing);
 
-                    case 47:
+                    case 61:
                         return _context.abrupt("return", false);
 
-                    case 48:
+                    case 62:
                     case "end":
                         return _context.stop();
                 }
@@ -148,12 +168,12 @@ watcher.on("change", function (filepath, root, stat) {
     } else {
         if (mainFlag === true) {
             mainFlag = false;
-            J.box("⚡⚡⚡ " + J.takeName(filepath) + " Will Start ⚡⚡⚡");
+            J.box("⚡⚡⚡  " + J.takeName(filepath) + " Will Start  ⚡⚡⚡");
             processFn(filepath).then(function (incoming) {
                 setTimeout(function () {
                     mainFlag = true;
                 }, 500);
-                J.log("💡💡💡 " + J.takeName(filepath) + " Is Over 💡💡💡");
+                J.log("💡💡💡  " + J.takeName(filepath) + " Is Over  💡💡💡");
             });
         }
     }
@@ -169,12 +189,12 @@ watcher.on("add", function (filepath, root, stat) {
     } else {
         if (mainFlag === true) {
             mainFlag = false;
-            J.box("⚡⚡⚡ " + J.takeName(filepath) + " Will Start ⚡⚡⚡");
+            J.box("⚡⚡⚡  " + J.takeName(filepath) + " Will Start  ⚡⚡⚡");
             processFn(filepath).then(function (incoming) {
                 setTimeout(function () {
                     mainFlag = true;
                 }, 500);
-                J.log("💡💡💡 " + J.takeName(filepath) + " Is Over 💡💡💡");
+                J.log("💡💡💡  " + J.takeName(filepath) + " Is Over  💡💡💡");
             });
         }
     }

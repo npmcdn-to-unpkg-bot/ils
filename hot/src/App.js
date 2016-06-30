@@ -56,7 +56,7 @@ export default class App extends Component {
         this.willHandleButton = this.willHandleButton.bind(this)
     }
     componentDidMount() {
-        
+
         J.emitter.on("init",()=>{
             let imageHeight = J.getHeightPx(40)
             let imageWidth = J.getWidthPx(50)
@@ -67,16 +67,16 @@ export default class App extends Component {
             let hiddenArr = []
             let visibleArr = []
             let hiddenArrRaw = R.split(" ",this.state.data.dePart)
-            let visibleArrRaw = hiddenArrRaw
-            R.shuffle(visibleArrRaw)
+            let visibleArrRaw = J.shuffle( R.split(" ",this.state.data.dePart))
             hiddenArrRaw.map((val)=>{
-                hiddenArr.push({name: val, customClass: "isHidden"})
+                hiddenArr.push({name: val, customClass: "isHidden paddingLR"})
                 //hiddenArr.push({name: val, visibilityState: false, customStyle: hiddenStyle, customClass: "isHidden"})
             })
             visibleArrRaw.map((val)=>{
                 visibleArr.push({name: val, customClass: "isVisible"})
                 //visibleArr.push({name: val, visibilityState: true, customStyle: visibleStyle, customClass: "isVisible"})
             })
+
             this.setState({
                 visibleArr: visibleArr,
                 hiddenArr: hiddenArr,
@@ -87,10 +87,10 @@ export default class App extends Component {
         })
         J.emitter.on("correct",()=>{
             let timing = 700
-            let elementSource = document.getElementById(J.imMap.get("currentId"))
-            let elementDestination = document.getElementById(`${J.imMap.get("currentId")}-hidden`)
-            let sourceIndexFuture = R.findIndex(R.propEq('name', J.imMap.get("currentId"))(this.state.visibleArr)
-            let destinationIndexFuture = R.findIndex(R.propEq('name', J.imMap.get("currentId")))(this.state.hiddenArr)
+            let elementSource = document.getElementById(currentId)
+            let elementDestination = document.getElementById(`${currentId}-hidden`)
+            let sourceIndexFuture = R.findIndex(R.propEq('name', currentId))(this.state.visibleArr)
+            let destinationIndexFuture = R.findIndex(R.propEq('name', currentId))(this.state.hiddenArr)
             let visibleArrFuture = this.state.visibleArr
             let hiddenArrFuture = this.state.hiddenArr
             visibleArrFuture[sourceIndexFuture] = {
@@ -115,7 +115,7 @@ export default class App extends Component {
             ramjet.transform(elementSource, elementDestination, {duration: timing})
         })
         J.emitter.on("wrong",()=>{
-            let elementSource = document.getElementById(J.imMap.get("currentId"))
+            let elementSource = document.getElementById(currentId)
             elementSource.classList.add("animated","zoomInDown")
             setTimeout(()=>{
                 elementSource.classList.remove("animated","zoomInDown")
@@ -147,7 +147,7 @@ export default class App extends Component {
                 buttonStyle: J.bulButtonNext
             })
         })
-        emitter.on("next",()=>{
+        J.emitter.on("next",()=>{
             let willBeIndex
             if (this.state.globalIndex === this.state.globalData.length - 1) {
                 willBeIndex = 0
@@ -180,16 +180,15 @@ export default class App extends Component {
         if(this.state.flagReady){
             return null
         }
-        J.imMap.set("currentId", event.currentTarget.id)
         currentId = event.currentTarget.id
-        if(J.imMap.get("currentId")===this.state.hiddenArr[this.state.index].name){
+        if(currentId===this.state.hiddenArr[this.state.index].name){
             if(this.state.index+1===this.state.hiddenArr.length){
-                emitter.emit("last word")
+                J.emitter.emit("last word")
             }else{
-                emitter.emit("correct")
+                J.emitter.emit("correct")
             }
         }else{
-            emitter.emit("wrong")
+            J.emitter.emit("wrong")
         }
 
     }
@@ -207,7 +206,7 @@ export default class App extends Component {
             <div className="column is-half is-offset-one-quarter has-text-centered" >
                 {
                     this.state.visibleArr.map((val)=>{
-                    return <span style={val.customStyle} key={randomSeed()} className={val.customClass} id={val.name} onClick={this.willHandleClick}>{val.name}</span>
+                    return <span style={val.customStyle} key={J.randomSeed()} className={val.customClass} id={val.name} onClick={this.willHandleClick}>{val.name}</span>
                 })
             }
             </div>
@@ -216,7 +215,7 @@ export default class App extends Component {
             <div className="column is-half is-offset-one-quarter has-text-centered" >
                 {
                     this.state.hiddenArr.map((val)=>{
-                    return <span style={val.customStyle} key={randomSeed()} className={val.customClass} id={`${val.name}-hidden`} >{val.name}</span>
+                    return <span style={val.customStyle} key={J.randomSeed()} className={val.customClass} id={`${val.name}-hidden`} >{val.name}</span>
                 })
             }
             </div>

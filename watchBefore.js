@@ -38,12 +38,12 @@ watcher.on("change", function (filepath, root, stat) {
     } else {
         if (mainFlag === true) {
             mainFlag = false
-            J.box(`⚡⚡⚡ ${J.takeName(filepath)} Will Start ⚡⚡⚡`)
+            J.box(`⚡⚡⚡  ${J.takeName(filepath)} Will Start  ⚡⚡⚡`)
             processFn(filepath).then((incoming)=>{
                 setTimeout(()=>{
                     mainFlag = true
                 }, 500)
-                J.log(`💡💡💡 ${J.takeName(filepath)} Is Over 💡💡💡`)
+                J.log(`💡💡💡  ${J.takeName(filepath)} Is Over  💡💡💡`)
             })
         }
     }
@@ -59,12 +59,12 @@ watcher.on("add", function (filepath, root, stat) {
     } else {
         if (mainFlag === true) {
             mainFlag = false
-            J.box(`⚡⚡⚡ ${J.takeName(filepath)} Will Start ⚡⚡⚡`)
+            J.box(`⚡⚡⚡  ${J.takeName(filepath)} Will Start  ⚡⚡⚡`)
             processFn(filepath).then((incoming)=>{
                 setTimeout(()=>{
                     mainFlag = true
                 }, 500)
-                J.log(`💡💡💡 ${J.takeName(filepath)} Is Over 💡💡💡`)
+                J.log(`💡💡💡  ${J.takeName(filepath)} Is Over  💡💡💡`)
             })
         }
     }
@@ -76,34 +76,41 @@ async function processFn(filepath) {
     let commands = factoryCommands(filepath)
 
     if (filepath.includes("Front.jsx")) {
-
+        J.log("babelify")
         iMeanNothing = await willRunFixedCommand(commands.babelifyHapi)
         return iMeanNothing
             //iMeanNothing = await await J.willRunFixedCommand(commands.lintReact)
 
-    } else if (filepath.includes(".jsx") && (filepath.includes("services")||filepath.includes("hot"))) {
+    } else if (filepath.includes(".jsx") && (filepath.includes("services") || filepath.includes("hot"))) {
+        J.log("babelify")
         iMeanNothing = await willRunFixedCommand(commands.babelify)
             //iMeanNothing = await await J.willRunFixedCommand(commands.lintReact)
         return iMeanNothing
 
     } else if (filepath.includes(".jsx") && filepath.includes("fth")) {
+        J.log("babelify")
         iMeanNothing = await willRunFixedCommand(commands.babelify)
             //iMeanNothing = await await J.willRunFixedCommand(commands.lintReact)
         return iMeanNothing
 
-    } else if (filepath.includes("Pre.js")) {
+    } else if (filepath.includes(".jsx")) {
+        J.log("lint react")
+        iMeanNothing = await willRunFixedCommand(commands.lint)
+        return iMeanNothing
 
+    } else if (filepath.includes("Pre.js")) {
+        J.log("babel lint")
         iMeanNothing = await willRunFixedCommand(commands.babel)
         iMeanNothing = await willRunFixedCommand(commands.lint)
         return iMeanNothing
 
     } else if (filepath.includes(".less")) {
-
+        J.log("less")
         iMeanNothing = await willRunFixedCommand(commands.less)
         return iMeanNothing
 
-    } else if (filepath.includes(".js") && !filepath.includes(".jsx")) {
-
+    } else if (filepath.includes(".js")) {
+        J.log("lint")
         iMeanNothing = await willRunFixedCommand(commands.lint)
         return iMeanNothing
 

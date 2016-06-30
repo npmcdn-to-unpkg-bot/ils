@@ -6,7 +6,7 @@ const db = require("proud-db")
 const J = require("justdo")
 const fs = require("fs-extra")
 //const similarity = require("./_inc/similarity.js")
-const ip = require("./_inc/ipRequest.js")
+//const ip = require("./_inc/ipRequest.js")
 
 function saveLog(data) {
     let logFile = `${__dirname}/_inc/log.txt`
@@ -76,7 +76,7 @@ let anyRaw = R.flip(R.any)
 let anyFn = R.curry(anyRaw)
 
 module.exports.saveLog = saveLog
-module.exports.getIp = getIp
+//module.exports.getIp = getIp
 module.exports.isEmpty = isEmpty
 module.exports.takeName = takeName
 module.exports.anyFn = anyFn
