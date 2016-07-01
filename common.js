@@ -6,10 +6,9 @@ const db = require("proud-db")
 const J = require("justdo")
 const fs = require("fs-extra")
 //const similarity = require("./_inc/similarity.js")
-//const ip = require("./_inc/ipRequest.js")
 
 function saveLog(data) {
-    let logFile = `${__dirname}/_inc/log.txt`
+    let logFile = `${__dirname}/zLog.txt`
     return new Promise((resolve)=>{
         fs.readFile(logFile, "utf8", (err, prevData)=>{
             fs.outputFile(logFile, `${data}\n${prevData}`, ()=> {
