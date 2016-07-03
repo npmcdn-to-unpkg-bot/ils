@@ -1,5 +1,6 @@
 "use strict"
 const express = require("express")
+const helmet = require("helmet")
 const path = require("path")
 const compression = require("compression")
 const favicon = require("serve-favicon")
@@ -10,6 +11,7 @@ const session = require("express-session")
 let routes = require("./routes/index.js")
 
 let app = express()
+app.use(helmet())
 app.get("/*", (request, response, next) => {
     let headerHost = request.headers.host
     let hostname = (request.headers.host.match(/:/g)) ? request.headers.host.slice(0, request.headers.host.indexOf(":")) : request.headers.host

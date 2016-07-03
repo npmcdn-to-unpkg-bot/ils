@@ -2,22 +2,19 @@
 const J = require("./common")
 const R = require("ramda")
 const RFantasy = require("ramda-fantasy")
+const fs = require("fs-extra")
 const Either = RFantasy.Either
 const Future = RFantasy.Future
 const Identity = RFantasy.Identity
 const Maybe = RFantasy.Maybe
 const Just = RFantasy.Just
-
-let commands = ["ls","free"]
-
-function promiseWrapper(command){
-    return new Promise((resolve)=>{
-        J.willRunFixedCommand(command).then(resolve)
+///home/just/ils/hapi/public/db.json
+let outputLocation = "/home/just/ils/_inc/inc/dbOut.json"
+let sourceLocation = require("/home/just/ils/hapi/public/db.json").data
+let ramdaMagic = R.compose(
+    R.map((data)=>{
+        return R.assoc('category', "quotes", data)
     })
-}
-let promisedCommand = R.composeP(promiseWrapper)
-let commandAsync = R.compose(R.map((val)=>{
-    return promisedCommand(val) 
-}))
+)
 
-commandAsync(commands)
+fs.outputJsonSync(outputLocation, ramdaMagic(sourceLocation))

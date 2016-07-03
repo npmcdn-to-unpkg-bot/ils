@@ -1,24 +1,21 @@
 "use strict"
 const R = require("ramda")
-//const Immutable = require("immutable")
+
 const winWidthIs = window.innerWidth
 const winHeightIs = window.innerHeight
 
-const singleWidth = divide(winWidthIs, 100)
-const singleHeight = divide(winHeightIs, 100)
-
-function divide(incomingNumber = 1, divideBy = 1) {
-    return Math.floor(R.divide(incomingNumber, divideBy))
+function getHeightPx(incomingPercent = 1) {
+    return Math.floor(R.divide(winHeightIs, 100) * incomingPercent)
 }
-
-function getHeightPx(incomingPercent = 1, divideBy = winHeightIs) {
-    return divide(incomingPercent, divideBy)
+function getWidthPx(incomingPercent = 1) {
+    return Math.floor(R.divide(winWidthIs, 100) * incomingPercent)
 }
-
-function getWidthPx(incomingPercent = 1, divideBy = winWidthIs) {
-    return divide(incomingPercent, divideBy)
+function getPercent(incomingPercent, whole) {
+    return Math.floor(R.divide(whole, 100) * incomingPercent)
 }
-
+function divide(part, whole) {
+    return Math.floor(R.divide(part, whole))
+}
 function randomSeed() {
     let willReturn = ""
     let data = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
@@ -65,17 +62,22 @@ function isUniq(obj) {
     return R.uniq(arr).length === arr.length
 }
 
-
 module.exports.bulButtonInit = "button"
 module.exports.bulButtonNext = "button is-success"
 module.exports.buttonTextShowAnswer = "Show Answer"
 module.exports.buttonTextNext = "Next"
-module.exports.bulMobile = "is-hidden-desktop-only is-hidden-tablet-only is-hidden-widescreen"
+module.exports.bulMobileBoxOuter = "columns box is-hidden-desktop-only is-hidden-tablet-only is-hidden-widescreen"
+module.exports.bulMobileOuter = "columns is-hidden-desktop-only is-hidden-tablet-only is-hidden-widescreen"
+module.exports.bulMobileBox = "column box is-hidden-desktop-only is-hidden-tablet-only is-hidden-widescreen"
+module.exports.bulMobileBoxHalf = "column box is-half is-offset-one-quarter is-hidden-desktop-only is-hidden-tablet-only is-hidden-widescreen"
+module.exports.bulBoxOuter = "columns box is-hidden-mobile"
+module.exports.bulBoxHalf = "column is-half is-offset-one-quarter has-text-centered"
 
 module.exports.shuffle = shuffle
+module.exports.getPercent = getPercent
+module.exports.divide = divide
 module.exports.isUniq = isUniq
 module.exports.emitter = emitter
-module.exports.divide = divide
 module.exports.getHeightPx = getHeightPx
 module.exports.getWidthPx = getWidthPx
 module.exports.randomSeed = randomSeed
