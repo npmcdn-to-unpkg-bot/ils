@@ -13,6 +13,50 @@ let titleFn = R.compose(R.trim, R.last, R.split("-"), R.head, R.match(/\/\/(\s)?
 //let categoryFn = R.compose(R.trim,R.last,R.split("-"),R.head,R.match(/\/\/(\s)?category.{1,70}/gm))
 let cleanFn = R.compose(R.replace(/\/(.|\n)+(?=#)/gm, ""))
 
+router.get("/", function (req, res) {
+    res.render("index")
+})
+router.get("/about", function (req, res) {
+    res.render("about")
+})
+router.get("/writeSentenceLite", function (req, res) {
+    res.render("writeSentenceLite")
+})
+router.get("/writeSentence", function (req, res) {
+    res.render("writeSentence")
+})
+router.get("/orderSentence", function (req, res) {
+    res.render("orderSentence")
+})
+router.get("/orderSentenceMobile", function (req, res) {
+    res.render("orderSentenceMobile")
+})
+router.post("/catchDailyHook", function (req, res) {
+    if (req.body.password === env.getEnv("mainPassword")) {
+        dailyTask.deploy().then(console.log)
+        res.send("success")
+    } else {
+        res.send("fail")
+    }
+})
+router.post("/catchDailyHookRoot", function (req, res) {
+    if (req.body.password === env.getEnv("mainPassword")) {
+        dailyTask.deployRoot().then(console.log)
+        res.send("success")
+    } else {
+        res.send("fail")
+    }
+})
+router.get("/blog-*", function (req, res) {
+    let keyword = req.params[ 0 ]
+    getMarkdownData(keyword).then((incoming)=>{
+        if (incoming !== null) {
+            res.render("blog", {title: titleFn(incoming), content: cleanFn(incoming)})
+        } else {
+            res.render("index")
+        }
+    })
+})
 function getMarkdownData(fileName) {
     let fileIs = `${oneLevelUp(__dirname)}/blog/${fileName}.md`
     return new Promise((resolve)=>{
@@ -25,55 +69,4 @@ function getMarkdownData(fileName) {
         })
     })
 }
-
-router.get("/", function (req, res) {
-    res.render("index")
-})
-
-router.get("/about", function (req, res) {
-    res.render("about")
-})
-
-router.get("/writeSentenceLite", function (req, res) {
-    res.render("writeSentenceLite")
-})
-
-router.get("/writeSentence", function (req, res) {
-    res.render("writeSentence")
-})
-router.get("/orderSentence", function (req, res) {
-    res.render("orderSentence")
-})
-
-router.post("/catchDailyHook", function (req, res) {
-    if (req.body.password === env.getEnv("mainPassword")) {
-        dailyTask.deploy().then(console.log)
-        res.send("success")
-    } else {
-        res.send("fail")
-    }
-})
-
-router.post("/catchDailyHookRoot", function (req, res) {
-    if (req.body.password === env.getEnv("mainPassword")) {
-        dailyTask.deployRoot().then(console.log)
-        res.send("success")
-    } else {
-        res.send("fail")
-    }
-})
-//get blog - list all current articles
-//auto add to sitemap
-//no category, but add, edit, delete article options
-router.get("/blog-*", function (req, res) {
-    let keyword = req.params[ 0 ]
-    getMarkdownData(keyword).then((incoming)=>{
-        if (incoming !== null) {
-            res.render("blog", {title: titleFn(incoming), content: cleanFn(incoming)})
-        } else {
-            res.render("index")
-        }
-    })
-})
-
 module.exports = router

@@ -1,29 +1,27 @@
 "use strict"
-import React, { Component } from "react"
+import React,{ Component } from "react"
+import ReactDOM from "react-dom"
 import R from "ramda"
+import reqwest from "reqwest"
 import FlipMove from "react-flip-move"
-const reqwest = require("reqwest")
-import J from "../commonReact.js"
+
+import J from "./components/commonReact.js"
 
 let initOnce = R.once(()=>{
     J.emitter.emit("init")
 })
 
-let initialData = {
-    dePart:"Ich brauche mehr Zeit diese Frage zu antworten",
-    enPart:"I need more time to answer this question"
-}
-
 let currentId
 
-export default class App extends Component {
+class App extends Component {
     constructor (props) {
         super(props)
         this.state = {
             index: 0,
             globalIndex: 0,
             globalData: [],
-            data:initialData,
+            data:{"dePart": "Ich gehe bald wieder weg",
+            "enPart": "I'll be leaving again soon"},
             flagReady: false,
             memeStyleContainer:{},
             singleWordBoxHeight:"10px",
@@ -38,31 +36,31 @@ export default class App extends Component {
         this.willHandleButton = this.willHandleButton.bind(this)
     }
     componentDidMount() {
-        J.emitter.on("init", ()=>{
+        J.emitter.on("init",()=>{
             let imageHeight = J.getHeightPx(25)
-            let imageWidth = J.getWidthPx(90)
+            let imageWidth = J.getWidthPx(95)
             let imageUrl = `https://unsplash.it/${imageWidth}/${imageHeight}/?random&more=${J.randomSeed()}`
             let memeStyleContainer = {
                 width: `${imageWidth}px`,
                 height: `${imageHeight}px`,
-		                                                                                                                                                                                                                                                                                                                                        backgroundImage: `url("${imageUrl}")`,
+		        backgroundImage: `url("${imageUrl}")`,
                 fontSize: `${J.getHeightPx(3)}px`
-		                                                                                                                                                                                                                                                    }
+		    }
             let hiddenArr = []
             let visibleArr = []
-            let referenceArr = R.split(" ", this.state.data.dePart)
-            let visibleArrRaw = J.shuffle(R.split(" ", this.state.data.dePart))
-            let singleWordBoxHeight = J.divide(J.getHeightPx(60), referenceArr.length)
+            let referenceArr = R.split(" ",this.state.data.dePart)
+            let visibleArrRaw = J.shuffle( R.split(" ",this.state.data.dePart))
+            let singleWordBoxHeight = J.divide(J.getHeightPx(43), referenceArr.length)
             visibleArrRaw.map((val)=>{
                 visibleArr.push({
                     name: val,
                     customStyle: {
-                        fontSize: `${J.getPercent(60, singleWordBoxHeight)}px`
+                        fontSize: `${J.getPercent(43,singleWordBoxHeight)}px`
                     }
                 })
             })
             this.setState({
-                singleWordBoxHeight: `${J.getPercent(60, singleWordBoxHeight)}px`,
+                singleWordBoxHeight: `${J.getPercent(43,singleWordBoxHeight)}px`,
                 visibleArr: visibleArr,
                 hiddenArr: hiddenArr,
                 referenceArr: referenceArr,
@@ -72,35 +70,35 @@ export default class App extends Component {
                 buttonStyle: {fontSize: `${J.getHeightPx(3)}px`, height: `${J.getHeightPx(3.1)}px`}
             })
         })
-        J.emitter.on("correct", ()=>{
-            let visibleArrFuture = R.compose(R.filter(val=>R.prop("name", val) !== currentId))(this.state.visibleArr)
+        J.emitter.on("correct",()=>{
+            let visibleArrFuture = R.compose(R.filter(val=>R.prop("name",val)!==currentId))(this.state.visibleArr)
             this.setState({
                 visibleArr: visibleArrFuture,
                 hiddenArr: R.append(
                     {
                         name: currentId,
                         customStyle: {fontSize: this.state.singleWordBoxHeight}
-                    }, this.state.hiddenArr),
-                index: this.state.index + 1
+                },this.state.hiddenArr),
+                index: this.state.index+1
             })
         })
-        J.emitter.on("wrong", ()=>{
+        J.emitter.on("wrong",()=>{
             let elementSource = document.getElementById(currentId)
             elementSource.classList.add("wrongAnswer")
             setTimeout(()=>{
                 elementSource.classList.remove("wrongAnswer")
-            }, 1000)
+            },1000)
         })
-        J.emitter.on("last word", ()=>{
+        J.emitter.on("last word",()=>{
             this.setState({
                 flagReady: true,
                 buttonText: J.buttonTextNext,
                 buttonClassName: J.bulButtonNext
-            }, ()=>{
+            },()=>{
                 J.emitter.emit("correct")
             })
         })
-        J.emitter.on("show answer", ()=>{
+        J.emitter.on("show answer",()=>{
             let singleWordBoxHeight = {fontSize: this.state.singleWordBoxHeight}
             this.setState({
                 visibleArr: [],
@@ -110,7 +108,7 @@ export default class App extends Component {
                 buttonClassName: J.bulButtonNext
             })
         })
-        J.emitter.on("next", ()=>{
+        J.emitter.on("next",()=>{
             let willBeIndex
             if (this.state.globalIndex === this.state.globalData.length - 1) {
                 willBeIndex = 0
@@ -129,45 +127,44 @@ export default class App extends Component {
                 J.emitter.emit("init")
             })
         })
-
         reqwest({
-            url:       "/db.json",
-            method:  "get",
-            error: (err) => { console.log(err)},
-            success: (data)=> {
+			url:       "/db.json",
+			method:  "get",
+			error: (err) => { console.log(err)},
+			success: (data)=> {
                 this.setState({
                     globalData: J.shuffle(R.filter(J.isUniq, data.data))
                 }, ()=>{
                     initOnce()
                 })
-            }
-        })
+			}
+		})
     }
     willHandleClick (event) {
-        if (this.state.flagReady) {
+        if(this.state.flagReady){
             return null
         }
         currentId = event.currentTarget.id
-        if (currentId === this.state.referenceArr[ this.state.index ]) {
-            if (this.state.index + 1 === this.state.referenceArr.length) {
+        if(currentId===this.state.referenceArr[this.state.index]){
+            if(this.state.index+1===this.state.referenceArr.length){
                 J.emitter.emit("last word")
-            } else {
+            }else{
                 J.emitter.emit("correct")
             }
-        } else {
+        }else{
             J.emitter.emit("wrong")
         }
 
     }
     willHandleButton () {
-        if (this.state.buttonText === "Show Answer") {
+        if(this.state.buttonText === "Show Answer") {
             J.emitter.emit("show answer")
-        } else if (this.state.buttonText === "Next") {
+        } else if(this.state.buttonText === "Next") {
             J.emitter.emit("next")
         }
     }
     render () {
-        return (
+        return(
     <div>
         <div className="box">
              <div style={this.state.memeStyleContainer} >
@@ -175,7 +172,7 @@ export default class App extends Component {
                     {this.state.data.enPart}
                 </div>
             </div>
-                <div className="box has-text-centered paddingLR">
+                <div className="has-text-centered paddingLR">
                     <a style={this.state.buttonStyle} className={`${this.state.buttonClassName} buttonStyle`} onClick={this.willHandleButton}>{this.state.buttonText}</a>
                 </div>
         </div>
@@ -183,8 +180,8 @@ export default class App extends Component {
             <FlipMove easing="ease-out" duration="300" >
                 {
                     this.state.visibleArr.map((val)=>{
-                        return <div key={`${val.name}-key`} style={val.customStyle} className="column singleWord" id={val.name} onClick={this.willHandleClick}>{val.name}</div>
-                    })
+                    return <div key={`${val.name}-key`} style={val.customStyle} className="column singleWord" id={val.name} onClick={this.willHandleClick}>{val.name}</div>
+                })
             }
             </FlipMove>
         </div>
@@ -192,11 +189,13 @@ export default class App extends Component {
             <FlipMove easing="ease-in" duration="700" >
                 {
                     this.state.hiddenArr.map((val)=>{
-                        return <div key={`${val.name}-key`} style={val.customStyle} className="column singleWordCorrect">{val.name}</div>
-                    })
+                    return <div key={`${val.name}-key`} style={val.customStyle} className="column singleWordCorrect">{val.name}</div>
+                })
             }
             </FlipMove>
         </div>
 	</div>
     )}
 }
+
+ReactDOM.render(<App />,document.getElementById("reactHook"))

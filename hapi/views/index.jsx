@@ -1,6 +1,6 @@
 "use strict"
-import React,{ Component } from "react"
-const DefaultLayout = require( "./default.jsx" )
+import React, { Component } from "react"
+const DefaultLayout = require("./default.jsx")
 
 class IndexContainer extends Component {
     render() {
@@ -17,9 +17,10 @@ class IndexContainer extends Component {
                           <ol>
                               <li><a href="/writeSentence">Write German Sentence</a> - You will see an English sentence and you have to write its German translation. The system will wait for correct key to be pressed and won't proceed further till that happen. Of cource, the user can just press "Enter" to see the answer, if the question is that hard. As a clue, the user can see the beginning of each word.</li>
                               <li><a href="/writeSentenceLite">Write German Sentence Lite</a> - You will see an English sentence and you have to write its translation. On every wrong input, the correct word will be displayed, as opposite to keep exppecting the right input. As a clue, the user can see the beginning of each word.</li>
+                              <li><a href="/orderSentence">Order German Sentences</a> - The user see the words of a German sentence in random order. The goal is to order the words, so at the end the correct sentence is displayed.</li>
+                              <li><a href="/orderSentenceMobile">Order German Sentences Mobile</a> - Same as above, but optimized for mobile users, but all other users can use it as well.</li>
                               <li><a href="/#">Learning Meme</a> - A word with related image and related translated sentence are displayed. The aim is to find the hidden word. - Under reconstruction</li>
                               <li><a href="/#">EinEine</a> - Select the right German article form. It is working with both indefinite and definite articles. -  Under reconstruction</li>
-                              <li><a href="/#">Order German Sentences</a> - The user see the words of a German sentence in random order. The goal is to order the words, so at the end the correct sentence is displayed. - Under reconstruction</li>
                               <li><a href="/#">Guess The Word</a> - The user must write the hidden word. As clues are displayed related words and example sentences. - Under reconstruction</li>
                           </ol>
                           <h3>About</h3>
@@ -34,10 +35,10 @@ class IndexContainer extends Component {
     }
 }
 
-let WillExport = React.createClass( {
+let WillExport = React.createClass({
     render: function() {
         return <DefaultLayout><IndexContainer /></DefaultLayout>
     }
-} )
+})
 
 module.exports = WillExport

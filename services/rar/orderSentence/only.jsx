@@ -1,5 +1,7 @@
 "use strict"
 import React,{ Component } from "react"
+import ReactDOM from "react-dom"
+
 import R from "ramda"
 import FlipMove from "react-flip-move"
 const dataRaw  = {
@@ -539,7 +541,7 @@ export default class App extends Component {
     componentDidMount() {
         J.emitter.on("init",()=>{
             let imageHeight = J.getHeightPx(25)
-            let imageWidth = J.getWidthPx(90)
+            let imageWidth = J.getWidthPx(95)
             let imageUrl = `https://unsplash.it/${imageWidth}/${imageHeight}/?random&more=${J.randomSeed()}`
             let memeStyleContainer = {
                 width: `${imageWidth}px`,
@@ -551,24 +553,24 @@ export default class App extends Component {
             let visibleArr = []
             let referenceArr = R.split(" ",this.state.data.dePart)
             let visibleArrRaw = J.shuffle( R.split(" ",this.state.data.dePart))
-            let singleWordBoxHeight = J.divide(J.getHeightPx(60), referenceArr.length)
+            let singleWordBoxHeight = J.divide(J.getHeightPx(42), referenceArr.length)
             visibleArrRaw.map((val)=>{
                 visibleArr.push({
                     name: val,
                     customStyle: {
-                        fontSize: `${J.getPercent(60,singleWordBoxHeight)}px`
+                        fontSize: `${J.getPercent(42,singleWordBoxHeight)}px`
                     }
                 })
             })
             this.setState({
-                singleWordBoxHeight: `${J.getPercent(60,singleWordBoxHeight)}px`,
+                singleWordBoxHeight: `${J.getPercent(42,singleWordBoxHeight)}px`,
                 visibleArr: visibleArr,
                 hiddenArr: hiddenArr,
                 referenceArr: referenceArr,
                 memeStyleContainer: memeStyleContainer,
                 buttonText: J.buttonTextShowAnswer,
                 buttonClassName: J.bulButtonInit,
-                buttonStyle: {fontSize: `${J.getHeightPx(3)}px`, height: `${J.getHeightPx(3.1)}px`}
+                buttonStyle: {fontSize: `${J.getHeightPx(2.3)}px`, height: `${J.getHeightPx(2.4)}px`}
             })
         })
         J.emitter.on("correct",()=>{
@@ -662,7 +664,7 @@ export default class App extends Component {
                     {this.state.data.enPart}
                 </div>
             </div>
-                <div className="box has-text-centered paddingLR">
+                <div className="has-text-centered paddingLR">
                     <a style={this.state.buttonStyle} className={`${this.state.buttonClassName} buttonStyle`} onClick={this.willHandleButton}>{this.state.buttonText}</a>
                 </div>
         </div>
@@ -687,3 +689,5 @@ export default class App extends Component {
 	</div>
     )}
 }
+
+ReactDOM.render(<App />, document.getElementById('reactHook'))
