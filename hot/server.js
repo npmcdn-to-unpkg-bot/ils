@@ -2,7 +2,7 @@
 var webpack = require("webpack")
 var WebpackDevServer = require("webpack-dev-server")
 var config = require("./webpack.config")
-let portIs = 3002
+let portIs = 8080
 new WebpackDevServer(webpack(config) ,{
     publicPath: config.output.publicPath ,
     hot: true ,
