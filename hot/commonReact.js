@@ -1,5 +1,23 @@
 "use strict"
-const R = require("ramda")
+import R from "ramda"
+import reqwest from "reqwest"
+
+function postData(url, data){
+    return new Promise((resolve)=>{
+        reqwest({
+            url:  url,
+            data: data,
+            method:  "post",
+            error: (err) => {
+                console.log(err)
+                resolve(null)
+            },
+            success: (incoming)=> {
+                resolve(incoming)
+            }
+        })
+    })
+}
 
 const winWidthIs = window.innerWidth
 const winHeightIs = window.innerHeight
@@ -73,6 +91,7 @@ module.exports.bulMobileBoxHalf = "column box is-half is-offset-one-quarter is-h
 module.exports.bulBoxOuter = "columns box is-hidden-mobile"
 module.exports.bulBoxHalf = "column is-half is-offset-one-quarter has-text-centered"
 
+module.exports.postData = shuffle
 module.exports.shuffle = shuffle
 module.exports.getPercent = getPercent
 module.exports.divide = divide

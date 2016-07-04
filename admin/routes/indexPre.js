@@ -1,15 +1,13 @@
 "use strict"
 const express = require("express")
 const router = express.Router()
-
 const fs = require("fs-extra")
 const R = require("ramda")
 const envHelper = require("dotenv-helper")
-
 const J = require("../../common.js")
-
 const translate = require("../_inc/translate")
 const bringOrderTranslation = require("../_inc/bringOrderTranslation")
+const proudDb = require("../_inc/proud-db")
 
 let twoLevelUp = R.compose(R.join("/"), R.dropLast(2), R.split("/"))
 
@@ -43,7 +41,7 @@ router.get("/", (req, res) => {
 })
 
 router.post("/test", (req, res) =>{
-    res.send(JSON.stringify(typeof req.ip))
+    res.send(proudDb.loadParent("data"))
 })
 
 router.post("/blog", (req, res) =>{

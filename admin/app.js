@@ -4,6 +4,7 @@ const path = require("path")
 const favicon = require("serve-favicon")
 const bodyParser = require("body-parser")
 const mainRoute = require("./routes/index.js")
+const altRoute = require("./routes/alt.js")
 
 let app = express()
 
@@ -21,6 +22,7 @@ app.use((req, res, next) =>{
 })
 
 app.use("/", mainRoute)
+app.use("/alt", altRoute)
 
 app.use(function (err, req, res) {
     res.status(err.status || 500)

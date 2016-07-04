@@ -1,9 +1,5 @@
 "use strict";
 
-var _typeof2 = require("babel-runtime/helpers/typeof");
-
-var _typeof3 = _interopRequireDefault(_typeof2);
-
 var _regenerator = require("babel-runtime/regenerator");
 
 var _regenerator2 = _interopRequireDefault(_regenerator);
@@ -67,15 +63,13 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var express = require("express");
 var router = express.Router();
-
 var fs = require("fs-extra");
 var R = require("ramda");
 var envHelper = require("dotenv-helper");
-
 var J = require("../../common.js");
-
 var translate = require("../_inc/translate");
 var bringOrderTranslation = require("../_inc/bringOrderTranslation");
+var proudDb = require("../_inc/proud-db");
 
 var twoLevelUp = R.compose(R.join("/"), R.dropLast(2), R.split("/"));
 
@@ -96,7 +90,7 @@ router.get("/", function (req, res) {
 });
 
 router.post("/test", function (req, res) {
-    res.send(JSON.stringify((0, _typeof3.default)(req.ip)));
+    res.send(proudDb.loadParent("data"));
 });
 
 router.post("/blog", function (req, res) {

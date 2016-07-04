@@ -1,8 +1,7 @@
 "use strict"
 import React,{ Component } from "react"
 import R from "ramda"
-import reqwest from "reqwest"
-import FlipMove from "react-flip-move"
+//import FlipMove from "react-flip-move"
 
 import J from "../commonReact.js"
 
@@ -10,134 +9,30 @@ let initOnce = R.once(()=>{
     J.emitter.emit("init")
 })
 
-let currentId
 
 export default class App extends Component {
     constructor (props) {
         super(props)
         this.state = {
-            index: 0,
-            globalIndex: 0,
-            globalData: [],
-            data:{"dePart": "Ich gehe bald wieder weg",
-            "enPart": "I'll be leaving again soon"},
-            flagReady: false,
-            memeStyleContainer:{},
-            singleWordBoxHeight:"10px",
-            visibleArr: [],
-            hiddenArr: [],
-            referenceArr: [],
-            buttonText: J.buttonTextShowAnswer,
-            buttonClassName: J.bulButtonInit,
-            buttonStyle: {}
+            index: 0
         }
         this.willHandleClick = this.willHandleClick.bind(this)
-        this.willHandleButton = this.willHandleButton.bind(this)
+        //this.willHandleButton = this.willHandleButton.bind(this)
     }
     componentDidMount() {
         J.emitter.on("init",()=>{
-            let imageHeight = J.getHeightPx(25)
-            let imageWidth = J.getWidthPx(95)
-            let imageUrl = `https://unsplash.it/${imageWidth}/${imageHeight}/?random&more=${J.randomSeed()}`
-            let memeStyleContainer = {
-                width: `${imageWidth}px`,
-                height: `${imageHeight}px`,
-		        backgroundImage: `url("${imageUrl}")`,
-                fontSize: `${J.getHeightPx(3)}px`
-		    }
-            let hiddenArr = []
-            let visibleArr = []
-            let referenceArr = R.split(" ",this.state.data.dePart)
-            let visibleArrRaw = J.shuffle( R.split(" ",this.state.data.dePart))
-            let singleWordBoxHeight = J.divide(J.getHeightPx(60), referenceArr.length)
-            visibleArrRaw.map((val)=>{
-                visibleArr.push({
-                    name: val,
-                    customStyle: {
-                        fontSize: `${J.getPercent(60,singleWordBoxHeight)}px`
-                    }
-                })
-            })
-            this.setState({
-                singleWordBoxHeight: `${J.getPercent(60,singleWordBoxHeight)}px`,
-                visibleArr: visibleArr,
-                hiddenArr: hiddenArr,
-                referenceArr: referenceArr,
-                memeStyleContainer: memeStyleContainer,
-                buttonText: J.buttonTextShowAnswer,
-                buttonClassName: J.bulButtonInit,
-                buttonStyle: {fontSize: `${J.getHeightPx(3)}px`, height: `${J.getHeightPx(3.1)}px`}
-            })
         })
         J.emitter.on("correct",()=>{
-            let visibleArrFuture = R.compose(R.filter(val=>R.prop("name",val)!==currentId))(this.state.visibleArr)
-            this.setState({
-                visibleArr: visibleArrFuture,
-                hiddenArr: R.append(
-                    {
-                        name: currentId,
-                        customStyle: {fontSize: this.state.singleWordBoxHeight}
-                },this.state.hiddenArr),
-                index: this.state.index+1
-            })
         })
         J.emitter.on("wrong",()=>{
-            let elementSource = document.getElementById(currentId)
-            elementSource.classList.add("wrongAnswer")
-            setTimeout(()=>{
-                elementSource.classList.remove("wrongAnswer")
-            },1000)
         })
         J.emitter.on("last word",()=>{
-            this.setState({
-                flagReady: true,
-                buttonText: J.buttonTextNext,
-                buttonClassName: J.bulButtonNext
-            },()=>{
-                J.emitter.emit("correct")
-            })
         })
         J.emitter.on("show answer",()=>{
-            let singleWordBoxHeight = {fontSize: this.state.singleWordBoxHeight}
-            this.setState({
-                visibleArr: [],
-                hiddenArr: R.compose(R.map((val)=>{return {name: val, customStyle: singleWordBoxHeight}}))(this.state.referenceArr),
-                flagReady:true,
-                buttonText: J.buttonTextNext,
-                buttonClassName: J.bulButtonNext
-            })
         })
         J.emitter.on("next",()=>{
-            let willBeIndex
-            if (this.state.globalIndex === this.state.globalData.length - 1) {
-                willBeIndex = 0
-            } else {
-                willBeIndex = this.state.globalIndex + 1
-            }
-            this.setState({
-                data:this.state.globalData[ willBeIndex ],
-                globalIndex: willBeIndex,
-                flagReady: false,
-                index: 0,
-                memeStyleContainer:{},
-                visibleArr: [],
-                hiddenArr: []
-            }, ()=>{
-                J.emitter.emit("init")
-            })
         })
-        reqwest({
-			url:       "/db.json",
-			method:  "get",
-			error: (err) => { console.log(err)},
-			success: (data)=> {
-                this.setState({
-                    globalData: J.shuffle(R.filter(J.isUniq, data.data))
-                }, ()=>{
-                    initOnce()
-                })
-			}
-		})
+
     }
     willHandleClick (event) {
         if(this.state.flagReady){

@@ -1,0 +1,726 @@
+{
+  "data": {
+    "data": [
+      {
+        "dePart": "Ich habe meine Telefonnummer verloren, kann ich deine haben",
+        "enPart": "I forgot my phone number, can I have yours",
+        "category": "jokes",
+        "id": 1
+      },
+      {
+        "dePart": "Die Stimmen in meinem Kopf sagen, dass du mit mir sprechen willst",
+        "enPart": "The voices in my head tell me, that you want to speak with me",
+        "category": "jokes",
+        "id": 2
+      },
+      {
+        "dePart": "Was möchtest du morgen zum Frühstück",
+        "enPart": "What do you want for breakfast tomorrow",
+        "category": "jokes",
+        "id": 3
+      },
+      {
+        "dePart": "Du bist so schön, dass ich meine Pickup Line vergessen habe",
+        "enPart": "You are so beautiful, that I forgot my Pickup Line",
+        "category": "jokes",
+        "id": 4
+      },
+      {
+        "dePart": "Warum ist sie nicht eingetreten",
+        "enPart": "Why didn't she come in",
+        "category": "derProcess",
+        "id": 5
+      },
+      {
+        "dePart": "Wie kann ich denn verhaftet sein und gar auf diese Weise",
+        "enPart": "But how can I be under arrest and how come it's like this",
+        "category": "derProcess",
+        "id": 6
+      },
+      {
+        "dePart": "Dieses Gesetz kenne ich nicht",
+        "enPart": "I don't know this law",
+        "category": "derProcess",
+        "id": 7
+      },
+      {
+        "dePart": "Führen Sie mich zu Ihrem Vorgesetzten",
+        "enPart": "Take me to your superior",
+        "category": "derProcess",
+        "id": 8
+      },
+      {
+        "dePart": "Es ist nicht üblich",
+        "enPart": "That's not usual",
+        "category": "derProcess",
+        "id": 9
+      },
+      {
+        "dePart": "Ich meinte es niemals anders",
+        "enPart": "I never meant it should be anything else",
+        "category": "derProcess",
+        "id": 10
+      },
+      {
+        "dePart": "Es war meine Pflicht",
+        "enPart": "That was my duty",
+        "category": "derProcess",
+        "id": 11
+      },
+      {
+        "dePart": "Ich meine die Männer die heute früh hier waren",
+        "enPart": "I mean the men who were here this morning",
+        "category": "derProcess",
+        "id": 12
+      },
+      {
+        "dePart": "Ich wollte nur ein paar Worte mit ihr reden",
+        "enPart": "I just wanted to have a few words with her",
+        "category": "derProcess",
+        "id": 13
+      },
+      {
+        "dePart": "Ich wollte ein paar Worte mit Ihnen sprechen wollen Sie mir das jetzt erlauben",
+        "enPart": "I wanted to have a word with you if you would allow me",
+        "category": "derProcess",
+        "id": 14
+      },
+      {
+        "dePart": "Ich warte seit neun Uhr auf Sie",
+        "enPart": "I've been waiting for you since nine o'clock",
+        "category": "derProcess",
+        "id": 15
+      },
+      {
+        "dePart": "Der Anlaß für das was ich Ihnen sagen will hat sich erst heute ergeben",
+        "enPart": "The reason I need to speak to you only came up today",
+        "category": "derProcess",
+        "id": 16
+      },
+      {
+        "dePart": "Glauben Sie denn daß ich schuldlos bin",
+        "enPart": "Do you believe then that I'm innocent",
+        "category": "derProcess",
+        "id": 17
+      },
+      {
+        "dePart": "Sehen Sie Sie haben nicht viel Erfahrung in Gerichtssachen",
+        "enPart": "Listen you don't have much experience in legal matters",
+        "category": "derProcess",
+        "id": 18
+      },
+      {
+        "dePart": "Fräulein Bürstner saß auf der Ottomane und lachte wieder",
+        "enPart": "Miss Bürstner sat on the ottoman and laughed again",
+        "category": "derProcess",
+        "id": 19
+      },
+      {
+        "dePart": "Der Herr fragt ob ein Tischler Lanz hier wohnt",
+        "enPart": "The gentleman's asking if a joiner called Lanz lives here",
+        "category": "derProcess",
+        "id": 20
+      },
+      {
+        "dePart": "Sehr vernünftig aber es ist jetzt schon zu voll",
+        "enPart": "Very sensible but it's too full already",
+        "category": "derProcess",
+        "id": 21
+      },
+      {
+        "dePart": "Es paßt zu allem anderen",
+        "enPart": "That fits in with everything else",
+        "category": "derProcess",
+        "id": 22
+      },
+      {
+        "dePart": "Wenn es sich so verhält dann gibt es allerdings keine Hilfe",
+        "enPart": "If that's how things are then there's nothing that can be done",
+        "category": "derProcess",
+        "id": 23
+      },
+      {
+        "dePart": "Sie scheinen sich ja viele Mühe zu geben",
+        "enPart": "You certainly seem to be going to a lot of effort",
+        "category": "derProcess",
+        "id": 24
+      },
+      {
+        "dePart": "Ich werde nicht warten und Sie müssen jetzt mit mir gehen",
+        "enPart": "I will not wait and you must come with me now",
+        "category": "derProcess",
+        "id": 25
+      },
+      {
+        "dePart": "Ich will mich nicht ausruhen",
+        "enPart": "I don't want to rest",
+        "category": "derProcess",
+        "id": 26
+      },
+      {
+        "dePart": "Frau Grubach kam sich recht machtlos vor",
+        "enPart": "Mrs Grubach appeared quite powerless",
+        "category": "derProcess",
+        "id": 27
+      },
+      {
+        "dePart": "Aber sie soll doch zu Fräulein Bürstner übersiedeln",
+        "enPart": "But she has to move in with Miss Bürstner",
+        "category": "derProcess",
+        "id": 28
+      },
+      {
+        "dePart": "Sie haben ja fast nichts angerührt",
+        "enPart": "But you've barely touched it",
+        "category": "derProcess",
+        "id": 29
+      },
+      {
+        "dePart": "Wir werden uns ja ganz nackt ausziehen müssen",
+        "enPart": "We're going to have to strip off totally naked",
+        "category": "derProcess",
+        "id": 30
+      },
+      {
+        "dePart": "Es schreit nur ein Hund auf dem Hof",
+        "enPart": "It's only a dog yelping in the yard",
+        "category": "derProcess",
+        "id": 31
+      },
+      {
+        "dePart": "Es betrifft mich nicht und es ist nicht mein Geheimnis",
+        "enPart": "It's not my business and it's not my secrets",
+        "category": "derProcess",
+        "id": 32
+      },
+      {
+        "dePart": "Ja aber woher wissen Sie denn etwas über mich und meinen Prozeß",
+        "enPart": "Yes but how is it that you know anything about me and my case",
+        "category": "derProcess",
+        "id": 33
+      },
+      {
+        "dePart": "Du fragst wie ein Kind",
+        "enPart": "You're asking questions like a child",
+        "category": "derProcess",
+        "id": 34
+      },
+      {
+        "dePart": "Es klang so unwiderleglich daß Kafka gar nicht antwortete",
+        "enPart": "It sounded so indisputable that Kafka gave no answer at all",
+        "category": "derProcess",
+        "id": 35
+      },
+      {
+        "dePart": "Und er zeigte in eine dunkle Zimmerecke",
+        "enPart": "And he pointed into a dark corner of the room",
+        "category": "derProcess",
+        "id": 36
+      },
+      {
+        "dePart": "Kafka sagte und zeigte mit einem Finger auf das Bild",
+        "enPart": "Kafka said and pointed to the picture with one finger",
+        "category": "derProcess",
+        "id": 37
+      },
+      {
+        "dePart": "Ich denke wahrscheinlich sogar zu wenig an ihn",
+        "enPart": "I probably even think too little about it",
+        "category": "derProcess",
+        "id": 38
+      },
+      {
+        "dePart": "Ich nehme mein Wort nicht zurück",
+        "enPart": "I'm not going to take my word back on that",
+        "category": "derProcess",
+        "id": 39
+      },
+      {
+        "dePart": "Sie haben mich geküßt",
+        "enPart": "You kissed me",
+        "category": "derProcess",
+        "id": 40
+      },
+      {
+        "dePart": "Und er öffnete die Tür die zu dem Vorzimmer seines Büros führte",
+        "enPart": "And he opened the door leading to the ante-room of his own office",
+        "category": "derProcess",
+        "id": 41
+      },
+      {
+        "dePart": "Sie nickte und fragte ihrerseits",
+        "enPart": "She nodded and asked in reply",
+        "category": "derProcess",
+        "id": 42
+      },
+      {
+        "dePart": "Wie heißt dieser Richter",
+        "enPart": "What's the name of this judge",
+        "category": "derProcess",
+        "id": 43
+      },
+      {
+        "dePart": "Sie sind wohl ein Vertrauensmann des Gerichtes",
+        "enPart": "I take it you must be a trustee of the court",
+        "category": "derProcess",
+        "id": 44
+      },
+      {
+        "dePart": "Das ist die Hauptsache",
+        "enPart": "That's the main thing",
+        "category": "derProcess",
+        "id": 45
+      },
+      {
+        "dePart": "Der Maler nickte als verstehe er Kafkas Unbehagen sehr gut",
+        "enPart": "The painter nodded as if he understood Kafka's discomfort very well",
+        "category": "derProcess",
+        "id": 46
+      },
+      {
+        "dePart": "Könnte man nicht das Fenster öffnen",
+        "enPart": "Could we not open the window",
+        "category": "derProcess",
+        "id": 47
+      },
+      {
+        "dePart": "Und der Prozeß beginnt von neuem",
+        "enPart": "And does the trial start over again",
+        "category": "derProcess",
+        "id": 48
+      },
+      {
+        "dePart": "Sie haben den Kern der Sache erfaßt",
+        "enPart": "You've understand the essence of the things",
+        "category": "derProcess",
+        "id": 49
+      },
+      {
+        "dePart": "Ich nehme auch dieses noch",
+        "enPart": "I'll take this one too",
+        "category": "derProcess",
+        "id": 50
+      },
+      {
+        "dePart": "Das erste Läuten an der Tür war wie gewöhnlich zwecklos",
+        "enPart": "As usual there was no response to the ring at the door",
+        "category": "derProcess",
+        "id": 51
+      },
+      {
+        "dePart": "Leni ist Ihre Geliebte",
+        "enPart": "Is Leni your lover",
+        "category": "derProcess",
+        "id": 52
+      },
+      {
+        "dePart": "Sie sehen glaubwürdig aus",
+        "enPart": "You look honest enough",
+        "category": "derProcess",
+        "id": 53
+      },
+      {
+        "dePart": "Ist das Ihr wirklicher Name",
+        "enPart": "Is that your real name",
+        "category": "derProcess",
+        "id": 54
+      },
+      {
+        "dePart": "Ich dachte Sie könnten Grund haben Ihren Namen zu verschweigen",
+        "enPart": "I thought you might have some reason to keep your name secret",
+        "category": "derProcess",
+        "id": 55
+      },
+      {
+        "dePart": "Es ist ein hoher Richter ",
+        "enPart": "He's an important judge",
+        "category": "derProcess",
+        "id": 56
+      },
+      {
+        "dePart": "Sie wissen doch wo sich Leni versteckt hat",
+        "enPart": "You know where Leni's hidden do you",
+        "category": "derProcess",
+        "id": 57
+      },
+      {
+        "dePart": "Warum haben Sie das nicht gleich gesagt",
+        "enPart": "Why didn't you say that immediately",
+        "category": "derProcess",
+        "id": 58
+      },
+      {
+        "dePart": "Sie glauben wohl sehr schlau zu sein",
+        "enPart": "You really think you're very clever",
+        "category": "derProcess",
+        "id": 59
+      },
+      {
+        "dePart": "Komm ins Arbeitszimmer ich werde dir alles erklären",
+        "enPart": "Come into the office I'll explain everything to you",
+        "category": "derProcess",
+        "id": 60
+      },
+      {
+        "dePart": "Ich wüßte auch nicht warum Sie eifersüchtig sein sollten",
+        "enPart": "I don't even know why you might be jealous",
+        "category": "derProcess",
+        "id": 61
+      },
+      {
+        "dePart": "Melde mich zuerst an",
+        "enPart": "Tell him I'm here first",
+        "category": "derProcess",
+        "id": 62
+      },
+      {
+        "dePart": "Sind Sie schon ein alter Klient des Advokaten",
+        "enPart": "Have you been a client of the lawyer's for a long time",
+        "category": "derProcess",
+        "id": 63
+      },
+      {
+        "dePart": "Wieviel Jahre vertritt er Sie denn schon",
+        "enPart": "How many years has he been representing you so far then",
+        "category": "derProcess",
+        "id": 64
+      },
+      {
+        "dePart": "Nein ich bin kein Verräter",
+        "enPart": "No I don't betray people",
+        "category": "derProcess",
+        "id": 65
+      },
+      {
+        "dePart": "Ich verhandle gerade noch mit einem sechsten",
+        "enPart": "I'm even negotiating with a sixth one",
+        "category": "derProcess",
+        "id": 66
+      },
+      {
+        "dePart": "Aber wozu brauchen Sie denn soviel Advokaten",
+        "enPart": "But why do you need so many lawyers",
+        "category": "derProcess",
+        "id": 67
+      },
+      {
+        "dePart": "Wollen Sie mir das nicht erklären",
+        "enPart": "Would you mind explaining that to me",
+        "category": "derProcess",
+        "id": 68
+      },
+      {
+        "dePart": "Wieso wissen Sie denn daß ich dort war",
+        "enPart": "How do you know I've been there then",
+        "category": "derProcess",
+        "id": 69
+      },
+      {
+        "dePart": "Ich war gerade im Wartezimmer als Sie durchgingen",
+        "enPart": "I was in the waiting room myself when you went through",
+        "category": "derProcess",
+        "id": 70
+      },
+      {
+        "dePart": "Wie abergläubisch diese Leute sind",
+        "enPart": "These people are so superstitious",
+        "category": "derProcess",
+        "id": 71
+      },
+      {
+        "dePart": "Was für einen Fortschritt wollten Sie denn sehen",
+        "enPart": "And what sort of progress had you been hoping for",
+        "category": "derProcess",
+        "id": 72
+      },
+      {
+        "dePart": "Sie dachten damals also nicht an die großen Advokaten",
+        "enPart": "So you weren't thinking about the great lawyers at that time",
+        "category": "derProcess",
+        "id": 73
+      },
+      {
+        "dePart": "Er wollte daß ich ihm von meinem Prozeß erzähle",
+        "enPart": "He wanted me to tell him about my trial",
+        "category": "derProcess",
+        "id": 74
+      },
+      {
+        "dePart": "Hast du mich angemeldet",
+        "enPart": "Have you told him I'm here",
+        "category": "derProcess",
+        "id": 75
+      },
+      {
+        "dePart": "Er schläft hier öfters",
+        "enPart": "He often sleeps here",
+        "category": "derProcess",
+        "id": 76
+      },
+      {
+        "dePart": "Es ist sehr vorteilhaft",
+        "enPart": "It has many advantages",
+        "category": "derProcess",
+        "id": 77
+      },
+      {
+        "dePart": "Ich gehe bald wieder weg",
+        "enPart": "I'll be leaving again soon",
+        "category": "derProcess",
+        "id": 78
+      },
+      {
+        "dePart": "Es schien mir daß Sie die Tür abgesperrt haben",
+        "enPart": "It seemed to me that you locked the door",
+        "category": "derProcess",
+        "id": 79
+      },
+      {
+        "dePart": "War sie wieder zudringlich",
+        "enPart": "Was she being importunate again",
+        "category": "derProcess",
+        "id": 80
+      },
+      {
+        "dePart": "Du kommst ungelegen",
+        "enPart": "You've come at a bad time",
+        "category": "derProcess",
+        "id": 81
+      },
+      {
+        "dePart": "Wollt Ihr daß ich weggehe",
+        "enPart": "Would you like me to go away again",
+        "category": "derProcess",
+        "id": 82
+      },
+      {
+        "dePart": "Und außer mir",
+        "enPart": "And who besides me",
+        "category": "derProcess",
+        "id": 83
+      },
+      {
+        "dePart": "Warum zögerst du denn",
+        "enPart": "What makes you so wary about it",
+        "category": "derProcess",
+        "id": 84
+      },
+      {
+        "dePart": "Was hat er während des ganzen Tages getan",
+        "enPart": "And what has he been doing all day",
+        "category": "derProcess",
+        "id": 85
+      },
+      {
+        "dePart": "Dieses Kapitel wurde nicht vollendet",
+        "enPart": "This chapter was left unfinished",
+        "category": "derProcess",
+        "id": 86
+      },
+      {
+        "dePart": "Ja man hat mich davon verständigt",
+        "enPart": "Yes so I have been informed",
+        "category": "derProcess",
+        "id": 87
+      },
+      {
+        "dePart": "Es ist ein Album der städtischen Sehenswürdigkeiten",
+        "enPart": "It's an album of the city's tourist sights",
+        "category": "derProcess",
+        "id": 88
+      },
+      {
+        "dePart": "Weißt du daß dein Prozeß schlecht steht",
+        "enPart": "Do you know your case is going badly",
+        "category": "derProcess",
+        "id": 89
+      },
+      {
+        "dePart": "Wie stellst du dir das Ende vor",
+        "enPart": "How do you imagine it will end",
+        "category": "derProcess",
+        "id": 90
+      },
+      {
+        "dePart": "Das ist richtig aber so pflegen die Schuldigen zu reden",
+        "enPart": "That is true but that is how the guilty speak",
+        "category": "derProcess",
+        "id": 91
+      },
+      {
+        "dePart": "Ich habe kein Vorurteil gegen dich",
+        "enPart": "I make no presumptions about you",
+        "category": "derProcess",
+        "id": 92
+      },
+      {
+        "dePart": "Hast du ein wenig Zeit für mich",
+        "enPart": "Can you spare me a little of your time",
+        "category": "derProcess",
+        "id": 93
+      },
+      {
+        "dePart": "Täusche dich nicht",
+        "enPart": "Don't fool yourself",
+        "category": "derProcess",
+        "id": 94
+      },
+      {
+        "dePart": "Die Lüge wird zur Weltordnung gemacht",
+        "enPart": "The lie made into the rule of the world",
+        "category": "derProcess",
+        "id": 95
+      },
+      {
+        "dePart": "Ich kann mich aber im Dunkel allein nicht zurechtfinden",
+        "enPart": "But I can't find my way round in this darkness by myself",
+        "category": "derProcess",
+        "id": 96
+      },
+      {
+        "dePart": "Willst du nicht noch etwas von mir",
+        "enPart": "Is there anything else you want from me",
+        "category": "derProcess",
+        "id": 97
+      },
+      {
+        "dePart": "Sieh du zuerst ein wer ich bin",
+        "enPart": "First you need to understand who I am",
+        "category": "derProcess",
+        "id": 98
+      },
+      {
+        "dePart": "Sie sind also für mich bestimmt",
+        "enPart": "You've come for me then have you",
+        "category": "derProcess",
+        "id": 99
+      },
+      {
+        "dePart": "Ich gehe nicht weiter",
+        "enPart": "I will go no further",
+        "category": "derProcess",
+        "id": 100
+      },
+      {
+        "dePart": "Der Mensch kann begrüßt die Herausforderungen mit Antworten",
+        "enPart": "Man can welcomes the challenges with answers",
+        "category": "quotes",
+        "id": 101
+      },
+      {
+        "dePart": "Man soll ein Fußballspieler von seinem schlechten Tag beurteilen",
+        "enPart": "Man should judge a football player by his bad day",
+        "category": "quotes",
+        "id": 102
+      },
+      {
+        "dePart": "Der Hass ist leichter zu unterstützen",
+        "enPart": "The hate is easier to support",
+        "category": "quotes",
+        "id": 103
+      },
+      {
+        "dePart": "Wir können die beste Verbrecher erwarten auch der beste Polizist zu sein",
+        "enPart": "We can expect the best criminal to be also the best policeman",
+        "category": "quotes",
+        "id": 104
+      },
+      {
+        "dePart": "Der permanente Hunger ist entweder ein Symptom für kranke Bauch oder ein Beweis für große Erwartungen",
+        "enPart": "The permanent hunger is either a symptom for sick stomach or a proof of great expectations",
+        "category": "quotes",
+        "id": 105
+      },
+      {
+        "dePart": "Alles hat seine Zeit nur die alten Weiber nicht",
+        "enPart": "Everybody has their own age, besides the old women",
+        "category": "quotes",
+        "id": 106
+      },
+      {
+        "dePart": "Alter geht vor Schönheit",
+        "enPart": "Age comes before beauty",
+        "category": "quotes",
+        "id": 107
+      },
+      {
+        "dePart": "Alter schützt vor der Liebe nicht aber Liebe vor dem Altern",
+        "enPart": "Old people don't run away from the love, but the love runs away from the old people",
+        "category": "quotes",
+        "id": 108
+      },
+      {
+        "dePart": "Altes Brot ist nicht hart kein Brot das ist hart",
+        "enPart": "Old bread is not hard, but no bread - this is hard",
+        "category": "quotes",
+        "id": 109
+      },
+      {
+        "dePart": "An ihren Taten sollt ihr sie erkennen",
+        "enPart": "Judge him by his actions",
+        "category": "quotes",
+        "id": 110
+      },
+      {
+        "dePart": "Die Angst verleiht Flügel",
+        "enPart": "The fear gives wings",
+        "category": "quotes",
+        "id": 111
+      },
+      {
+        "dePart": "Der Appetit holt man sich woanders gegessen wird zuhause",
+        "enPart": "The appetite is awaken somewhere else, but is satisfied at home",
+        "category": "quotes",
+        "id": 112
+      },
+      {
+        "dePart": "Arbeit adelt aber wir bleiben bürgerlich",
+        "enPart": "Work makes us noble, but we remain civil",
+        "category": "quotes",
+        "id": 113
+      },
+      {
+        "dePart": "Die Arbeit bringt Brot und Faulenzen bringt Hungersnot",
+        "enPart": "The work brings bread and lazing around brings famine",
+        "category": "quotes",
+        "id": 114
+      },
+      {
+        "dePart": "Arbeite klug nicht hart",
+        "enPart": "Work smart, not hard",
+        "category": "quotes",
+        "id": 115
+      },
+      {
+        "dePart": "Arbeit Müßigkeit und Ruhe schließt dem Arzt die Tür zu",
+        "enPart": "Work, idleness and rest keep the doctor away",
+        "category": "quotes",
+        "id": 116
+      },
+      {
+        "dePart": "Auch der Tüchtige braucht Glück",
+        "enPart": "The capable man also needs luck",
+        "category": "quotes",
+        "id": 117
+      },
+      {
+        "dePart": "Auch ein blindes Huhn findet mal ein Korn",
+        "enPart": "Even a blind hen sometimes finds a grain",
+        "category": "quotes",
+        "id": 118
+      },
+      {
+        "dePart": "Auch Rom wurde nicht an einem Tag gebaut",
+        "enPart": "Even Rome is not build for a day",
+        "category": "quotes",
+        "id": 119
+      },
+      {
+        "dePart": "Die unnötige Komplexität getötet die Katze",
+        "enPart": "The unnecessary complexity killed the cat",
+        "category": "quotes",
+        "id": 120
+      }
+    ]
+  }
+}
