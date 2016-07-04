@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
-import { observer } from 'mobx-react';
-import DevTools from 'mobx-react-devtools';
+import React, { Component } from "react"
+import { observer } from "mobx-react"
+import DevTools from "mobx-react-devtools"
+import reqwest from "reqwest"
 
 @observer
 class App extends Component {
@@ -8,7 +9,7 @@ class App extends Component {
     return (
       <div>
         <button onClick={this.onReset}>
-          Seconds passed: {this.props.appState.timer}
+          Seconds: {this.props.appState.timer}
         </button>
         <DevTools />
       </div>

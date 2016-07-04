@@ -13,25 +13,28 @@ let titleFn = R.compose(R.trim, R.last, R.split("-"), R.head, R.match(/\/\/(\s)?
 //let categoryFn = R.compose(R.trim,R.last,R.split("-"),R.head,R.match(/\/\/(\s)?category.{1,70}/gm))
 let cleanFn = R.compose(R.replace(/\/(.|\n)+(?=#)/gm, ""))
 
-router.get("/", function (req, res) {
+router.get("/",  (req, res) =>{
     res.render("index")
 })
-router.get("/about", function (req, res) {
+router.get("/aboutOrderSentence",  (req, res)=> {
+    res.render("aboutOrderSentence")
+})
+router.get("/about",  (req, res) =>{
     res.render("about")
 })
-router.get("/writeSentenceLite", function (req, res) {
+router.get("/writeSentenceLite",  (req, res) =>{
     res.render("writeSentenceLite")
 })
-router.get("/writeSentence", function (req, res) {
+router.get("/writeSentence",  (req, res)=> {
     res.render("writeSentence")
 })
-router.get("/orderSentence", function (req, res) {
+router.get("/orderSentence",  (req, res) =>{
     res.render("orderSentence")
 })
-router.get("/orderSentenceMobile", function (req, res) {
+router.get("/orderSentenceMobile",  (req, res) =>{
     res.render("orderSentenceMobile")
 })
-router.post("/catchDailyHook", function (req, res) {
+router.post("/catchDailyHook",  (req, res)=> {
     if (req.body.password === env.getEnv("mainPassword")) {
         dailyTask.deploy().then(console.log)
         res.send("success")
@@ -39,7 +42,7 @@ router.post("/catchDailyHook", function (req, res) {
         res.send("fail")
     }
 })
-router.post("/catchDailyHookRoot", function (req, res) {
+router.post("/catchDailyHookRoot",  (req, res) =>{
     if (req.body.password === env.getEnv("mainPassword")) {
         dailyTask.deployRoot().then(console.log)
         res.send("success")
@@ -47,7 +50,7 @@ router.post("/catchDailyHookRoot", function (req, res) {
         res.send("fail")
     }
 })
-router.get("/blog-*", function (req, res) {
+router.get("/blog-*",  (req, res) => {
     let keyword = req.params[ 0 ]
     getMarkdownData(keyword).then((incoming)=>{
         if (incoming !== null) {
