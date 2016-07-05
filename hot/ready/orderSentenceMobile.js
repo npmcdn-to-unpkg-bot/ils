@@ -45,9 +45,9 @@ export default class App extends Component {
             let memeStyleContainer = {
                 width: `${imageWidth}px`,
                 height: `${imageHeight}px`,
-		                                                                                                                                                                                                                                                                                                                                        backgroundImage: `url("${imageUrl}")`,
+                backgroundImage: `url("${imageUrl}")`,
                 fontSize: `${J.getHeightPx(3)}px`
-		                                                                                                                                                                                                                                                    }
+            }
             let hiddenArr = []
             let visibleArr = []
             let referenceArr = R.split(" ", this.state.data.dePart)

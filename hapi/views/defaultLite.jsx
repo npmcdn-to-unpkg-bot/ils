@@ -1,6 +1,6 @@
 import {replace} from "ramda"
 import React, {Component} from "react"
-import Navigation from "./components/navigation.jsx"
+import Navigation from "./components/navigationLite.jsx"
 
 class Exported extends Component {
     constructor(props) {
@@ -34,7 +34,7 @@ class Exported extends Component {
                     <link rel="stylesheet" href={`${this.props.keyword}.css`} />
                     <link rel="canonical" href={`http://ilearnsmarter.com/${address}`} />
                     <meta property="og:locale" content="en_US" />
-                    <meta property="og:type" content="article" />
+                    <meta property="og:type" content="app" />
                     <meta property="og:title" content={this.props.title} />
                     <meta property="og:description" content={this.props.description} />
                     <meta property="og:url" content={`http://ilearnsmarter.com/${address}`} />

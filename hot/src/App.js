@@ -8,86 +8,108 @@ import J from "../commonReact.js"
 let initOnce = R.once(()=>{
     J.emitter.emit("init")
 })
+const inputObjInitial = {
+    id: 0,
+    dePart: "",
+    enPart: "",
+    category:""
+}
+let willSave = {}
+let willAdd = {}
 
+class InputComponent extends Component {
+    constructor (props) {
+        super(props)
+        this.state = {
+            inputObj:inputObjInitial,
+            inputValue: "",
+            inputSize: 10
+        }
+        this.willHandleChange = this.willHandleChange.bind(this)
+        this.willHandleBlur = this.willHandleBlur.bind(this)
+    }
+    static get defaultProps () {
+        return {
+            inputObj:inputObjInitial,
+            inputValue: ""
+        }
+    }
+    componentDidMount() {
+        this.setState({
+            inputObj:this.props.inputObj,
+            inputValue: this.props.inputValue
+        })
+        J.emitter.on("init",()=>{
+        })
+        J.emitter.on("correct",()=>{
+        })
+    }
+    willHandleChangeDePart (event) {
+        this.setState({inputValue: event.target.value})
+    }
+    }
+    willHandleChangeEnPart (event) {
+        this.setState({inputValue: event.target.value})
+    }
+    willHandleBlur (event) {
+
+    }
+    render () {
+        return(
+    <div>
+        <div className="box">
+            <input type="text" value={this.state.inputObj.dePart} size={this.state.inputObj.dePart.length} onChange={this.willHandleChange} onBlur={this.willHandleBlur} />
+            <input type="text" value={this.state.inputObj.enPart} size={this.state.inputObj.enPart.length} onChange={this.willHandleChange} onBlur={this.willHandleBlur} />
+        </div>
+    </div>
+    )}
+}
 
 export default class App extends Component {
     constructor (props) {
         super(props)
         this.state = {
-            index: 0
+            index: 0,
+            paginationLowLimit: 0,
+            paginationHighLimit: 5,
+            just: 5,
+            globalData: []
         }
         this.willHandleClick = this.willHandleClick.bind(this)
-        //this.willHandleButton = this.willHandleButton.bind(this)
+        this.willHandleChildChange = this.willHandleChildChange.bind(this)
     }
     componentDidMount() {
         J.emitter.on("init",()=>{
         })
         J.emitter.on("correct",()=>{
         })
-        J.emitter.on("wrong",()=>{
+        J.getData("http://localhost:3000/_db.json").then((incoming)=>{
+            this.setState({globalData: incoming.data}, ()=>{
+                initOnce()
+            })
         })
-        J.emitter.on("last word",()=>{
-        })
-        J.emitter.on("show answer",()=>{
-        })
-        J.emitter.on("next",()=>{
-        })
-
+    }
+    willHandleChildChange (event) {
+        if(event.type==="blur"){
+            console.log(event.target.value)
+        }
     }
     willHandleClick (event) {
-        if(this.state.flagReady){
-            return null
-        }
-        currentId = event.currentTarget.id
-        if(currentId===this.state.referenceArr[this.state.index]){
-            if(this.state.index+1===this.state.referenceArr.length){
-                J.emitter.emit("last word")
-            }else{
-                J.emitter.emit("correct")
-            }
-        }else{
-            J.emitter.emit("wrong")
-        }
-
-    }
-    willHandleButton () {
-        if(this.state.buttonText === "Show Answer") {
-            J.emitter.emit("show answer")
-        } else if(this.state.buttonText === "Next") {
-            J.emitter.emit("next")
+        if(event.type==="blur"){
+            console.log(event.target.value)
         }
     }
     render () {
         return(
+<div>
     <div>
-        <div className="box">
-             <div style={this.state.memeStyleContainer} >
-                <div className="meme has-text-centered">
-                    {this.state.data.enPart}
-                </div>
-            </div>
-                <div className="has-text-centered paddingLR">
-                    <a style={this.state.buttonStyle} className={`${this.state.buttonClassName} buttonStyle`} onClick={this.willHandleButton}>{this.state.buttonText}</a>
-                </div>
-        </div>
-        <div className="box has-text-centered">
-            <FlipMove easing="ease-out" duration="300" >
-                {
-                    this.state.visibleArr.map((val)=>{
-                    return <div key={`${val.name}-key`} style={val.customStyle} className="column singleWord" id={val.name} onClick={this.willHandleClick}>{val.name}</div>
-                })
+        {this.state.globalData.map((val,key)=>{
+            if(key<=this.state.paginationHighLimit&&key>=this.state.paginationLowLimit)
+            {
+                return <InputComponent key={key} inputObj={val} />
             }
-            </FlipMove>
-        </div>
-        <div className="box has-text-centered">
-            <FlipMove easing="ease-in" duration="700" >
-                {
-                    this.state.hiddenArr.map((val)=>{
-                    return <div key={`${val.name}-key`} style={val.customStyle} className="column singleWordCorrect">{val.name}</div>
-                })
-            }
-            </FlipMove>
-        </div>
-	</div>
+        })}
+    </div>
+</div>
     )}
 }

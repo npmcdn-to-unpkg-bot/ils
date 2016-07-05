@@ -11,6 +11,13 @@ const session = require("express-session")
 let routes = require("./routes/index.js")
 
 let app = express()
+app.use((req, res, next)=>{
+    res.setHeader("Access-Control-Allow-Origin", "http://localhost:8082")
+    res.setHeader("Access-Control-Allow-Methods", "GET, POST")
+    res.setHeader("Access-Control-Allow-Headers", "X-Requested-With,content-type")
+    res.setHeader("Access-Control-Allow-Credentials", true)
+    next()
+})
 app.use(helmet())
 app.get("/*", (request, response, next) => {
     let headerHost = request.headers.host

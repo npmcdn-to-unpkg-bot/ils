@@ -1,5 +1,4 @@
 {
-  "data": {
     "data": [
       {
         "dePart": "Ich habe meine Telefonnummer verloren, kann ich deine haben",
@@ -720,7 +719,5 @@
         "enPart": "The unnecessary complexity killed the cat",
         "category": "quotes",
         "id": 120
-      }
-    ]
-  }
+      }]
 }

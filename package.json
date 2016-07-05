@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "prod": "node zStartDeploy",
-    "start": "parallelshell \"node watch.js\" \"nodemon --watch admin admin/start.js\" \"nodemon -e js,jsx,css --watch hapi hapi/start.js\"",
+    "start": "parallelshell \"node watch\" \"node zStart\" \"nodemon -e js,jsx,css --watch admin admin/start.js\" \"nodemon -e js,jsx,css --watch hapi hapi/start.js\"",
+    "c9": "parallelshell \"node watch\" \"node zStart\" \"nodemon -e js,jsx,css --watch admin admin/startC9.js\" \"nodemon -e js,jsx,css --watch hapi hapi/startC9.js\"",
     "a": "babel aPre.js --out-file a.js",
     "aa": "browserify aPre.js -o a.js -t [ babelify --presets [ es2015 react stage-3 stage-2 stage-1 stage-0 ] ] -im",
     "b": "babel bPre.js --out-file b.js",

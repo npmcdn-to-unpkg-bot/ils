@@ -1,10 +1,9 @@
 #!/usr/bin/env node
 
 var app = require("./app.js")
-//var debug = require("debug")("node_second:server")
 var http = require("http")
 
-var port = 8080
+var port = 8081
 app.set("port", port)
 
 /**

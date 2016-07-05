@@ -3,5 +3,6 @@
 <url> <loc>http://ilearnsmarter.com/</loc> </url>
 <url> <loc>http://ilearnsmarter.com/about/</loc> </url>
 <url> <loc>http://ilearnsmarter.com/writeSentence/</loc> </url>
+<url> <loc>http://ilearnsmarter.com/orderSentence/</loc> </url>
 <url> <loc>http://ilearnsmarter.com/writeSentenceLite/</loc> </url>
 </urlset>

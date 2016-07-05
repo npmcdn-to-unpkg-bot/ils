@@ -1,8 +1,24 @@
 "use strict"
-import R from "ramda"
-import reqwest from "reqwest"
+const R = require("ramda")
+const reqwest = require("reqwest")
 
-function postData(url, data){
+function getData(url) {
+    return new Promise((resolve)=>{
+        reqwest({
+            url:  url,
+            method:  "get",
+            error: (err) => {
+                console.log(err)
+                resolve(null)
+            },
+            success: (incoming)=> {
+                resolve(incoming)
+            }
+        })
+    })
+}
+
+function postData(url, data) {
     return new Promise((resolve)=>{
         reqwest({
             url:  url,
@@ -79,19 +95,17 @@ function isUniq(obj) {
     let arr = R.split(" ", obj[ "dePart" ])
     return R.uniq(arr).length === arr.length
 }
+function log(data) {
+    if (typeof data === "string") {
+        console.log(`||| ${data} |||`)
+    } else {
+        console.log(data)
+    }
+}
 
-module.exports.bulButtonInit = "button"
-module.exports.bulButtonNext = "button is-success"
-module.exports.buttonTextShowAnswer = "Show Answer"
-module.exports.buttonTextNext = "Next"
-module.exports.bulMobileBoxOuter = "columns box is-hidden-desktop-only is-hidden-tablet-only is-hidden-widescreen"
-module.exports.bulMobileOuter = "columns is-hidden-desktop-only is-hidden-tablet-only is-hidden-widescreen"
-module.exports.bulMobileBox = "column box is-hidden-desktop-only is-hidden-tablet-only is-hidden-widescreen"
-module.exports.bulMobileBoxHalf = "column box is-half is-offset-one-quarter is-hidden-desktop-only is-hidden-tablet-only is-hidden-widescreen"
-module.exports.bulBoxOuter = "columns box is-hidden-mobile"
-module.exports.bulBoxHalf = "column is-half is-offset-one-quarter has-text-centered"
-
-module.exports.postData = shuffle
+module.exports.log = log
+module.exports.getData = getData
+module.exports.postData = postData
 module.exports.shuffle = shuffle
 module.exports.getPercent = getPercent
 module.exports.divide = divide
@@ -102,3 +116,15 @@ module.exports.getWidthPx = getWidthPx
 module.exports.randomSeed = randomSeed
 module.exports.winWidthIs = winWidthIs
 module.exports.winHeightIs = winHeightIs
+
+module.exports.bulButtonInit = "button"
+module.exports.bulButtonNext = "button is-success"
+module.exports.buttonTextShowAnswer = "Show Answer"
+module.exports.buttonTextNext = "Next"
+module.exports.bulMobileBoxOuter = "columns box is-hidden-desktop-only is-hidden-tablet-only is-hidden-widescreen"
+module.exports.bulMobileOuter = "columns is-hidden-desktop-only is-hidden-tablet-only is-hidden-widescreen"
+module.exports.bulMobileBox = "column box is-hidden-desktop-only is-hidden-tablet-only is-hidden-widescreen"
+module.exports.bulMobileBoxHalf = "column box is-half is-offset-one-quarter is-hidden-desktop-only is-hidden-tablet-only is-hidden-widescreen"
+module.exports.bulBoxOuter = "columns box is-hidden-mobile"
+module.exports.bulBox = "column box"
+module.exports.bulBoxHalf = "column box is-half is-offset-one-quarter"
