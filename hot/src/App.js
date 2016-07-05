@@ -25,7 +25,8 @@ class InputComponent extends Component {
             inputValue: "",
             inputSize: 10
         }
-        this.willHandleChange = this.willHandleChange.bind(this)
+        this.willHandleChangeDePart = this.willHandleChangeDePart.bind(this)
+        this.willHandleChangeEnPart = this.willHandleChangeEnPart.bind(this)
         this.willHandleBlur = this.willHandleBlur.bind(this)
     }
     static get defaultProps () {
@@ -58,8 +59,8 @@ class InputComponent extends Component {
         return(
     <div>
         <div className="box">
-            <input type="text" value={this.state.inputObj.dePart} size={this.state.inputObj.dePart.length} onChange={this.willHandleChange} onBlur={this.willHandleBlur} />
-            <input type="text" value={this.state.inputObj.enPart} size={this.state.inputObj.enPart.length} onChange={this.willHandleChange} onBlur={this.willHandleBlur} />
+            <input type="text" value={this.state.inputObj.dePart} size={this.state.inputObj.dePart.length} onChange={this.willHandleChangeDePart} onBlur={this.willHandleBlur} />
+            <input type="text" value={this.state.inputObj.enPart} size={this.state.inputObj.enPart.length} onChange={this.willHandleChangeEnPart} onBlur={this.willHandleBlur} />
         </div>
     </div>
     )}
