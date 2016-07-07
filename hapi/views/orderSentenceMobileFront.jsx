@@ -128,12 +128,12 @@ class App extends Component {
             })
         })
         reqwest({
-			url:       "/db.json",
+			url:       "/_db.json",
 			method:  "get",
 			error: (err) => { console.log(err)},
-			success: (data)=> {
+			success: (incoming)=> {
                 this.setState({
-                    globalData: J.shuffle(R.filter(J.isUniq, data.data))
+                    globalData: J.shuffle(R.filter(J.isUniq, R.values(incoming.data)))
                 }, ()=>{
                     initOnce()
                 })

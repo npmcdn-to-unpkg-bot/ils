@@ -12,23 +12,10 @@ function loadAll(parent) {
     })
 }
 
-function saveParent(parent, data, overwriteFlag) {
+function saveParent(parent, data) {
     return new Promise((resolve)=>{
         fs.readJson(db, function (err, dbState) {
-            let parentState = R.prop(parent, dbState)
-            if (isEmpty(parentState)) {
-                dbState[ parent ] = {}
-                parentState = {}
-            }
-            if (overwriteFlag === true) {
-                delete dbState[ parent ]
-                let local = {}
-                local[ parent ] = data
-                dbState[ parent ] = local
-            } else {
-                return resolve(null)
-            }
-
+            dbState[ parent ] = data
             fs.outputJson(db, dbState, ()=>{
                 resolve(true)
             })
@@ -42,31 +29,17 @@ function saveParent(parent, data, overwriteFlag) {
  * @param  {string} parent
  * @param  {string} childKey
  * @param  {any} childValue - can be object, array or just another string
- * @param  {boolean} overwriteFlag - optional flag required to be set to boolean true if you overwrite an existing value
  * @return {Promise} resolves to true when record is made and to null when something is amiss
  */
-function save(parent, childKey, childValue, overwriteFlag) {
+function save(parent, childKey, childValue) {
     return new Promise((resolve)=>{
         fs.readJson(db, function (err, dbState) {
             let parentState = R.prop(parent, dbState)
             if (isEmpty(parentState)) {
                 dbState[ parent ] = {}
-                parentState = {}
+
             }
-            let childState = R.prop(childKey, parentState)
-            if (isEmpty(childState)) {
-                parentState[ childKey ] = childValue
-                dbState[ parent ] = parentState
-            } else {
-                if (overwriteFlag === true) {
-                    delete dbState[ parent ][ childKey ]
-                    let local = {}
-                    local[ childKey ] = childValue
-                    dbState[ parent ] = local
-                } else {
-                    return resolve(null)
-                }
-            }
+            dbState[ parent ][ childKey ] = childValue
             fs.outputJson(db, dbState, ()=>{
                 resolve(true)
             })

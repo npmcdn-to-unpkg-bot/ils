@@ -11,28 +11,6 @@ const proudDb = require("../_inc/proud-db")
 
 let twoLevelUp = R.compose(R.join("/"), R.dropLast(2), R.split("/"))
 
-async function willTranslateAsync(wordIn) {
-    let state = await J.load("GermanOverall", wordIn)
-    if (J.isEmpty(state)) {
-        let translated = await translate.deEn(wordIn)
-        let willSend = bringOrderTranslation.main(translated)
-        willSend = await J.save("GermanOverallRaw", wordIn, translated)
-        willSend = await J.save("GermanOverall", wordIn, willSend)
-        return willSend
-    } else {
-        return state
-    }
-}
-async function willUpdateDb(parent, data) {
-    let iMeanNothing
-    //R.values(data).map((val)=>{
-    for (let val of data) {
-        iMeanNothing = await proudDb.save(parent, `${val.id}`, val, true)
-        J.log(iMeanNothing)
-    }
-    return iMeanNothing
-
-}
 function willPublish(keyword, content) {
     return new Promise((resolve)=>{
         fs.outputFile(`${twoLevelUp(__dirname)}/hapi/blog/${keyword}.md`, content, ()=>{
@@ -41,16 +19,8 @@ function willPublish(keyword, content) {
     })
 }
 
-function willTranslate(wordIn) {
-    return willTranslateAsync(wordIn)
-}
-
 router.get("/", (req, res) => {
     res.send("index")
-})
-
-router.post("/test", (req, res) =>{
-    res.send("more")
 })
 
 router.get("/read/:parent", (req, res) =>{
@@ -60,9 +30,10 @@ router.get("/read/:parent", (req, res) =>{
 })
 
 router.post("/update/:parent", (req, res) =>{
-    willUpdateDb(req.params.parent, R.values(JSON.parse(req.body.data))).then(()=>{
-        res.send("done")
+    console.log(JSON.parse(req.body.data))
+    proudDb.loadParent(req.params.parent).then((parentData)=>{
     })
+    //proudDb.saveParent(req.params.parent,)
 })
 
 router.post("/blog", (req, res) =>{

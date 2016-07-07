@@ -22,7 +22,7 @@ function postData(url, data) {
     return new Promise((resolve)=>{
         reqwest({
             url:  url,
-            data: data,
+            data: {data: data},
             method:  "post",
             error: (err) => {
                 console.log(err)

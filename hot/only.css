@@ -1,3 +1,6 @@
+.Select-value:hover {
+  cursor: pointer;
+}
 .singleWord {
   border-radius: 40%;
   border: solid 2px #4DB6AC;

@@ -103,12 +103,12 @@ class Only extends Component {
     componentDidMount() {
         let self = this
         reqwest({
-			url:     "/db.json",
+			url:     "/_db.json",
 			method:  "get",
 			error:  (err) => { console.log(err)},
 			success: (incoming) => {
                 this.setState({
-                    globalData: shuffle(R.filter(isUniq, incoming.data))
+                    globalData: shuffle(R.filter(isUniq, R.values(incoming.data)))
                 },()=>{
                     console.log(this.state)
                 })

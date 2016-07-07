@@ -40,6 +40,7 @@
     "react": "*",
     "react-dom": "*",
     "react-markdown": "*",
+    "react-select": "^1.0.0-beta13",
     "request": "*",
     "reqwest": "*",
     "serve-favicon": "*",
