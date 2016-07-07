@@ -4,6 +4,7 @@ const fs = require("fs-extra")
 const J = require("../../common")
 const dailyTask = require("../_inc/dailyTask")
 const R = require("ramda")
+const moment = require("moment")
 const env = require("dotenv-helper")
 
 let router = express.Router()
@@ -13,44 +14,53 @@ let titleFn = R.compose(R.trim, R.last, R.split("-"), R.head, R.match(/\/\/(\s)?
 //let categoryFn = R.compose(R.trim,R.last,R.split("-"),R.head,R.match(/\/\/(\s)?category.{1,70}/gm))
 let cleanFn = R.compose(R.replace(/\/(.|\n)+(?=#)/gm, ""))
 
-router.get("/",  (req, res) =>{
+router.get("/", (req, res) =>{
     res.render("index")
 })
-router.get("/aboutOrderSentence",  (req, res)=> {
+router.get("/aboutOrderSentence", (req, res)=> {
     res.render("aboutOrderSentence")
 })
-router.get("/about",  (req, res) =>{
+router.get("/about", (req, res) =>{
     res.render("about")
 })
-router.get("/writeSentenceLite",  (req, res) =>{
+router.get("/writeSentenceLite", (req, res) =>{
     res.render("writeSentenceLite")
 })
-router.get("/writeSentence",  (req, res)=> {
+router.get("/writeSentence", (req, res)=> {
     res.render("writeSentence")
 })
-router.get("/orderSentence",  (req, res) =>{
+router.get("/orderSentence", (req, res) =>{
     res.render("orderSentence")
 })
-router.get("/orderSentenceMobile",  (req, res) =>{
+router.get("/orderSentenceMobile", (req, res) =>{
     res.render("orderSentenceMobile")
 })
-router.post("/catchDailyHook",  (req, res)=> {
+router.get("/test", (req, res) =>{
+    res.render("test")
+})
+router.get("/only", (req, res) =>{
+    //moment().format('MMMM Do YYYY, h:mm:ss a')
+    J.postData(env.getEnv("zapierLogData"), {logData: "moremore"}).then(J.log).then(res.send("more"))
+})
+router.post("/catchDailyHook", (req, res)=> {
     if (req.body.password === env.getEnv("mainPassword")) {
-        dailyTask.deploy().then(console.log)
+        dailyTask.deploy().then(()=>{
+        })
         res.send("success")
     } else {
         res.send("fail")
     }
 })
-router.post("/catchDailyHookRoot",  (req, res) =>{
+router.post("/catchDailyHookRoot", (req, res) =>{
     if (req.body.password === env.getEnv("mainPassword")) {
         dailyTask.deployRoot().then(console.log)
         res.send("success")
+        //
     } else {
         res.send("fail")
     }
 })
-router.get("/blog-*",  (req, res) => {
+router.get("/blog-*", (req, res) => {
     let keyword = req.params[ 0 ]
     getMarkdownData(keyword).then((incoming)=>{
         if (incoming !== null) {

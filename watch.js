@@ -19,112 +19,136 @@ var processFn = function () {
                         commands = factoryCommands(filepath);
 
                         if (!filepath.includes("Front.jsx")) {
-                            _context.next = 10;
+                            _context.next = 11;
                             break;
                         }
 
                         J.log("babelify");
-                        _context.next = 6;
+                        J.log(commands.babelifyHapi);
+                        _context.next = 7;
                         return willRunFixedCommand(commands.babelifyHapi);
 
-                    case 6:
+                    case 7:
                         iMeanNothing = _context.sent;
                         return _context.abrupt("return", iMeanNothing);
 
-                    case 10:
+                    case 11:
+                        if (!filepath.includes("Mob.jsx")) {
+                            _context.next = 24;
+                            break;
+                        }
+
+                        J.log("babel babelify");
+                        //testMob.jsx => testMob.js => public/testFront.js
+                        J.log(commands.babel);
+                        _context.next = 16;
+                        return willRunFixedCommand(commands.babel);
+
+                    case 16:
+                        iMeanNothing = _context.sent;
+
+                        J.log(commands.babelifyHapiMob);
+                        _context.next = 20;
+                        return willRunFixedCommand(commands.babelifyHapiMob);
+
+                    case 20:
+                        iMeanNothing = _context.sent;
+                        return _context.abrupt("return", iMeanNothing);
+
+                    case 24:
                         if (!(filepath.includes(".jsx") && (filepath.includes("services") || filepath.includes("hot")))) {
-                            _context.next = 19;
+                            _context.next = 33;
                             break;
                         }
 
                         J.log("babelify");
                         J.log(commands.babelify);
-                        _context.next = 15;
+                        _context.next = 29;
                         return willRunFixedCommand(commands.babelify);
 
-                    case 15:
+                    case 29:
                         iMeanNothing = _context.sent;
                         return _context.abrupt("return", iMeanNothing);
 
-                    case 19:
+                    case 33:
                         if (!(filepath.includes(".jsx") && filepath.includes("fth"))) {
-                            _context.next = 27;
+                            _context.next = 41;
                             break;
                         }
 
                         J.log("babelify");
-                        _context.next = 23;
+                        _context.next = 37;
                         return willRunFixedCommand(commands.babelify);
 
-                    case 23:
+                    case 37:
                         iMeanNothing = _context.sent;
                         return _context.abrupt("return", iMeanNothing);
 
-                    case 27:
+                    case 41:
                         if (!filepath.includes(".jsx")) {
-                            _context.next = 35;
+                            _context.next = 49;
                             break;
                         }
 
                         J.log("lint react");
-                        _context.next = 31;
+                        _context.next = 45;
                         return willRunFixedCommand(commands.lint);
 
-                    case 31:
+                    case 45:
                         iMeanNothing = _context.sent;
                         return _context.abrupt("return", iMeanNothing);
 
-                    case 35:
+                    case 49:
                         if (!filepath.includes("Pre.js")) {
-                            _context.next = 46;
+                            _context.next = 60;
                             break;
                         }
 
                         J.log("babel lint");
-                        _context.next = 39;
+                        _context.next = 53;
                         return willRunFixedCommand(commands.babel);
 
-                    case 39:
+                    case 53:
                         iMeanNothing = _context.sent;
-                        _context.next = 42;
+                        _context.next = 56;
                         return willRunFixedCommand(commands.lint);
 
-                    case 42:
+                    case 56:
                         iMeanNothing = _context.sent;
                         return _context.abrupt("return", iMeanNothing);
 
-                    case 46:
+                    case 60:
                         if (!filepath.includes(".less")) {
-                            _context.next = 54;
+                            _context.next = 68;
                             break;
                         }
 
                         J.log("less");
-                        _context.next = 50;
+                        _context.next = 64;
                         return willRunFixedCommand(commands.less);
 
-                    case 50:
+                    case 64:
                         iMeanNothing = _context.sent;
                         return _context.abrupt("return", iMeanNothing);
 
-                    case 54:
-                        if (!filepath.includes(".js")) {
-                            _context.next = 62;
+                    case 68:
+                        if (!(filepath.includes(".js") && !filepath.includes("Front"))) {
+                            _context.next = 76;
                             break;
                         }
 
                         J.log("lint");
-                        _context.next = 58;
+                        _context.next = 72;
                         return willRunFixedCommand(commands.lint);
 
-                    case 58:
+                    case 72:
                         iMeanNothing = _context.sent;
                         return _context.abrupt("return", iMeanNothing);
 
-                    case 62:
+                    case 76:
                         return _context.abrupt("return", false);
 
-                    case 63:
+                    case 77:
                     case "end":
                         return _context.stop();
                 }
@@ -203,21 +227,26 @@ watcher.on("add", function (filepath, root, stat) {
 
 function factoryCommands(src) {
     var willReturn = {};
+    var srcMob = R.replace(".jsx", ".js", src);
     var output = R.replace(/(Pre\.js)|(\.jsx)/g, ".js", src);
     var outputCss = R.replace(".less", ".css", src);
     var local = output.split("/");
     var name = local[local.length - 1];
+    var nameMob = R.replace("Mob.js", "Front.js", local[local.length - 1]);
     var hapiLocation = __dirname + "/hapi/public/" + name;
+    var hapiMobLocation = __dirname + "/hapi/public/" + nameMob;
     var adminLocation = "admin/public/" + name;
-    var presents = "-t [ babelify --presets [ es2015 react stage-3 stage-2 stage-1 stage-0 ] ]";
+    var presents = "-t [ babelify --presets [ react  es2015 stage-1 stage-3 stage-2 stage-0 ] ]";
     var eslintConfigOverkill = "--fix --debug --max-warnings 100 -o tmp/eslint.txt --no-ignore --cache --cache-location tmp --config";
     var eslintConfig = "--fix --max-warnings 500 --no-ignore --cache --cache-location tmp";
     willReturn.lintReact = "eslint " + src + " " + eslintConfig + " .eslintrcReact.json";
     willReturn.lint = "eslint " + src + " " + eslintConfig;
     willReturn.less = "lessc " + src + " " + outputCss;
+    willReturn.ts = "tsc " + src;
     willReturn.babel = "babel " + src + " --out-file " + output;
     willReturn.babelify = "browserify " + src + " -o " + output + " " + presents;
     willReturn.babelifyHapi = "browserify " + src + " -o " + hapiLocation + " " + presents;
+    willReturn.babelifyHapiMob = "browserify " + srcMob + " -o " + hapiMobLocation + " " + presents;
     willReturn.babelifyAdmin = "browserify " + src + " -o " + adminLocation + " " + presents;
     return willReturn;
 }

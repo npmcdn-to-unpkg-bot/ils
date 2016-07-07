@@ -5,21 +5,39 @@ const R = require("ramda")
 const db = require("proud-db")
 const J = require("justdo")
 const fs = require("fs-extra")
-//const similarity = require("./_inc/similarity.js")
+const reqwest = require("reqwest")
 
-function saveLog(data) {
-    let logFile = `${__dirname}/zLog.txt`
+function getData(url) {
     return new Promise((resolve)=>{
-        fs.readFile(logFile, "utf8", (err, prevData)=>{
-            fs.outputFile(logFile, `${data}\n${prevData}`, ()=> {
-                resolve(true)
-            })
+        reqwest({
+            url:  url,
+            method:  "get",
+            error: (err) => {
+                console.log(err)
+                resolve(null)
+            },
+            success: (incoming)=> {
+                resolve(incoming)
+            }
         })
     })
 }
 
-function getIp(requestIs) {
-    return ip.getClientIp(requestIs)
+function postData(url, data) {
+    return new Promise((resolve)=>{
+        reqwest({
+            url:  url,
+            data: data,
+            method:  "post",
+            error: (err) => {
+                console.log(err)
+                resolve(null)
+            },
+            success: (incoming)=> {
+                resolve(incoming)
+            }
+        })
+    })
 }
 
 function randomIndex(arr) {
@@ -74,15 +92,14 @@ let takeName = R.compose(R.takeLast(1), R.split("/"))
 let anyRaw = R.flip(R.any)
 let anyFn = R.curry(anyRaw)
 
-module.exports.saveLog = saveLog
-//module.exports.getIp = getIp
+module.exports.postData = postData
+module.exports.getData = getData
 module.exports.isEmpty = isEmpty
 module.exports.takeName = takeName
 module.exports.anyFn = anyFn
 module.exports.willRunFixedCommand = willRunFixedCommand
 module.exports.randomIndex = randomIndex
 module.exports.willRequest = willRequest
-//module.exports.stringCompare = similarity
 module.exports.log = J.log
 module.exports.lg = J.lg
 module.exports.box = J.box

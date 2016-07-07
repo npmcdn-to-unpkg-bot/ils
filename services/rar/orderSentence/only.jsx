@@ -553,17 +553,17 @@ export default class App extends Component {
             let visibleArr = []
             let referenceArr = R.split(" ",this.state.data.dePart)
             let visibleArrRaw = J.shuffle( R.split(" ",this.state.data.dePart))
-            let singleWordBoxHeight = J.divide(J.getHeightPx(42), referenceArr.length)
+            let singleWordBoxHeight = J.divide(J.getHeightPx(55), referenceArr.length)
             visibleArrRaw.map((val)=>{
                 visibleArr.push({
                     name: val,
                     customStyle: {
-                        fontSize: `${J.getPercent(42,singleWordBoxHeight)}px`
+                        fontSize: `${J.getPercent(55,singleWordBoxHeight)}px`
                     }
                 })
             })
             this.setState({
-                singleWordBoxHeight: `${J.getPercent(42,singleWordBoxHeight)}px`,
+                singleWordBoxHeight: `${J.getPercent(55,singleWordBoxHeight)}px`,
                 visibleArr: visibleArr,
                 hiddenArr: hiddenArr,
                 referenceArr: referenceArr,

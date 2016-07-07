@@ -77,9 +77,20 @@ async function processFn(filepath) {
 
     if (filepath.includes("Front.jsx")) {
         J.log("babelify")
+        J.log(commands.babelifyHapi)
         iMeanNothing = await willRunFixedCommand(commands.babelifyHapi)
         return iMeanNothing
             //iMeanNothing = await await J.willRunFixedCommand(commands.lintReact)
+
+    } else if (filepath.includes("Mob.jsx")) {
+        J.log("babel babelify")
+        //testMob.jsx => testMob.js => public/testFront.js
+        J.log(commands.babel)
+        iMeanNothing = await willRunFixedCommand(commands.babel)
+        J.log(commands.babelifyHapiMob)
+        iMeanNothing = await willRunFixedCommand(commands.babelifyHapiMob)
+            //iMeanNothing = await await J.willRunFixedCommand(commands.lintReact)
+        return iMeanNothing
 
     } else if (filepath.includes(".jsx") && (filepath.includes("services") || filepath.includes("hot"))) {
         J.log("babelify")
@@ -110,7 +121,7 @@ async function processFn(filepath) {
         iMeanNothing = await willRunFixedCommand(commands.less)
         return iMeanNothing
 
-    } else if (filepath.includes(".js")) {
+    } else if (filepath.includes(".js")&&!filepath.includes("Front")) {
         J.log("lint")
         iMeanNothing = await willRunFixedCommand(commands.lint)
         return iMeanNothing
@@ -122,21 +133,26 @@ async function processFn(filepath) {
 
 function factoryCommands(src) {
     let willReturn = {}
+    let srcMob = R.replace(".jsx", ".js", src)
     let output = R.replace(/(Pre\.js)|(\.jsx)/g, ".js", src)
     let outputCss = R.replace(".less", ".css", src)
     let local = output.split("/")
     let name = local[ local.length - 1 ]
+    let nameMob = R.replace("Mob.js", "Front.js", local[ local.length - 1 ])
     let hapiLocation = `${__dirname}/hapi/public/${name}`
+    let hapiMobLocation = `${__dirname}/hapi/public/${nameMob}`
     let adminLocation = `admin/public/${name}`
-    let presents = "-t [ babelify --presets [ es2015 react stage-3 stage-2 stage-1 stage-0 ] ]"
+    let presents = "-t [ babelify --presets [ react  es2015 stage-1 stage-3 stage-2 stage-0 ] ]"
     let eslintConfigOverkill = "--fix --debug --max-warnings 100 -o tmp/eslint.txt --no-ignore --cache --cache-location tmp --config"
     let eslintConfig = "--fix --max-warnings 500 --no-ignore --cache --cache-location tmp"
     willReturn.lintReact = `eslint ${src} ${eslintConfig} .eslintrcReact.json`
     willReturn.lint = `eslint ${src} ${eslintConfig}`
     willReturn.less = `lessc ${src} ${outputCss}`
+    willReturn.ts = `tsc ${src}`
     willReturn.babel = `babel ${src} --out-file ${output}`
     willReturn.babelify = `browserify ${src} -o ${output} ${presents}`
     willReturn.babelifyHapi = `browserify ${src} -o ${hapiLocation} ${presents}`
+    willReturn.babelifyHapiMob = `browserify ${srcMob} -o ${hapiMobLocation} ${presents}`
     willReturn.babelifyAdmin = `browserify ${src} -o ${adminLocation} ${presents}`
     return willReturn
 }

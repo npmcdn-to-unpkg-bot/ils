@@ -37,7 +37,6 @@ function save(parent, childKey, childValue) {
             let parentState = R.prop(parent, dbState)
             if (isEmpty(parentState)) {
                 dbState[ parent ] = {}
-
             }
             dbState[ parent ][ childKey ] = childValue
             fs.outputJson(db, dbState, ()=>{

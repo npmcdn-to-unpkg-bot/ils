@@ -1,0 +1,18 @@
+{
+    "compilerOptions": {
+        "module": "es6",
+        "target": "es5",
+        "noImplicitAny": false,
+        "skipLibCheck": true,
+        "sourceMap": false,
+        "moduleResolution": "node"
+    },
+    "exclude": [
+        "node_modules"
+    ],
+    "files": [
+        "./node.d.ts",
+        "./es6-promise.d.ts",
+        "./*.ts"
+    ]
+}

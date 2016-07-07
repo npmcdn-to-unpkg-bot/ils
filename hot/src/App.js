@@ -24,6 +24,7 @@ const inputObjInitial = {
 
 let willSave = {}
 let flag = true
+let selectedText
 J.emitter.on("save",()=>{
     J.postData("http://localhost:3001/update/data", JSON.stringify(willSave)).then((data)=>{
         willSave = {}
@@ -44,6 +45,7 @@ class InputComponent extends Component {
         this.state = {
             inputObj:inputObjInitial
         }
+        this.willHandleTextSelect = this.willHandleTextSelect.bind(this)
         this.willHandleChangeDePart = this.willHandleChangeDePart.bind(this)
         this.willHandleChangeEnPart = this.willHandleChangeEnPart.bind(this)
         this.willHandleCategory = this.willHandleCategory.bind(this)
@@ -64,6 +66,12 @@ class InputComponent extends Component {
         J.emitter.on("correct",()=>{
         })
     }
+    willHandleTextSelect (event) {
+        if(window.getSelection().toString().length>3){
+            selectedText = window.getSelection().toString()
+        }
+        J.log(selectedText)
+    }
     willHandleChangeDePart (event) {
         this.setState({inputObj: R.merge(this.state.inputObj, {dePart: event.target.value})})
     }
@@ -80,7 +88,7 @@ class InputComponent extends Component {
     render () {
         return(
         <div className="column is-half">
-            <input type="text" value={this.state.inputObj.dePart} className="dePart" size={this.state.inputObj.dePart.length} onChange={this.willHandleChangeDePart} onBlur={this.willHandleBlur} />
+            <input type="text" value={this.state.inputObj.dePart} className="dePart" size={this.state.inputObj.dePart.length} onChange={this.willHandleChangeDePart} onBlur={this.willHandleBlur} onSelect={this.willHandleTextSelect}/>
             <br/>
             <input type="text" value={this.state.inputObj.enPart} className="enPart" size={this.state.inputObj.enPart.length} onChange={this.willHandleChangeEnPart} onBlur={this.willHandleBlur} />
             <Select name={`category ${this.state.inputObj.id}`}
@@ -101,6 +109,8 @@ export default class App extends Component {
             globalData: []
         }
         this.willHandleCategory = this.willHandleCategory.bind(this)
+        this.willHandlePrevNavigation = this.willHandlePrevNavigation.bind(this)
+        this.willHandleNextNavigation = this.willHandleNextNavigation.bind(this)
     }
     componentDidMount() {
         J.emitter.on("init",()=>{
@@ -119,6 +129,21 @@ export default class App extends Component {
             })
         })
     }
+    willHandlePrevNavigation(){
+        if((this.state.paginationIndex-this.state.paginationPerPageCount)>=0){
+            this.setState({
+                paginationIndex: this.state.paginationIndex-this.state.paginationPerPageCount
+            })
+        }
+    }
+    willHandleNextNavigation(){
+        if((this.state.paginationIndex+this.state.paginationPerPageCount)<this.state.globalData.length){
+            this.setState({
+                paginationIndex: this.state.paginationIndex+this.state.paginationPerPageCount
+            })
+        }
+
+    }
     willHandleCategory (event) {
         let filterByCategory = R.compose(R.filter((val)=>{
             return R.prop("category",val)===event.value
@@ -131,6 +156,15 @@ export default class App extends Component {
     render () {
         return(
 <div>
+    <div className="columns box">
+        <div className="column">
+            <a className="button" onClick={this.willHandlePrevNavigation}><span className="icon"><i className="fa fa-arrow-circle-left"></i></span></a>
+            <a className="button" onClick={this.willHandleNextNavigation}><span className="icon"><i className="fa fa-arrow-circle-right"></i></span></a>
+        </div>
+        <div className="column">
+            <Select name="category global" value={this.state.category} options={categoryOptions} onChange={this.willHandleCategory} />
+        </div>
+    </div>
     <div className="columns is-multiline">
         {this.state.globalData.map((val,key)=>{
             if(key<this.state.paginationIndex+this.state.paginationPerPageCount&&key>=this.state.paginationIndex)
@@ -138,14 +172,6 @@ export default class App extends Component {
                 return <InputComponent key={key} inputObj={val} />
             }
         })}
-    </div>
-    <div className="card">
-        <a className="button">
-      <span className="icon">
-        <i className="fa fa-github"></i>
-      </span>
-    </a>
-    <Select name="category global" value={this.state.category} options={categoryOptions} onChange={this.willHandleCategory} />
     </div>
 </div>
     )}

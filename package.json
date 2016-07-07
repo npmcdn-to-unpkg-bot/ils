@@ -35,6 +35,7 @@
     "justdo": "*",
     "mobx": "^2.3.3",
     "mobx-react": "^3.4.0",
+    "moment": "^2.14.1",
     "proud-db": "*",
     "ramda": "*",
     "react": "*",
@@ -52,6 +53,8 @@
     "babel-core": "*",
     "babel-eslint": "*",
     "babel-plugin-transform-async-to-generator": "*",
+    "babel-plugin-transform-class-properties": "^6.10.2",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
     "babel-plugin-transform-do-expressions": "*",
     "babel-plugin-transform-function-bind": "*",
     "babel-plugin-transform-object-assign": "*",
@@ -97,8 +100,8 @@
         "babelify",
         {
           "presets": [
-            "es2015",
             "react",
+            "es2015",
             "stage-3",
             "stage-2",
             "stage-1",
