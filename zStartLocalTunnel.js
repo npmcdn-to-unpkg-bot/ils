@@ -20,5 +20,5 @@ proc.stdout.on("error", function(error) {
     console.error(error)
 })
 proc.stdout.on("end", function() {
-    process.exit(1)
+    process.exit(0)
 })

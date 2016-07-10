@@ -10,7 +10,7 @@ function timeoutFn(ms = 5000) {
     return new Promise((resolve)=>{
         setTimeout(()=>{
             resolve([])
-        },ms)
+        }, ms)
     })
 }
 
@@ -37,20 +37,20 @@ function deEnSecond(wordRaw) {
     let word = wordRaw.trim().toLowerCase()
     return new Promise((resolve) => {
         fetch(`http://dictionary.cambridge.org/dictionary/german-english/${word}`).then((res)=>{
-            if(res.status !== 200) {
+            if (res.status !== 200) {
                 console.log("response code error")
                 resolve(null)
-            } else{
+            } else {
                 return res.text()
             }
         }).then(function(data) {
-            if(data) {
+            if (data) {
                 let $ = cheerio.load(data)
                 let selector = ".di-body"
                 let willReturn = []
                 $(selector).each(function(i) {
                     let state = $(this).text().trim()
-                    R.split(",",state).map((val)=>{
+                    R.split(",", state).map((val)=>{
                         willReturn.push({
                             dePart: word,
                             enPart: val
@@ -58,7 +58,7 @@ function deEnSecond(wordRaw) {
                     })
                 })
                 resolve(willReturn)
-            } else{resolve(null)}
+            } else {resolve(null)}
         }).catch((error) => {
             console.log(error)
             resolve(null)
@@ -70,14 +70,14 @@ function deEnThird(wordRaw) {
     let word = wordRaw.trim().toLowerCase()
     return new Promise((resolve) => {
         fetch(`http://www.fremdwort.de/suchen/uebersetzung/${word}`).then((res)=>{
-            if(res.status !== 200) {
+            if (res.status !== 200) {
                 console.log("response code error")
                 resolve(null)
-            } else{
+            } else {
                 return res.text()
             }
         }).then(function(data) {
-            if(data) {
+            if (data) {
                 let willReturn = []
                 let $ = cheerio.load(data)
                 let selector = "#content .section ul li"
@@ -89,7 +89,7 @@ function deEnThird(wordRaw) {
                     })
                 })
                 resolve(willReturn)
-            } else{resolve(null)}
+            } else {resolve(null)}
         }).catch((error) => {
             console.log(error)
             resolve(null)
@@ -120,21 +120,21 @@ function synonymFirst(wordRaw) {
     let word = wordRaw.trim().toLowerCase()
     return new Promise((resolve) => {
         fetch(`http://ein.anderes-wort.de/fuer/${word}`).then(function(res) {
-            if(res.status !== 200) {
+            if (res.status !== 200) {
                 console.log("response code error")
                 resolve("response code error")
-            } else{
+            } else {
                 return res.text()
             }
         }).then(function(data) {
-            if(data) {
+            if (data) {
                 let $ = cheerio.load(data)
                 let willReturn = []
                 let selector = ".synonymeGroup"
                 $(selector).each(function(i) {
                     let localWord = $(this).text().trim()
                     localWord.substring(1).split("\n").map(function(val) {
-                        if(val.trim() !== "") {
+                        if (val.trim() !== "") {
                             willReturn.push({
                                 dePart: val.trim(),
                                 enPart: word
@@ -143,7 +143,7 @@ function synonymFirst(wordRaw) {
                     })
                 })
                 resolve(willReturn)
-            } else{resolve(null)}
+            } else {resolve(null)}
         }).catch((error) => {
             console.log(error)
             resolve(null)
@@ -155,31 +155,31 @@ function synonymSecond(wordRaw) {
     let word = wordRaw.trim().toLowerCase()
     return new Promise((resolve) => {
         fetch(`http://synonyme.woxikon.de/synonyme/${word}.php`).then(function(res) {
-            if(res.status !== 200) {
+            if (res.status !== 200) {
                 console.log("response code error")
                 resolve("response code error")
-            } else{
+            } else {
                 return res.text()
             }
         }).then(function(data) {
-            if(data) {
+            if (data) {
                 let $ = cheerio.load(data)
                 let counter = 0
                 let willReturn = []
                 let selector = ".inner"
                 $(selector).each(function() {
                     let currentWord = $(this).text().trim()
-                    if(counter == 0) {
+                    if (counter == 0) {
                         let arr = currentWord.split("\n")
-                        arr.map(function(value,key) {
+                        arr.map(function(value, key) {
                             let just = value.trim()
                             let localWord
-                            if(key == arr.length - 1) {
+                            if (key == arr.length - 1) {
                                 localWord = just
-                            } else{
-                                localWord = just.substring(0,just.length - 1)
+                            } else {
+                                localWord = just.substring(0, just.length - 1)
                             }
-                            if(localWord !== currentWord && localWord !== "") {
+                            if (localWord !== currentWord && localWord !== "") {
                                 willReturn.push({
                                     dePart: localWord,
                                     enPart: word
@@ -190,7 +190,7 @@ function synonymSecond(wordRaw) {
                     counter++
                 })
                 resolve(willReturn)
-            } else{resolve(null)}
+            } else {resolve(null)}
         }).catch((error) => {
             console.log(error)
             resolve(null)
@@ -202,14 +202,14 @@ function synonymThird(wordRaw) {
     let word = wordRaw.trim().toLowerCase()
     return new Promise((resolve) => {
         fetch(`http://www.fremdwort.de/suchen/synonym/${word}`).then(function(res) {
-            if(res.status !== 200) {
+            if (res.status !== 200) {
                 console.log("response code error")
                 resolve(null)
-            } else{
+            } else {
                 return res.text()
             }
         }).then(function(data) {
-            if(data) {
+            if (data) {
                 let willReturn = []
                 let $ = cheerio.load(data)
                 let selector = "#content .section ul li"
@@ -221,7 +221,7 @@ function synonymThird(wordRaw) {
                     })
                 })
                 resolve(willReturn)
-            } else{resolve(null)}
+            } else {resolve(null)}
         }).catch((error) => {
             console.log(error)
             resolve(null)
@@ -236,17 +236,17 @@ function phraseFirst(wordRaw) {
         let willReturn = []
         let dePart
         let url = `http://de.langenscheidt.com/deutsch-englisch/${word}`
-        scrapeIt(url,{
+        scrapeIt(url, {
             examples: {
                 listItem: ".row-fluid",
                 data: {
                     dePart: {
                         selector: ".lkgEx",
                         convert: (wordIs) => {
-                            if(wordIs.length > 0 && wordIs.length < 70) {
+                            if (wordIs.length > 0 && wordIs.length < 70) {
                                 flag = true
                                 dePart = wordIs
-                            } else{
+                            } else {
                                 flag = false
                             }
                         }
@@ -254,7 +254,7 @@ function phraseFirst(wordRaw) {
                     enPart: {
                         selector: ".lkgExNormal",
                         convert: (wordIs) => {
-                            if(flag && wordIs.length > 0 && wordIs.length < 70) {
+                            if (flag && wordIs.length > 0 && wordIs.length < 70) {
                                 let just = {}
                                 just.dePart = dePart
                                 just.enPart = wordIs
@@ -277,14 +277,14 @@ function phraseSecond(wordRaw) {
     let word = wordRaw.trim().toLowerCase()
     return new Promise((resolve) => {
         let url = `http://www.collinsdictionary.com/dictionary/german-english/${word}`
-        scrapeIt(url,{
+        scrapeIt(url, {
             data: {
                 listItem: ".cit-type-example",
                 data: {
                     dePart: {
                         selector: ".orth",
                         convert: (wordIs) => {
-                            let localWord = R.replace("⇒","",wordIs)
+                            let localWord = R.replace("⇒", "", wordIs)
                             return localWord.trim()
                         }
                     },
@@ -304,19 +304,18 @@ function phraseSecond(wordRaw) {
         })
     })
 }
-
 function phraseThird(wordRaw) {
     let word = wordRaw.trim().toLowerCase()
     return new Promise((resolve) => {
         fetch(`http://www.phrasen.com/index.php?do=suche&q=${word}`).then(function(res) {
-            if(res.status !== 200) {
+            if (res.status !== 200) {
                 console.log("response code error")
                 resolve(null)
-            } else{
+            } else {
                 return res.text()
             }
         }).then(function(data) {
-            if(data) {
+            if (data) {
                 let willReturn = []
                 let $ = cheerio.load(data)
                 let selector = "a.zeile"
@@ -335,19 +334,63 @@ function phraseThird(wordRaw) {
                         enPart: word
                     })
                 })
-                let sortByLength = R.sortBy(R.compose((a)=>{return-a.length},R.prop("dePart")))
-                let sortByLengthLess = R.sortBy(R.compose((a)=>{return a.length},R.prop("dePart")))
-                let local = R.take(20,sortByLength(willReturn))
-                let localSecond = R.take(10,sortByLengthLess(willReturn))
-                resolve(R.flatten([local,localSecond]))
-            } else{resolve(null)}
+                let sortByLength = R.sortBy(R.compose((a)=>{return -a.length}, R.prop("dePart")))
+                let sortByLengthLess = R.sortBy(R.compose((a)=>{return a.length}, R.prop("dePart")))
+                let local = R.take(20, sortByLength(willReturn))
+                let localSecond = R.take(10, sortByLengthLess(willReturn))
+                resolve(R.flatten([local, localSecond]))
+            } else {resolve(null)}
         }).catch((error) => {
             console.log(error)
             resolve(null)
         })
     })
 }
+function phraseFourth(word) {
+    return new Promise((resolve) => {
+        fetch(`http://www.dict.cc/?s=${word}`).then((res)=>{
+            if (res.status !== 200) {
+                console.log("response code error")
+                resolve(null)
+            } else {
+                return res.text()
+            }
+        }).then(function(data) {
+            if (data) {
+                let $ = cheerio.load(data)
+                let willReturn = []
+                let selector = "tr"
+                let flagNumber = 0
+                let enPart
+                $(selector).each(function(i) {
+                    let state = $(this).text().trim()
 
+                    if (state.includes("Andere")) {
+                        flagNumber = i - 4
+                        J.lg(state, "flag")
+                    }
+                })
+                selector = "td.td7nl"
+                $(selector).each(function(i) {
+                    let state = $(this).text().trim()
+                    if (flagNumber <= i && i % 2 === 0) {
+                        enPart = state
+                    }
+                    if (flagNumber <= i && i % 2 === 1) {
+                        willReturn.push({
+                            dePart: state,
+                            enPart: enPart
+                        })
+                    }
+                })
+                resolve(willReturn)
+            } else {resolve(null)}
+        }).catch((error) => {
+            console.log(error)
+            resolve(null)
+        })
+    })
+}
 function mixed(wordRaw) {
     let word = wordRaw.trim().toLowerCase()
     return new Promise((resolve)=>{
@@ -357,10 +400,10 @@ function mixed(wordRaw) {
             let willReturn = {}
             let willReturnTranslation = []
             let willReturnRelated = []
-            if(R.prop("dict",data) && R.prop("dict",data).length > 0) {
-                let state = R.prop("dict",data)[ 0 ]
-                if(R.prop("terms",state)) {
-                    let local = R.prop("terms",state)
+            if (R.prop("dict", data) && R.prop("dict", data).length > 0) {
+                let state = R.prop("dict", data)[ 0 ]
+                if (R.prop("terms", state)) {
+                    let local = R.prop("terms", state)
                     local.map((localState)=>{
                         willReturnTranslation.push({
                             dePart: word,
@@ -368,8 +411,8 @@ function mixed(wordRaw) {
                         })
                     })
                 }
-                if(R.prop("entry",state)) {
-                    let local = R.prop("entry",state)
+                if (R.prop("entry", state)) {
+                    let local = R.prop("entry", state)
                     local.map((val)=>{
                         val.reverse_translation.map((value)=>{
                             willReturnRelated.push({
@@ -401,17 +444,42 @@ async function deEnAsync(wordRaw) {
     willReturnMain.phraseFirst = await phraseFirst(word)
     willReturnMain.phraseSecond = await phraseSecond(word)
     willReturnMain.phraseThird = await phraseThird(word)
+    willReturnMain.phraseFourth = await phraseFourth(word)
     willReturn.synonymSecond = await synonymSecond(word)
     willReturnMain.synonymThird = await synonymThird(word)
     return willReturnMain
 }
+async function deEnShortAsync(wordRaw) {
+    let word = wordRaw.trim().toLowerCase()
+    let local = await mixed(word)
+    willReturnMain.deEnFourth = local.translation
+    //willReturnMain.synonymFirst = await synonymFirst(word)
+    willReturnMain.synonymFourth = local.related
+    //willReturnMain.phraseFirst = await phraseFirst(word)
+    willReturnMain.phraseFourth = await phraseFourth(word)
+    //willReturnMain.phraseSecond = await phraseSecond(word)
+    //willReturnMain.phraseThird = await phraseThird(word)
+    //willReturn.synonymSecond = await synonymSecond(word)
+    //willReturnMain.synonymThird = await synonymThird(word)
+    return willReturnMain
+}
 
 
-function deEn(word,ms = 10000) {
+function deEn(word, ms = 10000) {
     return new Promise((resolve)=>{
         setTimeout(()=>{
             resolve(willReturnMain)
-        },ms)
+        }, ms)
+        deEnAsync(word).then((result)=>{
+            resolve(result)
+        })
+    })
+}
+function deEnShort(word, ms = 10000) {
+    return new Promise((resolve)=>{
+        setTimeout(()=>{
+            resolve(willReturnMain)
+        }, ms)
         deEnAsync(word).then((result)=>{
             resolve(result)
         })
@@ -419,14 +487,14 @@ function deEn(word,ms = 10000) {
 }
 
 function willRequest(url) {
-    return new Promise((resolve,reject) => {
+    return new Promise((resolve, reject) => {
         request({
             url: url,
             "rejectUnauthorized": false
-        },(error,response,body) =>{
-            if(response.statusCode === 200) {
+        }, (error, response, body) =>{
+            if (response.statusCode === 200) {
                 resolve(body)
-            } else{
+            } else {
                 reject(error)
             }
         })
@@ -434,6 +502,7 @@ function willRequest(url) {
 }
 
 module.exports.deEn = deEn
+module.exports.deEnShort = deEnShort
 
 module.exports.timeoutFn = timeoutFn
 module.exports.deEnFirst = deEnFirst

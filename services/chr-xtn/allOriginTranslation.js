@@ -20,11 +20,11 @@ function willRequest(url) {
 
 function getData(url) {
     return new Promise((resolve) => {
-        willRequest('https://allorigins.pw/get?url=' + encodeURIComponent(url)).then(function (incoming) {
+        willRequest("https://allorigins.pw/get?url=" + encodeURIComponent(url)).then(function (incoming) {
             let willSend = JSON.parse(incoming)
-            if(willSend.contents){
+            if (willSend.contents) {
                 resolve(willSend.contents)
-            }else{
+            } else {
                 resolve(null)
             }
         })
@@ -52,12 +52,13 @@ function will(wordRaw) {
     })
 }
 
-//will("mehrere").then(console.log)
+const keyboard = new window.keypress.Listener()
 
-const keyboard = new window.keypress.Listener();
+keyboard.simple_combo("alt a", function() {
+    document.ondblclick = function () {
+        let word = (document.selection && document.selection.createRange().text) ||
+                 (window.getSelection && window.getSelection().toString())
+           //word.trim().toLowerCase()
 
-keyboard.simple_combo("alt z", function() {
- let word = "mehrere"
-
-will("mehrere").then(console.log)
+    }
 })

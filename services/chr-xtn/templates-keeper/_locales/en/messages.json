@@ -1,0 +1,10 @@
+{
+  "appName": {
+    "message": "Template Keeper",
+    "description": "PhraseExpress in the browser. Bind your common used texts to prefered keybinding. Example: associate the key combination of 'alt+z' with your email and your phone number with 'alt+x', thus making filling out registration forms much more convenient"  
+  },
+  "appDescription": {
+    "message": "Template Keeper",
+    "description": "PhraseExpress in the browser. Bind your common used texts to prefered keybinding. Example: associate the key combination of 'alt+z' with your email and your phone number with 'alt+x', thus making filling out registration forms much more convenient"
+  }
+}

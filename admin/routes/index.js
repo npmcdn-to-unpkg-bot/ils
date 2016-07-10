@@ -8,53 +8,28 @@ var _asyncToGenerator2 = require("babel-runtime/helpers/asyncToGenerator");
 
 var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
 
-var willTranslateAsync = function () {
-    var ref = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee(wordIn) {
-        var state, translated, willSend;
+var willTranslate = function () {
+    var ref = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee(word) {
+        var translated;
         return _regenerator2.default.wrap(function _callee$(_context) {
             while (1) {
                 switch (_context.prev = _context.next) {
                     case 0:
                         _context.next = 2;
-                        return J.load("GermanOverall", wordIn);
+                        return translate.deEn(word);
 
                     case 2:
-                        state = _context.sent;
-
-                        if (!J.isEmpty(state)) {
-                            _context.next = 17;
-                            break;
-                        }
-
-                        _context.next = 6;
-                        return translate.deEn(wordIn);
-
-                    case 6:
                         translated = _context.sent;
-                        willSend = bringOrderTranslation.main(translated);
-                        _context.next = 10;
-                        return J.save("GermanOverallRaw", wordIn, translated);
+                        return _context.abrupt("return", bringOrderTranslation.main(translated));
 
-                    case 10:
-                        willSend = _context.sent;
-                        _context.next = 13;
-                        return J.save("GermanOverall", wordIn, willSend);
-
-                    case 13:
-                        willSend = _context.sent;
-                        return _context.abrupt("return", willSend);
-
-                    case 17:
-                        return _context.abrupt("return", state);
-
-                    case 18:
+                    case 4:
                     case "end":
                         return _context.stop();
                 }
             }
         }, _callee, this);
     }));
-    return function willTranslateAsync(_x) {
+    return function willTranslate(_x) {
         return ref.apply(this, arguments);
     };
 }();
@@ -68,7 +43,6 @@ var willUpdateDb = function () {
                 switch (_context2.prev = _context2.next) {
                     case 0:
                         iMeanNothing = void 0;
-                        //R.values(data).map((val)=>{
                         _iteratorNormalCompletion = true;
                         _didIteratorError = false;
                         _iteratorError = undefined;
@@ -83,7 +57,7 @@ var willUpdateDb = function () {
 
                         val = _step.value;
                         _context2.next = 10;
-                        return proudDb.save(parent, "" + val.id, val, true);
+                        return proudDb.save(parent, "" + val.id, val);
 
                     case 10:
                         iMeanNothing = _context2.sent;
@@ -144,6 +118,43 @@ var willUpdateDb = function () {
     };
 }();
 
+var willAddEntryDb = function () {
+    var ref = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee3(parent, dataRaw) {
+        var indexFuture, data, iMeanNothing;
+        return _regenerator2.default.wrap(function _callee3$(_context3) {
+            while (1) {
+                switch (_context3.prev = _context3.next) {
+                    case 0:
+                        _context3.next = 2;
+                        return proudDb.loadParent("nextIndex");
+
+                    case 2:
+                        indexFuture = _context3.sent;
+                        data = R.merge(dataRaw, { id: indexFuture });
+                        _context3.next = 6;
+                        return proudDb.saveParent("nextIndex", indexFuture + 1);
+
+                    case 6:
+                        iMeanNothing = _context3.sent;
+                        _context3.next = 9;
+                        return proudDb.save(parent, "" + data.id, data);
+
+                    case 9:
+                        iMeanNothing = _context3.sent;
+                        return _context3.abrupt("return", iMeanNothing);
+
+                    case 11:
+                    case "end":
+                        return _context3.stop();
+                }
+            }
+        }, _callee3, this);
+    }));
+    return function willAddEntryDb(_x4, _x5) {
+        return ref.apply(this, arguments);
+    };
+}();
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var express = require("express");
@@ -166,36 +177,40 @@ function willPublish(keyword, content) {
     });
 }
 
-function willTranslate(wordIn) {
-    return willTranslateAsync(wordIn);
-}
-
 router.get("/", function (req, res) {
     res.send("index");
 });
-
+router.get("/db", function (req, res) {
+    res.render("db");
+});
 router.post("/test", function (req, res) {
     res.send("more");
 });
-
 router.get("/read/:parent", function (req, res) {
     proudDb.loadParent(req.params.parent).then(function (data) {
         res.send(data);
     });
 });
-
 router.post("/update/:parent", function (req, res) {
     willUpdateDb(req.params.parent, R.values(JSON.parse(req.body.data))).then(function () {
         res.send("done");
     });
 });
-
+router.post("/publish/:parent", function (req, res) {
+    willAddEntryDb(req.params.parent, JSON.parse(req.body.data)).then(function () {
+        res.send("done");
+    });
+});
+router.post("/remove/:parent", function (req, res) {
+    proudDb.remove(req.params.parent, JSON.parse(req.body.data).id * 1).then(function () {
+        res.send("done");
+    });
+});
 router.post("/blog", function (req, res) {
     willPublish(req.body.keyword, req.body.content).then(function () {
         res.send("was published");
     });
 });
-
 router.post("/read", function (req, res) {
     J.log(word, "word");
     var password = req.body.password;
@@ -208,7 +223,6 @@ router.post("/read", function (req, res) {
         res.send(word);
     }
 });
-
 router.post("/readRaw", function (req, res) {
     J.log(word, "word");
     var password = req.body.password;
@@ -221,20 +235,21 @@ router.post("/readRaw", function (req, res) {
         res.send(word);
     }
 });
-
-router.post("/detoen", function (req, res) {
+router.post("/deEnShort", function (req, res) {
     var password = req.body.password;
     var word = req.body.word;
     J.log(word, "word");
-    if (password === envHelper.getEnv("passwordUbersetzung")) {
-        willTranslate(word).then(function (result) {
-            res.send(result);
-        });
-    } else {
-        res.send(word);
-    }
+    willTranslate(word).then(function (result) {
+        res.send(result);
+    });
 });
-
+router.post("/deEn", function (req, res) {
+    var word = JSON.parse(req.body.data).word;
+    J.log(word, "word");
+    willTranslate(word).then(function (incoming) {
+        res.send(incoming);
+    });
+});
 router.post("/catchDailyHook", function (req, res) {
     if (req.body.password === env.getEnv("mainPassword")) {
         res.send("success");

@@ -46,18 +46,23 @@ var deEnAsync = function () {
                     case 17:
                         willReturnMain.phraseThird = _context.sent;
                         _context.next = 20;
-                        return synonymSecond(word);
+                        return phraseFourth(word);
 
                     case 20:
-                        willReturn.synonymSecond = _context.sent;
+                        willReturnMain.phraseFourth = _context.sent;
                         _context.next = 23;
-                        return synonymThird(word);
+                        return synonymSecond(word);
 
                     case 23:
+                        willReturn.synonymSecond = _context.sent;
+                        _context.next = 26;
+                        return synonymThird(word);
+
+                    case 26:
                         willReturnMain.synonymThird = _context.sent;
                         return _context.abrupt("return", willReturnMain);
 
-                    case 25:
+                    case 28:
                     case "end":
                         return _context.stop();
                 }
@@ -65,6 +70,43 @@ var deEnAsync = function () {
         }, _callee, this);
     }));
     return function deEnAsync(_x2) {
+        return ref.apply(this, arguments);
+    };
+}();
+
+var deEnShortAsync = function () {
+    var ref = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee2(wordRaw) {
+        var word, local;
+        return _regenerator2.default.wrap(function _callee2$(_context2) {
+            while (1) {
+                switch (_context2.prev = _context2.next) {
+                    case 0:
+                        word = wordRaw.trim().toLowerCase();
+                        _context2.next = 3;
+                        return mixed(word);
+
+                    case 3:
+                        local = _context2.sent;
+
+                        willReturnMain.deEnFourth = local.translation;
+                        //willReturnMain.synonymFirst = await synonymFirst(word)
+                        willReturnMain.synonymFourth = local.related;
+                        //willReturnMain.phraseFirst = await phraseFirst(word)
+                        _context2.next = 8;
+                        return phraseFourth(word);
+
+                    case 8:
+                        willReturnMain.phraseFourth = _context2.sent;
+                        return _context2.abrupt("return", willReturnMain);
+
+                    case 10:
+                    case "end":
+                        return _context2.stop();
+                }
+            }
+        }, _callee2, this);
+    }));
+    return function deEnShortAsync(_x3) {
         return ref.apply(this, arguments);
     };
 }();
@@ -400,7 +442,6 @@ function phraseSecond(wordRaw) {
         });
     });
 }
-
 function phraseThird(wordRaw) {
     var word = wordRaw.trim().toLowerCase();
     return new Promise(function (resolve) {
@@ -451,7 +492,55 @@ function phraseThird(wordRaw) {
         });
     });
 }
+function phraseFourth(word) {
+    return new Promise(function (resolve) {
+        fetch("http://www.dict.cc/?s=" + word).then(function (res) {
+            if (res.status !== 200) {
+                console.log("response code error");
+                resolve(null);
+            } else {
+                return res.text();
+            }
+        }).then(function (data) {
+            if (data) {
+                (function () {
+                    var $ = cheerio.load(data);
+                    var willReturn = [];
+                    var selector = "tr";
+                    var flagNumber = 0;
+                    var enPart = void 0;
+                    $(selector).each(function (i) {
+                        var state = $(this).text().trim();
 
+                        if (state.includes("Andere")) {
+                            flagNumber = i - 4;
+                            J.lg(state, "flag");
+                        }
+                    });
+                    selector = "td.td7nl";
+                    $(selector).each(function (i) {
+                        var state = $(this).text().trim();
+                        if (flagNumber <= i && i % 2 === 0) {
+                            enPart = state;
+                        }
+                        if (flagNumber <= i && i % 2 === 1) {
+                            willReturn.push({
+                                dePart: state,
+                                enPart: enPart
+                            });
+                        }
+                    });
+                    resolve(willReturn);
+                })();
+            } else {
+                resolve(null);
+            }
+        }).catch(function (error) {
+            console.log(error);
+            resolve(null);
+        });
+    });
+}
 function mixed(wordRaw) {
     var word = wordRaw.trim().toLowerCase();
     return new Promise(function (resolve) {
@@ -508,6 +597,18 @@ function deEn(word) {
         });
     });
 }
+function deEnShort(word) {
+    var ms = arguments.length <= 1 || arguments[1] === undefined ? 10000 : arguments[1];
+
+    return new Promise(function (resolve) {
+        setTimeout(function () {
+            resolve(willReturnMain);
+        }, ms);
+        deEnAsync(word).then(function (result) {
+            resolve(result);
+        });
+    });
+}
 
 function willRequest(url) {
     return new Promise(function (resolve, reject) {
@@ -525,6 +626,7 @@ function willRequest(url) {
 }
 
 module.exports.deEn = deEn;
+module.exports.deEnShort = deEnShort;
 
 module.exports.timeoutFn = timeoutFn;
 module.exports.deEnFirst = deEnFirst;

@@ -93,7 +93,8 @@ var mainAsync = function () {
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var J = require("./common");
+var commands = ["pm2 kill", "cd hot&&pm2 start server.js", "node zStartLocalTunnel", "pm2 status"];
 
-var commands = ["pm2 kill", "cd hot&&pm2 start server.js", "pm2 status"];
-
-mainAsync().then(J.lg);
+mainAsync().then(function () {
+    process.exit(0);
+});

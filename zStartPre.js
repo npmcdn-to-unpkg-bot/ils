@@ -1,8 +1,6 @@
 "use strict"
 const J = require("./common")
-
-let commands = ["pm2 kill", "cd hot&&pm2 start server.js", "pm2 status"]
-
+let commands = ["pm2 kill", "cd hot&&pm2 start server.js", "node zStartLocalTunnel", "pm2 status"]
 async function mainAsync() {
     let awaited
     for (let singleCommand of commands) {
@@ -10,4 +8,6 @@ async function mainAsync() {
     }
     return awaited
 }
-mainAsync().then(J.lg)
+mainAsync().then(()=>{
+    process.exit(0)
+})

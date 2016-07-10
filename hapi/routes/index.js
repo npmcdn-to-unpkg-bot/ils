@@ -38,13 +38,12 @@ router.get("/orderSentenceMobile", (req, res) =>{
 router.get("/test", (req, res) =>{
     res.render("test")
 })
-router.get("/only", (req, res) =>{
-    //moment().format('MMMM Do YYYY, h:mm:ss a')
-    J.postData(env.getEnv("zapierLogData"), {logData: "moremore"}).then(J.log).then(res.send("more"))
-})
 router.post("/catchDailyHook", (req, res)=> {
+    let currentTime = moment().format("MMMM Do h:mm")
+    J.postData(env.getEnv("zapierLogData"), {logData: `iLs dailyTask ${currentTime}`}).then(J.log)
     if (req.body.password === env.getEnv("mainPassword")) {
         dailyTask.deploy().then(()=>{
+            J.postData(env.getEnv("zapierLogData"), {logData: `iLs dailyTask ${currentTime}`}).then(J.log)
         })
         res.send("success")
     } else {
@@ -52,10 +51,13 @@ router.post("/catchDailyHook", (req, res)=> {
     }
 })
 router.post("/catchDailyHookRoot", (req, res) =>{
+    let currentTime = moment().format("MMMM Do h:mm")
+    J.postData(env.getEnv("zapierLogData"), {logData: `root dailyTask ${currentTime}`}).then(J.log)
     if (req.body.password === env.getEnv("mainPassword")) {
-        dailyTask.deployRoot().then(console.log)
+        dailyTask.deployRoot().then(()=>{
+            J.postData(env.getEnv("zapierLogData"), {logData: `root dailyTask ${currentTime}`}).then(J.log)
+        })
         res.send("success")
-        //
     } else {
         res.send("fail")
     }
