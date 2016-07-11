@@ -112,6 +112,7 @@ export default class App extends Component {
         this.willHandlePrevNavigation = this.willHandlePrevNavigation.bind(this)
         this.willHandleNextNavigation = this.willHandleNextNavigation.bind(this)
         this.willRemove = this.willRemove.bind(this)
+        this.willBulkRemove = this.willBulkRemove.bind(this)
         this.willSave = this.willSave.bind(this)
         this.newEntry = this.newEntry.bind(this)
     }
@@ -191,6 +192,22 @@ export default class App extends Component {
             J.log("removed")
         })
     }
+    willBulkRemove (event) {
+        let globalDataFuture = R.compose(R.filter((val)=>{
+            return R.prop("id",val)!=willDeleteIndex
+        }))(this.state.globalData)
+                J.log(globalDataFuture)
+        this.setState({
+            globalData: []
+        },()=>{
+            this.setState({
+                globalData: globalDataFuture
+            })
+        })
+        J.postData("http://localhost:3001/removeBulk/data", JSON.stringify({id: willDeleteIndex})).then((data)=>{
+            J.log("removed")
+        })
+    }
     willSave(){
         J.emitter.emit("save")
     }
@@ -208,6 +225,7 @@ export default class App extends Component {
             <a className="button outline is-danger is-inverted" onClick={this.willTranslate}>long</a>
             <a className="button outline is-danger is-inverted" onClick={this.newEntry}>new entry</a>
             <a className="button outline is-danger" onClick={this.willRemove}> X </a>
+            <a className="button outline is-primary is-inverted" onClick={this.willBulkRemove}>|X|</a>
             <a className="button outline is-warning" onClick={this.willSave}>Save</a>
         </div>
         <div className="column">

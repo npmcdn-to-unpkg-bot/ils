@@ -41,7 +41,7 @@ class NewEntry extends Component {
         return (
     <div className="newEntryContainer">
         <div className="newEntry">
-            <input autofocus type="text" value={this.state.inputObj.dePart} className="dePart" size="77" onChange={this.willHandleChangeDePart} onSelect={this.willHandleTextSelect}/>
+            <input autoFocus type="text" value={this.state.inputObj.dePart} className="dePart" size="77" onChange={this.willHandleChangeDePart} onSelect={this.willHandleTextSelect}/>
             <br/>
             <a className="button outline is-primary is-inverted" onClick={this.willHandlePublish}>Publish</a>
             <br/>

@@ -91,7 +91,7 @@ var scrape = function () {
             }
         }, _callee, this, [[5, 20, 24, 32], [25,, 27, 31]]);
     }));
-    return function scrape(_x2) {
+    return function scrape(_x) {
         return ref.apply(this, arguments);
     };
 }();
@@ -108,14 +108,11 @@ var R = require("ramda");
 var dbPath = "/home/just/ils/hapi/public/_db.json";
 var dbPathRaw = "/home/just/ils/hapi/public/_dbRaw.json";
 var removeLongSentences = R.compose(R.lt(R.__, 3), R.length, R.split("."));
-var filterFn = R.compose(R.replace("„", ""), R.replace("“", ""));
-var id = 1405;
+var id = fs.readJsonSync(dbPath).nextIndex;
 var willSave = {};
-function will() {
-    var pagination = arguments.length <= 0 || arguments[0] === undefined ? 27 : arguments[0];
-
+function will(pagination) {
     return new Promise(function (resolve) {
-        fetch("http://www.zitate-online.de/sprueche/politiker/seite" + pagination + ".html").then(function (res) {
+        fetch("http://www.gratis-spruch.de/sprueche/Zitate-Leben/kid/15/ukid/104/" + pagination).then(function (res) {
             if (res.status !== 200) {
                 console.log("response code error");
                 resolve(null);
@@ -127,12 +124,12 @@ function will() {
                 (function () {
                     var $ = cheerio.load(data);
                     var willReturn = [];
-                    var selector = ".witztext";
+                    var selector = "div.spruch a";
                     $(selector).each(function (i) {
                         var state = $(this).text().trim();
-                        if (removeLongSentences(state) && state.length < 80) {
+                        if (removeLongSentences(state) && state.length < 80 && state.length > 40) {
                             willSave[id] = {
-                                dePart: filterFn(state),
+                                dePart: state,
                                 enPart: "",
                                 category: "preDraft",
                                 id: id
@@ -152,14 +149,11 @@ function will() {
     });
 }
 
-
-scrape(R.range(1, 18)).then(function (data) {
-    fs.writeJsonSync(dbPathRaw, { data: R.flatten(data) });
+scrape(R.range(2, 331)).then(function (data) {
+    fs.writeJsonSync(dbPathRaw, { data: willSave });
 });
+
 //fs.readJson(dbPath, (err, dbState)=> {
 //test(dbState.nextIndex).then((incoming)=>{
 //dbState.data = R.merge(dbState.data, incoming.willReturn)
 //dbState.nextIndex = incoming.id
-//
-//})
-//})

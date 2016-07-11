@@ -15,7 +15,7 @@ async function willTranslate(word) {
     let translated = await translate.deEn(word)
     return bringOrderTranslation.main(translated)
 }
-async function willUpdateDb(parent, data) {
+async function willUpdate(parent, data) {
     let iMeanNothing
     for (let val of data) {
         iMeanNothing = await proudDb.save(parent, `${val.id}`, val)
@@ -23,7 +23,14 @@ async function willUpdateDb(parent, data) {
     }
     return iMeanNothing
 }
-async function willAddEntryDb(parent, dataRaw) {
+async function willAddEntry(parent, dataRaw) {
+    let indexFuture = await proudDb.loadParent("nextIndex")
+    let data = R.merge(dataRaw, {id: indexFuture})
+    let iMeanNothing = await proudDb.saveParent("nextIndex", indexFuture + 1)
+    iMeanNothing = await proudDb.save(parent, `${data.id}`, data)
+    return iMeanNothing
+}
+async function willBulkRemove(parent, dataRaw) {
     let indexFuture = await proudDb.loadParent("nextIndex")
     let data = R.merge(dataRaw, {id: indexFuture})
     let iMeanNothing = await proudDb.saveParent("nextIndex", indexFuture + 1)
@@ -53,12 +60,12 @@ router.get("/read/:parent", (req, res) =>{
     })
 })
 router.post("/update/:parent", (req, res) =>{
-    willUpdateDb(req.params.parent, R.values(JSON.parse(req.body.data))).then(()=>{
+    willUpdate(req.params.parent, R.values(JSON.parse(req.body.data))).then(()=>{
         res.send("done")
     })
 })
 router.post("/publish/:parent", (req, res) =>{
-    willAddEntryDb(req.params.parent, JSON.parse(req.body.data)).then(()=>{
+    willAddEntry(req.params.parent, JSON.parse(req.body.data)).then(()=>{
         res.send("done")
     })
 })

@@ -34,7 +34,7 @@ var willTranslate = function () {
     };
 }();
 
-var willUpdateDb = function () {
+var willUpdate = function () {
     var ref = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee2(parent, data) {
         var iMeanNothing, _iteratorNormalCompletion, _didIteratorError, _iteratorError, _iterator, _step, val;
 
@@ -113,12 +113,12 @@ var willUpdateDb = function () {
             }
         }, _callee2, this, [[4, 17, 21, 29], [22,, 24, 28]]);
     }));
-    return function willUpdateDb(_x2, _x3) {
+    return function willUpdate(_x2, _x3) {
         return ref.apply(this, arguments);
     };
 }();
 
-var willAddEntryDb = function () {
+var willAddEntry = function () {
     var ref = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee3(parent, dataRaw) {
         var indexFuture, data, iMeanNothing;
         return _regenerator2.default.wrap(function _callee3$(_context3) {
@@ -150,7 +150,44 @@ var willAddEntryDb = function () {
             }
         }, _callee3, this);
     }));
-    return function willAddEntryDb(_x4, _x5) {
+    return function willAddEntry(_x4, _x5) {
+        return ref.apply(this, arguments);
+    };
+}();
+
+var willBulkRemove = function () {
+    var ref = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee4(parent, dataRaw) {
+        var indexFuture, data, iMeanNothing;
+        return _regenerator2.default.wrap(function _callee4$(_context4) {
+            while (1) {
+                switch (_context4.prev = _context4.next) {
+                    case 0:
+                        _context4.next = 2;
+                        return proudDb.loadParent("nextIndex");
+
+                    case 2:
+                        indexFuture = _context4.sent;
+                        data = R.merge(dataRaw, { id: indexFuture });
+                        _context4.next = 6;
+                        return proudDb.saveParent("nextIndex", indexFuture + 1);
+
+                    case 6:
+                        iMeanNothing = _context4.sent;
+                        _context4.next = 9;
+                        return proudDb.save(parent, "" + data.id, data);
+
+                    case 9:
+                        iMeanNothing = _context4.sent;
+                        return _context4.abrupt("return", iMeanNothing);
+
+                    case 11:
+                    case "end":
+                        return _context4.stop();
+                }
+            }
+        }, _callee4, this);
+    }));
+    return function willBulkRemove(_x6, _x7) {
         return ref.apply(this, arguments);
     };
 }();
@@ -192,12 +229,12 @@ router.get("/read/:parent", function (req, res) {
     });
 });
 router.post("/update/:parent", function (req, res) {
-    willUpdateDb(req.params.parent, R.values(JSON.parse(req.body.data))).then(function () {
+    willUpdate(req.params.parent, R.values(JSON.parse(req.body.data))).then(function () {
         res.send("done");
     });
 });
 router.post("/publish/:parent", function (req, res) {
-    willAddEntryDb(req.params.parent, JSON.parse(req.body.data)).then(function () {
+    willAddEntry(req.params.parent, JSON.parse(req.body.data)).then(function () {
         res.send("done");
     });
 });
