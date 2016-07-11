@@ -1,2 +1,3 @@
+Sitemap:http://ilearnsmarter.com/sitemap.xml
 User-agent:*
 Allow:/

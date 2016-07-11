@@ -364,7 +364,6 @@ function phraseFourth(word) {
                 let enPart
                 $(selector).each(function(i) {
                     let state = $(this).text().trim()
-
                     if (state.includes("Andere")) {
                         flagNumber = i - 4
                         J.lg(state, "flag")
@@ -383,6 +382,67 @@ function phraseFourth(word) {
                         })
                     }
                 })
+                resolve(willReturn)
+            } else {resolve(null)}
+        }).catch((error) => {
+            console.log(error)
+            resolve(null)
+        })
+    })
+}
+function phraseFifth(word) {
+    return new Promise((resolve) => {
+        fetch(`http://www.duden.de/rechtschreibung/${word}`).then((res)=>{
+            if (res.status !== 200) {
+                console.log("response code error")
+                resolve(null)
+            } else {
+                return res.text()
+            }
+        }).then(function(data) {
+            if (data) {
+                let filterFn = R.compose(R.trim, R.join(" "), R.split(" "), R.ifElse((data)=>{R.length(data) === 1}, R.always, R.last), R.split(">:"))
+                let $ = cheerio.load(data)
+                let willReturn = []
+                let selector = "#Bedeutung1 .term-section ul li"
+                $(selector).each(function(i) {
+                    let state = $(this).text().trim()
+                    willReturn.push({
+                        dePart: filterFn(state),
+                        enPart: word
+                    })
+                })
+
+                resolve(willReturn)
+            } else {resolve(null)}
+        }).catch((error) => {
+            console.log(error)
+            resolve(null)
+        })
+    })
+}
+function phraseSixth(word) {
+    return new Promise((resolve) => {
+        fetch(`http://zitate.net/zitate/suche.html?query=${word}`).then((res)=>{
+            if (res.status !== 200) {
+                console.log("response code error")
+                resolve(null)
+            } else {
+                return res.text()
+            }
+        }).then(function(data) {
+            if (data) {
+                let $ = cheerio.load(data)
+                let willReturn = []
+                let selector = "span.quote"
+                $(selector).each(function(i) {
+                    let state = $(this).text().trim()
+                    willReturn.push({
+                        dePart: state,
+                        enPart: word
+                    })
+                })
+
                 resolve(willReturn)
             } else {resolve(null)}
         }).catch((error) => {
@@ -445,6 +505,8 @@ async function deEnAsync(wordRaw) {
     willReturnMain.phraseSecond = await phraseSecond(word)
     willReturnMain.phraseThird = await phraseThird(word)
     willReturnMain.phraseFourth = await phraseFourth(word)
+    willReturnMain.phraseFifth = await phraseFifth(word)
+    willReturnMain.phraseSixth = await phraseSixth(word)
     willReturn.synonymSecond = await synonymSecond(word)
     willReturnMain.synonymThird = await synonymThird(word)
     return willReturnMain
@@ -457,6 +519,7 @@ async function deEnShortAsync(wordRaw) {
     willReturnMain.synonymFourth = local.related
     //willReturnMain.phraseFirst = await phraseFirst(word)
     willReturnMain.phraseFourth = await phraseFourth(word)
+    willReturnMain.phraseSixth = await phraseSixth(word)
     //willReturnMain.phraseSecond = await phraseSecond(word)
     //willReturnMain.phraseThird = await phraseThird(word)
     //willReturn.synonymSecond = await synonymSecond(word)

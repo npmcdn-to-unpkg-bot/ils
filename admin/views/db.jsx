@@ -1,6 +1,6 @@
 "use strict"
 import React from "react"
-const DefaultLayout = require("./default.jsx")
+const DefaultLayout = require("./components/default.jsx")
 
 let Exported = React.createClass({
     render: function () {

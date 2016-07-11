@@ -1,1763 +1,426 @@
-
-      "829": {
-        "dePart": "Ich stalke nicht. Ich schau nur ab und zu mal nach dem Rechten.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 829
-      },
-      "830": {
-        "dePart": "Sonntags vor zwölf aufstehen. Leben am Limit.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 830
-      },
-      "831": {
-        "dePart": "Ich mag Menschen, die den Unterschied zwischen seid und seit kennen.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 831
-      },
-      "832": {
-        "dePart": "Ich bin kein Stalker. Ich bin einfach nur sehr gut informiert.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 832
-      },
-      "833": {
-        "dePart": "Früher war alles leichter. Ich zum Beispiel.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 833
-      },
-      "834": {
-        "dePart": "Scheiss Party. Keiner tanzt. Achso....Bin ja auf Arbeit.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 834
-      },
-      "835": {
-        "dePart": "Heutzutage ist es schwer dumm zu sein, weil die Konkurrenz so groß ist.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 835
-      }
+    "1405": {
+      "dePart": "Männlichkeit zieht die Weiber an!",
+      "enPart": "",
+      "category": "preDraft",
+      "id": 1405
     },
-    {
-      "836": {
-        "dePart": "Wolltest du nicht aufstehen? Ja genau, ich wollte nicht aufstehen.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 836
-      },
-      "837": {
-        "dePart": "Noch zwei mal joggen, dann ist Weihnachten.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 837
-      },
-      "838": {
-        "dePart": "Samstagabend: Ich trage Schlafanzug wie eine Prinzessin.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 838
-      },
-      "839": {
-        "dePart": "Da hat mir doch tatsächlich jemand KO-Tropfen in meinen 32. Tequila.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 839
-      },
-      "840": {
-        "dePart": "Ich muss nicht mehr lieb sein. Ich kann mir meine Schokolade selbst kaufen.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 840
-      },
-      "841": {
-        "dePart": "Zusammen schaffen wir alles, ausser nüchtern bleiben.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 841
-      },
-      "842": {
-        "dePart": "Und wie läuft´s mit dem lernen? Bin jetzt bei Staffel 8.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 842
-      },
-      "843": {
-        "dePart": "Aufräumen muss ich erst, wenn das WLAN Signal nicht mehr durchkommt.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 843
-      }
+    "1406": {
+      "dePart": "Wann, wenn nicht jetzt? Wo, wenn nicht hier? Wer, wenn nicht wir?",
+      "enPart": "",
+      "category": "preDraft",
+      "id": 1406
     },
-    {
-      "844": {
-        "dePart": "Mein Chef hat mir einen schönen Tag gewünscht, bin dann nach Hause gegangen.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 844
-      },
-      "845": {
-        "dePart": "Läuft bei mir, zwar rückwärts und bergab, aber läuft.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 845
-      },
-      "846": {
-        "dePart": "Wozu ein Auto? ich genieße mein Leben in vollen Zügen.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 846
-      }
+    "1407": {
+      "dePart": "Ein Wehrpflichtiger leistet mehr für den Frieden als die Friedensbewegung.",
+      "enPart": "",
+      "category": "preDraft",
+      "id": 1407
     },
-    {
-      "847": {
-        "dePart": "Klar teil´ ich mein Donut mit dir, du kriegst die Mitte.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 847
-      },
-      "848": {
-        "dePart": "Zusammen können wir alles schaffen. Außer die Matheklausur.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 848
-      },
-      "849": {
-        "dePart": "Die Gute Nachricht ist: Heute ist der letzte Montag dieser Woche.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 849
-      },
-      "850": {
-        "dePart": "Beziehungsstatus: Muss keine Weihnachtsgeschenke kaufen.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 850
-      }
+    "1408": {
+      "dePart": "Durch ein Unterlassen kann man genauso schuldig werden wie durch Handeln.",
+      "enPart": "",
+      "category": "preDraft",
+      "id": 1408
     },
-    {
-      "851": {
-        "dePart": "Irgendwie sind alle Leute in meinem Alter viel älter als ich.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 851
-      },
-      "852": {
-        "dePart": "Wenn du Frühstück im Bett möchtest, dann schlaf in der Küche.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 852
-      },
-      "853": {
-        "dePart": "Der Wecker hat heute morgen sehr lang geklingelt. War wohl was wichtiges.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 853
-      },
-      "854": {
-        "dePart": "Alles was man nicht im Liegen erledigen kann, muss bis morgen warten.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 854
-      },
-      "855": {
-        "dePart": "Alles wird teurer, nur die Ausreden werden billiger.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 855
-      },
-      "856": {
-        "dePart": "Für dich soll es Rosen regnen, aber mit den Vasen!",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 856
-      },
-      "857": {
-        "dePart": "Ich bin nicht dumm, ich hab nur Pech beim denken.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 857
-      },
-      "858": {
-        "dePart": "Heute lebe ich. Morgen putze ich. Vielleicht.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 858
-      },
-      "859": {
-        "dePart": "Komm, wir machen was romantisches! Geh weg, ich muss Kuchen essen!",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 859
-      }
+    "1409": {
+      "dePart": "Liebe und Treue sind unzertrennlich.",
+      "enPart": "",
+      "category": "preDraft",
+      "id": 1409
     },
-    {
-      "860": {
-        "dePart": "Bauchmuskeln ohne B sind auch Muskeln.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 860
-      },
-      "861": {
-        "dePart": "Ich bin ein Mann! Ich kann tun und lassen, was meine Frau will.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 861
-      },
-      "862": {
-        "dePart": "Studieren ist wie arbeitslos sein. Nur, dass die Eltern stolz sind",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 862
-      },
-      "863": {
-        "dePart": "Wenn ich du wäre... Nein lassen wir das lieber. Ich bin es zum Glück nicht.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 863
-      },
-      "864": {
-        "dePart": "Ich bin nicht dick, mein Bauch ist nur 3D.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 864
-      }
+    "1410": {
+      "dePart": "Jede Partei ist für das Volk da und nicht für sich selbst.",
+      "enPart": "",
+      "category": "preDraft",
+      "id": 1410
     },
-    {
-      "865": {
-        "dePart": "Auch wenn ich niedlich aussehe, nett war gestern!",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 865
-      },
-      "866": {
-        "dePart": "Manches sollte man einfach liegen lassen. Mich im Bett zum Beispiel.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 866
-      },
-      "867": {
-        "dePart": "Beziehungsstatus: Ich liege diagonal im Bett.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 867
-      },
-      "868": {
-        "dePart": "Das Leben ist kurz, also lächle solange du noch Zähne hast.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 868
-      },
-      "869": {
-        "dePart": "Das ist die dümmste Idee, die ich jemals gehört habe. Wann geht´s los?",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 869
-      }
+    "1411": {
+      "dePart": "Wer die Wahrheit nicht fürchtet, braucht auch die Lüge nicht zu fürchten.",
+      "enPart": "",
+      "category": "preDraft",
+      "id": 1411
     },
-    {
-      "870": {
-        "dePart": "Das Problem will ich nicht! Zeig mir das nächste!",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 870
-      },
-      "871": {
-        "dePart": "So müde wie heute, war ich bestimmt seit gestern nicht mehr.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 871
-      }
+    "1412": {
+      "dePart": "Bitte nicht um eine leichte Bürde - bitte um einen starken Rücken.",
+      "enPart": "",
+      "category": "preDraft",
+      "id": 1412
     },
-    {
-      "872": {
-        "dePart": "Müde ist kein Zustand. Müde ist eine Lebenseinstellung.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 872
-      },
-      "873": {
-        "dePart": "Jetzt verrate ich dir mal ein Geheimnis: Auch Frauen verstehen Frauen nicht.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 873
-      },
-      "874": {
-        "dePart": "Früher hatte ich Elan. Heute habe ich Wlan. Ist auch okay!",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 874
-      },
-      "875": {
-        "dePart": "\"Wissen Sie, was Sie da tun?\" Nein. ich überrasche mich gern selbst.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 875
-      },
-      "876": {
-        "dePart": "Nicht schubsen, ich habe einen Joghurt im Rucksack.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 876
-      }
+    "1413": {
+      "dePart": "Nichts ist mühsam, was man willig tut.",
+      "enPart": "",
+      "category": "preDraft",
+      "id": 1413
     },
-    {
-      "877": {
-        "dePart": "Du kannst nicht vorgeben, Honig zu sein, wenn du eine Bratwurst bist.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 877
-      },
-      "878": {
-        "dePart": "Liebe ist nur ein Wort, Honig auch. Aber Honig schmeckt besser.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 878
-      },
-      "879": {
-        "dePart": "Glück kann man nicht kaufen. Liebe auch nicht. Alkohol schon.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 879
-      },
-      "880": {
-        "dePart": "Wenn doch nur alles so einfach wäre wie fett werden.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 880
-      },
-      "881": {
-        "dePart": "Wenn ich Kopfschmerzen habe, dann drückt mein Heiligenschein.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 881
-      },
-      "882": {
-        "dePart": "Ich habe aufgehört den \"Einen\" zu suchen. Ich suche jetzt den \"Anderen\".",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 882
-      },
-      "883": {
-        "dePart": "Bin gerade etwas neben der Spur. Ist schön da.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 883
-      }
+    "1414": {
+      "dePart": "Nehmen Sie die Menschen, wie sie sind, andere gibt's nicht.",
+      "enPart": "",
+      "category": "preDraft",
+      "id": 1414
     },
-    {
-      "884": {
-        "dePart": "Alkohol löst keine Probleme, aber das tut Milch auch nicht.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 884
-      },
-      "885": {
-        "dePart": "So richtig wach werde ich ja meistens, wenn ich abends wieder ins Bett gehe.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 885
-      },
-      "886": {
-        "dePart": "Kämpfe um ein Mädchen, wie bei FIFA um den Sieg!",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 886
-      },
-      "887": {
-        "dePart": "Ich habe heute nichts vor und liege ganz gut in der Zeit.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 887
-      },
-      "888": {
-        "dePart": "Pause nach dem Sport ist wichtig. Ich mache immer so 2-3 Jahre.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 888
-      },
-      "889": {
-        "dePart": "Nichts kann mich aufhalten! MIST KINDERSICHERUNG!!!",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 889
-      }
+    "1415": {
+      "dePart": "Was interessiert mich mein Geschwätz von gestern.",
+      "enPart": "",
+      "category": "preDraft",
+      "id": 1415
     },
-    {
-      "890": {
-        "dePart": "Genug gescrollt. Ich hasse Frühsport.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 890
-      },
-      "891": {
-        "dePart": "Bis zu meinem 5. Lebensjahr dachte ich mein Name ist \"Nein\".",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 891
-      },
-      "892": {
-        "dePart": "Heute ist nicht mein Tag, aber wann ist der schonmal?",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 892
-      },
-      "893": {
-        "dePart": "Ach wie gut das niemand weiß auf was und wen ich alles scheiß!",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 893
-      },
-      "894": {
-        "dePart": "So schlecht, wie ich bezahlt werde, so schlecht kann ich garnicht arbeiten!",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 894
-      },
-      "895": {
-        "dePart": "ICH BIN RICHTIG GUT IM BETT! Manchmal schlafe ich über 9 Stunden.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 895
-      }
+    "1416": {
+      "dePart": "Machen Sie sich erst einmal unbeliebt, dann werden Sie auch ernstgenommen.",
+      "enPart": "",
+      "category": "preDraft",
+      "id": 1416
     },
-    {
-      "896": {
-        "dePart": "Eigentlich wurde ich gut erzogen. Keine Ahnung was danach passiert ist.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 896
-      },
-      "897": {
-        "dePart": "Wenn dir was nicht passt, da hat der Maurer das loch gelassen.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 897
-      },
-      "898": {
-        "dePart": "Wenn du dich an alle Regeln hältst, verpasst du den ganzen Spaß.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 898
-      },
-      "899": {
-        "dePart": "Eins habe ich in Mathe gelernt, geht es zu leicht ist es falsch!",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 899
-      }
+    "1417": {
+      "dePart": "In der Krise beweist sich der Charakter.",
+      "enPart": "",
+      "category": "preDraft",
+      "id": 1417
     },
-    {
-      "900": {
-        "dePart": "Ich bin wach. Mehr möchte ich zu meinem derzeitigen Zustand nicht sagen.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 900
-      },
-      "901": {
-        "dePart": "Beziehungsstatus: Ich frühstücke morgens alleine... Für zwei.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 901
-      },
-      "902": {
-        "dePart": "Ich erinnere mich als wäre es gestern gewesen, dabei war es heute Mittag!",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 902
-      },
-      "903": {
-        "dePart": "Bin mir nicht sicher, ob ich keinen Kater habe. Oder noch besoffen bin.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 903
-      },
-      "904": {
-        "dePart": "Ein Leben ohne Schokolade. Möglich, aber sinnlos.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 904
-      },
-      "905": {
-        "dePart": "Wie heißt das Zauberwort? Sofort!",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 905
-      }
+    "1418": {
+      "dePart": "Die Kunst ist, einmal mehr aufzustehen, als man umgeworfen wird.",
+      "enPart": "",
+      "category": "preDraft",
+      "id": 1418
     },
-    {
-      "906": {
-        "dePart": "Wenn es im Himmel keine Schokolade gibt, will ich da nicht hin.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 906
-      },
-      "907": {
-        "dePart": "Die Realität ist was für Menschen, die Angst vor Einhörnern haben.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 907
-      },
-      "908": {
-        "dePart": "Liebe geht durch den Magen.... und mir ist schlecht.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 908
-      },
-      "909": {
-        "dePart": "Kann mir bitte jemand das Wasser reichen?",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 909
-      },
-      "910": {
-        "dePart": "Sixpack? Hat ich schon. Steht mir nicht!",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 910
-      },
-      "911": {
-        "dePart": "Heiligenschein? Hatte ich schon. Steht mir nicht.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 911
-      },
-      "912": {
-        "dePart": "Es gibt Schafe und es gibt Wölfe. Und du bist ein Fisch.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 912
-      },
-      "913": {
-        "dePart": "Lieber Gott, gib mir Geduld. Aber bitte sofort!",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 913
-      },
-      "914": {
-        "dePart": "Lieber mit dem Fahrrad zum Strand, als mit dem Mercedes zur Arbeit.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 914
-      }
+    "1419": {
+      "dePart": "Das Einzige, was wir zu fürchten haben, ist die Furcht selbst.",
+      "enPart": "",
+      "category": "preDraft",
+      "id": 1419
     },
-    {
-      "915": {
-        "dePart": "Was sagen Sie als Unbeteiligter eigentlich zum Thema Intelligenz?",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 915
-      },
-      "916": {
-        "dePart": "Ich soll dich vom Niveau grüßen ihr seht euch ja nicht so oft.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 916
-      },
-      "917": {
-        "dePart": "Schnauze ich randaliere gerade mental!",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 917
-      },
-      "918": {
-        "dePart": "Montag ist der Tag an dem man das erste mal an das Wochenende denkt.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 918
-      },
-      "919": {
-        "dePart": "Was macht ein ein Hund ohne Beine? Durch die Häuser ziehen.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 919
-      },
-      "920": {
-        "dePart": "Mein Vertrauen ist keine PIN bei dem man 3 Versuche hat!",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 920
-      },
-      "921": {
-        "dePart": "Jungs sind wie Highheels, Wir lieben sie, aber trotzdem tun sie uns weh.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 921
-      },
-      "922": {
-        "dePart": "Geduld? Hab keine Zeit für so `nen Scheiß!",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 922
-      },
-      "923": {
-        "dePart": "Ich bin nicht eingebildet, mich gibt's wirklich.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 923
-      }
+    "1420": {
+      "dePart": "Geld und Waffen sind kein Ersatz für Gehirn und Willensstärke.",
+      "enPart": "",
+      "category": "preDraft",
+      "id": 1420
     },
-    {
-      "924": {
-        "dePart": "Das trifft mich jetzt so hart wie Wackelpudding.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 924
-      },
-      "925": {
-        "dePart": "Ich habe keinen Urlaub, ich muss nur nicht zur Arbeit!",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 925
-      },
-      "926": {
-        "dePart": "Team - toll ein Anderer machts!",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 926
-      },
-      "927": {
-        "dePart": "Egal wie Fisch du bist, Helene ist Fischer.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 927
-      },
-      "928": {
-        "dePart": "Ich kenne Menschen, da denke ich, ich muss sie an das Atmen erinnern!",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 928
-      }
+    "1421": {
+      "dePart": "Die Vernunft spricht leise, deshalb wird sie so oft nicht gehört.",
+      "enPart": "",
+      "category": "preDraft",
+      "id": 1421
     },
-    {
-      "929": {
-        "dePart": "Unhöflich? Ich nenne das ehrlich und direkt!",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 929
-      },
-      "930": {
-        "dePart": "Ich bin überhaupt noch nicht fertig mit Wochenende!",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 930
-      },
-      "931": {
-        "dePart": "Hat noch jemand Arschkarten? Ich sammel die nämlich!",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 931
-      },
-      "932": {
-        "dePart": "Vodka Diät: Du verlierst 3 Tage in einer Woche.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 932
-      },
-      "933": {
-        "dePart": "Willkommen in der Realität. Darf ich dich ein wenig herumführen?",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 933
-      },
-      "934": {
-        "dePart": "Ich brauch keinen Mittelfinger. Ich kann das mit den Augen.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 934
-      },
-      "935": {
-        "dePart": "Meine Motivation ging heute morgen winkend an mir vorbei..",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 935
-      }
+    "1422": {
+      "dePart": "Man löst keine Probleme, indem man sie aufs Eis legt.",
+      "enPart": "",
+      "category": "preDraft",
+      "id": 1422
     },
-    {
-      "936": {
-        "dePart": "Alle Mütter machen schöne Töchter, aber meine musste mal wieder übertreiben.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 936
-      },
-      "937": {
-        "dePart": "Scheiß auf den Prinzen ich nehm das Pferd!",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 937
-      },
-      "938": {
-        "dePart": "Hol den Alkohol Wir müssen über Gefühle reden!",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 938
-      },
-      "939": {
-        "dePart": "Ich habe heute mal wieder Sport gemacht. Ritter Sport. Zwei Tafeln.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 939
-      },
-      "940": {
-        "dePart": "Wenn du denkst es geht nicht mehr, dann löffle das Nuttela leer!!!",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 940
-      },
-      "941": {
-        "dePart": "Lange Rede, gar kein Sinn",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 941
-      },
-      "942": {
-        "dePart": "Entweder pünktlich sein oder geil aussehen.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 942
-      }
+    "1423": {
+      "dePart": "Die Presse ist für mich Druckerschwärze auf Papier.",
+      "enPart": "",
+      "category": "preDraft",
+      "id": 1423
     },
-    {
-      "943": {
-        "dePart": "An alle die über mich lästern: I love to entertain you!",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 943
-      },
-      "944": {
-        "dePart": "Solange Kakaobohnen an Bäumen wachsen, ist Schokolade für mich Obst.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 944
-      },
-      "945": {
-        "dePart": "Wo die Liebe hinfällt, lass sie liegen!",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 945
-      },
-      "946": {
-        "dePart": "Komisch, dass man auf älteren Bildern immer jünger aussieht.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 946
-      },
-      "947": {
-        "dePart": "Ich habe mich heute gewogen. Ich bin zu klein.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 947
-      },
-      "948": {
-        "dePart": "Zuhause ist dort, wo man wie ein Penner rumlaufen kann...",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 948
-      },
-      "949": {
-        "dePart": "Heirate erst wenn du das Geld zur Scheidung hast.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 949
-      },
-      "950": {
-        "dePart": "Arbeit hat noch keinen umgebracht, aber ich will kein Risiko eingehen.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 950
-      },
-      "951": {
-        "dePart": "Nichts und niemand kann mich jetzt noch aufhalten. Mist, ...Kindersicherung.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 951
-      }
+    "1424": {
+      "dePart": "Ich gehe langsam, aber ich gehe nie zurück.",
+      "enPart": "",
+      "category": "preDraft",
+      "id": 1424
     },
-    {
-      "952": {
-        "dePart": "Die kürzeste Horrorgeschichte: Montag",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 952
-      },
-      "953": {
-        "dePart": "Du hast zwar Recht, aber meine Meinung finde ich trotzdem besser.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 953
-      },
-      "954": {
-        "dePart": "Nichts ist unmöglich? Dann schlag mal ne Drehtür zu!",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 954
-      },
-      "955": {
-        "dePart": "Nimm dir ein beispiel an Stühlen: Sie halten auch jeden Arsch aus!",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 955
-      },
-      "956": {
-        "dePart": "Freunden gibt man kein Küsschen, man gibt ihn ein Bier aus!",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 956
-      },
-      "957": {
-        "dePart": "Früher war alles besser. Gestern war zum Beispiel Sonntag.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 957
-      },
-      "958": {
-        "dePart": "Die meisten Leute werden einmal das, was sie später sind.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 958
-      },
-      "959": {
-        "dePart": "Die Intelligenz verfolgt mich. aber ich bin schneller.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 959
-      },
-      "960": {
-        "dePart": "Sei immer du selbst. Außer du kannst ein Einhorn sein, dann sei ein Einhorn!",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 960
-      }
+    "1425": {
+      "dePart": "Krisen meistert man am besten, indem man ihnen zuvorkommt.",
+      "enPart": "",
+      "category": "preDraft",
+      "id": 1425
     },
-    {
-      "961": {
-        "dePart": "Vertraue nur deinem Arsch, denn er steht wirklich hinter dir!",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 961
-      },
-      "962": {
-        "dePart": "Ich hab gerade Zeit wo gibt es gerade nichts zu tun?",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 962
-      },
-      "963": {
-        "dePart": "Bist Du Single? Dann lass uns eine LP machen!",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 963
-      },
-      "964": {
-        "dePart": "Egal wie dicht du bist, Goethe war Dichter.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 964
-      },
-      "965": {
-        "dePart": "Ich falle nicht! Ich attackiere den Boden!",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 965
-      },
-      "966": {
-        "dePart": "Mein Schienbein hilft mir im Dunkeln Möbel zu finden.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 966
-      },
-      "967": {
-        "dePart": "Die Leute denken, Sie könnten mich einschätzen... Falsch!",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 967
-      },
-      "968": {
-        "dePart": "Wer zuletzt lacht, hat es nicht eher begriffen...",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 968
-      },
-      "969": {
-        "dePart": "Ich bin nicht gestört, ich bin eine Limited Edition!",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 969
-      }
+    "1426": {
+      "dePart": "Einfach reden, aber kompliziert denken - nicht umgekehrt.",
+      "enPart": "",
+      "category": "preDraft",
+      "id": 1426
     },
-    {
-      "970": {
-        "dePart": "Ich bin nicht kompliziert, sondern eine Herausforderung",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 970
-      },
-      "971": {
-        "dePart": "Tschüss Niveau und Anstand. Bis Montag :-)",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 971
-      },
-      "972": {
-        "dePart": "Männer können keine Gefühle zeigen? Geh mal ins Stadion!!!",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 972
-      },
-      "973": {
-        "dePart": "Das Leben ist ein Nehmen und Geben...also nimm mich und gib's mir!",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 973
-      },
-      "974": {
-        "dePart": "Natürlich komm' ich in die Hölle, sogar mit V.I.P-Bändchen und Freigetränk.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 974
-      },
-      "975": {
-        "dePart": "Ich könnte Frauen haben ,wenn DIE wollten...!",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 975
-      },
-      "976": {
-        "dePart": "Und jeden Tag wieder haut die Realität der Hoffnung eine auf´s Maul!",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 976
-      },
-      "977": {
-        "dePart": "Verständnis ist aus. Ab sofort gibt’s Konsequenzen!",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 977
-      },
-      "978": {
-        "dePart": "Der moderne Satzbau: Subjekt, Prädikat, Beleidigung, alter!",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 978
-      }
+    "1427": {
+      "dePart": "Wenn die anderen glauben, man ist am Ende, so muß man erst richtig anfangen.",
+      "enPart": "",
+      "category": "preDraft",
+      "id": 1427
     },
-    {
-      "979": {
-        "dePart": "Ich sollte aufhören mir alles bildlich vorzustellen",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 979
-      },
-      "980": {
-        "dePart": "Selbst meine Schminke hält länger als eure Beziehung",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 980
-      },
-      "981": {
-        "dePart": "Ich lästere nicht, ich erörtere Tatsachen.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 981
-      },
-      "982": {
-        "dePart": "Wenn jeder an sich denkt, dann ist an alle gedacht.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 982
-      },
-      "983": {
-        "dePart": "Es tut mir... ach was, ich würd's wieder machen",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 983
-      },
-      "984": {
-        "dePart": "Montag früh schon ans Wochenende denken :D",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 984
-      },
-      "985": {
-        "dePart": "Erschreckend, wie lieb ich sein kann, wenn ich was will",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 985
-      }
+    "1428": {
+      "dePart": "Die Natur macht Frauen verschieden - die Mode macht sie gleich.",
+      "enPart": "",
+      "category": "preDraft",
+      "id": 1428
     },
-    {
-      "986": {
-        "dePart": "Ich bin immer müde. Außer wenn ich schlafe, dann geht's",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 986
-      },
-      "987": {
-        "dePart": "Ich liebe es jemanden beim lügen zuzuhören, wenn ich die Wahrheit kenne",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 987
-      },
-      "988": {
-        "dePart": "Disney hat mir unrealistische Erwartungen von der Liebe gegeben",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 988
-      },
-      "989": {
-        "dePart": "Du kennst mich, ich komm zurecht!",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 989
-      },
-      "990": {
-        "dePart": "... wie nett??, nett ist die Schwester von Scheiße",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 990
-      },
-      "991": {
-        "dePart": "Kalorien sind kleine Tierchen, die nachts die Kleidung enger nähen.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 991
-      },
-      "992": {
-        "dePart": "Hallo, hier spricht dein Leben. Du hast keine Ahnung, was du da tust, oder?",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 992
-      }
+    "1429": {
+      "dePart": "Die Visionäre von gestern sind die Realisten von heute.",
+      "enPart": "",
+      "category": "preDraft",
+      "id": 1429
     },
-    {
-      "993": {
-        "dePart": "Unfreundlich? Ich nenn das ehrlich & direkt!",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 993
-      },
-      "994": {
-        "dePart": "Kennst du mich noch? Wir waren mal Freunde, damals, als du noch Single warst",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 994
-      },
-      "995": {
-        "dePart": "Es ist Sonntag! 16 Uhr morgens!!! Wieso rufst du mich an?!",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 995
-      },
-      "996": {
-        "dePart": "Ich bin nicht launisch - ich bin nur emotional etwas spontan!",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 996
-      },
-      "997": {
-        "dePart": "Nachts findet der Alkohol immer, telefonieren sei eine gute Idee.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 997
-      },
-      "998": {
-        "dePart": "Mein Bett und Ich lieben uns doch der Wecker will es nicht aktzeptieren",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 998
-      },
-      "999": {
-        "dePart": "Ich plane Gespräche, die ich in Wirklichkeit nie haben werde",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 999
-      },
-      "1000": {
-        "dePart": "Ich beschimpfe Dinge, wenn sie nicht das tun was ich will!",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1000
-      },
-      "1001": {
-        "dePart": "Mit meiner Handtasche könnte ich spontan das Land verlassen!",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1001
-      }
+    "1430": {
+      "dePart": "Es gibt Dinge, über die spreche ich nicht einmal mit mir selbst.",
+      "enPart": "",
+      "category": "preDraft",
+      "id": 1430
     },
-    {
-      "1002": {
-        "dePart": "Jeder muss an was glauben..ICH glaub, ich trink noch einen!",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1002
-      },
-      "1003": {
-        "dePart": "Warum einfach, wenn´s auch Kompliziert geht",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1003
-      },
-      "1004": {
-        "dePart": "Früher warst du alles für mich, jetzt nur noch eine Nummer im Handy",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1004
-      },
-      "1005": {
-        "dePart": "\"Wir können ja Freunde bleiben\" - Wer hat sich den Scheiß ausgedacht?",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1005
-      },
-      "1006": {
-        "dePart": "Armor gib mir diesen Pfeil! Ich mach die scheiße jetzt selber!",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1006
-      },
-      "1007": {
-        "dePart": "Ich suche nicht, ich werde gefunden!",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1007
-      },
-      "1008": {
-        "dePart": "Alt genug ums besser zu wissen. Jung genug um drauf zu scheißen.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1008
-      },
-      "1009": {
-        "dePart": "Wo war ich eigentlich in der Nacht von Freitag zu Montag???",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1009
-      },
-      "1010": {
-        "dePart": "Es gibt Tage, da sollte man einfach ausschlafen z.B Montag-Freitag",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1010
-      },
-      "1011": {
-        "dePart": "Darüber muss ich erst mal nachtrinken...",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1011
-      }
+    "1431": {
+      "dePart": "Die Weltgeschichte ist auch die Summe dessen, was vermeidbar gewesen wäre.",
+      "enPart": "",
+      "category": "preDraft",
+      "id": 1431
     },
-    {
-      "1012": {
-        "dePart": "Wenn dir das nicht passt.......daaaa hat der Maurer das Loch gelassen!!!",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1012
-      },
-      "1013": {
-        "dePart": "Wer früher stirbt ist länger tot.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1013
-      },
-      "1014": {
-        "dePart": "Wieso zu Fuß gehen, hab doch 4 gesunde Reifen!",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1014
-      },
-      "1015": {
-        "dePart": "Ich teile heimlich durch 0",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1015
-      },
-      "1016": {
-        "dePart": "Lieber peinlich als langweilig ;-)",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1016
-      },
-      "1017": {
-        "dePart": "Ein Mathebuch ist der einziger Ort wo es normal ist 52 Melonen zu kaufen!",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1017
-      },
-      "1018": {
-        "dePart": "Ich hasse es wen ich aus dem Bett steige und vergesse den Swag aufzudrehen",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1018
-      },
-      "1019": {
-        "dePart": "100 Dinge, die wir ohne Horrorfilme nie wüssten",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1019
-      },
-      "1020": {
-        "dePart": "Wer zu letzt lacht, denkt zu langsam!",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1020
-      }
+    "1432": {
+      "dePart": "Egal was ein Mensch getan hat, er bleibt ein Mensch.",
+      "enPart": "",
+      "category": "preDraft",
+      "id": 1432
     },
-    {
-      "1021": {
-        "dePart": "Das Spiel heißt flirten, wer sich verliebt, verliert",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1021
-      },
-      "1022": {
-        "dePart": "Frauen lügen nicht, wir passen die Wahrheit den Situationen an",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1022
-      },
-      "1023": {
-        "dePart": "Ich glaube ja nicht, dass sich dieses \"Internet\" durchsetzt",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1023
-      },
-      "1024": {
-        "dePart": "Sorry hab nicht zugehört, meine Gedanken waren gerade interessanter",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1024
-      },
-      "1025": {
-        "dePart": "Mir doch egal, ich lass das jetzt so",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1025
-      },
-      "1026": {
-        "dePart": "Wenn Männer gut riechen, kann ich nicht mehr klar denken",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1026
-      }
+    "1433": {
+      "dePart": "Entscheidend ist, was hinten rauskommt.",
+      "enPart": "",
+      "category": "preDraft",
+      "id": 1433
     },
-    {
-      "1027": {
-        "dePart": "Hier spricht Kapitän Niveau! Wir sinken!",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1027
-      },
-      "1028": {
-        "dePart": "Das Fenster musst du erstmal finden aus dem du dich da lehnst",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1028
-      },
-      "1029": {
-        "dePart": "Nein, Stil ist nicht das Ende des Besens",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1029
-      },
-      "1030": {
-        "dePart": "Ich liebe es, wenn das Lachen mancher Menschen lustiger als der Witz ist",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1030
-      },
-      "1031": {
-        "dePart": "Lass mich!...Ich muss mich da jetzt kurz reinsteigern",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1031
-      },
-      "1032": {
-        "dePart": "Die Wochenenden, die ich hinter mir habe, musst Du erst mal überleben!",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1032
-      },
-      "1033": {
-        "dePart": "Dich mag ich! Du hast genauso einen an der Klatsche wie ich",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1033
-      },
-      "1034": {
-        "dePart": "Richtige Männer stehen auf Kurven, nur Hunde spielen mit Knochen",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1034
-      },
-      "1035": {
-        "dePart": "Erwachsen werden? Ich mach ja viel Scheiß mit, aber nicht jeden!",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1035
-      }
+    "1434": {
+      "dePart": "Hochverrat ist eine Frage des Datums.",
+      "enPart": "",
+      "category": "preDraft",
+      "id": 1434
     },
-    {
-      "1036": {
-        "dePart": "Irgendwann brauchst du mich wieder und genau dann ist es mir egal",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1036
-      },
-      "1037": {
-        "dePart": "Ich kann da nicht nüchtern hin",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1037
-      },
-      "1038": {
-        "dePart": "Gestern war heute noch Morgen",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1038
-      },
-      "1039": {
-        "dePart": "Wer mich gleich nach dem aufstehen anspricht und überlebt, den mag ich.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1039
-      },
-      "1040": {
-        "dePart": "Der frühe Vogel kann mich mal!",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1040
-      },
-      "1041": {
-        "dePart": "Ich sage \"Was\" obwohl ich es verstanden habe",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1041
-      },
-      "1042": {
-        "dePart": "Das ist kein Chaos du verstehst nur mein System nicht.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1042
-      },
-      "1043": {
-        "dePart": "Ich kann aufwachen und spontan alles scheiße finden!",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1043
-      },
-      "1044": {
-        "dePart": "Sinnlos ist ein Leben ohne Sinn für Unsinn!",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1044
-      }
+    "1435": {
+      "dePart": "Wenn du durch die Hölle gehst, geh weiter.",
+      "enPart": "",
+      "category": "preDraft",
+      "id": 1435
     },
-    {
-      "1045": {
-        "dePart": "Ich habe mich entschieden und sage - Vielleicht!",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1045
-      },
-      "1046": {
-        "dePart": "Ich beschimpfe Dinge, die mir runterfallen",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1046
-      },
-      "1047": {
-        "dePart": "Um mich zu holen , säuft sich sogar der Teufel Mut an",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1047
-      },
-      "1048": {
-        "dePart": "Meine Nachbarn hören gute Musik, ob sie wollen oder nicht",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1048
-      },
-      "1049": {
-        "dePart": "Kaum freue ich mich auf den Freitag...ist schon wieder Sonntagabend :(",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1049
-      },
-      "1050": {
-        "dePart": "Früher durften wir das auch nicht...MAMA ES IST NICHT MEHR FRÜHER!!!",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1050
-      },
-      "1051": {
-        "dePart": "Der Betrunkene sagt, was der Nüchterne denkt",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1051
-      },
-      "1052": {
-        "dePart": "NEIN WOCHENDE! VERLASS MICH NICHT!",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1052
-      }
+    "1436": {
+      "dePart": "Vergib Deinen Feinden, aber vergiß niemals ihre Namen.",
+      "enPart": "",
+      "category": "preDraft",
+      "id": 1436
     },
-    {
-      "1053": {
-        "dePart": "Die neuen 4 Jahreszeiten: Frühling, Arschloch, Herbst und Winter!",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1053
-      },
-      "1054": {
-        "dePart": "Ich bin nicht betrunken! Ich kann am Boden liegen, ohne umzufallen :D",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1054
-      },
-      "1055": {
-        "dePart": "Es ist schwer, allwissend zu sein, aber ich komm damit klar",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1055
-      },
-      "1056": {
-        "dePart": "Wir lästern nicht! Wir beobachten, analysieren und bewerten!",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1056
-      },
-      "1057": {
-        "dePart": "Wer den Teufel an die Wand malt spart die Tapete",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1057
-      },
-      "1058": {
-        "dePart": "4 ist bestanden, bestanden ist gut und gut heißt 2",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1058
-      },
-      "1059": {
-        "dePart": "Was ich mir wünsche, kann man nicht kaufen",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1059
-      }
+    "1437": {
+      "dePart": "Die Zukunft gehört denen, die an die Schönheit ihrer Träume glauben.",
+      "enPart": "",
+      "category": "preDraft",
+      "id": 1437
     },
-    {
-      "1060": {
-        "dePart": "Oh ich hab vergessen zuzuhören :)",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1060
-      },
-      "1061": {
-        "dePart": "Wir pflegen einen Alternativen Lebensstil",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1061
-      },
-      "1062": {
-        "dePart": "Sorry hab nicht zugehört, meine Gedanken waren gerade interessanter!",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1062
-      },
-      "1063": {
-        "dePart": "Klar kannst du dich mal melden, halt nur nicht bei mir...",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1063
-      },
-      "1064": {
-        "dePart": "9 von 10 Stimmen in meinem Kopf sagen ich sei irre! Eine summt..",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1064
-      },
-      "1065": {
-        "dePart": "Nein kein Problem. War ja nur mein Herz",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1065
-      },
-      "1066": {
-        "dePart": "Männer denken anders als wir Menschen",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1066
-      },
-      "1067": {
-        "dePart": "Ja, lach nur. Sobald du einschläfst hol ich meine Filzstife",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1067
-      }
+    "1438": {
+      "dePart": "Nichts verschafft mehr Ruhe als ein gefasster Entschluss.",
+      "enPart": "",
+      "category": "preDraft",
+      "id": 1438
     },
-    {
-      "1068": {
-        "dePart": "Weiß ich schon. Habs auf Facebook gelesen",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1068
-      },
-      "1069": {
-        "dePart": "Liebes Mathebuch, werd erwachsen und lös deine Probleme selber!",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1069
-      },
-      "1070": {
-        "dePart": "Zum Taxifahrer sagen \"Egal wohin, ich werde überall gebraucht!\"",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1070
-      },
-      "1071": {
-        "dePart": "Ich fang plötzlich an zulachen, weil ich mich an was erinnere",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1071
-      },
-      "1072": {
-        "dePart": "Wenn das die Lösung meines Problems ist, hätte ich gerne mein Problem zurück",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1072
-      },
-      "1073": {
-        "dePart": "und ich sag noch zu mir \"Das ist total blöd was Du da machst\"",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1073
-      },
-      "1074": {
-        "dePart": "Falls wir uns verlieren, treffen wir uns im Delirium ;o)",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1074
-      },
-      "1075": {
-        "dePart": "Ein Bayer fragt ein Ehepaar: Kerts ihr zam?- \"Nein wir haben keinen Besen.\"",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1075
-      }
+    "1439": {
+      "dePart": "Schlimmer als blind sein, ist nicht sehen wollen.",
+      "enPart": "",
+      "category": "preDraft",
+      "id": 1439
     },
-    {
-      "1076": {
-        "dePart": "Wenn du wüsstest, was ich im Traum schon alles mit dir angestellt hab! ;)",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1076
-      },
-      "1077": {
-        "dePart": "Die ersten 5 Tage nach dem Wochenende sind die schlimmsten :D",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1077
-      },
-      "1078": {
-        "dePart": "Ist mir egal. Mir ist es zwar nicht egal, aber egal.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1078
-      },
-      "1079": {
-        "dePart": "Armor gib mir diesen Pfeil! Ich mach die scheiße jetzt selber!!",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1079
-      },
-      "1080": {
-        "dePart": "Kann den Wecker ausschalten ohne dabei aufzuwachen.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1080
-      },
-      "1081": {
-        "dePart": "Wenn du denkst es geht nicht mehr, warte ab - es kommt noch mehr...",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1081
-      },
-      "1082": {
-        "dePart": "Na, fühlt sich da wieder jemand zu cool um hallo zu sagen ?",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1082
-      },
-      "1083": {
-        "dePart": "50 Gründe warum es besser ist ein Mann zu sein!",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1083
-      },
-      "1084": {
-        "dePart": "Tür zu......TÜÜÜÜÜÜÜÜR ZUUUUU!!!",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1084
-      },
-      "1085": {
-        "dePart": "Ich plane Antworten auf Fragen die mir wahrscheinlich nie gestellt werden...",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1085
-      }
+    "1440": {
+      "dePart": "Wer sich nicht selbst imponiert, kann niemand anderem imponieren.",
+      "enPart": "",
+      "category": "preDraft",
+      "id": 1440
     },
-    {
-      "1086": {
-        "dePart": "Ach, die paar Schritte kann ich auch fahren!",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1086
-      },
-      "1087": {
-        "dePart": "Wir trinken Bier nur an Tagen die mit 'g' enden. Und Mittwochs.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1087
-      },
-      "1088": {
-        "dePart": "Es ist Sonntag! 16 Uhr morgens! Wieso rufst du mich schon an?",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1088
-      },
-      "1089": {
-        "dePart": "Natürlich komm ich in die Hölle und zwar durch den Personaleingang ;)",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1089
-      },
-      "1090": {
-        "dePart": "Wie sagt man? Gib her jetzt!",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1090
-      },
-      "1091": {
-        "dePart": "Wenn eine Frau sagt \"passt schon\" dann passt gar nichts!",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1091
-      },
-      "1092": {
-        "dePart": "Männer haben ihre fünf Minuten, Frauen ihre Tage",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1092
-      }
+    "1441": {
+      "dePart": "Kein Mensch hat das recht, einen anderen zu regieren.",
+      "enPart": "",
+      "category": "preDraft",
+      "id": 1441
     },
-    {
-      "1093": {
-        "dePart": "Oh du meldest dich bei mir?? Brauchst wohl wieder was...",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1093
-      },
-      "1094": {
-        "dePart": "Ich spreche fließend ironisch",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1094
-      },
-      "1095": {
-        "dePart": "Darf ich Dir das \"Sie\" anbieten?",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1095
-      },
-      "1096": {
-        "dePart": "Obwohl ich es 2008, 2009 & 2010 schon sagte: 2011 wird mein Jahr.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1096
-      },
-      "1097": {
-        "dePart": "Mein Zimmer sucht Aufmerksamkeit indem es sich ständig zumüllt.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1097
-      },
-      "1098": {
-        "dePart": "War es Liebe auf den ersten Blick? Oder soll ich noch mal vorbeikommen?",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1098
-      },
-      "1099": {
-        "dePart": "Die Enttäuschung und Ich sind schon per DU...",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1099
-      },
-      "1100": {
-        "dePart": "Winter, danke es reicht, bis nächstes Jahr..",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1100
-      },
-      "1101": {
-        "dePart": "Was heißt \"I dont know\"? - Ich weiß es nicht. Egal trotzdem danke",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1101
-      }
+    "1442": {
+      "dePart": "Egal wie weit der Weg ist, man muß den ersten Schritt tun.",
+      "enPart": "",
+      "category": "preDraft",
+      "id": 1442
     },
-    {
-      "1102": {
-        "dePart": "Alle Weihnachtsgeschenke zu haben",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1102
-      },
-      "1103": {
-        "dePart": "Ich bin nie zu spät. Die anderen sind einfach immer zu früh!",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1103
-      },
-      "1104": {
-        "dePart": "Ich will das alte FB Profil wieder",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1104
-      },
-      "1105": {
-        "dePart": "Wenn das die Lösung ist, hätte ich gern mein Problem zurück.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1105
-      },
-      "1106": {
-        "dePart": "Wer ist eigentlich dieser Feat in den ganzen Liedern?",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1106
-      },
-      "1107": {
-        "dePart": "Ja, es fällt Schnee, aber das heißt nicht, dass du 20 km/h fahren musst...",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1107
-      },
-      "1108": {
-        "dePart": "Ok, Ich hab mich umgesehen, wir sind die geilsten hier.",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1108
-      },
-      "1109": {
-        "dePart": "Wie freut sich eigentlich ein Schnitzel?",
-        "enPart": "",
-        "category": "preDraft",
-        "id": 1109
-      }
+    "1443": {
+      "dePart": "Lernen, lernen und nochmals lernen.",
+      "enPart": "",
+      "category": "preDraft",
+      "id": 1443
+    },
+    "1444": {
+      "dePart": "Mit Verlaub, Herr Präsident, Sie sind ein Arschloch.",
+      "enPart": "",
+      "category": "preDraft",
+      "id": 1444
+    },
+    "1445": {
+      "dePart": "Vergessen ist Gefahr und Gnade zugleich.",
+      "enPart": "",
+      "category": "preDraft",
+      "id": 1445
+    },
+    "1446": {
+      "dePart": "Alle menschlichen Organe werden irgendwann müde, nur die Zunge nicht.",
+      "enPart": "",
+      "category": "preDraft",
+      "id": 1446
+    },
+    "1447": {
+      "dePart": "Frieden im eigenen Lande, Frieden überall.",
+      "enPart": "",
+      "category": "preDraft",
+      "id": 1447
+    },
+    "1448": {
+      "dePart": "Es gibt nichts Neues in der Welt, außer der Geschichte, die du nicht kennst.",
+      "enPart": "",
+      "category": "preDraft",
+      "id": 1448
+    },
+    "1449": {
+      "dePart": "Schweigen ist Beweisführung mit anderen Mitteln.",
+      "enPart": "",
+      "category": "preDraft",
+      "id": 1449
+    },
+    "1450": {
+      "dePart": "Ich lüge nie, doch niemand kann mich zwingen, die Wahrheit zu sagen.",
+      "enPart": "",
+      "category": "preDraft",
+      "id": 1450
+    },
+    "1451": {
+      "dePart": "Wir können nicht alles tun, aber wir müssen tun, was wir können.",
+      "enPart": "",
+      "category": "preDraft",
+      "id": 1451
+    },
+    "1452": {
+      "dePart": "Die Zukunft ist im Himmel.",
+      "enPart": "",
+      "category": "preDraft",
+      "id": 1452
+    },
+    "1453": {
+      "dePart": "Wer ja sagt zur Familie, muß auch ja sagen zur Frau.",
+      "enPart": "",
+      "category": "preDraft",
+      "id": 1453
+    },
+    "1454": {
+      "dePart": "Wer Visionen hat, sollte zum Arzt gehen.",
+      "enPart": "",
+      "category": "preDraft",
+      "id": 1454
+    },
+    "1455": {
+      "dePart": "Ein Kuss ist wie jeder Kuss, aber die Liebenden werden trotzdem nie müde.",
+      "enPart": "",
+      "category": "preDraft",
+      "id": 1455
+    },
+    "1456": {
+      "dePart": "Das Schweigen von gestern rechtfertigt nie das Schweigen von heute.",
+      "enPart": "",
+      "category": "preDraft",
+      "id": 1456
+    },
+    "1457": {
+      "dePart": "Irren ist menschlich, aber immer irren ist sozialdemokratisch.",
+      "enPart": "",
+      "category": "preDraft",
+      "id": 1457
+    },
+    "1458": {
+      "dePart": "Der Mensch ist immer noch der beste Computer.",
+      "enPart": "",
+      "category": "preDraft",
+      "id": 1458
+    },
+    "1459": {
+      "dePart": "Partei ist organisierte Meinung.",
+      "enPart": "",
+      "category": "preDraft",
+      "id": 1459
+    },
+    "1460": {
+      "dePart": "Vorwärts immer, rückwärts nimmer.",
+      "enPart": "",
+      "category": "preDraft",
+      "id": 1460
+    },
+    "1461": {
+      "dePart": "Besser einander beschimpfen als einander beschießen.",
+      "enPart": "",
+      "category": "preDraft",
+      "id": 1461
+    },
+    "1462": {
+      "dePart": "Je freier die Wirtschaft, umso sozialer ist sie auch.",
+      "enPart": "",
+      "category": "preDraft",
+      "id": 1462
+    },
+    "1463": {
+      "dePart": "Die Stunde des Todes ist die Stunde der Wahrheit.",
+      "enPart": "",
+      "category": "preDraft",
+      "id": 1463
+    },
+    "1464": {
+      "dePart": "Nur wer sich sicher fühlt, ist tolerant.",
+      "enPart": "",
+      "category": "preDraft",
+      "id": 1464
+    },
+    "1465": {
+      "dePart": "Ich lehne die Todesstrafe ab - grundsätzlich und bei jedermann.",
+      "enPart": "",
+      "category": "preDraft",
+      "id": 1465
+    },
+    "1466": {
+      "dePart": "Alles ist möglich, selbst dämliche Fragen wie Ihre.",
+      "enPart": "",
+      "category": "preDraft",
+      "id": 1466
+    },
+    "1467": {
+      "dePart": "Freundschaft ist ein Band der Vernunft.",
+      "enPart": "",
+      "category": "preDraft",
+      "id": 1467
+    },
+    "1468": {
+      "dePart": "Zimmermann ist als Löwe gesprungen und als Bettvorleger gelandet.",
+      "enPart": "",
+      "category": "preDraft",
+      "id": 1468
+    },
+    "1469": {
+      "dePart": "Das Angenehme der Ehe wiegt ihr Unangenehmes nicht auf.",
+      "enPart": "",
+      "category": "preDraft",
+      "id": 1469
+    },
+    "1470": {
+      "dePart": "Gewissen hat mit Galanterie nicht mehr zu tun als mit Politik.",
+      "enPart": "",
+      "category": "preDraft",
+      "id": 1470
+    },
+    "1471": {
+      "dePart": "Da draussen lauert ein Wolf, er will mein Blut. Wir müssen alle Wölfe töten!",
+      "enPart": "",
+      "category": "preDraft",
+      "id": 1471
+    },
+    "1472": {
+      "dePart": "Wer Berlin zur neuen Hauptstadt macht, schafft geistig ein neues Preußen.",
+      "enPart": "",
+      "category": "preDraft",
+      "id": 1472
+    },
+    "1473": {
+      "dePart": "Die Revolution ist das größte, alles andere ist Quark",
+      "enPart": "",
+      "category": "preDraft",
+      "id": 1473
+    },
+    "1474": {
+      "dePart": "Die SPD unterliegt dem Missverständnis, dass Genosse von Genuss kommt.",
+      "enPart": "",
+      "category": "preDraft",
+      "id": 1474
+    },
+    "1475": {
+      "dePart": "Ich habe versucht, ehrlich zu sein, aber in Maßen.",
+      "enPart": "",
+      "category": "preDraft",
+      "id": 1475
+    }

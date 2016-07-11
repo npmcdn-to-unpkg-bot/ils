@@ -1,5 +1,5 @@
 "use strict"
-import React,{ Component } from "react"
+import React, { Component } from "react"
 import ReactDOM from "react-dom"
 import R from "ramda"
 import Select from "react-select"
@@ -24,7 +24,7 @@ let willSave = {}
 let flag = true
 let selectedText = ""
 let willDeleteIndex = 0
-J.emitter.on("save",()=>{
+J.emitter.on("save", ()=>{
     J.log("save event")
     J.log(willSave)
     J.postData("http://localhost:3001/update/data", JSON.stringify(willSave)).then((data)=>{
@@ -33,10 +33,10 @@ J.emitter.on("save",()=>{
     })
 })
 document.addEventListener("visibilitychange", ()=>{
-  if (document["hidden"]&&flag) {
-      flag = false
-      J.emitter.emit("save")
-  }
+    if (document[ "hidden" ] && flag) {
+        flag = false
+        J.emitter.emit("save")
+    }
 }, false)
 
 class InputComponent extends Component {
@@ -63,28 +63,28 @@ class InputComponent extends Component {
         })
     }
     willHandleTextSelect (event) {
-        if(window.getSelection().toString().length>3&&window.getSelection().toString()!==selectedText){
+        if (window.getSelection().toString().length > 3 && window.getSelection().toString() !== selectedText) {
             selectedText = window.getSelection().toString()
         }
     }
     willHandleChangeDePart (event) {
         this.setState({inputObj: R.merge(this.state.inputObj, {dePart: event.target.value})})
-        willDeleteIndex = this.state.inputObj.id*1
+        willDeleteIndex = this.state.inputObj.id * 1
     }
     willHandleChangeEnPart (event) {
         this.setState({inputObj: R.merge(this.state.inputObj, {enPart: event.target.value})})
     }
     willHandleBlur (event) {
         J.log("blur")
-        let oldState = willSave[this.state.inputObj.id]||{}
-        willSave[this.state.inputObj.id] = R.merge(oldState, this.state.inputObj)
+        let oldState = willSave[ this.state.inputObj.id ] || {}
+        willSave[ this.state.inputObj.id ] = R.merge(oldState, this.state.inputObj)
         console.log(willSave)
     }
     willHandleCategory (event) {
         this.setState({inputObj: R.merge(this.state.inputObj, {category: event.value})})
     }
     render () {
-        return(
+        return (
         <div className="column is-half">
             <input type="text" value={this.state.inputObj.dePart} className="dePart" size={this.state.inputObj.dePart.length} onChange={this.willHandleChangeDePart} onBlur={this.willHandleBlur} onClick={this.willHandleChangeDePart} onSelect={this.willHandleTextSelect}/>
             <br/>
@@ -116,73 +116,73 @@ export default class App extends Component {
         this.newEntry = this.newEntry.bind(this)
     }
     componentDidMount() {
-        J.emitter.on("init",()=>{
+        J.emitter.on("init", ()=>{
         })
         J.getData("http://localhost:3001/read/data").then((incoming)=>{
             let filterByCategory = R.compose(R.filter((val)=>{
-                return R.prop("category",val)===this.state.category
+                return R.prop("category", val) === this.state.category
             }))(incoming)
             this.setState({
-                globalDataRaw: R.merge({},incoming),
+                globalDataRaw: R.merge({}, incoming),
                 globalData: R.values(filterByCategory)
             }, ()=>{
                 initOnce()
             })
         })
     }
-    willTranslate(){
+    willTranslate() {
         J.postData("http://localhost:3001/deEn", JSON.stringify({word: selectedText})).then((incoming)=>{
-            ReactDOM.render(<GermanOverall.main incomingData={incoming}/>,document.getElementById("reactContainer"))
+            ReactDOM.render(<GermanOverall.main incomingData={incoming}/>, document.getElementById("reactContainer"))
             this.setState({translatedData: incoming})
         })
     }
-    newEntry(){
-        ReactDOM.render(<NewEntry.main />,document.getElementById("reactContainer"))
+    newEntry() {
+        ReactDOM.render(<NewEntry.main />, document.getElementById("reactContainer"))
     }
-    willTranslateShort(){
+    willTranslateShort() {
         J.postData("http://localhost:3001/deEnShort", JSON.stringify({word: selectedText})).then((incoming)=>{
-            ReactDOM.render(<GermanOverall.main incomingData={incoming}/>,document.getElementById("reactContainer"))
+            ReactDOM.render(<GermanOverall.main incomingData={incoming}/>, document.getElementById("reactContainer"))
             this.setState({translatedData: incoming})
         })
     }
-    willHandlePrevNavigation(){
-        if((this.state.paginationIndex-this.state.paginationPerPageCount)>=0){
+    willHandlePrevNavigation() {
+        if ((this.state.paginationIndex - this.state.paginationPerPageCount) >= 0) {
             this.setState({
-                paginationIndex: this.state.paginationIndex-this.state.paginationPerPageCount
+                paginationIndex: this.state.paginationIndex - this.state.paginationPerPageCount
             })
         }
     }
-    willHandleNextNavigation(){
-        if((this.state.paginationIndex+this.state.paginationPerPageCount)<this.state.globalData.length){
+    willHandleNextNavigation() {
+        if ((this.state.paginationIndex + this.state.paginationPerPageCount) < this.state.globalData.length) {
             this.setState({
-                paginationIndex: this.state.paginationIndex+this.state.paginationPerPageCount
+                paginationIndex: this.state.paginationIndex + this.state.paginationPerPageCount
             })
         }
 
     }
     willHandleCategory (event) {
         let filterByCategory = R.compose(R.filter((val)=>{
-            return R.prop("category",val)===event.value
+            return R.prop("category", val) === event.value
         }))(this.state.globalDataRaw)
         this.setState({
             paginationIndex: 0,
             paginationPerPageCount: 10,
             globalData: []
-        },()=>{
+        }, ()=>{
             this.setState({
                 category: event.value,
-                globalData: R.values(filterByCategory),
+                globalData: R.values(filterByCategory)
             })
         })
     }
     willRemove (event) {
         let globalDataFuture = R.compose(R.filter((val)=>{
-            return R.prop("id",val)!=willDeleteIndex
+            return R.prop("id", val) != willDeleteIndex
         }))(this.state.globalData)
-                J.log(globalDataFuture)
+        J.log(globalDataFuture)
         this.setState({
             globalData: []
-        },()=>{
+        }, ()=>{
             this.setState({
                 globalData: globalDataFuture
             })
@@ -191,11 +191,11 @@ export default class App extends Component {
             J.log("removed")
         })
     }
-    willSave(){
+    willSave() {
         J.emitter.emit("save")
     }
     render () {
-        return(
+        return (
 <div>
     <div id="reactContainer"></div>
     <div className="columns box">
@@ -215,8 +215,8 @@ export default class App extends Component {
         </div>
     </div>
     <div className="columns is-multiline">
-        {this.state.globalData.map((val,key)=>{
-            if(key<this.state.paginationIndex+this.state.paginationPerPageCount&&key>=this.state.paginationIndex)
+        {this.state.globalData.map((val, key)=>{
+            if (key < this.state.paginationIndex + this.state.paginationPerPageCount && key >= this.state.paginationIndex)
             {
                 return <InputComponent key={key} inputObj={val} />
             }

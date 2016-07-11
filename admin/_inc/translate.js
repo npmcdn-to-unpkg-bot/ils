@@ -51,18 +51,28 @@ var deEnAsync = function () {
                     case 20:
                         willReturnMain.phraseFourth = _context.sent;
                         _context.next = 23;
-                        return synonymSecond(word);
+                        return phraseFifth(word);
 
                     case 23:
-                        willReturn.synonymSecond = _context.sent;
+                        willReturnMain.phraseFifth = _context.sent;
                         _context.next = 26;
-                        return synonymThird(word);
+                        return phraseSixth(word);
 
                     case 26:
+                        willReturnMain.phraseSixth = _context.sent;
+                        _context.next = 29;
+                        return synonymSecond(word);
+
+                    case 29:
+                        willReturn.synonymSecond = _context.sent;
+                        _context.next = 32;
+                        return synonymThird(word);
+
+                    case 32:
                         willReturnMain.synonymThird = _context.sent;
                         return _context.abrupt("return", willReturnMain);
 
-                    case 28:
+                    case 34:
                     case "end":
                         return _context.stop();
                 }
@@ -97,9 +107,14 @@ var deEnShortAsync = function () {
 
                     case 8:
                         willReturnMain.phraseFourth = _context2.sent;
+                        _context2.next = 11;
+                        return phraseSixth(word);
+
+                    case 11:
+                        willReturnMain.phraseSixth = _context2.sent;
                         return _context2.abrupt("return", willReturnMain);
 
-                    case 10:
+                    case 13:
                     case "end":
                         return _context2.stop();
                 }
@@ -511,7 +526,6 @@ function phraseFourth(word) {
                     var enPart = void 0;
                     $(selector).each(function (i) {
                         var state = $(this).text().trim();
-
                         if (state.includes("Andere")) {
                             flagNumber = i - 4;
                             J.lg(state, "flag");
@@ -530,6 +544,77 @@ function phraseFourth(word) {
                             });
                         }
                     });
+                    resolve(willReturn);
+                })();
+            } else {
+                resolve(null);
+            }
+        }).catch(function (error) {
+            console.log(error);
+            resolve(null);
+        });
+    });
+}
+function phraseFifth(word) {
+    return new Promise(function (resolve) {
+        fetch("http://www.duden.de/rechtschreibung/" + word).then(function (res) {
+            if (res.status !== 200) {
+                console.log("response code error");
+                resolve(null);
+            } else {
+                return res.text();
+            }
+        }).then(function (data) {
+            if (data) {
+                (function () {
+                    var filterFn = R.compose(R.trim, R.join(" "), R.split(" "), R.ifElse(function (data) {
+                        R.length(data) === 1;
+                    }, R.always, R.last), R.split(">:"));
+                    var $ = cheerio.load(data);
+                    var willReturn = [];
+                    var selector = "#Bedeutung1 .term-section ul li";
+                    $(selector).each(function (i) {
+                        var state = $(this).text().trim();
+                        willReturn.push({
+                            dePart: filterFn(state),
+                            enPart: word
+                        });
+                    });
+
+                    resolve(willReturn);
+                })();
+            } else {
+                resolve(null);
+            }
+        }).catch(function (error) {
+            console.log(error);
+            resolve(null);
+        });
+    });
+}
+function phraseSixth(word) {
+    return new Promise(function (resolve) {
+        fetch("http://zitate.net/zitate/suche.html?query=" + word).then(function (res) {
+            if (res.status !== 200) {
+                console.log("response code error");
+                resolve(null);
+            } else {
+                return res.text();
+            }
+        }).then(function (data) {
+            if (data) {
+                (function () {
+                    var $ = cheerio.load(data);
+                    var willReturn = [];
+                    var selector = "span.quote";
+                    $(selector).each(function (i) {
+                        var state = $(this).text().trim();
+                        willReturn.push({
+                            dePart: state,
+                            enPart: word
+                        });
+                    });
+
                     resolve(willReturn);
                 })();
             } else {

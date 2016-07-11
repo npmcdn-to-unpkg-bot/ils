@@ -8,9 +8,13 @@ const J = require("justdo")
 const R = require("ramda")
 const dbPath = "/home/just/ils/hapi/public/_db.json"
 const dbPathRaw = "/home/just/ils/hapi/public/_dbRaw.json"
-function test(id = 10000) {
+let removeLongSentences = R.compose(R.lt(R.__, 3), R.length, R.split("."))
+let filterFn = R.compose(R.replace("„", ""), R.replace("“", ""))
+let id = 1405
+let willSave = {}
+function will(pagination = 27) {
     return new Promise((resolve) => {
-        fetch("http://www.dict.cc/?s=mehrere").then((res)=>{
+        fetch(`http://www.zitate-online.de/sprueche/politiker/seite${pagination}.html`).then((res)=>{
             if (res.status !== 200) {
                 console.log("response code error")
                 resolve(null)
@@ -20,37 +24,21 @@ function test(id = 10000) {
         }).then(function(data) {
             if (data) {
                 let $ = cheerio.load(data)
-                let willReturn = {}
-                let stateArr = []
-                let statePartialArr = []
-                let selector = "tr"
-                let flagNumber = 0
+                let willReturn = []
+                let selector = ".witztext"
                 $(selector).each(function(i) {
                     let state = $(this).text().trim()
-
-                    if (state.includes("Andere")) {
-                        flagNumber = i - 4
-                        J.lg(state, "flag")
-                    }
-                })
-                selector = "td.td7nl"
-                let enPart
-                $(selector).each(function(i) {
-                    let state = $(this).text().trim()
-                    if (flagNumber <= i && i % 2 === 0) {
-                        enPart = state
-                    }
-                    if (flagNumber <= i && i % 2 === 1) {
-                        willReturn[ id ] = {
-                            dePart: state,
-                            enPart: enPart,
+                    if (removeLongSentences(state) && state.length < 80) {
+                        willSave[ id ] = {
+                            dePart: filterFn(state),
+                            enPart: "",
                             category: "preDraft",
                             id: id
                         }
                         id++
                     }
                 })
-                resolve({willReturn, id})
+                resolve(true)
             } else {resolve(null)}
         }).catch((error) => {
             console.log(error)
@@ -58,11 +46,25 @@ function test(id = 10000) {
         })
     })
 }
-test().then(console.log)
+async function scrape(paginationArr) {
+    let willReturn = []
+    let result
+    for (let paginationIndex of paginationArr) {
+        J.log(paginationIndex)
+        result = await will(paginationIndex)
+        willReturn.push(result)
+        J.lg(result)
+    }
+    return willReturn
+}
+
+scrape(R.range(1, 18)).then((data)=>{
+    fs.writeJsonSync(dbPathRaw, {data: R.flatten(data)})
+})
 //fs.readJson(dbPath, (err, dbState)=> {
 //test(dbState.nextIndex).then((incoming)=>{
 //dbState.data = R.merge(dbState.data, incoming.willReturn)
 //dbState.nextIndex = incoming.id
-//fs.writeJsonSync(dbPath, dbState)
+//
 //})
 //})
