@@ -156,38 +156,166 @@ var willAddEntry = function () {
 }();
 
 var willBulkRemove = function () {
-    var ref = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee4(parent, dataRaw) {
-        var indexFuture, data, iMeanNothing;
+    var ref = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee4(marker) {
+        var dataState, predraftCategory, willRemoveIndexArr, dropByIndex, willChangeCategoryArr, iMeanNothing, _iteratorNormalCompletion2, _didIteratorError2, _iteratorError2, _iterator2, _step2, removeMarker, _iteratorNormalCompletion3, _didIteratorError3, _iteratorError3, _iterator3, _step3, updateValue;
+
         return _regenerator2.default.wrap(function _callee4$(_context4) {
             while (1) {
                 switch (_context4.prev = _context4.next) {
                     case 0:
                         _context4.next = 2;
-                        return proudDb.loadParent("nextIndex");
+                        return proudDb.loadParent("data");
 
                     case 2:
-                        indexFuture = _context4.sent;
-                        data = R.merge(dataRaw, { id: indexFuture });
-                        _context4.next = 6;
-                        return proudDb.saveParent("nextIndex", indexFuture + 1);
+                        dataState = _context4.sent;
+                        predraftCategory = getPredraftCategory(dataState);
+                        willRemoveIndexArr = [];
+                        dropByIndex = R.compose(R.values, R.map(R.set(R.lensProp("category"), "draft")), R.filter(function (val) {
+                            if (R.lte(R.prop("id", val), marker)) {
+                                if (R.prop("enPart", val).length > 1) {
+                                    return true;
+                                } else {
+                                    willRemoveIndexArr.push(R.prop("id", val));
+                                    return false;
+                                }
+                            } else {
+                                return false;
+                            }
+                        }));
+                        willChangeCategoryArr = dropByIndex(predraftCategory);
+                        iMeanNothing = void 0;
+                        _iteratorNormalCompletion2 = true;
+                        _didIteratorError2 = false;
+                        _iteratorError2 = undefined;
+                        _context4.prev = 11;
+                        _iterator2 = willRemoveIndexArr[Symbol.iterator]();
 
-                    case 6:
-                        iMeanNothing = _context4.sent;
-                        _context4.next = 9;
-                        return proudDb.save(parent, "" + data.id, data);
+                    case 13:
+                        if (_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done) {
+                            _context4.next = 22;
+                            break;
+                        }
 
-                    case 9:
+                        removeMarker = _step2.value;
+
+                        J.log(removeMarker, "remove");
+                        _context4.next = 18;
+                        return proudDb.remove("data", "" + removeMarker);
+
+                    case 18:
                         iMeanNothing = _context4.sent;
+
+                    case 19:
+                        _iteratorNormalCompletion2 = true;
+                        _context4.next = 13;
+                        break;
+
+                    case 22:
+                        _context4.next = 28;
+                        break;
+
+                    case 24:
+                        _context4.prev = 24;
+                        _context4.t0 = _context4["catch"](11);
+                        _didIteratorError2 = true;
+                        _iteratorError2 = _context4.t0;
+
+                    case 28:
+                        _context4.prev = 28;
+                        _context4.prev = 29;
+
+                        if (!_iteratorNormalCompletion2 && _iterator2.return) {
+                            _iterator2.return();
+                        }
+
+                    case 31:
+                        _context4.prev = 31;
+
+                        if (!_didIteratorError2) {
+                            _context4.next = 34;
+                            break;
+                        }
+
+                        throw _iteratorError2;
+
+                    case 34:
+                        return _context4.finish(31);
+
+                    case 35:
+                        return _context4.finish(28);
+
+                    case 36:
+                        _iteratorNormalCompletion3 = true;
+                        _didIteratorError3 = false;
+                        _iteratorError3 = undefined;
+                        _context4.prev = 39;
+                        _iterator3 = willChangeCategoryArr[Symbol.iterator]();
+
+                    case 41:
+                        if (_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done) {
+                            _context4.next = 50;
+                            break;
+                        }
+
+                        updateValue = _step3.value;
+
+                        J.log(updateValue, "update");
+                        _context4.next = 46;
+                        return proudDb.save("data", "" + updateValue.id, updateValue);
+
+                    case 46:
+                        iMeanNothing = _context4.sent;
+
+                    case 47:
+                        _iteratorNormalCompletion3 = true;
+                        _context4.next = 41;
+                        break;
+
+                    case 50:
+                        _context4.next = 56;
+                        break;
+
+                    case 52:
+                        _context4.prev = 52;
+                        _context4.t1 = _context4["catch"](39);
+                        _didIteratorError3 = true;
+                        _iteratorError3 = _context4.t1;
+
+                    case 56:
+                        _context4.prev = 56;
+                        _context4.prev = 57;
+
+                        if (!_iteratorNormalCompletion3 && _iterator3.return) {
+                            _iterator3.return();
+                        }
+
+                    case 59:
+                        _context4.prev = 59;
+
+                        if (!_didIteratorError3) {
+                            _context4.next = 62;
+                            break;
+                        }
+
+                        throw _iteratorError3;
+
+                    case 62:
+                        return _context4.finish(59);
+
+                    case 63:
+                        return _context4.finish(56);
+
+                    case 64:
                         return _context4.abrupt("return", iMeanNothing);
 
-                    case 11:
+                    case 65:
                     case "end":
                         return _context4.stop();
                 }
             }
-        }, _callee4, this);
+        }, _callee4, this, [[11, 24, 28, 36], [29,, 31, 35], [39, 52, 56, 64], [57,, 59, 63]]);
     }));
-    return function willBulkRemove(_x6, _x7) {
+    return function willBulkRemove(_x6) {
         return ref.apply(this, arguments);
     };
 }();
@@ -206,6 +334,10 @@ var proudDb = require("../_inc/proud-db");
 
 var twoLevelUp = R.compose(R.join("/"), R.dropLast(2), R.split("/"));
 
+var getPredraftCategory = R.compose(R.filter(function (val) {
+    return R.prop("category", val) === "preDraft";
+}));
+
 function willPublish(keyword, content) {
     return new Promise(function (resolve) {
         fs.outputFile(twoLevelUp(__dirname) + "/hapi/blog/" + keyword + ".md", content, function () {
@@ -220,7 +352,8 @@ router.get("/", function (req, res) {
 router.get("/db", function (req, res) {
     res.render("db");
 });
-router.post("/test", function (req, res) {
+router.get("/test", function (req, res) {
+    willBulkRemove(126).then(J.lg);
     res.send("more");
 });
 router.get("/read/:parent", function (req, res) {
@@ -229,7 +362,7 @@ router.get("/read/:parent", function (req, res) {
     });
 });
 router.post("/update/:parent", function (req, res) {
-    willUpdate(req.params.parent, R.values(JSON.parse(req.body.data))).then(function () {
+    willUpdate(req.params.parent, JSON.parse(req.body.data)).then(function () {
         res.send("done");
     });
 });
@@ -240,6 +373,11 @@ router.post("/publish/:parent", function (req, res) {
 });
 router.post("/remove/:parent", function (req, res) {
     proudDb.remove(req.params.parent, JSON.parse(req.body.data).id * 1).then(function () {
+        res.send("done");
+    });
+});
+router.post("/removeBulk", function (req, res) {
+    willBulkRemove(JSON.parse(req.body.data).id * 1).then(function () {
         res.send("done");
     });
 });

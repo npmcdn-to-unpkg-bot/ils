@@ -37,6 +37,7 @@
     "mobx": "^2.3.3",
     "mobx-react": "^3.4.0",
     "moment": "^2.14.1",
+    "node-bing-api": "^2.4.1",
     "proud-db": "*",
     "ramda": "*",
     "react": "*",

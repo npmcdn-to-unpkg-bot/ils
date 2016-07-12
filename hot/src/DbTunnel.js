@@ -22,16 +22,10 @@ let willDeleteIndex = 0
 J.emitter.on("save", ()=>{
     J.log("save event")
     J.log(willSave)
-    J.postData("http://localhost:3001/update/data", JSON.stringify(R.values(willSave))).then((data)=>{
+    J.postData("/update/data", JSON.stringify(R.values(willSave))).then((data)=>{
         willSave = {}
     })
 })
-
-//document.addEventListener("visibilitychange", ()=>{
-//if (document["hidden"]) {
-//J.emitter.emit("save")
-//}
-//}, false)
 
 class InputComponent extends Component {
     constructor (props) {
@@ -118,7 +112,7 @@ export default class App extends Component {
     }
     componentDidMount() {
         J.emitter.on("init", ()=>{
-            J.getData("http://localhost:3001/read/data").then((incoming)=>{
+            J.getData("/read/data").then((incoming)=>{
                 let filterByCategory = R.compose(R.filter((val)=>{
                     return R.prop("category", val) === this.state.category
                 }))(incoming)
@@ -194,14 +188,14 @@ export default class App extends Component {
                 globalData: globalDataFuture
             })
         })
-        J.postData("http://localhost:3001/remove/data", JSON.stringify({id: willDeleteIndex})).then((data)=>{
+        J.postData("/remove/data", JSON.stringify({id: willDeleteIndex})).then((data)=>{
             J.log("removed")
         })
     }
     willBulkRemove (event) {
-        J.postData("http://localhost:3001/update/data", JSON.stringify(R.values(willSave))).then((data)=>{
+        J.postData("/update/data", JSON.stringify(R.values(willSave))).then((data)=>{
             willSave = {}
-            J.postData("http://localhost:3001/removeBulk", JSON.stringify({id: willDeleteIndex})).then((data)=>{
+            J.postData("/removeBulk", JSON.stringify({id: willDeleteIndex})).then((data)=>{
                 J.log("removed bulk")
                 J.emitter.emit("init")
             })

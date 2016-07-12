@@ -1,14 +1,12 @@
 "use strict"
-import React,{ Component } from "react"
+import React, { Component } from "react"
 import R from "ramda"
-//import FlipMove from "react-flip-move"
 
-import J from "../commonReact.js"
+import J from "./component/commonReact.js"
 
 let initOnce = R.once(()=>{
     J.emitter.emit("init")
 })
-
 
 export default class App extends Component {
     constructor (props) {
@@ -17,20 +15,19 @@ export default class App extends Component {
             index: 0
         }
         this.willHandleClick = this.willHandleClick.bind(this)
-        //this.willHandleButton = this.willHandleButton.bind(this)
     }
     componentDidMount() {
-        J.emitter.on("init",()=>{
+        J.emitter.on("init", ()=>{
         })
-        J.emitter.on("correct",()=>{
+        J.emitter.on("correct", ()=>{
         })
-        J.emitter.on("wrong",()=>{
+        J.emitter.on("wrong", ()=>{
         })
-        J.emitter.on("last word",()=>{
+        J.emitter.on("last word", ()=>{
         })
-        J.emitter.on("show answer",()=>{
+        J.emitter.on("show answer", ()=>{
         })
-        J.emitter.on("next",()=>{
+        J.emitter.on("next", ()=>{
         })
 
     }
@@ -38,7 +35,7 @@ export default class App extends Component {
 
     }
     render () {
-        return(
+        return (
     <div>
         <div className="box">
 
@@ -47,7 +44,7 @@ export default class App extends Component {
 
         </div>
         <div className="box has-text-centered">
-            
+
         </div>
 	</div>
     )}

@@ -9,15 +9,15 @@ var _reactDom = require("react-dom");
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _Db = require("/home/just/ils/hot/src/Db.js");
+var _DbTunnel = require("/home/just/ils/hot/src/DbTunnel.js");
 
-var _Db2 = _interopRequireDefault(_Db);
+var _DbTunnel2 = _interopRequireDefault(_DbTunnel);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-_reactDom2.default.render(_react2.default.createElement(_Db2.default, null), document.getElementById("reactHook"));
+_reactDom2.default.render(_react2.default.createElement(_DbTunnel2.default, null), document.getElementById("reactHook"));
 
-},{"/home/just/ils/hot/src/Db.js":2,"react":240,"react-dom":92}],2:[function(require,module,exports){
+},{"/home/just/ils/hot/src/DbTunnel.js":2,"react":240,"react-dom":92}],2:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -65,7 +65,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-//import FlipMove from "react-flip-move"
 
 var initOnce = _ramda2.default.once(function () {
     _commonReact2.default.emitter.emit("init");
@@ -76,25 +75,16 @@ var inputObjInitial = {
     enPart: "",
     category: "draft"
 };
-
 var willSave = {};
-var flag = true;
 var selectedText = "";
 var willDeleteIndex = 0;
 _commonReact2.default.emitter.on("save", function () {
     _commonReact2.default.log("save event");
     _commonReact2.default.log(willSave);
-    _commonReact2.default.postData("http://localhost:3001/update/data", JSON.stringify(willSave)).then(function (data) {
+    _commonReact2.default.postData("/update/data", JSON.stringify(_ramda2.default.values(willSave))).then(function (data) {
         willSave = {};
-        flag = true;
     });
 });
-document.addEventListener("visibilitychange", function () {
-    if (document["hidden"] && flag) {
-        flag = false;
-        _commonReact2.default.emitter.emit("save");
-    }
-}, false);
 
 var InputComponent = function (_Component) {
     _inherits(InputComponent, _Component);
@@ -112,6 +102,7 @@ var InputComponent = function (_Component) {
         _this.willHandleChangeEnPart = _this.willHandleChangeEnPart.bind(_this);
         _this.willHandleCategory = _this.willHandleCategory.bind(_this);
         _this.willHandleBlur = _this.willHandleBlur.bind(_this);
+        _this.willSaveFn = _this.willSaveFn.bind(_this);
         return _this;
     }
 
@@ -124,6 +115,14 @@ var InputComponent = function (_Component) {
             });
         }
     }, {
+        key: "willSaveFn",
+        value: function willSaveFn() {
+            var oldState = willSave[this.state.inputObj.id] || {};
+            willSave[this.state.inputObj.id] = _ramda2.default.merge(oldState, this.state.inputObj);
+            willDeleteIndex = this.state.inputObj.id * 1;
+            _commonReact2.default.log(willDeleteIndex);
+        }
+    }, {
         key: "willHandleTextSelect",
         value: function willHandleTextSelect(event) {
             if (window.getSelection().toString().length > 3 && window.getSelection().toString() !== selectedText) {
@@ -134,25 +133,24 @@ var InputComponent = function (_Component) {
         key: "willHandleChangeDePart",
         value: function willHandleChangeDePart(event) {
             this.setState({ inputObj: _ramda2.default.merge(this.state.inputObj, { dePart: event.target.value }) });
-            willDeleteIndex = this.state.inputObj.id * 1;
+            this.willSaveFn();
         }
     }, {
         key: "willHandleChangeEnPart",
         value: function willHandleChangeEnPart(event) {
             this.setState({ inputObj: _ramda2.default.merge(this.state.inputObj, { enPart: event.target.value }) });
+            this.willSaveFn();
         }
     }, {
         key: "willHandleBlur",
         value: function willHandleBlur(event) {
-            _commonReact2.default.log("blur");
-            var oldState = willSave[this.state.inputObj.id] || {};
-            willSave[this.state.inputObj.id] = _ramda2.default.merge(oldState, this.state.inputObj);
-            console.log(willSave);
+            this.willSaveFn();
         }
     }, {
         key: "willHandleCategory",
         value: function willHandleCategory(event) {
             this.setState({ inputObj: _ramda2.default.merge(this.state.inputObj, { category: event.value }) });
+            this.willSaveFn();
         }
     }, {
         key: "render",
@@ -164,7 +162,7 @@ var InputComponent = function (_Component) {
                 _react2.default.createElement("br", null),
                 _react2.default.createElement("input", { type: "text", value: this.state.inputObj.enPart, className: "enPart", size: this.state.inputObj.enPart.length, onChange: this.willHandleChangeEnPart, onBlur: this.willHandleBlur, onSelect: this.willHandleTextSelect }),
                 _react2.default.createElement(_reactSelect2.default, { name: "category " + this.state.inputObj.id,
-                    value: this.state.inputObj.category, options: _commonReact2.default.categoryOptions, onBlur: this.willHandleBlur, onChange: this.willHandleCategory })
+                    value: this.state.inputObj.category, options: _commonReact2.default.categoryOptions, onChange: this.willHandleCategory })
             );
         }
     }], [{
@@ -201,6 +199,7 @@ var App = function (_Component2) {
         _this2.willHandlePrevNavigation = _this2.willHandlePrevNavigation.bind(_this2);
         _this2.willHandleNextNavigation = _this2.willHandleNextNavigation.bind(_this2);
         _this2.willRemove = _this2.willRemove.bind(_this2);
+        _this2.willBulkRemove = _this2.willBulkRemove.bind(_this2);
         _this2.willSave = _this2.willSave.bind(_this2);
         _this2.newEntry = _this2.newEntry.bind(_this2);
         return _this2;
@@ -211,18 +210,25 @@ var App = function (_Component2) {
         value: function componentDidMount() {
             var _this3 = this;
 
-            _commonReact2.default.emitter.on("init", function () {});
-            _commonReact2.default.getData("http://localhost:3001/read/data").then(function (incoming) {
-                var filterByCategory = _ramda2.default.compose(_ramda2.default.filter(function (val) {
-                    return _ramda2.default.prop("category", val) === _this3.state.category;
-                }))(incoming);
-                _this3.setState({
-                    globalDataRaw: _ramda2.default.merge({}, incoming),
-                    globalData: _ramda2.default.values(filterByCategory)
-                }, function () {
-                    initOnce();
+            _commonReact2.default.emitter.on("init", function () {
+                _commonReact2.default.getData("/read/data").then(function (incoming) {
+                    var filterByCategory = _ramda2.default.compose(_ramda2.default.filter(function (val) {
+                        return _ramda2.default.prop("category", val) === _this3.state.category;
+                    }))(incoming);
+                    _this3.setState({
+                        globalDataRaw: {},
+                        globalData: []
+                    }, function () {
+                        _this3.setState({
+                            globalDataRaw: _ramda2.default.merge({}, incoming),
+                            globalData: _ramda2.default.values(filterByCategory)
+                        }, function () {
+                            _commonReact2.default.log("init done");
+                        });
+                    });
                 });
             });
+            initOnce();
         }
     }, {
         key: "willTranslate",
@@ -302,8 +308,19 @@ var App = function (_Component2) {
                     globalData: globalDataFuture
                 });
             });
-            _commonReact2.default.postData("http://localhost:3001/remove/data", JSON.stringify({ id: willDeleteIndex })).then(function (data) {
+            _commonReact2.default.postData("/remove/data", JSON.stringify({ id: willDeleteIndex })).then(function (data) {
                 _commonReact2.default.log("removed");
+            });
+        }
+    }, {
+        key: "willBulkRemove",
+        value: function willBulkRemove(event) {
+            _commonReact2.default.postData("/update/data", JSON.stringify(_ramda2.default.values(willSave))).then(function (data) {
+                willSave = {};
+                _commonReact2.default.postData("/removeBulk", JSON.stringify({ id: willDeleteIndex })).then(function (data) {
+                    _commonReact2.default.log("removed bulk");
+                    _commonReact2.default.emitter.emit("init");
+                });
             });
         }
     }, {
@@ -367,6 +384,11 @@ var App = function (_Component2) {
                             "a",
                             { className: "button outline is-danger", onClick: this.willRemove },
                             " X "
+                        ),
+                        _react2.default.createElement(
+                            "a",
+                            { className: "button outline is-primary is-inverted", onClick: this.willBulkRemove },
+                            "|X|"
                         ),
                         _react2.default.createElement(
                             "a",
@@ -802,7 +824,7 @@ var NewEntry = function (_Component) {
                 _react2.default.createElement(
                     "div",
                     { className: "newEntry" },
-                    _react2.default.createElement("input", { autofocus: true, type: "text", value: this.state.inputObj.dePart, className: "dePart", size: "77", onChange: this.willHandleChangeDePart, onSelect: this.willHandleTextSelect }),
+                    _react2.default.createElement("input", { autoFocus: true, type: "text", value: this.state.inputObj.dePart, className: "dePart", size: "77", onChange: this.willHandleChangeDePart, onSelect: this.willHandleTextSelect }),
                     _react2.default.createElement("br", null),
                     _react2.default.createElement(
                         "a",

@@ -9,7 +9,7 @@ let takeDomain = R.compose(R.last, R.split("https://"))
 let willRunOnce = R.once((url)=>{
     J.willRequest(url).then(J.lg)
 })
-let proc = exec("lt --port 3000", {
+let proc = exec("lt --port 3001", {
     "cwd": __dirname
 })
 proc.stdout.on("data", function(chunk) {

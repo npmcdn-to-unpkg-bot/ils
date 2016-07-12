@@ -3,7 +3,10 @@ const J = require("./common.js")
 const sane = require("sane")
 const R = require("ramda")
 const exec = require("child_process").exec
-
+const profiler = require("gc-profiler")
+profiler.on("gc", (info)=>{
+    J.lg(info)
+})
 let mainFlag = true
 let negativeWordArr = [
     "node_modules",
@@ -74,13 +77,13 @@ async function processFn(filepath) {
 
     let iMeanNothing
     let commands = factoryCommands(filepath)
-    if (filepath.includes("Front.jsx")&&filepath.includes("admin")) {
+    if (filepath.includes("Front.jsx") && filepath.includes("admin")) {
         J.log("babelify admin")
         J.log(commands.babelifyHapi)
         iMeanNothing = await willRunFixedCommand(commands.babelifyAdmin)
         return iMeanNothing
 
-    }else if (filepath.includes("Front.jsx")) {
+    } else if (filepath.includes("Front.jsx")) {
         J.log("babelify hapi")
         J.log(commands.babelifyHapi)
         iMeanNothing = await willRunFixedCommand(commands.babelifyHapi)

@@ -8,6 +8,19 @@ const Future = RFantasy.Future
 const Identity = RFantasy.Identity
 const Maybe = RFantasy.Maybe
 const Just = RFantasy.Just
-const dbPath = "/home/just/ils/hapi/public/_db.json"
-const dbPathRaw = "/home/just/ils/hapi/public/_dbRaw.json"
-console.log(fs.readJsonSync(dbPath).data)
+const env = require("dotenv-helper")
+const Bing = require("node-bing-api")({ accKey: env.getEnv("bing") })
+Bing.images("javascript", {
+    top: 5,
+    imageFilters: {
+        size: "large",
+        color: "color",
+        style: "photo",
+        aspect : "wide"
+    }
+}, function(error, res, body) {
+    console.log(body.d.results[ 0 ].MediaUrl)
+    console.log(body.d.results[ 0 ].Width)
+    console.log(body.d.results[ 0 ].Height)
+    console.log(typeof body.d.results)
+})

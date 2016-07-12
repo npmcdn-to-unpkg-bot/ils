@@ -30,11 +30,35 @@ async function willAddEntry(parent, dataRaw) {
     iMeanNothing = await proudDb.save(parent, `${data.id}`, data)
     return iMeanNothing
 }
-async function willBulkRemove(parent, dataRaw) {
-    let indexFuture = await proudDb.loadParent("nextIndex")
-    let data = R.merge(dataRaw, {id: indexFuture})
-    let iMeanNothing = await proudDb.saveParent("nextIndex", indexFuture + 1)
-    iMeanNothing = await proudDb.save(parent, `${data.id}`, data)
+let getPredraftCategory = R.compose(R.filter((val)=>{
+    return R.prop("category", val) === "preDraft"
+}))
+async function willBulkRemove(marker) {
+    let dataState = await proudDb.loadParent("data")
+    let predraftCategory = getPredraftCategory(dataState)
+    let willRemoveIndexArr = []
+    let dropByIndex = R.compose(R.values, R.map(R.set(R.lensProp("category"), "draft")), R.filter((val)=>{
+        if (R.lte(R.prop("id", val), marker)) {
+            if (R.prop("enPart", val).length > 1) {
+                return true
+            } else {
+                willRemoveIndexArr.push(R.prop("id", val))
+                return false
+            }
+        } else {
+            return false
+        }
+    }))
+    let willChangeCategoryArr = dropByIndex(predraftCategory)
+    let iMeanNothing
+    for (let removeMarker of willRemoveIndexArr) {
+        J.log(removeMarker, "remove")
+        iMeanNothing = await proudDb.remove("data", `${removeMarker}`)
+    }
+    for (let updateValue of willChangeCategoryArr) {
+        J.log(updateValue, "update")
+        iMeanNothing = await proudDb.save("data", `${updateValue.id}`, updateValue)
+    }
     return iMeanNothing
 }
 function willPublish(keyword, content) {
@@ -51,7 +75,8 @@ router.get("/", (req, res) => {
 router.get("/db", (req, res) => {
     res.render("db")
 })
-router.post("/test", (req, res) =>{
+router.get("/test", (req, res) =>{
+    willBulkRemove(126).then(J.lg)
     res.send("more")
 })
 router.get("/read/:parent", (req, res) =>{
@@ -60,7 +85,7 @@ router.get("/read/:parent", (req, res) =>{
     })
 })
 router.post("/update/:parent", (req, res) =>{
-    willUpdate(req.params.parent, R.values(JSON.parse(req.body.data))).then(()=>{
+    willUpdate(req.params.parent, JSON.parse(req.body.data)).then(()=>{
         res.send("done")
     })
 })
@@ -71,6 +96,11 @@ router.post("/publish/:parent", (req, res) =>{
 })
 router.post("/remove/:parent", (req, res) =>{
     proudDb.remove(req.params.parent, JSON.parse(req.body.data).id * 1).then(()=>{
+        res.send("done")
+    })
+})
+router.post("/removeBulk", (req, res) =>{
+    willBulkRemove(JSON.parse(req.body.data).id * 1).then(()=>{
         res.send("done")
     })
 })

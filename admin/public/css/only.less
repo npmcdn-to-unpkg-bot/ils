@@ -1,0 +1,23 @@
+.transition(@transition) {
+  -webkit-transition: @transition;
+-moz-transition: @transition;
+-o-transition: @transition;
+transition: @transition;
+}
+.opacity(@opacity) {
+  opacity: @opacity / 100;
+  filter: ~"alpha(opacity=@{opacity})";
+}
+
+a {
+.transition(all 0.4s);
+&:hover {
+  .opacity(70);
+  }
+}
+
+@theGoodThings: ~".food, .beer, .sleep, .javascript";
+
+@{theGoodThings} {
+  font-weight: bold;
+}
