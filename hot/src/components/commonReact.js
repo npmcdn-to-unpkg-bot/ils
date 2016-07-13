@@ -50,6 +50,9 @@ function getPercent(incomingPercent, whole) {
 function divide(part, whole) {
     return Math.floor(R.divide(part, whole))
 }
+function getPart(part, whole) {
+    return Math.floor(R.divide(part, whole) * 100)
+}
 function randomSeed() {
     let willReturn = ""
     let data = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
@@ -102,12 +105,19 @@ function log(data) {
         console.log(data)
     }
 }
-
+function addProp(singleProp, defaultValue, arr) {
+    return R.compose(R.map(val=>{
+        val[ singleProp ] = defaultValue
+        return val
+    }))(arr)
+}
+module.exports.addProp = addProp
 module.exports.log = log
 module.exports.getData = getData
 module.exports.postData = postData
 module.exports.shuffle = shuffle
 module.exports.getPercent = getPercent
+module.exports.getPart = getPart
 module.exports.divide = divide
 module.exports.isUniq = isUniq
 module.exports.emitter = emitter

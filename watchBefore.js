@@ -3,10 +3,7 @@ const J = require("./common.js")
 const sane = require("sane")
 const R = require("ramda")
 const exec = require("child_process").exec
-const profiler = require("gc-profiler")
-profiler.on("gc", (info)=>{
-    J.lg(info)
-})
+
 let mainFlag = true
 let negativeWordArr = [
     "node_modules",

@@ -10,8 +10,8 @@ const bringOrderTranslation = require("../_inc/bringOrderTranslation")
 const proudDb = require("../_inc/proud-db")
 const Bing = require("node-bing-api")({ accKey: env.getEnv("bing") })
 function bingImages(keyword, marker = 5) {
-    return new Promise(()=>{
-        Bing.images("javascript hamburg", {
+    return new Promise((resolve)=>{
+        Bing.images(keyword, {
             top: marker,
             imageFilters: {
                 size: "large",
@@ -19,19 +19,55 @@ function bingImages(keyword, marker = 5) {
                 style: "photo",
                 aspect : "wide"
             }
-        }, function(error, res, body) {
-            if (R.path("d", "results")) {
-
+        }, (error, res, body)=>{
+            J.log(body)
+            if (R.path(["d", "results"], body)) {
+                let willReturn = []
+                body.d.results.map((val)=>{
+                    J.log(val)
+                    willReturn.push({
+                        src: val.MediaUrl,
+                        width: val.Width,
+                        height: val.Height
+                    })
+                })
+                resolve(willReturn)
+            } else {
+                resolve(null)
             }
-            (body.d.results)
         })
     })
 }
-
+function imageFirst(keyword) {
+    return new Promise((resolve) => {
+        fetch(`http://www.freeimages.com/search/${keyword}?free=1`).then((res)=>{
+            if (res.status !== 200) {
+                console.log("response code error")
+                resolve(null)
+            } else {
+                return res.text()
+            }
+        }).then(function(data) {
+            if (data) {
+                let $ = cheerio.load(data)
+                let willReturn = []
+                let selector = ".thumb-img img"
+                $(selector).each(function(i) {
+                    willReturn.push($(this).attr("src"))
+                })
+                resolve(willReturn)
+            } else {resolve(null)}
+        }).catch((error) => {
+            console.log(error)
+            resolve(null)
+        })
+    })
+}
 router.post("/", (req, res) =>{
-    J.lg(req.body)
-    J.lg(typeof req.body)
-    res.send("done")
+    let imageSearch = JSON.parse(req.body.data).imageSearch
+    bingImages(imageSearch).then(incoming =>{
+        res.send(incoming)
+    })
 })
 
 module.exports = router

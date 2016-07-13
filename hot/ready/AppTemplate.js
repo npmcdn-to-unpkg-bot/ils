@@ -14,24 +14,18 @@ export default class App extends Component {
         this.state = {
             index: 0
         }
-        this.willHandleClick = this.willHandleClick.bind(this)
+        this.handleClick = this.handleClick.bind(this)
+    }
+    static get defaultProps () {
+        return {
+            "message": "dummy"
+        }
     }
     componentDidMount() {
         J.emitter.on("init", ()=>{
         })
-        J.emitter.on("correct", ()=>{
-        })
-        J.emitter.on("wrong", ()=>{
-        })
-        J.emitter.on("last word", ()=>{
-        })
-        J.emitter.on("show answer", ()=>{
-        })
-        J.emitter.on("next", ()=>{
-        })
-
     }
-    willHandleClick (event) {
+    handleClick (event) {
 
     }
     render () {
