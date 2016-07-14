@@ -1,19 +1,27 @@
-"use strict";
-
-var fs = require("fs-extra");
-var scrapeIt = require("scrape-it");
-var cheerio = require("cheerio");
-var fetch = require("node-fetch");
-var request = require("request");
-var J = require("justdo");
-var R = require("ramda");
-var dbPath = "/home/just/ils/hapi/public/_db.json";
-var dbPathRaw = "/home/just/ils/hapi/public/_dbRaw.json";
-var removeLongSentences = R.compose(R.lt(R.__, 3), R.length, R.split("."));
-var id = fs.readJsonSync(dbPath).nextIndex;
-var willSave = {};
-
-//fs.readJson(dbPath, (err, dbState)=> {
-//test(dbState.nextIndex).then((incoming)=>{
-//dbState.data = R.merge(dbState.data, incoming.willReturn)
-//dbState.nextIndex = incoming.id
+"use strict"
+const fs = require("fs-extra")
+const scrapeIt = require("scrape-it")
+const cheerio = require("cheerio")
+const fetch = require("node-fetch")
+const request = require("request")
+const J = require("justdo")
+const R = require("ramda")
+const lwip = require("lwip")
+const download = require("download")
+const imgur = require("imgur")
+const imageSize = require("image-size")
+const imageSavePath = "/home/just/Dropbox/images"
+//lwip.open("hot/inc/cat.jpg", function(err, image) {
+//image.batch()
+////.resize(1400)
+////.contain(1000, 700, {r: 128, g: 128, b: 128, a: 100})
+//.writeFile("output.jpg", function(err) {
+//J.log(err)
+//})
+//})
+let imageUrl = "http://i.imgur.com/mx9H9VY.png"
+function imageDestination(url, name) {
+    return R.compose(R.apply(val => `${imageSavePath}/${name}.${val}`), R.of, R.last, R.split("."))(url)
+}
+let newImageName = "cat-a-rey"
+download(imageUrl).pipe(fs.createWriteStream(imageDestination(imageUrl, newImageName)))

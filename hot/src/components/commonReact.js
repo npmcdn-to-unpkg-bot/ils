@@ -47,6 +47,9 @@ function getWidthPx(incomingPercent = 1) {
 function getPercent(incomingPercent, whole) {
     return Math.floor(R.divide(whole, 100) * incomingPercent)
 }
+function getPercentRaw(incomingPercent, whole) {
+    return Math.floor(R.divide(whole, 100) * incomingPercent)
+}
 function divide(part, whole) {
     return Math.floor(R.divide(part, whole))
 }
@@ -116,6 +119,7 @@ module.exports.log = log
 module.exports.getData = getData
 module.exports.postData = postData
 module.exports.shuffle = shuffle
+module.exports.getPercentRaw = getPercentRaw
 module.exports.getPercent = getPercent
 module.exports.getPart = getPart
 module.exports.divide = divide

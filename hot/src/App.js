@@ -10,12 +10,15 @@ let initOnce = R.once(()=>{
 let store = {}
 
 let mockedData = {
-    "deWord": "der Gehälter",
+    "deWord": "__0__1__2__3__4__5__6__7__8__9__a__b__c__d__e__f__0__1__2__3__4__5__6__7", //72
+    "deWord1": "__0__1__2__3__4__5__6__7__8__9", //30
+    "deWord2": "__0__1__2__3__4__5__6__7__8__9__a__b__c__d__e__f", //48
+    "deWordd": "der Gehälter",
     "enWord": "the owner",
     "dePart": "Alle Menschen sind gleich. Nur die Gehälter sind verschieden.",
     "enPart": "All people are the same.",
     "category": "preDraft",
-    imageObj: {"src":"https://placeimg.com/1000/700/any", "width":"1000", "height":"700"},
+    imageObj: {"src":"https://placeimg.com/1000/750/any", "width":"1000", "height":"750"},
     "id": 419
 }
 let mockedDataArr = [{
@@ -63,48 +66,61 @@ export default class App extends Component {
     }
     render () {
         let numberIs = 50
-        let scaleFactor = J.getPart(this.state.tempState.imageObj.height, this.state.tempState.imageObj.width)
-        let memeHeightRaw = J.getPercent(scaleFactor, numberIs)
+        let scaleFactor = J.getPart(this.state.tempState.imageObj.height, this.state.tempState.imageObj.width)/100
+        J.log(scaleFactor)
+        let memeHeightRaw = J.getPercentRaw(scaleFactor*100, numberIs)
         let memeHeight = J.getWidthPx(memeHeightRaw)
-        let marginValue = J.getPercent(2,memeHeight)
-        let fontValue = J.getPercent(11,memeHeight)
-        let heightValue = J.getPercent(12,memeHeight)
-        console.log(memeHeight,marginValue, fontValue, heightValue)
-
+        let memeWidth = J.getWidthPx(numberIs)
+        let fontValue = 10
+        //let fontValueBig = J.getPart(8,memeWidth)
+        //let fontValueSmall = J.getPercent(3.5,memeWidth)
+        // NORMAL 1 43 15 2.5
+        // 1.5 97 16 5
+        // 0.66 18 15 1
+        // 0.55 12 11 1
+        // 0.5 10 10 1
+        // LONG 1 43 15 2.5
+        // 1.5 97 16 5
+        // 0.66 18 15 1
+        // 0.55 12 11 1
+        // 0.5 10 10 1
+        let heightValue = J.getPercent((10*scaleFactor),memeHeight)
+        let gapValue = memeHeight-(3*heightValue)
+        let lineHeightValue = 1
+        console.log(scaleFactor, heightValue, fontValue, lineHeightValue)
         let memeContainer = {
+            padding: "0px",
             marginLeft: `${J.getWidthPx(25)}px`,
-            width: `${J.getWidthPx(numberIs)}px`,
+            width: `${memeWidth}px`,
             height: `${memeHeight}px`,
             backgroundImage: `url(${this.state.tempState.imageObj.src})`
         }
         let memeTextTop = {
             top: "0px",
-            paddingLeft: `${marginValue}px`,
-            paddingRight: `${marginValue}px`,
+            fontSize: `${fontValue}px`,
+            lineHeight: `${lineHeightValue}`,
             height: `${heightValue}px`,
             textOverflow: "ellipsis",
-            maxWidth:  `${J.getWidthPx(numberIs-5)}px`,
+            width:  `${J.getWidthPx(numberIs)}px`,
             backgroundColor: "#FF4081",
             whiteSpace: "nowrap",
-            display: "inline-block"
+            overflow: "hidden"
         }
-        let memeTextBottomFirst = {
-            paddingTop: "300px",
-            display: "inline-block"
+        let gapStyle = {
+            height: `${gapValue}px`
         }
-        let memeTextBottomSecond = {
-            paddingTop: "100px",
-            display: "inline-block"
-        }
+        let memeTextBottomFirst = R.merge(memeTextTop,{backgroundColor: "#DCEDC8"})
+        let memeTextBottomSecond = R.merge(memeTextTop,{backgroundColor: "#FFE0B2"})
         return(
     <div>
         <div className="box has-text-centered">
             <input autoFocus type="text" value={this.state.answer} size={this.state.answer.length} onChange={this.handleAnswerInput} onKeyPress={this.handleAnswerInput}/>
         </div>
         <div className="box has-text-centered is-fullwidth" style={memeContainer}>
-            <div style={memeTextTop}>{this.state.tempState.deWord}000000000000000000000000000000000000000000000000</div>
-            <div style={memeTextBottomFirst}>{this.state.tempState.dePart}</div>
-            <div style={memeTextBottomSecond}>{this.state.tempState.enPart}</div>
+            <div style={memeTextTop}>{this.state.tempState.deWord}</div>
+            <div style={gapStyle}></div>
+            <div style={memeTextBottomFirst}>{this.state.tempState.deWord}</div>
+            <div style={memeTextBottomSecond}>{this.state.tempState.deWord}</div>
         </div>
 	</div>
     )}

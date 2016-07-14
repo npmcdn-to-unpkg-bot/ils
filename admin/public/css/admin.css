@@ -1,3 +1,7 @@
+.borderBottom {
+  border-style: solid;
+  border-bottom: 5px solid #FF4081;
+}
 .unselectedImage {
   border: solid 1px #4DB6AC;
   padding: 5px;
