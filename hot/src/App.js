@@ -10,7 +10,8 @@ let initOnce = R.once(()=>{
 let store = {}
 
 let mockedData = {
-    "deWord": "__0__1__2__3__4__5__6__7__8__9__a__b__c__d__e__f__0__1__2__3__4__5__6__7", //72
+    "deWord": "__0__1__2__3__4__5__6__7", //72
+    "deWordLong": "__0__1__2__3__4__5__6__7__8__9__a__b__c__d__e__f__0__1__2__3__4__5__6__7", //72
     "deWord1": "__0__1__2__3__4__5__6__7__8__9", //30
     "deWord2": "__0__1__2__3__4__5__6__7__8__9__a__b__c__d__e__f", //48
     "deWordd": "der Gehälter",
@@ -18,7 +19,7 @@ let mockedData = {
     "dePart": "Alle Menschen sind gleich. Nur die Gehälter sind verschieden.",
     "enPart": "All people are the same.",
     "category": "preDraft",
-    imageObj: {"src":"https://placeimg.com/1000/750/any", "width":"1000", "height":"750"},
+    imageObj: {"src":"/inc/fassen.jpg", "width":"1000", "height":"750"},
     "id": 419
 }
 let mockedDataArr = [{
@@ -65,44 +66,43 @@ export default class App extends Component {
         })
     }
     render () {
-        let numberIs = 50
-        let scaleFactor = J.getPart(this.state.tempState.imageObj.height, this.state.tempState.imageObj.width)/100
-        J.log(scaleFactor)
-        let memeHeightRaw = J.getPercentRaw(scaleFactor*100, numberIs)
-        let memeHeight = J.getWidthPx(memeHeightRaw)
-        let memeWidth = J.getWidthPx(numberIs)
-        let fontValue = 10
-        //let fontValueBig = J.getPart(8,memeWidth)
-        //let fontValueSmall = J.getPercent(3.5,memeWidth)
-        // NORMAL 1 43 15 2.5
-        // 1.5 97 16 5
-        // 0.66 18 15 1
-        // 0.55 12 11 1
-        // 0.5 10 10 1
-        // LONG 1 43 15 2.5
-        // 1.5 97 16 5
-        // 0.66 18 15 1
-        // 0.55 12 11 1
-        // 0.5 10 10 1
-        let heightValue = J.getPercent((10*scaleFactor),memeHeight)
+        let fontValueFn = R.cond([
+            [R.gte(30),   R.always(250)],
+            [R.both(R.lt(30),R.gte(48)), R.always(185)],
+            [R.T,           R.always(125)]
+        ])
+        let lineHeightFn = R.cond([
+            [R.both(R.lt(185),R.gt(250)),   R.always(4)],
+            [R.both(R.lt(125),R.gte(185)), R.always(2)],
+            [R.T,           R.always(1.5)]
+        ])
+        let scaleFactor = 100
+        let memeHeight = J.getHeightPx(80)
+        let memeWidth = memeHeight*1.33
+        let marginValue = J.divide(100-J.getPart(memeWidth,J.getWidthPx(100)),2)
+        let fontValue = fontValueFn(this.state.tempState.deWord.length)
+        let lineHeightValue = lineHeightFn(fontValue)
+        console.log(fontValue,lineHeightValue)
+        let heightValue = J.getPercent(10,memeHeight)
         let gapValue = memeHeight-(3*heightValue)
-        let lineHeightValue = 1
-        console.log(scaleFactor, heightValue, fontValue, lineHeightValue)
         let memeContainer = {
             padding: "0px",
-            marginLeft: `${J.getWidthPx(25)}px`,
+            marginLeft: `${J.getWidthPx(marginValue)}px`,
             width: `${memeWidth}px`,
             height: `${memeHeight}px`,
+            backgroundSize: "cover",
             backgroundImage: `url(${this.state.tempState.imageObj.src})`
         }
         let memeTextTop = {
             top: "0px",
-            fontSize: `${fontValue}px`,
+            color: "#263238",
+            fontSize: `${fontValue}%`,
+            fontWeight: "700",
             lineHeight: `${lineHeightValue}`,
             height: `${heightValue}px`,
             textOverflow: "ellipsis",
-            width:  `${J.getWidthPx(numberIs)}px`,
-            backgroundColor: "#FF4081",
+            width:  `${memeWidth}px`,
+            backgroundColor: "#B0BEC5",
             whiteSpace: "nowrap",
             overflow: "hidden"
         }
