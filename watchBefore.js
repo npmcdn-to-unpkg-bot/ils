@@ -1,8 +1,9 @@
 #!/usr/bin/env
 "use strict"
-const watcher = require('ape-watching')
+const watcher = require("ape-watching")
 const J = require("./common.js")
 const R = require("ramda")
+const fileExists = require("file-exists")
 const exec = require("child_process").exec
 let mainFlag = true
 let negativeWordArr = [
@@ -15,7 +16,7 @@ let negativeWordArr = [
     "cache"
 ]
 let filterFn = J.anyFn(negativeWordArr)
-watcher.watchFiles(["**/*.jsx", "**/*.js", "*.less", "!node_modules/**/*", "!tmp/**/*"], (ev, filepath) => {
+watcher.watchFiles(["**/*.jsx", "**/*.js", "*.less"], (ev, filepath) => {
     if (filterFn((negativeWord)=>{
         return filepath.includes(negativeWord)
     })) {
@@ -23,13 +24,19 @@ watcher.watchFiles(["**/*.jsx", "**/*.js", "*.less", "!node_modules/**/*", "!tmp
     } else {
         if (mainFlag === true) {
             mainFlag = false
-            J.box(`⚡⚡⚡  ${J.takeName(filepath)} Will Start  ⚡⚡⚡`)
-            processFn(filepath).then((incoming)=>{
+            if(fileExists(filepath)){
+                J.box(`⚡⚡⚡  ${J.takeName(filepath)} Will Start  ⚡⚡⚡`)
+                processFn(filepath).then((incoming)=>{
+                    setTimeout(()=>{
+                        mainFlag = true
+                    }, 1000)
+                    J.log(`💡💡💡  ${J.takeName(filepath)} Is Over  💡💡💡`)
+                })
+            }else{
                 setTimeout(()=>{
                     mainFlag = true
                 }, 1000)
-                J.log(`💡💡💡  ${J.takeName(filepath)} Is Over  💡💡💡`)
-            })
+            }
         }
     }
 })

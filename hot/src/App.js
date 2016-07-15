@@ -10,16 +10,12 @@ let initOnce = R.once(()=>{
 let store = {}
 
 let mockedData = {
-    "deWord": "__0__1__2__3__4__5__6__7__8__9__a__b__c__d__e__f__0__1__2__3__4__5__6__7", //72
-    "deWordLong": "__0__1__2__3__4__5__6__7__8__9__a__b__c__d__e__f__0__1__2__3__4__5__6__7", //72
-    "deWord1": "__0__1__2__3__4__5__6__7__8__9", //30
-    "deWord2": "__0__1__2__3__4__5__6__7__8__9__a__b__c__d__e__f", //48
-    "deWordd": "der Gehälter",
+    "deWord": "der Gehälter",
     "enWord": "the owner",
     "dePart": "Alle Menschen sind gleich. Nur die Gehälter sind verschieden.",
     "enPart": "All people are the same.",
     "category": "preDraft",
-    imageObj: {"src":"/inc/first.jpg", "width":"1000", "height":"750"},
+    imageSrc: "/inc/first.jpg",
     "id": 419
 }
 let mockedDataArr = [{
@@ -28,16 +24,22 @@ let mockedDataArr = [{
     "dePart": "Alle Menschen sind gleich. Nur die Gehälter sind verschieden.",
     "enPart": "All people are the same.",
     "category": "preDraft",
-    imageObj: {"src":"https://unsplash.it/2200/1700/?random&more=less", "width":"1700", "height":"2200"},
+    imageSrc: "src":"/inc/first.jpg",
     "id": 419
 }, {
+    "deWord": "der Gehälter",
+    "enWord": "the owner",
     "dePart": "Jedenfalls ist es besser, ein eckiges Etwas zu sein als ein rundes Nichts.",
-    "enPart": "",
+    "enPart": "Any way it is better",
     "category": "preDraft",
+    imageSrc: "src":"/inc/second.jpg",
     "id": 420
 }, {
+    "deWord": "abnehmen",
+    "enWord": "to leave",
     "dePart": "Die Hälfte aller Menschen wollen abnehmen, die andere Hälfte verhungert.",
-    "enPart": "",
+    "enPart": "Half of the people want to",
+    imageSrc: "src":"/inc/first.jpg",
     "category": "preDraft",
     "id": 421
 }]
@@ -47,7 +49,8 @@ export default class App extends Component {
         super(props)
         this.state = {
             index: 0,
-            tempState: mockedData,
+            globalData: [],
+            globalData: [],
             answer: ""
         }
         this.handleAnswerInput = this.handleAnswerInput.bind(this)
@@ -110,8 +113,8 @@ export default class App extends Component {
             height: `${gapValue}px`
         }
         let memeTextBottomSecond = R.merge(memeTextTop,{
-            backgroundColor: "#6D98AB",
-            color: "#003366"
+            backgroundColor: "#3C9099",
+            color: "#E3E2C3"
         })
         return(
     <div>

@@ -183,14 +183,15 @@ var processFn = function () {
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var watcher = require('ape-watching');
+var watcher = require("ape-watching");
 var J = require("./common.js");
 var R = require("ramda");
+var fileExists = require("file-exists");
 var exec = require("child_process").exec;
 var mainFlag = true;
 var negativeWordArr = ["node_modules", "eslint", ".log", "git", ".json", "App.js", "cache"];
 var filterFn = J.anyFn(negativeWordArr);
-watcher.watchFiles(["**/*.jsx", "**/*.js", "*.less", "!node_modules/**/*", "!tmp/**/*"], function (ev, filepath) {
+watcher.watchFiles(["**/*.jsx", "**/*.js", "*.less"], function (ev, filepath) {
     if (filterFn(function (negativeWord) {
         return filepath.includes(negativeWord);
     })) {
@@ -198,13 +199,19 @@ watcher.watchFiles(["**/*.jsx", "**/*.js", "*.less", "!node_modules/**/*", "!tmp
     } else {
         if (mainFlag === true) {
             mainFlag = false;
-            J.box("⚡⚡⚡  " + J.takeName(filepath) + " Will Start  ⚡⚡⚡");
-            processFn(filepath).then(function (incoming) {
+            if (fileExists(filepath)) {
+                J.box("⚡⚡⚡  " + J.takeName(filepath) + " Will Start  ⚡⚡⚡");
+                processFn(filepath).then(function (incoming) {
+                    setTimeout(function () {
+                        mainFlag = true;
+                    }, 1000);
+                    J.log("💡💡💡  " + J.takeName(filepath) + " Is Over  💡💡💡");
+                });
+            } else {
                 setTimeout(function () {
                     mainFlag = true;
                 }, 1000);
-                J.log("💡💡💡  " + J.takeName(filepath) + " Is Over  💡💡💡");
-            });
+            }
         }
     }
 });
