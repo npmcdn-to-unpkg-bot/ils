@@ -1,3 +1,5 @@
+#!/usr/bin/env
+
 "use strict";
 
 var _regenerator = require("babel-runtime/regenerator");
@@ -181,54 +183,17 @@ var processFn = function () {
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var watcher = require('ape-watching');
 var J = require("./common.js");
-var sane = require("sane");
 var R = require("ramda");
 var exec = require("child_process").exec;
-
 var mainFlag = true;
 var negativeWordArr = ["node_modules", "eslint", ".log", "git", ".json", "App.js", "cache"];
-
 var filterFn = J.anyFn(negativeWordArr);
-
-var watcher = sane(__dirname, {
-    glob: ["**/*.jsx", "**/*.js", "*.less", "!node_modules/**/*", "!tmp/**/*"],
-    poll: true,
-    watchman: false,
-    dot: false
-});
-
-watcher.on("ready", function () {
-    J.log("ready to watch");
-});
-
-watcher.on("change", function (filepath, root, stat) {
-
-    var canProceedFlag = filterFn(function (negativeWord) {
+watcher.watchFiles(["**/*.jsx", "**/*.js", "*.less", "!node_modules/**/*", "!tmp/**/*"], function (ev, filepath) {
+    if (filterFn(function (negativeWord) {
         return filepath.includes(negativeWord);
-    });
-    if (canProceedFlag) {
-        return null;
-    } else {
-        if (mainFlag === true) {
-            mainFlag = false;
-            J.box("⚡⚡⚡  " + J.takeName(filepath) + " Will Start  ⚡⚡⚡");
-            processFn(filepath).then(function (incoming) {
-                setTimeout(function () {
-                    mainFlag = true;
-                }, 1000);
-                J.log("💡💡💡  " + J.takeName(filepath) + " Is Over  💡💡💡");
-            });
-        }
-    }
-});
-
-watcher.on("add", function (filepath, root, stat) {
-
-    var canProceedFlag = filterFn(function (negativeWord) {
-        return filepath.includes(negativeWord);
-    });
-    if (canProceedFlag) {
+    })) {
         return null;
     } else {
         if (mainFlag === true) {

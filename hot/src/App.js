@@ -10,7 +10,7 @@ let initOnce = R.once(()=>{
 let store = {}
 
 let mockedData = {
-    "deWord": "__0__1__2__3__4__5__6__7", //72
+    "deWord": "__0__1__2__3__4__5__6__7__8__9__a__b__c__d__e__f__0__1__2__3__4__5__6__7", //72
     "deWordLong": "__0__1__2__3__4__5__6__7__8__9__a__b__c__d__e__f__0__1__2__3__4__5__6__7", //72
     "deWord1": "__0__1__2__3__4__5__6__7__8__9", //30
     "deWord2": "__0__1__2__3__4__5__6__7__8__9__a__b__c__d__e__f", //48
@@ -19,7 +19,7 @@ let mockedData = {
     "dePart": "Alle Menschen sind gleich. Nur die Gehälter sind verschieden.",
     "enPart": "All people are the same.",
     "category": "preDraft",
-    imageObj: {"src":"/inc/fassen.jpg", "width":"1000", "height":"750"},
+    imageObj: {"src":"/inc/first.jpg", "width":"1000", "height":"750"},
     "id": 419
 }
 let mockedDataArr = [{
@@ -74,9 +74,8 @@ export default class App extends Component {
         let lineHeightFn = R.cond([
             [R.both(R.lt(185),R.gt(250)),   R.always(4)],
             [R.both(R.lt(125),R.gte(185)), R.always(2)],
-            [R.T,           R.always(1.5)]
+            [R.T,           R.always(3)]
         ])
-        let scaleFactor = 100
         let memeHeight = J.getHeightPx(80)
         let memeWidth = memeHeight*1.33
         let marginValue = J.divide(100-J.getPart(memeWidth,J.getWidthPx(100)),2)
@@ -94,6 +93,7 @@ export default class App extends Component {
             backgroundImage: `url(${this.state.tempState.imageObj.src})`
         }
         let memeTextTop = {
+            opacity: "1",
             top: "0px",
             color: "#263238",
             fontSize: `${fontValue}%`,
@@ -109,8 +109,10 @@ export default class App extends Component {
         let gapStyle = {
             height: `${gapValue}px`
         }
-        let memeTextBottomFirst = R.merge(memeTextTop,{backgroundColor: "#DCEDC8"})
-        let memeTextBottomSecond = R.merge(memeTextTop,{backgroundColor: "#FFE0B2"})
+        let memeTextBottomSecond = R.merge(memeTextTop,{
+            backgroundColor: "#6D98AB",
+            color: "#003366"
+        })
         return(
     <div>
         <div className="box has-text-centered">
@@ -119,7 +121,7 @@ export default class App extends Component {
         <div className="box has-text-centered is-fullwidth" style={memeContainer}>
             <div style={memeTextTop}>{this.state.tempState.deWord}</div>
             <div style={gapStyle}></div>
-            <div style={memeTextBottomFirst}>{this.state.tempState.deWord}</div>
+            <div style={memeTextTop}>{this.state.tempState.deWord}</div>
             <div style={memeTextBottomSecond}>{this.state.tempState.deWord}</div>
         </div>
 	</div>

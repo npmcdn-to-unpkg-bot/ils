@@ -1,21 +1,36 @@
-#!/usr/bin/env
 "use strict"
-const watcher = require('ape-watching')
 const J = require("./common.js")
+const sane = require("sane")
 const R = require("ramda")
 const exec = require("child_process").exec
+
 let mainFlag = true
 let negativeWordArr = [
     "node_modules",
     "eslint",
     ".log",
     "git",
+    "a.js",
+    "aPre.js",
     ".json",
     "App.js",
     "cache"
 ]
+
 let filterFn = J.anyFn(negativeWordArr)
-watcher.watchFiles(["**/*.jsx", "**/*.js", "*.less", "!node_modules/**/*", "!tmp/**/*"], (ev, filepath) => {
+
+let watcher = sane(__dirname, {
+    glob: ["**/*.jsx", "**/*.js", "*.less", "!node_modules/**/*", "!tmp/**/*"],
+    poll: true,
+    watchman: false,
+    dot: false
+})
+
+watcher.on("ready", function () {
+    J.log("ready to watch")
+})
+
+watcher.on("change", function (filepath, root, stat) {
     if (filterFn((negativeWord)=>{
         return filepath.includes(negativeWord)
     })) {
