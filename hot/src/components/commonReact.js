@@ -96,7 +96,6 @@ function Events(target) {
         while (j = list[ i++ ]) j[ 0 ].apply(j[ 1 ], empty.slice.call(arguments, 1))
     }
 }
-
 function isUniq(obj) {
     let arr = R.split(" ", obj[ "dePart" ])
     return R.uniq(arr).length === arr.length
@@ -114,6 +113,50 @@ function addProp(singleProp, defaultValue, arr) {
         return val
     }))(arr)
 }
+let fontValueFn = R.cond([
+    [R.gte(30), R.always(250)],
+    [R.both(R.lt(30), R.gte(48)), R.always(185)],
+    [R.T, R.always(125)]
+])
+let lineHeightFn = R.cond([
+    [R.equals(250), R.always(1.5)],
+    [R.equals(185), R.always(2)],
+    [R.T, R.always(3)]
+])
+function hideTail(str) {
+    return `${R.head(str)}${R.compose(R.join(""), R.repeat("."), R.length, R.tail)(str)}`
+}
+function easyGermanSymbol(keyIs) {
+    if (keyIs === "ä") {
+        return "a"
+    } else if (keyIs === "ö") {
+        return "o"
+    } else if (keyIs === "ü") {
+        return "u"
+    } else if (keyIs === "ß") {
+        return "s"
+    } else {
+        return false
+    }
+}
+function returnOldStyleGerman(keyIs) {
+    if (keyIs === "ä") {
+        return "ae"
+    } else if (keyIs === "ö") {
+        return "oe"
+    } else if (keyIs === "ü") {
+        return "ue"
+    } else if (keyIs === "ß") {
+        return "ss"
+    } else {
+        return false
+    }
+}
+module.exports.returnOldStyleGerman = returnOldStyleGerman
+module.exports.easyGermanSymbol = easyGermanSymbol
+module.exports.hideTail = hideTail
+module.exports.fontValueFn = fontValueFn
+module.exports.lineHeightFn = lineHeightFn
 module.exports.addProp = addProp
 module.exports.log = log
 module.exports.getData = getData

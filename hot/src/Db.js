@@ -26,13 +26,11 @@ J.emitter.on("save", ()=>{
         willSave = {}
     })
 })
-
 //document.addEventListener("visibilitychange", ()=>{
 //if (document["hidden"]) {
 //J.emitter.emit("save")
 //}
 //}, false)
-
 class InputComponent extends Component {
     constructor (props) {
         super(props)
