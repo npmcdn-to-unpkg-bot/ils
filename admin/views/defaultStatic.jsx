@@ -7,14 +7,14 @@ class Navigation extends Component {
     }
     static get defaultProps () {
         return {
-            keyword: "empty"
+            title: "Admin panel"
         }
     }
     render () {
         return (
             <html>
               <head>
-                  <title>{this.props.keyword}</title>
+                  <title>{this.props.title}</title>
                   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.1.0/css/bulma.min.css"/>
               </head>
               <body>
@@ -27,8 +27,6 @@ class Navigation extends Component {
                     <div>
                         {this.props.children}
                     </div>
-                    <div id="reactHook"></div>
-                    <script src={`${this.props.keyword}Front.js`} ></script>
                 </body>
             </html>
         )

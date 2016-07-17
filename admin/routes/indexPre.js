@@ -8,9 +8,7 @@ const J = require("../../common.js")
 const translate = require("../_inc/translate")
 const bringOrderTranslation = require("../_inc/bringOrderTranslation")
 const proudDb = require("../_inc/proud-db")
-
 let twoLevelUp = R.compose(R.join("/"), R.dropLast(2), R.split("/"))
-
 async function willTranslate(word) {
     let translated = await translate.deEn(word)
     return bringOrderTranslation.main(translated)
@@ -50,9 +48,12 @@ async function willBulkRemove(marker) {
         }
     }))
     let willChangeCategoryArr = dropByIndex(predraftCategory)
+    J.log(willRemoveIndexArr)
+    J.log(willChangeCategoryArr)
     let iMeanNothing
     for (let removeMarker of willRemoveIndexArr) {
         J.log(removeMarker, "remove")
+        J.log(dataState[ removeMarker ])
         iMeanNothing = await proudDb.remove("data", `${removeMarker}`)
     }
     for (let updateValue of willChangeCategoryArr) {
@@ -68,16 +69,11 @@ function willPublish(keyword, content) {
         })
     })
 }
-
 router.get("/", (req, res) => {
-    res.send("index")
+    res.render("index")
 })
 router.get("/db", (req, res) => {
     res.render("db")
-})
-router.get("/test", (req, res) =>{
-    willBulkRemove(126).then(J.lg)
-    res.send("more")
 })
 router.get("/read/:parent", (req, res) =>{
     proudDb.loadParent(req.params.parent).then((data)=>{
@@ -109,30 +105,6 @@ router.post("/blog", (req, res) =>{
         res.send("was published")
     })
 })
-router.post("/read", (req, res)=> {
-    J.log(word, "word")
-    let password = req.body.password
-    let word = req.body.word
-    if (password === envHelper.getEnv("passwordUbersetzung")) {
-        J.loadParent("GermanOverall").then((result)=>{
-            res.send(result)
-        })
-    } else {
-        res.send(word)
-    }
-})
-router.post("/readRaw", (req, res) => {
-    J.log(word, "word")
-    let password = req.body.password
-    let word = req.body.word
-    if (password === envHelper.getEnv("passwordUbersetzung")) {
-        J.loadParent("GermanOverallRaw").then((result)=>{
-            res.send(result)
-        })
-    } else {
-        res.send(word)
-    }
-})
 router.post("/deEnShort", (req, res)=>{
     let password = req.body.password
     let word = req.body.word
@@ -148,12 +120,8 @@ router.post("/deEn", (req, res)=>{
         res.send(incoming)
     })
 })
-router.post("/catchDailyHook", function (req, res) {
-    if (req.body.password === env.getEnv("mainPassword")) {
-        res.send("success")
-    } else {
-        res.send("fail")
-    }
+router.get("/test", (req, res) =>{
+    //willBulkRemove(126).then(J.lg)
+    res.send("more")
 })
-
 module.exports = router

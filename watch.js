@@ -140,36 +140,37 @@ var processFn = function () {
 
                     case 72:
                         if (!filepath.includes(".less")) {
-                            _context.next = 80;
+                            _context.next = 81;
                             break;
                         }
 
                         J.log("less");
-                        _context.next = 76;
+                        J.box(commands.less);
+                        _context.next = 77;
                         return willRunFixedCommand(commands.less);
 
-                    case 76:
+                    case 77:
                         iMeanNothing = _context.sent;
                         return _context.abrupt("return", iMeanNothing);
 
-                    case 80:
+                    case 81:
                         if (!(filepath.includes(".js") && !filepath.includes("Front"))) {
-                            _context.next = 88;
+                            _context.next = 89;
                             break;
                         }
 
                         J.log("lint");
-                        _context.next = 84;
+                        _context.next = 85;
                         return willRunFixedCommand(commands.lint);
 
-                    case 84:
+                    case 85:
                         iMeanNothing = _context.sent;
                         return _context.abrupt("return", iMeanNothing);
 
-                    case 88:
+                    case 89:
                         return _context.abrupt("return", false);
 
-                    case 89:
+                    case 90:
                     case "end":
                         return _context.stop();
                 }
@@ -191,10 +192,11 @@ var exec = require("child_process").exec;
 var mainFlag = true;
 var negativeWordArr = ["node_modules", "eslint", ".log", "git", ".json", "App.js", "cache"];
 var filterFn = J.anyFn(negativeWordArr);
-watcher.watchFiles(["**/*.jsx", "**/*.js", "*.less"], function (ev, filepath) {
+watcher.watchFiles(["**/*.jsx", "**/*.js", "**/*.less"], function (ev, filepath) {
     if (filterFn(function (negativeWord) {
         return filepath.includes(negativeWord);
     })) {
+        J.lg("will return null");
         return null;
     } else {
         if (mainFlag === true) {
@@ -208,6 +210,7 @@ watcher.watchFiles(["**/*.jsx", "**/*.js", "*.less"], function (ev, filepath) {
                     J.log("💡💡💡  " + J.takeName(filepath) + " Is Over  💡💡💡");
                 });
             } else {
+                J.lg("file does not exist?!");
                 setTimeout(function () {
                     mainFlag = true;
                 }, 1000);

@@ -6,55 +6,8 @@
 @memeImageHeight: 40%;
 @memeBackgroundColor: #CFD8DC;
 @memeTextColor: #546E7A;
-@mildRed: #FF4081;
-@learningMemeBackground: #B0BEC5;
-@correctFirst: #689F38;
-@correctSecond: #A5D6A7;
-@wrongFirst: #E57373;
-@wrongSecond: #EC407A;
-.wrongAnswerLearningMeme{
-  animation: wrongLearningMeme 1s;
-}
-.correctAnswerLearningMeme{
-  animation: correctLearningMeme 1s;
-}
-@keyframes correctLearningMeme {
-     0% {background-color: @correctFirst;outline: 3px solid @correctSecond;}
-     33% {background-color: @correctSecond;outline: 3px solid @correctFirst;}
-     66% {background-color: @correctFirst;outline: 3px solid @correctSecond;}
-     99% {background-color: @correctSecond;outline: 3px solid @correctFirst;}
-}
-@keyframes wrongLearningMeme {
-     0% {background-color: @wrongFirst;outline: 3px solid @wrongSecond;}
-     33% {background-color: @wrongSecond;outline: 3px solid @wrongFirst;}
-     66% {background-color: @wrongFirst;outline: 3px solid @wrongSecond;}
-     99% {background-color: @wrongSecond;outline: 3px solid @wrongFirst;}
-}
 .borderTemplate(){
     border:solid 1px #4DB6AC;
-}
-.inputField, .inputField:focus{
-text-align: center;
-font-weight:bold;
-outline: none;
-padding: 7px;
-opacity: 0.5;
-border-radius: 5%;
-border: 1px solid @learningMemeBackground;
-background: linear-gradient(@learningMemeBackground, @backgroundMeme 70%, @learningMemeBackground);
-}
-.borderBottom{
-    border-style: solid;
-    border-bottom: 5px solid @mildRed;
-}
-.unselectedImage{
-    .borderTemplate;
-    padding: 5px;
-    background-color: @memeTextColor;
-}
-.selectedImage{
-    padding: 5px;
-    background-color: @mildRed;
 }
 .newEntryContainer{
     .borderTemplate;
@@ -90,7 +43,7 @@ border:solid 1px #4DB6AC !important;
 }
 .singleWordCorrect{
     border-radius: 40%;
-    border:solid 2px @mildRed;
+    border:solid 2px #FF4081;
     border-style:double;
     padding:2px;
     cursor: pointer;

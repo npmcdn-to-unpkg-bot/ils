@@ -139,6 +139,19 @@ function easyGermanSymbol(keyIs) {
         return false
     }
 }
+function returnEasyStyleGerman(keyIs) {
+    if (keyIs === "ä") {
+        return "a"
+    } else if (keyIs === "ö") {
+        return "o"
+    } else if (keyIs === "ü") {
+        return "u"
+    } else if (keyIs === "ß") {
+        return "s"
+    } else {
+        return keyIs
+    }
+}
 function returnOldStyleGerman(keyIs) {
     if (keyIs === "ä") {
         return "ae"
@@ -149,9 +162,10 @@ function returnOldStyleGerman(keyIs) {
     } else if (keyIs === "ß") {
         return "ss"
     } else {
-        return false
+        return keyIs
     }
 }
+module.exports.returnEasyStyleGerman = returnEasyStyleGerman
 module.exports.returnOldStyleGerman = returnOldStyleGerman
 module.exports.easyGermanSymbol = easyGermanSymbol
 module.exports.hideTail = hideTail

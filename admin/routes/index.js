@@ -183,137 +183,141 @@ var willBulkRemove = function () {
                             }
                         }));
                         willChangeCategoryArr = dropByIndex(predraftCategory);
+
+                        J.log(willRemoveIndexArr);
+                        J.log(willChangeCategoryArr);
                         iMeanNothing = void 0;
                         _iteratorNormalCompletion2 = true;
                         _didIteratorError2 = false;
                         _iteratorError2 = undefined;
-                        _context4.prev = 11;
+                        _context4.prev = 13;
                         _iterator2 = willRemoveIndexArr[Symbol.iterator]();
 
-                    case 13:
+                    case 15:
                         if (_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done) {
-                            _context4.next = 22;
+                            _context4.next = 25;
                             break;
                         }
 
                         removeMarker = _step2.value;
 
                         J.log(removeMarker, "remove");
-                        _context4.next = 18;
+                        J.log(dataState[removeMarker]);
+                        _context4.next = 21;
                         return proudDb.remove("data", "" + removeMarker);
 
-                    case 18:
+                    case 21:
                         iMeanNothing = _context4.sent;
 
-                    case 19:
-                        _iteratorNormalCompletion2 = true;
-                        _context4.next = 13;
-                        break;
-
                     case 22:
-                        _context4.next = 28;
+                        _iteratorNormalCompletion2 = true;
+                        _context4.next = 15;
                         break;
 
-                    case 24:
-                        _context4.prev = 24;
-                        _context4.t0 = _context4["catch"](11);
+                    case 25:
+                        _context4.next = 31;
+                        break;
+
+                    case 27:
+                        _context4.prev = 27;
+                        _context4.t0 = _context4["catch"](13);
                         _didIteratorError2 = true;
                         _iteratorError2 = _context4.t0;
 
-                    case 28:
-                        _context4.prev = 28;
-                        _context4.prev = 29;
+                    case 31:
+                        _context4.prev = 31;
+                        _context4.prev = 32;
 
                         if (!_iteratorNormalCompletion2 && _iterator2.return) {
                             _iterator2.return();
                         }
 
-                    case 31:
-                        _context4.prev = 31;
+                    case 34:
+                        _context4.prev = 34;
 
                         if (!_didIteratorError2) {
-                            _context4.next = 34;
+                            _context4.next = 37;
                             break;
                         }
 
                         throw _iteratorError2;
 
-                    case 34:
+                    case 37:
+                        return _context4.finish(34);
+
+                    case 38:
                         return _context4.finish(31);
 
-                    case 35:
-                        return _context4.finish(28);
-
-                    case 36:
+                    case 39:
                         _iteratorNormalCompletion3 = true;
                         _didIteratorError3 = false;
                         _iteratorError3 = undefined;
-                        _context4.prev = 39;
+                        _context4.prev = 42;
                         _iterator3 = willChangeCategoryArr[Symbol.iterator]();
 
-                    case 41:
+                    case 44:
                         if (_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done) {
-                            _context4.next = 50;
+                            _context4.next = 53;
                             break;
                         }
 
                         updateValue = _step3.value;
 
                         J.log(updateValue, "update");
-                        _context4.next = 46;
+                        _context4.next = 49;
                         return proudDb.save("data", "" + updateValue.id, updateValue);
 
-                    case 46:
+                    case 49:
                         iMeanNothing = _context4.sent;
 
-                    case 47:
-                        _iteratorNormalCompletion3 = true;
-                        _context4.next = 41;
-                        break;
-
                     case 50:
-                        _context4.next = 56;
+                        _iteratorNormalCompletion3 = true;
+                        _context4.next = 44;
                         break;
 
-                    case 52:
-                        _context4.prev = 52;
-                        _context4.t1 = _context4["catch"](39);
+                    case 53:
+                        _context4.next = 59;
+                        break;
+
+                    case 55:
+                        _context4.prev = 55;
+                        _context4.t1 = _context4["catch"](42);
                         _didIteratorError3 = true;
                         _iteratorError3 = _context4.t1;
 
-                    case 56:
-                        _context4.prev = 56;
-                        _context4.prev = 57;
+                    case 59:
+                        _context4.prev = 59;
+                        _context4.prev = 60;
 
                         if (!_iteratorNormalCompletion3 && _iterator3.return) {
                             _iterator3.return();
                         }
 
-                    case 59:
-                        _context4.prev = 59;
+                    case 62:
+                        _context4.prev = 62;
 
                         if (!_didIteratorError3) {
-                            _context4.next = 62;
+                            _context4.next = 65;
                             break;
                         }
 
                         throw _iteratorError3;
 
-                    case 62:
+                    case 65:
+                        return _context4.finish(62);
+
+                    case 66:
                         return _context4.finish(59);
 
-                    case 63:
-                        return _context4.finish(56);
-
-                    case 64:
+                    case 67:
                         return _context4.abrupt("return", iMeanNothing);
 
-                    case 65:
+                    case 68:
                     case "end":
                         return _context4.stop();
                 }
             }
-        }, _callee4, this, [[11, 24, 28, 36], [29,, 31, 35], [39, 52, 56, 64], [57,, 59, 63]]);
+        }, _callee4, this, [[13, 27, 31, 39], [32,, 34, 38], [42, 55, 59, 67], [60,, 62, 66]]);
     }));
     return function willBulkRemove(_x6) {
         return ref.apply(this, arguments);
@@ -331,7 +335,6 @@ var J = require("../../common.js");
 var translate = require("../_inc/translate");
 var bringOrderTranslation = require("../_inc/bringOrderTranslation");
 var proudDb = require("../_inc/proud-db");
-
 var twoLevelUp = R.compose(R.join("/"), R.dropLast(2), R.split("/"));
 
 var getPredraftCategory = R.compose(R.filter(function (val) {
@@ -345,16 +348,11 @@ function willPublish(keyword, content) {
         });
     });
 }
-
 router.get("/", function (req, res) {
-    res.send("index");
+    res.render("index");
 });
 router.get("/db", function (req, res) {
     res.render("db");
-});
-router.get("/test", function (req, res) {
-    willBulkRemove(126).then(J.lg);
-    res.send("more");
 });
 router.get("/read/:parent", function (req, res) {
     proudDb.loadParent(req.params.parent).then(function (data) {
@@ -386,30 +384,6 @@ router.post("/blog", function (req, res) {
         res.send("was published");
     });
 });
-router.post("/read", function (req, res) {
-    J.log(word, "word");
-    var password = req.body.password;
-    var word = req.body.word;
-    if (password === envHelper.getEnv("passwordUbersetzung")) {
-        J.loadParent("GermanOverall").then(function (result) {
-            res.send(result);
-        });
-    } else {
-        res.send(word);
-    }
-});
-router.post("/readRaw", function (req, res) {
-    J.log(word, "word");
-    var password = req.body.password;
-    var word = req.body.word;
-    if (password === envHelper.getEnv("passwordUbersetzung")) {
-        J.loadParent("GermanOverallRaw").then(function (result) {
-            res.send(result);
-        });
-    } else {
-        res.send(word);
-    }
-});
 router.post("/deEnShort", function (req, res) {
     var password = req.body.password;
     var word = req.body.word;
@@ -425,12 +399,8 @@ router.post("/deEn", function (req, res) {
         res.send(incoming);
     });
 });
-router.post("/catchDailyHook", function (req, res) {
-    if (req.body.password === env.getEnv("mainPassword")) {
-        res.send("success");
-    } else {
-        res.send("fail");
-    }
+router.get("/test", function (req, res) {
+    //willBulkRemove(126).then(J.lg)
+    res.send("more");
 });
-
 module.exports = router;

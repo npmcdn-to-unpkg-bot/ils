@@ -49,11 +49,14 @@ export default class App extends Component {
         super(props)
         this.state = {
             index: 0,
+            globalIndex: 0,
             globalData: [],
             data: initData,
             answer: "",
             textTop: "",
             textBottom: "",
+            inputFieldSize:20,
+            inputFieldClassName:"inputField",
             buttonText: J.buttonTextShowAnswer,
             buttonClassName: J.bulButtonInit,
             buttonStyle: {}
@@ -73,7 +76,6 @@ export default class App extends Component {
             let willTextTopRaw = R.split(" ",this.state.data.deWord)
             let willTextTop = R.compose(R.map(val=>J.hideTail(val)),R.split(" "))(this.state.data.deWord)
             let willTextBottom = R.compose(R.join(" "),R.map(val=>{
-                J.log(val)
                 willTextTopRaw.map((value,key)=>{
                     if(value===val){
                         val = willTextTop[key]
@@ -81,11 +83,53 @@ export default class App extends Component {
                 })
                 return val
             }),R.split(" "))(this.state.data.dePart)
-            J.log(willTextBottom)
             this.setState({
                 textTop: `${R.join(" ",willTextTop)}|${this.state.data.enWord}`,
                 textBottom: willTextBottom
             })
+        })
+        J.emitter.on("correct",()=>{
+            let domElement = document.getElementById("animationMarker")
+            domElement.classList.add("correctAnswerLearningMeme")
+            setTimeout(()=>{
+                domElement.classList.remove("correctAnswerLearningMeme")
+            },10000)
+            J.emitter.emit("change button")
+        })
+        J.emitter.on("wrong",()=>{
+            let domElement = document.getElementById("animationMarker")
+            domElement.classList.add("wrongAnswerLearningMeme")
+            setTimeout(()=>{
+                domElement.classList.remove("wrongAnswerLearningMeme")
+            },10000)
+            J.emitter.emit("change button")
+        })
+        J.emitter.on("check answer",()=>{
+            let deWord = this.state.data.deWord.toLowerCase()
+            let altAnswer = R.compose(R.toLower,R.join(""),R.map(val =>J.returnEasyStyleGerman(val)),R.splitEvery(1))(deWord)
+            let altAnswerSecond = R.compose(R.toLower,R.join(""),R.map(val =>J.returnOldStyleGerman(val)),R.splitEvery(1))(deWord)
+            J.log(altAnswer)
+            J.log(altAnswerSecond)
+            console.log(this.state.answer.toLowerCase(),deWord, altAnswer, altAnswerSecond)
+            if(R.any(R.equals(this.state.answer.toLowerCase()))([deWord, altAnswer, altAnswerSecond])){
+                J.emitter.emit("correct")
+            }else{
+                J.emitter.emit("wrong")
+            }
+        })
+        J.emitter.on("show answer",()=>{
+
+        })
+        J.emitter.on("change button",()=>{
+            this.setState({
+                buttonText: J.buttonTextNext,
+                buttonClassName: J.bulButtonNext,
+                textTop: `${this.state.data.deWord}|${this.state.data.enWord}`,
+                textBottom: this.state.data.dePart
+            })
+        })
+        J.emitter.on("next",()=>{
+
         })
         initOnce()
     }
@@ -95,6 +139,10 @@ export default class App extends Component {
         }
         this.setState({
             answer: event.target.value
+        },()=>{
+            if(this.state.answer.length>this.state.inputFieldSize){
+                this.setState({inputFieldSize:this.state.answer.length})
+            }
         })
     }
     render () {
@@ -109,9 +157,9 @@ export default class App extends Component {
         let lineHeightTextBottomSecond = J.lineHeightFn(fontTextBottomSecond)
         let heightValue = J.getPercent(10,memeHeight)
         let gapValue = memeHeight-(3*heightValue)
-        console.log(this.state.textTop.length, this.state.textBottom.length, this.state.data.enPart.length)
-        console.log(fontTextTop, fontTextBottom, fontTextBottomSecond)
-        console.log(lineHeightTextTop, lineHeightTextBottom, lineHeightTextBottomSecond)
+        //console.log(this.state.textTop.length, this.state.textBottom.length, this.state.data.enPart.length)
+        //console.log(fontTextTop, fontTextBottom, fontTextBottomSecond)
+        //console.log(lineHeightTextTop, lineHeightTextBottom, lineHeightTextBottomSecond)
         let memeContainer = {
             padding: "0px",
             marginLeft: `${J.getWidthPx(marginValue)}px`,
@@ -148,8 +196,13 @@ export default class App extends Component {
         })
         return(
     <div>
-        <div className="box has-text-centered">
-            <input autoFocus className="inputField" type="text" value={this.state.answer} size={this.state.answer.length} onChange={this.handleAnswerInput} onKeyPress={this.handleAnswerInput}/>
+        <div className="box has-text-centered columns">
+            <div id="animationMarker" className="column is-4 is-offset-4">
+            <input autoFocus className={this.state.inputFieldClassName} type="text" value={this.state.answer} size={this.state.inputFieldSize} onChange={this.handleAnswerInput} onKeyPress={this.handleAnswerInput}/>
+            </div>
+            <div className="column is-4">
+                <a className="button is-info is-outlined">{this.state.buttonText}</a>
+            </div>
         </div>
         <div className="box has-text-centered is-fullwidth" style={memeContainer}>
             <div style={memeTextTop}>{this.state.textTop}</div>

@@ -1,3 +1,69 @@
+.wrongAnswerLearningMeme {
+  animation: wrongLearningMeme 1s;
+}
+.correctAnswerLearningMeme {
+  animation: correctLearningMeme 1s;
+}
+@keyframes correctLearningMeme {
+  0% {
+    background-color: #689F38;
+    outline: 3px solid #A5D6A7;
+  }
+  33% {
+    background-color: #A5D6A7;
+    outline: 3px solid #689F38;
+  }
+  66% {
+    background-color: #689F38;
+    outline: 3px solid #A5D6A7;
+  }
+  99% {
+    background-color: #A5D6A7;
+    outline: 3px solid #689F38;
+  }
+}
+@keyframes wrongLearningMeme {
+  0% {
+    background-color: #E57373;
+    outline: 3px solid #EC407A;
+  }
+  33% {
+    background-color: #EC407A;
+    outline: 3px solid #E57373;
+  }
+  66% {
+    background-color: #E57373;
+    outline: 3px solid #EC407A;
+  }
+  99% {
+    background-color: #EC407A;
+    outline: 3px solid #E57373;
+  }
+}
+.inputField,
+.inputField:focus {
+  text-align: center;
+  font-weight: bold;
+  outline: none;
+  padding: 7px;
+  opacity: 0.5;
+  border-radius: 5%;
+  border: 1px solid #B0BEC5;
+  background: linear-gradient(#B0BEC5, #ffffff 70%, #B0BEC5);
+}
+.borderBottom {
+  border-style: solid;
+  border-bottom: 5px solid #FF4081;
+}
+.unselectedImage {
+  border: solid 1px #4DB6AC;
+  padding: 5px;
+  background-color: #546E7A;
+}
+.selectedImage {
+  padding: 5px;
+  background-color: #FF4081;
+}
 .newEntryContainer {
   border: solid 1px #4DB6AC;
   position: fixed;

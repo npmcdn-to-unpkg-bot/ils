@@ -17,6 +17,9 @@ let cleanFn = R.compose(R.replace(/\/(.|\n)+(?=#)/gm, ""))
 router.get("/", (req, res) =>{
     res.render("index")
 })
+router.get("/redux", (req, res) =>{
+    res.render("redux")
+})
 router.get("/aboutOrderSentence", (req, res)=> {
     res.render("aboutOrderSentence")
 })

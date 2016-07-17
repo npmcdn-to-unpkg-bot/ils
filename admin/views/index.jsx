@@ -1,21 +1,9 @@
 "use strict"
-import React ,{ Component }from"react"
-var DefaultLayout = require("./default.jsx")
-
-class IndexContainer extends Component {
-    render () {
-        return(
-            <div>
-                <p>SomeStaticContent</p>
-            </div>
-        )
-      }
-}
-
+import React, { Component } from "react"
+const DefaultLayout = require("./defaultStatic.jsx")
 let Exported = React.createClass({
-  render: function () {
-    return<DefaultLayout keyword="learningMeme"></DefaultLayout>
-  }
+    render: function () {
+        return <DefaultLayout></DefaultLayout>
+    }
 })
-
 module.exports = Exported

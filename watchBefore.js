@@ -16,15 +16,16 @@ let negativeWordArr = [
     "cache"
 ]
 let filterFn = J.anyFn(negativeWordArr)
-watcher.watchFiles(["**/*.jsx", "**/*.js", "*.less"], (ev, filepath) => {
+watcher.watchFiles(["**/*.jsx", "**/*.js", "**/*.less"], (ev, filepath) => {
     if (filterFn((negativeWord)=>{
         return filepath.includes(negativeWord)
     })) {
+        J.lg("will return null")
         return null
     } else {
         if (mainFlag === true) {
             mainFlag = false
-            if(fileExists(filepath)){
+            if (fileExists(filepath)) {
                 J.box(`⚡⚡⚡  ${J.takeName(filepath)} Will Start  ⚡⚡⚡`)
                 processFn(filepath).then((incoming)=>{
                     setTimeout(()=>{
@@ -32,7 +33,8 @@ watcher.watchFiles(["**/*.jsx", "**/*.js", "*.less"], (ev, filepath) => {
                     }, 1000)
                     J.log(`💡💡💡  ${J.takeName(filepath)} Is Over  💡💡💡`)
                 })
-            }else{
+            } else {
+                J.lg("file does not exist?!")
                 setTimeout(()=>{
                     mainFlag = true
                 }, 1000)
@@ -90,6 +92,7 @@ async function processFn(filepath) {
 
     } else if (filepath.includes(".less")) {
         J.log("less")
+        J.box(commands.less)
         iMeanNothing = await willRunFixedCommand(commands.less)
         return iMeanNothing
 
