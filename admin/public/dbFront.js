@@ -73,7 +73,8 @@ var inputObjInitial = {
     id: 0,
     dePart: "",
     enPart: "",
-    category: "draft"
+    category: "draft",
+    removeSingle: function removeSingle() {}
 };
 var willSave = {};
 var selectedText = "";
@@ -166,6 +167,11 @@ var InputComponent = function (_Component) {
                 _react2.default.createElement("input", { type: "text", value: this.state.inputObj.dePart, className: "dePart", size: this.state.inputObj.dePart.length, onChange: this.willHandleChangeDePart, onBlur: this.willHandleBlur, onClick: this.willHandleChangeDePart, onSelect: this.willHandleTextSelect }),
                 _react2.default.createElement("br", null),
                 _react2.default.createElement("input", { type: "text", value: this.state.inputObj.enPart, className: "enPart", size: this.state.inputObj.enPart.length, onChange: this.willHandleChangeEnPart, onBlur: this.willHandleBlur, onSelect: this.willHandleTextSelect }),
+                _react2.default.createElement(
+                    "a",
+                    { className: "button outline is-danger", id: this.state.inputObj.id, onClick: this.props.removeSingle },
+                    " X "
+                ),
                 _react2.default.createElement(_reactSelect2.default, { name: "category " + this.state.inputObj.id,
                     value: this.state.inputObj.category, options: _commonReact2.default.categoryOptions, onChange: this.willHandleCategory })
             );
@@ -194,6 +200,7 @@ var App = function (_Component2) {
             paginationIndex: 0,
             paginationPerPageCount: 10,
             category: "quotes",
+            message: "",
             translatedData: {},
             globalDataRaw: {},
             globalData: []
@@ -207,6 +214,8 @@ var App = function (_Component2) {
         _this2.willBulkRemove = _this2.willBulkRemove.bind(_this2);
         _this2.willSave = _this2.willSave.bind(_this2);
         _this2.newEntry = _this2.newEntry.bind(_this2);
+        _this2.removeSingle = _this2.removeSingle.bind(_this2);
+        _this2.sendMessage = _this2.sendMessage.bind(_this2);
         return _this2;
     }
 
@@ -305,7 +314,6 @@ var App = function (_Component2) {
             var globalDataFuture = _ramda2.default.compose(_ramda2.default.filter(function (val) {
                 return _ramda2.default.prop("id", val) != willDeleteIndex;
             }))(this.state.globalData);
-            _commonReact2.default.log(globalDataFuture);
             this.setState({
                 globalData: []
             }, function () {
@@ -334,9 +342,43 @@ var App = function (_Component2) {
             _commonReact2.default.emitter.emit("save");
         }
     }, {
+        key: "removeSingle",
+        value: function removeSingle(event) {
+            var _this8 = this;
+
+            var identity = event.target.attributes.id.value;
+            _commonReact2.default.postData("http://localhost:3001/remove/data", JSON.stringify({ id: identity })).then(function (data) {
+                _commonReact2.default.log("removed");
+                _this8.sendMessage("removed");
+                var globalDataFuture = _ramda2.default.compose(_ramda2.default.filter(function (val) {
+                    return _ramda2.default.prop("id", val) != identity;
+                }))(_this8.state.globalData);
+                _this8.setState({
+                    globalData: []
+                }, function () {
+                    _this8.setState({
+                        globalData: globalDataFuture
+                    });
+                });
+            });
+        }
+    }, {
+        key: "sendMessage",
+        value: function sendMessage(msg) {
+            var _this9 = this;
+
+            this.setState({
+                message: msg
+            }, function () {
+                setTimeout(function () {
+                    _this9.setState({ message: "" });
+                }, 5000);
+            });
+        }
+    }, {
         key: "render",
         value: function render() {
-            var _this8 = this;
+            var _this10 = this;
 
             return _react2.default.createElement(
                 "div",
@@ -383,12 +425,7 @@ var App = function (_Component2) {
                         _react2.default.createElement(
                             "a",
                             { className: "button outline is-danger is-inverted", onClick: this.newEntry },
-                            "new entry"
-                        ),
-                        _react2.default.createElement(
-                            "a",
-                            { className: "button outline is-danger", onClick: this.willRemove },
-                            " X "
+                            "+"
                         ),
                         _react2.default.createElement(
                             "a",
@@ -403,6 +440,11 @@ var App = function (_Component2) {
                     ),
                     _react2.default.createElement(
                         "div",
+                        { className: "column is-2" },
+                        this.state.message
+                    ),
+                    _react2.default.createElement(
+                        "div",
                         { className: "column" },
                         _react2.default.createElement(_reactSelect2.default, { name: "category global", value: this.state.category, options: _commonReact2.default.categoryOptions, onChange: this.willHandleCategory })
                     )
@@ -411,8 +453,8 @@ var App = function (_Component2) {
                     "div",
                     { className: "columns is-multiline" },
                     this.state.globalData.map(function (val, key) {
-                        if (key < _this8.state.paginationIndex + _this8.state.paginationPerPageCount && key >= _this8.state.paginationIndex) {
-                            return _react2.default.createElement(InputComponent, { key: key, inputObj: val });
+                        if (key < _this10.state.paginationIndex + _this10.state.paginationPerPageCount && key >= _this10.state.paginationIndex) {
+                            return _react2.default.createElement(InputComponent, { key: key, inputObj: val, removeSingle: _this10.removeSingle });
                         }
                     })
                 )
@@ -572,6 +614,19 @@ function easyGermanSymbol(keyIs) {
         return false;
     }
 }
+function returnEasyStyleGerman(keyIs) {
+    if (keyIs === "ä") {
+        return "a";
+    } else if (keyIs === "ö") {
+        return "o";
+    } else if (keyIs === "ü") {
+        return "u";
+    } else if (keyIs === "ß") {
+        return "s";
+    } else {
+        return keyIs;
+    }
+}
 function returnOldStyleGerman(keyIs) {
     if (keyIs === "ä") {
         return "ae";
@@ -582,9 +637,10 @@ function returnOldStyleGerman(keyIs) {
     } else if (keyIs === "ß") {
         return "ss";
     } else {
-        return false;
+        return keyIs;
     }
 }
+module.exports.returnEasyStyleGerman = returnEasyStyleGerman;
 module.exports.returnOldStyleGerman = returnOldStyleGerman;
 module.exports.easyGermanSymbol = easyGermanSymbol;
 module.exports.hideTail = hideTail;

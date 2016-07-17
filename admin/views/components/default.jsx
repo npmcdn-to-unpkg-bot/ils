@@ -22,14 +22,6 @@ class Navigation extends Component {
                   <link rel="stylesheet" async href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.1/animate.min.css"/>
               </head>
               <body>
-              <div className="columns is-mobile has-text-centered">
-                <div className="column is-half is-offset-one-quarter has-text-centered">
-                    <span className="is-text-centered navItem"><a className="button is-normal" href="/db" rel="nofollow">db</a></span>
-                    <span className="is-text-centered navItem"><a className="button is-normal" href="/#" rel="nofollow">Next</a></span>
-                    <span className="is-text-centered navItem"><a className="button is-normal" href="/#" rel="nofollow">Next</a></span>
-                    <span className="is-text-centered navItem"><a className="button is-normal" href="/#" rel="nofollow">Next</a></span>
-                </div>
-              </div>
                     <div>
                         {this.props.children}
                     </div>

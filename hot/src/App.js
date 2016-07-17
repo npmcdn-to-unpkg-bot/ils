@@ -37,7 +37,7 @@ let mockedDataArr = [{
 }, {
     "deWord": "abnehmen",
     "enWord": "to leave",
-    "dePart": "Die Hälfte aller Menschen wollen abnehmen, die andere Hälfte verhungert.",
+    "dePart": "Die Hälfte aller Menschen wollen abnehmen die andere Hälfte verhungert.",
     "enPart": "Half of the people want to",
     imageSrc:"/inc/first.jpg",
     "category": "preDraft",
@@ -48,7 +48,6 @@ export default class App extends Component {
     constructor (props) {
         super(props)
         this.state = {
-            index: 0,
             globalIndex: 0,
             globalData: [],
             data: initData,
@@ -58,10 +57,10 @@ export default class App extends Component {
             inputFieldSize:20,
             inputFieldClassName:"inputField",
             buttonText: J.buttonTextShowAnswer,
-            buttonClassName: J.bulButtonInit,
-            buttonStyle: {}
+            buttonClassName: J.bulButtonInit
         }
         this.handleAnswerInput = this.handleAnswerInput.bind(this)
+        this.handleButtonClick = this.handleButtonClick.bind(this)
     }
     componentDidMount() {
         J.emitter.on("global init",()=>{
@@ -85,7 +84,9 @@ export default class App extends Component {
             }),R.split(" "))(this.state.data.dePart)
             this.setState({
                 textTop: `${R.join(" ",willTextTop)}|${this.state.data.enWord}`,
-                textBottom: willTextBottom
+                textBottom: willTextBottom,
+                buttonText: J.buttonTextShowAnswer,
+                buttonClassName: J.bulButtonInit
             })
         })
         J.emitter.on("correct",()=>{
@@ -117,9 +118,6 @@ export default class App extends Component {
                 J.emitter.emit("wrong")
             }
         })
-        J.emitter.on("show answer",()=>{
-
-        })
         J.emitter.on("change button",()=>{
             this.setState({
                 buttonText: J.buttonTextNext,
@@ -129,9 +127,28 @@ export default class App extends Component {
             })
         })
         J.emitter.on("next",()=>{
-
+            let willBeIndex
+            if (this.state.globalIndex === this.state.globalData.length - 1) {
+                willBeIndex = 0
+            } else {
+                willBeIndex = this.state.globalIndex + 1
+            }
+            this.setState({
+                data:this.state.globalData[ willBeIndex ],
+                globalIndex: willBeIndex
+            }, ()=>{
+                J.emitter.emit("init")
+            })
         })
         initOnce()
+    }
+    handleButtonClick(event){
+        J.log(this.state.buttonText)
+        if (this.state.buttonText === "Show Answer") {
+            J.emitter.emit("change button")
+        } else if (this.state.buttonText === "Next") {
+            J.emitter.emit("next")
+        }
     }
     handleAnswerInput (event) {
         if(event.key==="Enter"){
@@ -201,7 +218,7 @@ export default class App extends Component {
             <input autoFocus className={this.state.inputFieldClassName} type="text" value={this.state.answer} size={this.state.inputFieldSize} onChange={this.handleAnswerInput} onKeyPress={this.handleAnswerInput}/>
             </div>
             <div className="column is-4">
-                <a className="button is-info is-outlined">{this.state.buttonText}</a>
+                <a className={this.state.buttonClassName} onClick={this.handleButtonClick}>{this.state.buttonText}</a>
             </div>
         </div>
         <div className="box has-text-centered is-fullwidth" style={memeContainer}>

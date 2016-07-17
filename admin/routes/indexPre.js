@@ -37,7 +37,7 @@ async function willBulkRemove(marker) {
     let willRemoveIndexArr = []
     let dropByIndex = R.compose(R.values, R.map(R.set(R.lensProp("category"), "draft")), R.filter((val)=>{
         if (R.lte(R.prop("id", val), marker)) {
-            if (R.prop("enPart", val).length > 1) {
+            if (R.prop("enPart", val).length > 0) {
                 return true
             } else {
                 willRemoveIndexArr.push(R.prop("id", val))

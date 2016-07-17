@@ -14,7 +14,8 @@ const inputObjInitial = {
     id: 0,
     dePart: "",
     enPart: "",
-    category:"draft"
+    category:"draft",
+    removeSingle: ()=>{}
 }
 let willSave = {}
 let selectedText = ""
@@ -87,6 +88,7 @@ class InputComponent extends Component {
             <input type="text" value={this.state.inputObj.dePart} className="dePart" size={this.state.inputObj.dePart.length} onChange={this.willHandleChangeDePart} onBlur={this.willHandleBlur} onClick={this.willHandleChangeDePart} onSelect={this.willHandleTextSelect}/>
             <br/>
             <input type="text" value={this.state.inputObj.enPart} className="enPart" size={this.state.inputObj.enPart.length} onChange={this.willHandleChangeEnPart} onBlur={this.willHandleBlur} onSelect={this.willHandleTextSelect}/>
+            <a className="button outline is-danger" id={this.state.inputObj.id} onClick={this.props.removeSingle}> X </a>
             <Select name={`category ${this.state.inputObj.id}`}
             value={this.state.inputObj.category} options={J.categoryOptions} onChange={this.willHandleCategory} />
         </div>
@@ -100,6 +102,7 @@ export default class App extends Component {
             paginationIndex: 0,
             paginationPerPageCount: 10,
             category: "quotes",
+            message:"",
             translatedData: {},
             globalDataRaw: {},
             globalData: []
@@ -113,6 +116,8 @@ export default class App extends Component {
         this.willBulkRemove = this.willBulkRemove.bind(this)
         this.willSave = this.willSave.bind(this)
         this.newEntry = this.newEntry.bind(this)
+        this.removeSingle = this.removeSingle.bind(this)
+        this.sendMessage = this.sendMessage.bind(this)
     }
     componentDidMount() {
         J.emitter.on("init", ()=>{
@@ -184,7 +189,6 @@ export default class App extends Component {
         let globalDataFuture = R.compose(R.filter((val)=>{
             return R.prop("id", val) != willDeleteIndex
         }))(this.state.globalData)
-        J.log(globalDataFuture)
         this.setState({
             globalData: []
         }, ()=>{
@@ -208,6 +212,32 @@ export default class App extends Component {
     willSave() {
         J.emitter.emit("save")
     }
+    removeSingle(event) {
+        let identity = event.target.attributes.id.value
+        J.postData("http://localhost:3001/remove/data", JSON.stringify({id: identity})).then((data)=>{
+            J.log("removed")
+            this.sendMessage("removed")
+            let globalDataFuture = R.compose(R.filter((val)=>{
+                return R.prop("id", val) != identity
+            }))(this.state.globalData)
+            this.setState({
+                globalData: []
+            }, ()=>{
+                this.setState({
+                    globalData: globalDataFuture
+                })
+            })
+        })
+    }
+    sendMessage(msg) {
+        this.setState({
+            message: msg
+        }, ()=>{
+            setTimeout(()=>{
+                this.setState({message: ""})
+            }, 5000)
+        })
+    }
     render () {
         return (
 <div>
@@ -220,10 +250,12 @@ export default class App extends Component {
         <div className="column">
             <a className="button outline is-primary is-inverted" onClick={this.willTranslateShort}>short</a>
             <a className="button outline is-danger is-inverted" onClick={this.willTranslate}>long</a>
-            <a className="button outline is-danger is-inverted" onClick={this.newEntry}>new entry</a>
-            <a className="button outline is-danger" onClick={this.willRemove}> X </a>
+            <a className="button outline is-danger is-inverted" onClick={this.newEntry}>+</a>
             <a className="button outline is-primary is-inverted" onClick={this.willBulkRemove}>|X|</a>
             <a className="button outline is-warning" onClick={this.willSave}>Save</a>
+        </div>
+        <div className="column is-2">
+            {this.state.message}
         </div>
         <div className="column">
             <Select name="category global" value={this.state.category} options={J.categoryOptions} onChange={this.willHandleCategory} />
@@ -233,7 +265,7 @@ export default class App extends Component {
         {this.state.globalData.map((val, key)=>{
             if (key < this.state.paginationIndex + this.state.paginationPerPageCount && key >= this.state.paginationIndex)
             {
-                return <InputComponent key={key} inputObj={val} />
+                return <InputComponent key={key} inputObj={val} removeSingle={this.removeSingle}/>
             }
         })}
     </div>
