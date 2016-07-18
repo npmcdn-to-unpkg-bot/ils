@@ -101,6 +101,7 @@ async function processFn(filepath) {
         iMeanNothing = await willRunFixedCommand(commands.lint)
         return iMeanNothing
     } else {
+        J.lg(`in else ${filepath}`)
         return false
     }
 }

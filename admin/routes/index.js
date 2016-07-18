@@ -1,5 +1,9 @@
 "use strict";
 
+var _typeof2 = require("babel-runtime/helpers/typeof");
+
+var _typeof3 = _interopRequireDefault(_typeof2);
+
 var _regenerator = require("babel-runtime/regenerator");
 
 var _regenerator2 = _interopRequireDefault(_regenerator);
@@ -334,6 +338,8 @@ var envHelper = require("dotenv-helper");
 var J = require("../../common.js");
 var translate = require("../_inc/translate");
 var bringOrderTranslation = require("../_inc/bringOrderTranslation");
+var uploadImage = require("../_inc/uploadImage");
+var searchImage = require("../_inc/searchImage");
 var proudDb = require("../_inc/proud-db");
 var twoLevelUp = R.compose(R.join("/"), R.dropLast(2), R.split("/"));
 
@@ -382,6 +388,14 @@ router.post("/removeBulk", function (req, res) {
 router.post("/blog", function (req, res) {
     willPublish(req.body.keyword, req.body.content).then(function () {
         res.send("was published");
+    });
+});
+router.post("/searchImage", function (req, res) {
+    J.log(req.body.data);
+    J.log((0, _typeof3.default)(req.body.data));
+    var keyword = R.prop("searchImage", JSON.parse(req.body.data));
+    searchImage.main(keyword).then(function (incoming) {
+        res.send(incoming);
     });
 });
 router.post("/deEnShort", function (req, res) {

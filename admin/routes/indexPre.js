@@ -7,6 +7,8 @@ const envHelper = require("dotenv-helper")
 const J = require("../../common.js")
 const translate = require("../_inc/translate")
 const bringOrderTranslation = require("../_inc/bringOrderTranslation")
+const uploadImage = require("../_inc/uploadImage")
+const searchImage = require("../_inc/searchImage")
 const proudDb = require("../_inc/proud-db")
 let twoLevelUp = R.compose(R.join("/"), R.dropLast(2), R.split("/"))
 async function willTranslate(word) {
@@ -103,6 +105,14 @@ router.post("/removeBulk", (req, res) =>{
 router.post("/blog", (req, res) =>{
     willPublish(req.body.keyword, req.body.content).then(()=>{
         res.send("was published")
+    })
+})
+router.post("/searchImage", (req, res) =>{
+    J.log(req.body.data)
+    J.log(typeof req.body.data)
+    let keyword = R.prop("searchImage", JSON.parse(req.body.data))
+    searchImage.main(keyword).then(incoming =>{
+        res.send(incoming)
     })
 })
 router.post("/deEnShort", (req, res)=>{

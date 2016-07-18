@@ -2,8 +2,13 @@
 The current code base of my project in progress
 
 # Naming convention patterns
+- common names
+```
+handlePrevNavigation
+handleNextNavigation
+```
 - "main" - if JSON act as a holder for array of objects, then use "main" as the single object property
-- width comes before height 
+- width comes before height
 
 - "awaited*" - can be used in context of await keyword
 ```
@@ -17,6 +22,11 @@ let awaited = await willRunCommand("ls")
 ```
 let stateRaw = JSON.parse(data)
 let state = R.replace(",","",stateRaw)
+```
+- pagination
+```
+paginationIndex: 0,
+paginationPerPageCount: 10
 ```
 
 - "incoming"||"incoming*"||"data" - is never set, always used as single result from a function or as function argument

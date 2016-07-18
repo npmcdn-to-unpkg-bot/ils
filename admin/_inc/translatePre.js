@@ -527,7 +527,6 @@ async function deEnShortAsync(wordRaw) {
     return willReturnMain
 }
 
-
 function deEn(word, ms = 10000) {
     return new Promise((resolve)=>{
         setTimeout(()=>{

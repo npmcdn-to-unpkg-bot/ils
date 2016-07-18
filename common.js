@@ -22,7 +22,6 @@ function getData(url) {
         })
     })
 }
-
 function postData(url, data) {
     return new Promise((resolve)=>{
         reqwest({
@@ -39,12 +38,10 @@ function postData(url, data) {
         })
     })
 }
-
 function randomIndex(arr) {
     let index = Math.floor(Math.random() * arr.length)
     return arr[ index ]
 }
-
 function willRequest(url) {
     return new Promise((resolve, reject) => {
         request({
@@ -59,7 +56,6 @@ function willRequest(url) {
         })
     })
 }
-
 /**
  * willRunFixedCommand - will execute shell command from the directory of this file
  *
@@ -83,15 +79,25 @@ function willRunFixedCommand(commandIs) {
         })
     })
 }
-
 function isEmpty(question) {
     return R.isEmpty(question) || question === null || question === undefined
 }
-
+function shuffle(array) {
+    let counter = array.length
+    while (counter > 0) {
+        let index = Math.floor(Math.random() * counter)
+        counter--
+        let temp = array[ counter ]
+        array[ counter ] = array[ index ]
+        array[ index ] = temp
+    }
+    return array
+}
 let takeName = R.compose(R.takeLast(1), R.split("/"))
 let anyRaw = R.flip(R.any)
 let anyFn = R.curry(anyRaw)
 
+module.exports.shuffle = shuffle
 module.exports.postData = postData
 module.exports.getData = getData
 module.exports.isEmpty = isEmpty

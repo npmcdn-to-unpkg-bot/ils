@@ -168,6 +168,7 @@ export default class App extends Component {
                 paginationIndex: this.state.paginationIndex + this.state.paginationPerPageCount
             })
         }
+
     }
     willHandleCategory (event) {
         let filterByCategory = R.compose(R.filter((val)=>{

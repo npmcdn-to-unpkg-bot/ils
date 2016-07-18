@@ -1,231 +1,148 @@
 "use strict"
-import React,{ Component } from "react"
+import React, { Component } from "react"
 import R from "ramda"
-import LazyLoad from 'react-lazyload'
+import LazyLoad from "react-lazyload"
 import J from "./components/commonReact.js"
 
 let initOnce = R.once(()=>{
-    J.emitter.emit("global init")
+    J.emitter.emit("init")
 })
 let store = {}
 
-let initData = {
-    "deWord": "der Gehälter",
-    "enWord": "the owner",
+let mockedData = [{
     "dePart": "Alle Menschen sind gleich. Nur die Gehälter sind verschieden.",
-    "enPart": "All people are the same.",
+    "enPart": "",
     "category": "preDraft",
-    imageSrc: "/inc/first.jpg",
-    "id": 419
-}
-let mockedDataArr = [{
-    "deWord": "der Gehälter",
-    "enWord": "the owner",
-    "dePart": "Alle Menschen sind gleich. Nur die Gehälter sind verschieden.",
-    "enPart": "All people are the same.",
-    "category": "preDraft",
-    imageSrc: "/inc/first.jpg",
     "id": 419
 }, {
-    "deWord": "der Gehälter",
-    "enWord": "the owner",
     "dePart": "Jedenfalls ist es besser, ein eckiges Etwas zu sein als ein rundes Nichts.",
-    "enPart": "Any way it is better",
+    "enPart": "",
     "category": "preDraft",
-    imageSrc: "/inc/second.jpg",
     "id": 420
 }, {
-    "deWord": "abnehmen",
-    "enWord": "to leave",
-    "dePart": "Die Hälfte aller Menschen wollen abnehmen die andere Hälfte verhungert.",
-    "enPart": "Half of the people want to",
-    imageSrc:"/inc/first.jpg",
+    "dePart": "Die Hälfte aller Menschen wollen abnehmen, die andere Hälfte verhungert.",
+    "enPart": "",
     "category": "preDraft",
     "id": 421
 }]
-// no length beyond 72
+let mockedImage = [{"src":"http://3.bp.blogspot.com/-5tna2I9cHPo/TV5XB85nTTI/AAAAAAAAAvY/uPnXQA8sxn8/s1600/cat-allergy.jpg", "width":"1595", "height":"1075"},
+{"src":"http://dianakhayyat.files.wordpress.com/2011/05/animals_cats_small_cat_005241_.jpg", "width":"1152", "height":"864"},
+{"src":"http://3.bp.blogspot.com/-pZMZb0rC6qI/UTHNYH7mi7I/AAAAAAAAAPA/m_VYPjtLG8w/s1600/cat.jpeg", "width":"1600", "height":"1200"}, {"src":"http://3.bp.blogspot.com/-5tna2I9cHPo/TV5XB85nTTI/AAAAAAAAAvY/uPnXQA8sxn8/s1600/cat-allergy.jpg", "width":"1595", "height":"1075"},
+{"src":"http://dianakhayyat.files.wordpress.com/2011/05/animals_cats_small_cat_005241_.jpg", "width":"1152", "height":"864"},
+{"src":"http://3.bp.blogspot.com/-pZMZb0rC6qI/UTHNYH7mi7I/AAAAAAAAAPA/m_VYPjtLG8w/s1600/cat.jpeg", "width":"1600", "height":"1200"}, {"src":"http://3.bp.blogspot.com/-5tna2I9cHPo/TV5XB85nTTI/AAAAAAAAAvY/uPnXQA8sxn8/s1600/cat-allergy.jpg", "width":"1595", "height":"1075"},
+{"src":"http://dianakhayyat.files.wordpress.com/2011/05/animals_cats_small_cat_005241_.jpg", "width":"1152", "height":"864"},
+{"src":"http://3.bp.blogspot.com/-pZMZb0rC6qI/UTHNYH7mi7I/AAAAAAAAAPA/m_VYPjtLG8w/s1600/cat.jpeg", "width":"1600", "height":"1200"}]
+let mockedImageSearchResult = [{"imageThumb":"http://images.freeimages.com/images/thumbs/974/cat-1192444.jpg","imageSrc":"http://images.freeimages.com/images/previews/974/cat-1192444.jpg"},{"imageThumb":"https://static.pexels.com/photos/62640/pexels-photo-62640-medium.jpeg","imageSrc":"https://static.pexels.com/photos/62640/pexels-photo-62640-medium.jpeg"},{"imageThumb":"http://images.freeimages.com/images/thumbs/f9a/cat-1-1566138.jpg","imageSrc":"http://images.freeimages.com/images/previews/f9a/cat-1-1566138.jpg"},{"imageThumb":"https://static.pexels.com/photos/8923/pexels-photo-medium.jpg","imageSrc":"https://static.pexels.com/photos/8923/pexels-photo-medium.jpg"},{"imageThumb":"https://static.pexels.com/photos/96938/pexels-photo-96938-medium.jpeg","imageSrc":"https://static.pexels.com/photos/96938/pexels-photo-96938-medium.jpeg"},{"imageThumb":"https://static.pexels.com/photos/54632/cat-animal-eyes-grey-54632-medium.jpeg","imageSrc":"https://static.pexels.com/photos/54632/cat-animal-eyes-grey-54632-medium.jpeg"},{"imageThumb":"http://images.freeimages.com/images/thumbs/c17/cat-1399577.jpg","imageSrc":"http://images.freeimages.com/images/previews/c17/cat-1399577.jpg"},{"imageThumb":"http://images.freeimages.com/images/thumbs/707/cat-1410064.jpg","imageSrc":"http://images.freeimages.com/images/previews/707/cat-1410064.jpg"},{"imageThumb":"http://images.freeimages.com/images/thumbs/139/cat-1362530.jpg","imageSrc":"http://images.freeimages.com/images/previews/139/cat-1362530.jpg"},{"imageThumb":"http://images4.fanpop.com/image/photos/16100000/Beautiful-Cat-cats-16121794-1280-800.jpg","imageSrc":"http://images4.fanpop.com/image/photos/16100000/Beautiful-Cat-cats-16121794-1280-800.jpg"},{"imageThumb":"http://images.freeimages.com/images/thumbs/502/cat-1393633.jpg","imageSrc":"http://images.freeimages.com/images/previews/502/cat-1393633.jpg"},{"imageThumb":"http://images.freeimages.com/images/thumbs/e1c/cat-1501949.jpg","imageSrc":"http://images.freeimages.com/images/previews/e1c/cat-1501949.jpg"},{"imageThumb":"http://images.freeimages.com/images/thumbs/763/sniffing-cat-1398165.jpg","imageSrc":"http://images.freeimages.com/images/previews/763/sniffing-cat-1398165.jpg"},{"imageThumb":"http://images.freeimages.com/images/thumbs/485/cat-1391699.jpg","imageSrc":"http://images.freeimages.com/images/previews/485/cat-1391699.jpg"},{"imageThumb":"http://images.freeimages.com/images/thumbs/e65/cat-1459230.jpg","imageSrc":"http://images.freeimages.com/images/previews/e65/cat-1459230.jpg"},{"imageThumb":"http://images.freeimages.com/images/thumbs/c23/cat-1396828.jpg","imageSrc":"http://images.freeimages.com/images/previews/c23/cat-1396828.jpg"},{"imageThumb":"https://static.pexels.com/photos/121920/pexels-photo-121920-medium.jpeg","imageSrc":"https://static.pexels.com/photos/121920/pexels-photo-121920-medium.jpeg"},{"imageThumb":"http://images.freeimages.com/images/thumbs/c22/cat-1395746.jpg","imageSrc":"http://images.freeimages.com/images/previews/c22/cat-1395746.jpg"},{"imageThumb":"http://images.freeimages.com/images/thumbs/338/cat-food-1539260.jpg","imageSrc":"http://images.freeimages.com/images/previews/338/cat-food-1539260.jpg"},{"imageThumb":"http://images.freeimages.com/images/thumbs/817/black-cat-1402633.jpg","imageSrc":"http://images.freeimages.com/images/previews/817/black-cat-1402633.jpg"},{"imageThumb":"https://static.pexels.com/photos/105587/pexels-photo-105587-medium.jpeg","imageSrc":"https://static.pexels.com/photos/105587/pexels-photo-105587-medium.jpeg"},{"imageThumb":"http://images.freeimages.com/images/thumbs/6d4/little-cat-1409488.jpg","imageSrc":"http://images.freeimages.com/images/previews/6d4/little-cat-1409488.jpg"},{"imageThumb":"http://images.freeimages.com/images/thumbs/737/cat-1401863.jpg","imageSrc":"http://images.freeimages.com/images/previews/737/cat-1401863.jpg"},{"imageThumb":"http://images.freeimages.com/images/thumbs/7cc/cat-1410491.jpg","imageSrc":"http://images.freeimages.com/images/previews/7cc/cat-1410491.jpg"},{"imageThumb":"http://images.freeimages.com/images/thumbs/ae3/cat-1372484.jpg","imageSrc":"http://images.freeimages.com/images/previews/ae3/cat-1372484.jpg"},{"imageThumb":"https://static.pexels.com/photos/69932/tabby-cat-close-up-portrait-69932-medium.jpeg","imageSrc":"https://static.pexels.com/photos/69932/tabby-cat-close-up-portrait-69932-medium.jpeg"},{"imageThumb":"http://images.freeimages.com/images/thumbs/1e1/cat-1399848.jpg","imageSrc":"http://images.freeimages.com/images/previews/1e1/cat-1399848.jpg"},{"imageThumb":"http://images.freeimages.com/images/thumbs/162/pet-cat-1561824.jpg","imageSrc":"http://images.freeimages.com/images/previews/162/pet-cat-1561824.jpg"},{"imageThumb":"http://stuffpoint.com/cats/image/60451-cats-cat.jpg","imageSrc":"http://stuffpoint.com/cats/image/60451-cats-cat.jpg"},{"imageThumb":"https://static.pexels.com/photos/41315/africa-african-animal-cat-41315-medium.jpeg","imageSrc":"https://static.pexels.com/photos/41315/africa-african-animal-cat-41315-medium.jpeg"},{"imageThumb":"http://images4.fanpop.com/image/photos/16000000/Beautiful-Cat-cats-16096437-1280-800.jpg","imageSrc":"http://images4.fanpop.com/image/photos/16000000/Beautiful-Cat-cats-16096437-1280-800.jpg"},{"imageThumb":"https://static.pexels.com/photos/4602/jumping-cute-playing-animals-medium.jpg","imageSrc":"https://static.pexels.com/photos/4602/jumping-cute-playing-animals-medium.jpg"},{"imageThumb":"http://www.mrwallpaper.com/wallpapers/Cat-Sad-Annoyed.jpg","imageSrc":"http://www.mrwallpaper.com/wallpapers/Cat-Sad-Annoyed.jpg"},{"imageThumb":"http://images.freeimages.com/images/thumbs/c7d/sleeping-cat-1531012.jpg","imageSrc":"http://images.freeimages.com/images/previews/c7d/sleeping-cat-1531012.jpg"},{"imageThumb":"https://static.pexels.com/photos/65006/pexels-photo-65006-medium.jpeg","imageSrc":"https://static.pexels.com/photos/65006/pexels-photo-65006-medium.jpeg"},{"imageThumb":"https://static.pexels.com/photos/24104/pexels-photo-24104-medium.jpg","imageSrc":"https://static.pexels.com/photos/24104/pexels-photo-24104-medium.jpg"},{"imageThumb":"https://static.pexels.com/photos/26897/pexels-photo-26897-medium.jpg","imageSrc":"https://static.pexels.com/photos/26897/pexels-photo-26897-medium.jpg"},{"imageThumb":"http://images.freeimages.com/images/thumbs/db5/cat-1407260.jpg","imageSrc":"http://images.freeimages.com/images/previews/db5/cat-1407260.jpg"},{"imageThumb":"https://static.pexels.com/photos/47390/pexels-photo-47390-medium.jpeg","imageSrc":"https://static.pexels.com/photos/47390/pexels-photo-47390-medium.jpeg"},{"imageThumb":"https://static.pexels.com/photos/25453/pexels-photo-25453-medium.jpg","imageSrc":"https://static.pexels.com/photos/25453/pexels-photo-25453-medium.jpg"},{"imageThumb":"http://images.freeimages.com/images/thumbs/863/cat-1549038.jpg","imageSrc":"http://images.freeimages.com/images/previews/863/cat-1549038.jpg"},{"imageThumb":"http://images.freeimages.com/images/thumbs/2c1/cat-1188492.jpg","imageSrc":"http://images.freeimages.com/images/previews/2c1/cat-1188492.jpg"},{"imageThumb":"http://images.freeimages.com/images/thumbs/ee6/screaming-cat-1404453.jpg","imageSrc":"http://images.freeimages.com/images/previews/ee6/screaming-cat-1404453.jpg"},{"imageThumb":"http://images.freeimages.com/images/thumbs/f1d/cat-1408257.jpg","imageSrc":"http://images.freeimages.com/images/previews/f1d/cat-1408257.jpg"},{"imageThumb":"http://images.freeimages.com/images/thumbs/730/cat-blue-eyes-1408567.jpg","imageSrc":"http://images.freeimages.com/images/previews/730/cat-blue-eyes-1408567.jpg"},{"imageThumb":"http://images.freeimages.com/images/thumbs/288/cat-1498803.jpg","imageSrc":"http://images.freeimages.com/images/previews/288/cat-1498803.jpg"},{"imageThumb":"http://images.freeimages.com/images/thumbs/299/cat-2-1565759.jpg","imageSrc":"http://images.freeimages.com/images/previews/299/cat-2-1565759.jpg"},{"imageThumb":"http://3.bp.blogspot.com/-WHW5J1uTTCY/UERgSSUImII/AAAAAAAAAMk/JrIBdXHajj0/s1600/Cat+Pictures+8.jpg","imageSrc":"http://3.bp.blogspot.com/-WHW5J1uTTCY/UERgSSUImII/AAAAAAAAAMk/JrIBdXHajj0/s1600/Cat+Pictures+8.jpg"},{"imageThumb":"https://static.pexels.com/photos/115011/cat-face-close-view-115011-medium.jpeg","imageSrc":"https://static.pexels.com/photos/115011/cat-face-close-view-115011-medium.jpeg"},{"imageThumb":"http://images.freeimages.com/images/thumbs/bd1/cat-1404368.jpg","imageSrc":"http://images.freeimages.com/images/previews/bd1/cat-1404368.jpg"}]
+class Image extends Component {
+    constructor (props) {
+        super(props)
+        this.state = {}
+    }
+    static get defaultProps () {
+        return {
+            handleImageClick: null,
+            imageSrc: "",
+            className: ""
+        }
+    }
+    render () {
+        let numberIs = 15
+        let imageStyle = {
+            maxWidth: `${J.getWidthPx(numberIs)}px`,
+            height: "auto",
+            maxHeight: `${J.getHeightPx(numberIs)}px`
+        }
+        return (
+            <span className="column" onClick={this.props.handleImageClick}>
+                <img src={this.props.imageSrc} style={imageStyle} className={this.props.className} />
+            </span>
+        )
+    }
+}
+
 export default class App extends Component {
     constructor (props) {
         super(props)
         this.state = {
-            globalIndex: 0,
-            globalData: [],
-            data: initData,
-            answer: "",
-            textTop: "",
-            textBottom: "",
-            inputFieldSize:20,
-            inputFieldClassName:"inputField",
-            buttonText: J.buttonTextShowAnswer,
-            buttonClassName: J.bulButtonInit
+            index: 0,
+            searchImage: "",
+            imageSearchResult: J.addProp("className", "unselectedImage", mockedImageSearchResult),
+            paginationIndex: 0,
+            paginationPerPageCount: 10
         }
-        this.handleAnswerInput = this.handleAnswerInput.bind(this)
-        this.handleButtonClick = this.handleButtonClick.bind(this)
+        this.handleSearchInput = this.handleSearchInput.bind(this)
+        this.handleImageClick = this.handleImageClick.bind(this)
+        this.handlePrevNavigation = this.handlePrevNavigation.bind(this)
+        this.handleNextNavigation = this.handleNextNavigation.bind(this)
     }
     componentDidMount() {
-        J.emitter.on("global init",()=>{
-            let globalDataFuture = J.shuffle(mockedDataArr)
-            this.setState({
-                globalData: globalDataFuture
-            },()=>{
-                J.emitter.emit("init")
+        J.emitter.on("init", ()=>{
+        })
+        J.emitter.on("searchImage", ()=>{
+            J.postData("http://localhost:3001/searchImage", JSON.stringify({searchImage: this.state.searchImage})).then(incoming =>{
+                J.log(JSON.stringify(incoming).length)
+                this.setState({imageSearchResult: J.addProp("className", "unselectedImage", incoming)})
             })
         })
-        J.emitter.on("init",()=>{
-            let willTextTopRaw = R.split(" ",this.state.data.deWord)
-            let willTextTop = R.compose(R.map(val=>J.hideTail(val)),R.split(" "))(this.state.data.deWord)
-            let willTextBottom = R.compose(R.join(" "),R.map(val=>{
-                willTextTopRaw.map((value,key)=>{
-                    if(value===val){
-                        val = willTextTop[key]
-                    }
-                })
-                return val
-            }),R.split(" "))(this.state.data.dePart)
-            this.setState({
-                textTop: `${R.join(" ",willTextTop)}|${this.state.data.enWord}`,
-                textBottom: willTextBottom,
-                buttonText: J.buttonTextShowAnswer,
-                buttonClassName: J.bulButtonInit
-            })
-        })
-        J.emitter.on("correct",()=>{
-            let domElement = document.getElementById("animationMarker")
-            domElement.classList.add("correctAnswerLearningMeme")
-            setTimeout(()=>{
-                domElement.classList.remove("correctAnswerLearningMeme")
-            },10000)
-            J.emitter.emit("change button")
-        })
-        J.emitter.on("wrong",()=>{
-            let domElement = document.getElementById("animationMarker")
-            domElement.classList.add("wrongAnswerLearningMeme")
-            setTimeout(()=>{
-                domElement.classList.remove("wrongAnswerLearningMeme")
-            },10000)
-            J.emitter.emit("change button")
-        })
-        J.emitter.on("check answer",()=>{
-            let deWord = this.state.data.deWord.toLowerCase()
-            let altAnswer = R.compose(R.toLower,R.join(""),R.map(val =>J.returnEasyStyleGerman(val)),R.splitEvery(1))(deWord)
-            let altAnswerSecond = R.compose(R.toLower,R.join(""),R.map(val =>J.returnOldStyleGerman(val)),R.splitEvery(1))(deWord)
-            J.log(altAnswer)
-            J.log(altAnswerSecond)
-            console.log(this.state.answer.toLowerCase(),deWord, altAnswer, altAnswerSecond)
-            if(R.any(R.equals(this.state.answer.toLowerCase()))([deWord, altAnswer, altAnswerSecond])){
-                J.emitter.emit("correct")
-            }else{
-                J.emitter.emit("wrong")
-            }
-        })
-        J.emitter.on("change button",()=>{
-            this.setState({
-                buttonText: J.buttonTextNext,
-                buttonClassName: J.bulButtonNext,
-                textTop: `${this.state.data.deWord}|${this.state.data.enWord}`,
-                textBottom: this.state.data.dePart
-            })
-        })
-        J.emitter.on("next",()=>{
-            let willBeIndex
-            if (this.state.globalIndex === this.state.globalData.length - 1) {
-                willBeIndex = 0
-            } else {
-                willBeIndex = this.state.globalIndex + 1
-            }
-            this.setState({
-                data:this.state.globalData[ willBeIndex ],
-                globalIndex: willBeIndex
-            }, ()=>{
-                J.emitter.emit("init")
-            })
-        })
-        initOnce()
     }
-    handleButtonClick(event){
-        J.log(this.state.buttonText)
-        if (this.state.buttonText === "Show Answer") {
-            J.emitter.emit("change button")
-        } else if (this.state.buttonText === "Next") {
-            J.emitter.emit("next")
+    handleImageClick(event) {
+        let oldState = this.state.imageSearchResult
+        let index = R.compose(R.multiply(1), R.last, R.split(" "))(event.target.className)
+        let className = R.compose(R.head, R.split(" "))(event.target.className)
+        oldState = J.addProp("className", "unselectedImage", oldState)
+        if (className === "unselectedImage") {
+            className = "selectedImage"
+        } else {
+            className = "unselectedImage"
+        }
+        oldState[ index ] = R.merge(oldState[ index ], {
+            className: className
+        })
+        this.setState({
+            imageSearchResult: oldState
+        })
+    }
+    handleNextNavigation() {
+        if ((this.state.paginationIndex + this.state.paginationPerPageCount) < this.state.imageSearchResult.length) {
+            this.setState({
+                paginationIndex: this.state.paginationIndex + this.state.paginationPerPageCount
+            })
         }
     }
-    handleAnswerInput (event) {
-        if(event.key==="Enter"){
-            J.emitter.emit("check answer")
+    handlePrevNavigation() {
+        if ((this.state.paginationIndex - this.state.paginationPerPageCount) >= 0) {
+            this.setState({
+                paginationIndex: this.state.paginationIndex - this.state.paginationPerPageCount
+            })
+        }
+    }
+    handleSearchInput (event) {
+        if (event.key === "Enter") {
+            J.emitter.emit("searchImage")
         }
         this.setState({
-            answer: event.target.value
-        },()=>{
-            if(this.state.answer.length>this.state.inputFieldSize){
-                this.setState({inputFieldSize:this.state.answer.length})
-            }
+            searchImage: event.target.value
         })
     }
     render () {
-        let memeHeight = J.getHeightPx(80)
-        let memeWidth = memeHeight*1.33
-        let marginValue = J.divide(100-J.getPart(memeWidth,J.getWidthPx(100)),2)
-        let fontTextTop = J.fontValueFn(this.state.textTop.length)
-        let fontTextBottom = J.fontValueFn(this.state.textBottom.length)
-        let fontTextBottomSecond = J.fontValueFn(this.state.data.enPart.length)
-        let lineHeightTextTop = J.lineHeightFn(fontTextTop)
-        let lineHeightTextBottom = J.lineHeightFn(fontTextBottom)
-        let lineHeightTextBottomSecond = J.lineHeightFn(fontTextBottomSecond)
-        let heightValue = J.getPercent(10,memeHeight)
-        let gapValue = memeHeight-(3*heightValue)
-        //console.log(this.state.textTop.length, this.state.textBottom.length, this.state.data.enPart.length)
-        //console.log(fontTextTop, fontTextBottom, fontTextBottomSecond)
-        //console.log(lineHeightTextTop, lineHeightTextBottom, lineHeightTextBottomSecond)
-        let memeContainer = {
-            padding: "0px",
-            marginLeft: `${J.getWidthPx(marginValue)}px`,
-            width: `${memeWidth}px`,
-            height: `${memeHeight}px`,
-            backgroundSize: "cover",
-            backgroundImage: `url(${this.state.data.imageSrc})`
-        }
-        let memeTextTop = {
-            top: "0px",
-            fontWeight: "700",
-            color: "#263238",
-            fontSize: `${fontTextTop}%`,
-            lineHeight: `${lineHeightTextTop}`,
-            height: `${heightValue}px`,
-            textOverflow: "ellipsis",
-            width:  `${memeWidth}px`,
-           backgroundColor: "#B0BEC5",
-            whiteSpace: "nowrap",
-            overflow: "hidden"
-        }
-        let gapStyle = {
-            height: `${gapValue}px`
-        }
-        let memeTextBottom = R.merge(memeTextTop,{
-            fontSize: `${fontTextBottom}%`,
-            lineHeight: `${lineHeightTextBottom}`
-        })
-        let memeTextBottomSecond = R.merge(memeTextTop,{
-            fontSize: `${fontTextBottomSecond}%`,
-            lineHeight: `${lineHeightTextBottomSecond}`,
-           backgroundColor: "#3c5a72",
-            color: "#b2d0c4"
-        })
-        return(
+        return (
     <div>
-        <div className="box has-text-centered columns">
-            <div id="animationMarker" className="column is-4 is-offset-4">
-            <input autoFocus className={this.state.inputFieldClassName} type="text" value={this.state.answer} size={this.state.inputFieldSize} onChange={this.handleAnswerInput} onKeyPress={this.handleAnswerInput}/>
+        <div className="columns box">
+            <div className="column">
+                <a className="button" onClick={this.handlePrevNavigation}><span className="icon"><i className="fa fa-arrow-circle-left"></i></span></a>
+                <a className="button" onClick={this.handleNextNavigation}><span className="icon"><i className="fa fa-arrow-circle-right"></i></span></a>
             </div>
-            <div className="column is-4">
-                <a className={this.state.buttonClassName} onClick={this.handleButtonClick}>{this.state.buttonText}</a>
+            <div className="column">
+                <input autoFocus type="text" value={this.state.searchImage} size={this.state.searchImage.length} onChange={this.handleSearchInput} onKeyPress={this.handleSearchInput}/>
             </div>
+
         </div>
-        <div className="box has-text-centered is-fullwidth" style={memeContainer}>
-            <div style={memeTextTop}>{this.state.textTop}</div>
-            <div style={gapStyle}></div>
-            <div style={memeTextBottom}>{this.state.textBottom}</div>
-            <div style={memeTextBottomSecond}>{this.state.data.enPart}</div>
+        <div className="columns is-multiline box has-text-centered">
+        {this.state.imageSearchResult.map((val, index)=>{
+            if(R.gt(index,this.state.paginationIndex)&&R.lt(index,this.state.paginationIndex+this.state.paginationPerPageCount)){
+                return <Image key={index} className={`${val.className} ${index}`} handleImageClick={this.handleImageClick} imageSrc={val.imageThumb} />
+            }
+        })}
         </div>
 	</div>
     )}

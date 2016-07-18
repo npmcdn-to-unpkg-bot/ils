@@ -8,7 +8,3 @@ const Future = RFantasy.Future
 const Identity = RFantasy.Identity
 const Maybe = RFantasy.Maybe
 const Just = RFantasy.Just
-function hideFn(str) {
-    return `${R.head(str)}${R.compose(R.join(""), R.repeat("*"), R.length, R.tail)(str)}`
-}
-J.log(hideFn("Manschaft"))
