@@ -97,6 +97,16 @@ router.post("/remove/:parent", (req, res) =>{
         res.send("done")
     })
 })
+router.post("/updateSingle", (req, res) =>{
+    willUpdate("data", JSON.parse(req.body.data)).then(()=>{
+        res.send("done")
+    })
+})
+router.post("/removeSingle", (req, res) =>{
+    proudDb.remove("data", JSON.parse(req.body.data).id).then(()=>{
+        res.send("done")
+    })
+})
 router.post("/removeBulk", (req, res) =>{
     willBulkRemove(JSON.parse(req.body.data).id * 1).then(()=>{
         res.send("done")

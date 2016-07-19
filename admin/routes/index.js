@@ -376,6 +376,16 @@ router.post("/remove/:parent", function (req, res) {
         res.send("done");
     });
 });
+router.post("/updateSingle", function (req, res) {
+    willUpdate("data", JSON.parse(req.body.data)).then(function () {
+        res.send("done");
+    });
+});
+router.post("/removeSingle", function (req, res) {
+    proudDb.remove("data", JSON.parse(req.body.data).id).then(function () {
+        res.send("done");
+    });
+});
 router.post("/removeBulk", function (req, res) {
     willBulkRemove(JSON.parse(req.body.data).id * 1).then(function () {
         res.send("done");

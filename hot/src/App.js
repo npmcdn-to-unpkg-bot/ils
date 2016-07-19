@@ -74,13 +74,13 @@ class Image extends Component {
 export default class App extends Component {
     constructor (props) {
         super(props)
-        let dataRaw = J.shuffle(R.filter(val => R.equals(R.prop("imageSrc",val),undefined),mockedData))
-        dataRaw = J.addProp("childSafetyFlag", true, dataRaw)
-        dataRaw = J.addProp("imageSrc", false, dataRaw)
+        //let dataRaw = J.shuffle(R.filter(val => R.equals(R.prop("imageSrc",val),undefined),mockedData))
+        //dataRaw = J.addProp("childSafetyFlag", true, dataRaw)
+        //dataRaw = J.addProp("imageSrc", false, dataRaw)
         this.state = {
             globalIndex: 0,
             searchImageKeyword: "",
-            globalData: dataRaw,
+            globalData: [],
             data: initData,
             dataHolder: [],
             searchImageResult: [],
@@ -99,13 +99,23 @@ export default class App extends Component {
     }
     componentDidMount() {
         J.emitter.on("init", ()=>{
-            let dataFuture = this.state.globalData[this.state.globalIndex]
-            J.log(J.randomIndex(J.stopWordsFilter(dataFuture.dePart)))
-            this.setState({
-                data: dataFuture,
-                searchImageKeyword: J.randomIndex(J.stopWordsFilter(dataFuture.dePart))
-            },()=>{
-                J.emitter.emit("searchImageFirst")
+            J.getData("http://localhost:3001/read/data").then(incoming => {
+                let globalData =R.compose(R.values,R.filter(val => {
+                    return R.equals(R.prop("imageSrc",val),undefined)||R.equals(R.prop("imageSrc",val),false)
+                }))(incoming)
+                globalData = J.addProp("childSafetyFlag", true, globalData)
+                globalData = J.addProp("imageSrc", false, globalData)
+                J.log(R.type(globalData))
+                let data = globalData[this.state.globalIndex]
+                let searchImageKeywordArr = J.stopWordsFilter(data.dePart)
+                searchImageKeywordArr = R.sort((a,b)=>{return a.length-b.length},searchImageKeywordArr)
+                if(searchImageKeywordArr.length>0){
+                    this.setState({data,globalData,searchImageKeyword: R.last(searchImageKeywordArr)},()=>{
+                        J.emitter.emit("searchImageFirst")
+                    })
+                }else{
+                    this.setState({data,globalData})
+                }
             })
         })
         J.emitter.on("next", ()=>{
@@ -123,13 +133,11 @@ export default class App extends Component {
         })
         J.emitter.on("searchImage", ()=>{
             J.postData("http://localhost:3001/searchImage", JSON.stringify({searchImageKeyword: this.state.searchImageKeyword})).then(incoming =>{
-                J.log(JSON.stringify(incoming).length)
                 this.setState({searchImageResult: J.addProp("className", "unselectedImage", incoming)})
             })
         })
         J.emitter.on("searchImageFirst", ()=>{
             J.postData("http://localhost:3001/searchImageFirst", JSON.stringify({searchImageKeyword: this.state.searchImageKeyword})).then(incoming =>{
-                J.log(JSON.stringify(incoming).length)
                 this.setState({searchImageResult: J.addProp("className", "unselectedImage", incoming)})
             })
         })

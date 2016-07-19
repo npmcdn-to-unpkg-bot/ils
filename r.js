@@ -8,19 +8,14 @@ const Future = RFantasy.Future
 const Identity = RFantasy.Identity
 const Maybe = RFantasy.Maybe
 const Just = RFantasy.Just
-var lineReader = require("line-reader")
+var arrRaw = require("/home/just/ils/deWordScore.js")
+var arr2 = require("/home/just/ils/hot/src/components/stopWords.js")
 
-let willSave = []
-lineReader.eachLine("_inc/inc/wordsDeEnScore.txt", function(line, last, cb) {
-    //console.log(line)
-    let word = R.compose(R.head, R.split(/\s/))(line)
-    let score = R.match(/[0-9]+/, line)
-    J.lg(word)
-    if (word.length > 3) {
-        willSave.push({word, score})
-    }
-    if (last) {
-        fs.writeFileSync("temp2.txt", JSON.stringify(R.flatten([willSave])))
-        cb(false)
-    } else {cb()}
-})
+let arr = R.compose(R.map(val => R.prop("word", val)), R.filter(val => {
+    return val.score > 8153
+    return val
+}))(arrRaw)
+J.log(R.flatten([arr, arr2]).length)
+J.log(arr.length)
+J.log(arr2.length)
+//fs.writeFileSync("temp3.txt", JSON.stringify(R.flatten([arr, arr2])))
