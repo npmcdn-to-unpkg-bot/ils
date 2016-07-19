@@ -6,6 +6,19 @@ The current code base of my project in progress
 ```
 handlePrevNavigation
 handleNextNavigation
+globalData
+imageSearchResult
+handleNext
+handleEnInput
+handleSearchInput
+globalIndex
+willBeIndex
+domElement
+childSafetyFlag
+stopWordsFilter
+initData
+searchImageKeyword
+dataFuture
 ```
 - "main" - if JSON act as a holder for array of objects, then use "main" as the single object property
 - width comes before height

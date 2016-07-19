@@ -7,22 +7,31 @@ import J from "./components/commonReact.js"
 let initOnce = R.once(()=>{
     J.emitter.emit("init")
 })
-let store = {}
+let initData = {
+    "dePart": "",
+    "enPart": ""
+}
 
 let mockedData = [{
     "dePart": "Alle Menschen sind gleich. Nur die Gehälter sind verschieden.",
-    "enPart": "",
+    "enPart": "all ",
     "category": "preDraft",
     "id": 419
 }, {
     "dePart": "Jedenfalls ist es besser, ein eckiges Etwas zu sein als ein rundes Nichts.",
-    "enPart": "",
+    "enPart": "more",
     "category": "preDraft",
     "id": 420
 }, {
     "dePart": "Die Hälfte aller Menschen wollen abnehmen, die andere Hälfte verhungert.",
-    "enPart": "",
+    "enPart": "mocked",
     "category": "preDraft",
+    "id": 421
+},{
+    "dePart": "DONT Die Hälfte aller Menschen wollen abnehmen, die andere Hälfte verhungert.",
+    "enPart": "DONTmocked",
+    "category": "preDraft",
+    "imageSrc": "http://3.bp.blogspot.com/-5tna2I9cHPo/TV5XB85nTTI/AAAAAAAAAvY/uPnXQA8sxn8/s1600/cat-allergy.jpg",
     "id": 421
 }]
 let mockedImage = [{"src":"http://3.bp.blogspot.com/-5tna2I9cHPo/TV5XB85nTTI/AAAAAAAAAvY/uPnXQA8sxn8/s1600/cat-allergy.jpg", "width":"1595", "height":"1075"},
@@ -48,13 +57,15 @@ class Image extends Component {
     render () {
         let numberIs = 15
         let imageStyle = {
-            maxWidth: `${J.getWidthPx(numberIs)}px`,
+            minWidth: `${J.getWidthPx(numberIs)}px`,
             height: "auto",
-            maxHeight: `${J.getHeightPx(numberIs)}px`
+            maxHeight: `${J.getHeightPx(numberIs-2)}px`
         }
         return (
             <span className="column" onClick={this.props.handleImageClick}>
+                <LazyLoad height={200} once={true}>
                 <img src={this.props.imageSrc} style={imageStyle} className={this.props.className} />
+                </LazyLoad>
             </span>
         )
     }
@@ -63,27 +74,66 @@ class Image extends Component {
 export default class App extends Component {
     constructor (props) {
         super(props)
+        let dataRaw = J.shuffle(R.filter(val => R.equals(R.prop("imageSrc",val),undefined),mockedData))
+        dataRaw = J.addProp("childSafetyFlag", true, dataRaw)
+        dataRaw = J.addProp("imageSrc", false, dataRaw)
         this.state = {
-            index: 0,
-            searchImage: "",
-            imageSearchResult: J.addProp("className", "unselectedImage", mockedImageSearchResult),
+            globalIndex: 0,
+            searchImageKeyword: "",
+            globalData: dataRaw,
+            data: initData,
+            dataHolder: [],
+            searchImageResult: [],
             paginationIndex: 0,
-            paginationPerPageCount: 10
+            paginationPerPageCount: 20
         }
         this.handleSearchInput = this.handleSearchInput.bind(this)
         this.handleImageClick = this.handleImageClick.bind(this)
         this.handlePrevNavigation = this.handlePrevNavigation.bind(this)
         this.handleNextNavigation = this.handleNextNavigation.bind(this)
+        this.handleReady = this.handleReady.bind(this)
+        this.handleRemove = this.handleRemove.bind(this)
+        this.handleToggle = this.handleToggle.bind(this)
+        this.handleDeInput = this.handleDeInput.bind(this)
+        this.handleEnInput = this.handleEnInput.bind(this)
     }
     componentDidMount() {
         J.emitter.on("init", ()=>{
-        })
-        J.emitter.on("searchImage", ()=>{
-            J.postData("http://localhost:3001/searchImage", JSON.stringify({searchImage: this.state.searchImage})).then(incoming =>{
-                J.log(JSON.stringify(incoming).length)
-                this.setState({imageSearchResult: J.addProp("className", "unselectedImage", incoming)})
+            let dataFuture = this.state.globalData[this.state.globalIndex]
+            J.log(J.randomIndex(J.stopWordsFilter(dataFuture.dePart)))
+            this.setState({
+                data: dataFuture,
+                searchImageKeyword: J.randomIndex(J.stopWordsFilter(dataFuture.dePart))
+            },()=>{
+                J.emitter.emit("searchImageFirst")
             })
         })
+        J.emitter.on("next", ()=>{
+            let willBeIndex
+            if (this.state.globalIndex === this.state.globalData.length - 1) {
+                willBeIndex = 0
+            } else{
+                willBeIndex = this.state.globalIndex + 1
+            }
+            this.setState({
+                globalIndex: willBeIndex,
+                data: this.state.globalData[willBeIndex],
+                dataHolder: this.state.globalData[willBeIndex]
+            })
+        })
+        J.emitter.on("searchImage", ()=>{
+            J.postData("http://localhost:3001/searchImage", JSON.stringify({searchImageKeyword: this.state.searchImageKeyword})).then(incoming =>{
+                J.log(JSON.stringify(incoming).length)
+                this.setState({searchImageResult: J.addProp("className", "unselectedImage", incoming)})
+            })
+        })
+        J.emitter.on("searchImageFirst", ()=>{
+            J.postData("http://localhost:3001/searchImageFirst", JSON.stringify({searchImageKeyword: this.state.searchImageKeyword})).then(incoming =>{
+                J.log(JSON.stringify(incoming).length)
+                this.setState({searchImageResult: J.addProp("className", "unselectedImage", incoming)})
+            })
+        })
+        initOnce()
     }
     handleImageClick(event) {
         let oldState = this.state.imageSearchResult
@@ -102,8 +152,19 @@ export default class App extends Component {
             imageSearchResult: oldState
         })
     }
+    handleReady() {
+
+    }
+    handleRemove() {
+
+    }
+    handleToggle(){
+        this.setState({
+            data: R.set(R.lensProp("childSafetyFlag"), R.not(this.state.data.childSafetyFlag), this.state.data)
+        })
+    }
     handleNextNavigation() {
-        if ((this.state.paginationIndex + this.state.paginationPerPageCount) < this.state.imageSearchResult.length) {
+        if ((this.state.paginationIndex + this.state.paginationPerPageCount) < this.state.searchImageResult.length) {
             this.setState({
                 paginationIndex: this.state.paginationIndex + this.state.paginationPerPageCount
             })
@@ -121,7 +182,24 @@ export default class App extends Component {
             J.emitter.emit("searchImage")
         }
         this.setState({
-            searchImage: event.target.value
+            searchImageKeyword: event.target.value
+        })
+    }
+    handleDeInput (event) {
+        if (event.key === "Enter") {
+            J.emitter.emit("searchImage")
+        }
+        if(event.target.value){}
+        this.setState({
+            //searchImage: event.target.value
+        })
+    }
+    handleEnInput (event) {
+        if (event.key === "Enter") {
+            //J.emitter.emit("searchImage")
+        }
+        this.setState({
+            //searchImage: event.target.value
         })
     }
     render () {
@@ -131,15 +209,26 @@ export default class App extends Component {
             <div className="column">
                 <a className="button" onClick={this.handlePrevNavigation}><span className="icon"><i className="fa fa-arrow-circle-left"></i></span></a>
                 <a className="button" onClick={this.handleNextNavigation}><span className="icon"><i className="fa fa-arrow-circle-right"></i></span></a>
+                <a className="button is-primary is-inverted" onClick={this.handleReady}><span className="icon"><i className="fa fa-check"></i></span></a>
+                <a className="button is-primary is-inverted" onClick={this.handleRemove}><span className="icon"><i className="fa fa-remove"></i></span></a>
+                <a id="toggleId" className={`button ${this.state.data.childSafetyFlag?"is-success":"is-danger"} is-inverted`} onClick={this.handleToggle}><span className="icon"><i className="fa fa-child"></i></span></a>
             </div>
             <div className="column">
-                <input autoFocus type="text" value={this.state.searchImage} size={this.state.searchImage.length} onChange={this.handleSearchInput} onKeyPress={this.handleSearchInput}/>
+                <input autoFocus type="text" value={this.state.searchImageKeyword} size={this.state.searchImageKeyword.length} onChange={this.handleSearchInput} onKeyPress={this.handleSearchInput}/>
             </div>
-
+        </div>
+        <div className="columns box">
+            <div className="column is-5">
+                <input autoFocus={true} type="text" size={this.state.data.dePart.length-10} value={this.state.data.dePart} onChange={this.handleSearchInput} onKeyPress={this.handleSearchInput} />
+            </div>
+            <div className="column is-2"></div>
+            <div className="column is-5">
+                <input autoFocus={false} type="text" size={this.state.data.enPart.length-10} value={this.state.data.enPart} onChange={this.handleSearchInput} onKeyPress={this.handleSearchInput} />
+            </div>
         </div>
         <div className="columns is-multiline box has-text-centered">
-        {this.state.imageSearchResult.map((val, index)=>{
-            if(R.gt(index,this.state.paginationIndex)&&R.lt(index,this.state.paginationIndex+this.state.paginationPerPageCount)){
+        {this.state.searchImageResult.map((val, index)=>{
+            if(R.gt(index,this.state.paginationIndex)&&R.lte(index,this.state.paginationIndex+this.state.paginationPerPageCount)){
                 return <Image key={index} className={`${val.className} ${index}`} handleImageClick={this.handleImageClick} imageSrc={val.imageThumb} />
             }
         })}

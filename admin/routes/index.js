@@ -1,9 +1,5 @@
 "use strict";
 
-var _typeof2 = require("babel-runtime/helpers/typeof");
-
-var _typeof3 = _interopRequireDefault(_typeof2);
-
 var _regenerator = require("babel-runtime/regenerator");
 
 var _regenerator2 = _interopRequireDefault(_regenerator);
@@ -391,10 +387,14 @@ router.post("/blog", function (req, res) {
     });
 });
 router.post("/searchImage", function (req, res) {
-    J.log(req.body.data);
-    J.log((0, _typeof3.default)(req.body.data));
-    var keyword = R.prop("searchImage", JSON.parse(req.body.data));
+    var keyword = R.prop("searchImageKeyword", JSON.parse(req.body.data));
     searchImage.main(keyword).then(function (incoming) {
+        res.send(incoming);
+    });
+});
+router.post("/searchImageFirst", function (req, res) {
+    var keyword = R.prop("searchImageKeyword", JSON.parse(req.body.data));
+    searchImage.imageFirst(keyword).then(function (incoming) {
         res.send(incoming);
     });
 });

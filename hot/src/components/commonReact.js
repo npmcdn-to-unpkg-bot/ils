@@ -1,6 +1,7 @@
 "use strict"
 const R = require("ramda")
 const reqwest = require("reqwest")
+const stopWords = require("./stopWords.js")
 
 function getData(url) {
     return new Promise((resolve)=>{
@@ -109,7 +110,9 @@ function log(data) {
 }
 function addProp(singleProp, defaultValue, arr) {
     return R.compose(R.map(val=>{
-        val[ singleProp ] = defaultValue
+        if (val[ singleProp ] === undefined) {
+            val[ singleProp ] = defaultValue
+        }
         return val
     }))(arr)
 }
@@ -165,6 +168,18 @@ function returnOldStyleGerman(keyIs) {
         return keyIs
     }
 }
+function stopWordsFilter(sentence) {
+    return R.compose(R.filter(val=> {
+        return R.indexOf(val, stopWords) !== -1 && val.length > 3
+    }), R.split(" "), R.toLower)(sentence)
+}
+function randomIndex(arr) {
+    if (R.type(arr) === "Array" && arr.length > 0) {
+        return shuffle(arr)[ 0 ]
+    } else {return null}
+}
+module.exports.stopWordsFilter = stopWordsFilter
+module.exports.randomIndex = randomIndex
 module.exports.returnEasyStyleGerman = returnEasyStyleGerman
 module.exports.returnOldStyleGerman = returnOldStyleGerman
 module.exports.easyGermanSymbol = easyGermanSymbol

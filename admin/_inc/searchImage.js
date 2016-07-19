@@ -8,7 +8,7 @@ const J = require("../../common.js")
 const R = require("ramda")
 const env = require("dotenv-helper")
 const Bing = require("node-bing-api")({ accKey: env.getEnv("bing") })
-function imageFirst(keyword, searchLimit = 5) {
+function imageFirst(keyword, searchLimit = 40) {
     return new Promise((resolve)=>{
         Bing.images(keyword, {
             top: searchLimit,
@@ -36,7 +36,7 @@ function imageFirst(keyword, searchLimit = 5) {
         })
     })
 }
-function imageSecond(keyword, searchLimit = false) {
+function imageSecond(keyword) {
     //http://images.freeimages.com/images/previews/763/sniffing-cat-1398165.jpg
     //http://images.freeimages.com/images/thumbs/763/sniffing-cat-1398165.jpg
     return new Promise((resolve) => {
@@ -59,11 +59,7 @@ function imageSecond(keyword, searchLimit = false) {
                         imageSrc: R.replace("thumbs", "previews", imageThumb)
                     })
                 })
-                if (!searchLimit) {
-                    resolve(willReturn)
-                } else {
-                    resolve(R.take(searchLimit, willReturn))
-                }
+                resolve(willReturn)
             } else {resolve(null)}
         }).catch((error) => {
             console.log(error)
@@ -71,7 +67,7 @@ function imageSecond(keyword, searchLimit = false) {
         })
     })
 }
-function imageThird(keyword, searchLimit = false) {
+function imageThird(keyword) {
     //https://static.pexels.com/photos/4602/jumping-cute-playing-animals-medium.jpg
     //https://static.pexels.com/photos/4602/jumping-cute-playing-animals-large.jpg
     return new Promise((resolve)=>{
@@ -94,11 +90,7 @@ function imageThird(keyword, searchLimit = false) {
                         imageSrc: R.replace("meduim", "large", imageThumb)
                     })
                 })
-                if (!searchLimit) {
-                    resolve(willReturn)
-                } else {
-                    resolve(R.take(searchLimit, willReturn))
-                }
+                resolve(willReturn)
             } else {resolve(null)}
         }).catch((error) => {
             console.log(error)
@@ -107,13 +99,12 @@ function imageThird(keyword, searchLimit = false) {
     })
 }
 
-function main(keyword, searchLimit = false) {
+function main(keyword) {
     J.box(keyword)
     return new Promise(resolve=>{
-        let imageFirstLimit = searchLimit === false ? 5 : searchLimit
-        imageFirst(keyword, imageFirstLimit).then(imageFirstData =>{
-            imageSecond(keyword, searchLimit).then(imageSecondData=>{
-                imageThird(keyword, searchLimit).then(imageThirdData=>{
+        imageFirst(keyword).then(imageFirstData =>{
+            imageSecond(keyword).then(imageSecondData=>{
+                imageThird(keyword).then(imageThirdData=>{
                     resolve(J.shuffle(R.flatten([imageFirstData, imageSecondData, imageThirdData])))
                 })
             })

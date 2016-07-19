@@ -108,10 +108,14 @@ router.post("/blog", (req, res) =>{
     })
 })
 router.post("/searchImage", (req, res) =>{
-    J.log(req.body.data)
-    J.log(typeof req.body.data)
-    let keyword = R.prop("searchImage", JSON.parse(req.body.data))
+    let keyword = R.prop("searchImageKeyword", JSON.parse(req.body.data))
     searchImage.main(keyword).then(incoming =>{
+        res.send(incoming)
+    })
+})
+router.post("/searchImageFirst", (req, res) =>{
+    let keyword = R.prop("searchImageKeyword", JSON.parse(req.body.data))
+    searchImage.imageFirst(keyword).then(incoming =>{
         res.send(incoming)
     })
 })
