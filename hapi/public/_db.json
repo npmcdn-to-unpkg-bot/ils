@@ -1,16 +1,20 @@
 {
   "data": {
     "1": {
-      "dePart": "Ich habe meine Telefonnummer verloren, kann ich deine haben",
+      "dePart": "Ich habe meine Telefonnummer verloren, kann ich deine haben?",
       "enPart": "I forgot my phone number, can I have yours?",
       "category": "jokes",
-      "id": 1
+      "id": 1,
+      "childSafetyFlag": true,
+      "imageSrc": false
     },
     "2": {
-      "dePart": "Die Stimmen in meinem Kopf sagen, dass du mit mir sprechen willst",
-      "enPart": "The voices in my head tell me, that you want to speak with me",
+      "dePart": "Die Stimmen in meinem Kopf sagen, dass du mit mir sprechen willst.",
+      "enPart": "The voices in my head tell me, that you want to speak with me.",
       "category": "jokes",
-      "id": 2
+      "id": 2,
+      "childSafetyFlag": true,
+      "imageSrc": false
     },
     "3": {
       "dePart": "Was möchtest du morgen zum Frühstück?",
@@ -679,10 +683,10 @@
       "category": "draft"
     },
     "129": {
-          "dePart": "Wer ein altes Haus hat und eine junge Frau, hat Arbeit genug.",
-          "enPart": "aa",
-          "category": "preDraft",
-          "id": 129
+      "dePart": "Wer ein altes Haus hat und eine junge Frau, hat Arbeit genug.",
+      "enPart": "aa",
+      "category": "preDraft",
+      "id": 129
     },
     "130": {
       "dePart": "Dankbarkeit ist in den Himmel gestiegen und hat die Leiter mitgenommen.",
@@ -2909,12 +2913,6 @@
       "enPart": "",
       "category": "preDraft",
       "id": 507
-    },
-    "508": {
-      "dePart": "Alles, worauf die Liebe wartet, ist die Gelegenheit.",
-      "enPart": "",
-      "category": "preDraft",
-      "id": 508
     },
     "509": {
       "dePart": "Es gibt nichts Schöneres, als geliebt zu werden, geliebt um seiner selbst willen oder vielmehr trotz seiner selbst.",

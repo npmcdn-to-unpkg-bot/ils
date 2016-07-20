@@ -1,3 +1,17 @@
+.searchImageKeyword {
+  background-color: #A5D6A7;
+}
+.searchImageKeyword:focus,
+.deWordInput:focus,
+enWordInput:focus {
+  background-color: #CFD8DC;
+}
+.deWordInput {
+  background-color: #E1F5FE;
+}
+.enWordInput {
+  background-color: #FBE9E7;
+}
 .wrongAnswerLearningMeme {
   animation: wrongLearningMeme 1s;
 }

@@ -23,6 +23,9 @@ async function willUpdate(parent, data) {
     }
     return iMeanNothing
 }
+async function willUpdateSingle(data) {
+    return await proudDb.save("data", `${data.id}`, data)
+}
 async function willAddEntry(parent, dataRaw) {
     let indexFuture = await proudDb.loadParent("nextIndex")
     let data = R.merge(dataRaw, {id: indexFuture})
@@ -50,8 +53,6 @@ async function willBulkRemove(marker) {
         }
     }))
     let willChangeCategoryArr = dropByIndex(predraftCategory)
-    J.log(willRemoveIndexArr)
-    J.log(willChangeCategoryArr)
     let iMeanNothing
     for (let removeMarker of willRemoveIndexArr) {
         J.log(removeMarker, "remove")
@@ -98,7 +99,7 @@ router.post("/remove/:parent", (req, res) =>{
     })
 })
 router.post("/updateSingle", (req, res) =>{
-    willUpdate("data", JSON.parse(req.body.data)).then(()=>{
+    willUpdateSingle(JSON.parse(req.body.data).data).then(()=>{
         res.send("done")
     })
 })

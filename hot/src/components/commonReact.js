@@ -116,6 +116,12 @@ function addProp(singleProp, defaultValue, arr) {
         return val
     }))(arr)
 }
+function setProp(singleProp, value, arr) {
+    return R.compose(R.map(val=>{
+        val[ singleProp ] = value
+        return val
+    }))(arr)
+}
 let fontValueFn = R.cond([
     [R.gte(30), R.always(250)],
     [R.both(R.lt(30), R.gte(48)), R.always(185)],
@@ -170,7 +176,7 @@ function returnOldStyleGerman(keyIs) {
 }
 function stopWordsFilter(sentence) {
     return R.compose(R.filter(val=> {
-        return R.indexOf(val, stopWords) !== -1 && val.length > 3
+        return R.indexOf(val, stopWords) === -1 && val.length > 3
     }), R.split(" "), R.toLower)(sentence)
 }
 function randomIndex(arr) {
@@ -178,6 +184,16 @@ function randomIndex(arr) {
         return shuffle(arr)[ 0 ]
     } else {return null}
 }
+function addFullstop(str) {
+    let lastChar = R.last(str)
+    let punctuationArr = [".", "?", "!"]
+    if (R.indexOf(lastChar, punctuationArr) === -1 && lastChar !== "") {
+        return `${str}.`
+    } else {
+        return str
+    }
+}
+module.exports.addFullstop = addFullstop
 module.exports.stopWordsFilter = stopWordsFilter
 module.exports.randomIndex = randomIndex
 module.exports.returnEasyStyleGerman = returnEasyStyleGerman
@@ -186,6 +202,7 @@ module.exports.easyGermanSymbol = easyGermanSymbol
 module.exports.hideTail = hideTail
 module.exports.fontValueFn = fontValueFn
 module.exports.lineHeightFn = lineHeightFn
+module.exports.setProp = setProp
 module.exports.addProp = addProp
 module.exports.log = log
 module.exports.getData = getData
@@ -202,6 +219,7 @@ module.exports.getWidthPx = getWidthPx
 module.exports.randomSeed = randomSeed
 module.exports.winWidthIs = winWidthIs
 module.exports.winHeightIs = winHeightIs
+module.exports.host = "http://localhost:3001"
 
 module.exports.bulButtonInit = "button"
 module.exports.categoryOptions = [
