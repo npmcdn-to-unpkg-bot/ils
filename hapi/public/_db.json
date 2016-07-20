@@ -197,10 +197,12 @@
       "id": 34
     },
     "35": {
-      "dePart": "Es klang so unwiderleglich daß Kafka gar nicht antwortete",
-      "enPart": "It sounded so indisputable that Kafka gave no answer at all",
+      "dePart": "Es klang so unwiderleglich daß Kafka gar nicht antwortete.",
+      "enPart": "It sounded so indisputable that Kafka gave no answer at all.",
       "category": "derProcess",
-      "id": 35
+      "id": 35,
+      "childSafetyFlag": true,
+      "imageSrc": false
     },
     "36": {
       "dePart": "Und er zeigte in eine dunkle Zimmerecke",
@@ -3652,12 +3654,6 @@
       "category": "preDraft",
       "id": 631
     },
-    "632": {
-      "dePart": "Ein Mensch würde nie dazu kommen, etwas zu tun, wenn er stets warten würde, bis er es so gut kann, dass niemand mehr einen Fehler entdecken könnte.",
-      "enPart": "",
-      "category": "preDraft",
-      "id": 632
-    },
     "633": {
       "dePart": "Hauptsache ich bin gesund und meine Frau hat eine Arbeit.",
       "enPart": "",
@@ -4431,12 +4427,6 @@
       "enPart": "",
       "category": "preDraft",
       "id": 761
-    },
-    "762": {
-      "dePart": "Was keiner kann, das kann ich auch.",
-      "enPart": "",
-      "category": "preDraft",
-      "id": 762
     },
     "763": {
       "dePart": "Wer nicht hören will, muss lesen.",
@@ -6834,9 +6824,13 @@
     },
     "1162": {
       "dePart": "Liebe ist, wenn aus dem Ich und Du ein Wir entsteht.",
-      "enPart": "",
-      "category": "preDraft",
-      "id": 1162
+      "enPart": "Love is when from I and You emerge We.",
+      "category": "quotes",
+      "id": 1162,
+      "childSafetyFlag": true,
+      "imageSrc": "https://static.pexels.com/photos/5390/sunset-hands-love-woman-medium.jpg",
+      "deWord": "entsteht",
+      "enWord": "to result, to develop, to emerge"
     },
     "1163": {
       "dePart": "Mit Haut und Haaren bin Dich Dein, mit Herz und Seele obendrein.",
@@ -8439,12 +8433,6 @@
       "enPart": "",
       "category": "preDraft",
       "id": 1429
-    },
-    "1430": {
-      "dePart": "Es gibt Dinge, über die spreche ich nicht einmal mit mir selbst.",
-      "enPart": "",
-      "category": "preDraft",
-      "id": 1430
     },
     "1431": {
       "dePart": "Die Weltgeschichte ist auch die Summe dessen, was vermeidbar gewesen wäre.",
@@ -10787,10 +10775,14 @@
       "id": 1820
     },
     "1821": {
-      "dePart": "Du kannst die Wellen nicht stoppen, aber du kannst lernen zu surfen.",
-      "enPart": "",
-      "category": "preDraft",
-      "id": 1821
+      "dePart": "Du kannst die Welle nicht stoppen, aber du kannst lernen zu surfen.",
+      "enPart": "You can't stop the wave, but you can learn to surf.",
+      "category": "quotes",
+      "id": 1821,
+      "childSafetyFlag": true,
+      "imageSrc": "http://www.surfertoday.com/images/stories/surfetiquette.jpg",
+      "deWord": "die Welle",
+      "enWord": "the wave"
     },
     "1822": {
       "dePart": "Die Hoffnung ist der Regenbogen über den herabstürzenden Bach des Lebens.",
@@ -15622,12 +15614,6 @@
       "category": "preDraft",
       "id": 2626
     },
-    "2627": {
-      "dePart": "Versuchungen bekämpft man am besten mit Geldmangel und Rheumatismus",
-      "enPart": "",
-      "category": "preDraft",
-      "id": 2627
-    },
     "2628": {
       "dePart": "Träumen muss nicht heissen,die Augen vor der Wirklichkeit zu verschließen.",
       "enPart": "",
@@ -16632,9 +16618,13 @@
     },
     "2795": {
       "dePart": "Gemeinsame Erinnerungen sind manchmal die besten Friedensstifter.",
-      "enPart": "",
-      "category": "preDraft",
-      "id": 2795
+      "enPart": "Mutual memories are often the best peacemakers.",
+      "category": "quotes",
+      "id": 2795,
+      "childSafetyFlag": true,
+      "imageSrc": "http://images5.fanpop.com/image/photos/31300000/Couple-love-31396193-1440-900.jpg",
+      "deWord": "die Erinnerungen",
+      "enWord": "memories"
     },
     "2796": {
       "dePart": "Wenn man viel hineinzustecken hat, so hat ein Tag hundert Taschen.",
@@ -18209,10 +18199,12 @@
       "id": 3057
     },
     "3058": {
-      "dePart": "Schmerz und Freude liegt in einer Schale; ihre Mischung ist der Menschen Los.",
+      "dePart": "Schmerz und Freude liegt in einer Schale.",
       "enPart": "",
       "category": "preDraft",
-      "id": 3058
+      "id": 3058,
+      "childSafetyFlag": true,
+      "imageSrc": false
     },
     "3059": {
       "dePart": "Nie drohe man zuerst mit der Faust und dann mit dem Finger.",
@@ -18850,12 +18842,6 @@
       "category": "preDraft",
       "id": 3164
     },
-    "3165": {
-      "dePart": "Individualität ist überall zu schonen und zu ehren als Wurzel jedes Guten.",
-      "enPart": "",
-      "category": "preDraft",
-      "id": 3165
-    },
     "3166": {
       "dePart": "Nur die Ruhe in der Bewegunghält die Welt und macht den Mann.",
       "enPart": "",
@@ -19473,12 +19459,6 @@
       "enPart": "",
       "category": "preDraft",
       "id": 3268
-    },
-    "3269": {
-      "dePart": "Menschlich und edel ist das Gute, göttlich und unsterblich aber das Schöne.",
-      "enPart": "",
-      "category": "preDraft",
-      "id": 3269
     },
     "3270": {
       "dePart": "Die Wahrheit liegt zwischen zwei Extremen, aber nicht in der Mitte.",

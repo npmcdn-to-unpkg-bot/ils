@@ -1,9 +1,17 @@
+.commonInput {
+  padding: 5px;
+}
 .searchImageKeyword {
-  background-color: #A5D6A7;
+  background-color: #FFF3E0;
+}
+.searchImageKeyword,
+.deWordInput,
+.enWordInput {
+  padding: 5px;
 }
 .searchImageKeyword:focus,
 .deWordInput:focus,
-enWordInput:focus {
+.enWordInput:focus {
   background-color: #CFD8DC;
 }
 .deWordInput {

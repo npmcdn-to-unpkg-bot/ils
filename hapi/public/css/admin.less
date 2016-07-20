@@ -12,10 +12,16 @@
 @correctSecond: #A5D6A7;
 @wrongFirst: #E57373;
 @wrongSecond: #EC407A;
-.searchImageKeyword{
-    background-color: @correctSecond;
+.commonInput{
+    padding: 5px;
 }
-.searchImageKeyword:focus, .deWordInput:focus, enWordInput:focus{
+.searchImageKeyword{
+    background-color: #FFF3E0;
+}
+.searchImageKeyword, .deWordInput, .enWordInput{
+    .commonInput;
+}
+.searchImageKeyword:focus, .deWordInput:focus, .enWordInput:focus{
     background-color: @memeBackgroundColor;
 }
 .deWordInput{

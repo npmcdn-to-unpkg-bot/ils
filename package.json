@@ -95,6 +95,7 @@
     "ramda-fantasy": "*",
     "ramjet": "*",
     "react-hot-loader": "*",
+    "react-notification": "^5.0.7",
     "sane": "*",
     "scrape-it": "*",
     "siege": "*",

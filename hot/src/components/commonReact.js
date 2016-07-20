@@ -185,12 +185,12 @@ function randomIndex(arr) {
     } else {return null}
 }
 function addFullstop(str) {
-    let lastChar = R.last(str)
+    let lastChar = R.last(str.trim())
     let punctuationArr = [".", "?", "!"]
     if (R.indexOf(lastChar, punctuationArr) === -1 && lastChar !== "") {
-        return `${str}.`
+        return `${str.trim()}.`
     } else {
-        return str
+        return str.trim()
     }
 }
 module.exports.addFullstop = addFullstop
