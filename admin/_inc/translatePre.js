@@ -129,7 +129,7 @@ function synonymFirst(wordRaw) {
                         if (val.trim() !== "") {
                             willReturn.push({
                                 dePart: val.trim(),
-                                enPart: word
+                                enPart: ""
                             })
                         }
                     })
@@ -174,7 +174,7 @@ function synonymSecond(wordRaw) {
                             if (localWord !== currentWord && localWord !== "") {
                                 willReturn.push({
                                     dePart: localWord,
-                                    enPart: word
+                                    enPart: ""
                                 })
                             }
                         })
@@ -209,7 +209,7 @@ function synonymThird(wordRaw) {
                     let localWord = $(this).text().trim()
                     willReturn.push({
                         dePart: localWord,
-                        enPart: word
+                        enPart: ""
                     })
                 })
                 resolve(willReturn)
@@ -220,7 +220,83 @@ function synonymThird(wordRaw) {
         })
     })
 }
-//
+function synonymFourth(word) {
+    return new Promise((resolve) => {
+        J.getData(`https://www.openthesaurus.de/synonyme/search?q=${word}&format=application/json`).then(data=>{
+            let willReturn = []
+            data.synsets.map(val=>{
+                willReturn = R.flatten([willReturn,R.pluck("term",val.terms)])
+            })
+            resolve(R.compose(R.map(val=>{return {dePart:val,enPart:""}}),R.sort((a,b)=>b.length-a.length))(willReturn))
+        })
+    })
+}
+function synonymFifth(word) {
+    return new Promise((resolve) => {
+        fetch(`http://ein.anderes-wort.de/fuer/${word}`).then((res)=>{
+            if (res.status !== 200) {
+                console.log("response code error")
+                resolve(null)
+            } else {
+                return res.text()
+            }
+        }).then(function(data) {
+            if (data) {
+                let $ = cheerio.load(data)
+                let willReturn = []
+                let id = 0
+                let flag = false
+                let selector = "li a"
+                $(selector).each(function(i) {
+                    let state = $(this).text().trim()
+                    J.log(state,i)
+                    willReturn.push(state)
+                })
+                if(willReturn.length>11){
+                    resolve(R.compose(R.map(val=>{return {dePart:val, enPart:""}}),R.filter(val=> val.length>3),R.sort((a,b)=>{return b.length-a.length}),R.drop(2),R.dropLast(9))(willReturn))
+                }else{
+                    resolve(null)
+                }
+            } else {resolve(null)}
+        }).catch((error) => {
+            console.log(error)
+            resolve(null)
+        })
+    })
+}
+function synonymSixth(word) {
+    return new Promise((resolve) => {
+        fetch(`http://ein-anderes-wort.com/ein_anderes_wort_fuer_${word}.html`).then((res)=>{
+            if (res.status !== 200) {
+                console.log("response code error")
+                resolve(null)
+            } else {
+                return res.text()
+            }
+        }).then(function(data) {
+            if (data) {
+                let $ = cheerio.load(data)
+                let willReturn = []
+                let id = 0
+                let flag = false
+                let selector = "a"
+                $(selector).each(function(i) {
+                    let state = $(this).text().trim()
+                    willReturn.push(state)
+                })
+                if(willReturn.length>44){
+                    resolve(R.compose(R.map(val=>{return {dePart:val, enPart:""}}),R.filter(val=> R.indexOf("(",val)===-1&&R.indexOf(")",val)===-1&&val.length>3),R.sort((a,b)=>{return b.length-a.length}),R.drop(10),R.dropLast(33))(willReturn))
+                }else{
+                    resolve(null)
+                }
+                
+            } else {resolve(null)}
+        }).catch((error) => {
+            console.log(error)
+            resolve(null)
+        })
+    })
+}
 function phraseFirst(wordRaw) {
     let word = wordRaw.trim().toLowerCase()
     return new Promise((resolve) => {
@@ -230,41 +306,34 @@ function phraseFirst(wordRaw) {
         let url = `http://de.langenscheidt.com/deutsch-englisch/${word}`
         scrapeIt(url, {
             examples: {
-                listItem: ".row-fluid",
+                listItem: ".lemma-example",
                 data: {
                     dePart: {
-                        selector: ".lkgEx",
-                        convert: (wordIs) => {
-                            if (wordIs.length > 0 && wordIs.length < 70) {
-                                flag = true
-                                dePart = wordIs
-                            } else {
-                                flag = false
-                            }
+                        selector: ".col1 span span.text",
+                        convert: state => {
+                            flag = true
+                            return state.trim()
                         }
                     },
                     enPart: {
-                        selector: ".lkgExNormal",
-                        convert: (wordIs) => {
-                            if (flag && wordIs.length > 0 && wordIs.length < 70) {
-                                let just = {}
-                                just.dePart = dePart
-                                just.enPart = wordIs
-                                willReturn.push(just)
+                        selector: ".trans-line span.trans",
+                        convert: state => {
+                            if(flag){
+                                flag = false
+                                return state.trim()
                             }
                         }
                     }
                 }
             }
-        }).then(() => {
-            resolve(willReturn)
+        }).then(incoming => {
+            resolve(incoming)
         }).catch((error) => {
             console.log(error)
             resolve(null)
         })
     })
 }
-
 function phraseSecond(wordRaw) {
     let word = wordRaw.trim().toLowerCase()
     return new Promise((resolve) => {
@@ -382,39 +451,8 @@ function phraseFourth(word) {
         })
     })
 }
-//
-function phraseFifth(word) {
-    return new Promise((resolve) => {
-        fetch(`http://www.duden.de/rechtschreibung/${word}`).then((res)=>{
-            if (res.status !== 200) {
-                console.log("response code error")
-                resolve(null)
-            } else {
-                return res.text()
-            }
-        }).then(function(data) {
-            if (data) {
-                let filterFn = R.compose(R.trim, R.join(" "), R.split(" "), R.ifElse((data)=>{R.length(data) === 1}, R.always, R.last), R.split(">:"))
-                let $ = cheerio.load(data)
-                let willReturn = []
-                let selector = "#Bedeutung1 .term-section ul li"
-                $(selector).each(function(i) {
-                    let state = $(this).text().trim()
-                    willReturn.push({
-                        dePart: filterFn(state),
-                        enPart: word
-                    })
-                })
 
-                resolve(willReturn)
-            } else {resolve(null)}
-        }).catch((error) => {
-            console.log(error)
-            resolve(null)
-        })
-    })
-}
-function phraseSixth(word) {
+function phraseFifth(word) {
     return new Promise((resolve) => {
         fetch(`http://zitate.net/zitate/suche.html?query=${word}`).then((res)=>{
             if (res.status !== 200) {
@@ -444,7 +482,7 @@ function phraseSixth(word) {
         })
     })
 }
-function phraseSeventh(word) {
+function phraseSixth(word) {
     return new Promise((resolve) => {
         fetch(`http://www.uitmuntend.de/woerterbuch/${word}/`).then((res)=>{
             if (res.status !== 200) {
@@ -536,26 +574,28 @@ let willReturnMain = {}
 async function deEnAsync(wordRaw) {
     let word = wordRaw.trim().toLowerCase()
     let local = await mixed(word)
+    willReturnMain.deEnFirst = local.translation
     willReturnMain.deEnThird = await deEnThird(word)
-    willReturnMain.deEnFourth = local.translation
     willReturnMain.phraseFirst = await phraseFirst(word)
     willReturnMain.phraseSecond = await phraseSecond(word)
     willReturnMain.phraseThird = await phraseThird(word)
     willReturnMain.phraseFourth = await phraseFourth(word)
     willReturnMain.phraseFifth = await phraseFifth(word)
     willReturnMain.phraseSixth = await phraseSixth(word)
-    willReturnMain.phraseSeventh = await phraseSeventh(word)
     willReturnMain.synonymFirst = await synonymFirst(word)
     willReturnMain.synonymSecond = await synonymSecond(word)
     willReturnMain.synonymThird = await synonymThird(word)
-    willReturnMain.synonymFourth = local.related
+    willReturnMain.synonymFourth = await synonymFourth(word)
+    willReturnMain.synonymFifth = await synonymFifth(word)
+    willReturnMain.synonymSixth = await synonymSixth(word)
+    willReturnMain.synonymSeventh = local.related
     return willReturnMain
 }
 async function deEnAltAsync(wordRaw) {
     let word = wordRaw.trim().toLowerCase()
     let local = await mixed(word)
+    willReturnMain.deEnFirst = local.translation
     willReturnMain.deEnThird = await deEnThird(word)
-    willReturnMain.deEnFourth = local.translation
     willReturnMain.phraseFirst = await phraseFirst(word)
     willReturnMain.phraseSecond = await phraseSecond(word)
     willReturnMain.phraseThird = await phraseThird(word)
