@@ -52,5 +52,43 @@ function will(word) {
         })
     })
 }
+function willBe(word) {
+    return new Promise((resolve) => {
+        fetch(`http://ein-anderes-wort.com/ein_anderes_wort_fuer_${word}.html`).then((res)=>{
+            if (res.status !== 200) {
+                console.log("response code error")
+                resolve(null)
+            } else {
+                return res.text()
+            }
+        }).then(function(data) {
+            if (data) {
+                let $ = cheerio.load(data)
+                let willReturn = []
+                let id = 0
+                let flag = false
+                let selector = "a"
+                $(selector).each(function(i) {
+                    let state = $(this).text().trim()
+                    willReturn.push(state)
+                })
+                //resolve(R.sort((a,b)=>a.length-b.length,filterFn(willReturn)))
+                if(willReturn.lenght>44){
+                    resolve(R.compose(R.drop(10),R.dropLast(33))(willReturn))
+                }else{
+                    resolve(null)
+                }
+                
+            } else {resolve(null)}
+        }).catch((error) => {
+            console.log(error)
+            resolve(null)
+        })
+    })
+}
 
-will().then(J.log)
+willBe("wenig").then(incoming=>{
+    J.log(R.take(10,incoming))
+    J.log(R.takeLast(10,incoming))
+    
+})
