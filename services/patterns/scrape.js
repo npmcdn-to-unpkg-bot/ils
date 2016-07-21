@@ -6,9 +6,9 @@ const fetch = require("node-fetch")
 const request = require("request")
 const J = require("justdo")
 const R = require("ramda")
-function will(pagination = 27) {
+function willBe(pagination = 27) {
     return new Promise((resolve) => {
-        fetch(`https://www.reddit.com/r/javascript/`).then((res)=>{
+        fetch("https://www.reddit.com/r/javascript/").then((res)=>{
             if (res.status !== 200) {
                 console.log("response code error")
                 resolve(null)
@@ -41,7 +41,7 @@ function will(pagination = 27) {
     })
 }
 
-function will(subreddit="javascript") {
+function will(subreddit = "javascript") {
     return new Promise(resolve => {
         let flag = false
         let counter = 0
@@ -55,7 +55,7 @@ function will(subreddit="javascript") {
                         selector: "a",
                         attr: "href",
                         convert: (incoming) => {
-                            if(R.take(3,incoming)!=="/r/"){
+                            if (R.take(3, incoming) !== "/r/") {
                                 //J.box(incoming)
                             }
                             //return incoming
@@ -65,9 +65,9 @@ function will(subreddit="javascript") {
                         selector: "a",
                         attr: "href",
                         convert: (wordIs) => {
-                            if(wordIs.includes(`reddit.com/r/${subreddit}/new/?count=`)){
+                            if (wordIs.includes(`reddit.com/r/${subreddit}/new/?count=`)) {
                                 J.lg(wordIs)
-                            }else{J.log(wordIs)}
+                            } else {J.log(wordIs)}
                             //return wordIs
                         }
                     }

@@ -6,14 +6,6 @@ const request = require("request")
 const J = require("justdo")
 const R = require("ramda")
 
-function timeoutFn(ms = 5000) {
-    return new Promise((resolve)=>{
-        setTimeout(()=>{
-            resolve([])
-        }, ms)
-    })
-}
-
 function deEnFirst(wordRaw) {
     let word = wordRaw.trim().toLowerCase()
     return new Promise((resolve) => {
@@ -228,7 +220,7 @@ function synonymThird(wordRaw) {
         })
     })
 }
-
+//
 function phraseFirst(wordRaw) {
     let word = wordRaw.trim().toLowerCase()
     return new Promise((resolve) => {
@@ -390,6 +382,7 @@ function phraseFourth(word) {
         })
     })
 }
+//
 function phraseFifth(word) {
     return new Promise((resolve) => {
         fetch(`http://www.duden.de/rechtschreibung/${word}`).then((res)=>{
@@ -451,6 +444,51 @@ function phraseSixth(word) {
         })
     })
 }
+function phraseSeventh(word) {
+    return new Promise((resolve) => {
+        fetch(`http://www.uitmuntend.de/woerterbuch/${word}/`).then((res)=>{
+            if (res.status !== 200) {
+                console.log("response code error")
+                resolve(null)
+            } else {
+                return res.text()
+            }
+        }).then(function(data) {
+            if (data) {
+                let $ = cheerio.load(data)
+                let willReturn = []
+                let trimFn = R.compose(R.trim, R.head, R.split("["))
+                let filterFn = R.compose(R.uniq, R.filter(val=>{
+                    return val.length > 3 && val.length < 130
+                }), R.map(val => trimFn(val)))
+                let id = 0
+                let flag = false
+                let selector = "tr"
+                $(selector).each(function(i) {
+                    let state = $(this).text().trim()
+                    switch (state) {
+                    case "Zusammensetzungen":
+                    case "Sprichwörter & Zitate":
+                    case "Beispiele":
+                        flag = true
+                        break
+                    case "Title":
+                        flag = false
+                        break
+                    }
+                    if (flag) {
+                        willReturn.push($(this).find("td[lang=\"de\"]").text().trim())
+                    }
+                })
+                willReturn = R.sort((a, b)=>a.length - b.length, filterFn(willReturn))
+                resolve(R.map(val =>{return {dePart: val, enPart:""}}, willReturn))
+            } else {resolve(null)}
+        }).catch((error) => {
+            console.log(error)
+            resolve(null)
+        })
+    })
+}
 function mixed(wordRaw) {
     let word = wordRaw.trim().toLowerCase()
     return new Promise((resolve)=>{
@@ -498,17 +536,37 @@ let willReturnMain = {}
 async function deEnAsync(wordRaw) {
     let word = wordRaw.trim().toLowerCase()
     let local = await mixed(word)
+    willReturnMain.deEnThird = await deEnThird(word)
     willReturnMain.deEnFourth = local.translation
-    willReturnMain.synonymFirst = await synonymFirst(word)
-    willReturnMain.synonymFourth = local.related
     willReturnMain.phraseFirst = await phraseFirst(word)
     willReturnMain.phraseSecond = await phraseSecond(word)
     willReturnMain.phraseThird = await phraseThird(word)
     willReturnMain.phraseFourth = await phraseFourth(word)
     willReturnMain.phraseFifth = await phraseFifth(word)
     willReturnMain.phraseSixth = await phraseSixth(word)
-    willReturn.synonymSecond = await synonymSecond(word)
+    willReturnMain.phraseSeventh = await phraseSeventh(word)
+    willReturnMain.synonymFirst = await synonymFirst(word)
+    willReturnMain.synonymSecond = await synonymSecond(word)
     willReturnMain.synonymThird = await synonymThird(word)
+    willReturnMain.synonymFourth = local.related
+    return willReturnMain
+}
+async function deEnAltAsync(wordRaw) {
+    let word = wordRaw.trim().toLowerCase()
+    let local = await mixed(word)
+    willReturnMain.deEnThird = await deEnThird(word)
+    willReturnMain.deEnFourth = local.translation
+    willReturnMain.phraseFirst = await phraseFirst(word)
+    willReturnMain.phraseSecond = await phraseSecond(word)
+    willReturnMain.phraseThird = await phraseThird(word)
+    willReturnMain.phraseFourth = await phraseFourth(word)
+    willReturnMain.phraseFifth = await phraseFifth(word)
+    willReturnMain.phraseSixth = await phraseSixth(word)
+    willReturnMain.phraseSeventh = await phraseSeventh(word)
+    willReturnMain.synonymFirst = await synonymFirst(word)
+    willReturnMain.synonymSecond = await synonymSecond(word)
+    willReturnMain.synonymThird = await synonymThird(word)
+    willReturnMain.synonymFourth = local.related
     return willReturnMain
 }
 async function deEnShortAsync(wordRaw) {
@@ -527,13 +585,13 @@ async function deEnShortAsync(wordRaw) {
     return willReturnMain
 }
 
-function deEn(word, ms = 10000) {
+function deEn(word, ms = 12000) {
     return new Promise((resolve)=>{
         setTimeout(()=>{
             resolve(willReturnMain)
         }, ms)
-        deEnAsync(word).then((result)=>{
-            resolve(result)
+        deEnAsync(word).then(incoming=>{
+            resolve(incoming)
         })
     })
 }
@@ -565,8 +623,6 @@ function willRequest(url) {
 
 module.exports.deEn = deEn
 module.exports.deEnShort = deEnShort
-
-module.exports.timeoutFn = timeoutFn
 module.exports.deEnFirst = deEnFirst
 module.exports.deEnSecond = deEnSecond
 module.exports.deEnThird = deEnThird
@@ -576,3 +632,8 @@ module.exports.synonymSecond = synonymSecond
 module.exports.synonymThird = synonymThird
 module.exports.phraseFirst = phraseFirst
 module.exports.phraseSecond = phraseSecond
+module.exports.phraseThird = phraseThird
+module.exports.phraseFourth = phraseFourth
+module.exports.phraseFifth = phraseFifth
+module.exports.phraseSixth = phraseSixth
+module.exports.phraseSeventh = phraseSeventh

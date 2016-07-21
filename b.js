@@ -8,4 +8,7 @@ const Future = RFantasy.Future
 const Identity = RFantasy.Identity
 const Maybe = RFantasy.Maybe
 const Just = RFantasy.Just
+const translate = require("./admin/_inc/translate.js")
+let words = require("./words")
+translate.deEn("wenig").then(J.log)
 //fs.writeFileSync("temp3.txt", JSON.stringify(R.flatten([arr, arr2])))

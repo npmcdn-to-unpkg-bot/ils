@@ -21,70 +21,80 @@ var deEnAsync = function () {
 
                     case 3:
                         local = _context.sent;
+                        _context.next = 6;
+                        return deEnThird(word);
+
+                    case 6:
+                        willReturnMain.deEnThird = _context.sent;
 
                         willReturnMain.deEnFourth = local.translation;
-                        _context.next = 7;
-                        return synonymFirst(word);
-
-                    case 7:
-                        willReturnMain.synonymFirst = _context.sent;
-
-                        willReturnMain.synonymFourth = local.related;
-                        _context.next = 11;
+                        _context.next = 10;
                         return phraseFirst(word);
 
-                    case 11:
+                    case 10:
                         willReturnMain.phraseFirst = _context.sent;
-                        _context.next = 14;
+                        _context.next = 13;
                         return phraseSecond(word);
 
-                    case 14:
+                    case 13:
                         willReturnMain.phraseSecond = _context.sent;
-                        _context.next = 17;
+                        _context.next = 16;
                         return phraseThird(word);
 
-                    case 17:
+                    case 16:
                         willReturnMain.phraseThird = _context.sent;
-                        _context.next = 20;
+                        _context.next = 19;
                         return phraseFourth(word);
 
-                    case 20:
+                    case 19:
                         willReturnMain.phraseFourth = _context.sent;
-                        _context.next = 23;
+                        _context.next = 22;
                         return phraseFifth(word);
 
-                    case 23:
+                    case 22:
                         willReturnMain.phraseFifth = _context.sent;
-                        _context.next = 26;
+                        _context.next = 25;
                         return phraseSixth(word);
 
-                    case 26:
+                    case 25:
                         willReturnMain.phraseSixth = _context.sent;
-                        _context.next = 29;
+                        _context.next = 28;
+                        return phraseSeventh(word);
+
+                    case 28:
+                        willReturnMain.phraseSeventh = _context.sent;
+                        _context.next = 31;
+                        return synonymFirst(word);
+
+                    case 31:
+                        willReturnMain.synonymFirst = _context.sent;
+                        _context.next = 34;
                         return synonymSecond(word);
 
-                    case 29:
-                        willReturn.synonymSecond = _context.sent;
-                        _context.next = 32;
+                    case 34:
+                        willReturnMain.synonymSecond = _context.sent;
+                        _context.next = 37;
                         return synonymThird(word);
 
-                    case 32:
+                    case 37:
                         willReturnMain.synonymThird = _context.sent;
+
+                        willReturnMain.synonymFourth = local.related;
                         return _context.abrupt("return", willReturnMain);
 
-                    case 34:
+                    case 40:
                     case "end":
                         return _context.stop();
                 }
             }
         }, _callee, this);
     }));
-    return function deEnAsync(_x2) {
+    return function deEnAsync(_x) {
         return ref.apply(this, arguments);
     };
 }();
 
-var deEnShortAsync = function () {
+var deEnAltAsync = function () {
     var ref = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee2(wordRaw) {
         var word, local;
         return _regenerator2.default.wrap(function _callee2$(_context2) {
@@ -97,29 +107,115 @@ var deEnShortAsync = function () {
 
                     case 3:
                         local = _context2.sent;
+                        _context2.next = 6;
+                        return deEnThird(word);
+
+                    case 6:
+                        willReturnMain.deEnThird = _context2.sent;
 
                         willReturnMain.deEnFourth = local.translation;
-                        //willReturnMain.synonymFirst = await synonymFirst(word)
-                        willReturnMain.synonymFourth = local.related;
-                        //willReturnMain.phraseFirst = await phraseFirst(word)
-                        _context2.next = 8;
-                        return phraseFourth(word);
+                        _context2.next = 10;
+                        return phraseFirst(word);
 
-                    case 8:
-                        willReturnMain.phraseFourth = _context2.sent;
-                        _context2.next = 11;
-                        return phraseSixth(word);
-
-                    case 11:
-                        willReturnMain.phraseSixth = _context2.sent;
-                        return _context2.abrupt("return", willReturnMain);
+                    case 10:
+                        willReturnMain.phraseFirst = _context2.sent;
+                        _context2.next = 13;
+                        return phraseSecond(word);
 
                     case 13:
+                        willReturnMain.phraseSecond = _context2.sent;
+                        _context2.next = 16;
+                        return phraseThird(word);
+
+                    case 16:
+                        willReturnMain.phraseThird = _context2.sent;
+                        _context2.next = 19;
+                        return phraseFourth(word);
+
+                    case 19:
+                        willReturnMain.phraseFourth = _context2.sent;
+                        _context2.next = 22;
+                        return phraseFifth(word);
+
+                    case 22:
+                        willReturnMain.phraseFifth = _context2.sent;
+                        _context2.next = 25;
+                        return phraseSixth(word);
+
+                    case 25:
+                        willReturnMain.phraseSixth = _context2.sent;
+                        _context2.next = 28;
+                        return phraseSeventh(word);
+
+                    case 28:
+                        willReturnMain.phraseSeventh = _context2.sent;
+                        _context2.next = 31;
+                        return synonymFirst(word);
+
+                    case 31:
+                        willReturnMain.synonymFirst = _context2.sent;
+                        _context2.next = 34;
+                        return synonymSecond(word);
+
+                    case 34:
+                        willReturnMain.synonymSecond = _context2.sent;
+                        _context2.next = 37;
+                        return synonymThird(word);
+
+                    case 37:
+                        willReturnMain.synonymThird = _context2.sent;
+
+                        willReturnMain.synonymFourth = local.related;
+                        return _context2.abrupt("return", willReturnMain);
+
+                    case 40:
                     case "end":
                         return _context2.stop();
                 }
             }
         }, _callee2, this);
+    }));
+    return function deEnAltAsync(_x2) {
+        return ref.apply(this, arguments);
+    };
+}();
+
+var deEnShortAsync = function () {
+    var ref = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee3(wordRaw) {
+        var word, local;
+        return _regenerator2.default.wrap(function _callee3$(_context3) {
+            while (1) {
+                switch (_context3.prev = _context3.next) {
+                    case 0:
+                        word = wordRaw.trim().toLowerCase();
+                        _context3.next = 3;
+                        return mixed(word);
+
+                    case 3:
+                        local = _context3.sent;
+
+                        willReturnMain.deEnFourth = local.translation;
+                        //willReturnMain.synonymFirst = await synonymFirst(word)
+                        willReturnMain.synonymFourth = local.related;
+                        //willReturnMain.phraseFirst = await phraseFirst(word)
+                        _context3.next = 8;
+                        return phraseFourth(word);
+
+                    case 8:
+                        willReturnMain.phraseFourth = _context3.sent;
+                        _context3.next = 11;
+                        return phraseSixth(word);
+
+                    case 11:
+                        willReturnMain.phraseSixth = _context3.sent;
+                        return _context3.abrupt("return", willReturnMain);
+
+                    case 13:
+                    case "end":
+                        return _context3.stop();
+                }
+            }
+        }, _callee3, this);
     }));
     return function deEnShortAsync(_x3) {
         return ref.apply(this, arguments);
@@ -134,16 +230,6 @@ var fetch = require("node-fetch");
 var request = require("request");
 var J = require("justdo");
 var R = require("ramda");
-
-function timeoutFn() {
-    var ms = arguments.length <= 0 || arguments[0] === undefined ? 5000 : arguments[0];
-
-    return new Promise(function (resolve) {
-        setTimeout(function () {
-            resolve([]);
-        }, ms);
-    });
-}
 
 function deEnFirst(wordRaw) {
     var word = wordRaw.trim().toLowerCase();
@@ -381,7 +467,7 @@ function synonymThird(wordRaw) {
         });
     });
 }
-
+//
 function phraseFirst(wordRaw) {
     var word = wordRaw.trim().toLowerCase();
     return new Promise(function (resolve) {
@@ -555,6 +641,7 @@ function phraseFourth(word) {
         });
     });
 }
+//
 function phraseFifth(word) {
     return new Promise(function (resolve) {
         fetch("http://www.duden.de/rechtschreibung/" + word).then(function (res) {
@@ -626,6 +713,61 @@ function phraseSixth(word) {
         });
     });
 }
+function phraseSeventh(word) {
+    return new Promise(function (resolve) {
+        fetch("http://www.uitmuntend.de/woerterbuch/" + word + "/").then(function (res) {
+            if (res.status !== 200) {
+                console.log("response code error");
+                resolve(null);
+            } else {
+                return res.text();
+            }
+        }).then(function (data) {
+            if (data) {
+                (function () {
+                    var $ = cheerio.load(data);
+                    var willReturn = [];
+                    var trimFn = R.compose(R.trim, R.head, R.split("["));
+                    var filterFn = R.compose(R.uniq, R.filter(function (val) {
+                        return val.length > 3 && val.length < 130;
+                    }), R.map(function (val) {
+                        return trimFn(val);
+                    }));
+                    var id = 0;
+                    var flag = false;
+                    var selector = "tr";
+                    $(selector).each(function (i) {
+                        var state = $(this).text().trim();
+                        switch (state) {
+                            case "Zusammensetzungen":
+                            case "Sprichwörter & Zitate":
+                            case "Beispiele":
+                                flag = true;
+                                break;
+                            case "Title":
+                                flag = false;
+                                break;
+                        }
+                        if (flag) {
+                            willReturn.push($(this).find("td[lang=\"de\"]").text().trim());
+                        }
+                    });
+                    willReturn = R.sort(function (a, b) {
+                        return a.length - b.length;
+                    }, filterFn(willReturn));
+                    resolve(R.map(function (val) {
+                        return { dePart: val, enPart: "" };
+                    }, willReturn));
+                })();
+            } else {
+                resolve(null);
+            }
+        }).catch(function (error) {
+            console.log(error);
+            resolve(null);
+        });
+    });
+}
 function mixed(wordRaw) {
     var word = wordRaw.trim().toLowerCase();
     return new Promise(function (resolve) {
@@ -671,14 +813,14 @@ function mixed(wordRaw) {
 var willReturnMain = {};
 
 function deEn(word) {
-    var ms = arguments.length <= 1 || arguments[1] === undefined ? 10000 : arguments[1];
+    var ms = arguments.length <= 1 || arguments[1] === undefined ? 12000 : arguments[1];
 
     return new Promise(function (resolve) {
         setTimeout(function () {
             resolve(willReturnMain);
         }, ms);
-        deEnAsync(word).then(function (result) {
-            resolve(result);
+        deEnAsync(word).then(function (incoming) {
+            resolve(incoming);
         });
     });
 }
@@ -712,8 +854,6 @@ function willRequest(url) {
 
 module.exports.deEn = deEn;
 module.exports.deEnShort = deEnShort;
-
-module.exports.timeoutFn = timeoutFn;
 module.exports.deEnFirst = deEnFirst;
 module.exports.deEnSecond = deEnSecond;
 module.exports.deEnThird = deEnThird;
@@ -723,3 +863,8 @@ module.exports.synonymSecond = synonymSecond;
 module.exports.synonymThird = synonymThird;
 module.exports.phraseFirst = phraseFirst;
 module.exports.phraseSecond = phraseSecond;
+module.exports.phraseThird = phraseThird;
+module.exports.phraseFourth = phraseFourth;
+module.exports.phraseFifth = phraseFifth;
+module.exports.phraseSixth = phraseSixth;
+module.exports.phraseSeventh = phraseSeventh;

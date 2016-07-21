@@ -21,6 +21,7 @@ searchImageKeyword
 dataFuture
 dataHolder
 notificationMessage
+rawSelectionShort
 .commonInput
 ```
 - "main" - if JSON act as a holder for array of objects, then use "main" as the single object property
