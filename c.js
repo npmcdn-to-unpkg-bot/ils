@@ -15,3 +15,4 @@ function pluckFn(prop, obj) {
 let deEnArr = pluckFn("deEn", translated)
 let synonymArr = pluckFn("phrase", translated)
 let phraseArr = pluckFn("phrase", translated)
+J.log(deEnArr)
