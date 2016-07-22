@@ -456,12 +456,6 @@
       "category": "derProcess",
       "id": 77
     },
-    "78": {
-      "dePart": "Ich gehe bald wieder weg",
-      "enPart": "I'll be leaving again soon",
-      "category": "derProcess",
-      "id": 78
-    },
     "79": {
       "dePart": "Es schien mir daß Sie die Tür abgesperrt haben",
       "enPart": "It seemed to me that you locked the door",
@@ -1697,12 +1691,6 @@
       "enPart": "",
       "category": "preDraft",
       "id": 304
-    },
-    "305": {
-      "dePart": "Die kürzesten Wörter, nämlich ‘ja’ und ‘nein’ erfordern das meiste Nachdenken.",
-      "enPart": "",
-      "category": "preDraft",
-      "id": 305
     },
     "306": {
       "dePart": "Liebe bedeutet, dass man ein offenes Herz hat, sich berühren lässt und von Liebe erfüllt ist.",
@@ -3586,12 +3574,6 @@
       "category": "preDraft",
       "id": 623
     },
-    "624": {
-      "dePart": "Ein Tritt in den Hintern sagt oft mehr als tausend Worte.",
-      "enPart": "",
-      "category": "preDraft",
-      "id": 624
-    },
     "625": {
       "dePart": "Gebranntes Kind hat knusprige Finger…",
       "enPart": "",
@@ -3603,12 +3585,6 @@
       "enPart": "",
       "category": "preDraft",
       "id": 626
-    },
-    "627": {
-      "dePart": "Erst wenn Du in einem Sarg liegst, hat man Dich zum letzten Mal reingelegt.",
-      "enPart": "",
-      "category": "preDraft",
-      "id": 627
     },
     "628": {
       "dePart": "Die meisten Probleme lösen sich von alleine. Man darf sie nur nicht dabei stören!",
@@ -3843,12 +3819,6 @@
       "enPart": "",
       "category": "preDraft",
       "id": 668
-    },
-    "669": {
-      "dePart": "Auf alten Rädern lernt man fahren.",
-      "enPart": "",
-      "category": "preDraft",
-      "id": 669
     },
     "670": {
       "dePart": "Auch auf dem höchsten Thron sitzt man auf dem eigenen Hintern.",
@@ -4951,12 +4921,6 @@
       "enPart": "",
       "category": "preDraft",
       "id": 854
-    },
-    "855": {
-      "dePart": "Alles wird teurer, nur die Ausreden werden billiger.",
-      "enPart": "",
-      "category": "preDraft",
-      "id": 855
     },
     "856": {
       "dePart": "Für dich soll es Rosen regnen, aber mit den Vasen!",
@@ -6488,12 +6452,6 @@
       "category": "preDraft",
       "id": 1110
     },
-    "1111": {
-      "dePart": "Wer ständig glücklich sein möchte, der muss sich oft verändern.",
-      "enPart": "",
-      "category": "preDraft",
-      "id": 1111
-    },
     "1112": {
       "dePart": "Lernen, ohne zu Denken, ist eitel. Denken, ohne zu Lernen, gefährlich.",
       "enPart": "",
@@ -6716,12 +6674,6 @@
       "category": "preDraft",
       "id": 1148
     },
-    "1149": {
-      "dePart": "Glaubst Du an Liebe auf den ersten Blick oder soll ich noch mal reinkommen?",
-      "enPart": "",
-      "category": "preDraft",
-      "id": 1149
-    },
     "1150": {
       "dePart": "Das Einzige was mir deine Augen nicht gesagt haben ist dein Name.",
       "enPart": "",
@@ -6887,12 +6839,6 @@
       "enPart": "",
       "category": "preDraft",
       "id": 1176
-    },
-    "1177": {
-      "dePart": "Wo unsere Familie ist, dort ist die Liebe.",
-      "enPart": "",
-      "category": "preDraft",
-      "id": 1177
     },
     "1178": {
       "dePart": "Familie ist, wo das Leben anfängt und die Liebe nie aufhört.",
@@ -7421,12 +7367,6 @@
       "enPart": "",
       "category": "preDraft",
       "id": 1265
-    },
-    "1266": {
-      "dePart": "Um Geld verachten zu können, muss man es haben.",
-      "enPart": "",
-      "category": "preDraft",
-      "id": 1266
     },
     "1267": {
       "dePart": "Die Torte im menschlichen Antlitz ist einer der bedeutendsten Einfälle des internationalen Humors.",
@@ -8862,12 +8802,6 @@
       "category": "preDraft",
       "id": 1507
     },
-    "1508": {
-      "dePart": "Die Freiheit ist immer die Freiheit des Andersdenkenden.",
-      "enPart": "",
-      "category": "preDraft",
-      "id": 1508
-    },
     "1509": {
       "dePart": "Was man mit Gewalt gewinnt, kann man nur mit Gewalt behalten.",
       "enPart": "",
@@ -8993,12 +8927,6 @@
       "enPart": "",
       "category": "preDraft",
       "id": 1529
-    },
-    "1530": {
-      "dePart": "Nur auf das Ziel zu sehen, verdirbt die Lust am Reisen.",
-      "enPart": "",
-      "category": "preDraft",
-      "id": 1530
     },
     "1531": {
       "dePart": "Unbedingter Gehorsam setzt Unwissenheit voraus!",
@@ -9606,12 +9534,6 @@
       "category": "preDraft",
       "id": 1631
     },
-    "1632": {
-      "dePart": "Man kann einen Krieg beginnen, aber niemals beenden, wenn man will.",
-      "enPart": "",
-      "category": "preDraft",
-      "id": 1632
-    },
     "1633": {
       "dePart": "Unter den Menschen gibt es viel mehr Kopien als Originale.",
       "enPart": "",
@@ -9840,12 +9762,6 @@
       "category": "preDraft",
       "id": 1670
     },
-    "1671": {
-      "dePart": "Die Wurzel der Liebe ist in der Ewigkeit.",
-      "enPart": "",
-      "category": "preDraft",
-      "id": 1671
-    },
     "1672": {
       "dePart": "Es kann passieren, was will: es gibt immer einen, der es kommen sah.",
       "enPart": "",
@@ -9992,9 +9908,13 @@
     },
     "1696": {
       "dePart": "Was mit Gewalt gewonnen wird, hat keine Dauer.",
-      "enPart": "",
-      "category": "preDraft",
-      "id": 1696
+      "enPart": "What is won by violence has no endurance.",
+      "category": "quotes",
+      "id": 1696,
+      "childSafetyFlag": true,
+      "imageSrc": "http://i.imgur.com/Bb2GonC.jpg",
+      "deWord": "die Gewalt",
+      "enWord": "the violence"
     },
     "1697": {
       "dePart": "Was nicht kaputt ist, soll man nicht reparieren.",
@@ -11718,12 +11638,6 @@
       "category": "preDraft",
       "id": 1982
     },
-    "1983": {
-      "dePart": "Das Leben lieben, heißt: Gott lieben.",
-      "enPart": "",
-      "category": "preDraft",
-      "id": 1983
-    },
     "1984": {
       "dePart": "Ich hasse dich, ich hasse dich, oh mein Gott, ich liebe dich.",
       "enPart": "",
@@ -11843,12 +11757,6 @@
       "enPart": "",
       "category": "preDraft",
       "id": 2003
-    },
-    "2004": {
-      "dePart": "Die Liebe ist das Leben des Weibes, aber eine Episode im Leben des Mannes.",
-      "enPart": "",
-      "category": "preDraft",
-      "id": 2004
     },
     "2005": {
       "dePart": "Wir zeigen mit weniger Scham die Leidenschaften des Hassens als des Liebens.",
@@ -12458,9 +12366,11 @@
     },
     "2106": {
       "dePart": "Wissen ist das Kind der Erfahrung.",
-      "enPart": "",
-      "category": "preDraft",
-      "id": 2106
+      "enPart": "Knowledge is the child of the experience.",
+      "category": "quotes",
+      "id": 2106,
+      "childSafetyFlag": true,
+      "imageSrc": "http://i.imgur.com/yHtbEci.jpg"
     },
     "2107": {
       "dePart": "Der Weise ist nicht gelehrt, der Gelehrte ist nicht weise.",
@@ -13662,12 +13572,6 @@
       "category": "preDraft",
       "id": 2306
     },
-    "2307": {
-      "dePart": "Körper, Seele und Geist sind die Elemente der Welt.",
-      "enPart": "",
-      "category": "preDraft",
-      "id": 2307
-    },
     "2308": {
       "dePart": "Heutzutage hat jeder vor sich selbst Angst.",
       "enPart": "",
@@ -13733,12 +13637,6 @@
       "enPart": "",
       "category": "preDraft",
       "id": 2318
-    },
-    "2319": {
-      "dePart": "Denn was von mir ein Esel spricht,das acht' ich nicht!",
-      "enPart": "",
-      "category": "preDraft",
-      "id": 2319
     },
     "2320": {
       "dePart": "Das Vorurteil ist das Kind der Unwissenheit.",
@@ -13859,12 +13757,6 @@
       "enPart": "",
       "category": "preDraft",
       "id": 2339
-    },
-    "2340": {
-      "dePart": "Menschlich gesprochen hat auch der Tod sein Gutes: Er setzt dem Alter ein Ziel.",
-      "enPart": "",
-      "category": "preDraft",
-      "id": 2340
     },
     "2341": {
       "dePart": "Was in der Welt dir nicht gefällt,musst du dir gelassen gefallen lassen",
@@ -13988,9 +13880,13 @@
     },
     "2361": {
       "dePart": "Der Mensch vergißt Schmerz viel rascher als Freude.",
-      "enPart": "",
-      "category": "preDraft",
-      "id": 2361
+      "enPart": "Man forgets pain much faster than happiness.",
+      "category": "quotes",
+      "id": 2361,
+      "childSafetyFlag": true,
+      "imageSrc": "http://i.imgur.com/rWJizIc.jpg",
+      "deWord": "rascher",
+      "enWord": "quicker, faster"
     },
     "2362": {
       "dePart": "Die Angst vor einer Gefahr kann manchmal die größte der Gefahren sein.",
@@ -14160,12 +14056,6 @@
       "category": "preDraft",
       "id": 2389
     },
-    "2390": {
-      "dePart": "Die das Dunkel nicht fühlen, werden sich nie nach dem Lichte umsehen.",
-      "enPart": "",
-      "category": "preDraft",
-      "id": 2390
-    },
     "2391": {
       "dePart": "Viele Menschen halten ihre Phantasie für ihr Gedächtnis.",
       "enPart": "",
@@ -14195,12 +14085,6 @@
       "enPart": "",
       "category": "preDraft",
       "id": 2395
-    },
-    "2396": {
-      "dePart": "Sobald eine Mode allgemein geworden ist, hat sie sich überlebt.",
-      "enPart": "",
-      "category": "preDraft",
-      "id": 2396
     },
     "2397": {
       "dePart": "Die Lust ist nur dann ein Gut, wenn sie keine Reue nach sich zieht.",
@@ -15407,10 +15291,14 @@
       "id": 2598
     },
     "2599": {
-      "dePart": "Zufall ist ein Wort ohne Sinn – nichts kann ohne Ursache existieren",
-      "enPart": "",
-      "category": "preDraft",
-      "id": 2599
+      "dePart": "Zufall ist ein Wort ohne Sinn, weil nichts ohne Ursache existieren kann.",
+      "enPart": "Accident is meaningless word, because nothing exist without a cause.",
+      "category": "quotes",
+      "id": 2599,
+      "childSafetyFlag": true,
+      "imageSrc": "http://i.imgur.com/9ys8BDq.jpg",
+      "deWord": "die Ursache",
+      "enWord": "the reason, the cause, the source"
     },
     "2600": {
       "dePart": "Es gibt Wichtigeres im Leben, als sein Tempo zu beschleunigen",
@@ -15891,10 +15779,14 @@
       "id": 2680
     },
     "2681": {
-      "dePart": "Unwahrheit zerstört die Seele;Wahrheit stärkt sie.",
-      "enPart": "",
-      "category": "preDraft",
-      "id": 2681
+      "dePart": "Unwahrheit zerstört die Seele, Wahrheit stärkt sie.",
+      "enPart": "Untruth shatters the soul, truth strengthens it.",
+      "category": "quotes",
+      "id": 2681,
+      "childSafetyFlag": true,
+      "imageSrc": "http://i.imgur.com/z79TIFc.png",
+      "deWord": "zerstört",
+      "enWord": "to ruin, to shatter, to demolish"
     },
     "2682": {
       "dePart": "Diese Welt ist ständig durch zwei Dinge bedroht, Durch Ordnung und Unordnung.",
@@ -16925,12 +16817,6 @@
       "enPart": "",
       "category": "preDraft",
       "id": 2853
-    },
-    "2854": {
-      "dePart": "Das Leben ist die Idee in ihrem unmittelbaren Dasein.",
-      "enPart": "",
-      "category": "preDraft",
-      "id": 2854
     },
     "2855": {
       "dePart": "Man ist nur schön, wenn man auch zugleich menschlich ist.",
@@ -18229,12 +18115,6 @@
       "enPart": "",
       "category": "preDraft",
       "id": 3070
-    },
-    "3071": {
-      "dePart": "Nichts ist so verzichtbar wie die Sitten und Gebäuche anderer Völker.",
-      "enPart": "",
-      "category": "preDraft",
-      "id": 3071
     },
     "3072": {
       "dePart": "Ich liebe den Verrat, aber ich hasse Verräter.",
@@ -19640,12 +19520,6 @@
       "category": "preDraft",
       "id": 3308
     },
-    "3309": {
-      "dePart": "Enthusiasmus ist das schönste Wort der Erde.",
-      "enPart": "",
-      "category": "preDraft",
-      "id": 3309
-    },
     "3310": {
       "dePart": "Man muß das Leben so einrichten, dass jeder Augenblick bedeutungsvoll ist.",
       "enPart": "",
@@ -19681,12 +19555,6 @@
       "enPart": "",
       "category": "preDraft",
       "id": 3315
-    },
-    "3316": {
-      "dePart": "Die Richtung unseres Geistes ist wichtigerals sein Fortschritt.",
-      "enPart": "",
-      "category": "preDraft",
-      "id": 3316
     },
     "3317": {
       "dePart": "Mache dieses Herz vollkommen und so, wie du es haben willst.",
@@ -20372,12 +20240,6 @@
       "category": "preDraft",
       "id": 3431
     },
-    "3432": {
-      "dePart": "Alle Lust der Welt ist ein kurzer Traum nur!",
-      "enPart": "",
-      "category": "preDraft",
-      "id": 3432
-    },
     "3433": {
       "dePart": "Auf Erden die größte Pein heißt: auf Kommando geistreich sein",
       "enPart": "",
@@ -20689,12 +20551,6 @@
       "enPart": "",
       "category": "preDraft",
       "id": 3484
-    },
-    "3485": {
-      "dePart": "Je mehr sich die Dinge ändern, um so mehr bleiben sie sich gleich.",
-      "enPart": "",
-      "category": "preDraft",
-      "id": 3485
     },
     "3486": {
       "dePart": "Wir können ohne Freude leben, aber nicht ohne Hoffnung.",
@@ -21017,12 +20873,6 @@
       "enPart": "",
       "category": "preDraft",
       "id": 3538
-    },
-    "3539": {
-      "dePart": "Die Willkür kennt nur den blinden Eigenwillen.",
-      "enPart": "",
-      "category": "preDraft",
-      "id": 3539
     },
     "3540": {
       "dePart": "Oft ist es die Angst vor einem Übel,die uns zu einem schlimmeren führt.",
