@@ -1,6 +1,5 @@
 "use strict"
 const express = require("express")
-const client = require("redis").createClient()
 const minify = require("express-minify")
 const helmet = require("helmet")
 const path = require("path")
@@ -11,14 +10,6 @@ const bodyParser = require("body-parser")
 const J = require("../common")
 let routes = require("./routes/index.js")
 let app = express()
-//const limiter = require("express-limiter")(app, client)
-//limiter({
-//path: "*",
-//method: "all",
-//lookup: "connection.remoteAddress",
-//total: 100,
-//expire: 1000 * 60
-//})
 app.use(helmet())
 app.get("/*", (request, response, next) => {
     let headerHost = request.headers.host
