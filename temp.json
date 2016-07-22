@@ -1,0 +1,4894 @@
+{
+  "data": {
+    "deEnFirst": [
+      {
+        "dePart": "wenig",
+        "enPart": "little"
+      },
+      {
+        "dePart": "wenig",
+        "enPart": "a little"
+      },
+      {
+        "dePart": "wenig",
+        "enPart": "small"
+      },
+      {
+        "dePart": "wenig",
+        "enPart": "scant"
+      }
+    ],
+    "deEnThird": [
+      {
+        "dePart": "wenig",
+        "enPart": "few"
+      },
+      {
+        "dePart": "wenig",
+        "enPart": "less"
+      },
+      {
+        "dePart": "wenig",
+        "enPart": "little"
+      },
+      {
+        "dePart": "wenig",
+        "enPart": "rare"
+      },
+      {
+        "dePart": "wenig",
+        "enPart": "sparse"
+      },
+      {
+        "dePart": "wenig",
+        "enPart": "sparsely"
+      }
+    ],
+    "phraseFirst": [
+      {
+        "dePart": "sie haben sehr wenig Geld",
+        "enPart": "they have very little money"
+      },
+      {
+        "dePart": "wenig Änderung",
+        "enPart": "little change"
+      },
+      {
+        "dePart": "das bringt wenig Gewinn",
+        "enPart": "that isn’t very profitable"
+      },
+      {
+        "dePart": "das bringt wenig Gewinn",
+        "enPart": "there is little to gain from that"
+      },
+      {
+        "dePart": "ich habe heute sehr wenig Zeit",
+        "enPart": "I have very little (oder|or od I am pressed for) time todayI have very little (I am pressed for) time today"
+      },
+      {
+        "dePart": "es gibt wenig Neues",
+        "enPart": "there is little news, there isn’t much news"
+      },
+      {
+        "dePart": "etwas mit wenig Mühe erreichen",
+        "enPart": "to achieveetwas|something sth with little trouble (oder|or od quite easily)to achievewith little trouble (quite easily)"
+      },
+      {
+        "dePart": "ich habe wenig Lust hinzugehen",
+        "enPart": "I don’t really feel like going"
+      },
+      {
+        "dePart": "wenig Aussicht auf Erfolg haben",
+        "enPart": "to have little (oder|or od small) hope of successto have little (small) hope of success"
+      },
+      {
+        "dePart": "ein wenig Wahrheit",
+        "enPart": "a modicum of truth"
+      },
+      {
+        "dePart": "du musst ein wenig Geduld haben",
+        "enPart": "you must have a little (oder|or od some) patienceyou must have a little (some) patience"
+      },
+      {
+        "dePart": "mit ein wenig gutem Willen wird es schon gehen",
+        "enPart": "it will work out with a little bit of good will"
+      },
+      {
+        "dePart": "die Tablette in ein wenig Wasser auflösen",
+        "enPart": "dissolve the tablet in a little water"
+      },
+      {
+        "dePart": "er kann nur wenig Englisch",
+        "enPart": "he speaks only a little English"
+      },
+      {
+        "dePart": "das hat wenig Zweck",
+        "enPart": "there is little point (oder|or od use) in (doing) thatthere is little point (use) in (doing) that"
+      },
+      {
+        "dePart": "ein klein wenig [ein ganz klein wenig] Milch",
+        "enPart": "a little drop [a tiny (little) drop] of milka little drop [a tiny (little) drop] of milk"
+      },
+      {
+        "dePart": "zu wenig",
+        "enPart": "too little"
+      },
+      {
+        "dePart": "es ist zu wenig Salz in der Suppe",
+        "enPart": "there is too little (oder|or od there isn’t enough) salt in the soupthere is too little (there isn’t enough) salt in the soup"
+      },
+      {
+        "dePart": "es sind nur noch wenige Meter",
+        "enPart": "it’s only a few (more) metersamerikanisches Englisch|American English US to goit’s only a few (more) metersto goit’s only a few (more) metresbritisches Englisch|British English Br to goit’s only a few (more) metresto go"
+      },
+      {
+        "dePart": "in wenigen Tagen bin ich zurück",
+        "enPart": "I’ll be back in a few days’ time"
+      },
+      {
+        "dePart": "etwas mit wenigen Worten erklären",
+        "enPart": "to explainetwas|something sth in (a) few wordsto explainin (a) few words"
+      },
+      {
+        "dePart": "",
+        "enPart": "it will begin in a few moments"
+      },
+      {
+        "dePart": "ich habe ihn nur wenige Male gesehen",
+        "enPart": "I have only seen him a few times"
+      },
+      {
+        "dePart": "das geht nur in wenigen Fällen gut",
+        "enPart": "it only works out in a few (oder|or od in the minority of) casesit only works out in a few (in the minority of) cases"
+      },
+      {
+        "dePart": "es dauerte nur wenige Sekunden",
+        "enPart": "it only took a few seconds"
+      },
+      {
+        "dePart": "es gibt nur wenige Menschen, die das erlebt haben",
+        "enPart": "few people have experienced that"
+      },
+      {
+        "dePart": "er ist ein Freund, wie es nur wenige gibt",
+        "enPart": "he is a friend in a million, friends like him are few and far between"
+      },
+      {
+        "dePart": "zu wenig",
+        "enPart": "too few"
+      },
+      {
+        "dePart": "er hat zu wenig Freunde",
+        "enPart": "he has too few (oder|or od he doesn’t have enough) friendshe has too few (he doesn’t have enough) friends"
+      },
+      {
+        "dePart": "das ist wenig",
+        "enPart": "that’s not much"
+      },
+      {
+        "dePart": "und sei es auch noch so wenig, und wenn es auch noch so wenig ist",
+        "enPart": "no matter how little, however little"
+      },
+      {
+        "dePart": "wenig, aber mit Liebe (von Herzen)",
+        "enPart": "it’s not much but it’s meant sincerely"
+      },
+      {
+        "dePart": "sie besitzt nur sehr wenig",
+        "enPart": "she possesses very little, she has very few possessions, she has very little to her name"
+      },
+      {
+        "dePart": "sie ist zufrieden mit dem wenigen (",
+        "enPart": "she is happy with what (oder|or od the) little she hasshe is happy with what (the) little she has"
+      },
+      {
+        "dePart": "mit wenig(em) (Wenigem) zufrieden sein [auskommen]",
+        "enPart": "to be happy with [to get by on] little"
+      },
+      {
+        "dePart": "sie isst sehr wenig",
+        "enPart": "she eats very little"
+      },
+      {
+        "dePart": "es fehlte wenig, und ich hätte ihm geglaubt",
+        "enPart": "it wouldn’t have taken much for me to believe him, I very nearly believed him"
+      },
+      {
+        "dePart": "es gehört wenig dazu, das zu begreifen",
+        "enPart": "it doesn’t take much to understand that"
+      },
+      {
+        "dePart": "dafür habe ich nur wenig übrig",
+        "enPart": "I have little time for that, that interests me very little"
+      },
+      {
+        "dePart": "ich verstehe davon nur sehr wenig",
+        "enPart": "I know very little about that"
+      },
+      {
+        "dePart": "er ist um (ein) weniges älter als ich",
+        "enPart": "he is a little (oder|or od slightly) older than I amhe is a little (slightly) older than I am"
+      },
+      {
+        "dePart": "zu wenig",
+        "enPart": "too little"
+      },
+      {
+        "dePart": "zu wenig",
+        "enPart": "too few"
+      },
+      {
+        "dePart": "er weiß zu wenig",
+        "enPart": "he knows too little"
+      },
+      {
+        "dePart": "es sind zu wenig gekommen",
+        "enPart": "too few have come"
+      },
+      {
+        "dePart": "das ist zu wenig für ihn",
+        "enPart": "that isn’t enough for him"
+      },
+      {
+        "dePart": "da wir nur wenige sind, ist der Anteil jedes Einzelnen größer",
+        "enPart": "since there are only a few of us each will have a bigger share"
+      },
+      {
+        "dePart": "einige wenige blieben bis Mitternacht",
+        "enPart": "a few stayed on until midnight"
+      },
+      {
+        "dePart": "nur sehr wenige haben den Vortrag verstanden",
+        "enPart": "only very few people understood the lecture"
+      },
+      {
+        "dePart": "",
+        "enPart": "he is one of the few who …"
+      },
+      {
+        "dePart": "das interessiert mich wenig",
+        "enPart": "that interests me very little, that doesn’t interest me very much, I’m not very interested in that"
+      },
+      {
+        "dePart": "es kümmert mich wenig, ob …",
+        "enPart": "I care very little whether …, I don’t really care whether …"
+      },
+      {
+        "dePart": "das hilft mir wenig",
+        "enPart": "that is (of) little help to me, that’s not much help to methat is (of) little help to me, that’s not much help to me"
+      },
+      {
+        "dePart": "dieses Buch wird wenig gelesen",
+        "enPart": "this book is not widely read"
+      },
+      {
+        "dePart": "das stört mich wenig",
+        "enPart": "it doesn’t really bother me"
+      },
+      {
+        "dePart": "daran liegt mir wenig",
+        "enPart": "I’m not really interested in that"
+      },
+      {
+        "dePart": "er liebt es wenig, gestört zu werden",
+        "enPart": "he doesn’t take kindly to being disturbed"
+      },
+      {
+        "dePart": "das war eine wenig glückliche Wahl",
+        "enPart": "that was a rather unfortunate choice"
+      },
+      {
+        "dePart": "das ist wenig erfreulich",
+        "enPart": "that is not so (oder|or od not at all) pleasantthat is not so (not at all) pleasant"
+      },
+      {
+        "dePart": "das ist wenig erfreulich",
+        "enPart": "that is rather disappointing"
+      },
+      {
+        "dePart": "er ist wenig beliebt",
+        "enPart": "he is not very popular, he is not well liked"
+      },
+      {
+        "dePart": "das ist wenig nett von dir",
+        "enPart": "that isn’t very nice of you"
+      },
+      {
+        "dePart": "ich habe mich nicht wenig geärgert",
+        "enPart": "I was quite (oder|or od pretty) annoyedI was quite (pretty) annoyed"
+      },
+      {
+        "dePart": "danach fragt er wenig",
+        "enPart": "that is of little interest to him"
+      },
+      {
+        "dePart": "das kostet, wenig gerechnet, tausend Euro",
+        "enPart": "it will cost at least a thousand euros, it will cost a thousand euros minimum"
+      },
+      {
+        "dePart": "zu wenig",
+        "enPart": "too little"
+      },
+      {
+        "dePart": "zu wenig",
+        "enPart": "too few"
+      },
+      {
+        "dePart": "zu wenig",
+        "enPart": "not well enough"
+      },
+      {
+        "dePart": "er schläft zu wenig",
+        "enPart": "he sleeps too little, he doesn’t get enough sleep"
+      },
+      {
+        "dePart": "in dieser Gruppe ist einer zu wenig",
+        "enPart": "there is one too few in this group"
+      },
+      {
+        "dePart": "du hast dich zu wenig vorbereitet",
+        "enPart": "you didn’t prepare yourself well enough"
+      },
+      {
+        "dePart": "ein wenig",
+        "enPart": "a little, somewhat, a bit"
+      },
+      {
+        "dePart": "ein wenig schneller [besser, größer]",
+        "enPart": "a little (oder|or od a bit) faster [better, bigger]a little (a bit) faster [better, bigger]"
+      },
+      {
+        "dePart": "ich habe ein wenig gearbeitet",
+        "enPart": "I worked a bit"
+      },
+      {
+        "dePart": "das ist ein wenig übertrieben",
+        "enPart": "that is a little (oder|or od slightly) exaggerated, that is a slight (oder|or od a bit of an) exaggerationthat is a little (slightly) exaggerated, that is a slight (a bit of an) exaggeration"
+      },
+      {
+        "dePart": "ein klein wenig bezweifle ich seine Angaben",
+        "enPart": "I rather doubt what he said"
+      },
+      {
+        "dePart": "wir haben uns in der letzten Zeit wenig gesehen",
+        "enPart": "we have seen very little of each other lately, we have seen each other very little recently"
+      },
+      {
+        "dePart": "ich bin wenig ausgegangen",
+        "enPart": "I went out very little, I didn’t go out much"
+      },
+      {
+        "dePart": "viele Wenig machen ein Viel",
+        "enPart": "it all adds up, many a little makes a mickle"
+      }
+    ],
+    "phraseSecond": [
+      {
+        "dePart": "ich habe wenig",
+        "enPart": "I have only a little"
+      },
+      {
+        "dePart": "hast du Zeit? -- wenig!",
+        "enPart": "have you got time? -- not much"
+      },
+      {
+        "dePart": "das ist wenig",
+        "enPart": "that isn't much"
+      },
+      {
+        "dePart": "so wenig wie or als möglich",
+        "enPart": "as little as possible"
+      },
+      {
+        "dePart": "sie ist mir so wenig sympathisch wie dir",
+        "enPart": "I don't like her any more than you do"
+      },
+      {
+        "dePart": "du sagst so wenig",
+        "enPart": "you're not saying much"
+      },
+      {
+        "dePart": "mein weniges Geld",
+        "enPart": "what little money I have"
+      },
+      {
+        "dePart": "das wenige Geld muss ausreichen",
+        "enPart": "we'll have to make do with this small amount of money"
+      },
+      {
+        "dePart": "es fehlte (nur) wenig, und er wäre überfahren worden",
+        "enPart": "he was very nearly run over"
+      },
+      {
+        "dePart": "sie hat zu wenig Geld etc",
+        "enPart": "she doesn't have enough money etc"
+      },
+      {
+        "dePart": "ein Exemplar zu wenig haben",
+        "enPart": "to have one copy too few"
+      },
+      {
+        "dePart": "ich habe ihm £ 20 zu wenig geboten",
+        "enPart": "I offered him £20 too little"
+      },
+      {
+        "dePart": "in wenigen Tagen",
+        "enPart": "in (just) a few days"
+      },
+      {
+        "dePart": "nicht wenige (waren da)",
+        "enPart": "quite a few people (were there)"
+      },
+      {
+        "dePart": "einige wenige Leute",
+        "enPart": "a few people"
+      },
+      {
+        "dePart": "ein wenig Salz/besser",
+        "enPart": "a little salt/better"
+      },
+      {
+        "dePart": "sie kommt (nur) wenig raus",
+        "enPart": "she doesn't get out very often"
+      },
+      {
+        "dePart": "das überraschte ihn nicht wenig",
+        "enPart": "he was more than a little surprised"
+      },
+      {
+        "dePart": "wenig besser",
+        "enPart": "little better"
+      },
+      {
+        "dePart": "wenig bekannt",
+        "enPart": "little-known (attr)little known (pred)"
+      },
+      {
+        "dePart": "wenig mehr",
+        "enPart": "little more"
+      },
+      {
+        "dePart": "wenig erfreulich",
+        "enPart": "not very pleasant"
+      },
+      {
+        "dePart": "zu wenig",
+        "enPart": "not enough"
+      },
+      {
+        "dePart": "einer/zwei etc zu wenig",
+        "enPart": "one/two etc too few"
+      }
+    ],
+    "phraseThird": [
+      {
+        "dePart": "Man sollte Anteil nehmen an der Freude, der Schönheit, der Farbigkeit des Lebens. Je weniger man von den ...",
+        "enPart": "wenig"
+      },
+      {
+        "dePart": "Der Mensch ist am wenigsten er selbst, wenn er für sich selbst spricht. Gib ihm eine Maske und er wird di...",
+        "enPart": "wenig"
+      },
+      {
+        "dePart": "Wenig bis nichts verbindet den Linksterrorismus mit dem religiösen fundamentalistischen Terror der Gegenw...",
+        "enPart": ""
+      },
+      {
+        "dePart": "Sie stehen [auf dem Lande] so früh auf, weil sie so viel zu tun haben, und legen sich so früh zu Bet...",
+        "enPart": "wenig"
+      },
+      {
+        "dePart": "Mit der wahren Liebe ist’s wie mit den Geistererscheinungen, alle Welt spricht darüber, aber wenige...",
+        "enPart": "wenig"
+      },
+      {
+        "dePart": "Wir hatten uns sehr wenig zu sagen, und es war ziemlich schwierig, das Gespräch in Gang zu halten",
+        "enPart": "wenig"
+      },
+      {
+        "dePart": "Der Ausdruck ’inmitten’ ist in der Standardsprache weniger gebräuchlich als ’mitten unt...",
+        "enPart": ""
+      },
+      {
+        "dePart": "Amerika hat uns niemals verziehen, dass Europa ein wenig früher entdeckt worden ist.",
+        "enPart": "wenig"
+      },
+      {
+        "dePart": "Er war so mit seiner Arbeit beschäftigt, dass wenig Zeit für seine Familie blieb",
+        "enPart": "wenig"
+      },
+      {
+        "dePart": "Das neue Dach sollte das Erscheinungsbild so wenig wie möglich beeinträchtigen",
+        "enPart": ""
+      },
+      {
+        "dePart": "Die Würdigung dieser Emanzipation aber bleibt bislang mehr oder weniger aus",
+        "enPart": "wenig"
+      },
+      {
+        "dePart": "Im weltweiten Vergleich gibt Großbritannien wenig für Verteidigung aus",
+        "enPart": "wenig"
+      },
+      {
+        "dePart": "Auf dem europäischen Markt kommen nur wenige Filme aus dem Orient an",
+        "enPart": ""
+      },
+      {
+        "dePart": "Wenige Wochen nach seinem Geburtstag verstarb er am 25. September",
+        "enPart": "wenig"
+      },
+      {
+        "dePart": "Im Vergleich zu den Franzosen essen die Briten weit weniger Fisch",
+        "enPart": ""
+      },
+      {
+        "dePart": "Aber alle sind ein wenig stolz auf das, was sie geleistet haben",
+        "enPart": ""
+      },
+      {
+        "dePart": "Das Wissen alleine, dass diese Probleme bestehen, ist zu wenig",
+        "enPart": "wenig"
+      },
+      {
+        "dePart": "Je weniger eine Hand verrichtet, desto zarter ist ihr Gefühl.",
+        "enPart": ""
+      },
+      {
+        "dePart": "Seine Rede machte keinen Eindruck und fand nur wenig Beifall",
+        "enPart": ""
+      },
+      {
+        "dePart": "Sie war bloß ein wenig zu freundlich für meinen Geschmack",
+        "enPart": ""
+      },
+      {
+        "dePart": "wenigstens",
+        "enPart": "wenig"
+      },
+      {
+        "dePart": "wenig essen",
+        "enPart": ""
+      },
+      {
+        "dePart": "immer weniger",
+        "enPart": ""
+      },
+      {
+        "dePart": "verdammt wenig",
+        "enPart": "wenig"
+      },
+      {
+        "dePart": "nur wenig wert",
+        "enPart": "wenig"
+      },
+      {
+        "dePart": "herzlich wenig",
+        "enPart": "wenig"
+      },
+      {
+        "dePart": "mit wenig Geld",
+        "enPart": "wenig"
+      },
+      {
+        "dePart": "zu wenig haben",
+        "enPart": "wenig"
+      },
+      {
+        "dePart": "Weniger ist mehr",
+        "enPart": ""
+      },
+      {
+        "dePart": "in wenigen Fällen",
+        "enPart": "wenig"
+      }
+    ],
+    "phraseFourth": [
+      {
+        "dePart": "11wenig [interessieren]",
+        "enPart": "faintly {adv} [slightly]"
+      },
+      {
+        "dePart": "ebenso wenig",
+        "enPart": "just as little"
+      },
+      {
+        "dePart": "ein wenig",
+        "enPart": "mus. poco {adv}"
+      },
+      {
+        "dePart": "ein wenig",
+        "enPart": "some {adv} [coll.] [a little, to some degree]"
+      },
+      {
+        "dePart": "ein wenig",
+        "enPart": "somewhat {adv}"
+      },
+      {
+        "dePart": "ein wenig",
+        "enPart": "a bit"
+      },
+      {
+        "dePart": "ein wenig",
+        "enPart": "a drop"
+      },
+      {
+        "dePart": "ein wenig",
+        "enPart": "a little"
+      },
+      {
+        "dePart": "ein wenig",
+        "enPart": "a trifle"
+      },
+      {
+        "dePart": "ein wenig",
+        "enPart": "a modicum (of)"
+      },
+      {
+        "dePart": "ein wenig [besser, anders etc.]",
+        "enPart": "slightly {adv} [better, different, etc.]"
+      },
+      {
+        "dePart": "ein wenig [ein bisschen (Hilfe, Salz etc.)]",
+        "enPart": "a bit of {pron} [a little (help, salt, etc.)]"
+      },
+      {
+        "dePart": "ein wenig [fig.]",
+        "enPart": "a sprinkling of"
+      },
+      {
+        "dePart": "genauso wenig",
+        "enPart": "just as little"
+      },
+      {
+        "dePart": "herzlich wenig",
+        "enPart": "precious little {adj}"
+      },
+      {
+        "dePart": "herzlich wenig",
+        "enPart": "idiom a fat lot {adv}"
+      },
+      {
+        "dePart": "nur wenig",
+        "enPart": "slightly {adv}"
+      },
+      {
+        "dePart": "nur wenig",
+        "enPart": "idiom little in the way of"
+      },
+      {
+        "dePart": "relativ wenig",
+        "enPart": "relatively little {adj}"
+      },
+      {
+        "dePart": "verdammt wenig [ugs.]",
+        "enPart": "bugger all {adv} [Br.] [vulg.]"
+      },
+      {
+        "dePart": "verdammt wenig [ugs.]",
+        "enPart": "not a hell of a lot {adv} [coll.]"
+      },
+      {
+        "dePart": "wenig anregend",
+        "enPart": "uninspiring {adj}"
+      },
+      {
+        "dePart": "wenig anregend",
+        "enPart": "uninspiringly {adv}"
+      },
+      {
+        "dePart": "wenig anziehend",
+        "enPart": "uninvitingly {adv}"
+      },
+      {
+        "dePart": "wenig bedacht",
+        "enPart": "ill-judged {adj}"
+      },
+      {
+        "dePart": "wenig begangen",
+        "enPart": "little-used {adj} [attr.] [road, path, etc. by walkers]"
+      },
+      {
+        "dePart": "wenig begeistert",
+        "enPart": "unenthusiastic {adj}"
+      },
+      {
+        "dePart": "wenig bekannt",
+        "enPart": "little-known {adj}"
+      },
+      {
+        "dePart": "wenig beneidenswert",
+        "enPart": "unenviable {adj}"
+      },
+      {
+        "dePart": "wenig berauschend [fig.] [wenig überzeugend]",
+        "enPart": "idiom rather underwhelming {adj}"
+      },
+      {
+        "dePart": "wenig besucht",
+        "enPart": "unfrequented {adj}"
+      },
+      {
+        "dePart": "wenig bewegt",
+        "enPart": "uneventful {adj} [career]"
+      },
+      {
+        "dePart": "wenig einladend",
+        "enPart": "untempting {adj}"
+      },
+      {
+        "dePart": "wenig einträglich",
+        "enPart": "financially unrewarding {adj}"
+      },
+      {
+        "dePart": "wenig erbaulich [iron.]",
+        "enPart": "not exactly edifying {adj} [iron.]"
+      },
+      {
+        "dePart": "wenig erbaulich [veraltend]",
+        "enPart": "unedifying {adj}"
+      },
+      {
+        "dePart": "wenig erforscht",
+        "enPart": "underexplored {adj}"
+      },
+      {
+        "dePart": "wenig erquicklich [iron.]",
+        "enPart": "not exactly edifying {adj} [iron.]"
+      },
+      {
+        "dePart": "wenig fasernd",
+        "enPart": "low-fraying {adj}"
+      },
+      {
+        "dePart": "wenig gefragt",
+        "enPart": "comm. slow in demand {adj} [pred.]"
+      },
+      {
+        "dePart": "wenig hilfreich",
+        "enPart": "unhelpfully {adv}"
+      },
+      {
+        "dePart": "wenig hilfsbereit",
+        "enPart": "unhelpfully {adv}"
+      },
+      {
+        "dePart": "wenig inspirierend",
+        "enPart": "uninspiring {adj}"
+      },
+      {
+        "dePart": "wenig kontrastreich",
+        "enPart": "photo. murky {adj}"
+      },
+      {
+        "dePart": "wenig liebenswürdig",
+        "enPart": "unlovable {adj}"
+      },
+      {
+        "dePart": "wenig mehr",
+        "enPart": "little else"
+      }
+    ],
+    "phraseFifth": [
+      {
+        "dePart": "Wem genug zu wenig ist, dem ist nichts genug.",
+        "enPart": ""
+      },
+      {
+        "dePart": "Arm ist nicht, wer wenig hat, sondern wer viel braucht.",
+        "enPart": ""
+      },
+      {
+        "dePart": "Noch nie waren so viele so sehr wenigen ausgeliefert.",
+        "enPart": ""
+      },
+      {
+        "dePart": "Sich mit wenigem begnügen ist schwer, sich mit vielem begnügen unmöglich.",
+        "enPart": ""
+      },
+      {
+        "dePart": "Es ist viel sicherer, zu wenig als zu viel zu wissen.",
+        "enPart": ""
+      }
+    ],
+    "phraseSixth": [
+      {
+        "dePart": "ein wenig",
+        "enPart": ""
+      },
+      {
+        "dePart": "ganz wenig",
+        "enPart": ""
+      },
+      {
+        "dePart": "bitter wenig",
+        "enPart": ""
+      },
+      {
+        "dePart": "wenig bringen",
+        "enPart": ""
+      },
+      {
+        "dePart": "Es fehlte wenig.",
+        "enPart": ""
+      },
+      {
+        "dePart": "bedauerlich wenig",
+        "enPart": ""
+      },
+      {
+        "dePart": "einer der wenigen",
+        "enPart": ""
+      },
+      {
+        "dePart": "wenig Erfolg haben",
+        "enPart": ""
+      },
+      {
+        "dePart": "wenige Tage danach",
+        "enPart": ""
+      },
+      {
+        "dePart": "mit wenigen Worten",
+        "enPart": ""
+      },
+      {
+        "dePart": "Hunger nach weniger",
+        "enPart": ""
+      },
+      {
+        "dePart": "zu wenig untermauert",
+        "enPart": ""
+      },
+      {
+        "dePart": "Es hat wenig gefehlt.",
+        "enPart": ""
+      },
+      {
+        "dePart": "Etwas gibt wenig her.",
+        "enPart": ""
+      },
+      {
+        "dePart": "Davon halte ich wenig.",
+        "enPart": ""
+      },
+      {
+        "dePart": "noch zu wenig beachten",
+        "enPart": ""
+      },
+      {
+        "dePart": "der Gashahn wenig offen",
+        "enPart": ""
+      },
+      {
+        "dePart": "die wenigen Glücklichen",
+        "enPart": ""
+      },
+      {
+        "dePart": "erst vor wenigen Wochen",
+        "enPart": ""
+      },
+      {
+        "dePart": "Das ist ganz schön wenig.",
+        "enPart": ""
+      },
+      {
+        "dePart": "Es fehlte nur ganz wenig.",
+        "enPart": ""
+      },
+      {
+        "dePart": "am wenigsten begehrenswert",
+        "enPart": ""
+      },
+      {
+        "dePart": "weniger gut | weniger gute",
+        "enPart": ""
+      },
+      {
+        "dePart": "Weniger wäre mehr gewesen.",
+        "enPart": ""
+      },
+      {
+        "dePart": "Darf es etwas weniger sein?",
+        "enPart": ""
+      },
+      {
+        "dePart": "viele Wenig machen ein Viel",
+        "enPart": ""
+      },
+      {
+        "dePart": "ein wenig erhebender Anblick",
+        "enPart": ""
+      },
+      {
+        "dePart": "die wenig bevölkerten Gebiete",
+        "enPart": ""
+      },
+      {
+        "dePart": "viel Geschrei und wenig Wolle",
+        "enPart": ""
+      },
+      {
+        "dePart": "mehr Jobs und weniger Steuern",
+        "enPart": ""
+      },
+      {
+        "dePart": "Soviele Ideen, so wenig Zeit.",
+        "enPart": ""
+      },
+      {
+        "dePart": "mehr Qualität für weniger Geld",
+        "enPart": ""
+      },
+      {
+        "dePart": "ein wenig Balsam auf die Wunde",
+        "enPart": ""
+      },
+      {
+        "dePart": "herzlich wenig zu tun haben mit",
+        "enPart": ""
+      },
+      {
+        "dePart": "ein wenig hin und her spazieren",
+        "enPart": ""
+      },
+      {
+        "dePart": "Wie wenig sich die Zeiten ändern.",
+        "enPart": ""
+      },
+      {
+        "dePart": "jemandem ein wenig entgegenkommen",
+        "enPart": ""
+      },
+      {
+        "dePart": "Die Kollekte hat wenig eingebracht.",
+        "enPart": ""
+      },
+      {
+        "dePart": "Ich vertrete mir ein wenig die Beine.",
+        "enPart": ""
+      },
+      {
+        "dePart": "Das Wetter sieht wenig einladend aus.",
+        "enPart": ""
+      },
+      {
+        "dePart": "jemandem mit zu wenig Respekt begegnen",
+        "enPart": ""
+      },
+      {
+        "dePart": "viele sind berufen, wenige auserwählt.",
+        "enPart": ""
+      },
+      {
+        "dePart": "jemandem mit zu wenig Respekt behandeln",
+        "enPart": ""
+      },
+      {
+        "dePart": "Sie gibt sich nicht mit weniger zufrieden.",
+        "enPart": ""
+      },
+      {
+        "dePart": "Das Trinkwasser enthält meistens zu wenig Jod.",
+        "enPart": ""
+      },
+      {
+        "dePart": "Viele sind berufen, aber wenige sind auserkoren.",
+        "enPart": ""
+      },
+      {
+        "dePart": "Er hat zum Leben zu wenig und zum Sterben zu viel.",
+        "enPart": ""
+      },
+      {
+        "dePart": "Was tatsächlich gezeigt wird, tut weniger zur Sache.",
+        "enPart": ""
+      },
+      {
+        "dePart": "Mit je mehr Leuten man teilen muß, desto weniger bekommt jeder.",
+        "enPart": ""
+      },
+      {
+        "dePart": "Füge wenig zu wenig und das Ergebnis wird ein großer Haufen sein.",
+        "enPart": ""
+      },
+      {
+        "dePart": "Pflücke dir den Tag, und glaube so wenig wie möglich an den nächsten.",
+        "enPart": ""
+      },
+      {
+        "dePart": "Puschst du wenig, und ist dein Urin dunkler, dann mußt du mehr trinken.",
+        "enPart": ""
+      },
+      {
+        "dePart": "Ein Brief mit Nachporto. Es waren zu wenig Briefmarken aufgeklebt worden.",
+        "enPart": ""
+      },
+      {
+        "dePart": "Die wöchentliche Arbeitszeit beträgt durchschnittlich weniger als 20 Stunden.",
+        "enPart": ""
+      },
+      {
+        "dePart": "Pro Kilogramm Mensch gibt es in Europa nur 4 Gramm Vogel. Das ist sehr wenig.",
+        "enPart": ""
+      },
+      {
+        "dePart": "Was wir wissen, ist noch sehr wenig im Vergleich zu dem, was wir nicht wissen.",
+        "enPart": ""
+      },
+      {
+        "dePart": "Die zur Verfügung gestellten Belege erwiesen sich jedoch als wenig überzeugend.",
+        "enPart": ""
+      },
+      {
+        "dePart": "Zu den unbestimmten Kardinalzahlen rechnet man unter anderem alle, einige, manche",
+        "enPart": ""
+      },
+      {
+        "dePart": "Wenn ein Betrieb keine Masse hat, kann auch ein Konkursverwalter wenig ausrichten.",
+        "enPart": ""
+      },
+      {
+        "dePart": "Läßt du wenig Wasser, und ist dein Harn relativ dunkel, dann mußt du mehr trinken.",
+        "enPart": ""
+      },
+      {
+        "dePart": "Man braucht nur ganz wenig zu sehen, um zu wissen, dass man jemand Großes vor sich hat.",
+        "enPart": ""
+      },
+      {
+        "dePart": "Kämpfe gegen Schwätzer nicht mit Worten: die Sprache ist vielen gegeben, Vernunft nur wenigen.",
+        "enPart": ""
+      },
+      {
+        "dePart": "Die meisten Zahnärzte nehmen weiße Füllungen für die Vorderzähne, weil das Weiß weniger auffällt.",
+        "enPart": ""
+      },
+      {
+        "dePart": "Trink viel (lauwarmes) Wasser oder dünnen Tee mit ein wenig Zucker, wenn du ein Problem mit Durchfall hast.",
+        "enPart": ""
+      },
+      {
+        "dePart": "Ich habe gerade eine Bestellung aufgegeben, die weniger als 50 Euro wert ist, muss ich gegen \"Vorkasse\" bezahlen.",
+        "enPart": ""
+      },
+      {
+        "dePart": "Judith Leyster war eine der wenigen und der bekannteste weibliche Maler während des niederländischen Goldenen Zeitalters.",
+        "enPart": ""
+      },
+      {
+        "dePart": "Der Berner Sennenhund ist wie ein roher Diamant, der mit wenig Mühe zu einem prächtigen Edelstein geschliffen werden kann.",
+        "enPart": ""
+      },
+      {
+        "dePart": "Meistens sind diese \"Jahreswagen\" zwischen 6 und 12 Monate alt, haben wenig Kilometer und sind technisch und optisch wie neu.",
+        "enPart": ""
+      },
+      {
+        "dePart": "Für den ersten Herbstmonat datierte der vorherige Rekord aus dem Jahr 1984 mit nur 0,6 mm weniger Niederschlag als dieses Jahr.",
+        "enPart": ""
+      }
+    ],
+    "synonymFirst": [
+      {
+        "dePart": "(ein) bisschen",
+        "enPart": ""
+      },
+      {
+        "dePart": "(ein) bissel",
+        "enPart": ""
+      },
+      {
+        "dePart": "(ein) bisserl",
+        "enPart": ""
+      },
+      {
+        "dePart": "(ein) wenig",
+        "enPart": ""
+      },
+      {
+        "dePart": "ein klein bisschen",
+        "enPart": ""
+      },
+      {
+        "dePart": "ein Spritzer",
+        "enPart": ""
+      },
+      {
+        "dePart": "ein wenig",
+        "enPart": ""
+      },
+      {
+        "dePart": "eine Prise",
+        "enPart": ""
+      },
+      {
+        "dePart": "etwas",
+        "enPart": ""
+      },
+      {
+        "dePart": "gering",
+        "enPart": ""
+      },
+      {
+        "dePart": "kümmerlich",
+        "enPart": ""
+      },
+      {
+        "dePart": "schwach",
+        "enPart": ""
+      }
+    ],
+    "synonymSecond": [
+      {
+        "dePart": "dürftig",
+        "enPart": ""
+      },
+      {
+        "dePart": "gering",
+        "enPart": ""
+      },
+      {
+        "dePart": "geringfügig",
+        "enPart": ""
+      },
+      {
+        "dePart": "karg",
+        "enPart": ""
+      },
+      {
+        "dePart": "klein",
+        "enPart": ""
+      },
+      {
+        "dePart": "kümmerlich",
+        "enPart": ""
+      },
+      {
+        "dePart": "kärglich",
+        "enPart": ""
+      },
+      {
+        "dePart": "mager",
+        "enPart": ""
+      },
+      {
+        "dePart": "minimal",
+        "enPart": ""
+      },
+      {
+        "dePart": "schmal",
+        "enPart": ""
+      },
+      {
+        "dePart": "spärlich",
+        "enPart": ""
+      },
+      {
+        "dePart": "unbedeutend",
+        "enPart": ""
+      },
+      {
+        "dePart": "verschwindend",
+        "enPart": ""
+      },
+      {
+        "dePart": "winzig",
+        "enPart": ""
+      },
+      {
+        "dePart": "wenig",
+        "enPart": ""
+      }
+    ],
+    "synonymThird": [
+      {
+        "dePart": "dünn",
+        "enPart": ""
+      },
+      {
+        "dePart": "gering",
+        "enPart": ""
+      },
+      {
+        "dePart": "kaum",
+        "enPart": ""
+      },
+      {
+        "dePart": "klein",
+        "enPart": ""
+      },
+      {
+        "dePart": "kümmerlich",
+        "enPart": ""
+      },
+      {
+        "dePart": "marginal",
+        "enPart": ""
+      },
+      {
+        "dePart": "mickerig",
+        "enPart": ""
+      },
+      {
+        "dePart": "mickrig",
+        "enPart": ""
+      },
+      {
+        "dePart": "schwach",
+        "enPart": ""
+      },
+      {
+        "dePart": "unbedeutend",
+        "enPart": ""
+      },
+      {
+        "dePart": "winzig",
+        "enPart": ""
+      }
+    ],
+    "synonymFourth": [
+      {
+        "dePart": "(ein) paar Brocken (von einer Fremdsprache)",
+        "enPart": ""
+      },
+      {
+        "dePart": "bescheiden (Summe, Lohn)",
+        "enPart": ""
+      },
+      {
+        "dePart": "nur im äußersten Notfall",
+        "enPart": ""
+      },
+      {
+        "dePart": "wenig (an) (Einkünften)",
+        "enPart": ""
+      },
+      {
+        "dePart": "schmal (Rente, Pension)",
+        "enPart": ""
+      },
+      {
+        "dePart": "(ein) kleines bisschen",
+        "enPart": ""
+      },
+      {
+        "dePart": "(ein) Hauch von (lit.)",
+        "enPart": ""
+      },
+      {
+        "dePart": "(ein) klein bisschen",
+        "enPart": ""
+      },
+      {
+        "dePart": "alle paar Jubeljahre",
+        "enPart": ""
+      },
+      {
+        "dePart": "(eine) geringe Menge",
+        "enPart": ""
+      },
+      {
+        "dePart": "höchst gelegentlich",
+        "enPart": ""
+      },
+      {
+        "dePart": "(eine) kleine Menge",
+        "enPart": ""
+      },
+      {
+        "dePart": "nur im Ausnahmefall",
+        "enPart": ""
+      },
+      {
+        "dePart": "(ein) Fitzel(chen)",
+        "enPart": ""
+      },
+      {
+        "dePart": "nur ausnahmsweise",
+        "enPart": ""
+      },
+      {
+        "dePart": "(ein) Stück weit",
+        "enPart": ""
+      },
+      {
+        "dePart": "(ein) Quäntchen",
+        "enPart": ""
+      },
+      {
+        "dePart": "alle Jubeljahre",
+        "enPart": ""
+      },
+      {
+        "dePart": "(ein) bisschen",
+        "enPart": ""
+      },
+      {
+        "dePart": "(ein) Spritzer",
+        "enPart": ""
+      },
+      {
+        "dePart": "höchst selten",
+        "enPart": ""
+      },
+      {
+        "dePart": "(ein) bisserl",
+        "enPart": ""
+      },
+      {
+        "dePart": "praktisch nie",
+        "enPart": ""
+      },
+      {
+        "dePart": "klein (Rente)",
+        "enPart": ""
+      },
+      {
+        "dePart": "gering (Lohn)",
+        "enPart": ""
+      },
+      {
+        "dePart": "(ein) Funken",
+        "enPart": ""
+      },
+      {
+        "dePart": "(ein) bissel",
+        "enPart": ""
+      },
+      {
+        "dePart": "(ein) Schuss",
+        "enPart": ""
+      },
+      {
+        "dePart": "(eine) Prise",
+        "enPart": ""
+      },
+      {
+        "dePart": "überschaubar",
+        "enPart": ""
+      },
+      {
+        "dePart": "(ein) Tacken",
+        "enPart": ""
+      },
+      {
+        "dePart": "gelegentlich",
+        "enPart": ""
+      },
+      {
+        "dePart": "(eine) Idee",
+        "enPart": ""
+      },
+      {
+        "dePart": "wenige Male",
+        "enPart": ""
+      },
+      {
+        "dePart": "kaum einmal",
+        "enPart": ""
+      },
+      {
+        "dePart": "unbedeutend",
+        "enPart": ""
+      },
+      {
+        "dePart": "(ein) Tick",
+        "enPart": ""
+      },
+      {
+        "dePart": "kümmerlich",
+        "enPart": ""
+      },
+      {
+        "dePart": "ein wenig",
+        "enPart": ""
+      },
+      {
+        "dePart": "nicht oft",
+        "enPart": ""
+      },
+      {
+        "dePart": "kaum noch",
+        "enPart": ""
+      },
+      {
+        "dePart": "kaum mehr",
+        "enPart": ""
+      },
+      {
+        "dePart": "marginal",
+        "enPart": ""
+      },
+      {
+        "dePart": "mickerig",
+        "enPart": ""
+      },
+      {
+        "dePart": "fast nie",
+        "enPart": ""
+      },
+      {
+        "dePart": "(ein) My",
+        "enPart": ""
+      },
+      {
+        "dePart": "(ein) Mü",
+        "enPart": ""
+      },
+      {
+        "dePart": "kaum mal",
+        "enPart": ""
+      },
+      {
+        "dePart": "mickrig",
+        "enPart": ""
+      },
+      {
+        "dePart": "schwach",
+        "enPart": ""
+      },
+      {
+        "dePart": "winzig",
+        "enPart": ""
+      },
+      {
+        "dePart": "gering",
+        "enPart": ""
+      },
+      {
+        "dePart": "gering",
+        "enPart": ""
+      },
+      {
+        "dePart": "selten",
+        "enPart": ""
+      },
+      {
+        "dePart": "wenig",
+        "enPart": ""
+      },
+      {
+        "dePart": "klein",
+        "enPart": ""
+      },
+      {
+        "dePart": "etwas",
+        "enPart": ""
+      },
+      {
+        "dePart": "wenig",
+        "enPart": ""
+      },
+      {
+        "dePart": "wenig",
+        "enPart": ""
+      },
+      {
+        "dePart": "wenig",
+        "enPart": ""
+      },
+      {
+        "dePart": "wenig",
+        "enPart": ""
+      },
+      {
+        "dePart": "dünn",
+        "enPart": ""
+      },
+      {
+        "dePart": "karg",
+        "enPart": ""
+      },
+      {
+        "dePart": "kaum",
+        "enPart": ""
+      },
+      {
+        "dePart": "kaum",
+        "enPart": ""
+      },
+      {
+        "dePart": "rar",
+        "enPart": ""
+      }
+    ],
+    "synonymFifth": [
+      {
+        "dePart": "nicht ins Gewicht fallend",
+        "enPart": ""
+      },
+      {
+        "dePart": "nicht zum Fettwerden",
+        "enPart": ""
+      },
+      {
+        "dePart": "für den hohlen Zahn",
+        "enPart": ""
+      },
+      {
+        "dePart": "ein klein bisschen",
+        "enPart": ""
+      },
+      {
+        "dePart": "fast gar nichts",
+        "enPart": ""
+      },
+      {
+        "dePart": "so gut wie nie",
+        "enPart": ""
+      },
+      {
+        "dePart": "(ein) bisschen",
+        "enPart": ""
+      },
+      {
+        "dePart": "nicht genügend",
+        "enPart": ""
+      },
+      {
+        "dePart": "(ein) bisserl",
+        "enPart": ""
+      },
+      {
+        "dePart": "verschwindend",
+        "enPart": ""
+      },
+      {
+        "dePart": "ein Spritzer",
+        "enPart": ""
+      },
+      {
+        "dePart": "(ein) bissel",
+        "enPart": ""
+      },
+      {
+        "dePart": "(ein) wenig",
+        "enPart": ""
+      },
+      {
+        "dePart": "geringfügig",
+        "enPart": ""
+      },
+      {
+        "dePart": "unbedeutend",
+        "enPart": ""
+      },
+      {
+        "dePart": "nicht genug",
+        "enPart": ""
+      },
+      {
+        "dePart": "gerade noch",
+        "enPart": ""
+      },
+      {
+        "dePart": "kaum etwas",
+        "enPart": ""
+      },
+      {
+        "dePart": "kümmerlich",
+        "enPart": ""
+      },
+      {
+        "dePart": "kümmerlich",
+        "enPart": ""
+      },
+      {
+        "dePart": "vereinzelt",
+        "enPart": ""
+      },
+      {
+        "dePart": "eine Prise",
+        "enPart": ""
+      },
+      {
+        "dePart": "nicht viel",
+        "enPart": ""
+      },
+      {
+        "dePart": "ein wenig",
+        "enPart": ""
+      },
+      {
+        "dePart": "belanglos",
+        "enPart": ""
+      },
+      {
+        "dePart": "mickerig",
+        "enPart": ""
+      },
+      {
+        "dePart": "marginal",
+        "enPart": ""
+      },
+      {
+        "dePart": "spärlich",
+        "enPart": ""
+      },
+      {
+        "dePart": "kärglich",
+        "enPart": ""
+      },
+      {
+        "dePart": "dürftig",
+        "enPart": ""
+      },
+      {
+        "dePart": "mickrig",
+        "enPart": ""
+      },
+      {
+        "dePart": "minimal",
+        "enPart": ""
+      },
+      {
+        "dePart": "schwach",
+        "enPart": ""
+      },
+      {
+        "dePart": "gering",
+        "enPart": ""
+      },
+      {
+        "dePart": "schmal",
+        "enPart": ""
+      },
+      {
+        "dePart": "gering",
+        "enPart": ""
+      },
+      {
+        "dePart": "winzig",
+        "enPart": ""
+      },
+      {
+        "dePart": "selten",
+        "enPart": ""
+      },
+      {
+        "dePart": "mager",
+        "enPart": ""
+      },
+      {
+        "dePart": "etwas",
+        "enPart": ""
+      },
+      {
+        "dePart": "klein",
+        "enPart": ""
+      },
+      {
+        "dePart": "karg",
+        "enPart": ""
+      },
+      {
+        "dePart": "dünn",
+        "enPart": ""
+      },
+      {
+        "dePart": "kaum",
+        "enPart": ""
+      }
+    ],
+    "synonymSixth": [
+      {
+        "dePart": "treten erscheinung in stark weniger",
+        "enPart": ""
+      },
+      {
+        "dePart": "minderheit einer herschaft",
+        "enPart": ""
+      },
+      {
+        "dePart": "ein schatten seiner selbst",
+        "enPart": ""
+      },
+      {
+        "dePart": "weniger heftig verlaufend",
+        "enPart": ""
+      },
+      {
+        "dePart": "nicht ins gewicht fallend",
+        "enPart": ""
+      },
+      {
+        "dePart": "verlaufend heftig weniger",
+        "enPart": ""
+      },
+      {
+        "dePart": "vor wenigen augenblicken",
+        "enPart": ""
+      },
+      {
+        "dePart": "der eine und der andere",
+        "enPart": ""
+      },
+      {
+        "dePart": "weniger als zu erwarten",
+        "enPart": ""
+      },
+      {
+        "dePart": "verkleinernder ausdruck",
+        "enPart": ""
+      },
+      {
+        "dePart": "unverhältnismäßig wenig",
+        "enPart": ""
+      },
+      {
+        "dePart": "nur wenigen zugänglich",
+        "enPart": ""
+      },
+      {
+        "dePart": "klitzekleines bisschen",
+        "enPart": ""
+      },
+      {
+        "dePart": "weniger als die hälfte",
+        "enPart": ""
+      },
+      {
+        "dePart": "eine gehörige portion",
+        "enPart": ""
+      },
+      {
+        "dePart": "vor nicht langer zeit",
+        "enPart": ""
+      },
+      {
+        "dePart": "momenten wenigen vor",
+        "enPart": ""
+      },
+      {
+        "dePart": "wahrscheinlich nicht",
+        "enPart": ""
+      },
+      {
+        "dePart": "nach längerem warten",
+        "enPart": ""
+      },
+      {
+        "dePart": "nur haut und knochen",
+        "enPart": ""
+      },
+      {
+        "dePart": "vom fleisch gefallen",
+        "enPart": ""
+      },
+      {
+        "dePart": "kontrollierend wenig",
+        "enPart": ""
+      },
+      {
+        "dePart": "unter abrechnung von",
+        "enPart": ""
+      },
+      {
+        "dePart": "auf einen augenblick",
+        "enPart": ""
+      },
+      {
+        "dePart": "vor wenigen momenten",
+        "enPart": ""
+      },
+      {
+        "dePart": "im großen und ganzen",
+        "enPart": ""
+      },
+      {
+        "dePart": "einfach und schlicht",
+        "enPart": ""
+      },
+      {
+        "dePart": "nicht zum fettwerden",
+        "enPart": ""
+      },
+      {
+        "dePart": "tiefschürfend wenig",
+        "enPart": ""
+      },
+      {
+        "dePart": "nicht von interesse",
+        "enPart": ""
+      },
+      {
+        "dePart": "sich zusammenziehen",
+        "enPart": ""
+      },
+      {
+        "dePart": "verständlicherweise",
+        "enPart": ""
+      },
+      {
+        "dePart": "nicht der rede wert",
+        "enPart": ""
+      },
+      {
+        "dePart": "von geringem ausmaß",
+        "enPart": ""
+      },
+      {
+        "dePart": "für den hohlen zahn",
+        "enPart": ""
+      },
+      {
+        "dePart": "nicht erwähnenswert",
+        "enPart": ""
+      },
+      {
+        "dePart": "ich für meinen teil",
+        "enPart": ""
+      },
+      {
+        "dePart": "nicht einbegriffen",
+        "enPart": ""
+      },
+      {
+        "dePart": "nach längerer zeit",
+        "enPart": ""
+      },
+      {
+        "dePart": "unterrepräsentiert",
+        "enPart": ""
+      },
+      {
+        "dePart": "geistig wenig rege",
+        "enPart": ""
+      },
+      {
+        "dePart": "im grunde genommen",
+        "enPart": ""
+      },
+      {
+        "dePart": "ein klein bisschen",
+        "enPart": ""
+      },
+      {
+        "dePart": "sich verflüchtigen",
+        "enPart": ""
+      },
+      {
+        "dePart": "trotz desto nichts",
+        "enPart": ""
+      },
+      {
+        "dePart": "selbstverständlich",
+        "enPart": ""
+      },
+      {
+        "dePart": "zusammenschrumpfen",
+        "enPart": ""
+      },
+      {
+        "dePart": "nichtsdestoweniger",
+        "enPart": ""
+      },
+      {
+        "dePart": "in hülle und fülle",
+        "enPart": ""
+      },
+      {
+        "dePart": "tiefgreifend nicht",
+        "enPart": ""
+      },
+      {
+        "dePart": "zugänglich wenigen",
+        "enPart": ""
+      },
+      {
+        "dePart": "in geringerem maße",
+        "enPart": ""
+      },
+      {
+        "dePart": "weniger herschaft",
+        "enPart": ""
+      },
+      {
+        "dePart": "nichts wie gut so",
+        "enPart": ""
+      },
+      {
+        "dePart": "weniger oder mehr",
+        "enPart": ""
+      },
+      {
+        "dePart": "nicht ausführlich",
+        "enPart": ""
+      },
+      {
+        "dePart": "was mich betrifft",
+        "enPart": ""
+      },
+      {
+        "dePart": "nicht weitsichtig",
+        "enPart": ""
+      },
+      {
+        "dePart": "dessen ungeachtet",
+        "enPart": ""
+      },
+      {
+        "dePart": "wässerig fließend",
+        "enPart": ""
+      },
+      {
+        "dePart": "die eigene person",
+        "enPart": ""
+      },
+      {
+        "dePart": "in wenigen worten",
+        "enPart": ""
+      },
+      {
+        "dePart": "nicht nennenswert",
+        "enPart": ""
+      },
+      {
+        "dePart": "an zweiter stelle",
+        "enPart": ""
+      },
+      {
+        "dePart": "weniger bedeutend",
+        "enPart": ""
+      },
+      {
+        "dePart": "doppelt gemoppelt",
+        "enPart": ""
+      },
+      {
+        "dePart": "nicht wahrnehmbar",
+        "enPart": ""
+      },
+      {
+        "dePart": "verantwortungslos",
+        "enPart": ""
+      },
+      {
+        "dePart": "mehr oder weniger",
+        "enPart": ""
+      },
+      {
+        "dePart": "nichtsdestominder",
+        "enPart": ""
+      },
+      {
+        "dePart": "auf ein stündchen",
+        "enPart": ""
+      },
+      {
+        "dePart": "einkommensschwach",
+        "enPart": ""
+      },
+      {
+        "dePart": "nicht weniger als",
+        "enPart": ""
+      },
+      {
+        "dePart": "nicht inbegriffen",
+        "enPart": ""
+      },
+      {
+        "dePart": "ungeachtet dessen",
+        "enPart": ""
+      },
+      {
+        "dePart": "minder oder mehr",
+        "enPart": ""
+      },
+      {
+        "dePart": "sich verkleinern",
+        "enPart": ""
+      },
+      {
+        "dePart": "im telegrammstil",
+        "enPart": ""
+      },
+      {
+        "dePart": "vernachlässigbar",
+        "enPart": ""
+      },
+      {
+        "dePart": "vermutlich nicht",
+        "enPart": ""
+      },
+      {
+        "dePart": "weniger begütert",
+        "enPart": ""
+      },
+      {
+        "dePart": "nicht alltäglich",
+        "enPart": ""
+      },
+      {
+        "dePart": "abgestuft werden",
+        "enPart": ""
+      },
+      {
+        "dePart": "mehr oder minder",
+        "enPart": ""
+      },
+      {
+        "dePart": "niedriger werden",
+        "enPart": ""
+      },
+      {
+        "dePart": "lichtdurchlässig",
+        "enPart": ""
+      },
+      {
+        "dePart": "status verlieren",
+        "enPart": ""
+      },
+      {
+        "dePart": "mit ausnahme von",
+        "enPart": ""
+      },
+      {
+        "dePart": "nichtsdestotrotz",
+        "enPart": ""
+      },
+      {
+        "dePart": "darunter liegend",
+        "enPart": ""
+      },
+      {
+        "dePart": "unverantwortlich",
+        "enPart": ""
+      },
+      {
+        "dePart": "mit vergleichbar",
+        "enPart": ""
+      },
+      {
+        "dePart": "anders wenig ein",
+        "enPart": ""
+      },
+      {
+        "dePart": "verschiedenerlei",
+        "enPart": ""
+      },
+      {
+        "dePart": "heruntergekommen",
+        "enPart": ""
+      },
+      {
+        "dePart": "wenig gehaltvoll",
+        "enPart": ""
+      },
+      {
+        "dePart": "dieser und jener",
+        "enPart": ""
+      },
+      {
+        "dePart": "wenig ansteigend",
+        "enPart": ""
+      },
+      {
+        "dePart": "kaum vernehmlich",
+        "enPart": ""
+      },
+      {
+        "dePart": "maße geringem in",
+        "enPart": ""
+      },
+      {
+        "dePart": "charakterschwach",
+        "enPart": ""
+      },
+      {
+        "dePart": "wenig aufregend",
+        "enPart": ""
+      },
+      {
+        "dePart": "außergewöhnlich",
+        "enPart": ""
+      },
+      {
+        "dePart": "desinteressiert",
+        "enPart": ""
+      },
+      {
+        "dePart": "minderbemittelt",
+        "enPart": ""
+      },
+      {
+        "dePart": "unerschwinglich",
+        "enPart": ""
+      },
+      {
+        "dePart": "alle jubeljahre",
+        "enPart": ""
+      },
+      {
+        "dePart": "wenigkeit meine",
+        "enPart": ""
+      },
+      {
+        "dePart": "kleinbürgerlich",
+        "enPart": ""
+      },
+      {
+        "dePart": "geringstenfalls",
+        "enPart": ""
+      },
+      {
+        "dePart": "an und für sich",
+        "enPart": ""
+      },
+      {
+        "dePart": "sich dezimieren",
+        "enPart": ""
+      },
+      {
+        "dePart": "in groben zügen",
+        "enPart": ""
+      },
+      {
+        "dePart": "aufregend wenig",
+        "enPart": ""
+      },
+      {
+        "dePart": "in großer menge",
+        "enPart": ""
+      },
+      {
+        "dePart": "erbaulich wenig",
+        "enPart": ""
+      },
+      {
+        "dePart": "was mich angeht",
+        "enPart": ""
+      },
+      {
+        "dePart": "einladend wenig",
+        "enPart": ""
+      },
+      {
+        "dePart": "wenig erbaulich",
+        "enPart": ""
+      },
+      {
+        "dePart": "ohne umschweife",
+        "enPart": ""
+      },
+      {
+        "dePart": "sich reduzieren",
+        "enPart": ""
+      },
+      {
+        "dePart": "sich vermindern",
+        "enPart": ""
+      },
+      {
+        "dePart": "schritte wenige",
+        "enPart": ""
+      },
+      {
+        "dePart": "wenig einladend",
+        "enPart": ""
+      },
+      {
+        "dePart": "zusammengezogen",
+        "enPart": ""
+      },
+      {
+        "dePart": "geringer werden",
+        "enPart": ""
+      },
+      {
+        "dePart": "unliebenswürdig",
+        "enPart": ""
+      },
+      {
+        "dePart": "unendlich klein",
+        "enPart": ""
+      },
+      {
+        "dePart": "vor kurzer zeit",
+        "enPart": ""
+      },
+      {
+        "dePart": "kurz und bündig",
+        "enPart": ""
+      },
+      {
+        "dePart": "kaum vernehmbar",
+        "enPart": ""
+      },
+      {
+        "dePart": "unkonventionell",
+        "enPart": ""
+      },
+      {
+        "dePart": "geringerer teil",
+        "enPart": ""
+      },
+      {
+        "dePart": "fast gar nichts",
+        "enPart": ""
+      },
+      {
+        "dePart": "meine wenigkeit",
+        "enPart": ""
+      },
+      {
+        "dePart": "sich verringern",
+        "enPart": ""
+      },
+      {
+        "dePart": "zureuckhaltend",
+        "enPart": ""
+      },
+      {
+        "dePart": "in großer zahl",
+        "enPart": ""
+      },
+      {
+        "dePart": "undiplomatisch",
+        "enPart": ""
+      },
+      {
+        "dePart": "augenblicklich",
+        "enPart": ""
+      },
+      {
+        "dePart": "im allgemeinen",
+        "enPart": ""
+      },
+      {
+        "dePart": "durchscheinend",
+        "enPart": ""
+      },
+      {
+        "dePart": "ein mindestmaß",
+        "enPart": ""
+      },
+      {
+        "dePart": "unterlegenheit",
+        "enPart": ""
+      },
+      {
+        "dePart": "zu guter letzt",
+        "enPart": ""
+      },
+      {
+        "dePart": "schlussendlich",
+        "enPart": ""
+      },
+      {
+        "dePart": "minderbegütert",
+        "enPart": ""
+      },
+      {
+        "dePart": "willensschwach",
+        "enPart": ""
+      },
+      {
+        "dePart": "alles in allem",
+        "enPart": ""
+      },
+      {
+        "dePart": "niederträchtig",
+        "enPart": ""
+      },
+      {
+        "dePart": "durch die bank",
+        "enPart": ""
+      },
+      {
+        "dePart": "auf jeden fall",
+        "enPart": ""
+      },
+      {
+        "dePart": "in aller regel",
+        "enPart": ""
+      },
+      {
+        "dePart": "für gewöhnlich",
+        "enPart": ""
+      },
+      {
+        "dePart": "ungebräuchlich",
+        "enPart": ""
+      },
+      {
+        "dePart": "unersprießlich",
+        "enPart": ""
+      },
+      {
+        "dePart": "kleiner werden",
+        "enPart": ""
+      },
+      {
+        "dePart": "hin und wieder",
+        "enPart": ""
+      },
+      {
+        "dePart": "weniger werden",
+        "enPart": ""
+      },
+      {
+        "dePart": "angedeutet nur",
+        "enPart": ""
+      },
+      {
+        "dePart": "dahinschwinden",
+        "enPart": ""
+      },
+      {
+        "dePart": "uneingerechnet",
+        "enPart": ""
+      },
+      {
+        "dePart": "sich verkürzen",
+        "enPart": ""
+      },
+      {
+        "dePart": "zusammenlaufen",
+        "enPart": ""
+      },
+      {
+        "dePart": "zusammenfallen",
+        "enPart": ""
+      },
+      {
+        "dePart": "weniger begabt",
+        "enPart": ""
+      },
+      {
+        "dePart": "tiefer liegend",
+        "enPart": ""
+      },
+      {
+        "dePart": "persönlichkeit",
+        "enPart": ""
+      },
+      {
+        "dePart": "nun erst recht",
+        "enPart": ""
+      },
+      {
+        "dePart": "kleinerer teil",
+        "enPart": ""
+      },
+      {
+        "dePart": "unbeträchtlich",
+        "enPart": ""
+      },
+      {
+        "dePart": "so gut wie nie",
+        "enPart": ""
+      },
+      {
+        "dePart": "nicht genügend",
+        "enPart": ""
+      },
+      {
+        "dePart": "letzten endes",
+        "enPart": ""
+      },
+      {
+        "dePart": "ausnahmsweise",
+        "enPart": ""
+      },
+      {
+        "dePart": "infinitesimal",
+        "enPart": ""
+      },
+      {
+        "dePart": "bedeutungslos",
+        "enPart": ""
+      },
+      {
+        "dePart": "als wenigstes",
+        "enPart": ""
+      },
+      {
+        "dePart": "fadenscheinig",
+        "enPart": ""
+      },
+      {
+        "dePart": "beinahe nicht",
+        "enPart": ""
+      },
+      {
+        "dePart": "hintergründig",
+        "enPart": ""
+      },
+      {
+        "dePart": "nebensächlich",
+        "enPart": ""
+      },
+      {
+        "dePart": "zurückhaltend",
+        "enPart": ""
+      },
+      {
+        "dePart": "unsympathisch",
+        "enPart": ""
+      },
+      {
+        "dePart": "ziemlich viel",
+        "enPart": ""
+      },
+      {
+        "dePart": "im flüsterton",
+        "enPart": ""
+      },
+      {
+        "dePart": "ziemlich groß",
+        "enPart": ""
+      },
+      {
+        "dePart": "unvorteilhaft",
+        "enPart": ""
+      },
+      {
+        "dePart": "gertenschlank",
+        "enPart": ""
+      },
+      {
+        "dePart": "unerquicklich",
+        "enPart": ""
+      },
+      {
+        "dePart": "einschrumpfen",
+        "enPart": ""
+      },
+      {
+        "dePart": "vermindert um",
+        "enPart": ""
+      },
+      {
+        "dePart": "wenig bedacht",
+        "enPart": ""
+      },
+      {
+        "dePart": "kaum sichtbar",
+        "enPart": ""
+      },
+      {
+        "dePart": "einschrumpeln",
+        "enPart": ""
+      },
+      {
+        "dePart": "zum wenigsten",
+        "enPart": ""
+      },
+      {
+        "dePart": "unintelligent",
+        "enPart": ""
+      },
+      {
+        "dePart": "demungeachtet",
+        "enPart": ""
+      },
+      {
+        "dePart": "verschwindend",
+        "enPart": ""
+      },
+      {
+        "dePart": "bedacht wenig",
+        "enPart": ""
+      },
+      {
+        "dePart": "nicht so sehr",
+        "enPart": ""
+      },
+      {
+        "dePart": "ohne relevanz",
+        "enPart": ""
+      },
+      {
+        "dePart": "unausstehlich",
+        "enPart": ""
+      },
+      {
+        "dePart": "ohne weiteres",
+        "enPart": ""
+      },
+      {
+        "dePart": "oberflächlich",
+        "enPart": ""
+      },
+      {
+        "dePart": "spürbar kaum",
+        "enPart": ""
+      },
+      {
+        "dePart": "selbstredend",
+        "enPart": ""
+      },
+      {
+        "dePart": "gelegentlich",
+        "enPart": ""
+      },
+      {
+        "dePart": "unordentlich",
+        "enPart": ""
+      },
+      {
+        "dePart": "außenstehend",
+        "enPart": ""
+      },
+      {
+        "dePart": "bisschen ein",
+        "enPart": ""
+      },
+      {
+        "dePart": "ungewöhnlich",
+        "enPart": ""
+      },
+      {
+        "dePart": "durchsichtig",
+        "enPart": ""
+      },
+      {
+        "dePart": "inferiorität",
+        "enPart": ""
+      },
+      {
+        "dePart": "minderbegabt",
+        "enPart": ""
+      },
+      {
+        "dePart": "abgedroschen",
+        "enPart": ""
+      },
+      {
+        "dePart": "unerfreulich",
+        "enPart": ""
+      },
+      {
+        "dePart": "untalentiert",
+        "enPart": ""
+      },
+      {
+        "dePart": "minderwertig",
+        "enPart": ""
+      },
+      {
+        "dePart": "verschiedene",
+        "enPart": ""
+      },
+      {
+        "dePart": "unverständig",
+        "enPart": ""
+      },
+      {
+        "dePart": "leichtfertig",
+        "enPart": ""
+      },
+      {
+        "dePart": "verschwinden",
+        "enPart": ""
+      },
+      {
+        "dePart": "unvernünftig",
+        "enPart": ""
+      },
+      {
+        "dePart": "leichtsinnig",
+        "enPart": ""
+      },
+      {
+        "dePart": "unvorsichtig",
+        "enPart": ""
+      },
+      {
+        "dePart": "unvertretbar",
+        "enPart": ""
+      },
+      {
+        "dePart": "kleinkariert",
+        "enPart": ""
+      },
+      {
+        "dePart": "später wenig",
+        "enPart": ""
+      },
+      {
+        "dePart": "kaum spürbar",
+        "enPart": ""
+      },
+      {
+        "dePart": "unfreundlich",
+        "enPart": ""
+      },
+      {
+        "dePart": "gleichgültig",
+        "enPart": ""
+      },
+      {
+        "dePart": "ausgemergelt",
+        "enPart": ""
+      },
+      {
+        "dePart": "ausgehungert",
+        "enPart": ""
+      },
+      {
+        "dePart": "beträchtlich",
+        "enPart": ""
+      },
+      {
+        "dePart": "unauffaellig",
+        "enPart": ""
+      },
+      {
+        "dePart": "ein spritzer",
+        "enPart": ""
+      },
+      {
+        "dePart": "genauso fast",
+        "enPart": ""
+      },
+      {
+        "dePart": "kleine menge",
+        "enPart": ""
+      },
+      {
+        "dePart": "menge kleine",
+        "enPart": ""
+      },
+      {
+        "dePart": "unwesentlich",
+        "enPart": ""
+      },
+      {
+        "dePart": "person meine",
+        "enPart": ""
+      },
+      {
+        "dePart": "mehrere male",
+        "enPart": ""
+      },
+      {
+        "dePart": "nicht selten",
+        "enPart": ""
+      },
+      {
+        "dePart": "in der regel",
+        "enPart": ""
+      },
+      {
+        "dePart": "amount small",
+        "enPart": ""
+      },
+      {
+        "dePart": "abschließend",
+        "enPart": ""
+      },
+      {
+        "dePart": "im endeffekt",
+        "enPart": ""
+      },
+      {
+        "dePart": "unerträglich",
+        "enPart": ""
+      },
+      {
+        "dePart": "letztendlich",
+        "enPart": ""
+      },
+      {
+        "dePart": "katzensprung",
+        "enPart": ""
+      },
+      {
+        "dePart": "zerbrechlich",
+        "enPart": ""
+      },
+      {
+        "dePart": "verschlissen",
+        "enPart": ""
+      },
+      {
+        "dePart": "ueberwiegend",
+        "enPart": ""
+      },
+      {
+        "dePart": "scharenweise",
+        "enPart": ""
+      },
+      {
+        "dePart": "andererseits",
+        "enPart": ""
+      },
+      {
+        "dePart": "weitesgehend",
+        "enPart": ""
+      },
+      {
+        "dePart": "missfallend",
+        "enPart": ""
+      },
+      {
+        "dePart": "nicht wenig",
+        "enPart": ""
+      },
+      {
+        "dePart": "eingefallen",
+        "enPart": ""
+      },
+      {
+        "dePart": "wenige male",
+        "enPart": ""
+      },
+      {
+        "dePart": "eben gerade",
+        "enPart": ""
+      },
+      {
+        "dePart": "gedankenlos",
+        "enPart": ""
+      },
+      {
+        "dePart": "klitzeklein",
+        "enPart": ""
+      },
+      {
+        "dePart": "knochendürr",
+        "enPart": ""
+      },
+      {
+        "dePart": "ungerechnet",
+        "enPart": ""
+      },
+      {
+        "dePart": "eine anzahl",
+        "enPart": ""
+      },
+      {
+        "dePart": "vertraulich",
+        "enPart": ""
+      },
+      {
+        "dePart": "kaum hörbar",
+        "enPart": ""
+      },
+      {
+        "dePart": "zweigleisig",
+        "enPart": ""
+      },
+      {
+        "dePart": "gerade eben",
+        "enPart": ""
+      },
+      {
+        "dePart": "fast nichts",
+        "enPart": ""
+      },
+      {
+        "dePart": "geringfügig",
+        "enPart": ""
+      },
+      {
+        "dePart": "unerheblich",
+        "enPart": ""
+      },
+      {
+        "dePart": "einige male",
+        "enPart": ""
+      },
+      {
+        "dePart": "oft weniger",
+        "enPart": ""
+      },
+      {
+        "dePart": "ausgefallen",
+        "enPart": ""
+      },
+      {
+        "dePart": "durchlässig",
+        "enPart": ""
+      },
+      {
+        "dePart": "zwergenhaft",
+        "enPart": ""
+      },
+      {
+        "dePart": "des öfteren",
+        "enPart": ""
+      },
+      {
+        "dePart": "reichhaltig",
+        "enPart": ""
+      },
+      {
+        "dePart": "umfangreich",
+        "enPart": ""
+      },
+      {
+        "dePart": "nicht genug",
+        "enPart": ""
+      },
+      {
+        "dePart": "unbemerkbar",
+        "enPart": ""
+      },
+      {
+        "dePart": "massenweise",
+        "enPart": ""
+      },
+      {
+        "dePart": "schließlich",
+        "enPart": ""
+      },
+      {
+        "dePart": "trotz allem",
+        "enPart": ""
+      },
+      {
+        "dePart": "ausführlich",
+        "enPart": ""
+      },
+      {
+        "dePart": "gerade noch",
+        "enPart": ""
+      },
+      {
+        "dePart": "tiefliegend",
+        "enPart": ""
+      },
+      {
+        "dePart": "nichts fast",
+        "enPart": ""
+      },
+      {
+        "dePart": "schwächlich",
+        "enPart": ""
+      },
+      {
+        "dePart": "zum schluss",
+        "enPart": ""
+      },
+      {
+        "dePart": "unbedeutend",
+        "enPart": ""
+      },
+      {
+        "dePart": "unfruchtbar",
+        "enPart": ""
+      },
+      {
+        "dePart": "bischen ein",
+        "enPart": ""
+      },
+      {
+        "dePart": "ungenießbar",
+        "enPart": ""
+      },
+      {
+        "dePart": "priese eine",
+        "enPart": ""
+      },
+      {
+        "dePart": "dünnflüssig",
+        "enPart": ""
+      },
+      {
+        "dePart": "empfindlich",
+        "enPart": ""
+      },
+      {
+        "dePart": "widerwärtig",
+        "enPart": ""
+      },
+      {
+        "dePart": "unerwünscht",
+        "enPart": ""
+      },
+      {
+        "dePart": "ohne belang",
+        "enPart": ""
+      },
+      {
+        "dePart": "haufenweise",
+        "enPart": ""
+      },
+      {
+        "dePart": "abgesondert",
+        "enPart": ""
+      },
+      {
+        "dePart": "spartanisch",
+        "enPart": ""
+      },
+      {
+        "dePart": "ungeschickt",
+        "enPart": ""
+      },
+      {
+        "dePart": "eintrocknen",
+        "enPart": ""
+      },
+      {
+        "dePart": "bestenfalls",
+        "enPart": ""
+      },
+      {
+        "dePart": "abgegriffen",
+        "enPart": ""
+      },
+      {
+        "dePart": "altersblank",
+        "enPart": ""
+      },
+      {
+        "dePart": "bedenkenlos",
+        "enPart": ""
+      },
+      {
+        "dePart": "verkleinern",
+        "enPart": ""
+      },
+      {
+        "dePart": "gebrechlich",
+        "enPart": ""
+      },
+      {
+        "dePart": "so etwa in",
+        "enPart": ""
+      },
+      {
+        "dePart": "allerdings",
+        "enPart": ""
+      },
+      {
+        "dePart": "abgetragen",
+        "enPart": ""
+      },
+      {
+        "dePart": "ausgeprägt",
+        "enPart": ""
+      },
+      {
+        "dePart": "vereinzelt",
+        "enPart": ""
+      },
+      {
+        "dePart": "wesentlich",
+        "enPart": ""
+      },
+      {
+        "dePart": "jede menge",
+        "enPart": ""
+      },
+      {
+        "dePart": "fast nicht",
+        "enPart": ""
+      },
+      {
+        "dePart": "nach allem",
+        "enPart": ""
+      },
+      {
+        "dePart": "abgeschabt",
+        "enPart": ""
+      },
+      {
+        "dePart": "fehlerhaft",
+        "enPart": ""
+      },
+      {
+        "dePart": "abgestoßen",
+        "enPart": ""
+      },
+      {
+        "dePart": "geld wenig",
+        "enPart": ""
+      },
+      {
+        "dePart": "geldmangel",
+        "enPart": ""
+      },
+      {
+        "dePart": "ungeachtet",
+        "enPart": ""
+      },
+      {
+        "dePart": "gleichwohl",
+        "enPart": ""
+      },
+      {
+        "dePart": "ungastlich",
+        "enPart": ""
+      },
+      {
+        "dePart": "eigentlich",
+        "enPart": ""
+      },
+      {
+        "dePart": "sommerlich",
+        "enPart": ""
+      },
+      {
+        "dePart": "zweifellos",
+        "enPart": ""
+      },
+      {
+        "dePart": "ohne frage",
+        "enPart": ""
+      },
+      {
+        "dePart": "unrühmlich",
+        "enPart": ""
+      },
+      {
+        "dePart": "schwerlich",
+        "enPart": ""
+      },
+      {
+        "dePart": "etwas kaum",
+        "enPart": ""
+      },
+      {
+        "dePart": "wenig sehr",
+        "enPart": ""
+      },
+      {
+        "dePart": "jedenfalls",
+        "enPart": ""
+      },
+      {
+        "dePart": "erbärmlich",
+        "enPart": ""
+      },
+      {
+        "dePart": "nicht viel",
+        "enPart": ""
+      },
+      {
+        "dePart": "ausgedehnt",
+        "enPart": ""
+      },
+      {
+        "dePart": "individuum",
+        "enPart": ""
+      },
+      {
+        "dePart": "summarisch",
+        "enPart": ""
+      },
+      {
+        "dePart": "kaum etwas",
+        "enPart": ""
+      },
+      {
+        "dePart": "schmächtig",
+        "enPart": ""
+      },
+      {
+        "dePart": "lächerlich",
+        "enPart": ""
+      },
+      {
+        "dePart": "massenhaft",
+        "enPart": ""
+      },
+      {
+        "dePart": "wenigstens",
+        "enPart": ""
+      },
+      {
+        "dePart": "wiederholt",
+        "enPart": ""
+      },
+      {
+        "dePart": "rundheraus",
+        "enPart": ""
+      },
+      {
+        "dePart": "irrelevant",
+        "enPart": ""
+      },
+      {
+        "dePart": "mindestens",
+        "enPart": ""
+      },
+      {
+        "dePart": "alltäglich",
+        "enPart": ""
+      },
+      {
+        "dePart": "wohl nicht",
+        "enPart": ""
+      },
+      {
+        "dePart": "oligarchie",
+        "enPart": ""
+      },
+      {
+        "dePart": "viele male",
+        "enPart": ""
+      },
+      {
+        "dePart": "glimpflich",
+        "enPart": ""
+      },
+      {
+        "dePart": "vorsichtig",
+        "enPart": ""
+      },
+      {
+        "dePart": "allmählich",
+        "enPart": ""
+      },
+      {
+        "dePart": "nicht laut",
+        "enPart": ""
+      },
+      {
+        "dePart": "nur wenige",
+        "enPart": ""
+      },
+      {
+        "dePart": "allenfalls",
+        "enPart": ""
+      },
+      {
+        "dePart": "unauffälig",
+        "enPart": ""
+      },
+      {
+        "dePart": "gewöhnlich",
+        "enPart": ""
+      },
+      {
+        "dePart": "eine prise",
+        "enPart": ""
+      },
+      {
+        "dePart": "vor kurzem",
+        "enPart": ""
+      },
+      {
+        "dePart": "breckele a",
+        "enPart": ""
+      },
+      {
+        "dePart": "abgemagert",
+        "enPart": ""
+      },
+      {
+        "dePart": "unmerklich",
+        "enPart": ""
+      },
+      {
+        "dePart": "unleidlich",
+        "enPart": ""
+      },
+      {
+        "dePart": "erst recht",
+        "enPart": ""
+      },
+      {
+        "dePart": "nun gerade",
+        "enPart": ""
+      },
+      {
+        "dePart": "fahrlässig",
+        "enPart": ""
+      },
+      {
+        "dePart": "unüberlegt",
+        "enPart": ""
+      },
+      {
+        "dePart": "beschränkt",
+        "enPart": ""
+      },
+      {
+        "dePart": "vermindern",
+        "enPart": ""
+      },
+      {
+        "dePart": "unterlegen",
+        "enPart": ""
+      },
+      {
+        "dePart": "weil nicht",
+        "enPart": ""
+      },
+      {
+        "dePart": "unbesonnen",
+        "enPart": ""
+      },
+      {
+        "dePart": "nach abzug",
+        "enPart": ""
+      },
+      {
+        "dePart": "eine reihe",
+        "enPart": ""
+      },
+      {
+        "dePart": "entweichen",
+        "enPart": ""
+      },
+      {
+        "dePart": "engstirnig",
+        "enPart": ""
+      },
+      {
+        "dePart": "sehr wenig",
+        "enPart": ""
+      },
+      {
+        "dePart": "unerfahren",
+        "enPart": ""
+      },
+      {
+        "dePart": "bescheiden",
+        "enPart": ""
+      },
+      {
+        "dePart": "schlechter",
+        "enPart": ""
+      },
+      {
+        "dePart": "bedenklich",
+        "enPart": ""
+      },
+      {
+        "dePart": "abträglich",
+        "enPart": ""
+      },
+      {
+        "dePart": "unangenehm",
+        "enPart": ""
+      },
+      {
+        "dePart": "verführbar",
+        "enPart": ""
+      },
+      {
+        "dePart": "schrumpeln",
+        "enPart": ""
+      },
+      {
+        "dePart": "sehr klein",
+        "enPart": ""
+      },
+      {
+        "dePart": "verhutzeln",
+        "enPart": ""
+      },
+      {
+        "dePart": "fast immer",
+        "enPart": ""
+      },
+      {
+        "dePart": "nachgiebig",
+        "enPart": ""
+      },
+      {
+        "dePart": "sporadisch",
+        "enPart": ""
+      },
+      {
+        "dePart": "energielos",
+        "enPart": ""
+      },
+      {
+        "dePart": "verkümmern",
+        "enPart": ""
+      },
+      {
+        "dePart": "geschwächt",
+        "enPart": ""
+      },
+      {
+        "dePart": "vermindert",
+        "enPart": ""
+      },
+      {
+        "dePart": "minderzahl",
+        "enPart": ""
+      },
+      {
+        "dePart": "dünn gesät",
+        "enPart": ""
+      },
+      {
+        "dePart": "wenngleich",
+        "enPart": ""
+      },
+      {
+        "dePart": "langweilig",
+        "enPart": ""
+      },
+      {
+        "dePart": "kümmerlich",
+        "enPart": ""
+      },
+      {
+        "dePart": "mancherlei",
+        "enPart": ""
+      },
+      {
+        "dePart": "entkräftet",
+        "enPart": ""
+      },
+      {
+        "dePart": "nachlässig",
+        "enPart": ""
+      },
+      {
+        "dePart": "nachlassen",
+        "enPart": ""
+      },
+      {
+        "dePart": "schrumpfen",
+        "enPart": ""
+      },
+      {
+        "dePart": "ab und zu",
+        "enPart": ""
+      },
+      {
+        "dePart": "böswillig",
+        "enPart": ""
+      },
+      {
+        "dePart": "charakter",
+        "enPart": ""
+      },
+      {
+        "dePart": "ein wenig",
+        "enPart": ""
+      },
+      {
+        "dePart": "abgenutzt",
+        "enPart": ""
+      },
+      {
+        "dePart": "nun recht",
+        "enPart": ""
+      },
+      {
+        "dePart": "in massen",
+        "enPart": ""
+      },
+      {
+        "dePart": "fadendünn",
+        "enPart": ""
+      },
+      {
+        "dePart": "fruchtlos",
+        "enPart": ""
+      },
+      {
+        "dePart": "übergenug",
+        "enPart": ""
+      },
+      {
+        "dePart": "bissele a",
+        "enPart": ""
+      },
+      {
+        "dePart": "wenig ein",
+        "enPart": ""
+      },
+      {
+        "dePart": "umfassend",
+        "enPart": ""
+      },
+      {
+        "dePart": "abweisend",
+        "enPart": ""
+      },
+      {
+        "dePart": "unbedacht",
+        "enPart": ""
+      },
+      {
+        "dePart": "geringste",
+        "enPart": ""
+      },
+      {
+        "dePart": "versiegen",
+        "enPart": ""
+      },
+      {
+        "dePart": "widerlich",
+        "enPart": ""
+      },
+      {
+        "dePart": "wenigkeit",
+        "enPart": ""
+      },
+      {
+        "dePart": "unbeliebt",
+        "enPart": ""
+      },
+      {
+        "dePart": "unterhalb",
+        "enPart": ""
+      },
+      {
+        "dePart": "natürlich",
+        "enPart": ""
+      },
+      {
+        "dePart": "abgenützt",
+        "enPart": ""
+      },
+      {
+        "dePart": "abgezogen",
+        "enPart": ""
+      },
+      {
+        "dePart": "reichlich",
+        "enPart": ""
+      },
+      {
+        "dePart": "umfriedet",
+        "enPart": ""
+      },
+      {
+        "dePart": "niveaulos",
+        "enPart": ""
+      },
+      {
+        "dePart": "kleinlich",
+        "enPart": ""
+      },
+      {
+        "dePart": "zuzüglich",
+        "enPart": ""
+      },
+      {
+        "dePart": "eingeengt",
+        "enPart": ""
+      },
+      {
+        "dePart": "gelichtet",
+        "enPart": ""
+      },
+      {
+        "dePart": "nieder...",
+        "enPart": ""
+      },
+      {
+        "dePart": "willenlos",
+        "enPart": ""
+      },
+      {
+        "dePart": "unliebsam",
+        "enPart": ""
+      },
+      {
+        "dePart": "mehrmalig",
+        "enPart": ""
+      },
+      {
+        "dePart": "minimalst",
+        "enPart": ""
+      },
+      {
+        "dePart": "talentlos",
+        "enPart": ""
+      },
+      {
+        "dePart": "spring to",
+        "enPart": ""
+      },
+      {
+        "dePart": "unwissend",
+        "enPart": ""
+      },
+      {
+        "dePart": "praktisch",
+        "enPart": ""
+      },
+      {
+        "dePart": "vielmalig",
+        "enPart": ""
+      },
+      {
+        "dePart": "lakonisch",
+        "enPart": ""
+      },
+      {
+        "dePart": "schädlich",
+        "enPart": ""
+      },
+      {
+        "dePart": "ärgerlich",
+        "enPart": ""
+      },
+      {
+        "dePart": "phrasiert",
+        "enPart": ""
+      },
+      {
+        "dePart": "ungezählt",
+        "enPart": ""
+      },
+      {
+        "dePart": "zahlreich",
+        "enPart": ""
+      },
+      {
+        "dePart": "permissiv",
+        "enPart": ""
+      },
+      {
+        "dePart": "verdorren",
+        "enPart": ""
+      },
+      {
+        "dePart": "hinterher",
+        "enPart": ""
+      },
+      {
+        "dePart": "ungünstig",
+        "enPart": ""
+      },
+      {
+        "dePart": "hauchdünn",
+        "enPart": ""
+      },
+      {
+        "dePart": "unwichtig",
+        "enPart": ""
+      },
+      {
+        "dePart": "sozusagen",
+        "enPart": ""
+      },
+      {
+        "dePart": "mißliebig",
+        "enPart": ""
+      },
+      {
+        "dePart": "einfallen",
+        "enPart": ""
+      },
+      {
+        "dePart": "nicht oft",
+        "enPart": ""
+      },
+      {
+        "dePart": "einlaufen",
+        "enPart": ""
+      },
+      {
+        "dePart": "niedrigen",
+        "enPart": ""
+      },
+      {
+        "dePart": "minorität",
+        "enPart": ""
+      },
+      {
+        "dePart": "letztlich",
+        "enPart": ""
+      },
+      {
+        "dePart": "also doch",
+        "enPart": ""
+      },
+      {
+        "dePart": "in mengen",
+        "enPart": ""
+      },
+      {
+        "dePart": "friedlich",
+        "enPart": ""
+      },
+      {
+        "dePart": "miserabel",
+        "enPart": ""
+      },
+      {
+        "dePart": "belanglos",
+        "enPart": ""
+      },
+      {
+        "dePart": "pöbelhaft",
+        "enPart": ""
+      },
+      {
+        "dePart": "erheblich",
+        "enPart": ""
+      },
+      {
+        "dePart": "gemeinhin",
+        "enPart": ""
+      },
+      {
+        "dePart": "durchwegs",
+        "enPart": ""
+      },
+      {
+        "dePart": "abzüglich",
+        "enPart": ""
+      },
+      {
+        "dePart": "wenn auch",
+        "enPart": ""
+      },
+      {
+        "dePart": "zuwenigst",
+        "enPart": ""
+      },
+      {
+        "dePart": "ausgiebig",
+        "enPart": ""
+      },
+      {
+        "dePart": "abzählbar",
+        "enPart": ""
+      },
+      {
+        "dePart": "schlampig",
+        "enPart": ""
+      },
+      {
+        "dePart": "zumindest",
+        "enPart": ""
+      },
+      {
+        "dePart": "unbemerkt",
+        "enPart": ""
+      },
+      {
+        "dePart": "anständig",
+        "enPart": ""
+      },
+      {
+        "dePart": "verfallen",
+        "enPart": ""
+      },
+      {
+        "dePart": "geschätzt",
+        "enPart": ""
+      },
+      {
+        "dePart": "schwinden",
+        "enPart": ""
+      },
+      {
+        "dePart": "flüsternd",
+        "enPart": ""
+      },
+      {
+        "dePart": "allerhand",
+        "enPart": ""
+      },
+      {
+        "dePart": "abstoßend",
+        "enPart": ""
+      },
+      {
+        "dePart": "kränklich",
+        "enPart": ""
+      },
+      {
+        "dePart": "dünngesät",
+        "enPart": ""
+      },
+      {
+        "dePart": "verstreut",
+        "enPart": ""
+      },
+      {
+        "dePart": "impulsiv",
+        "enPart": ""
+      },
+      {
+        "dePart": "indessen",
+        "enPart": ""
+      },
+      {
+        "dePart": "ekelhaft",
+        "enPart": ""
+      },
+      {
+        "dePart": "unlängst",
+        "enPart": ""
+      },
+      {
+        "dePart": "kläglich",
+        "enPart": ""
+      },
+      {
+        "dePart": "verebben",
+        "enPart": ""
+      },
+      {
+        "dePart": "hingegen",
+        "enPart": ""
+      },
+      {
+        "dePart": "schlicht",
+        "enPart": ""
+      },
+      {
+        "dePart": "kleinste",
+        "enPart": ""
+      },
+      {
+        "dePart": "geistlos",
+        "enPart": ""
+      },
+      {
+        "dePart": "kärglich",
+        "enPart": ""
+      },
+      {
+        "dePart": "trotzdem",
+        "enPart": ""
+      },
+      {
+        "dePart": "unbegabt",
+        "enPart": ""
+      },
+      {
+        "dePart": "behutsam",
+        "enPart": ""
+      },
+      {
+        "dePart": "wenigste",
+        "enPart": ""
+      },
+      {
+        "dePart": "notwenig",
+        "enPart": ""
+      },
+      {
+        "dePart": "peinlich",
+        "enPart": ""
+      },
+      {
+        "dePart": "vollends",
+        "enPart": ""
+      },
+      {
+        "dePart": "zärtlich",
+        "enPart": ""
+      },
+      {
+        "dePart": "unbequem",
+        "enPart": ""
+      },
+      {
+        "dePart": "mehrfach",
+        "enPart": ""
+      },
+      {
+        "dePart": "schlecht",
+        "enPart": ""
+      },
+      {
+        "dePart": "winzigen",
+        "enPart": ""
+      },
+      {
+        "dePart": "geringer",
+        "enPart": ""
+      },
+      {
+        "dePart": "deutlich",
+        "enPart": ""
+      },
+      {
+        "dePart": "kraftlos",
+        "enPart": ""
+      },
+      {
+        "dePart": "spritzer",
+        "enPart": ""
+      },
+      {
+        "dePart": "spärlich",
+        "enPart": ""
+      },
+      {
+        "dePart": "einwenig",
+        "enPart": ""
+      },
+      {
+        "dePart": "geringen",
+        "enPart": ""
+      },
+      {
+        "dePart": "glasklar",
+        "enPart": ""
+      },
+      {
+        "dePart": "gehässig",
+        "enPart": ""
+      },
+      {
+        "dePart": "bisschen",
+        "enPart": ""
+      },
+      {
+        "dePart": "gliedrig",
+        "enPart": ""
+      },
+      {
+        "dePart": "geringst",
+        "enPart": ""
+      },
+      {
+        "dePart": "einzelne",
+        "enPart": ""
+      },
+      {
+        "dePart": "armselig",
+        "enPart": ""
+      },
+      {
+        "dePart": "vergehen",
+        "enPart": ""
+      },
+      {
+        "dePart": "genügend",
+        "enPart": ""
+      },
+      {
+        "dePart": "einmalig",
+        "enPart": ""
+      },
+      {
+        "dePart": "wackelig",
+        "enPart": ""
+      },
+      {
+        "dePart": "mickerig",
+        "enPart": ""
+      },
+      {
+        "dePart": "vielmals",
+        "enPart": ""
+      },
+      {
+        "dePart": "machtlos",
+        "enPart": ""
+      },
+      {
+        "dePart": "in summa",
+        "enPart": ""
+      },
+      {
+        "dePart": "letztens",
+        "enPart": ""
+      },
+      {
+        "dePart": "ziemlich",
+        "enPart": ""
+      },
+      {
+        "dePart": "durchweg",
+        "enPart": ""
+      },
+      {
+        "dePart": "generell",
+        "enPart": ""
+      },
+      {
+        "dePart": "haarfein",
+        "enPart": ""
+      },
+      {
+        "dePart": "schütter",
+        "enPart": ""
+      },
+      {
+        "dePart": "mehr als",
+        "enPart": ""
+      },
+      {
+        "dePart": "wässerig",
+        "enPart": ""
+      },
+      {
+        "dePart": "immerhin",
+        "enPart": ""
+      },
+      {
+        "dePart": "rückgang",
+        "enPart": ""
+      },
+      {
+        "dePart": "begrenzt",
+        "enPart": ""
+      },
+      {
+        "dePart": "eingehen",
+        "enPart": ""
+      },
+      {
+        "dePart": "marginal",
+        "enPart": ""
+      },
+      {
+        "dePart": "entgegen",
+        "enPart": ""
+      },
+      {
+        "dePart": "obgleich",
+        "enPart": ""
+      },
+      {
+        "dePart": "zierlich",
+        "enPart": ""
+      },
+      {
+        "dePart": "läppisch",
+        "enPart": ""
+      },
+      {
+        "dePart": "abfedern",
+        "enPart": ""
+      },
+      {
+        "dePart": "unter...",
+        "enPart": ""
+      },
+      {
+        "dePart": "einerlei",
+        "enPart": ""
+      },
+      {
+        "dePart": "exclusiv",
+        "enPart": ""
+      },
+      {
+        "dePart": "primitiv",
+        "enPart": ""
+      },
+      {
+        "dePart": "umgrenzt",
+        "enPart": ""
+      },
+      {
+        "dePart": "zweifach",
+        "enPart": ""
+      },
+      {
+        "dePart": "oftmalig",
+        "enPart": ""
+      },
+      {
+        "dePart": "meistens",
+        "enPart": ""
+      },
+      {
+        "dePart": "manchmal",
+        "enPart": ""
+      },
+      {
+        "dePart": "ein paar",
+        "enPart": ""
+      },
+      {
+        "dePart": "förmlich",
+        "enPart": ""
+      },
+      {
+        "dePart": "abflauen",
+        "enPart": ""
+      },
+      {
+        "dePart": "kürzlich",
+        "enPart": ""
+      },
+      {
+        "dePart": "ausgehen",
+        "enPart": ""
+      },
+      {
+        "dePart": "fast nie",
+        "enPart": ""
+      },
+      {
+        "dePart": "freilich",
+        "enPart": ""
+      },
+      {
+        "dePart": "mindeste",
+        "enPart": ""
+      },
+      {
+        "dePart": "abnehmen",
+        "enPart": ""
+      },
+      {
+        "dePart": "wertvoll",
+        "enPart": ""
+      },
+      {
+        "dePart": "vielfach",
+        "enPart": ""
+      },
+      {
+        "dePart": "abebben",
+        "enPart": ""
+      },
+      {
+        "dePart": "mehrere",
+        "enPart": ""
+      },
+      {
+        "dePart": "erlesen",
+        "enPart": ""
+      },
+      {
+        "dePart": "dämpfen",
+        "enPart": ""
+      },
+      {
+        "dePart": "manches",
+        "enPart": ""
+      },
+      {
+        "dePart": "subakut",
+        "enPart": ""
+      },
+      {
+        "dePart": "schwach",
+        "enPart": ""
+      },
+      {
+        "dePart": "traurig",
+        "enPart": ""
+      },
+      {
+        "dePart": "ärmlich",
+        "enPart": ""
+      },
+      {
+        "dePart": "gesucht",
+        "enPart": ""
+      },
+      {
+        "dePart": "obschon",
+        "enPart": ""
+      },
+      {
+        "dePart": "weniger",
+        "enPart": ""
+      },
+      {
+        "dePart": "kleinen",
+        "enPart": ""
+      },
+      {
+        "dePart": "dürftig",
+        "enPart": ""
+      },
+      {
+        "dePart": "wenigen",
+        "enPart": ""
+      },
+      {
+        "dePart": "weithin",
+        "enPart": ""
+      },
+      {
+        "dePart": "kostbar",
+        "enPart": ""
+      },
+      {
+        "dePart": "kleiner",
+        "enPart": ""
+      },
+      {
+        "dePart": "etliche",
+        "enPart": ""
+      },
+      {
+        "dePart": "schäbig",
+        "enPart": ""
+      },
+      {
+        "dePart": "kleinst",
+        "enPart": ""
+      },
+      {
+        "dePart": "wenigst",
+        "enPart": ""
+      },
+      {
+        "dePart": "diverse",
+        "enPart": ""
+      },
+      {
+        "dePart": "schlaff",
+        "enPart": ""
+      },
+      {
+        "dePart": "klusive",
+        "enPart": ""
+      },
+      {
+        "dePart": "wacklig",
+        "enPart": ""
+      },
+      {
+        "dePart": "schwund",
+        "enPart": ""
+      },
+      {
+        "dePart": "doppelt",
+        "enPart": ""
+      },
+      {
+        "dePart": "minimal",
+        "enPart": ""
+      },
+      {
+        "dePart": "niedrig",
+        "enPart": ""
+      },
+      {
+        "dePart": "wichtig",
+        "enPart": ""
+      },
+      {
+        "dePart": "abbauen",
+        "enPart": ""
+      },
+      {
+        "dePart": "stupide",
+        "enPart": ""
+      },
+      {
+        "dePart": "hilflos",
+        "enPart": ""
+      },
+      {
+        "dePart": "einiges",
+        "enPart": ""
+      },
+      {
+        "dePart": "bedingt",
+        "enPart": ""
+      },
+      {
+        "dePart": "mindern",
+        "enPart": ""
+      },
+      {
+        "dePart": "dannach",
+        "enPart": ""
+      },
+      {
+        "dePart": "diskret",
+        "enPart": ""
+      },
+      {
+        "dePart": "beinahe",
+        "enPart": ""
+      },
+      {
+        "dePart": "am ende",
+        "enPart": ""
+      },
+      {
+        "dePart": "rinnend",
+        "enPart": ""
+      },
+      {
+        "dePart": "einfach",
+        "enPart": ""
+      },
+      {
+        "dePart": "endlich",
+        "enPart": ""
+      },
+      {
+        "dePart": "knochig",
+        "enPart": ""
+      },
+      {
+        "dePart": "maginal",
+        "enPart": ""
+      },
+      {
+        "dePart": "skurril",
+        "enPart": ""
+      },
+      {
+        "dePart": "lieblos",
+        "enPart": ""
+      },
+      {
+        "dePart": "zuletzt",
+        "enPart": ""
+      },
+      {
+        "dePart": "ähnlich",
+        "enPart": ""
+      },
+      {
+        "dePart": "demnach",
+        "enPart": ""
+      },
+      {
+        "dePart": "gehörig",
+        "enPart": ""
+      },
+      {
+        "dePart": "ordinär",
+        "enPart": ""
+      },
+      {
+        "dePart": "logisch",
+        "enPart": ""
+      },
+      {
+        "dePart": "grotesk",
+        "enPart": ""
+      },
+      {
+        "dePart": "seltsam",
+        "enPart": ""
+      },
+      {
+        "dePart": "dagegen",
+        "enPart": ""
+      },
+      {
+        "dePart": "sondern",
+        "enPart": ""
+      },
+      {
+        "dePart": "zuwider",
+        "enPart": ""
+      },
+      {
+        "dePart": "fettarm",
+        "enPart": ""
+      },
+      {
+        "dePart": "mickrig",
+        "enPart": ""
+      },
+      {
+        "dePart": "dennoch",
+        "enPart": ""
+      },
+      {
+        "dePart": "wogegen",
+        "enPart": ""
+      },
+      {
+        "dePart": "subjekt",
+        "enPart": ""
+      },
+      {
+        "dePart": "schlank",
+        "enPart": ""
+      },
+      {
+        "dePart": "opulent",
+        "enPart": ""
+      },
+      {
+        "dePart": "sattsam",
+        "enPart": ""
+      },
+      {
+        "dePart": "rundweg",
+        "enPart": ""
+      },
+      {
+        "dePart": "ständig",
+        "enPart": ""
+      },
+      {
+        "dePart": "zumeist",
+        "enPart": ""
+      },
+      {
+        "dePart": "lapidar",
+        "enPart": ""
+      },
+      {
+        "dePart": "winzig",
+        "enPart": ""
+      },
+      {
+        "dePart": "unlieb",
+        "enPart": ""
+      },
+      {
+        "dePart": "leicht",
+        "enPart": ""
+      },
+      {
+        "dePart": "massig",
+        "enPart": ""
+      },
+      {
+        "dePart": "mensch",
+        "enPart": ""
+      },
+      {
+        "dePart": "passiv",
+        "enPart": ""
+      },
+      {
+        "dePart": "person",
+        "enPart": ""
+      },
+      {
+        "dePart": "selbst",
+        "enPart": ""
+      },
+      {
+        "dePart": "lässig",
+        "enPart": ""
+      },
+      {
+        "dePart": "selber",
+        "enPart": ""
+      },
+      {
+        "dePart": "billig",
+        "enPart": ""
+      },
+      {
+        "dePart": "manche",
+        "enPart": ""
+      },
+      {
+        "dePart": "klusiv",
+        "enPart": ""
+      },
+      {
+        "dePart": "obwohl",
+        "enPart": ""
+      },
+      {
+        "dePart": "abzgl.",
+        "enPart": ""
+      },
+      {
+        "dePart": "jedoch",
+        "enPart": ""
+      },
+      {
+        "dePart": "sicher",
+        "enPart": ""
+      },
+      {
+        "dePart": "konzis",
+        "enPart": ""
+      },
+      {
+        "dePart": "unfein",
+        "enPart": ""
+      },
+      {
+        "dePart": "endlos",
+        "enPart": ""
+      },
+      {
+        "dePart": "soweit",
+        "enPart": ""
+      },
+      {
+        "dePart": "tiefer",
+        "enPart": ""
+      },
+      {
+        "dePart": "immens",
+        "enPart": ""
+      },
+      {
+        "dePart": "untief",
+        "enPart": ""
+      },
+      {
+        "dePart": "gering",
+        "enPart": ""
+      },
+      {
+        "dePart": "häufig",
+        "enPart": ""
+      },
+      {
+        "dePart": "gerade",
+        "enPart": ""
+      },
+      {
+        "dePart": "seicht",
+        "enPart": ""
+      },
+      {
+        "dePart": "öfters",
+        "enPart": ""
+      },
+      {
+        "dePart": "geizig",
+        "enPart": ""
+      },
+      {
+        "dePart": "soeben",
+        "enPart": ""
+      },
+      {
+        "dePart": "minder",
+        "enPart": ""
+      },
+      {
+        "dePart": "jetzig",
+        "enPart": ""
+      },
+      {
+        "dePart": "einige",
+        "enPart": ""
+      },
+      {
+        "dePart": "bizarr",
+        "enPart": ""
+      },
+      {
+        "dePart": "wenige",
+        "enPart": ""
+      },
+      {
+        "dePart": "leidig",
+        "enPart": ""
+      },
+      {
+        "dePart": "schmal",
+        "enPart": ""
+      },
+      {
+        "dePart": "lesser",
+        "enPart": ""
+      },
+      {
+        "dePart": "danach",
+        "enPart": ""
+      },
+      {
+        "dePart": "stupid",
+        "enPart": ""
+      },
+      {
+        "dePart": "weng a",
+        "enPart": ""
+      },
+      {
+        "dePart": "priese",
+        "enPart": ""
+      },
+      {
+        "dePart": "lausig",
+        "enPart": ""
+      },
+      {
+        "dePart": "bilige",
+        "enPart": ""
+      },
+      {
+        "dePart": "nahezu",
+        "enPart": ""
+      },
+      {
+        "dePart": "unklug",
+        "enPart": ""
+      },
+      {
+        "dePart": "kürzer",
+        "enPart": ""
+      },
+      {
+        "dePart": "ehrlos",
+        "enPart": ""
+      },
+      {
+        "dePart": "nieder",
+        "enPart": ""
+      },
+      {
+        "dePart": "jüngst",
+        "enPart": ""
+      },
+      {
+        "dePart": "selten",
+        "enPart": ""
+      },
+      {
+        "dePart": "vorhin",
+        "enPart": ""
+      },
+      {
+        "dePart": "gemein",
+        "enPart": ""
+      },
+      {
+        "dePart": "welche",
+        "enPart": ""
+      },
+      {
+        "dePart": "nunmal",
+        "enPart": ""
+      },
+      {
+        "dePart": "dezent",
+        "enPart": ""
+      },
+      {
+        "dePart": "knapp",
+        "enPart": ""
+      },
+      {
+        "dePart": "hager",
+        "enPart": ""
+      },
+      {
+        "dePart": "netto",
+        "enPart": ""
+      },
+      {
+        "dePart": "üppig",
+        "enPart": ""
+      },
+      {
+        "dePart": "mager",
+        "enPart": ""
+      },
+      {
+        "dePart": "schön",
+        "enPart": ""
+      },
+      {
+        "dePart": "dabei",
+        "enPart": ""
+      },
+      {
+        "dePart": "sacht",
+        "enPart": ""
+      },
+      {
+        "dePart": "meist",
+        "enPart": ""
+      },
+      {
+        "dePart": "flach",
+        "enPart": ""
+      },
+      {
+        "dePart": "spitz",
+        "enPart": ""
+      },
+      {
+        "dePart": "least",
+        "enPart": ""
+      },
+      {
+        "dePart": "trotz",
+        "enPart": ""
+      },
+      {
+        "dePart": "eckig",
+        "enPart": ""
+      },
+      {
+        "dePart": "teuer",
+        "enPart": ""
+      },
+      {
+        "dePart": "lange",
+        "enPart": ""
+      },
+      {
+        "dePart": "klein",
+        "enPart": ""
+      },
+      {
+        "dePart": "mäßig",
+        "enPart": ""
+      },
+      {
+        "dePart": "quasi",
+        "enPart": ""
+      },
+      {
+        "dePart": "blank",
+        "enPart": ""
+      },
+      {
+        "dePart": "lasch",
+        "enPart": ""
+      },
+      {
+        "dePart": "sanft",
+        "enPart": ""
+      },
+      {
+        "dePart": "weich",
+        "enPart": ""
+      },
+      {
+        "dePart": "grade",
+        "enPart": ""
+      },
+      {
+        "dePart": "reich",
+        "enPart": ""
+      },
+      {
+        "dePart": "zwerg",
+        "enPart": ""
+      },
+      {
+        "dePart": "genug",
+        "enPart": ""
+      },
+      {
+        "dePart": "enorm",
+        "enPart": ""
+      },
+      {
+        "dePart": "minus",
+        "enPart": ""
+      },
+      {
+        "dePart": "unter",
+        "enPart": ""
+      },
+      {
+        "dePart": "elend",
+        "enPart": ""
+      },
+      {
+        "dePart": "manch",
+        "enPart": ""
+      },
+      {
+        "dePart": "etwas",
+        "enPart": ""
+      },
+      {
+        "dePart": "indes",
+        "enPart": ""
+      },
+      {
+        "dePart": "weit",
+        "enPart": ""
+      },
+      {
+        "dePart": "eins",
+        "enPart": ""
+      },
+      {
+        "dePart": "egal",
+        "enPart": ""
+      },
+      {
+        "dePart": "kaum",
+        "enPart": ""
+      },
+      {
+        "dePart": "fast",
+        "enPart": ""
+      },
+      {
+        "dePart": "tief",
+        "enPart": ""
+      },
+      {
+        "dePart": "über",
+        "enPart": ""
+      },
+      {
+        "dePart": "spät",
+        "enPart": ""
+      },
+      {
+        "dePart": "edel",
+        "enPart": ""
+      },
+      {
+        "dePart": "leer",
+        "enPart": ""
+      },
+      {
+        "dePart": "also",
+        "enPart": ""
+      },
+      {
+        "dePart": "hohl",
+        "enPart": ""
+      },
+      {
+        "dePart": "mild",
+        "enPart": ""
+      },
+      {
+        "dePart": "less",
+        "enPart": ""
+      },
+      {
+        "dePart": "lose",
+        "enPart": ""
+      },
+      {
+        "dePart": "doof",
+        "enPart": ""
+      },
+      {
+        "dePart": "auch",
+        "enPart": ""
+      },
+      {
+        "dePart": "fein",
+        "enPart": ""
+      },
+      {
+        "dePart": "übel",
+        "enPart": ""
+      },
+      {
+        "dePart": "nach",
+        "enPart": ""
+      },
+      {
+        "dePart": "böse",
+        "enPart": ""
+      },
+      {
+        "dePart": "doch",
+        "enPart": ""
+      },
+      {
+        "dePart": "aber",
+        "enPart": ""
+      },
+      {
+        "dePart": "lahm",
+        "enPart": ""
+      },
+      {
+        "dePart": "sehr",
+        "enPart": ""
+      },
+      {
+        "dePart": "lang",
+        "enPart": ""
+      },
+      {
+        "dePart": "paar",
+        "enPart": ""
+      },
+      {
+        "dePart": "just",
+        "enPart": ""
+      },
+      {
+        "dePart": "o ja",
+        "enPart": ""
+      },
+      {
+        "dePart": "eben",
+        "enPart": ""
+      },
+      {
+        "dePart": "viel",
+        "enPart": ""
+      },
+      {
+        "dePart": "zart",
+        "enPart": ""
+      },
+      {
+        "dePart": "dünn",
+        "enPart": ""
+      },
+      {
+        "dePart": "zwar",
+        "enPart": ""
+      },
+      {
+        "dePart": "karg",
+        "enPart": ""
+      },
+      {
+        "dePart": "min.",
+        "enPart": ""
+      },
+      {
+        "dePart": "ohne",
+        "enPart": ""
+      },
+      {
+        "dePart": "dürr",
+        "enPart": ""
+      },
+      {
+        "dePart": "kurz",
+        "enPart": ""
+      },
+      {
+        "dePart": "klar",
+        "enPart": ""
+      },
+      {
+        "dePart": "mich",
+        "enPart": ""
+      },
+      {
+        "dePart": "dumm",
+        "enPart": ""
+      }
+    ],
+    "synonymSeventh": [
+      {
+        "dePart": "wenig",
+        "enPart": "little"
+      },
+      {
+        "dePart": "klein",
+        "enPart": "little"
+      },
+      {
+        "dePart": "gering",
+        "enPart": "little"
+      },
+      {
+        "dePart": "ein bisschen",
+        "enPart": "a little"
+      },
+      {
+        "dePart": "wenig",
+        "enPart": "a little"
+      },
+      {
+        "dePart": "klein",
+        "enPart": "small"
+      },
+      {
+        "dePart": "Klein-",
+        "enPart": "small"
+      },
+      {
+        "dePart": "gering",
+        "enPart": "small"
+      },
+      {
+        "dePart": "wenig",
+        "enPart": "small"
+      },
+      {
+        "dePart": "schmal",
+        "enPart": "small"
+      },
+      {
+        "dePart": "bescheiden",
+        "enPart": "small"
+      },
+      {
+        "dePart": "wenig",
+        "enPart": "scant"
+      },
+      {
+        "dePart": "spärlich",
+        "enPart": "scant"
+      },
+      {
+        "dePart": "dürftig",
+        "enPart": "scant"
+      },
+      {
+        "dePart": "gering",
+        "enPart": "scant"
+      },
+      {
+        "dePart": "mager",
+        "enPart": "scant"
+      }
+    ]
+  }
+}

@@ -8,209 +8,302 @@ var _asyncToGenerator2 = require("babel-runtime/helpers/asyncToGenerator");
 
 var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
 
-var deEnAsync = function () {
+var deEnTimerAsync = function () {
     var ref = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee(wordRaw) {
-        var word, local;
+        var willReturn, word, local;
         return _regenerator2.default.wrap(function _callee$(_context) {
             while (1) {
                 switch (_context.prev = _context.next) {
                     case 0:
+                        willReturn = {};
                         word = wordRaw.trim().toLowerCase();
-                        _context.next = 3;
+
+                        console.time("mixed");
+                        _context.next = 5;
                         return mixed(word);
 
-                    case 3:
+                    case 5:
                         local = _context.sent;
-                        _context.next = 6;
+
+                        console.timeEnd("mixed");
+                        willReturn.deEnFirst = local.translation;
+                        console.time("deEnThird");
+                        _context.next = 11;
                         return deEnThird(word);
 
-                    case 6:
-                        willReturnMain.deEnThird = _context.sent;
+                    case 11:
+                        willReturn.deEnThird = _context.sent;
 
-                        willReturnMain.deEnFourth = local.translation;
-                        _context.next = 10;
+                        console.timeEnd("deEnThird");
+                        console.time("phraseFirst");
+                        _context.next = 16;
                         return phraseFirst(word);
 
-                    case 10:
-                        willReturnMain.phraseFirst = _context.sent;
-                        _context.next = 13;
+                    case 16:
+                        willReturn.phraseFirst = _context.sent;
+
+                        console.timeEnd("phraseFirst");
+                        console.time("phraseSecond");
+                        _context.next = 21;
                         return phraseSecond(word);
 
-                    case 13:
-                        willReturnMain.phraseSecond = _context.sent;
-                        _context.next = 16;
+                    case 21:
+                        willReturn.phraseSecond = _context.sent;
+
+                        console.timeEnd("phraseSecond");
+                        console.time("phraseThird");
+                        _context.next = 26;
                         return phraseThird(word);
 
-                    case 16:
-                        willReturnMain.phraseThird = _context.sent;
-                        _context.next = 19;
+                    case 26:
+                        willReturn.phraseThird = _context.sent;
+
+                        console.timeEnd("phraseThird");
+                        console.time("phraseFourth");
+                        _context.next = 31;
                         return phraseFourth(word);
 
-                    case 19:
-                        willReturnMain.phraseFourth = _context.sent;
-                        _context.next = 22;
+                    case 31:
+                        willReturn.phraseFourth = _context.sent;
+
+                        console.timeEnd("phraseFourth");
+                        console.time("phraseFifth");
+                        _context.next = 36;
                         return phraseFifth(word);
 
-                    case 22:
-                        willReturnMain.phraseFifth = _context.sent;
-                        _context.next = 25;
+                    case 36:
+                        willReturn.phraseFifth = _context.sent;
+
+                        console.timeEnd("phraseFifth");
+                        console.time("phraseSixth");
+                        _context.next = 41;
                         return phraseSixth(word);
 
-                    case 25:
-                        willReturnMain.phraseSixth = _context.sent;
-                        _context.next = 28;
-                        return phraseSeventh(word);
+                    case 41:
+                        willReturn.phraseSixth = _context.sent;
 
-                    case 28:
-                        willReturnMain.phraseSeventh = _context.sent;
-                        _context.next = 31;
+                        console.timeEnd("phraseSixth");
+                        console.time("synonymFirst");
+                        _context.next = 46;
                         return synonymFirst(word);
 
-                    case 31:
-                        willReturnMain.synonymFirst = _context.sent;
-                        _context.next = 34;
+                    case 46:
+                        willReturn.synonymFirst = _context.sent;
+
+                        console.timeEnd("synonymFirst");
+                        console.time("synonymSecond");
+                        _context.next = 51;
                         return synonymSecond(word);
 
-                    case 34:
-                        willReturnMain.synonymSecond = _context.sent;
-                        _context.next = 37;
+                    case 51:
+                        willReturn.synonymSecond = _context.sent;
+
+                        console.timeEnd("synonymSecond");
+                        console.time("synonymThird");
+                        _context.next = 56;
                         return synonymThird(word);
 
-                    case 37:
-                        willReturnMain.synonymThird = _context.sent;
+                    case 56:
+                        willReturn.synonymThird = _context.sent;
 
-                        willReturnMain.synonymFourth = local.related;
-                        return _context.abrupt("return", willReturnMain);
+                        console.timeEnd("synonymThird");
+                        console.time("synonymFourth");
+                        _context.next = 61;
+                        return synonymFourth(word);
 
-                    case 40:
+                    case 61:
+                        willReturn.synonymFourth = _context.sent;
+
+                        console.timeEnd("synonymFourth");
+                        console.time("synonymFifth");
+                        _context.next = 66;
+                        return synonymFifth(word);
+
+                    case 66:
+                        willReturn.synonymFifth = _context.sent;
+
+                        console.timeEnd("synonymFifth");
+                        console.time("synonymSixth");
+                        _context.next = 71;
+                        return synonymSixth(word);
+
+                    case 71:
+                        willReturn.synonymSixth = _context.sent;
+
+                        console.timeEnd("synonymSixth");
+                        willReturn.synonymSeventh = local.related;
+                        return _context.abrupt("return", willReturn);
+
+                    case 75:
                     case "end":
                         return _context.stop();
                 }
             }
         }, _callee, this);
     }));
-    return function deEnAsync(_x) {
+    return function deEnTimerAsync(_x) {
         return ref.apply(this, arguments);
     };
 }();
 
-var deEnAltAsync = function () {
+var deEnAsync = function () {
     var ref = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee2(wordRaw) {
-        var word, local;
+        var willReturn, word, local;
         return _regenerator2.default.wrap(function _callee2$(_context2) {
             while (1) {
                 switch (_context2.prev = _context2.next) {
                     case 0:
+                        willReturn = {};
                         word = wordRaw.trim().toLowerCase();
-                        _context2.next = 3;
+                        _context2.next = 4;
                         return mixed(word);
 
-                    case 3:
+                    case 4:
                         local = _context2.sent;
-                        _context2.next = 6;
+
+                        willReturn.deEnFirst = local.translation;
+                        _context2.next = 8;
                         return deEnThird(word);
 
-                    case 6:
-                        willReturnMain.deEnThird = _context2.sent;
-
-                        willReturnMain.deEnFourth = local.translation;
-                        _context2.next = 10;
+                    case 8:
+                        willReturn.deEnThird = _context2.sent;
+                        _context2.next = 11;
                         return phraseFirst(word);
 
-                    case 10:
-                        willReturnMain.phraseFirst = _context2.sent;
-                        _context2.next = 13;
+                    case 11:
+                        willReturn.phraseFirst = _context2.sent;
+                        _context2.next = 14;
                         return phraseSecond(word);
 
-                    case 13:
-                        willReturnMain.phraseSecond = _context2.sent;
-                        _context2.next = 16;
+                    case 14:
+                        willReturn.phraseSecond = _context2.sent;
+                        _context2.next = 17;
                         return phraseThird(word);
 
-                    case 16:
-                        willReturnMain.phraseThird = _context2.sent;
-                        _context2.next = 19;
+                    case 17:
+                        willReturn.phraseThird = _context2.sent;
+                        _context2.next = 20;
                         return phraseFourth(word);
 
-                    case 19:
-                        willReturnMain.phraseFourth = _context2.sent;
-                        _context2.next = 22;
+                    case 20:
+                        willReturn.phraseFourth = _context2.sent;
+                        _context2.next = 23;
                         return phraseFifth(word);
 
-                    case 22:
-                        willReturnMain.phraseFifth = _context2.sent;
-                        _context2.next = 25;
+                    case 23:
+                        willReturn.phraseFifth = _context2.sent;
+                        _context2.next = 26;
                         return phraseSixth(word);
 
-                    case 25:
-                        willReturnMain.phraseSixth = _context2.sent;
-                        _context2.next = 28;
-                        return phraseSeventh(word);
-
-                    case 28:
-                        willReturnMain.phraseSeventh = _context2.sent;
-                        _context2.next = 31;
+                    case 26:
+                        willReturn.phraseSixth = _context2.sent;
+                        _context2.next = 29;
                         return synonymFirst(word);
 
-                    case 31:
-                        willReturnMain.synonymFirst = _context2.sent;
-                        _context2.next = 34;
+                    case 29:
+                        willReturn.synonymFirst = _context2.sent;
+                        _context2.next = 32;
                         return synonymSecond(word);
 
-                    case 34:
-                        willReturnMain.synonymSecond = _context2.sent;
-                        _context2.next = 37;
+                    case 32:
+                        willReturn.synonymSecond = _context2.sent;
+                        _context2.next = 35;
                         return synonymThird(word);
 
-                    case 37:
-                        willReturnMain.synonymThird = _context2.sent;
+                    case 35:
+                        willReturn.synonymThird = _context2.sent;
+                        _context2.next = 38;
+                        return synonymFourth(word);
 
-                        willReturnMain.synonymFourth = local.related;
-                        return _context2.abrupt("return", willReturnMain);
+                    case 38:
+                        willReturn.synonymFourth = _context2.sent;
+                        _context2.next = 41;
+                        return synonymFifth(word);
 
-                    case 40:
+                    case 41:
+                        willReturn.synonymFifth = _context2.sent;
+                        _context2.next = 44;
+                        return synonymSixth(word);
+
+                    case 44:
+                        willReturn.synonymSixth = _context2.sent;
+
+                        willReturn.synonymSeventh = local.related;
+                        return _context2.abrupt("return", willReturn);
+
+                    case 47:
                     case "end":
                         return _context2.stop();
                 }
             }
         }, _callee2, this);
     }));
-    return function deEnAltAsync(_x2) {
+    return function deEnAsync(_x2) {
         return ref.apply(this, arguments);
     };
 }();
 
 var deEnShortAsync = function () {
     var ref = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee3(wordRaw) {
-        var word, local;
+        var willReturn, word, mixedResult;
         return _regenerator2.default.wrap(function _callee3$(_context3) {
             while (1) {
                 switch (_context3.prev = _context3.next) {
                     case 0:
+                        willReturn = {};
                         word = wordRaw.trim().toLowerCase();
-                        _context3.next = 3;
+                        _context3.next = 4;
                         return mixed(word);
 
-                    case 3:
-                        local = _context3.sent;
+                    case 4:
+                        mixedResult = _context3.sent;
 
-                        willReturnMain.deEnFourth = local.translation;
-                        //willReturnMain.synonymFirst = await synonymFirst(word)
-                        willReturnMain.synonymFourth = local.related;
-                        //willReturnMain.phraseFirst = await phraseFirst(word)
+                        willReturn.deEnFirst = mixedResult.translation;
                         _context3.next = 8;
-                        return phraseFourth(word);
+                        return synonymFirst(word);
 
                     case 8:
-                        willReturnMain.phraseFourth = _context3.sent;
+                        willReturn.synonymFirst = _context3.sent;
                         _context3.next = 11;
-                        return phraseSixth(word);
+                        return synonymSecond(word);
 
                     case 11:
-                        willReturnMain.phraseSixth = _context3.sent;
-                        return _context3.abrupt("return", willReturnMain);
+                        willReturn.synonymSecond = _context3.sent;
 
-                    case 13:
+                        willReturn.synonymThird = mixedResult.related;
+                        _context3.next = 15;
+                        return synonymFourth(word);
+
+                    case 15:
+                        willReturn.synonymFourth = _context3.sent;
+                        _context3.next = 18;
+                        return synonymFifth(word);
+
+                    case 18:
+                        willReturn.synonymFifth = _context3.sent;
+                        _context3.next = 21;
+                        return phraseSecond(word);
+
+                    case 21:
+                        willReturn.phraseSecond = _context3.sent;
+                        _context3.next = 24;
+                        return phraseThird(word);
+
+                    case 24:
+                        willReturn.phraseThird = _context3.sent;
+                        _context3.next = 27;
+                        return phraseFourth(word);
+
+                    case 27:
+                        willReturn.phraseFourth = _context3.sent;
+                        _context3.next = 30;
+                        return phraseSixth(word);
+
+                    case 30:
+                        willReturn.phraseSixth = _context3.sent;
+                        return _context3.abrupt("return", willReturn);
+
+                    case 32:
                     case "end":
                         return _context3.stop();
                 }
@@ -230,7 +323,6 @@ var fetch = require("node-fetch");
 var request = require("request");
 var J = require("justdo");
 var R = require("ramda");
-
 function deEnFirst(wordRaw) {
     var word = wordRaw.trim().toLowerCase();
     return new Promise(function (resolve) {
@@ -249,7 +341,6 @@ function deEnFirst(wordRaw) {
         });
     });
 }
-
 function deEnSecond(wordRaw) {
     var word = wordRaw.trim().toLowerCase();
     return new Promise(function (resolve) {
@@ -286,7 +377,6 @@ function deEnSecond(wordRaw) {
         });
     });
 }
-
 function deEnThird(wordRaw) {
     var word = wordRaw.trim().toLowerCase();
     return new Promise(function (resolve) {
@@ -321,26 +411,6 @@ function deEnThird(wordRaw) {
         });
     });
 }
-
-function enDeFirst(wordRaw) {
-    var word = wordRaw.trim().toLowerCase();
-    return new Promise(function (resolve) {
-        willRequest("https://api.mymemory.translated.net/get?q=" + word + "&langpair=en|de").then(function (dataRaw) {
-            var willReturnRaw = [];
-            var willReturn = [];
-            var data = JSON.parse(dataRaw);
-            var mainTranslation = data.responseData.translatedText;
-            resolve({
-                dePart: mainTranslation,
-                enPart: wordRaw
-            });
-        }).catch(function (error) {
-            console.log(error);
-            resolve(null);
-        });
-    });
-}
-
 function synonymFirst(wordRaw) {
     var word = wordRaw.trim().toLowerCase();
     return new Promise(function (resolve) {
@@ -363,7 +433,7 @@ function synonymFirst(wordRaw) {
                             if (val.trim() !== "") {
                                 willReturn.push({
                                     dePart: val.trim(),
-                                    enPart: word
+                                    enPart: ""
                                 });
                             }
                         });
@@ -379,7 +449,6 @@ function synonymFirst(wordRaw) {
         });
     });
 }
-
 function synonymSecond(wordRaw) {
     var word = wordRaw.trim().toLowerCase();
     return new Promise(function (resolve) {
@@ -413,7 +482,7 @@ function synonymSecond(wordRaw) {
                                     if (localWord !== currentWord && localWord !== "") {
                                         willReturn.push({
                                             dePart: localWord,
-                                            enPart: word
+                                            enPart: ""
                                         });
                                     }
                                 });
@@ -432,7 +501,6 @@ function synonymSecond(wordRaw) {
         });
     });
 }
-
 function synonymThird(wordRaw) {
     var word = wordRaw.trim().toLowerCase();
     return new Promise(function (resolve) {
@@ -453,7 +521,7 @@ function synonymThird(wordRaw) {
                         var localWord = $(this).text().trim();
                         willReturn.push({
                             dePart: localWord,
-                            enPart: word
+                            enPart: ""
                         });
                     });
                     resolve(willReturn);
@@ -467,51 +535,141 @@ function synonymThird(wordRaw) {
         });
     });
 }
-//
-function phraseFirst(wordRaw) {
-    var word = wordRaw.trim().toLowerCase();
+function synonymFourth(word) {
     return new Promise(function (resolve) {
-        var flag = false;
-        var willReturn = [];
-        var dePart = void 0;
-        var url = "http://de.langenscheidt.com/deutsch-englisch/" + word;
-        scrapeIt(url, {
-            examples: {
-                listItem: ".row-fluid",
-                data: {
-                    dePart: {
-                        selector: ".lkgEx",
-                        convert: function convert(wordIs) {
-                            if (wordIs.length > 0 && wordIs.length < 70) {
-                                flag = true;
-                                dePart = wordIs;
-                            } else {
-                                flag = false;
-                            }
-                        }
-                    },
-                    enPart: {
-                        selector: ".lkgExNormal",
-                        convert: function convert(wordIs) {
-                            if (flag && wordIs.length > 0 && wordIs.length < 70) {
-                                var just = {};
-                                just.dePart = dePart;
-                                just.enPart = wordIs;
-                                willReturn.push(just);
-                            }
-                        }
-                    }
-                }
+        willRequest("https://www.openthesaurus.de/synonyme/search?q=" + word + "&format=application/json").then(function (dataRaw) {
+            var data = JSON.parse(dataRaw);
+            var willReturn = [];
+            data.synsets.map(function (val) {
+                willReturn = R.flatten([willReturn, R.pluck("term", val.terms)]);
+            });
+            resolve(R.compose(R.map(function (val) {
+                return { dePart: val, enPart: "" };
+            }), R.sort(function (a, b) {
+                return b.length - a.length;
+            }))(willReturn));
+        });
+    });
+}
+function synonymFifth(word) {
+    return new Promise(function (resolve) {
+        fetch("http://ein.anderes-wort.de/fuer/" + word).then(function (res) {
+            if (res.status !== 200) {
+                console.log("response code error");
+                resolve(null);
+            } else {
+                return res.text();
             }
-        }).then(function () {
-            resolve(willReturn);
+        }).then(function (data) {
+            if (data) {
+                (function () {
+                    var $ = cheerio.load(data);
+                    var willReturn = [];
+                    var id = 0;
+                    var flag = false;
+                    var selector = "li a";
+                    $(selector).each(function (i) {
+                        var state = $(this).text().trim();
+                        willReturn.push(state);
+                    });
+                    if (willReturn.length > 11) {
+                        resolve(R.compose(R.map(function (val) {
+                            return { dePart: val, enPart: "" };
+                        }), R.filter(function (val) {
+                            return val.length > 3;
+                        }), R.sort(function (a, b) {
+                            return b.length - a.length;
+                        }), R.drop(2), R.dropLast(9))(willReturn));
+                    } else {
+                        resolve(null);
+                    }
+                })();
+            } else {
+                resolve(null);
+            }
         }).catch(function (error) {
             console.log(error);
             resolve(null);
         });
     });
 }
-
+function synonymSixth(word) {
+    return new Promise(function (resolve) {
+        fetch("http://ein-anderes-wort.com/ein_anderes_wort_fuer_" + word + ".html").then(function (res) {
+            if (res.status !== 200) {
+                console.log("response code error");
+                resolve(null);
+            } else {
+                return res.text();
+            }
+        }).then(function (data) {
+            if (data) {
+                (function () {
+                    var $ = cheerio.load(data);
+                    var willReturn = [];
+                    var id = 0;
+                    var flag = false;
+                    var selector = "a";
+                    $(selector).each(function (i) {
+                        var state = $(this).text().trim();
+                        willReturn.push(state);
+                    });
+                    if (willReturn.length > 44) {
+                        resolve(R.compose(R.map(function (val) {
+                            return { dePart: val, enPart: "" };
+                        }), R.filter(function (val) {
+                            return R.indexOf("(", val) === -1 && R.indexOf(")", val) === -1 && val.length > 3;
+                        }), R.sort(function (a, b) {
+                            return b.length - a.length;
+                        }), R.drop(10), R.dropLast(33))(willReturn));
+                    } else {
+                        resolve(null);
+                    }
+                })();
+            } else {
+                resolve(null);
+            }
+        }).catch(function (error) {
+            console.log(error);
+            resolve(null);
+        });
+    });
+}
+function phraseFirst(wordRaw) {
+    var word = wordRaw.trim().toLowerCase();
+    return new Promise(function (resolve) {
+        var url = "http://de.langenscheidt.com/deutsch-englisch/" + word;
+        var flag = false;
+        scrapeIt(url, {
+            willReturn: {
+                listItem: ".lemma-example",
+                data: {
+                    dePart: {
+                        selector: ".col1 span span.text",
+                        convert: function convert(state) {
+                            flag = true;
+                            return state.trim();
+                        }
+                    },
+                    enPart: {
+                        selector: ".trans-line span.trans",
+                        convert: function convert(state) {
+                            if (flag) {
+                                flag = false;
+                                return state.trim();
+                            }
+                        }
+                    }
+                }
+            }
+        }).then(function (incoming) {
+            resolve(incoming.willReturn);
+        }).catch(function (error) {
+            console.log(error);
+            resolve(null);
+        });
+    });
+}
 function phraseSecond(wordRaw) {
     var word = wordRaw.trim().toLowerCase();
     return new Promise(function (resolve) {
@@ -571,7 +729,7 @@ function phraseThird(wordRaw) {
                         var localWord = $(this).text().trim();
                         willReturn.push({
                             dePart: localWord,
-                            enPart: word
+                            enPart: ""
                         });
                     });
                     var sortByLength = R.sortBy(R.compose(function (a) {
@@ -614,7 +772,6 @@ function phraseFourth(word) {
                         var state = $(this).text().trim();
                         if (state.includes("Andere")) {
                             flagNumber = i - 4;
-                            J.lg(state, "flag");
                         }
                     });
                     selector = "td.td7nl";
@@ -641,45 +798,7 @@ function phraseFourth(word) {
         });
     });
 }
-//
 function phraseFifth(word) {
-    return new Promise(function (resolve) {
-        fetch("http://www.duden.de/rechtschreibung/" + word).then(function (res) {
-            if (res.status !== 200) {
-                console.log("response code error");
-                resolve(null);
-            } else {
-                return res.text();
-            }
-        }).then(function (data) {
-            if (data) {
-                (function () {
-                    var filterFn = R.compose(R.trim, R.join(" "), R.split(" "), R.ifElse(function (data) {
-                        R.length(data) === 1;
-                    }, R.always, R.last), R.split(">:"));
-                    var $ = cheerio.load(data);
-                    var willReturn = [];
-                    var selector = "#Bedeutung1 .term-section ul li";
-                    $(selector).each(function (i) {
-                        var state = $(this).text().trim();
-                        willReturn.push({
-                            dePart: filterFn(state),
-                            enPart: word
-                        });
-                    });
-
-                    resolve(willReturn);
-                })();
-            } else {
-                resolve(null);
-            }
-        }).catch(function (error) {
-            console.log(error);
-            resolve(null);
-        });
-    });
-}
-function phraseSixth(word) {
     return new Promise(function (resolve) {
         fetch("http://zitate.net/zitate/suche.html?query=" + word).then(function (res) {
             if (res.status !== 200) {
@@ -698,7 +817,7 @@ function phraseSixth(word) {
                         var state = $(this).text().trim();
                         willReturn.push({
                             dePart: state,
-                            enPart: word
+                            enPart: ""
                         });
                     });
 
@@ -713,7 +832,7 @@ function phraseSixth(word) {
         });
     });
 }
-function phraseSeventh(word) {
+function phraseSixth(word) {
     return new Promise(function (resolve) {
         fetch("http://www.uitmuntend.de/woerterbuch/" + word + "/").then(function (res) {
             if (res.status !== 200) {
@@ -810,33 +929,15 @@ function mixed(wordRaw) {
     });
 }
 
-var willReturnMain = {};
-
 function deEn(word) {
-    var ms = arguments.length <= 1 || arguments[1] === undefined ? 12000 : arguments[1];
-
-    return new Promise(function (resolve) {
-        setTimeout(function () {
-            resolve(willReturnMain);
-        }, ms);
-        deEnAsync(word).then(function (incoming) {
-            resolve(incoming);
-        });
-    });
+    return deEnAsync(word);
 }
 function deEnShort(word) {
-    var ms = arguments.length <= 1 || arguments[1] === undefined ? 10000 : arguments[1];
-
-    return new Promise(function (resolve) {
-        setTimeout(function () {
-            resolve(willReturnMain);
-        }, ms);
-        deEnAsync(word).then(function (result) {
-            resolve(result);
-        });
-    });
+    return deEnShortAsync(word);
 }
-
+function deEnTimer(word) {
+    return deEnTimerAsync(word);
+}
 function willRequest(url) {
     return new Promise(function (resolve, reject) {
         request({
@@ -851,9 +952,9 @@ function willRequest(url) {
         });
     });
 }
-
 module.exports.deEn = deEn;
 module.exports.deEnShort = deEnShort;
+module.exports.deEnTimer = deEnTimer;
 module.exports.deEnFirst = deEnFirst;
 module.exports.deEnSecond = deEnSecond;
 module.exports.deEnThird = deEnThird;
@@ -861,10 +962,12 @@ module.exports.mixed = mixed;
 module.exports.synonymFirst = synonymFirst;
 module.exports.synonymSecond = synonymSecond;
 module.exports.synonymThird = synonymThird;
+module.exports.synonymFourth = synonymFourth;
+module.exports.synonymFifth = synonymFifth;
+module.exports.synonymSixth = synonymSixth;
 module.exports.phraseFirst = phraseFirst;
 module.exports.phraseSecond = phraseSecond;
 module.exports.phraseThird = phraseThird;
 module.exports.phraseFourth = phraseFourth;
 module.exports.phraseFifth = phraseFifth;
 module.exports.phraseSixth = phraseSixth;
-module.exports.phraseSeventh = phraseSeventh;

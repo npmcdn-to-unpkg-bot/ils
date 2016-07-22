@@ -7,6 +7,12 @@ const J = require("justdo")
 const fs = require("fs-extra")
 const reqwest = require("reqwest")
 const winston = require("winston")
+let store = {endMarker: "default"}
+function timer(startMarker="default"){
+    console.timeEnd(store.endMarker)
+    console.time(startMarker)
+    store.endMarker = startMarker
+}
 const logger = new (winston.Logger)({
     transports: [
         new (winston.transports.File)({
@@ -111,6 +117,7 @@ let takeName = R.compose(R.takeLast(1), R.split("/"))
 let anyRaw = R.flip(R.any)
 let anyFn = R.curry(anyRaw)
 
+module.exports.timer = timer
 module.exports.logger = logger
 module.exports.shuffle = shuffle
 module.exports.postData = postData

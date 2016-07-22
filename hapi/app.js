@@ -2,6 +2,7 @@
 const express = require("express")
 const minify = require("express-minify")
 const helmet = require("helmet")
+const responseTime = require("response-time")
 const path = require("path")
 const compression = require("compression")
 const favicon = require("serve-favicon")
@@ -10,6 +11,7 @@ const bodyParser = require("body-parser")
 const J = require("../common")
 let routes = require("./routes/index.js")
 let app = express()
+app.use(responseTime())
 app.use(helmet())
 app.get("/*", (request, response, next) => {
     let headerHost = request.headers.host

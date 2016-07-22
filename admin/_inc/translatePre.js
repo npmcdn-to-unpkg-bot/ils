@@ -5,7 +5,6 @@ const fetch = require("node-fetch")
 const request = require("request")
 const J = require("justdo")
 const R = require("ramda")
-
 function deEnFirst(wordRaw) {
     let word = wordRaw.trim().toLowerCase()
     return new Promise((resolve) => {
@@ -24,7 +23,6 @@ function deEnFirst(wordRaw) {
         })
     })
 }
-
 function deEnSecond(wordRaw) {
     let word = wordRaw.trim().toLowerCase()
     return new Promise((resolve) => {
@@ -57,7 +55,6 @@ function deEnSecond(wordRaw) {
         })
     })
 }
-
 function deEnThird(wordRaw) {
     let word = wordRaw.trim().toLowerCase()
     return new Promise((resolve) => {
@@ -88,26 +85,6 @@ function deEnThird(wordRaw) {
         })
     })
 }
-
-function enDeFirst(wordRaw) {
-    let word = wordRaw.trim().toLowerCase()
-    return new Promise((resolve) => {
-        willRequest(`https://api.mymemory.translated.net/get?q=${word}&langpair=en|de`).then(function(dataRaw) {
-            let willReturnRaw = []
-            let willReturn = []
-            let data = JSON.parse(dataRaw)
-            let mainTranslation = data.responseData.translatedText
-            resolve({
-                dePart: mainTranslation,
-                enPart: wordRaw
-            })
-        }).catch((error) => {
-            console.log(error)
-            resolve(null)
-        })
-    })
-}
-
 function synonymFirst(wordRaw) {
     let word = wordRaw.trim().toLowerCase()
     return new Promise((resolve) => {
@@ -142,7 +119,6 @@ function synonymFirst(wordRaw) {
         })
     })
 }
-
 function synonymSecond(wordRaw) {
     let word = wordRaw.trim().toLowerCase()
     return new Promise((resolve) => {
@@ -189,7 +165,6 @@ function synonymSecond(wordRaw) {
         })
     })
 }
-
 function synonymThird(wordRaw) {
     let word = wordRaw.trim().toLowerCase()
     return new Promise((resolve) => {
@@ -222,12 +197,14 @@ function synonymThird(wordRaw) {
 }
 function synonymFourth(word) {
     return new Promise((resolve) => {
-        J.getData(`https://www.openthesaurus.de/synonyme/search?q=${word}&format=application/json`).then(data=>{
+        willRequest(`https://www.openthesaurus.de/synonyme/search?q=${word}&format=application/json`)
+        .then(dataRaw=>{
+            let data = JSON.parse(dataRaw)
             let willReturn = []
             data.synsets.map(val=>{
-                willReturn = R.flatten([willReturn,R.pluck("term",val.terms)])
+                willReturn = R.flatten([willReturn, R.pluck("term", val.terms)])
             })
-            resolve(R.compose(R.map(val=>{return {dePart:val,enPart:""}}),R.sort((a,b)=>b.length-a.length))(willReturn))
+            resolve(R.compose(R.map(val=>{return {dePart:val, enPart:""}}), R.sort((a, b)=>b.length - a.length))(willReturn))
         })
     })
 }
@@ -249,12 +226,11 @@ function synonymFifth(word) {
                 let selector = "li a"
                 $(selector).each(function(i) {
                     let state = $(this).text().trim()
-                    J.log(state,i)
                     willReturn.push(state)
                 })
-                if(willReturn.length>11){
-                    resolve(R.compose(R.map(val=>{return {dePart:val, enPart:""}}),R.filter(val=> val.length>3),R.sort((a,b)=>{return b.length-a.length}),R.drop(2),R.dropLast(9))(willReturn))
-                }else{
+                if (willReturn.length > 11) {
+                    resolve(R.compose(R.map(val=>{return {dePart:val, enPart:""}}), R.filter(val=> val.length > 3), R.sort((a, b)=>{return b.length - a.length}), R.drop(2), R.dropLast(9))(willReturn))
+                } else {
                     resolve(null)
                 }
             } else {resolve(null)}
@@ -284,12 +260,12 @@ function synonymSixth(word) {
                     let state = $(this).text().trim()
                     willReturn.push(state)
                 })
-                if(willReturn.length>44){
-                    resolve(R.compose(R.map(val=>{return {dePart:val, enPart:""}}),R.filter(val=> R.indexOf("(",val)===-1&&R.indexOf(")",val)===-1&&val.length>3),R.sort((a,b)=>{return b.length-a.length}),R.drop(10),R.dropLast(33))(willReturn))
-                }else{
+                if (willReturn.length > 44) {
+                    resolve(R.compose(R.map(val=>{return {dePart:val, enPart:""}}), R.filter(val=> R.indexOf("(", val) === -1 && R.indexOf(")", val) === -1 && val.length > 3), R.sort((a, b)=>{return b.length - a.length}), R.drop(10), R.dropLast(33))(willReturn))
+                } else {
                     resolve(null)
                 }
-                
+
             } else {resolve(null)}
         }).catch((error) => {
             console.log(error)
@@ -300,12 +276,10 @@ function synonymSixth(word) {
 function phraseFirst(wordRaw) {
     let word = wordRaw.trim().toLowerCase()
     return new Promise((resolve) => {
-        let flag = false
-        let willReturn = []
-        let dePart
         let url = `http://de.langenscheidt.com/deutsch-englisch/${word}`
+        let flag = false
         scrapeIt(url, {
-            examples: {
+            willReturn: {
                 listItem: ".lemma-example",
                 data: {
                     dePart: {
@@ -318,7 +292,7 @@ function phraseFirst(wordRaw) {
                     enPart: {
                         selector: ".trans-line span.trans",
                         convert: state => {
-                            if(flag){
+                            if (flag) {
                                 flag = false
                                 return state.trim()
                             }
@@ -327,7 +301,7 @@ function phraseFirst(wordRaw) {
                 }
             }
         }).then(incoming => {
-            resolve(incoming)
+            resolve(incoming.willReturn)
         }).catch((error) => {
             console.log(error)
             resolve(null)
@@ -392,7 +366,7 @@ function phraseThird(wordRaw) {
                     let localWord = $(this).text().trim()
                     willReturn.push({
                         dePart: localWord,
-                        enPart: word
+                        enPart: ""
                     })
                 })
                 let sortByLength = R.sortBy(R.compose((a)=>{return -a.length}, R.prop("dePart")))
@@ -427,7 +401,6 @@ function phraseFourth(word) {
                     let state = $(this).text().trim()
                     if (state.includes("Andere")) {
                         flagNumber = i - 4
-                        J.lg(state, "flag")
                     }
                 })
                 selector = "td.td7nl"
@@ -451,7 +424,6 @@ function phraseFourth(word) {
         })
     })
 }
-
 function phraseFifth(word) {
     return new Promise((resolve) => {
         fetch(`http://zitate.net/zitate/suche.html?query=${word}`).then((res)=>{
@@ -470,7 +442,7 @@ function phraseFifth(word) {
                     let state = $(this).text().trim()
                     willReturn.push({
                         dePart: state,
-                        enPart: word
+                        enPart: ""
                     })
                 })
 
@@ -568,84 +540,101 @@ function mixed(wordRaw) {
         })
     })
 }
-
-let willReturnMain = {}
-
-async function deEnAsync(wordRaw) {
+async function deEnTimerAsync(wordRaw) {
+    let willReturn = {}
     let word = wordRaw.trim().toLowerCase()
+    console.time("mixed")
     let local = await mixed(word)
-    willReturnMain.deEnFirst = local.translation
-    willReturnMain.deEnThird = await deEnThird(word)
-    willReturnMain.phraseFirst = await phraseFirst(word)
-    willReturnMain.phraseSecond = await phraseSecond(word)
-    willReturnMain.phraseThird = await phraseThird(word)
-    willReturnMain.phraseFourth = await phraseFourth(word)
-    willReturnMain.phraseFifth = await phraseFifth(word)
-    willReturnMain.phraseSixth = await phraseSixth(word)
-    willReturnMain.synonymFirst = await synonymFirst(word)
-    willReturnMain.synonymSecond = await synonymSecond(word)
-    willReturnMain.synonymThird = await synonymThird(word)
-    willReturnMain.synonymFourth = await synonymFourth(word)
-    willReturnMain.synonymFifth = await synonymFifth(word)
-    willReturnMain.synonymSixth = await synonymSixth(word)
-    willReturnMain.synonymSeventh = local.related
-    return willReturnMain
+    console.timeEnd("mixed")
+    willReturn.deEnFirst = local.translation
+    console.time("deEnThird")
+    willReturn.deEnThird = await deEnThird(word)
+    console.timeEnd("deEnThird")
+    console.time("phraseFirst")
+    willReturn.phraseFirst = await phraseFirst(word)
+    console.timeEnd("phraseFirst")
+    console.time("phraseSecond")
+    willReturn.phraseSecond = await phraseSecond(word)
+    console.timeEnd("phraseSecond")
+    console.time("phraseThird")
+    willReturn.phraseThird = await phraseThird(word)
+    console.timeEnd("phraseThird")
+    console.time("phraseFourth")
+    willReturn.phraseFourth = await phraseFourth(word)
+    console.timeEnd("phraseFourth")
+    console.time("phraseFifth")
+    willReturn.phraseFifth = await phraseFifth(word)
+    console.timeEnd("phraseFifth")
+    console.time("phraseSixth")
+    willReturn.phraseSixth = await phraseSixth(word)
+    console.timeEnd("phraseSixth")
+    console.time("synonymFirst")
+    willReturn.synonymFirst = await synonymFirst(word)
+    console.timeEnd("synonymFirst")
+    console.time("synonymSecond")
+    willReturn.synonymSecond = await synonymSecond(word)
+    console.timeEnd("synonymSecond")
+    console.time("synonymThird")
+    willReturn.synonymThird = await synonymThird(word)
+    console.timeEnd("synonymThird")
+    console.time("synonymFourth")
+    willReturn.synonymFourth = await synonymFourth(word)
+    console.timeEnd("synonymFourth")
+    console.time("synonymFifth")
+    willReturn.synonymFifth = await synonymFifth(word)
+    console.timeEnd("synonymFifth")
+    console.time("synonymSixth")
+    willReturn.synonymSixth = await synonymSixth(word)
+    console.timeEnd("synonymSixth")
+    willReturn.synonymSeventh = local.related
+    return willReturn
 }
-async function deEnAltAsync(wordRaw) {
+async function deEnAsync(wordRaw) {
+    let willReturn = {}
     let word = wordRaw.trim().toLowerCase()
     let local = await mixed(word)
-    willReturnMain.deEnFirst = local.translation
-    willReturnMain.deEnThird = await deEnThird(word)
-    willReturnMain.phraseFirst = await phraseFirst(word)
-    willReturnMain.phraseSecond = await phraseSecond(word)
-    willReturnMain.phraseThird = await phraseThird(word)
-    willReturnMain.phraseFourth = await phraseFourth(word)
-    willReturnMain.phraseFifth = await phraseFifth(word)
-    willReturnMain.phraseSixth = await phraseSixth(word)
-    willReturnMain.phraseSeventh = await phraseSeventh(word)
-    willReturnMain.synonymFirst = await synonymFirst(word)
-    willReturnMain.synonymSecond = await synonymSecond(word)
-    willReturnMain.synonymThird = await synonymThird(word)
-    willReturnMain.synonymFourth = local.related
-    return willReturnMain
+    willReturn.deEnFirst = local.translation
+    willReturn.deEnThird = await deEnThird(word)
+    willReturn.phraseFirst = await phraseFirst(word)
+    willReturn.phraseSecond = await phraseSecond(word)
+    willReturn.phraseThird = await phraseThird(word)
+    willReturn.phraseFourth = await phraseFourth(word)
+    willReturn.phraseFifth = await phraseFifth(word)
+    willReturn.phraseSixth = await phraseSixth(word)
+    willReturn.synonymFirst = await synonymFirst(word)
+    willReturn.synonymSecond = await synonymSecond(word)
+    willReturn.synonymThird = await synonymThird(word)
+    willReturn.synonymFourth = await synonymFourth(word)
+    willReturn.synonymFifth = await synonymFifth(word)
+    willReturn.synonymSixth = await synonymSixth(word)
+    willReturn.synonymSeventh = local.related
+    return willReturn
 }
 async function deEnShortAsync(wordRaw) {
+    let willReturn = {}
     let word = wordRaw.trim().toLowerCase()
-    let local = await mixed(word)
-    willReturnMain.deEnFourth = local.translation
-    //willReturnMain.synonymFirst = await synonymFirst(word)
-    willReturnMain.synonymFourth = local.related
-    //willReturnMain.phraseFirst = await phraseFirst(word)
-    willReturnMain.phraseFourth = await phraseFourth(word)
-    willReturnMain.phraseSixth = await phraseSixth(word)
-    //willReturnMain.phraseSecond = await phraseSecond(word)
-    //willReturnMain.phraseThird = await phraseThird(word)
-    //willReturn.synonymSecond = await synonymSecond(word)
-    //willReturnMain.synonymThird = await synonymThird(word)
-    return willReturnMain
+    let mixedResult = await mixed(word)
+    willReturn.deEnFirst = mixedResult.translation
+    willReturn.synonymFirst = await synonymFirst(word)
+    willReturn.synonymSecond = await synonymSecond(word)
+    willReturn.synonymThird = mixedResult.related
+    willReturn.synonymFourth = await synonymFourth(word)
+    willReturn.synonymFifth = await synonymFifth(word)
+    willReturn.phraseSecond = await phraseSecond(word)
+    willReturn.phraseThird = await phraseThird(word)
+    willReturn.phraseFourth = await phraseFourth(word)
+    willReturn.phraseSixth = await phraseSixth(word)
+    return willReturn
 }
-
-function deEn(word, ms = 12000) {
-    return new Promise((resolve)=>{
-        setTimeout(()=>{
-            resolve(willReturnMain)
-        }, ms)
-        deEnAsync(word).then(incoming=>{
-            resolve(incoming)
-        })
-    })
+function deEn(word) {
+    return deEnAsync(word)
 }
-function deEnShort(word, ms = 10000) {
-    return new Promise((resolve)=>{
-        setTimeout(()=>{
-            resolve(willReturnMain)
-        }, ms)
-        deEnAsync(word).then((result)=>{
-            resolve(result)
-        })
-    })
+function deEnShort(word) {
+    return deEnShortAsync(word)
 }
-
+function deEnTimer(word) {
+    return deEnTimerAsync(word)
+}
 function willRequest(url) {
     return new Promise((resolve, reject) => {
         request({
@@ -660,9 +649,9 @@ function willRequest(url) {
         })
     })
 }
-
 module.exports.deEn = deEn
 module.exports.deEnShort = deEnShort
+module.exports.deEnTimer = deEnTimer
 module.exports.deEnFirst = deEnFirst
 module.exports.deEnSecond = deEnSecond
 module.exports.deEnThird = deEnThird
@@ -670,10 +659,12 @@ module.exports.mixed = mixed
 module.exports.synonymFirst = synonymFirst
 module.exports.synonymSecond = synonymSecond
 module.exports.synonymThird = synonymThird
+module.exports.synonymFourth = synonymFourth
+module.exports.synonymFifth = synonymFifth
+module.exports.synonymSixth = synonymSixth
 module.exports.phraseFirst = phraseFirst
 module.exports.phraseSecond = phraseSecond
 module.exports.phraseThird = phraseThird
 module.exports.phraseFourth = phraseFourth
 module.exports.phraseFifth = phraseFifth
 module.exports.phraseSixth = phraseSixth
-module.exports.phraseSeventh = phraseSeventh

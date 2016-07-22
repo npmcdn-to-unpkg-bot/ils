@@ -97,6 +97,7 @@
     "react-hot-loader": "*",
     "react-notification": "^5.0.7",
     "react-select": "^1.0.0-beta13",
+    "response-time": "^2.3.1",
     "scrape-it": "*",
     "siege": "*",
     "twit": "*",
