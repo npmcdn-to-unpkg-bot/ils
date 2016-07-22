@@ -6,7 +6,21 @@ const db = require("proud-db")
 const J = require("justdo")
 const fs = require("fs-extra")
 const reqwest = require("reqwest")
-
+const winston = require("winston")
+const logger = new (winston.Logger)({
+    transports: [
+        new (winston.transports.File)({
+            name: "info-file",
+            filename: "zMainLog.log",
+            level: "info"
+        }),
+        new (winston.transports.File)({
+            name: "error-file",
+            filename: "zErrorLog.log",
+            level: "error"
+        })
+    ]
+})
 function getData(url) {
     return new Promise((resolve)=>{
         reqwest({
@@ -97,6 +111,7 @@ let takeName = R.compose(R.takeLast(1), R.split("/"))
 let anyRaw = R.flip(R.any)
 let anyFn = R.curry(anyRaw)
 
+module.exports.logger = logger
 module.exports.shuffle = shuffle
 module.exports.postData = postData
 module.exports.getData = getData

@@ -1,5 +1,6 @@
 "use strict"
 const express = require("express")
+const client = require("redis").createClient()
 const minify = require("express-minify")
 const helmet = require("helmet")
 const path = require("path")
@@ -7,11 +8,17 @@ const compression = require("compression")
 const favicon = require("serve-favicon")
 const cookieParser = require("cookie-parser")
 const bodyParser = require("body-parser")
-const session = require("express-session")
-const winston = require('winston')
-const expressWinston = require('express-winston')
+const J = require("../common")
 let routes = require("./routes/index.js")
 let app = express()
+//const limiter = require("express-limiter")(app, client)
+//limiter({
+//path: "*",
+//method: "all",
+//lookup: "connection.remoteAddress",
+//total: 100,
+//expire: 1000 * 60
+//})
 app.use(helmet())
 app.get("/*", (request, response, next) => {
     let headerHost = request.headers.host
@@ -37,21 +44,14 @@ app.use(bodyParser.urlencoded({ extended: false }))
 //app.use(cookieParser())
 app.use(minify({cache:`${__dirname}/cache`}))
 app.use(express.static(path.join(__dirname, "public")))
-app.use(expressWinston.logger({
-      transports: [
-        new winston.transports.Console({
-          json: true,
-          colorize: true
-        })
-      ],
-      meta: true, // optional: control whether you want to log the meta data about the request (default to true)
-      msg: "HTTP {{req.method}} {{req.url}}", // optional: customize the default logging message. E.g. "{{res.statusCode}} {{req.method}} {{res.responseTime}}ms {{req.url}}"
-      expressFormat: true, // Use the default Express/morgan request formatting, with the same colors. Enabling this will override any msg and colorStatus if true. Will only output colors on transports with colorize set to true
-      colorStatus: true // Color the status code, using the Express/morgan color palette (default green, 3XX cyan, 4XX yellow, 5XX red). Will not be recognized if expressFormat is true
-}))
+app.use((req, res, next) =>{
+    J.logger.info(`${res.statusCode} ${req.url}`)
+    next()
+})
 app.use("/", routes)
 //console.log(app.get("env"))
 app.use((req, res) =>{
+    J.logger.error(`${res.statusCode} ${req.url} ${app.get("env")}`)
     res.render("index")
 })
 module.exports = app

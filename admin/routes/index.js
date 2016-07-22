@@ -118,80 +118,112 @@ var willUpdate = function () {
     };
 }();
 
-var willUpdateSingle = function () {
+var learningMeme = function () {
     var ref = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee3(data) {
+        var imageSrc;
         return _regenerator2.default.wrap(function _callee3$(_context3) {
             while (1) {
                 switch (_context3.prev = _context3.next) {
                     case 0:
                         _context3.next = 2;
-                        return proudDb.save("data", "" + data.id, data);
+                        return uploadImage.main(data.imageSrc);
 
                     case 2:
+                        imageSrc = _context3.sent;
+
+                        J.log(imageSrc);
+                        _context3.next = 6;
+                        return proudDb.save("data", "" + data.id, R.merge(data, { imageSrc: imageSrc }));
+
+                    case 6:
                         return _context3.abrupt("return", _context3.sent);
 
-                    case 3:
+                    case 7:
                     case "end":
                         return _context3.stop();
                 }
             }
         }, _callee3, this);
     }));
-    return function willUpdateSingle(_x4) {
+    return function learningMeme(_x4) {
         return ref.apply(this, arguments);
     };
 }();
 
-var willAddEntry = function () {
-    var ref = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee4(parent, dataRaw) {
-        var indexFuture, data, iMeanNothing;
+var willUpdateSingle = function () {
+    var ref = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee4(data) {
         return _regenerator2.default.wrap(function _callee4$(_context4) {
             while (1) {
                 switch (_context4.prev = _context4.next) {
                     case 0:
                         _context4.next = 2;
-                        return proudDb.loadParent("nextIndex");
+                        return proudDb.save("data", "" + data.id, data);
 
                     case 2:
-                        indexFuture = _context4.sent;
-                        data = R.merge(dataRaw, { id: indexFuture });
-                        _context4.next = 6;
-                        return proudDb.saveParent("nextIndex", indexFuture + 1);
+                        return _context4.abrupt("return", _context4.sent);
 
-                    case 6:
-                        iMeanNothing = _context4.sent;
-                        _context4.next = 9;
-                        return proudDb.save(parent, "" + data.id, data);
-
-                    case 9:
-                        iMeanNothing = _context4.sent;
-                        return _context4.abrupt("return", iMeanNothing);
-
-                    case 11:
+                    case 3:
                     case "end":
                         return _context4.stop();
                 }
             }
         }, _callee4, this);
     }));
-    return function willAddEntry(_x5, _x6) {
+    return function willUpdateSingle(_x5) {
         return ref.apply(this, arguments);
     };
 }();
 
-var willBulkRemove = function () {
-    var ref = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee5(marker) {
-        var dataState, predraftCategory, willRemoveIndexArr, dropByIndex, willChangeCategoryArr, iMeanNothing, _iteratorNormalCompletion2, _didIteratorError2, _iteratorError2, _iterator2, _step2, removeMarker, _iteratorNormalCompletion3, _didIteratorError3, _iteratorError3, _iterator3, _step3, updateValue;
-
+var willAddEntry = function () {
+    var ref = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee5(parent, dataRaw) {
+        var indexFuture, data, iMeanNothing;
         return _regenerator2.default.wrap(function _callee5$(_context5) {
             while (1) {
                 switch (_context5.prev = _context5.next) {
                     case 0:
                         _context5.next = 2;
+                        return proudDb.loadParent("nextIndex");
+
+                    case 2:
+                        indexFuture = _context5.sent;
+                        data = R.merge(dataRaw, { id: indexFuture });
+                        _context5.next = 6;
+                        return proudDb.saveParent("nextIndex", indexFuture + 1);
+
+                    case 6:
+                        iMeanNothing = _context5.sent;
+                        _context5.next = 9;
+                        return proudDb.save(parent, "" + data.id, data);
+
+                    case 9:
+                        iMeanNothing = _context5.sent;
+                        return _context5.abrupt("return", iMeanNothing);
+
+                    case 11:
+                    case "end":
+                        return _context5.stop();
+                }
+            }
+        }, _callee5, this);
+    }));
+    return function willAddEntry(_x6, _x7) {
+        return ref.apply(this, arguments);
+    };
+}();
+
+var willBulkRemove = function () {
+    var ref = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee6(marker) {
+        var dataState, predraftCategory, willRemoveIndexArr, dropByIndex, willChangeCategoryArr, iMeanNothing, _iteratorNormalCompletion2, _didIteratorError2, _iteratorError2, _iterator2, _step2, removeMarker, _iteratorNormalCompletion3, _didIteratorError3, _iteratorError3, _iterator3, _step3, updateValue;
+
+        return _regenerator2.default.wrap(function _callee6$(_context6) {
+            while (1) {
+                switch (_context6.prev = _context6.next) {
+                    case 0:
+                        _context6.next = 2;
                         return proudDb.loadParent("data");
 
                     case 2:
-                        dataState = _context5.sent;
+                        dataState = _context6.sent;
                         predraftCategory = getPredraftCategory(dataState);
                         willRemoveIndexArr = [];
                         dropByIndex = R.compose(R.values, R.map(R.set(R.lensProp("category"), "draft")), R.filter(function (val) {
@@ -211,12 +243,12 @@ var willBulkRemove = function () {
                         _iteratorNormalCompletion2 = true;
                         _didIteratorError2 = false;
                         _iteratorError2 = undefined;
-                        _context5.prev = 11;
+                        _context6.prev = 11;
                         _iterator2 = willRemoveIndexArr[Symbol.iterator]();
 
                     case 13:
                         if (_iteratorNormalCompletion2 = (_step2 = _iterator2.next()).done) {
-                            _context5.next = 23;
+                            _context6.next = 23;
                             break;
                         }
 
@@ -224,123 +256,123 @@ var willBulkRemove = function () {
 
                         J.log(removeMarker, "remove");
                         J.log(dataState[removeMarker]);
-                        _context5.next = 19;
+                        _context6.next = 19;
                         return proudDb.remove("data", "" + removeMarker);
 
                     case 19:
-                        iMeanNothing = _context5.sent;
+                        iMeanNothing = _context6.sent;
 
                     case 20:
                         _iteratorNormalCompletion2 = true;
-                        _context5.next = 13;
+                        _context6.next = 13;
                         break;
 
                     case 23:
-                        _context5.next = 29;
+                        _context6.next = 29;
                         break;
 
                     case 25:
-                        _context5.prev = 25;
-                        _context5.t0 = _context5["catch"](11);
+                        _context6.prev = 25;
+                        _context6.t0 = _context6["catch"](11);
                         _didIteratorError2 = true;
-                        _iteratorError2 = _context5.t0;
+                        _iteratorError2 = _context6.t0;
 
                     case 29:
-                        _context5.prev = 29;
-                        _context5.prev = 30;
+                        _context6.prev = 29;
+                        _context6.prev = 30;
 
                         if (!_iteratorNormalCompletion2 && _iterator2.return) {
                             _iterator2.return();
                         }
 
                     case 32:
-                        _context5.prev = 32;
+                        _context6.prev = 32;
 
                         if (!_didIteratorError2) {
-                            _context5.next = 35;
+                            _context6.next = 35;
                             break;
                         }
 
                         throw _iteratorError2;
 
                     case 35:
-                        return _context5.finish(32);
+                        return _context6.finish(32);
 
                     case 36:
-                        return _context5.finish(29);
+                        return _context6.finish(29);
 
                     case 37:
                         _iteratorNormalCompletion3 = true;
                         _didIteratorError3 = false;
                         _iteratorError3 = undefined;
-                        _context5.prev = 40;
+                        _context6.prev = 40;
                         _iterator3 = willChangeCategoryArr[Symbol.iterator]();
 
                     case 42:
                         if (_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done) {
-                            _context5.next = 51;
+                            _context6.next = 51;
                             break;
                         }
 
                         updateValue = _step3.value;
 
                         J.log(updateValue, "update");
-                        _context5.next = 47;
+                        _context6.next = 47;
                         return proudDb.save("data", "" + updateValue.id, updateValue);
 
                     case 47:
-                        iMeanNothing = _context5.sent;
+                        iMeanNothing = _context6.sent;
 
                     case 48:
                         _iteratorNormalCompletion3 = true;
-                        _context5.next = 42;
+                        _context6.next = 42;
                         break;
 
                     case 51:
-                        _context5.next = 57;
+                        _context6.next = 57;
                         break;
 
                     case 53:
-                        _context5.prev = 53;
-                        _context5.t1 = _context5["catch"](40);
+                        _context6.prev = 53;
+                        _context6.t1 = _context6["catch"](40);
                         _didIteratorError3 = true;
-                        _iteratorError3 = _context5.t1;
+                        _iteratorError3 = _context6.t1;
 
                     case 57:
-                        _context5.prev = 57;
-                        _context5.prev = 58;
+                        _context6.prev = 57;
+                        _context6.prev = 58;
 
                         if (!_iteratorNormalCompletion3 && _iterator3.return) {
                             _iterator3.return();
                         }
 
                     case 60:
-                        _context5.prev = 60;
+                        _context6.prev = 60;
 
                         if (!_didIteratorError3) {
-                            _context5.next = 63;
+                            _context6.next = 63;
                             break;
                         }
 
                         throw _iteratorError3;
 
                     case 63:
-                        return _context5.finish(60);
+                        return _context6.finish(60);
 
                     case 64:
-                        return _context5.finish(57);
+                        return _context6.finish(57);
 
                     case 65:
-                        return _context5.abrupt("return", iMeanNothing);
+                        return _context6.abrupt("return", iMeanNothing);
 
                     case 66:
                     case "end":
-                        return _context5.stop();
+                        return _context6.stop();
                 }
             }
-        }, _callee5, this, [[11, 25, 29, 37], [30,, 32, 36], [40, 53, 57, 65], [58,, 60, 64]]);
+        }, _callee6, this, [[11, 25, 29, 37], [30,, 32, 36], [40, 53, 57, 65], [58,, 60, 64]]);
     }));
-    return function willBulkRemove(_x7) {
+    return function willBulkRemove(_x8) {
         return ref.apply(this, arguments);
     };
 }();
@@ -382,6 +414,11 @@ router.get("/read/:parent", function (req, res) {
         res.send(data);
     });
 });
+router.post("/uploadImage", function (req, res) {
+    uploadImage.main(req.body.imageUrl).then(function (incoming) {
+        res.send(incoming);
+    });
+});
 router.post("/update/:parent", function (req, res) {
     willUpdate(req.params.parent, JSON.parse(req.body.data)).then(function () {
         res.send("done");
@@ -399,6 +436,11 @@ router.post("/remove/:parent", function (req, res) {
 });
 router.post("/updateSingle", function (req, res) {
     willUpdateSingle(JSON.parse(req.body.data).data).then(function () {
+        res.send("done");
+    });
+});
+router.post("/learningMeme", function (req, res) {
+    learningMeme(JSON.parse(req.body.data).data).then(function () {
         res.send("done");
     });
 });

@@ -23,6 +23,11 @@ async function willUpdate(parent, data) {
     }
     return iMeanNothing
 }
+async function learningMeme(data) {
+    let imageSrc = await uploadImage.main(data.imageSrc)
+    J.log(imageSrc)
+    return await proudDb.save("data", `${data.id}`, R.merge(data, {imageSrc}))
+}
 async function willUpdateSingle(data) {
     return await proudDb.save("data", `${data.id}`, data)
 }
@@ -83,6 +88,11 @@ router.get("/read/:parent", (req, res) =>{
         res.send(data)
     })
 })
+router.post("/uploadImage", (req, res) =>{
+    uploadImage.main(req.body.imageUrl).then(incoming=>{
+        res.send(incoming)
+    })
+})
 router.post("/update/:parent", (req, res) =>{
     willUpdate(req.params.parent, JSON.parse(req.body.data)).then(()=>{
         res.send("done")
@@ -100,6 +110,11 @@ router.post("/remove/:parent", (req, res) =>{
 })
 router.post("/updateSingle", (req, res) =>{
     willUpdateSingle(JSON.parse(req.body.data).data).then(()=>{
+        res.send("done")
+    })
+})
+router.post("/learningMeme", (req, res) =>{
+    learningMeme(JSON.parse(req.body.data).data).then(()=>{
         res.send("done")
     })
 })
