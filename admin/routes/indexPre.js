@@ -83,6 +83,9 @@ router.get("/", (req, res) => {
 router.get("/db", (req, res) => {
     res.render("db")
 })
+router.get("/learningMeme", (req, res) => {
+    res.render("learningMeme")
+})
 router.get("/read/:parent", (req, res) =>{
     proudDb.loadParent(req.params.parent).then((data)=>{
         res.send(data)

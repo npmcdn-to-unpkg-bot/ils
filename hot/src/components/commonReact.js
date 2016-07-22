@@ -2,23 +2,41 @@
 const R = require("ramda")
 const reqwest = require("reqwest")
 const stopWords = require("./stopWords.js")
-
+const winWidthIs = window.innerWidth
+const winHeightIs = window.innerHeight
+let emitter = new Events()
+function Events(target) {
+    let events = {}, empty = []
+    target = target || this
+    target.on = function(type, func, ctx) {
+        (events[ type ] = events[ type ] || []).push([func, ctx])
+    }
+    target.off = function(type, func) {
+        type || (events = {})
+        var list = events[ type ] || empty,
+            i = list.length = func ? list.length : 0
+        while (i--) func == list[ i ][ 0 ] && list.splice(i, 1)
+    }
+    target.emit = function(type) {
+        let e = events[ type ] || empty, list = e.length > 0 ? e.slice(0, e.length) : e, i = 0, j
+        while (j = list[ i++ ]) j[ 0 ].apply(j[ 1 ], empty.slice.call(arguments, 1))
+    }
+}
 function getData(url) {
     return new Promise((resolve)=>{
         reqwest({
             url:  url,
             method:  "get",
-            error: (err) => {
+            error: err => {
                 console.log(err)
                 resolve(null)
             },
-            success: (incoming)=> {
+            success: incoming=> {
                 resolve(incoming)
             }
         })
     })
 }
-
 function postData(url, data) {
     return new Promise((resolve)=>{
         reqwest({
@@ -35,10 +53,6 @@ function postData(url, data) {
         })
     })
 }
-
-const winWidthIs = window.innerWidth
-const winHeightIs = window.innerHeight
-
 function getHeightPx(incomingPercent = 1) {
     return Math.floor(R.divide(winHeightIs, 100) * incomingPercent)
 }
@@ -65,7 +79,6 @@ function randomSeed() {
     }
     return willReturn
 }
-
 function shuffle(array) {
     let counter = array.length
     while (counter > 0) {
@@ -76,26 +89,6 @@ function shuffle(array) {
         array[ index ] = temp
     }
     return array
-}
-
-let emitter = new Events()
-
-function Events(target) {
-    let events = {}, empty = []
-    target = target || this
-    target.on = function(type, func, ctx) {
-        (events[ type ] = events[ type ] || []).push([func, ctx])
-    }
-    target.off = function(type, func) {
-        type || (events = {})
-        var list = events[ type ] || empty,
-            i = list.length = func ? list.length : 0
-        while (i--) func == list[ i ][ 0 ] && list.splice(i, 1)
-    }
-    target.emit = function(type) {
-        let e = events[ type ] || empty, list = e.length > 0 ? e.slice(0, e.length) : e, i = 0, j
-        while (j = list[ i++ ]) j[ 0 ].apply(j[ 1 ], empty.slice.call(arguments, 1))
-    }
 }
 function isUniq(obj) {
     let arr = R.split(" ", obj[ "dePart" ])
@@ -193,6 +186,10 @@ function addFullstop(str) {
         return str.trim()
     }
 }
+function removePunctuation(str) {
+    return {cleanStr: R.replace(/\.|\!|\,|\-|\?/, "", str), removedChar:  R.match(/\.|\!|\,|\-|\?/, str)}
+}
+module.exports.removePunctuation = removePunctuation
 module.exports.addFullstop = addFullstop
 module.exports.stopWordsFilter = stopWordsFilter
 module.exports.randomIndex = randomIndex

@@ -55,7 +55,7 @@ async function processFn(filepath) {
 
     } else if (filepath.includes("Front.jsx")) {
         J.log("babelify hapi")
-        J.log(commands.babelifyHapi)
+        J.log(commands.babelifyHapiProd)
         iMeanNothing = await willRunFixedCommand(commands.babelifyHapi)
         return iMeanNothing
 
@@ -118,6 +118,7 @@ function factoryCommands(src) {
     let adminLocation = `${__dirname}/admin/public/${name}`
     let hapiMobLocation = `${__dirname}/hapi/public/${nameMob}`
     let presents = "-t [ babelify --presets [ react  es2015 stage-1 stage-3 stage-2 stage-0 ] ]"
+    let presentsProd = "-t [ babelify --presets [ react  es2015 stage-1 stage-3 stage-2 stage-0 ] ] -t [ envify --NODE_ENV production ]"
     let eslintConfigOverkill = "--fix --debug --max-warnings 100 -o tmp/eslint.txt --no-ignore --cache --cache-location tmp --config"
     let eslintConfig = "--fix --max-warnings 500 --no-ignore --cache --cache-location tmp"
     willReturn.lintReact = `eslint ${src} ${eslintConfig} .eslintrcReact.json`
@@ -128,6 +129,7 @@ function factoryCommands(src) {
     willReturn.babel = `babel ${src} --out-file ${output}`
     willReturn.babelify = `browserify ${src} -o ${output} ${presents}`
     willReturn.babelifyHapi = `browserify ${src} -o ${hapiLocation} ${presents}`
+    willReturn.babelifyHapiProd = `browserify ${src} -o ${hapiLocation} ${presentsProd}`
     willReturn.babelifyAdmin = `browserify ${src} -o ${adminLocation} ${presents}`
     willReturn.babelifyHapiMob = `browserify ${srcMob} -o ${hapiMobLocation} ${presents}`
     willReturn.babelifyAdmin = `browserify ${src} -o ${adminLocation} ${presents}`

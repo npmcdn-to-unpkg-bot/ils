@@ -29,6 +29,9 @@ router.get("/about", (req, res) =>{
 router.get("/writeSentenceLite", (req, res) =>{
     res.render("writeSentenceLite")
 })
+router.get("/learningMeme", (req, res) =>{
+    res.render("learningMeme")
+})
 router.get("/writeSentence", (req, res)=> {
     res.render("writeSentence")
 })

@@ -2448,12 +2448,6 @@
       "category": "preDraft",
       "id": 430
     },
-    "431": {
-      "dePart": "Humor ist eines der besten Kleidungsstuecke, die man in Gesellschaft tragen kann.",
-      "enPart": "",
-      "category": "preDraft",
-      "id": 431
-    },
     "432": {
       "dePart": "Männer sind Menschen, bei denen Pubertät und Midlife-Crisis fließend ineinander übergehen.",
       "enPart": "",
@@ -4479,12 +4473,6 @@
       "enPart": "",
       "category": "preDraft",
       "id": 774
-    },
-    "775": {
-      "dePart": "Der Vater furzt, die Kinder lachen, so kann man billig Freude machen.",
-      "enPart": "",
-      "category": "preDraft",
-      "id": 775
     },
     "776": {
       "dePart": "Eine Frau ohne Mann ist wie ein Fisch ohne Fahrrad.",
@@ -10848,9 +10836,13 @@
     },
     "1836": {
       "dePart": "Man muss erst einige Male sterben um wirklich leben zu können.",
-      "enPart": "",
-      "category": "preDraft",
-      "id": 1836
+      "enPart": "Man at first must die several times, before he can really live.",
+      "category": "quotes",
+      "id": 1836,
+      "childSafetyFlag": true,
+      "imageSrc": "http://i.imgur.com/EklG2ay.png",
+      "deWord": "einige",
+      "enWord": "some, several, a few"
     },
     "1837": {
       "dePart": "Akzeptiere alles so wie es ist.",

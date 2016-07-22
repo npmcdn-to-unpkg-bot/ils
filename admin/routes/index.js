@@ -409,6 +409,9 @@ router.get("/", function (req, res) {
 router.get("/db", function (req, res) {
     res.render("db");
 });
+router.get("/learningMeme", function (req, res) {
+    res.render("learningMeme");
+});
 router.get("/read/:parent", function (req, res) {
     proudDb.loadParent(req.params.parent).then(function (data) {
         res.send(data);

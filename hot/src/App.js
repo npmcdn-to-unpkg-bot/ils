@@ -1,346 +1,246 @@
 "use strict"
-import React, { Component } from "react"
-import ReactDOM from "react-dom"
+import React,{ Component } from "react"
 import R from "ramda"
-import LazyLoad from "react-lazyload"
+import LazyLoad from 'react-lazyload'
 import J from "./components/commonReact.js"
-import GermanOverall from "./components/germanOverall.js"
-import { Notification } from "react-notification"
+
 let initOnce = R.once(()=>{
     J.emitter.emit("once init")
 })
+let store = {}
+
 let initData = {
+    "deWord": "",
+    "enWord": "",
     "dePart": "",
-    "enPart": ""
+    "enPart": "",
+    imageSrc: "",
+    "id": 419
 }
-class Image extends Component {
-    constructor (props) {
-        super(props)
-    }
-    static get defaultProps () {
-        return {
-            handleImageClick: null,
-            imageSrc: "",
-            className: ""
-        }
-    }
-    render () {
-        let numberIs = 15
-        let imageStyle = {
-            minWidth: `${J.getWidthPx(numberIs)}px`,
-            height: "auto",
-            maxHeight: `${J.getHeightPx(numberIs-2)}px`
-        }
-        return (
-            <span className="column" onClick={this.props.handleImageClick}>
-                <LazyLoad height={200} once={true}>
-                <img src={this.props.imageSrc} style={imageStyle} className={this.props.className} />
-                </LazyLoad>
-            </span>
-        )
-    }
-}
+let mockedDataArr = [{
+    "deWord": "der Gehälter",
+    "enWord": "the owner",
+    "dePart": "Alle Menschen sind gleich. Nur die Gehälter sind verschieden.",
+    "enPart": "All people are the same.",
+    "category": "preDraft",
+    imageSrc: "",
+    "id": 419
+}, {
+    "deWord": "der Gehälter",
+    "enWord": "the owner",
+    "dePart": "Jedenfalls ist es besser, ein eckiges Etwas zu sein als ein rundes Nichts.",
+    "enPart": "Any way it is better",
+    "category": "preDraft",
+    imageSrc: "/inc/second.jpg",
+    "id": 420
+}, {
+    "deWord": "abnehmen",
+    "enWord": "to leave",
+    "dePart": "Die Hälfte aller Menschen wollen abnehmen die andere Hälfte verhungert.",
+    "enPart": "Half of the people want to",
+    imageSrc:"/inc/first.jpg",
+    "category": "preDraft",
+    "id": 421
+}]
+// no length beyond 72
 export default class App extends Component {
     constructor (props) {
         super(props)
         this.state = {
             globalIndex: 0,
-            deWord: "",
-            enWord: "",
-            searchImageKeyword: "",
             globalData: [],
             data: initData,
-            dataHolder: [],
-            searchImageResult: [],
-            paginationIndex: 0,
-            paginationPerPageCount: 20,
-            notificationMessage: "",
-            notificationState: false
+            answer: "",
+            textTop: "",
+            textBottom: "",
+            inputFieldSize:20,
+            inputFieldClassName:"inputField",
+            buttonText: J.buttonTextShowAnswer,
+            buttonClassName: J.bulButtonInit
         }
-        this.handleSearchInput = this.handleSearchInput.bind(this)
-        this.handleImageClick = this.handleImageClick.bind(this)
-        this.handlePrevNavigation = this.handlePrevNavigation.bind(this)
-        this.handleNextNavigation = this.handleNextNavigation.bind(this)
-        this.handleReady = this.handleReady.bind(this)
-        this.handleRemove = this.handleRemove.bind(this)
-        this.handleToggle = this.handleToggle.bind(this)
-        this.handleDeInput = this.handleDeInput.bind(this)
-        this.handleEnInput = this.handleEnInput.bind(this)
-        this.handleDeWordInput = this.handleDeWordInput.bind(this)
-        this.handleEnWordInput = this.handleEnWordInput.bind(this)
-    }
-    log(msg, seconds = 2){
-        let message = R.type(msg)==="String"?msg:JSON.stringify(msg)
-        this.setState({
-            notificationMessage: "",
-            notificationState: false
-        },()=>{
-            this.setState({
-                notificationMessage: message,
-                notificationState: true
-            })
-        })
-        setTimeout(()=>{
-            this.setState({
-                notificationState: false
-            })
-        },seconds*1000)
-    }
-    lg(msg, seconds = 2){
-        let message = R.type(msg)==="String"?msg:JSON.stringify(msg)
-        setTimeout(()=>{
-            this.setState({
-                notificationMessage: "",
-                notificationState: false
-            },()=>{
-                this.setState({
-                    notificationMessage: message,
-                    notificationState: true
-                })
-            })
-        },seconds*1000)
-        setTimeout(()=>{
-            this.setState({
-                notificationState: false
-            })
-        },seconds*1000+2000)
+        this.handleAnswerInput = this.handleAnswerInput.bind(this)
+        this.handleButtonClick = this.handleButtonClick.bind(this)
     }
     componentDidMount() {
-        J.emitter.on("once init", ()=>{
-            J.getData(`${J.host}/read/data`).then(incoming => {
-                let globalData =R.compose(R.values,R.filter(val => {
-                    return R.equals(R.prop("imageSrc",val),undefined)||R.equals(R.prop("imageSrc",val),false)
-                }))(incoming)
-                globalData = J.addProp("childSafetyFlag", true, globalData)
-                globalData = J.addProp("imageSrc", false, globalData)
-                globalData = J.shuffle(globalData)
-                this.setState({globalData},()=>{
+        J.emitter.on("once init",()=>{
+            J.getData(`${J.host}/read/data`).then(incoming =>{
+                let globalDataFuture = R.compose(R.filter(val=>{
+                    return R.type(val.imageSrc)==="String"&&val.dePart.length<73&&val.enPart.length<73
+                }),R.values)(incoming)
+                globalDataFuture = J.shuffle(globalDataFuture)
+                this.setState({
+                    data: globalDataFuture[0],
+                    globalData: globalDataFuture
+                },()=>{
                     J.emitter.emit("init")
                 })
             })
         })
-        J.emitter.on("init", ()=>{
-                J.log("init")
-                let data = this.state.globalData[this.state.globalIndex]
-                let searchImageKeywordArr = J.stopWordsFilter(data.dePart)
-                searchImageKeywordArr = R.sort((a,b)=>{return a.length-b.length},searchImageKeywordArr)
-                if(searchImageKeywordArr.length>0){
-                    this.setState({
-                        data,
-                        searchImageKeyword: R.last(searchImageKeywordArr),
-                        deWord: "",
-                        enWord: ""
-                    },()=>{
-                        this.log(this.state.data.dePart.length,3)
-                        if(this.state.data.dePart.length>70){
-                            this.lg("TOO LONG!!")
+        J.emitter.on("init",()=>{
+            let willTextTopRaw = R.split(" ",this.state.data.deWord)
+            let willTextTop = R.compose(R.map(val=>J.hideTail(val)),R.split(" "))(this.state.data.deWord)
+            let willTextBottom = R.compose(R.join(" "),R.map(val=>{
+                willTextTopRaw.map((value,key)=>{
+                    let {cleanStr, removedChar} = J.removePunctuation(val)
+                    if(value===cleanStr){
+                        if(removedChar.length===0){
+                            val = willTextTop[key]
+                        }else{
+                            val = `${willTextTop[key]}${removedChar[0]}`
                         }
-                        J.emitter.emit("searchImageFirst")
-                        setTimeout(()=>{
-                            J.log(searchImageKeywordArr)
-                            this.setState({searchImageKeyword: ""})
-                        },1000)
-                    })
-                }else{
-                    this.setState({data})
-                }
-        })
-        J.emitter.on("next", ()=>{
-            J.log("next")
-            let willBeIndex = this.state.globalIndex === this.state.globalData.length-1 ? 0 : this.state.globalIndex + 1
+
+                    }
+                })
+                return val
+            }),R.split(" "))(this.state.data.dePart)
             this.setState({
-                globalIndex: willBeIndex
-            },()=>{
-                J.emitter.emit("init")
+                answer: "",
+                textTop: `${R.join(" ",willTextTop)}|${this.state.data.enWord}`,
+                textBottom: willTextBottom,
+                buttonText: J.buttonTextShowAnswer,
+                buttonClassName: J.bulButtonInit
             })
         })
-        J.emitter.on("ready", ()=>{
-            J.log("ready")
-            if(!R.equals(this.state.data,this.state.dataHolder)){
-                this.log(this.normalizeData())
-                J.log(this.normalizeData())
-                let willSend = JSON.stringify({data: this.state.data})
-                if(R.type(this.state.data.imageSrc)==="String"){
-                    J.postData(`${J.host}/learningMeme`, willSend).then(() =>{
-                        this.lg("learningMeme")
-                    })
-                }else{
-                    J.postData(`${J.host}/updateSingle`, willSend).then(() =>{
-                        this.lg("updated")
-                    })
-                }
+        J.emitter.on("correct",()=>{
+            let domElement = document.getElementById("animationMarker")
+            domElement.classList.add("correctAnswerLearningMeme")
+            setTimeout(()=>{
+                domElement.classList.remove("correctAnswerLearningMeme")
+            },1000)
+            J.emitter.emit("change button")
+        })
+        J.emitter.on("wrong",()=>{
+            let domElement = document.getElementById("animationMarker")
+            domElement.classList.add("wrongAnswerLearningMeme")
+            setTimeout(()=>{
+                domElement.classList.remove("wrongAnswerLearningMeme")
+            },1000)
+            J.emitter.emit("change button")
+        })
+        J.emitter.on("check answer",()=>{
+            let deWord = this.state.data.deWord.toLowerCase()
+            let altAnswer = R.compose(R.toLower,R.join(""),R.map(val =>J.returnEasyStyleGerman(val)),R.splitEvery(1))(deWord)
+            let altAnswerSecond = R.compose(R.toLower,R.join(""),
+            R.map(val =>J.returnOldStyleGerman(val)),R.splitEvery(1))(deWord)
+            if(R.any(R.equals(this.state.answer.toLowerCase()))([deWord, altAnswer, altAnswerSecond])){
+                J.emitter.emit("correct")
             }else{
-                this.log("nothing changed")
+                J.emitter.emit("wrong")
             }
-            J.emitter.emit("next")
         })
-        J.emitter.on("remove",()=>{
-            let willSend = JSON.stringify({id: this.state.data.id})
-            J.log(this.state.data.id)
-            this.log(this.state.data.id)
-            J.postData(`${J.host}/removeSingle`,willSend).then(() =>{this.lg("removed")})
-            J.emitter.emit("next")
-        })
-        J.emitter.on("searchImage", ()=>{
-            J.log("searchImage")
-            this.log("searchImage",1)
-            J.postData(`${J.host}/searchImage`, JSON.stringify({searchImageKeyword: this.state.searchImageKeyword})).then(incoming =>{
-                this.setState({searchImageResult: J.addProp("className", "unselectedImage", incoming)})
+        J.emitter.on("change button",()=>{
+            this.setState({
+                buttonText: J.buttonTextNext,
+                buttonClassName: J.bulButtonNext,
+                textTop: `${this.state.data.deWord}|${this.state.data.enWord}`,
+                textBottom: this.state.data.dePart
             })
         })
-        J.emitter.on("searchImageFirst", ()=>{
-            J.postData(`${J.host}/searchImageFirst`, JSON.stringify({searchImageKeyword: this.state.searchImageKeyword})).then(incoming =>{
-                this.setState({searchImageResult: J.addProp("className", "unselectedImage", incoming)})
+        J.emitter.on("next",()=>{
+            let willBeIndex
+            if (this.state.globalIndex === this.state.globalData.length - 1) {
+                willBeIndex = 0
+            } else {
+                willBeIndex = this.state.globalIndex + 1
+            }
+            this.setState({
+                data:this.state.globalData[ willBeIndex ],
+                globalIndex: willBeIndex
+            }, ()=>{
+                J.emitter.emit("init")
             })
         })
         initOnce()
     }
-    normalizeData(){
-        let willReturn = this.state.data
-        willReturn.dePart = J.addFullstop(willReturn.dePart)
-        willReturn.enPart = J.addFullstop(willReturn.enPart)
-        if(willReturn.category==="preDraft"&&willReturn.enPart!==""){
-            willReturn.category = "quotes"
-        }
-        if(willReturn.category==="draft"&&willReturn.enPart.length>5){
-            willReturn.category = "quotes"
-        }
-        if(this.state.deWord.length>2){
-            willReturn.deWord = this.state.deWord
-            willReturn.enWord = this.state.enWord
-        }
-        return willReturn
-    }
-    handleImageClick(event) {
-        let searchImageResult = this.state.searchImageResult
-        let index = R.compose(R.multiply(1), R.last, R.split(" "))(event.target.className)
-        let className = R.compose(R.head, R.split(" "))(event.target.className)
-        searchImageResult = J.setProp("className", "unselectedImage", searchImageResult)
-        if (className === "unselectedImage") {
-            className = "selectedImage"
-            this.setState({
-                data: R.merge(this.state.data,{
-                    imageSrc: this.state.searchImageResult[index].imageSrc
-                })
-            })
-        } else {
-            className = "unselectedImage"
-            this.setState({
-                data: R.merge(this.state.data,{imageSrc: false})
-            })
-        }
-        searchImageResult[ index ] = R.merge(searchImageResult[ index ], {className})
-        this.setState({searchImageResult})
-    }
-    handleReady() {J.emitter.emit("ready")}
-    handleRemove() {J.emitter.emit("remove")}
-    handleToggle(){
-        this.setState({
-            data: R.set(R.lensProp("childSafetyFlag"), R.not(this.state.data.childSafetyFlag), this.state.data)
-        })
-    }
-    handleNextNavigation() {
-        if ((this.state.paginationIndex + this.state.paginationPerPageCount) < this.state.searchImageResult.length) {
-            this.setState({
-                paginationIndex: this.state.paginationIndex + this.state.paginationPerPageCount
-            })
+    handleButtonClick(event){
+        J.log(this.state.buttonText)
+        if (this.state.buttonText === "Show Answer") {
+            J.emitter.emit("change button")
+        } else if (this.state.buttonText === "Next") {
+            J.emitter.emit("next")
         }
     }
-    handlePrevNavigation() {
-        if ((this.state.paginationIndex - this.state.paginationPerPageCount) >= 0) {
-            this.setState({
-                paginationIndex: this.state.paginationIndex - this.state.paginationPerPageCount
-            })
-        }
-    }
-    handleSearchInput (event) {
-        if (event.key === "Enter") {
-            J.emitter.emit("searchImage")
+    handleAnswerInput (event) {
+        if(event.key==="Enter"){
+            if(this.state.buttonText === J.buttonTextNext){
+                J.emitter.emit("next")
+            }else{
+                J.emitter.emit("check answer")
+            }
         }
         this.setState({
-            searchImageKeyword: event.target.value
+            answer: event.target.value
+        },()=>{
+            if(this.state.answer.length>this.state.inputFieldSize){
+                this.setState({inputFieldSize:this.state.answer.length})
+            }
         })
-    }
-    handleDeWordInput (event) {
-        if (event.key === "Enter") {
-            J.emitter.emit("ready")
-        }
-        this.setState({
-            deWord: event.target.value
-        })
-
-    }
-    handleEnWordInput (event) {
-        if (event.key === "Enter") {
-            J.emitter.emit("ready")
-        }
-        this.setState({
-            enWord: event.target.value
-        })
-    }
-    handleDeInput (event) {
-        if (event.key === "Enter") {
-            J.emitter.emit("ready")
-        }
-        this.setState({
-            data: R.merge(this.state.data,{dePart: event.target.value})
-        })
-        if(event.target.value.length>68){
-            this.log(`TOO LONG - ${event.target.value.length}`, 5)
-        }
-    }
-    handleEnInput (event) {
-        if (event.key === "Enter") {
-            J.emitter.emit("ready")
-        }
-        this.setState({
-            data: R.merge(this.state.data,{enPart: event.target.value})
-        })
-        if(event.target.value.length>68){
-            this.log(`TOO LONG - ${event.target.value.length}`, 5)
-        }
     }
     render () {
-        return (
+        let memeHeight = J.getHeightPx(80)
+        let memeWidth = memeHeight*1.33
+        let marginValue = J.divide(100-J.getPart(memeWidth,J.getWidthPx(100)),2)
+        let fontTextTop = J.fontValueFn(this.state.textTop.length)
+        let fontTextBottom = J.fontValueFn(this.state.textBottom.length)
+        let fontTextBottomSecond = J.fontValueFn(this.state.data.enPart.length)
+        let lineHeightTextTop = J.lineHeightFn(fontTextTop)
+        let lineHeightTextBottom = J.lineHeightFn(fontTextBottom)
+        let lineHeightTextBottomSecond = J.lineHeightFn(fontTextBottomSecond)
+        let heightValue = J.getPercent(10,memeHeight)
+        let gapValue = memeHeight-(3*heightValue)
+        //console.log(this.state.textTop.length, this.state.textBottom.length, this.state.data.enPart.length)
+        //console.log(fontTextTop, fontTextBottom, fontTextBottomSecond)
+        //console.log(lineHeightTextTop, lineHeightTextBottom, lineHeightTextBottomSecond)
+        let memeContainer = {
+            padding: "0px",
+            marginLeft: `${J.getWidthPx(marginValue)}px`,
+            width: `${memeWidth}px`,
+            height: `${memeHeight}px`,
+            backgroundSize: "cover",
+            backgroundImage: `url(${this.state.data.imageSrc})`
+        }
+        let memeTextTop = {
+            top: "0px",
+            fontWeight: "700",
+            color: "#263238",
+            fontSize: `${fontTextTop}%`,
+            lineHeight: `${lineHeightTextTop}`,
+            height: `${heightValue}px`,
+            textOverflow: "ellipsis",
+            width:  `${memeWidth}px`,
+           backgroundColor: "#B0BEC5",
+            whiteSpace: "nowrap",
+            overflow: "hidden"
+        }
+        let gapStyle = {
+            height: `${gapValue}px`
+        }
+        let memeTextBottom = R.merge(memeTextTop,{
+            fontSize: `${fontTextBottom}%`,
+            lineHeight: `${lineHeightTextBottom}`
+        })
+        let memeTextBottomSecond = R.merge(memeTextTop,{
+            fontSize: `${fontTextBottomSecond}%`,
+            lineHeight: `${lineHeightTextBottomSecond}`,
+           backgroundColor: "#3c5a72",
+            color: "#b2d0c4"
+        })
+        return(
     <div>
-        <div className="columns box">
+        <div className="box has-text-centered columns">
+            <div id="animationMarker" className="column is-4 is-offset-4">
+            <input autoFocus className={this.state.inputFieldClassName} type="text" value={this.state.answer} size={this.state.inputFieldSize} onChange={this.handleAnswerInput} onKeyPress={this.handleAnswerInput}/>
+            </div>
             <div className="column is-4">
-                <a className="button" onClick={this.handlePrevNavigation}><span className="icon"><i className="fa fa-arrow-circle-left"></i></span></a>
-                <a className="button" onClick={this.handleNextNavigation}><span className="icon"><i className="fa fa-arrow-circle-right"></i></span></a>
-                <a className="button is-primary is-inverted" onClick={this.handleReady}><span className="icon"><i className="fa fa-check"></i></span></a>
-                <a className="button is-primary is-inverted" onClick={this.handleRemove}><span className="icon"><i className="fa fa-remove"></i></span></a>
-                <a id="toggleId" className={`button ${this.state.data.childSafetyFlag?"is-success":"is-danger"} is-inverted`} onClick={this.handleToggle}><span className="icon"><i className="fa fa-child"></i></span></a>
-                <a className="button is-primary is-inverted" onClick={this.handleRemove}><span className="icon"><i className="fa fa-flag-o"></i></span></a>
-                <a className="button is-primary is-inverted" onClick={this.handleRemove}><span className="icon"><i className="fa fa-flag"></i></span></a>
-            </div>
-            <div className="column is-2">
-                <input autoFocus={false} className="searchImageKeyword" type="search" value={this.state.searchImageKeyword} size={this.state.searchImageKeyword.length>10?this.state.searchImageKeyword.length:10} onChange={this.handleSearchInput} onKeyPress={this.handleSearchInput}/>
-            </div>
-            <div className="column is-3">
-                <input className="deWordInput" type="text" value={this.state.deWord} placeholder="deWord" spellCheck="true" size={this.state.deWord.length>10?this.state.deWord.length:10} onChange={this.handleDeWordInput} onKeyPress={this.handleDeWordInput}/>
-            </div>
-            <div className="column is-3">
-                <input className="enWordInput" type="text" value={this.state.enWord} placeholder="enWord" spellCheck="true" size={this.state.enWord.length>10?this.state.enWord.length:10} onChange={this.handleEnWordInput} onKeyPress={this.handleEnWordInput}/>
+                <a className={this.state.buttonClassName} onClick={this.handleButtonClick}>{this.state.buttonText}</a>
             </div>
         </div>
-        <div className="columns box">
-            <div className="column is-5">
-                <input autoFocus={true} spellCheck="true" type="text" size={this.state.data.dePart.length} className="commonInput" value={this.state.data.dePart} onChange={this.handleDeInput} onKeyPress={this.handleDeInput} />
-            </div>
-            <div className="column is-2"></div>
-            <div className="column is-5">
-                <input autoFocus={false} spellCheck="true" type="text" size={this.state.data.enPart.length} className="commonInput" value={this.state.data.enPart} onChange={this.handleEnInput} onKeyPress={this.handleEnInput} />
-            </div>
+        <div className="box has-text-centered is-fullwidth" style={memeContainer}>
+            <div style={memeTextTop}>{this.state.textTop}</div>
+            <div style={gapStyle}></div>
+            <div style={memeTextBottom}>{this.state.textBottom}</div>
+            <div style={memeTextBottomSecond}>{this.state.data.enPart}</div>
         </div>
-        <div className="columns is-multiline box has-text-centered">
-        {this.state.searchImageResult.map((val, index)=>{
-            if(R.gt(index,this.state.paginationIndex)&&R.lte(index,this.state.paginationIndex+this.state.paginationPerPageCount)){
-                return <Image key={index} className={`${val.className} ${index}`} handleImageClick={this.handleImageClick} imageSrc={val.imageThumb} />
-            }
-        })}
-        </div>
-        <Notification isActive={this.state.notificationState} message={this.state.notificationMessage} />
-        <div id="reactContainer"></div>
 	</div>
     )}
 }
