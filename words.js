@@ -1,4 +1,5 @@
-module.exports = ["auswahl",
+module.exports = [
+"auswahl",
 "vergeblich",
 "beigetreten",
 "erneuten",
