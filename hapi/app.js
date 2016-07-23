@@ -11,7 +11,11 @@ const bodyParser = require("body-parser")
 const J = require("../common")
 let routes = require("./routes/index.js")
 let app = express()
-app.use(responseTime())
+app.use(responseTime((req, res, time)=>{
+    if (time > 500) {
+        J.logger.info(`${time} ${req.method} ${req.url} ${J.log(req.ip)}`)
+    }
+}))
 app.use(helmet())
 app.get("/*", (request, response, next) => {
     let headerHost = request.headers.host
@@ -26,6 +30,7 @@ app.get("/*", (request, response, next) => {
         next()
     }
 })
+
 app.use(compression())
 app.set("view cache", true)
 app.set("views", __dirname + "/views")
@@ -37,10 +42,6 @@ app.use(bodyParser.urlencoded({ extended: false }))
 //app.use(cookieParser())
 app.use(minify({cache:`${__dirname}/cache`}))
 app.use(express.static(path.join(__dirname, "public")))
-app.use((req, res, next) =>{
-    J.logger.info(`${res.statusCode} ${req.url}`)
-    next()
-})
 app.use("/", routes)
 //console.log(app.get("env"))
 app.use((req, res) =>{

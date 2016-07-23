@@ -396,12 +396,6 @@
       "category": "derProcess",
       "id": 67
     },
-    "68": {
-      "dePart": "Wollen Sie mir das nicht erklären",
-      "enPart": "Would you mind explaining that to me",
-      "category": "derProcess",
-      "id": 68
-    },
     "69": {
       "dePart": "Wieso wissen Sie denn daß ich dort war",
       "enPart": "How do you know I've been there then",
@@ -521,12 +515,6 @@
       "enPart": "Do you know your case is going badly",
       "category": "derProcess",
       "id": 89
-    },
-    "90": {
-      "dePart": "Wie stellst du dir das Ende vor",
-      "enPart": "How do you imagine it will end",
-      "category": "derProcess",
-      "id": 90
     },
     "91": {
       "dePart": "Das ist richtig aber so pflegen die Schuldigen zu reden",
@@ -1278,12 +1266,6 @@
       "category": "preDraft",
       "id": 235
     },
-    "236": {
-      "dePart": "Freundschaft ist eine Tür zwischen zwei Menschen. Sie kann manchmal knarren, sie kann klemmen, aber sie ist nie verschlossen.",
-      "enPart": "",
-      "category": "preDraft",
-      "id": 236
-    },
     "237": {
       "dePart": "Ein bisschen Freundschaft ist mir mehr wert als die Bewunderung der ganzen Welt.",
       "enPart": "",
@@ -1675,10 +1657,14 @@
       "id": 301
     },
     "302": {
-      "dePart": "Freundschaft zwischen Frauen ist nicht viel mehr als ein Nichtangriffspakt.",
-      "enPart": "",
-      "category": "preDraft",
-      "id": 302
+      "dePart": "Freundschaft zwischen Frauen ist nur ein Nichtangriffspakt.",
+      "enPart": "Friendship between women is just a non-aggression pact.",
+      "category": "quotes",
+      "id": 302,
+      "childSafetyFlag": true,
+      "imageSrc": "http://i.imgur.com/G2qhvCo.jpg",
+      "deWord": "zwischen",
+      "enWord": "between"
     },
     "303": {
       "dePart": "Es gibt drei treue Freunde – eine alte Ehefrau, ein alter Hund und flüssiges Geld.",
@@ -3166,12 +3152,6 @@
       "category": "preDraft",
       "id": 554
     },
-    "555": {
-      "dePart": "Erfahrungen vererben sich nicht – jeder muss sie allein machen.",
-      "enPart": "",
-      "category": "preDraft",
-      "id": 555
-    },
     "556": {
       "dePart": "Wir leben alle unter dem gleichen Himmel, aber wir haben nicht alle den gleichen Horizont.",
       "enPart": "",
@@ -4060,12 +4040,6 @@
       "category": "preDraft",
       "id": 709
     },
-    "710": {
-      "dePart": "Wer ein Brett vor dem Kopf hat, nimmt leider selten ein Blatt vor den Mund.",
-      "enPart": "",
-      "category": "preDraft",
-      "id": 710
-    },
     "711": {
       "dePart": "Zum schweigen fehlen mir die passenden Worte!",
       "enPart": "",
@@ -4143,12 +4117,6 @@
       "enPart": "",
       "category": "preDraft",
       "id": 723
-    },
-    "724": {
-      "dePart": "Irren kann nur, wer etwas weiß.",
-      "enPart": "",
-      "category": "preDraft",
-      "id": 724
     },
     "725": {
       "dePart": "Ohne Staub, worin er aufleuchtet, wäre der Sonnenstrahl nicht sichtbar.",
@@ -4735,12 +4703,6 @@
       "enPart": "",
       "category": "preDraft",
       "id": 823
-    },
-    "824": {
-      "dePart": "Das wird mir hier zu kindisch, komm Teddy wir gehen.",
-      "enPart": "",
-      "category": "preDraft",
-      "id": 824
     },
     "825": {
       "dePart": "Der schwerste Abschied ist immer morgens von meinem Bett.",
@@ -7520,9 +7482,13 @@
     },
     "1292": {
       "dePart": "An den Scheidewegen des Lebens stehen keine Wegweiser.",
-      "enPart": "",
-      "category": "preDraft",
-      "id": 1292
+      "enPart": "On the crossroads of life, there are no signs.",
+      "category": "quotes",
+      "id": 1292,
+      "childSafetyFlag": true,
+      "imageSrc": "http://i.imgur.com/5OvAb3E.jpg",
+      "deWord": "der Scheidewegen",
+      "enWord": "the crossroad"
     },
     "1293": {
       "dePart": "Aus den Träumen von gestern werden manchmal die Alpträume von morgen.",
@@ -10775,12 +10741,6 @@
       "enPart": "",
       "category": "preDraft",
       "id": 1838
-    },
-    "1839": {
-      "dePart": "Wenn man ein Wozu des Lebens hat, erträgt man jedes Wie.",
-      "enPart": "",
-      "category": "preDraft",
-      "id": 1839
     },
     "1840": {
       "dePart": "Das wahrhafte Leben ist das Leben für den anderen.",
@@ -16028,12 +15988,6 @@
       "category": "preDraft",
       "id": 2722
     },
-    "2723": {
-      "dePart": "Die Hälfte dessen, was man schreibt, ist schädlich, die andere Hälfte unnütz.",
-      "enPart": "",
-      "category": "preDraft",
-      "id": 2723
-    },
     "2724": {
       "dePart": "Wer Freiheit zugunsten von Sicherheit aufgibt,hat keines von beiden verdient.",
       "enPart": "",
@@ -16156,9 +16110,13 @@
     },
     "2744": {
       "dePart": "Der Charakter ist weiter nichts als eine langwierige Gewohnheit.",
-      "enPart": "",
-      "category": "preDraft",
-      "id": 2744
+      "enPart": "The character is nothing more than a lengthy habit.",
+      "category": "quotes",
+      "id": 2744,
+      "childSafetyFlag": true,
+      "imageSrc": "http://i.imgur.com/zwf3yLX.jpg",
+      "deWord": "langwierige",
+      "enWord": "lengthy, lifelong, tedious"
     },
     "2745": {
       "dePart": "Die ganze gegenwärtige Zeit ist ein Punkt der Ewigkeit.",
@@ -16514,9 +16472,13 @@
     },
     "2803": {
       "dePart": "Das Leben ist eine Brücke von Seufzern über einen Strom von Tränen.",
-      "enPart": "",
-      "category": "preDraft",
-      "id": 2803
+      "enPart": "The life is a bridge of sighs over a river of tears.",
+      "category": "quotes",
+      "id": 2803,
+      "childSafetyFlag": true,
+      "imageSrc": "http://i.imgur.com/d4WljPf.jpg",
+      "deWord": "die Brücke",
+      "enWord": "the bridge"
     },
     "2804": {
       "dePart": "Überall wo Grenzen sind, wird geschmuggelt.",
@@ -17081,12 +17043,6 @@
       "enPart": "",
       "category": "preDraft",
       "id": 2898
-    },
-    "2899": {
-      "dePart": "Ein glückliches Leben besteht in erster Linie aus Freiheit von Sorgen.",
-      "enPart": "",
-      "category": "preDraft",
-      "id": 2899
     },
     "2900": {
       "dePart": "An seinen Idealen zu Grunde gehen können heißt lebensfähig sein.",
@@ -18535,12 +18491,6 @@
       "enPart": "",
       "category": "preDraft",
       "id": 3141
-    },
-    "3142": {
-      "dePart": "Die Ehre hat gesetzlichen Anspruch auf Feierabend und Pension.",
-      "enPart": "",
-      "category": "preDraft",
-      "id": 3142
     },
     "3143": {
       "dePart": "Ein freundliches Wort findet immer guten Boden.",
@@ -20156,12 +20106,6 @@
       "category": "preDraft",
       "id": 3417
     },
-    "3418": {
-      "dePart": "Nur in der Bewegung, so schmerzlich sie sei, ist Leben.",
-      "enPart": "",
-      "category": "preDraft",
-      "id": 3418
-    },
     "3419": {
       "dePart": "Das Schicksal setzt den Hobel an und hobelt alle gleich.",
       "enPart": "",
@@ -20179,12 +20123,6 @@
       "enPart": "",
       "category": "preDraft",
       "id": 3421
-    },
-    "3422": {
-      "dePart": "Die Mutter eines Ängstlichen pflegt nicht zu weinen",
-      "enPart": "",
-      "category": "preDraft",
-      "id": 3422
     },
     "3423": {
       "dePart": "Das Schwierige im Leben ist die Entscheidung.",
