@@ -6,21 +6,43 @@ const fs = require("fs")
 const db = require("proud-db")
 const translate = require("./admin/_inc/translate.js")
 const scrapedParse = require("./_inc/scrapedParse.js")
+const testData = require("./data0.json")
 let words = require("./words")
 let arr = R.splitEvery(30, words)
-
-let willMap = arr[0].map(val=>{
+let willSave = {}
+let index = 0
+let willMap = arr[index].map(val=>{
     return function(callback){
         J.log(val)
         translate.deEnSave(val).then(incoming=>{
-            fs.writeFile(`/home/just/ils/_inc/words/${val}.txt`, JSON.stringify(scrapedParse.main(incoming)), (err) => {
-                J.log(err)
-                callback(null)
-            })
+            willSave[val]=scrapedParse.main(incoming)    
+            callback(null)
         })
     }
 })
-async.series(willMap,
+let willMapSecond = arr[index].map(val=>{
+    return function(callback){
+        J.log(val)
+        
+                promised().then(()=>{
+                     fs.writeFile(`/home/ubuntu/workspace/ils/_inc/words/${val}.txt`, JSON.stringify(testData), (err) => {
+                J.log(err)
+                promised().then(()=>{
+                callback(null)    
+                })
+                
+            })
+                })
+           
+    }
+})
+function promised(){
+    return new Promise(resolve =>{
+        setTimeout(resolve,2000)
+    })
+}
+async.series(willMapSecond,
 function(err, results) {
+    //fs.writeJsonSync(`data${index}.json`,willSave)
 J.log(1)
 })
