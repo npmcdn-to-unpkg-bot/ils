@@ -3,12 +3,45 @@ import React,{ Component } from "react"
 import R from "ramda"
 import LazyLoad from 'react-lazyload'
 import J from "./components/commonReact.js"
-import initData from "./components/data.json"
-J.log(initData)
+
 let initOnce = R.once(()=>{
     J.emitter.emit("once init")
 })
+let store = {}
 
+let initData = {
+    "deWord": "",
+    "enWord": "",
+    "dePart": "",
+    "enPart": "",
+    imageSrc: "",
+    "id": 419
+}
+let mockedDataArr = [{
+    "deWord": "der Gehälter",
+    "enWord": "the owner",
+    "dePart": "Alle Menschen sind gleich. Nur die Gehälter sind verschieden.",
+    "enPart": "All people are the same.",
+    "category": "preDraft",
+    imageSrc: "",
+    "id": 419
+}, {
+    "deWord": "der Gehälter",
+    "enWord": "the owner",
+    "dePart": "Jedenfalls ist es besser, ein eckiges Etwas zu sein als ein rundes Nichts.",
+    "enPart": "Any way it is better",
+    "category": "preDraft",
+    imageSrc: "/inc/second.jpg",
+    "id": 420
+}, {
+    "deWord": "abnehmen",
+    "enWord": "to leave",
+    "dePart": "Die Hälfte aller Menschen wollen abnehmen die andere Hälfte verhungert.",
+    "enPart": "Half of the people want to",
+    imageSrc:"/inc/first.jpg",
+    "category": "preDraft",
+    "id": 421
+}]
 // no length beyond 72
 export default class App extends Component {
     constructor (props) {
