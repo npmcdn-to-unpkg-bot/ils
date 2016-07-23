@@ -50,6 +50,7 @@
   },
   "devDependencies": {
     "ape-watching": "^2.1.2",
+    "async": "^2.0.1",
     "babel-cli": "*",
     "babel-core": "*",
     "babel-eslint": "*",

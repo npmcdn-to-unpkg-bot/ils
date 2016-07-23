@@ -1,0 +1,4668 @@
+{
+  "data": {
+    "auswahl": {
+      "synonym": [
+        {
+          "dePart": "pool",
+          "enPart": ""
+        },
+        {
+          "dePart": "duft",
+          "enPart": ""
+        },
+        {
+          "dePart": "wahl",
+          "enPart": ""
+        },
+        {
+          "dePart": "Wahl",
+          "enPart": ""
+        },
+        {
+          "dePart": "odor",
+          "enPart": ""
+        },
+        {
+          "dePart": "team",
+          "enPart": ""
+        },
+        {
+          "dePart": "Wahl",
+          "enPart": ""
+        },
+        {
+          "dePart": "Team",
+          "enPart": ""
+        },
+        {
+          "dePart": "Wahl",
+          "enPart": ""
+        },
+        {
+          "dePart": "Team",
+          "enPart": ""
+        },
+        {
+          "dePart": "summe",
+          "enPart": ""
+        },
+        {
+          "dePart": "range",
+          "enPart": ""
+        },
+        {
+          "dePart": "Kader",
+          "enPart": ""
+        },
+        {
+          "dePart": "blüte",
+          "enPart": ""
+        },
+        {
+          "dePart": "anbot",
+          "enPart": ""
+        },
+        {
+          "dePart": "votum",
+          "enPart": ""
+        },
+        {
+          "dePart": "Range",
+          "enPart": ""
+        },
+        {
+          "dePart": "beste",
+          "enPart": ""
+        },
+        {
+          "dePart": "aroma",
+          "enPart": ""
+        },
+        {
+          "dePart": "küren",
+          "enPart": ""
+        },
+        {
+          "dePart": "elite",
+          "enPart": ""
+        },
+        {
+          "dePart": "reihe",
+          "enPart": ""
+        },
+        {
+          "dePart": "Elite",
+          "enPart": ""
+        },
+        {
+          "dePart": "Range",
+          "enPart": ""
+        },
+        {
+          "dePart": "Skala",
+          "enPart": ""
+        },
+        {
+          "dePart": "fülle",
+          "enPart": ""
+        },
+        {
+          "dePart": "Muster",
+          "enPart": ""
+        },
+        {
+          "dePart": "fangen",
+          "enPart": ""
+        },
+        {
+          "dePart": "Abrégé",
+          "enPart": ""
+        },
+        {
+          "dePart": "auszug",
+          "enPart": ""
+        },
+        {
+          "dePart": "Fundus",
+          "enPart": ""
+        },
+        {
+          "dePart": "angeln",
+          "enPart": ""
+        },
+        {
+          "dePart": "szenen",
+          "enPart": ""
+        },
+        {
+          "dePart": "equipe",
+          "enPart": ""
+        },
+        {
+          "dePart": "klären",
+          "enPart": ""
+        },
+        {
+          "dePart": "sieben",
+          "enPart": ""
+        },
+        {
+          "dePart": "fundus",
+          "enPart": ""
+        },
+        {
+          "dePart": "lagern",
+          "enPart": ""
+        },
+        {
+          "dePart": "parken",
+          "enPart": ""
+        },
+        {
+          "dePart": "nehmen",
+          "enPart": ""
+        },
+        {
+          "dePart": "wählen",
+          "enPart": ""
+        },
+        {
+          "dePart": "seihen",
+          "enPart": ""
+        },
+        {
+          "dePart": "digest",
+          "enPart": ""
+        },
+        {
+          "dePart": "fassen",
+          "enPart": ""
+        },
+        {
+          "dePart": "Fundus",
+          "enPart": ""
+        },
+        {
+          "dePart": "raffen",
+          "enPart": ""
+        },
+        {
+          "dePart": "Fundus",
+          "enPart": ""
+        },
+        {
+          "dePart": "muster",
+          "enPart": ""
+        },
+        {
+          "dePart": "packen",
+          "enPart": ""
+        },
+        {
+          "dePart": "geruch",
+          "enPart": ""
+        },
+        {
+          "dePart": "wegzug",
+          "enPart": ""
+        },
+        {
+          "dePart": "Spanne",
+          "enPart": ""
+        },
+        {
+          "dePart": "Digest",
+          "enPart": ""
+        },
+        {
+          "dePart": "Fundus",
+          "enPart": ""
+        },
+        {
+          "dePart": "Auszug",
+          "enPart": ""
+        },
+        {
+          "dePart": "option",
+          "enPart": ""
+        },
+        {
+          "dePart": "palette",
+          "enPart": ""
+        },
+        {
+          "dePart": "greifen",
+          "enPart": ""
+        },
+        {
+          "dePart": "exzerpt",
+          "enPart": ""
+        },
+        {
+          "dePart": "erküren",
+          "enPart": ""
+        },
+        {
+          "dePart": "extrakt",
+          "enPart": ""
+        },
+        {
+          "dePart": "ablegen",
+          "enPart": ""
+        },
+        {
+          "dePart": "erlesen",
+          "enPart": ""
+        },
+        {
+          "dePart": "abjagen",
+          "enPart": ""
+        },
+        {
+          "dePart": "analyse",
+          "enPart": ""
+        },
+        {
+          "dePart": "stellen",
+          "enPart": ""
+        },
+        {
+          "dePart": "fördern",
+          "enPart": ""
+        },
+        {
+          "dePart": "angebot",
+          "enPart": ""
+        },
+        {
+          "dePart": "absagen",
+          "enPart": ""
+        },
+        {
+          "dePart": "auslese",
+          "enPart": ""
+        },
+        {
+          "dePart": "sondern",
+          "enPart": ""
+        },
+        {
+          "dePart": "brevier",
+          "enPart": ""
+        },
+        {
+          "dePart": "ersehen",
+          "enPart": ""
+        },
+        {
+          "dePart": "bestand",
+          "enPart": ""
+        },
+        {
+          "dePart": "Bestand",
+          "enPart": ""
+        },
+        {
+          "dePart": "Auslese",
+          "enPart": ""
+        },
+        {
+          "dePart": "Bestand",
+          "enPart": ""
+        },
+        {
+          "dePart": "Auswahl",
+          "enPart": ""
+        },
+        {
+          "dePart": "Auslese",
+          "enPart": ""
+        },
+        {
+          "dePart": "Auswahl",
+          "enPart": ""
+        },
+        {
+          "dePart": "Auslese",
+          "enPart": ""
+        },
+        {
+          "dePart": "Bestand",
+          "enPart": ""
+        },
+        {
+          "dePart": "Palette",
+          "enPart": ""
+        },
+        {
+          "dePart": "Angebot",
+          "enPart": ""
+        },
+        {
+          "dePart": "sichten",
+          "enPart": ""
+        },
+        {
+          "dePart": "bewegen",
+          "enPart": ""
+        },
+        {
+          "dePart": "elektiv",
+          "enPart": ""
+        },
+        {
+          "dePart": "filtern",
+          "enPart": ""
+        },
+        {
+          "dePart": "entwurf",
+          "enPart": ""
+        },
+        {
+          "dePart": "Palette",
+          "enPart": ""
+        },
+        {
+          "dePart": "Auslese",
+          "enPart": ""
+        },
+        {
+          "dePart": "Auswahl",
+          "enPart": ""
+        },
+        {
+          "dePart": "Auswahl",
+          "enPart": ""
+        },
+        {
+          "dePart": "Auswahl",
+          "enPart": ""
+        },
+        {
+          "dePart": "Auslese",
+          "enPart": ""
+        },
+        {
+          "dePart": "Exzerpt",
+          "enPart": ""
+        },
+        {
+          "dePart": "Bestand",
+          "enPart": ""
+        },
+        {
+          "dePart": "Auswahl",
+          "enPart": ""
+        },
+        {
+          "dePart": "Auswahl",
+          "enPart": ""
+        },
+        {
+          "dePart": "Auswahl",
+          "enPart": ""
+        },
+        {
+          "dePart": "Auswahl",
+          "enPart": ""
+        },
+        {
+          "dePart": "Auswahl",
+          "enPart": ""
+        },
+        {
+          "dePart": "Epitome",
+          "enPart": ""
+        },
+        {
+          "dePart": "Auslese",
+          "enPart": ""
+        },
+        {
+          "dePart": "Auswahl",
+          "enPart": ""
+        },
+        {
+          "dePart": "Auswahl",
+          "enPart": ""
+        },
+        {
+          "dePart": "berufen",
+          "enPart": ""
+        },
+        {
+          "dePart": "schöpfen",
+          "enPart": ""
+        },
+        {
+          "dePart": "Konspekt",
+          "enPart": ""
+        },
+        {
+          "dePart": "Aufgebot",
+          "enPart": ""
+        },
+        {
+          "dePart": "Spektrum",
+          "enPart": ""
+        },
+        {
+          "dePart": "Sammlung",
+          "enPart": ""
+        },
+        {
+          "dePart": "vorsehen",
+          "enPart": ""
+        },
+        {
+          "dePart": "erfassen",
+          "enPart": ""
+        },
+        {
+          "dePart": "berauben",
+          "enPart": ""
+        },
+        {
+          "dePart": "sammlung",
+          "enPart": ""
+        },
+        {
+          "dePart": "eruieren",
+          "enPart": ""
+        },
+        {
+          "dePart": "Sammlung",
+          "enPart": ""
+        },
+        {
+          "dePart": "Sammlung",
+          "enPart": ""
+        },
+        {
+          "dePart": "almanach",
+          "enPart": ""
+        },
+        {
+          "dePart": "zumachen",
+          "enPart": ""
+        },
+        {
+          "dePart": "scheiden",
+          "enPart": ""
+        },
+        {
+          "dePart": "Sammlung",
+          "enPart": ""
+        },
+        {
+          "dePart": "ernennen",
+          "enPart": ""
+        },
+        {
+          "dePart": "optieren",
+          "enPart": ""
+        },
+        {
+          "dePart": "erkiesen",
+          "enPart": ""
+        },
+        {
+          "dePart": "hinlegen",
+          "enPart": ""
+        },
+        {
+          "dePart": "Sammlung",
+          "enPart": ""
+        },
+        {
+          "dePart": "Almanach",
+          "enPart": ""
+        },
+        {
+          "dePart": "ablassen",
+          "enPart": ""
+        },
+        {
+          "dePart": "absetzen",
+          "enPart": ""
+        },
+        {
+          "dePart": "Sammlung",
+          "enPart": ""
+        },
+        {
+          "dePart": "zudenken",
+          "enPart": ""
+        },
+        {
+          "dePart": "aufgeben",
+          "enPart": ""
+        },
+        {
+          "dePart": "beispiel",
+          "enPart": ""
+        },
+        {
+          "dePart": "selektiv",
+          "enPart": ""
+        },
+        {
+          "dePart": "repetoir",
+          "enPart": ""
+        },
+        {
+          "dePart": "vielfalt",
+          "enPart": ""
+        },
+        {
+          "dePart": "spektrum",
+          "enPart": ""
+        },
+        {
+          "dePart": "eingeben",
+          "enPart": ""
+        },
+        {
+          "dePart": "programm",
+          "enPart": ""
+        },
+        {
+          "dePart": "belieben",
+          "enPart": ""
+        },
+        {
+          "dePart": "abnehmen",
+          "enPart": ""
+        },
+        {
+          "dePart": "ermessen",
+          "enPart": ""
+        },
+        {
+          "dePart": "auslesen",
+          "enPart": ""
+        },
+        {
+          "dePart": "wahlgang",
+          "enPart": ""
+        },
+        {
+          "dePart": "aufhören",
+          "enPart": ""
+        },
+        {
+          "dePart": "kalender",
+          "enPart": ""
+        },
+        {
+          "dePart": "jahrbuch",
+          "enPart": ""
+        },
+        {
+          "dePart": "erwählen",
+          "enPart": ""
+        },
+        {
+          "dePart": "annehmen",
+          "enPart": ""
+        },
+        {
+          "dePart": "Abstract",
+          "enPart": ""
+        },
+        {
+          "dePart": "Sortiment",
+          "enPart": ""
+        },
+        {
+          "dePart": "Präferenz",
+          "enPart": ""
+        },
+        {
+          "dePart": "Besetzung",
+          "enPart": ""
+        },
+        {
+          "dePart": "Sortiment",
+          "enPart": ""
+        },
+        {
+          "dePart": "Selektion",
+          "enPart": ""
+        },
+        {
+          "dePart": "Sortiment",
+          "enPart": ""
+        },
+        {
+          "dePart": "Besetzung",
+          "enPart": ""
+        },
+        {
+          "dePart": "Sortiment",
+          "enPart": ""
+        },
+        {
+          "dePart": "Selektion",
+          "enPart": ""
+        },
+        {
+          "dePart": "Erwählung",
+          "enPart": ""
+        },
+        {
+          "dePart": "Selektion",
+          "enPart": ""
+        },
+        {
+          "dePart": "Erwählung",
+          "enPart": ""
+        },
+        {
+          "dePart": "Sortiment",
+          "enPart": ""
+        },
+        {
+          "dePart": "Selektion",
+          "enPart": ""
+        },
+        {
+          "dePart": "Sortiment",
+          "enPart": ""
+        },
+        {
+          "dePart": "Präferenz",
+          "enPart": ""
+        },
+        {
+          "dePart": "denken an",
+          "enPart": ""
+        },
+        {
+          "dePart": "selektion",
+          "enPart": ""
+        },
+        {
+          "dePart": "urnengang",
+          "enPart": ""
+        },
+        {
+          "dePart": "passieren",
+          "enPart": ""
+        },
+        {
+          "dePart": "bestellen",
+          "enPart": ""
+        },
+        {
+          "dePart": "überblick",
+          "enPart": ""
+        },
+        {
+          "dePart": "übersicht",
+          "enPart": ""
+        },
+        {
+          "dePart": "ergreifen",
+          "enPart": ""
+        },
+        {
+          "dePart": "enteignen",
+          "enPart": ""
+        },
+        {
+          "dePart": "rosenzeit",
+          "enPart": ""
+        },
+        {
+          "dePart": "entreißen",
+          "enPart": ""
+        },
+        {
+          "dePart": "ausmessen",
+          "enPart": ""
+        },
+        {
+          "dePart": "sehr fein",
+          "enPart": ""
+        },
+        {
+          "dePart": "ermitteln",
+          "enPart": ""
+        },
+        {
+          "dePart": "abstimmen",
+          "enPart": ""
+        },
+        {
+          "dePart": "ausräumen",
+          "enPart": ""
+        },
+        {
+          "dePart": "Selektion",
+          "enPart": ""
+        },
+        {
+          "dePart": "schnappen",
+          "enPart": ""
+        },
+        {
+          "dePart": "vergleich",
+          "enPart": ""
+        },
+        {
+          "dePart": "ernennung",
+          "enPart": ""
+        },
+        {
+          "dePart": "vorziehen",
+          "enPart": ""
+        },
+        {
+          "dePart": "auswählen",
+          "enPart": ""
+        },
+        {
+          "dePart": "beispiele",
+          "enPart": ""
+        },
+        {
+          "dePart": "sortiment",
+          "enPart": ""
+        },
+        {
+          "dePart": "bestimmen",
+          "enPart": ""
+        },
+        {
+          "dePart": "zugreifen",
+          "enPart": ""
+        },
+        {
+          "dePart": "aussuchen",
+          "enPart": ""
+        },
+        {
+          "dePart": "weinernte",
+          "enPart": ""
+        },
+        {
+          "dePart": "einnehmen",
+          "enPart": ""
+        },
+        {
+          "dePart": "filterung",
+          "enPart": ""
+        },
+        {
+          "dePart": "erwählung",
+          "enPart": ""
+        },
+        {
+          "dePart": "eruierung",
+          "enPart": ""
+        },
+        {
+          "dePart": "wegwerfen",
+          "enPart": ""
+        },
+        {
+          "dePart": "gesichtet",
+          "enPart": ""
+        },
+        {
+          "dePart": "grapschen",
+          "enPart": ""
+        },
+        {
+          "dePart": "besetzung",
+          "enPart": ""
+        },
+        {
+          "dePart": "entschluß",
+          "enPart": ""
+        },
+        {
+          "dePart": "selection",
+          "enPart": ""
+        },
+        {
+          "dePart": "wettkampf",
+          "enPart": ""
+        },
+        {
+          "dePart": "mitnehmen",
+          "enPart": ""
+        },
+        {
+          "dePart": "entfernen",
+          "enPart": ""
+        },
+        {
+          "dePart": "entnehmen",
+          "enPart": ""
+        },
+        {
+          "dePart": "aussieben",
+          "enPart": ""
+        },
+        {
+          "dePart": "isolieren",
+          "enPart": ""
+        },
+        {
+          "dePart": "reportoir",
+          "enPart": ""
+        },
+        {
+          "dePart": "auslosung",
+          "enPart": ""
+        },
+        {
+          "dePart": "abtrennen",
+          "enPart": ""
+        },
+        {
+          "dePart": "auswerfen",
+          "enPart": ""
+        },
+        {
+          "dePart": "einsetzen",
+          "enPart": ""
+        },
+        {
+          "dePart": "ausmarsch",
+          "enPart": ""
+        },
+        {
+          "dePart": "Mannschaft",
+          "enPart": ""
+        },
+        {
+          "dePart": "Kollektion",
+          "enPart": ""
+        },
+        {
+          "dePart": "auflistung",
+          "enPart": ""
+        },
+        {
+          "dePart": "Güteklasse",
+          "enPart": ""
+        },
+        {
+          "dePart": "Grundstock",
+          "enPart": ""
+        },
+        {
+          "dePart": "Mannschaft",
+          "enPart": ""
+        },
+        {
+          "dePart": "Anthologie",
+          "enPart": ""
+        },
+        {
+          "dePart": "Güteklasse",
+          "enPart": ""
+        },
+        {
+          "dePart": "Grundstock",
+          "enPart": ""
+        },
+        {
+          "dePart": "Güteklasse",
+          "enPart": ""
+        },
+        {
+          "dePart": "Sammelband",
+          "enPart": ""
+        },
+        {
+          "dePart": "Breviarium",
+          "enPart": ""
+        },
+        {
+          "dePart": "Grundstock",
+          "enPart": ""
+        },
+        {
+          "dePart": "Grundstock",
+          "enPart": ""
+        },
+        {
+          "dePart": "Ausschnitt",
+          "enPart": ""
+        },
+        {
+          "dePart": "Blütenlese",
+          "enPart": ""
+        },
+        {
+          "dePart": "garagieren",
+          "enPart": ""
+        },
+        {
+          "dePart": "die besten",
+          "enPart": ""
+        },
+        {
+          "dePart": "ausfingern",
+          "enPart": ""
+        },
+        {
+          "dePart": "verdunkeln",
+          "enPart": ""
+        },
+        {
+          "dePart": "kollektion",
+          "enPart": ""
+        },
+        {
+          "dePart": "selektiert",
+          "enPart": ""
+        },
+        {
+          "dePart": "vorauswahl",
+          "enPart": ""
+        },
+        {
+          "dePart": "hinstellen",
+          "enPart": ""
+        },
+        {
+          "dePart": "anthologie",
+          "enPart": ""
+        },
+        {
+          "dePart": "ausschnitt",
+          "enPart": ""
+        },
+        {
+          "dePart": "überordnen",
+          "enPart": ""
+        },
+        {
+          "dePart": "güteklasse",
+          "enPart": ""
+        },
+        {
+          "dePart": "auswahltyp",
+          "enPart": ""
+        },
+        {
+          "dePart": "mannschaft",
+          "enPart": ""
+        },
+        {
+          "dePart": "einstecken",
+          "enPart": ""
+        },
+        {
+          "dePart": "deponieren",
+          "enPart": ""
+        },
+        {
+          "dePart": "grundstock",
+          "enPart": ""
+        },
+        {
+          "dePart": "bevorzugen",
+          "enPart": ""
+        },
+        {
+          "dePart": "bestimmung",
+          "enPart": ""
+        },
+        {
+          "dePart": "aussondern",
+          "enPart": ""
+        },
+        {
+          "dePart": "ausmustern",
+          "enPart": ""
+        },
+        {
+          "dePart": "ausklauben",
+          "enPart": ""
+        },
+        {
+          "dePart": "ausfiltern",
+          "enPart": ""
+        },
+        {
+          "dePart": "abstimmung",
+          "enPart": ""
+        },
+        {
+          "dePart": "blütenlese",
+          "enPart": ""
+        },
+        {
+          "dePart": "seligieren",
+          "enPart": ""
+        },
+        {
+          "dePart": "bestätigen",
+          "enPart": ""
+        },
+        {
+          "dePart": "selegieren",
+          "enPart": ""
+        },
+        {
+          "dePart": "buchhandel",
+          "enPart": ""
+        },
+        {
+          "dePart": "fortwerfen",
+          "enPart": ""
+        },
+        {
+          "dePart": "ausersehen",
+          "enPart": ""
+        },
+        {
+          "dePart": "beseitigen",
+          "enPart": ""
+        },
+        {
+          "dePart": "Bandbreite",
+          "enPart": ""
+        },
+        {
+          "dePart": "eklektisch",
+          "enPart": ""
+        },
+        {
+          "dePart": "auswählend",
+          "enPart": ""
+        },
+        {
+          "dePart": "besten die",
+          "enPart": ""
+        },
+        {
+          "dePart": "gesamtheit",
+          "enPart": ""
+        },
+        {
+          "dePart": "repertoire",
+          "enPart": ""
+        },
+        {
+          "dePart": "entscheiden",
+          "enPart": ""
+        },
+        {
+          "dePart": "möglichkeit",
+          "enPart": ""
+        },
+        {
+          "dePart": "auserwählen",
+          "enPart": ""
+        },
+        {
+          "dePart": "protegieren",
+          "enPart": ""
+        },
+        {
+          "dePart": "auszeichnen",
+          "enPart": ""
+        },
+        {
+          "dePart": "alternative",
+          "enPart": ""
+        },
+        {
+          "dePart": "durchsieben",
+          "enPart": ""
+        },
+        {
+          "dePart": "assortiment",
+          "enPart": ""
+        },
+        {
+          "dePart": "kopfauswahl",
+          "enPart": ""
+        },
+        {
+          "dePart": "stimmabgabe",
+          "enPart": ""
+        },
+        {
+          "dePart": "auswahlband",
+          "enPart": ""
+        },
+        {
+          "dePart": "eliminieren",
+          "enPart": ""
+        },
+        {
+          "dePart": "begünstigen",
+          "enPart": ""
+        },
+        {
+          "dePart": "niederlegen",
+          "enPart": ""
+        },
+        {
+          "dePart": "ausspielung",
+          "enPart": ""
+        },
+        {
+          "dePart": "beschließen",
+          "enPart": ""
+        },
+        {
+          "dePart": "traubenlese",
+          "enPart": ""
+        },
+        {
+          "dePart": "bemächtigen",
+          "enPart": ""
+        },
+        {
+          "dePart": "bevorzugung",
+          "enPart": ""
+        },
+        {
+          "dePart": "oberschicht",
+          "enPart": ""
+        },
+        {
+          "dePart": "durchseihen",
+          "enPart": ""
+        },
+        {
+          "dePart": "selektieren",
+          "enPart": ""
+        },
+        {
+          "dePart": "komposition",
+          "enPart": ""
+        },
+        {
+          "dePart": "ausplündern",
+          "enPart": ""
+        },
+        {
+          "dePart": "abscheidung",
+          "enPart": ""
+        },
+        {
+          "dePart": "erforschung",
+          "enPart": ""
+        },
+        {
+          "dePart": "ausscheiden",
+          "enPart": ""
+        },
+        {
+          "dePart": "ausdünstung",
+          "enPart": ""
+        },
+        {
+          "dePart": "ausgliedern",
+          "enPart": ""
+        },
+        {
+          "dePart": "herauslösen",
+          "enPart": ""
+        },
+        {
+          "dePart": "durchsuchen",
+          "enPart": ""
+        },
+        {
+          "dePart": "auslese top",
+          "enPart": ""
+        },
+        {
+          "dePart": "Bevorzugung",
+          "enPart": ""
+        },
+        {
+          "dePart": "Bevorzugung",
+          "enPart": ""
+        },
+        {
+          "dePart": "Assortiment",
+          "enPart": ""
+        },
+        {
+          "dePart": "Bevorzugung",
+          "enPart": ""
+        },
+        {
+          "dePart": "Nationalelf",
+          "enPart": ""
+        },
+        {
+          "dePart": "Bevorzugung",
+          "enPart": ""
+        },
+        {
+          "dePart": "Klappentext",
+          "enPart": ""
+        },
+        {
+          "dePart": "stimmen für",
+          "enPart": ""
+        },
+        {
+          "dePart": "aussonderung",
+          "enPart": ""
+        },
+        {
+          "dePart": "preselection",
+          "enPart": ""
+        },
+        {
+          "dePart": "niedersetzen",
+          "enPart": ""
+        },
+        {
+          "dePart": "einkassieren",
+          "enPart": ""
+        },
+        {
+          "dePart": "ausmusterung",
+          "enPart": ""
+        },
+        {
+          "dePart": "lieber mögen",
+          "enPart": ""
+        },
+        {
+          "dePart": "warenauswahl",
+          "enPart": ""
+        },
+        {
+          "dePart": "favorisieren",
+          "enPart": ""
+        },
+        {
+          "dePart": "vorauswählen",
+          "enPart": ""
+        },
+        {
+          "dePart": "ausschließen",
+          "enPart": ""
+        },
+        {
+          "dePart": "jobinterview",
+          "enPart": ""
+        },
+        {
+          "dePart": "aussortieren",
+          "enPart": ""
+        },
+        {
+          "dePart": "einstreichen",
+          "enPart": ""
+        },
+        {
+          "dePart": "durchstöbern",
+          "enPart": ""
+        },
+        {
+          "dePart": "durchforsten",
+          "enPart": ""
+        },
+        {
+          "dePart": "kontrollfeld",
+          "enPart": ""
+        },
+        {
+          "dePart": "herausnehmen",
+          "enPart": ""
+        },
+        {
+          "dePart": "ausscheidung",
+          "enPart": ""
+        },
+        {
+          "dePart": "Warenangebot",
+          "enPart": ""
+        },
+        {
+          "dePart": "warenangebot",
+          "enPart": ""
+        },
+        {
+          "dePart": "Warenangebot",
+          "enPart": ""
+        },
+        {
+          "dePart": "entscheidung",
+          "enPart": ""
+        },
+        {
+          "dePart": "herauspicken",
+          "enPart": ""
+        },
+        {
+          "dePart": "Warenangebot",
+          "enPart": ""
+        },
+        {
+          "dePart": "(die) Besten",
+          "enPart": ""
+        },
+        {
+          "dePart": "Warenangebot",
+          "enPart": ""
+        },
+        {
+          "dePart": "Gurkentruppe",
+          "enPart": ""
+        },
+        {
+          "dePart": "große anzahl",
+          "enPart": ""
+        },
+        {
+          "dePart": "preselect to",
+          "enPart": ""
+        },
+        {
+          "dePart": "votieren für",
+          "enPart": ""
+        },
+        {
+          "dePart": "heraussuchen",
+          "enPart": ""
+        },
+        {
+          "dePart": "kameraauswahl",
+          "enPart": ""
+        },
+        {
+          "dePart": "führerschicht",
+          "enPart": ""
+        },
+        {
+          "dePart": "herausfischen",
+          "enPart": ""
+        },
+        {
+          "dePart": "lieber wählen",
+          "enPart": ""
+        },
+        {
+          "dePart": "herausstellen",
+          "enPart": ""
+        },
+        {
+          "dePart": "mustersendung",
+          "enPart": ""
+        },
+        {
+          "dePart": "sich aneignen",
+          "enPart": ""
+        },
+        {
+          "dePart": "herausklauben",
+          "enPart": ""
+        },
+        {
+          "dePart": "Inhaltsangabe",
+          "enPart": ""
+        },
+        {
+          "dePart": "Bestenauslese",
+          "enPart": ""
+        },
+        {
+          "dePart": "Warenspektrum",
+          "enPart": ""
+        },
+        {
+          "dePart": "kontenauswahl",
+          "enPart": ""
+        },
+        {
+          "dePart": "niederstellen",
+          "enPart": ""
+        },
+        {
+          "dePart": "plädieren für",
+          "enPart": ""
+        },
+        {
+          "dePart": "abstimmen für",
+          "enPart": ""
+        },
+        {
+          "dePart": "adressauswahl",
+          "enPart": ""
+        },
+        {
+          "dePart": "aufräumen mit",
+          "enPart": ""
+        },
+        {
+          "dePart": "an sich reißen",
+          "enPart": ""
+        },
+        {
+          "dePart": "abkommandieren",
+          "enPart": ""
+        },
+        {
+          "dePart": "Warensortiment",
+          "enPart": ""
+        },
+        {
+          "dePart": "Produktangebot",
+          "enPart": ""
+        },
+        {
+          "dePart": "Produktpalette",
+          "enPart": ""
+        },
+        {
+          "dePart": "Produktauswahl",
+          "enPart": ""
+        },
+        {
+          "dePart": "selection head",
+          "enPart": ""
+        },
+        {
+          "dePart": "warensortiment",
+          "enPart": ""
+        },
+        {
+          "dePart": "zu sich nehmen",
+          "enPart": ""
+        },
+        {
+          "dePart": "entgegennehmen",
+          "enPart": ""
+        },
+        {
+          "dePart": "an sich nehmen",
+          "enPart": ""
+        },
+        {
+          "dePart": "bundestagswahl",
+          "enPart": ""
+        },
+        {
+          "dePart": "administrieren",
+          "enPart": ""
+        },
+        {
+          "dePart": "fördern zutage",
+          "enPart": ""
+        },
+        {
+          "dePart": "selektionieren",
+          "enPart": ""
+        },
+        {
+          "dePart": "auswahltabelle",
+          "enPart": ""
+        },
+        {
+          "dePart": "multiple choice",
+          "enPart": ""
+        },
+        {
+          "dePart": "selector camera",
+          "enPart": ""
+        },
+        {
+          "dePart": "wohnungsaufgabe",
+          "enPart": ""
+        },
+        {
+          "dePart": "wahlmöglichkeit",
+          "enPart": ""
+        },
+        {
+          "dePart": "auswahlgespräch",
+          "enPart": ""
+        },
+        {
+          "dePart": "mehrfachauswahl",
+          "enPart": ""
+        },
+        {
+          "dePart": "table selection",
+          "enPart": ""
+        },
+        {
+          "dePart": "auswahlschalter",
+          "enPart": ""
+        },
+        {
+          "dePart": "jemanden wählen",
+          "enPart": ""
+        },
+        {
+          "dePart": "auswählen etwas",
+          "enPart": ""
+        },
+        {
+          "dePart": "markierungsfeld",
+          "enPart": ""
+        },
+        {
+          "dePart": "Zusammenfassung",
+          "enPart": ""
+        },
+        {
+          "dePart": "sich abgewöhnen",
+          "enPart": ""
+        },
+        {
+          "dePart": "assessmentcenter",
+          "enPart": ""
+        },
+        {
+          "dePart": "Produktsortiment",
+          "enPart": ""
+        },
+        {
+          "dePart": "kontrollkästchen",
+          "enPart": ""
+        },
+        {
+          "dePart": "einhalt gebieten",
+          "enPart": ""
+        },
+        {
+          "dePart": "musterkollektion",
+          "enPart": ""
+        },
+        {
+          "dePart": "Musterkollektion",
+          "enPart": ""
+        },
+        {
+          "dePart": "auswahlkriterium",
+          "enPart": ""
+        },
+        {
+          "dePart": "auswahlinterview",
+          "enPart": ""
+        },
+        {
+          "dePart": "auswahlverfahren",
+          "enPart": ""
+        },
+        {
+          "dePart": "type recommended",
+          "enPart": ""
+        },
+        {
+          "dePart": "besitz ergreifen",
+          "enPart": ""
+        },
+        {
+          "dePart": "zusammenstellung",
+          "enPart": ""
+        },
+        {
+          "dePart": "in besitz nehmen",
+          "enPart": ""
+        },
+        {
+          "dePart": "auflage erteilen",
+          "enPart": ""
+        },
+        {
+          "dePart": "sich entscheiden",
+          "enPart": ""
+        },
+        {
+          "dePart": "sich bemächtigen",
+          "enPart": ""
+        },
+        {
+          "dePart": "Zusammenstellung",
+          "enPart": ""
+        },
+        {
+          "dePart": "Leistungsangebot",
+          "enPart": ""
+        },
+        {
+          "dePart": "Angebotsvielfalt",
+          "enPart": ""
+        },
+        {
+          "dePart": "Produktportfolio",
+          "enPart": ""
+        },
+        {
+          "dePart": "Inhaltsübersicht",
+          "enPart": ""
+        },
+        {
+          "dePart": "Angebotsspektrum",
+          "enPart": ""
+        },
+        {
+          "dePart": "Riege (Turnsport)",
+          "enPart": ""
+        },
+        {
+          "dePart": "(die) erste Garde",
+          "enPart": ""
+        },
+        {
+          "dePart": "Leistungsspektrum",
+          "enPart": ""
+        },
+        {
+          "dePart": "Angebotsportfolio",
+          "enPart": ""
+        },
+        {
+          "dePart": "jemanden erwählen",
+          "enPart": ""
+        },
+        {
+          "dePart": "in besitz bringen",
+          "enPart": ""
+        },
+        {
+          "dePart": "selection address",
+          "enPart": ""
+        },
+        {
+          "dePart": "crème de la crème",
+          "enPart": ""
+        },
+        {
+          "dePart": "center assessment",
+          "enPart": ""
+        },
+        {
+          "dePart": "auswahlmannschaft",
+          "enPart": ""
+        },
+        {
+          "dePart": "sich einverleiben",
+          "enPart": ""
+        },
+        {
+          "dePart": "selection account",
+          "enPart": ""
+        },
+        {
+          "dePart": "eine wahl treffen",
+          "enPart": ""
+        },
+        {
+          "dePart": "assessment center",
+          "enPart": ""
+        },
+        {
+          "dePart": "Nationalmannschaft",
+          "enPart": ""
+        },
+        {
+          "dePart": "auswahlmöglichkeit",
+          "enPart": ""
+        },
+        {
+          "dePart": "nationalmannschaft",
+          "enPart": ""
+        },
+        {
+          "dePart": "Equipe (Reitsport)",
+          "enPart": ""
+        },
+        {
+          "dePart": "Körung (Tierzucht)",
+          "enPart": ""
+        },
+        {
+          "dePart": "Leistungsportfolio",
+          "enPart": ""
+        },
+        {
+          "dePart": "Nationalmannschaft",
+          "enPart": ""
+        },
+        {
+          "dePart": "seine stimme geben",
+          "enPart": ""
+        },
+        {
+          "dePart": "auswahl der besten",
+          "enPart": ""
+        },
+        {
+          "dePart": "in die hand nehmen",
+          "enPart": ""
+        },
+        {
+          "dePart": "ausscheidungskampf",
+          "enPart": ""
+        },
+        {
+          "dePart": "Nationalmannschaft",
+          "enPart": ""
+        },
+        {
+          "dePart": "besten der auswahl",
+          "enPart": ""
+        },
+        {
+          "dePart": "ausscheidungsspiel",
+          "enPart": ""
+        },
+        {
+          "dePart": "procedure selection",
+          "enPart": ""
+        },
+        {
+          "dePart": "criterion selection",
+          "enPart": ""
+        },
+        {
+          "dePart": "Kurzzusammenfassung",
+          "enPart": ""
+        },
+        {
+          "dePart": "außer betrieb setzen",
+          "enPart": ""
+        },
+        {
+          "dePart": "sich entscheiden für",
+          "enPart": ""
+        },
+        {
+          "dePart": "sich schenken lassen",
+          "enPart": ""
+        },
+        {
+          "dePart": "vorstellungsgespräch",
+          "enPart": ""
+        },
+        {
+          "dePart": "... heißt wahl meine",
+          "enPart": ""
+        },
+        {
+          "dePart": "Abriss (eines Buches)",
+          "enPart": ""
+        },
+        {
+          "dePart": "sich etwas abgewöhnen",
+          "enPart": ""
+        },
+        {
+          "dePart": "Range (fachsprachlich)",
+          "enPart": ""
+        },
+        {
+          "dePart": "ausscheidungswettkampf",
+          "enPart": ""
+        },
+        {
+          "dePart": "Range (fachsprachlich)",
+          "enPart": ""
+        },
+        {
+          "dePart": "durch das sieb schütten",
+          "enPart": ""
+        },
+        {
+          "dePart": "bestimmen auswahl durch",
+          "enPart": ""
+        },
+        {
+          "dePart": "zu seinem eigentum machen",
+          "enPart": ""
+        },
+        {
+          "dePart": "sich frei entscheiden für",
+          "enPart": ""
+        },
+        {
+          "dePart": "... haben ich will dieses",
+          "enPart": ""
+        },
+        {
+          "dePart": "artikelnummer bzw. bestell.-",
+          "enPart": ""
+        },
+        {
+          "dePart": "mit einer gewohnheit brechen",
+          "enPart": ""
+        },
+        {
+          "dePart": "sich einer sache bemächtigen",
+          "enPart": ""
+        },
+        {
+          "dePart": "von einer gewohnheit abgehen",
+          "enPart": ""
+        }
+      ],
+      "synonymTranslated": [
+        {
+          "dePart": "Art",
+          "enPart": "variety"
+        },
+        {
+          "dePart": "Tipp",
+          "enPart": "selection"
+        },
+        {
+          "dePart": "Wahl",
+          "enPart": "choice"
+        },
+        {
+          "dePart": "Wahl",
+          "enPart": "selection"
+        },
+        {
+          "dePart": "Probe",
+          "enPart": "sample"
+        },
+        {
+          "dePart": "Picke",
+          "enPart": "pick"
+        },
+        {
+          "dePart": "Sorte",
+          "enPart": "variety"
+        },
+        {
+          "dePart": "Reihe",
+          "enPart": "range"
+        },
+        {
+          "dePart": "Beste",
+          "enPart": "pick"
+        },
+        {
+          "dePart": "Muster",
+          "enPart": "sample"
+        },
+        {
+          "dePart": "Pickel",
+          "enPart": "pick"
+        },
+        {
+          "dePart": "Sample",
+          "enPart": "sample"
+        },
+        {
+          "dePart": "Gemisch",
+          "enPart": "miscellany"
+        },
+        {
+          "dePart": "Auswahl",
+          "enPart": "selection"
+        },
+        {
+          "dePart": "Auslese",
+          "enPart": "selection"
+        },
+        {
+          "dePart": "Auswahl",
+          "enPart": "sample"
+        },
+        {
+          "dePart": "Palette",
+          "enPart": "range"
+        },
+        {
+          "dePart": "Auswahl",
+          "enPart": "choice"
+        },
+        {
+          "dePart": "Angebot",
+          "enPart": "range"
+        },
+        {
+          "dePart": "Auslese",
+          "enPart": "choice"
+        },
+        {
+          "dePart": "Auswahl",
+          "enPart": "range"
+        },
+        {
+          "dePart": "Auswahl",
+          "enPart": "pick"
+        },
+        {
+          "dePart": "Auswahl",
+          "enPart": "variety"
+        },
+        {
+          "dePart": "Auswahl",
+          "enPart": "representative team"
+        },
+        {
+          "dePart": "Auswahl",
+          "enPart": "assortment"
+        },
+        {
+          "dePart": "Auswahl",
+          "enPart": "cull"
+        },
+        {
+          "dePart": "Auswahl",
+          "enPart": "miscellany"
+        },
+        {
+          "dePart": "Varietät",
+          "enPart": "variety"
+        },
+        {
+          "dePart": "Sammlung",
+          "enPart": "miscellany"
+        },
+        {
+          "dePart": "Mischung",
+          "enPart": "assortment"
+        },
+        {
+          "dePart": "Plektrum",
+          "enPart": "pick"
+        },
+        {
+          "dePart": "Vielfalt",
+          "enPart": "variety"
+        },
+        {
+          "dePart": "Beispiel",
+          "enPart": "sample"
+        },
+        {
+          "dePart": "Selektion",
+          "enPart": "selection"
+        },
+        {
+          "dePart": "Sortiment",
+          "enPart": "assortment"
+        },
+        {
+          "dePart": "Auswählen",
+          "enPart": "selection"
+        },
+        {
+          "dePart": "Sortiment",
+          "enPart": "range"
+        },
+        {
+          "dePart": "Reichweite",
+          "enPart": "range"
+        },
+        {
+          "dePart": "Sammelband",
+          "enPart": "miscellany"
+        },
+        {
+          "dePart": "Stichprobe",
+          "enPart": "sample"
+        },
+        {
+          "dePart": "Spitzhacke",
+          "enPart": "pick"
+        },
+        {
+          "dePart": "Abwechslung",
+          "enPart": "variety"
+        },
+        {
+          "dePart": "buntes Gemisch",
+          "enPart": "miscellany"
+        },
+        {
+          "dePart": "Auswahlmannschaft",
+          "enPart": "representative team"
+        },
+        {
+          "dePart": "Redaktionsabschuss",
+          "enPart": "cull"
+        },
+        {
+          "dePart": "vermischte Schriften",
+          "enPart": "miscellany"
+        }
+      ],
+      "phrase": [
+        {
+          "dePart": "große Auswahl",
+          "enPart": ""
+        },
+        {
+          "dePart": "Auswahl von Mustern",
+          "enPart": ""
+        },
+        {
+          "dePart": "die freie Auswahl haben",
+          "enPart": ""
+        },
+        {
+          "dePart": "eine beschränkte Auswahl",
+          "enPart": ""
+        },
+        {
+          "dePart": "eine reiche Auswahl an Speisen",
+          "enPart": ""
+        },
+        {
+          "dePart": "die Auswahl und Pflege der Links",
+          "enPart": ""
+        },
+        {
+          "dePart": "eine große Auswahl an Strickwolle",
+          "enPart": ""
+        },
+        {
+          "dePart": "auswahlverfahren für stellenbewerber",
+          "enPart": ""
+        },
+        {
+          "dePart": "stellenbewerber für auswahlverfahren",
+          "enPart": ""
+        },
+        {
+          "dePart": "(sich lesen wie ein) Who is who (von)",
+          "enPart": ""
+        },
+        {
+          "dePart": "Man sollte eigentlich im Leben niemals die gleiche Dummheit zweimal machen, denn die Auswahl ist so groß.",
+          "enPart": ""
+        },
+        {
+          "dePart": "Dies führt im Ergebnis zu einem eingeschränkten Wettbewerb, einer geringeren Auswahl für die Verbraucher und zu hohen Preisen.",
+          "enPart": ""
+        },
+        {
+          "dePart": "Man muss nicht nur mehr Ideen haben als andere, sondern auch die Fähigkeit besitzen, zu entscheiden, welche dieser Ideen gut sind.",
+          "enPart": ""
+        }
+      ],
+      "phraseTranslated": [
+        {
+          "dePart": "Auswahl {f}",
+          "enPart": "assorted samples {pl}"
+        },
+        {
+          "dePart": "zur Auswahl",
+          "enPart": "at choice"
+        },
+        {
+          "dePart": "zur Auswahl",
+          "enPart": "to choose from"
+        },
+        {
+          "dePart": "40Auswahl {f}",
+          "enPart": "repertory"
+        },
+        {
+          "dePart": "36Auswahl {f}",
+          "enPart": "digest [of book, facts]"
+        },
+        {
+          "dePart": "A-Auswahl {f}",
+          "enPart": "sports (national) A team [A-team]"
+        },
+        {
+          "dePart": "B-Auswahl {f}",
+          "enPart": "sports second-string side"
+        },
+        {
+          "dePart": "Auswahl {f} von",
+          "enPart": "assortment of"
+        },
+        {
+          "dePart": "Chip-Auswahl {f}",
+          "enPart": "chip-select"
+        },
+        {
+          "dePart": "freie Auswahl {f}",
+          "enPart": "free choice"
+        },
+        {
+          "dePart": "zufällige Auswahl",
+          "enPart": "random sampling"
+        },
+        {
+          "dePart": "große Auswahl {f}",
+          "enPart": "large choice"
+        },
+        {
+          "dePart": "große Auswahl {f}",
+          "enPart": "wide choice"
+        },
+        {
+          "dePart": "große Auswahl {f}",
+          "enPart": "idiom plenty of choice"
+        },
+        {
+          "dePart": "eine Auswahl haben",
+          "enPart": "to have an option"
+        },
+        {
+          "dePart": "engere Auswahl {f}",
+          "enPart": "short list"
+        },
+        {
+          "dePart": "eigene Auswahl {f}",
+          "enPart": "self-selection"
+        },
+        {
+          "dePart": "falsche Auswahl {f}",
+          "enPart": "faulty selection"
+        },
+        {
+          "dePart": "keine Auswahl haben",
+          "enPart": "to have no option"
+        },
+        {
+          "dePart": "eine Auswahl treffen",
+          "enPart": "to make a choiceto make a selection"
+        },
+        {
+          "dePart": "eine Auswahl treffen",
+          "enPart": "to select (from), to make a selection (from), to make one’s choice (of)to select (from), to make a selection (from), to make one’s choice (of)"
+        },
+        {
+          "dePart": "sexuelle Auswahl {f}",
+          "enPart": "biol. sexual selection"
+        },
+        {
+          "dePart": "negative Auswahl {f}",
+          "enPart": "adverse selection"
+        },
+        {
+          "dePart": "bewusste Auswahl {f}",
+          "enPart": "sociol. stat. purposive sample"
+        },
+        {
+          "dePart": "Baustein-Auswahl {f}",
+          "enPart": "chip-select"
+        },
+        {
+          "dePart": "zufällige Auswahl {f}",
+          "enPart": "chance selection"
+        },
+        {
+          "dePart": "verzerrte Auswahl {f}",
+          "enPart": "math. stat. selection bias"
+        },
+        {
+          "dePart": "zufällige Auswahl {f}",
+          "enPart": "random selection"
+        },
+        {
+          "dePart": "eine Auswahl gewinnen",
+          "enPart": "idiom  Unverified to make the cut for sth. [coll.] [person or team] [meet a certain standard or requirement]"
+        },
+        {
+          "dePart": "die Auswahl begrenzen",
+          "enPart": "to narrow down the choice"
+        },
+        {
+          "dePart": "besondere Auswahl {f}",
+          "enPart": "particular choice"
+        },
+        {
+          "dePart": "eine Auswahl anbieten",
+          "enPart": "to offer a choice"
+        },
+        {
+          "dePart": "künstliche Auswahl {f}",
+          "enPart": "artificial selection"
+        },
+        {
+          "dePart": "überreiche Auswahl {f}",
+          "enPart": "embarrassment of riches"
+        },
+        {
+          "dePart": "reichliche Auswahl {f}",
+          "enPart": "idiom plenty of choices"
+        },
+        {
+          "dePart": "reichliche Auswahl {f}",
+          "enPart": "ample choice"
+        },
+        {
+          "dePart": "natürliche Auswahl {f}",
+          "enPart": "biol. natural selection"
+        },
+        {
+          "dePart": "viel/eine reiche Auswahl",
+          "enPart": "a large/wide selection"
+        },
+        {
+          "dePart": "willkürliche Auswahl {f}",
+          "enPart": "stat. convenience sample / sampling"
+        },
+        {
+          "dePart": "willkürliche Auswahl {f}",
+          "enPart": "random selection"
+        },
+        {
+          "dePart": "Schuhe in großer Auswahl",
+          "enPart": "a large assortment of shoes"
+        },
+        {
+          "dePart": "hier gibt es keine Auswahl",
+          "enPart": "there is no choice"
+        },
+        {
+          "dePart": "eine Auswahl von Gedichten",
+          "enPart": "an anthology of poems"
+        },
+        {
+          "dePart": "Auswahl {f} [das Auswählen]",
+          "enPart": "selecting"
+        },
+        {
+          "dePart": "eine Auswahl zusammenstellen",
+          "enPart": "to compile a selection [an anthology]"
+        },
+        {
+          "dePart": "zehn Bücher stehen zur Auswahl",
+          "enPart": "there are ten books to choose from"
+        },
+        {
+          "dePart": "bewusste [geschichtete] Auswahl",
+          "enPart": "purposive [stratified] sample"
+        },
+        {
+          "dePart": "eine sorgfältige Auswahl treffen",
+          "enPart": "to choose carefully"
+        },
+        {
+          "dePart": "drei Bewerber stehen zur Auswahl",
+          "enPart": "there are three applicants to choose from"
+        },
+        {
+          "dePart": "jemandem etwas zur Auswahl vorlegen",
+          "enPart": "to presentjemand|somebody sb with etwas|something sth to choose fromto presentwith to choose from"
+        },
+        {
+          "dePart": "(jemandem) etwas zur Auswahl stellen",
+          "enPart": "to offer (jemand|somebody sb ) the choice ofetwas|something sth to offer () the choice of"
+        },
+        {
+          "dePart": "jdm drei Sachen zur Auswahl vorlegen",
+          "enPart": "to offer sb a choice of three things"
+        },
+        {
+          "dePart": "eine schöne Auswahl an Schallplatten",
+          "enPart": "a fine selection of records"
+        },
+        {
+          "dePart": "geschichtete Auswahl {f} [Stichprobe]",
+          "enPart": "stat. stratified sampling"
+        },
+        {
+          "dePart": "eine Auswahl aus (von) Goethes Werken",
+          "enPart": "selections from Goethe"
+        },
+        {
+          "dePart": "Auswahl {f} [kurz für: Auswahlmannschaft]",
+          "enPart": "sports representative team"
+        },
+        {
+          "dePart": "Auswahl aufheben [Kontrollkästchen \"abwählen\"]",
+          "enPart": "comp. to uncheck (a checkbox)"
+        },
+        {
+          "dePart": "eine reiche (reichhaltige) Auswahl anetwas haben",
+          "enPart": "to have a great variety (oder|or od wide range) ofetwas|something sth to choose fromto have a great variety (wide range) ofto choose from"
+        },
+        {
+          "dePart": "die Auswahl unter verschiedenen Möglichkeiten haben",
+          "enPart": "to be able to choose from various possibilities"
+        }
+      ],
+      "deEn": {
+        "dePart": "auswahl",
+        "enPart": "cull,pick,range,sample,choice,Anzahl,variety,Ausnahm,Ausfall,Aufwand,Baustahl,selection,miscellany,assortment,representative team"
+      }
+    },
+    "vergeblich": {
+      "synonym": [
+        {
+          "dePart": "fort",
+          "enPart": ""
+        },
+        {
+          "dePart": "müßig",
+          "enPart": ""
+        },
+        {
+          "dePart": "irreal",
+          "enPart": ""
+        },
+        {
+          "dePart": "unnütz",
+          "enPart": ""
+        },
+        {
+          "dePart": "futsch",
+          "enPart": ""
+        },
+        {
+          "dePart": "vertan",
+          "enPart": ""
+        },
+        {
+          "dePart": "nutzlos",
+          "enPart": ""
+        },
+        {
+          "dePart": "sinnlos",
+          "enPart": ""
+        },
+        {
+          "dePart": "umsonst",
+          "enPart": ""
+        },
+        {
+          "dePart": "negativ",
+          "enPart": ""
+        },
+        {
+          "dePart": "nutzlos",
+          "enPart": ""
+        },
+        {
+          "dePart": "sinnlos",
+          "enPart": ""
+        },
+        {
+          "dePart": "umsonst",
+          "enPart": ""
+        },
+        {
+          "dePart": "nutzlos",
+          "enPart": ""
+        },
+        {
+          "dePart": "brotlos",
+          "enPart": ""
+        },
+        {
+          "dePart": "wertlos",
+          "enPart": ""
+        },
+        {
+          "dePart": "unnötig",
+          "enPart": ""
+        },
+        {
+          "dePart": "negativ",
+          "enPart": ""
+        },
+        {
+          "dePart": "sieglos",
+          "enPart": ""
+        },
+        {
+          "dePart": "nutzlos",
+          "enPart": ""
+        },
+        {
+          "dePart": "umsonst",
+          "enPart": ""
+        },
+        {
+          "dePart": "negativ",
+          "enPart": ""
+        },
+        {
+          "dePart": "planlos",
+          "enPart": ""
+        },
+        {
+          "dePart": "töricht",
+          "enPart": ""
+        },
+        {
+          "dePart": "sinnlos",
+          "enPart": ""
+        },
+        {
+          "dePart": "sinnlos",
+          "enPart": ""
+        },
+        {
+          "dePart": "nutzlos",
+          "enPart": ""
+        },
+        {
+          "dePart": "umsonst",
+          "enPart": ""
+        },
+        {
+          "dePart": "witzlos",
+          "enPart": ""
+        },
+        {
+          "dePart": "sinnlos",
+          "enPart": ""
+        },
+        {
+          "dePart": "umsonst",
+          "enPart": ""
+        },
+        {
+          "dePart": "vanitas",
+          "enPart": ""
+        },
+        {
+          "dePart": "zwecklos",
+          "enPart": ""
+        },
+        {
+          "dePart": "frustran",
+          "enPart": ""
+        },
+        {
+          "dePart": "abhanden",
+          "enPart": ""
+        },
+        {
+          "dePart": "zwecklos",
+          "enPart": ""
+        },
+        {
+          "dePart": "verloren",
+          "enPart": ""
+        },
+        {
+          "dePart": "unsinnig",
+          "enPart": ""
+        },
+        {
+          "dePart": "zwecklos",
+          "enPart": ""
+        },
+        {
+          "dePart": "unsinnig",
+          "enPart": ""
+        },
+        {
+          "dePart": "zwecklos",
+          "enPart": ""
+        },
+        {
+          "dePart": "zwecklos",
+          "enPart": ""
+        },
+        {
+          "dePart": "verfehlt",
+          "enPart": ""
+        },
+        {
+          "dePart": "unwirksam",
+          "enPart": ""
+        },
+        {
+          "dePart": "effektlos",
+          "enPart": ""
+        },
+        {
+          "dePart": "fruchtlos",
+          "enPart": ""
+        },
+        {
+          "dePart": "ausweglos",
+          "enPart": ""
+        },
+        {
+          "dePart": "verlassen",
+          "enPart": ""
+        },
+        {
+          "dePart": "erfolglos",
+          "enPart": ""
+        },
+        {
+          "dePart": "fruchtlos",
+          "enPart": ""
+        },
+        {
+          "dePart": "unwirksam",
+          "enPart": ""
+        },
+        {
+          "dePart": "vergebens",
+          "enPart": ""
+        },
+        {
+          "dePart": "erfolglos",
+          "enPart": ""
+        },
+        {
+          "dePart": "Makulatur",
+          "enPart": ""
+        },
+        {
+          "dePart": "erfolglos",
+          "enPart": ""
+        },
+        {
+          "dePart": "unwirksam",
+          "enPart": ""
+        },
+        {
+          "dePart": "vergebens",
+          "enPart": ""
+        },
+        {
+          "dePart": "fruchtlos",
+          "enPart": ""
+        },
+        {
+          "dePart": "wie wegge",
+          "enPart": ""
+        },
+        {
+          "dePart": "Makulatur",
+          "enPart": ""
+        },
+        {
+          "dePart": "Makulatur",
+          "enPart": ""
+        },
+        {
+          "dePart": "vergebens",
+          "enPart": ""
+        },
+        {
+          "dePart": "fruchtlos",
+          "enPart": ""
+        },
+        {
+          "dePart": "Makulatur",
+          "enPart": ""
+        },
+        {
+          "dePart": "vergebens",
+          "enPart": ""
+        },
+        {
+          "dePart": "erfolglos",
+          "enPart": ""
+        },
+        {
+          "dePart": "erfolglos",
+          "enPart": ""
+        },
+        {
+          "dePart": "fruchtlos",
+          "enPart": ""
+        },
+        {
+          "dePart": "makulatur",
+          "enPart": ""
+        },
+        {
+          "dePart": "verspielt",
+          "enPart": ""
+        },
+        {
+          "dePart": "ungereimt",
+          "enPart": ""
+        },
+        {
+          "dePart": "vergebens",
+          "enPart": ""
+        },
+        {
+          "dePart": "erfolglos",
+          "enPart": ""
+        },
+        {
+          "dePart": "unmöglich",
+          "enPart": ""
+        },
+        {
+          "dePart": "erfolglos",
+          "enPart": ""
+        },
+        {
+          "dePart": "versetzen",
+          "enPart": ""
+        },
+        {
+          "dePart": "zerronnen",
+          "enPart": ""
+        },
+        {
+          "dePart": "ungeeignet",
+          "enPart": ""
+        },
+        {
+          "dePart": "ineffektiv",
+          "enPart": ""
+        },
+        {
+          "dePart": "von dannen",
+          "enPart": ""
+        },
+        {
+          "dePart": "ausgedient",
+          "enPart": ""
+        },
+        {
+          "dePart": "abkömmlich",
+          "enPart": ""
+        },
+        {
+          "dePart": "vergeblich",
+          "enPart": ""
+        },
+        {
+          "dePart": "uneffektiv",
+          "enPart": ""
+        },
+        {
+          "dePart": "vergeblich",
+          "enPart": ""
+        },
+        {
+          "dePart": "vergeblich",
+          "enPart": ""
+        },
+        {
+          "dePart": "vergeblich",
+          "enPart": ""
+        },
+        {
+          "dePart": "ineffektiv",
+          "enPart": ""
+        },
+        {
+          "dePart": "von hinnen",
+          "enPart": ""
+        },
+        {
+          "dePart": "chancenlos",
+          "enPart": ""
+        },
+        {
+          "dePart": "ineffektiv",
+          "enPart": ""
+        },
+        {
+          "dePart": "unproduktiv",
+          "enPart": ""
+        },
+        {
+          "dePart": "ohne Erfolg",
+          "enPart": ""
+        },
+        {
+          "dePart": "ergebnislos",
+          "enPart": ""
+        },
+        {
+          "dePart": "ohne Erfolg",
+          "enPart": ""
+        },
+        {
+          "dePart": "illusorisch",
+          "enPart": ""
+        },
+        {
+          "dePart": "wirkungslos",
+          "enPart": ""
+        },
+        {
+          "dePart": "wirkungslos",
+          "enPart": ""
+        },
+        {
+          "dePart": "ohne Erfolg",
+          "enPart": ""
+        },
+        {
+          "dePart": "unbrauchbar",
+          "enPart": ""
+        },
+        {
+          "dePart": "erfolg ohne",
+          "enPart": ""
+        },
+        {
+          "dePart": "unfruchtbar",
+          "enPart": ""
+        },
+        {
+          "dePart": "ergebnislos",
+          "enPart": ""
+        },
+        {
+          "dePart": "brechen mit",
+          "enPart": ""
+        },
+        {
+          "dePart": "illusorisch",
+          "enPart": ""
+        },
+        {
+          "dePart": "widersinnig",
+          "enPart": ""
+        },
+        {
+          "dePart": "nichts wert",
+          "enPart": ""
+        },
+        {
+          "dePart": "verschollen",
+          "enPart": ""
+        },
+        {
+          "dePart": "ohne erfolg",
+          "enPart": ""
+        },
+        {
+          "dePart": "wirkungslos",
+          "enPart": ""
+        },
+        {
+          "dePart": "ergebnislos",
+          "enPart": ""
+        },
+        {
+          "dePart": "futschikato",
+          "enPart": ""
+        },
+        {
+          "dePart": "entbehrlich",
+          "enPart": ""
+        },
+        {
+          "dePart": "überflüssig",
+          "enPart": ""
+        },
+        {
+          "dePart": "aussichtslos",
+          "enPart": ""
+        },
+        {
+          "dePart": "für die Katz",
+          "enPart": ""
+        },
+        {
+          "dePart": "keine Option",
+          "enPart": ""
+        },
+        {
+          "dePart": "für die Katz",
+          "enPart": ""
+        },
+        {
+          "dePart": "aussichtslos",
+          "enPart": ""
+        },
+        {
+          "dePart": "aussichtslos",
+          "enPart": ""
+        },
+        {
+          "dePart": "für die Katz",
+          "enPart": ""
+        },
+        {
+          "dePart": "verlustreich",
+          "enPart": ""
+        },
+        {
+          "dePart": "verluststark",
+          "enPart": ""
+        },
+        {
+          "dePart": "aussichtslos",
+          "enPart": ""
+        },
+        {
+          "dePart": "für die Katz",
+          "enPart": ""
+        },
+        {
+          "dePart": "für die Katz",
+          "enPart": ""
+        },
+        {
+          "dePart": "verlustreich",
+          "enPart": ""
+        },
+        {
+          "dePart": "verluststark",
+          "enPart": ""
+        },
+        {
+          "dePart": "unerreichbar",
+          "enPart": ""
+        },
+        {
+          "dePart": "hoffnungslos",
+          "enPart": ""
+        },
+        {
+          "dePart": "unzweckmäßig",
+          "enPart": ""
+        },
+        {
+          "dePart": "unauffindbar",
+          "enPart": ""
+        },
+        {
+          "dePart": "katz die für",
+          "enPart": ""
+        },
+        {
+          "dePart": "aussichtslos",
+          "enPart": ""
+        },
+        {
+          "dePart": "verschwunden",
+          "enPart": ""
+        },
+        {
+          "dePart": "für die katz",
+          "enPart": ""
+        },
+        {
+          "dePart": "unvernünftig",
+          "enPart": ""
+        },
+        {
+          "dePart": "bringt nichts",
+          "enPart": ""
+        },
+        {
+          "dePart": "ohne ergebnis",
+          "enPart": ""
+        },
+        {
+          "dePart": "sich abwenden",
+          "enPart": ""
+        },
+        {
+          "dePart": "nutzlosigkeit",
+          "enPart": ""
+        },
+        {
+          "dePart": "sinnlosigkeit",
+          "enPart": ""
+        },
+        {
+          "dePart": "für den Arsch",
+          "enPart": ""
+        },
+        {
+          "dePart": "für den Arsch",
+          "enPart": ""
+        },
+        {
+          "dePart": "für die Tonne",
+          "enPart": ""
+        },
+        {
+          "dePart": "ohne resultat",
+          "enPart": ""
+        },
+        {
+          "dePart": "alleine lassen",
+          "enPart": ""
+        },
+        {
+          "dePart": "undurchführbar",
+          "enPart": ""
+        },
+        {
+          "dePart": "zwecklosigkeit",
+          "enPart": ""
+        },
+        {
+          "dePart": "unverständlich",
+          "enPart": ""
+        },
+        {
+          "dePart": "vergeblichkeit",
+          "enPart": ""
+        },
+        {
+          "dePart": "sehr schwierig",
+          "enPart": ""
+        },
+        {
+          "dePart": "ausgeschlossen",
+          "enPart": ""
+        },
+        {
+          "dePart": "gegenstandslos",
+          "enPart": ""
+        },
+        {
+          "dePart": "im stich lassen",
+          "enPart": ""
+        },
+        {
+          "dePart": "nicht zu finden",
+          "enPart": ""
+        },
+        {
+          "dePart": "führt zu nichts",
+          "enPart": ""
+        },
+        {
+          "dePart": "hat keinen Wert",
+          "enPart": ""
+        },
+        {
+          "dePart": "nicht versetzen",
+          "enPart": ""
+        },
+        {
+          "dePart": "erfolglosigkeit",
+          "enPart": ""
+        },
+        {
+          "dePart": "es erübrigt sich",
+          "enPart": ""
+        },
+        {
+          "dePart": "zu nichts führen",
+          "enPart": ""
+        },
+        {
+          "dePart": "keinen Sinn haben",
+          "enPart": ""
+        },
+        {
+          "dePart": "wirkungslosigkeit",
+          "enPart": ""
+        },
+        {
+          "dePart": "kannst du knicken",
+          "enPart": ""
+        },
+        {
+          "dePart": "sinnlose tätigkeit",
+          "enPart": ""
+        },
+        {
+          "dePart": "unnötige tätigkeit",
+          "enPart": ""
+        },
+        {
+          "dePart": "nicht zurückholbar",
+          "enPart": ""
+        },
+        {
+          "dePart": "zu nichts gut sein",
+          "enPart": ""
+        },
+        {
+          "dePart": "keinen Sinn machen",
+          "enPart": ""
+        },
+        {
+          "dePart": "nicht realisierbar",
+          "enPart": ""
+        },
+        {
+          "dePart": "keinen Zweck haben",
+          "enPart": ""
+        },
+        {
+          "dePart": "ohne Sinn und Zweck",
+          "enPart": ""
+        },
+        {
+          "dePart": "(gut) für die Tonne",
+          "enPart": ""
+        },
+        {
+          "dePart": "vergebene Liebesmüh",
+          "enPart": ""
+        },
+        {
+          "dePart": "kannst du vergessen",
+          "enPart": ""
+        },
+        {
+          "dePart": "nicht mehr vorhanden",
+          "enPart": ""
+        },
+        {
+          "dePart": "nutzlose arbeitsgänge",
+          "enPart": ""
+        },
+        {
+          "dePart": "unnötige arbeitsgänge",
+          "enPart": ""
+        },
+        {
+          "dePart": "sinnlose arbeitsgänge",
+          "enPart": ""
+        },
+        {
+          "dePart": "nichts zu machen sein",
+          "enPart": ""
+        },
+        {
+          "dePart": "vergebliche Liebesmüh",
+          "enPart": ""
+        },
+        {
+          "dePart": "dabei kommt nichts rum",
+          "enPart": ""
+        },
+        {
+          "dePart": "frustran (medizinisch)",
+          "enPart": ""
+        },
+        {
+          "dePart": "ohne positives ergebnis",
+          "enPart": ""
+        },
+        {
+          "dePart": "(ein) totgeborenes Kind",
+          "enPart": ""
+        },
+        {
+          "dePart": "ohne Aussicht auf Erfolg",
+          "enPart": ""
+        },
+        {
+          "dePart": "ohne aussicht auf erfolg",
+          "enPart": ""
+        },
+        {
+          "dePart": "vergeblich warten lassen",
+          "enPart": ""
+        },
+        {
+          "dePart": "dabei kommt nichts herum",
+          "enPart": ""
+        },
+        {
+          "dePart": "(ein) tot geborenes Kind",
+          "enPart": ""
+        },
+        {
+          "dePart": "die freundschaft kündigen",
+          "enPart": ""
+        },
+        {
+          "dePart": "(das) kannst du vergessen",
+          "enPart": ""
+        },
+        {
+          "dePart": "unrationelle arbeitsgänge",
+          "enPart": ""
+        },
+        {
+          "dePart": "hoffnungsloses Unterfangen",
+          "enPart": ""
+        },
+        {
+          "dePart": "fruchtlos (Anwaltsdeutsch)",
+          "enPart": ""
+        },
+        {
+          "dePart": "außer Spesen nichts gewesen",
+          "enPart": ""
+        },
+        {
+          "dePart": "keinen Sinn und Zweck haben",
+          "enPart": ""
+        },
+        {
+          "dePart": "für nichts und wieder nichts",
+          "enPart": ""
+        },
+        {
+          "dePart": "die freundschaft aufkündigen",
+          "enPart": ""
+        }
+      ],
+      "synonymTranslated": [
+        {
+          "dePart": "leer",
+          "enPart": "vain"
+        },
+        {
+          "dePart": "müßig",
+          "enPart": "futile"
+        },
+        {
+          "dePart": "eitel",
+          "enPart": "vain"
+        },
+        {
+          "dePart": "unnütz",
+          "enPart": "useless"
+        },
+        {
+          "dePart": "nutzlos",
+          "enPart": "futile"
+        },
+        {
+          "dePart": "sinnlos",
+          "enPart": "futile"
+        },
+        {
+          "dePart": "nichtig",
+          "enPart": "vain"
+        },
+        {
+          "dePart": "nutzlos",
+          "enPart": "vain"
+        },
+        {
+          "dePart": "nutzlos",
+          "enPart": "unavailing"
+        },
+        {
+          "dePart": "nutzlos",
+          "enPart": "useless"
+        },
+        {
+          "dePart": "umsonst",
+          "enPart": "unavailing"
+        },
+        {
+          "dePart": "sinnlos",
+          "enPart": "useless"
+        },
+        {
+          "dePart": "zwecklos",
+          "enPart": "futile"
+        },
+        {
+          "dePart": "verfehlt",
+          "enPart": "unsuccessful"
+        },
+        {
+          "dePart": "zwecklos",
+          "enPart": "useless"
+        },
+        {
+          "dePart": "erfolglos",
+          "enPart": "unsuccessful"
+        },
+        {
+          "dePart": "fruchtlos",
+          "enPart": "fruitless"
+        },
+        {
+          "dePart": "vergeblich",
+          "enPart": "useless"
+        },
+        {
+          "dePart": "vergeblich",
+          "enPart": "vain"
+        },
+        {
+          "dePart": "vergeblich",
+          "enPart": "fruitless"
+        },
+        {
+          "dePart": "vergeblich",
+          "enPart": "unavailing"
+        },
+        {
+          "dePart": "abgewiesen",
+          "enPart": "unsuccessful"
+        },
+        {
+          "dePart": "vergeblich",
+          "enPart": "futile"
+        },
+        {
+          "dePart": "vergeblich",
+          "enPart": "unsuccessful"
+        },
+        {
+          "dePart": "überflüssig",
+          "enPart": "futile"
+        },
+        {
+          "dePart": "resultatlos",
+          "enPart": "fruitless"
+        },
+        {
+          "dePart": "ergebnislos",
+          "enPart": "unsuccessful"
+        },
+        {
+          "dePart": "unglücklich",
+          "enPart": "unsuccessful"
+        },
+        {
+          "dePart": "ergebnislos",
+          "enPart": "fruitless"
+        },
+        {
+          "dePart": "unfruchtbar",
+          "enPart": "fruitless"
+        },
+        {
+          "dePart": "eingebildet",
+          "enPart": "vain"
+        },
+        {
+          "dePart": "unbrauchbar",
+          "enPart": "useless"
+        },
+        {
+          "dePart": "unersprießlich",
+          "enPart": "fruitless"
+        }
+      ],
+      "phrase": [
+        {
+          "dePart": "vergebliche Liebesmüh’",
+          "enPart": ""
+        },
+        {
+          "dePart": "vergebliche Bemühungen",
+          "enPart": ""
+        },
+        {
+          "dePart": "vergebliche Liebesmüh’",
+          "enPart": ""
+        },
+        {
+          "dePart": "vergebliche Bemühungen",
+          "enPart": ""
+        },
+        {
+          "dePart": "Vergebliche Entwarnung",
+          "enPart": ""
+        },
+        {
+          "dePart": "Sein Bemühen ist vergeblich",
+          "enPart": ""
+        },
+        {
+          "dePart": "Sein Bemühen ist vergeblich",
+          "enPart": ""
+        },
+        {
+          "dePart": "Alle Versuche waren vergeblich",
+          "enPart": ""
+        },
+        {
+          "dePart": "Alle Versuche waren vergeblich",
+          "enPart": ""
+        },
+        {
+          "dePart": "(von vornherein) zum Scheitern verurteilt",
+          "enPart": ""
+        },
+        {
+          "dePart": "Eine Katze in Handschuhen fängt keine Mäuse.",
+          "enPart": ""
+        },
+        {
+          "dePart": "Die erste Liebe (nach 19 vergeblichen Versuchen)",
+          "enPart": ""
+        },
+        {
+          "dePart": "(an/bei jemandem/etwas ist) Hopfen und Malz verloren",
+          "enPart": ""
+        },
+        {
+          "dePart": "Unmöglich kann ein naturhaftes Begehren vergeblich sein.",
+          "enPart": ""
+        },
+        {
+          "dePart": "Nicht nur Vögel suchen manchmal vergeblich nach einer Nisthilfe. Auch Insekten haben ein Bedürfnis nach Unterstützung.",
+          "enPart": ""
+        },
+        {
+          "dePart": "So geht es oft mit einer Unterhaltung: Nach einer Weile vergeblicher Auseinandersetzung merkt man, dass man gar nicht von derselben Sache gesprochen hat.",
+          "enPart": ""
+        }
+      ],
+      "phraseTranslated": [
+        {
+          "dePart": "vergeblich",
+          "enPart": "to no avail {adj}"
+        },
+        {
+          "dePart": "vergeblich",
+          "enPart": "of no avail {adj}"
+        },
+        {
+          "dePart": "vergeblich",
+          "enPart": "without success {adv}"
+        },
+        {
+          "dePart": "vergeblich",
+          "enPart": "in vain {adv}"
+        },
+        {
+          "dePart": "vergeblich",
+          "enPart": "for vain {adv} [archaic]"
+        },
+        {
+          "dePart": "vergeblich",
+          "enPart": "vergeblich"
+        },
+        {
+          "dePart": "vergeblich",
+          "enPart": "vergeblich"
+        },
+        {
+          "dePart": "vergeblich",
+          "enPart": "unavailingly {adv}"
+        },
+        {
+          "dePart": "vergeblich",
+          "enPart": "to no end {adv} [in vain]"
+        },
+        {
+          "dePart": "62vergeblich",
+          "enPart": "futilely {adv}"
+        },
+        {
+          "dePart": "14vergeblich",
+          "enPart": "unsuccessfully {adv}"
+        },
+        {
+          "dePart": "24vergeblich",
+          "enPart": "fruitless {adj} [attempt]"
+        },
+        {
+          "dePart": "60vergeblich",
+          "enPart": "unsuccessful {adj}"
+        },
+        {
+          "dePart": "68vergeblich",
+          "enPart": "unavailing {adj}"
+        },
+        {
+          "dePart": "367vergeblich",
+          "enPart": "vain {adj}"
+        },
+        {
+          "dePart": "152vergeblich",
+          "enPart": "vainly {adv}"
+        },
+        {
+          "dePart": "1083vergeblich",
+          "enPart": "futile {adj}"
+        },
+        {
+          "dePart": "vergeblich reden",
+          "enPart": "to waste one's breath"
+        },
+        {
+          "dePart": "vergeblich reden",
+          "enPart": "to spend one's breath"
+        },
+        {
+          "dePart": "vergeblich hoffen",
+          "enPart": "to hope in vain"
+        },
+        {
+          "dePart": "vergebliche Hoffnung",
+          "enPart": "vergeblich"
+        },
+        {
+          "dePart": "vergebliche Hoffnung",
+          "enPart": "vergeblich"
+        },
+        {
+          "dePart": "sich vergeblich bemühen",
+          "enPart": "to try in vain (oder|or od unsuccessfully, without success)to try in vain (unsuccessfully, without success)"
+        },
+        {
+          "dePart": "alles Bitten war vergeblich",
+          "enPart": "all pleading was in vain"
+        },
+        {
+          "dePart": "deine Anstrengungen sind vergeblich",
+          "enPart": "your efforts are in vain, you are wasting your efforts"
+        },
+        {
+          "dePart": "alle Bitten/Versuche waren vergeblich",
+          "enPart": "all requests/attempts were in vain"
+        },
+        {
+          "dePart": "es wäre vergeblich, sie um Hilfe zu bitten",
+          "enPart": "it would be useless to ask her for help"
+        },
+        {
+          "dePart": "vergeblich gegen etw. anrennen [anstürmen]",
+          "enPart": "mil. sports to attack sth. in vain"
+        },
+        {
+          "dePart": "Ich habe es versucht, aber vergeblich, und obendrein habe ich noch Geld verloren",
+          "enPart": "vergeblich"
+        },
+        {
+          "dePart": "Ich habe es versucht, aber vergeblich, und obendrein habe ich noch Geld verloren",
+          "enPart": "vergeblich"
+        }
+      ],
+      "deEn": {
+        "dePart": "vergeblich",
+        "enPart": "vain,futile,vainly,useless,in vain,futilely,fruitless,unavailing,of no avail,to no avail,unavailingly,unsuccessful,to no purpose,without avail"
+      }
+    },
+    "unbestritten": {
+      "synonym": [
+        {
+          "dePart": "echt",
+          "enPart": ""
+        },
+        {
+          "dePart": "wahr",
+          "enPart": ""
+        },
+        {
+          "dePart": "klar",
+          "enPart": ""
+        },
+        {
+          "dePart": "wahr",
+          "enPart": ""
+        },
+        {
+          "dePart": "klar",
+          "enPart": ""
+        },
+        {
+          "dePart": "gewiß",
+          "enPart": ""
+        },
+        {
+          "dePart": "gewiß",
+          "enPart": ""
+        },
+        {
+          "dePart": "gewiß",
+          "enPart": ""
+        },
+        {
+          "dePart": "gewiß",
+          "enPart": ""
+        },
+        {
+          "dePart": "gewiß",
+          "enPart": ""
+        },
+        {
+          "dePart": "gewiss",
+          "enPart": ""
+        },
+        {
+          "dePart": "sicher",
+          "enPart": ""
+        },
+        {
+          "dePart": "gültig",
+          "enPart": ""
+        },
+        {
+          "dePart": "sicher",
+          "enPart": ""
+        },
+        {
+          "dePart": "üblich",
+          "enPart": ""
+        },
+        {
+          "dePart": "sicher",
+          "enPart": ""
+        },
+        {
+          "dePart": "sicher",
+          "enPart": ""
+        },
+        {
+          "dePart": "fraglos",
+          "enPart": ""
+        },
+        {
+          "dePart": "geltend",
+          "enPart": ""
+        },
+        {
+          "dePart": "bewährt",
+          "enPart": ""
+        },
+        {
+          "dePart": "perfekt",
+          "enPart": ""
+        },
+        {
+          "dePart": "erprobt",
+          "enPart": ""
+        },
+        {
+          "dePart": "fraglos",
+          "enPart": ""
+        },
+        {
+          "dePart": "fraglos",
+          "enPart": ""
+        },
+        {
+          "dePart": "fürwahr",
+          "enPart": ""
+        },
+        {
+          "dePart": "fraglos",
+          "enPart": ""
+        },
+        {
+          "dePart": "erwiesen",
+          "enPart": ""
+        },
+        {
+          "dePart": "erwiesen",
+          "enPart": ""
+        },
+        {
+          "dePart": "bewiesen",
+          "enPart": ""
+        },
+        {
+          "dePart": "wirklich",
+          "enPart": ""
+        },
+        {
+          "dePart": "wahrlich",
+          "enPart": ""
+        },
+        {
+          "dePart": "geachtet",
+          "enPart": ""
+        },
+        {
+          "dePart": "bewiesen",
+          "enPart": ""
+        },
+        {
+          "dePart": "erwiesen",
+          "enPart": ""
+        },
+        {
+          "dePart": "bestimmt",
+          "enPart": ""
+        },
+        {
+          "dePart": "effektiv",
+          "enPart": ""
+        },
+        {
+          "dePart": "erwiesen",
+          "enPart": ""
+        },
+        {
+          "dePart": "erwiesen",
+          "enPart": ""
+        },
+        {
+          "dePart": "unfehlbar",
+          "enPart": ""
+        },
+        {
+          "dePart": "angesehen",
+          "enPart": ""
+        },
+        {
+          "dePart": "eindeutig",
+          "enPart": ""
+        },
+        {
+          "dePart": "geschätzt",
+          "enPart": ""
+        },
+        {
+          "dePart": "unfehlbar",
+          "enPart": ""
+        },
+        {
+          "dePart": "unleugbar",
+          "enPart": ""
+        },
+        {
+          "dePart": "unfehlbar",
+          "enPart": ""
+        },
+        {
+          "dePart": "unfehlbar",
+          "enPart": ""
+        },
+        {
+          "dePart": "unfehlbar",
+          "enPart": ""
+        },
+        {
+          "dePart": "unleugbar",
+          "enPart": ""
+        },
+        {
+          "dePart": "eindeutig",
+          "enPart": ""
+        },
+        {
+          "dePart": "unbedingt",
+          "enPart": ""
+        },
+        {
+          "dePart": "starkness",
+          "enPart": ""
+        },
+        {
+          "dePart": "anerkannt",
+          "enPart": ""
+        },
+        {
+          "dePart": "unstreitig",
+          "enPart": ""
+        },
+        {
+          "dePart": "zweifellos",
+          "enPart": ""
+        },
+        {
+          "dePart": "unstrittig",
+          "enPart": ""
+        },
+        {
+          "dePart": "unstreitig",
+          "enPart": ""
+        },
+        {
+          "dePart": "zweifellos",
+          "enPart": ""
+        },
+        {
+          "dePart": "zutreffend",
+          "enPart": ""
+        },
+        {
+          "dePart": "unstrittig",
+          "enPart": ""
+        },
+        {
+          "dePart": "zweifellos",
+          "enPart": ""
+        },
+        {
+          "dePart": "unstreitig",
+          "enPart": ""
+        },
+        {
+          "dePart": "zutreffend",
+          "enPart": ""
+        },
+        {
+          "dePart": "unstrittig",
+          "enPart": ""
+        },
+        {
+          "dePart": "unstreitig",
+          "enPart": ""
+        },
+        {
+          "dePart": "unstrittig",
+          "enPart": ""
+        },
+        {
+          "dePart": "unstrittig",
+          "enPart": ""
+        },
+        {
+          "dePart": "unstrittig",
+          "enPart": ""
+        },
+        {
+          "dePart": "zweifellos",
+          "enPart": ""
+        },
+        {
+          "dePart": "rechtmäßig",
+          "enPart": ""
+        },
+        {
+          "dePart": "profiliert",
+          "enPart": ""
+        },
+        {
+          "dePart": "renommiert",
+          "enPart": ""
+        },
+        {
+          "dePart": "unstreitig",
+          "enPart": ""
+        },
+        {
+          "dePart": "untrüglich",
+          "enPart": ""
+        },
+        {
+          "dePart": "eingeführt",
+          "enPart": ""
+        },
+        {
+          "dePart": "wahrhaftig",
+          "enPart": ""
+        },
+        {
+          "dePart": "zweifellos",
+          "enPart": ""
+        },
+        {
+          "dePart": "zuverlässig",
+          "enPart": ""
+        },
+        {
+          "dePart": "unabweisbar",
+          "enPart": ""
+        },
+        {
+          "dePart": "hergebracht",
+          "enPart": ""
+        },
+        {
+          "dePart": "tatsächlich",
+          "enPart": ""
+        },
+        {
+          "dePart": "unumstritten",
+          "enPart": ""
+        },
+        {
+          "dePart": "unbestritten",
+          "enPart": ""
+        },
+        {
+          "dePart": "zweifelsfrei",
+          "enPart": ""
+        },
+        {
+          "dePart": "keine Frage!",
+          "enPart": ""
+        },
+        {
+          "dePart": "unbestritten",
+          "enPart": ""
+        },
+        {
+          "dePart": "unumstritten",
+          "enPart": ""
+        },
+        {
+          "dePart": "unanfechtbar",
+          "enPart": ""
+        },
+        {
+          "dePart": "gebräuchlich",
+          "enPart": ""
+        },
+        {
+          "dePart": "unumstritten",
+          "enPart": ""
+        },
+        {
+          "dePart": "keine Frage!",
+          "enPart": ""
+        },
+        {
+          "dePart": "unumstritten",
+          "enPart": ""
+        },
+        {
+          "dePart": "unbestreitbar",
+          "enPart": ""
+        },
+        {
+          "dePart": "unbestreitbar",
+          "enPart": ""
+        },
+        {
+          "dePart": "unzweifelhaft",
+          "enPart": ""
+        },
+        {
+          "dePart": "unbestreitbar",
+          "enPart": ""
+        },
+        {
+          "dePart": "unbestreitbar",
+          "enPart": ""
+        },
+        {
+          "dePart": "unwiderlegbar",
+          "enPart": ""
+        },
+        {
+          "dePart": "außer Zweifel",
+          "enPart": ""
+        },
+        {
+          "dePart": "übereinkommen",
+          "enPart": ""
+        },
+        {
+          "dePart": "unzweifelhaft",
+          "enPart": ""
+        },
+        {
+          "dePart": "nicht strittig",
+          "enPart": ""
+        },
+        {
+          "dePart": "auf jeden Fall",
+          "enPart": ""
+        },
+        {
+          "dePart": "nicht strittig",
+          "enPart": ""
+        },
+        {
+          "dePart": "nicht strittig",
+          "enPart": ""
+        },
+        {
+          "dePart": "unbezweifelbar",
+          "enPart": ""
+        },
+        {
+          "dePart": "nicht strittig",
+          "enPart": ""
+        },
+        {
+          "dePart": "nicht strittig",
+          "enPart": ""
+        },
+        {
+          "dePart": "Konsens (sein)",
+          "enPart": ""
+        },
+        {
+          "dePart": "erwiesenermaßen",
+          "enPart": ""
+        },
+        {
+          "dePart": "uneingeschränkt",
+          "enPart": ""
+        },
+        {
+          "dePart": "guten ruf habend",
+          "enPart": ""
+        },
+        {
+          "dePart": "unbestrittenheit",
+          "enPart": ""
+        },
+        {
+          "dePart": "unstrittig (sein)",
+          "enPart": ""
+        },
+        {
+          "dePart": "unbestritten (sein)",
+          "enPart": ""
+        },
+        {
+          "dePart": "(darin) übereinstimmen",
+          "enPart": ""
+        },
+        {
+          "dePart": "(es) herrscht Einigkeit",
+          "enPart": ""
+        },
+        {
+          "dePart": "(sich) (darin) einig (sein)",
+          "enPart": ""
+        },
+        {
+          "dePart": "kein Vertun (es gibt da ...)",
+          "enPart": ""
+        },
+        {
+          "dePart": "(allgemein) akzeptiert (sein)",
+          "enPart": ""
+        }
+      ],
+      "synonymTranslated": [
+        {
+          "dePart": "fraglos",
+          "enPart": "unquestionable"
+        },
+        {
+          "dePart": "zweifellos",
+          "enPart": "undisputed"
+        },
+        {
+          "dePart": "unbegründet",
+          "enPart": "unargued"
+        },
+        {
+          "dePart": "unbestritten",
+          "enPart": "undisputed"
+        },
+        {
+          "dePart": "unbestritten",
+          "enPart": "uncontested"
+        },
+        {
+          "dePart": "unbestritten",
+          "enPart": "unargued"
+        },
+        {
+          "dePart": "unbestritten",
+          "enPart": "unchallenged"
+        },
+        {
+          "dePart": "unbestritten",
+          "enPart": "unquestioned"
+        },
+        {
+          "dePart": "unumstritten",
+          "enPart": "undisputed"
+        },
+        {
+          "dePart": "unbestritten",
+          "enPart": "unquestionable"
+        },
+        {
+          "dePart": "unbestritten",
+          "enPart": "undoubted"
+        },
+        {
+          "dePart": "unzweifelhaft",
+          "enPart": "unquestionable"
+        },
+        {
+          "dePart": "unzweifelhaft",
+          "enPart": "undoubted"
+        },
+        {
+          "dePart": "unangefochten",
+          "enPart": "unquestionable"
+        },
+        {
+          "dePart": "unangefochten",
+          "enPart": "unchallenged"
+        },
+        {
+          "dePart": "unangefochten",
+          "enPart": "undisputed"
+        },
+        {
+          "dePart": "unbestreitbar",
+          "enPart": "unquestionable"
+        },
+        {
+          "dePart": "unangefochten",
+          "enPart": "unargued"
+        },
+        {
+          "dePart": "unangefochten",
+          "enPart": "uncontested"
+        },
+        {
+          "dePart": "unbezweifelbar",
+          "enPart": "unquestionable"
+        },
+        {
+          "dePart": "nicht abgelehnt",
+          "enPart": "unchallenged"
+        },
+        {
+          "dePart": "nicht anzufechten",
+          "enPart": "unchallenged"
+        },
+        {
+          "dePart": "ohne Gegenkandidat",
+          "enPart": "uncontested"
+        }
+      ],
+      "phrase": [
+        {
+          "dePart": "die unbestrittene Forderung | die unbestrittenen Forderungen",
+          "enPart": ""
+        }
+      ],
+      "phraseTranslated": [
+        {
+          "dePart": "unbestritten",
+          "enPart": "without dispute {adj}"
+        },
+        {
+          "dePart": "unbestritten",
+          "enPart": "beyond dispute {adj} [postpos.]"
+        },
+        {
+          "dePart": "unbestritten",
+          "enPart": "beyond controversy {adj}"
+        },
+        {
+          "dePart": "unbestritten",
+          "enPart": "undisputably {adv}"
+        },
+        {
+          "dePart": "unbestritten",
+          "enPart": "uncontradicted {adj}"
+        },
+        {
+          "dePart": "unbestritten",
+          "enPart": "unchallengedly {adv}"
+        },
+        {
+          "dePart": "9unbestritten",
+          "enPart": "unquestionable {adj}"
+        },
+        {
+          "dePart": "7unbestritten",
+          "enPart": "undenied {adj}"
+        },
+        {
+          "dePart": "80unbestritten",
+          "enPart": "uncontested {adj}"
+        },
+        {
+          "dePart": "11unbestritten",
+          "enPart": "undisputedly {adv}"
+        },
+        {
+          "dePart": "13unbestritten",
+          "enPart": "law uncontended {adj}"
+        },
+        {
+          "dePart": "17unbestritten",
+          "enPart": "unquestioned {adj}"
+        },
+        {
+          "dePart": "28unbestritten",
+          "enPart": "unchallenged {adj}"
+        },
+        {
+          "dePart": "67unbestritten",
+          "enPart": "indisputable {adj}"
+        },
+        {
+          "dePart": "248unbestritten",
+          "enPart": "undisputed {adj}"
+        },
+        {
+          "dePart": "323unbestritten",
+          "enPart": "undoubted {adj}"
+        },
+        {
+          "dePart": "etw. ist unbestritten",
+          "enPart": "sth. is beyond debate"
+        },
+        {
+          "dePart": "Es ist unbestritten, dass ...",
+          "enPart": "It is incontestable that ..."
+        },
+        {
+          "dePart": "es ist ja unbestritten, dass ...",
+          "enPart": "nobody disputes that ..."
+        }
+      ],
+      "deEn": {
+        "dePart": "unbestritten",
+        "enPart": "unargued,undoubted,undisputed,uncontested,unquestioned,unchallenged,unumstritten,unquestionable"
+      }
+    },
+    "beziehungsweise": {
+      "synonym": [
+        {
+          "dePart": "oder",
+          "enPart": ""
+        },
+        {
+          "dePart": "eher",
+          "enPart": ""
+        },
+        {
+          "dePart": "bzw.",
+          "enPart": ""
+        },
+        {
+          "dePart": "oder",
+          "enPart": ""
+        },
+        {
+          "dePart": "bzw.",
+          "enPart": ""
+        },
+        {
+          "dePart": "bzw.",
+          "enPart": ""
+        },
+        {
+          "dePart": "doch",
+          "enPart": ""
+        },
+        {
+          "dePart": "oder",
+          "enPart": ""
+        },
+        {
+          "dePart": "bzw.",
+          "enPart": ""
+        },
+        {
+          "dePart": "eher",
+          "enPart": ""
+        },
+        {
+          "dePart": "doch",
+          "enPart": ""
+        },
+        {
+          "dePart": "oder",
+          "enPart": ""
+        },
+        {
+          "dePart": "bzw.",
+          "enPart": ""
+        },
+        {
+          "dePart": "alias",
+          "enPart": ""
+        },
+        {
+          "dePart": "alias",
+          "enPart": ""
+        },
+        {
+          "dePart": "resp.",
+          "enPart": ""
+        },
+        {
+          "dePart": "sonst",
+          "enPart": ""
+        },
+        {
+          "dePart": "sonst",
+          "enPart": ""
+        },
+        {
+          "dePart": "sonst",
+          "enPart": ""
+        },
+        {
+          "dePart": "ebenso",
+          "enPart": ""
+        },
+        {
+          "dePart": "lieber",
+          "enPart": ""
+        },
+        {
+          "dePart": "anders",
+          "enPart": ""
+        },
+        {
+          "dePart": "lieber",
+          "enPart": ""
+        },
+        {
+          "dePart": "sondern",
+          "enPart": ""
+        },
+        {
+          "dePart": "genauer",
+          "enPart": ""
+        },
+        {
+          "dePart": "sondern",
+          "enPart": ""
+        },
+        {
+          "dePart": "dagegen",
+          "enPart": ""
+        },
+        {
+          "dePart": "genauer",
+          "enPart": ""
+        },
+        {
+          "dePart": "genauer",
+          "enPart": ""
+        },
+        {
+          "dePart": "genauer",
+          "enPart": ""
+        },
+        {
+          "dePart": "genauer",
+          "enPart": ""
+        },
+        {
+          "dePart": "vielmehr",
+          "enPart": ""
+        },
+        {
+          "dePart": "notabene",
+          "enPart": ""
+        },
+        {
+          "dePart": "und zwar",
+          "enPart": ""
+        },
+        {
+          "dePart": "vielmehr",
+          "enPart": ""
+        },
+        {
+          "dePart": "vielmehr",
+          "enPart": ""
+        },
+        {
+          "dePart": "vielmehr",
+          "enPart": ""
+        },
+        {
+          "dePart": "und zwar",
+          "enPart": ""
+        },
+        {
+          "dePart": "vielmehr",
+          "enPart": ""
+        },
+        {
+          "dePart": "das heißt",
+          "enPart": ""
+        },
+        {
+          "dePart": "ebenfalls",
+          "enPart": ""
+        },
+        {
+          "dePart": "ansonsten",
+          "enPart": ""
+        },
+        {
+          "dePart": "das heißt",
+          "enPart": ""
+        },
+        {
+          "dePart": "das heißt",
+          "enPart": ""
+        },
+        {
+          "dePart": "mehr noch",
+          "enPart": ""
+        },
+        {
+          "dePart": "oder auch",
+          "enPart": ""
+        },
+        {
+          "dePart": "das heißt",
+          "enPart": ""
+        },
+        {
+          "dePart": "noch auch",
+          "enPart": ""
+        },
+        {
+          "dePart": "oder auch",
+          "enPart": ""
+        },
+        {
+          "dePart": "ansonsten",
+          "enPart": ""
+        },
+        {
+          "dePart": "respetive",
+          "enPart": ""
+        },
+        {
+          "dePart": "respktive",
+          "enPart": ""
+        },
+        {
+          "dePart": "das heißt",
+          "enPart": ""
+        },
+        {
+          "dePart": "will sagen",
+          "enPart": ""
+        },
+        {
+          "dePart": "respektive",
+          "enPart": ""
+        },
+        {
+          "dePart": "respektive",
+          "enPart": ""
+        },
+        {
+          "dePart": "respektive",
+          "enPart": ""
+        },
+        {
+          "dePart": "je nachdem",
+          "enPart": ""
+        },
+        {
+          "dePart": "je nachdem",
+          "enPart": ""
+        },
+        {
+          "dePart": "alternativ",
+          "enPart": ""
+        },
+        {
+          "dePart": "respektive",
+          "enPart": ""
+        },
+        {
+          "dePart": "respektive",
+          "enPart": ""
+        },
+        {
+          "dePart": "will sagen",
+          "enPart": ""
+        },
+        {
+          "dePart": "respektive",
+          "enPart": ""
+        },
+        {
+          "dePart": "eigentlich",
+          "enPart": ""
+        },
+        {
+          "dePart": "andernfalls",
+          "enPart": ""
+        },
+        {
+          "dePart": "will heißen",
+          "enPart": ""
+        },
+        {
+          "dePart": "will heißen",
+          "enPart": ""
+        },
+        {
+          "dePart": "andernfalls",
+          "enPart": ""
+        },
+        {
+          "dePart": "anderweitig",
+          "enPart": ""
+        },
+        {
+          "dePart": "inflationär",
+          "enPart": ""
+        },
+        {
+          "dePart": "mehr als das",
+          "enPart": ""
+        },
+        {
+          "dePart": "andererseits",
+          "enPart": ""
+        },
+        {
+          "dePart": "von sinne im",
+          "enPart": ""
+        },
+        {
+          "dePart": "anderenfalls",
+          "enPart": ""
+        },
+        {
+          "dePart": "insbesondere",
+          "enPart": ""
+        },
+        {
+          "dePart": "andererseits",
+          "enPart": ""
+        },
+        {
+          "dePart": "besser gesagt",
+          "enPart": ""
+        },
+        {
+          "dePart": "besser gesagt",
+          "enPart": ""
+        },
+        {
+          "dePart": "anders gesagt",
+          "enPart": ""
+        },
+        {
+          "dePart": "anders gesagt",
+          "enPart": ""
+        },
+        {
+          "dePart": "besser gesagt",
+          "enPart": ""
+        },
+        {
+          "dePart": "besser gesagt",
+          "enPart": ""
+        },
+        {
+          "dePart": "anderem unter",
+          "enPart": ""
+        },
+        {
+          "dePart": "widrigenfalls",
+          "enPart": ""
+        },
+        {
+          "dePart": "gesagt besser",
+          "enPart": ""
+        },
+        {
+          "dePart": "anders gesagt",
+          "enPart": ""
+        },
+        {
+          "dePart": "besser gesagt",
+          "enPart": ""
+        },
+        {
+          "dePart": "anders gesagt",
+          "enPart": ""
+        },
+        {
+          "dePart": "genauer gesagt",
+          "enPart": ""
+        },
+        {
+          "dePart": "genauer gesagt",
+          "enPart": ""
+        },
+        {
+          "dePart": "gegebenenfalls",
+          "enPart": ""
+        },
+        {
+          "dePart": "genauer gesagt",
+          "enPart": ""
+        },
+        {
+          "dePart": "gegebenenfalls",
+          "enPart": ""
+        },
+        {
+          "dePart": "genauer gesagt",
+          "enPart": ""
+        },
+        {
+          "dePart": "genauer gesagt",
+          "enPart": ""
+        },
+        {
+          "dePart": "beziehungsweise",
+          "enPart": ""
+        },
+        {
+          "dePart": "(oder) vielmehr",
+          "enPart": ""
+        },
+        {
+          "dePart": "beziehungsweise",
+          "enPart": ""
+        },
+        {
+          "dePart": "im anderen fall",
+          "enPart": ""
+        },
+        {
+          "dePart": "zum anderen Teil",
+          "enPart": ""
+        },
+        {
+          "dePart": "zum anderen teil",
+          "enPart": ""
+        },
+        {
+          "dePart": "ausgedrückt anders",
+          "enPart": ""
+        },
+        {
+          "dePart": "anders ausgedrückt",
+          "enPart": ""
+        },
+        {
+          "dePart": "mit anderen Worten",
+          "enPart": ""
+        },
+        {
+          "dePart": "mit anderen Worten",
+          "enPart": ""
+        },
+        {
+          "dePart": "mit anderen Worten",
+          "enPart": ""
+        },
+        {
+          "dePart": "mit anderen worten",
+          "enPart": ""
+        },
+        {
+          "dePart": "wenn das nicht möglich ist",
+          "enPart": ""
+        }
+      ],
+      "synonymTranslated": [
+        {
+          "dePart": "respektive",
+          "enPart": "respectively"
+        },
+        {
+          "dePart": "respektive",
+          "enPart": "or rather"
+        },
+        {
+          "dePart": "beziehungsweise",
+          "enPart": "respectively"
+        },
+        {
+          "dePart": "beziehungsweise",
+          "enPart": "or rather"
+        }
+      ],
+      "phrase": [
+        {
+          "dePart": "Beziehungsweise Liebe",
+          "enPart": ""
+        },
+        {
+          "dePart": "auftretend weise übermäßiger in",
+          "enPart": ""
+        },
+        {
+          "dePart": "Ich reserviere einen Platz beziehungsweise zwei, wenn du mitkommst.",
+          "enPart": ""
+        }
+      ],
+      "phraseTranslated": [
+        {
+          "dePart": "beziehungsweise",
+          "enPart": "or (else) {conj}"
+        },
+        {
+          "dePart": "Beziehungsweise New York",
+          "enPart": "F film Chinese Puzzle [Cédric Klapisch]"
+        },
+        {
+          "dePart": "165beziehungsweise <bzw.>",
+          "enPart": "or {conj}"
+        },
+        {
+          "dePart": "2694beziehungsweise <bzw.>",
+          "enPart": "respectively {adv} <resp.>"
+        },
+        {
+          "dePart": "beziehungsweise [je nachdem]",
+          "enPart": "as the case may be {conj}"
+        },
+        {
+          "dePart": "beziehungsweise [genauer gesagt]",
+          "enPart": "more specifically {adv}"
+        },
+        {
+          "dePart": "beziehungsweise [genauer gesagt]",
+          "enPart": "or that is to say {conj}"
+        },
+        {
+          "dePart": "beziehungsweise [genauer gesagt]",
+          "enPart": "or to be precise {conj}"
+        },
+        {
+          "dePart": "beziehungsweise [genauer gesagt]",
+          "enPart": "or rather {conj}"
+        },
+        {
+          "dePart": "ich, beziehungsweise meine Schwester",
+          "enPart": "I, or rather my sister"
+        },
+        {
+          "dePart": "402beziehungsweise [im anderen Fall]",
+          "enPart": "alternatively {adv}"
+        },
+        {
+          "dePart": "beziehungsweise <bzw.> [im anderen Fall]",
+          "enPart": "and ..., respectively"
+        },
+        {
+          "dePart": "die Personalausweise beziehungsweise Reisepässe",
+          "enPart": "the identity cards or (oder|or od and) passportsthe identity cards or (and) passports"
+        },
+        {
+          "dePart": "zwei Briefmarken, die 50 beziehungsweise 70 Cent kosten",
+          "enPart": "two stamps costing 50 and 70 cents respectively"
+        },
+        {
+          "dePart": "England und Frankreich steuerten 3 beziehungsweise 2 Millionen Dollar bei",
+          "enPart": "England and France contributed 3 and 2 million dollars respectively"
+        },
+        {
+          "dePart": "geben Sie in Ihrer Bestellung rot beziehungsweise blau als gewünschte Farbe an",
+          "enPart": "state your choice of colour (Brit) or color  (US) in your order: red or blue"
+        }
+      ],
+      "deEn": {
+        "dePart": "beziehungsweise",
+        "enPart": "and/or,or rather,respectively,or that is to say,as the case may be"
+      }
+    }
+  }
+}

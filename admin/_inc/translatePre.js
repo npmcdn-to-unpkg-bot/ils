@@ -3,8 +3,20 @@ const scrapeIt = require("scrape-it")
 const cheerio = require("cheerio")
 const fetch = require("node-fetch")
 const request = require("request")
+const db = require("proud-db")
+const fs = require("fs-extra")
 const J = require("justdo")
 const R = require("ramda")
+const scrapedParse = require("../../_inc/scrapedParse")
+function save(name, data) {
+    return new Promise(resolve=>{
+        fs.writeJson(`/home/just/ils/_inc/words/${name}.json`, {data}, ()=>{
+            setTimeout(()=>{
+                resolve(true)
+            }, 10000)
+        })
+    })
+}
 function deEnFirst(wordRaw) {
     let word = wordRaw.trim().toLowerCase()
     return new Promise((resolve) => {
@@ -587,8 +599,63 @@ async function deEnTimerAsync(wordRaw) {
     willReturn.synonymSixth = await synonymSixth(word)
     console.timeEnd("synonymSixth")
     willReturn.synonymSeventh = local.related
+    willReturn.word = word
+
     return willReturn
 }
+
+async function deEnSaveAsync(wordRaw) {
+    let willReturn = {}
+    let word = wordRaw.trim().toLowerCase()
+    console.time("mixed")
+    let local = await mixed(word)
+    console.timeEnd("mixed")
+    willReturn.deEnFirst = local.translation
+    console.time("deEnThird")
+    willReturn.deEnThird = await deEnThird(word)
+    console.timeEnd("deEnThird")
+    console.time("phraseFirst")
+    willReturn.phraseFirst = await phraseFirst(word)
+    console.timeEnd("phraseFirst")
+    console.time("phraseSecond")
+    willReturn.phraseSecond = await phraseSecond(word)
+    console.timeEnd("phraseSecond")
+    console.time("phraseThird")
+    willReturn.phraseThird = await phraseThird(word)
+    console.timeEnd("phraseThird")
+    console.time("phraseFourth")
+    willReturn.phraseFourth = await phraseFourth(word)
+    console.timeEnd("phraseFourth")
+    console.time("phraseFifth")
+    willReturn.phraseFifth = await phraseFifth(word)
+    console.timeEnd("phraseFifth")
+    console.time("phraseSixth")
+    willReturn.phraseSixth = await phraseSixth(word)
+    console.timeEnd("phraseSixth")
+    console.time("synonymFirst")
+    willReturn.synonymFirst = await synonymFirst(word)
+    console.timeEnd("synonymFirst")
+    console.time("synonymSecond")
+    willReturn.synonymSecond = await synonymSecond(word)
+    console.timeEnd("synonymSecond")
+    console.time("synonymThird")
+    willReturn.synonymThird = await synonymThird(word)
+    console.timeEnd("synonymThird")
+    console.time("synonymFourth")
+    willReturn.synonymFourth = await synonymFourth(word)
+    console.timeEnd("synonymFourth")
+    console.time("synonymFifth")
+    willReturn.synonymFifth = await synonymFifth(word)
+    console.timeEnd("synonymFifth")
+    console.time("synonymSixth")
+    willReturn.synonymSixth = await synonymSixth(word)
+    console.timeEnd("synonymSixth")
+    willReturn.synonymSeventh = local.related
+    //let willSave = scrapedParse.main(willReturn)
+    //willReturn.saved = await db.save("data", word, willSave)
+    return willReturn
+}
+
 async function deEnAsync(wordRaw) {
     let willReturn = {}
     let word = wordRaw.trim().toLowerCase()
@@ -608,6 +675,7 @@ async function deEnAsync(wordRaw) {
     willReturn.synonymFifth = await synonymFifth(word)
     willReturn.synonymSixth = await synonymSixth(word)
     willReturn.synonymSeventh = local.related
+    willReturn.word = word
     return willReturn
 }
 async function deEnShortAsync(wordRaw) {
@@ -626,14 +694,37 @@ async function deEnShortAsync(wordRaw) {
     willReturn.phraseSixth = await phraseSixth(word)
     return willReturn
 }
+async function deEnArrAsync(arr) {
+    let willMap = arr.map(val=>deEnSave(val))
+    let willReturn = await Promise.all(willMap)
+    return willReturn
+}
 function deEn(word) {
     return deEnAsync(word)
 }
 function deEnShort(word) {
     return deEnShortAsync(word)
 }
+function deEnSave(word) {
+    return new Promise(resolve=>{
+        deEnSaveAsync(word).then(incoming=>{
+            resolve(incoming)
+        })
+    })
+}
+function deEnArr(arr) {
+    return new Promise(resolve=>{
+        deEnArrAsync(arr).then(incoming=>{
+            resolve(incoming)
+        })
+    })
+}
 function deEnTimer(word) {
-    return deEnTimerAsync(word)
+    return new Promise(resolve=>{
+        deEnTimerAsync(word).then(incoming=>{
+            resolve(incoming)
+        })
+    })
 }
 function willRequest(url) {
     return new Promise((resolve, reject) => {
@@ -652,6 +743,8 @@ function willRequest(url) {
 module.exports.deEn = deEn
 module.exports.deEnShort = deEnShort
 module.exports.deEnTimer = deEnTimer
+module.exports.deEnSave = deEnSave
+module.exports.deEnArr = deEnArr
 module.exports.deEnFirst = deEnFirst
 module.exports.deEnSecond = deEnSecond
 module.exports.deEnThird = deEnThird

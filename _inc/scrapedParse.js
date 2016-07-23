@@ -21,12 +21,13 @@ function main(translated) {
     willSave.phrase = []
     willSave.phraseTranslated = []
     let deEnArr = pluckFn("deEn", translated)
-    let synonymArr = pluckFn("phrase", translated)
+    let synonymArr = pluckFn("synonym", translated)
     let phraseArr = pluckFn("phrase", translated)
     willSave.deEn = {dePart: `${deEnArr[ 0 ].dePart}`,
 enPart: R.compose(R.join(","), R.uniq, R.sort((a, b)=>a.length - b.length), R.pluck("enPart"))(deEnArr)}
+
     R.map(val =>{
-        if (val.enPart.length > 0) {
+        if (val.enPart && val.enPart.length > 0) {
             if (val.dePart.length > 30) {
                 willSave.phraseTranslated.push(val)
             } else {
@@ -40,8 +41,9 @@ enPart: R.compose(R.join(","), R.uniq, R.sort((a, b)=>a.length - b.length), R.pl
             }
         }
     }, synonymArr)
+
     R.map(val =>{
-        if (val.enPart.length > 0) {
+        if (val.enPart && val.enPart.length > 0) {
             willSave.phraseTranslated.push(val)
         } else {
             willSave.phrase.push(val)
