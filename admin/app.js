@@ -1,4 +1,5 @@
 "use strict"
+const J = require("../common")
 const express = require("express")
 const path = require("path")
 const favicon = require("serve-favicon")
@@ -7,6 +8,11 @@ const mainRoute = require("./routes/index.js")
 const altRoute = require("./routes/alt.js")
 let app = express()
 app.use((req, res, next) =>{
+    if (req.body) {
+        J.logger.debug(`${req.url} ${req.body}`)
+    } else {
+        J.logger.debug(`${req.url}`)
+    }
     res.header("Access-Control-Allow-Origin", "*")
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
     next()

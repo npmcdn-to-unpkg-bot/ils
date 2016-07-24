@@ -1,0 +1,2407 @@
+{
+  "deEnFirst": [
+    {
+      "dePart": "auswahl",
+      "enPart": "selection"
+    },
+    {
+      "dePart": "auswahl",
+      "enPart": "choice"
+    },
+    {
+      "dePart": "auswahl",
+      "enPart": "pick"
+    },
+    {
+      "dePart": "auswahl",
+      "enPart": "range"
+    },
+    {
+      "dePart": "auswahl",
+      "enPart": "variety"
+    },
+    {
+      "dePart": "auswahl",
+      "enPart": "assortment"
+    },
+    {
+      "dePart": "auswahl",
+      "enPart": "sample"
+    },
+    {
+      "dePart": "auswahl",
+      "enPart": "cull"
+    },
+    {
+      "dePart": "auswahl",
+      "enPart": "representative team"
+    },
+    {
+      "dePart": "auswahl",
+      "enPart": "miscellany"
+    }
+  ],
+  "deEnThird": [
+    {
+      "dePart": "auswahl",
+      "enPart": "Anzahl"
+    },
+    {
+      "dePart": "auswahl",
+      "enPart": "Aufwand"
+    },
+    {
+      "dePart": "auswahl",
+      "enPart": "Ausfall"
+    },
+    {
+      "dePart": "auswahl",
+      "enPart": "Ausnahm"
+    },
+    {
+      "dePart": "auswahl",
+      "enPart": "Baustahl"
+    }
+  ],
+  "phraseFirst": [
+    {
+      "dePart": "eine Auswahl treffen",
+      "enPart": "to select (from), to make a selection (from), to make one’s choice (of)to select (from), to make a selection (from), to make one’s choice (of)"
+    },
+    {
+      "dePart": "die Auswahl unter verschiedenen Möglichkeiten haben",
+      "enPart": "to be able to choose from various possibilities"
+    },
+    {
+      "dePart": "eine sorgfältige Auswahl treffen",
+      "enPart": "to choose carefully"
+    },
+    {
+      "dePart": "zehn Bücher stehen zur Auswahl",
+      "enPart": "there are ten books to choose from"
+    },
+    {
+      "dePart": "(jemandem) etwas zur Auswahl stellen",
+      "enPart": "to offer (jemand|somebody sb ) the choice ofetwas|something sth to offer () the choice of"
+    },
+    {
+      "dePart": "jemandem etwas zur Auswahl vorlegen",
+      "enPart": "to presentjemand|somebody sb with etwas|something sth to choose fromto presentwith to choose from"
+    },
+    {
+      "dePart": "eine reiche (reichhaltige) Auswahl anetwas haben",
+      "enPart": "to have a great variety (oder|or od wide range) ofetwas|something sth to choose fromto have a great variety (wide range) ofto choose from"
+    },
+    {
+      "dePart": "eine schöne Auswahl an Schallplatten",
+      "enPart": "a fine selection of records"
+    },
+    {
+      "dePart": "Schuhe in großer Auswahl",
+      "enPart": "a large assortment of shoes"
+    },
+    {
+      "dePart": "zur Auswahl",
+      "enPart": "to choose from"
+    },
+    {
+      "dePart": "Auswahl von Mustern",
+      "enPart": ""
+    },
+    {
+      "dePart": "bewusste [geschichtete] Auswahl",
+      "enPart": "purposive [stratified] sample"
+    },
+    {
+      "dePart": "eine Auswahl aus (von) Goethes Werken",
+      "enPart": "selections from Goethe"
+    },
+    {
+      "dePart": "eine Auswahl von Gedichten",
+      "enPart": "an anthology of poems"
+    },
+    {
+      "dePart": "eine Auswahl zusammenstellen",
+      "enPart": "to compile a selection [an anthology]"
+    },
+    {
+      "dePart": "zufällige Auswahl",
+      "enPart": "random sampling"
+    }
+  ],
+  "phraseSecond": [
+    {
+      "dePart": "viel/eine reiche Auswahl",
+      "enPart": "a large/wide selection"
+    },
+    {
+      "dePart": "hier gibt es keine Auswahl",
+      "enPart": "there is no choice"
+    },
+    {
+      "dePart": "drei Bewerber stehen zur Auswahl",
+      "enPart": "there are three applicants to choose from"
+    },
+    {
+      "dePart": "jdm drei Sachen zur Auswahl vorlegen",
+      "enPart": "to offer sb a choice of three things"
+    },
+    {
+      "dePart": "eine Auswahl treffen",
+      "enPart": "to make a choiceto make a selection"
+    }
+  ],
+  "phraseThird": [],
+  "phraseFourth": [
+    {
+      "dePart": "40Auswahl {f}",
+      "enPart": "repertory"
+    },
+    {
+      "dePart": "36Auswahl {f}",
+      "enPart": "digest [of book, facts]"
+    },
+    {
+      "dePart": "A-Auswahl {f}",
+      "enPart": "sports (national) A team [A-team]"
+    },
+    {
+      "dePart": "Auswahl {f}",
+      "enPart": "assorted samples {pl}"
+    },
+    {
+      "dePart": "Auswahl {f} [das Auswählen]",
+      "enPart": "selecting"
+    },
+    {
+      "dePart": "Auswahl {f} [kurz für: Auswahlmannschaft]",
+      "enPart": "sports representative team"
+    },
+    {
+      "dePart": "B-Auswahl {f}",
+      "enPart": "sports second-string side"
+    },
+    {
+      "dePart": "zur Auswahl",
+      "enPart": "at choice"
+    },
+    {
+      "dePart": "Auswahl aufheben [Kontrollkästchen \"abwählen\"]",
+      "enPart": "comp. to uncheck (a checkbox)"
+    },
+    {
+      "dePart": "Auswahl {f} von",
+      "enPart": "assortment of"
+    },
+    {
+      "dePart": "Baustein-Auswahl {f}",
+      "enPart": "chip-select"
+    },
+    {
+      "dePart": "besondere Auswahl {f}",
+      "enPart": "particular choice"
+    },
+    {
+      "dePart": "bewusste Auswahl {f}",
+      "enPart": "sociol. stat. purposive sample"
+    },
+    {
+      "dePart": "Chip-Auswahl {f}",
+      "enPart": "chip-select"
+    },
+    {
+      "dePart": "eigene Auswahl {f}",
+      "enPart": "self-selection"
+    },
+    {
+      "dePart": "engere Auswahl {f}",
+      "enPart": "short list"
+    },
+    {
+      "dePart": "falsche Auswahl {f}",
+      "enPart": "faulty selection"
+    },
+    {
+      "dePart": "freie Auswahl {f}",
+      "enPart": "free choice"
+    },
+    {
+      "dePart": "geschichtete Auswahl {f} [Stichprobe]",
+      "enPart": "stat. stratified sampling"
+    },
+    {
+      "dePart": "große Auswahl {f}",
+      "enPart": "large choice"
+    },
+    {
+      "dePart": "große Auswahl {f}",
+      "enPart": "wide choice"
+    },
+    {
+      "dePart": "große Auswahl {f}",
+      "enPart": "idiom plenty of choice"
+    },
+    {
+      "dePart": "künstliche Auswahl {f}",
+      "enPart": "artificial selection"
+    },
+    {
+      "dePart": "natürliche Auswahl {f}",
+      "enPart": "biol. natural selection"
+    },
+    {
+      "dePart": "negative Auswahl {f}",
+      "enPart": "adverse selection"
+    },
+    {
+      "dePart": "reichliche Auswahl {f}",
+      "enPart": "ample choice"
+    },
+    {
+      "dePart": "reichliche Auswahl {f}",
+      "enPart": "idiom plenty of choices"
+    },
+    {
+      "dePart": "sexuelle Auswahl {f}",
+      "enPart": "biol. sexual selection"
+    },
+    {
+      "dePart": "überreiche Auswahl {f}",
+      "enPart": "embarrassment of riches"
+    },
+    {
+      "dePart": "verzerrte Auswahl {f}",
+      "enPart": "math. stat. selection bias"
+    },
+    {
+      "dePart": "willkürliche Auswahl {f}",
+      "enPart": "random selection"
+    },
+    {
+      "dePart": "willkürliche Auswahl {f}",
+      "enPart": "stat. convenience sample / sampling"
+    },
+    {
+      "dePart": "zufällige Auswahl {f}",
+      "enPart": "chance selection"
+    },
+    {
+      "dePart": "zufällige Auswahl {f}",
+      "enPart": "random selection"
+    },
+    {
+      "dePart": "die Auswahl begrenzen",
+      "enPart": "to narrow down the choice"
+    },
+    {
+      "dePart": "eine Auswahl anbieten",
+      "enPart": "to offer a choice"
+    },
+    {
+      "dePart": "eine Auswahl gewinnen",
+      "enPart": "idiom  Unverified to make the cut for sth. [coll.] [person or team] [meet a certain standard or requirement]"
+    },
+    {
+      "dePart": "eine Auswahl haben",
+      "enPart": "to have an option"
+    },
+    {
+      "dePart": "keine Auswahl haben",
+      "enPart": "to have no option"
+    }
+  ],
+  "phraseFifth": [
+    {
+      "dePart": "Man sollte eigentlich im Leben niemals die gleiche Dummheit zweimal machen, denn die Auswahl ist so groß.",
+      "enPart": ""
+    },
+    {
+      "dePart": "Man muss nicht nur mehr Ideen haben als andere, sondern auch die Fähigkeit besitzen, zu entscheiden, welche dieser Ideen gut sind.",
+      "enPart": ""
+    }
+  ],
+  "phraseSixth": [
+    {
+      "dePart": "große Auswahl",
+      "enPart": ""
+    },
+    {
+      "dePart": "die freie Auswahl haben",
+      "enPart": ""
+    },
+    {
+      "dePart": "eine beschränkte Auswahl",
+      "enPart": ""
+    },
+    {
+      "dePart": "eine reiche Auswahl an Speisen",
+      "enPart": ""
+    },
+    {
+      "dePart": "die Auswahl und Pflege der Links",
+      "enPart": ""
+    },
+    {
+      "dePart": "eine große Auswahl an Strickwolle",
+      "enPart": ""
+    },
+    {
+      "dePart": "Dies führt im Ergebnis zu einem eingeschränkten Wettbewerb, einer geringeren Auswahl für die Verbraucher und zu hohen Preisen.",
+      "enPart": ""
+    }
+  ],
+  "synonymFirst": [
+    {
+      "dePart": "Auslese",
+      "enPart": ""
+    },
+    {
+      "dePart": "Bevorzugung",
+      "enPart": ""
+    },
+    {
+      "dePart": "Erwählung",
+      "enPart": ""
+    },
+    {
+      "dePart": "Selektion",
+      "enPart": ""
+    },
+    {
+      "dePart": "Bestand",
+      "enPart": ""
+    },
+    {
+      "dePart": "Fundus",
+      "enPart": ""
+    },
+    {
+      "dePart": "Grundstock",
+      "enPart": ""
+    },
+    {
+      "dePart": "Sammlung",
+      "enPart": ""
+    },
+    {
+      "dePart": "Range (fachsprachlich)",
+      "enPart": ""
+    },
+    {
+      "dePart": "Sortiment",
+      "enPart": ""
+    },
+    {
+      "dePart": "Warenangebot",
+      "enPart": ""
+    }
+  ],
+  "synonymSecond": [
+    {
+      "dePart": "Assortiment",
+      "enPart": ""
+    },
+    {
+      "dePart": "Kollektion",
+      "enPart": ""
+    },
+    {
+      "dePart": "Musterkollektion",
+      "enPart": ""
+    },
+    {
+      "dePart": "Palette",
+      "enPart": ""
+    },
+    {
+      "dePart": "Selektion",
+      "enPart": ""
+    },
+    {
+      "dePart": "Sortiment",
+      "enPart": ""
+    },
+    {
+      "dePart": "Wahl",
+      "enPart": ""
+    },
+    {
+      "dePart": "Sammlung",
+      "enPart": ""
+    },
+    {
+      "dePart": "Muster",
+      "enPart": ""
+    },
+    {
+      "dePart": "Almanach",
+      "enPart": ""
+    },
+    {
+      "dePart": "Angebot",
+      "enPart": ""
+    },
+    {
+      "dePart": "Anthologie",
+      "enPart": ""
+    },
+    {
+      "dePart": "Besetzung",
+      "enPart": ""
+    },
+    {
+      "dePart": "Auswahl",
+      "enPart": ""
+    }
+  ],
+  "synonymThird": [
+    {
+      "dePart": "Auslese",
+      "enPart": ""
+    },
+    {
+      "dePart": "Bestand",
+      "enPart": ""
+    },
+    {
+      "dePart": "Bevorzugung",
+      "enPart": ""
+    },
+    {
+      "dePart": "Fundus",
+      "enPart": ""
+    },
+    {
+      "dePart": "Grundstock",
+      "enPart": ""
+    },
+    {
+      "dePart": "Güteklasse",
+      "enPart": ""
+    },
+    {
+      "dePart": "Nationalmannschaft",
+      "enPart": ""
+    },
+    {
+      "dePart": "Präferenz",
+      "enPart": ""
+    },
+    {
+      "dePart": "Range",
+      "enPart": ""
+    },
+    {
+      "dePart": "Sammlung",
+      "enPart": ""
+    },
+    {
+      "dePart": "Selektion",
+      "enPart": ""
+    },
+    {
+      "dePart": "Sortiment",
+      "enPart": ""
+    },
+    {
+      "dePart": "Wahl",
+      "enPart": ""
+    },
+    {
+      "dePart": "Warenangebot",
+      "enPart": ""
+    }
+  ],
+  "synonymFourth": [
+    {
+      "dePart": "(sich lesen wie ein) Who is who (von)",
+      "enPart": ""
+    },
+    {
+      "dePart": "Abriss (eines Buches)",
+      "enPart": ""
+    },
+    {
+      "dePart": "Kurzzusammenfassung",
+      "enPart": ""
+    },
+    {
+      "dePart": "Nationalmannschaft",
+      "enPart": ""
+    },
+    {
+      "dePart": "Leistungsportfolio",
+      "enPart": ""
+    },
+    {
+      "dePart": "Körung (Tierzucht)",
+      "enPart": ""
+    },
+    {
+      "dePart": "Equipe (Reitsport)",
+      "enPart": ""
+    },
+    {
+      "dePart": "(die) erste Garde",
+      "enPart": ""
+    },
+    {
+      "dePart": "Leistungsspektrum",
+      "enPart": ""
+    },
+    {
+      "dePart": "Angebotsportfolio",
+      "enPart": ""
+    },
+    {
+      "dePart": "Riege (Turnsport)",
+      "enPart": ""
+    },
+    {
+      "dePart": "Produktsortiment",
+      "enPart": ""
+    },
+    {
+      "dePart": "Angebotsspektrum",
+      "enPart": ""
+    },
+    {
+      "dePart": "Inhaltsübersicht",
+      "enPart": ""
+    },
+    {
+      "dePart": "Produktportfolio",
+      "enPart": ""
+    },
+    {
+      "dePart": "Angebotsvielfalt",
+      "enPart": ""
+    },
+    {
+      "dePart": "Leistungsangebot",
+      "enPart": ""
+    },
+    {
+      "dePart": "Zusammenstellung",
+      "enPart": ""
+    },
+    {
+      "dePart": "Zusammenfassung",
+      "enPart": ""
+    },
+    {
+      "dePart": "Warensortiment",
+      "enPart": ""
+    },
+    {
+      "dePart": "Produktangebot",
+      "enPart": ""
+    },
+    {
+      "dePart": "Produktpalette",
+      "enPart": ""
+    },
+    {
+      "dePart": "Produktauswahl",
+      "enPart": ""
+    },
+    {
+      "dePart": "Warenspektrum",
+      "enPart": ""
+    },
+    {
+      "dePart": "Bestenauslese",
+      "enPart": ""
+    },
+    {
+      "dePart": "Inhaltsangabe",
+      "enPart": ""
+    },
+    {
+      "dePart": "(die) Besten",
+      "enPart": ""
+    },
+    {
+      "dePart": "Warenangebot",
+      "enPart": ""
+    },
+    {
+      "dePart": "Gurkentruppe",
+      "enPart": ""
+    },
+    {
+      "dePart": "Nationalelf",
+      "enPart": ""
+    },
+    {
+      "dePart": "Bevorzugung",
+      "enPart": ""
+    },
+    {
+      "dePart": "Klappentext",
+      "enPart": ""
+    },
+    {
+      "dePart": "Ausschnitt",
+      "enPart": ""
+    },
+    {
+      "dePart": "Blütenlese",
+      "enPart": ""
+    },
+    {
+      "dePart": "Bandbreite",
+      "enPart": ""
+    },
+    {
+      "dePart": "Mannschaft",
+      "enPart": ""
+    },
+    {
+      "dePart": "Grundstock",
+      "enPart": ""
+    },
+    {
+      "dePart": "Breviarium",
+      "enPart": ""
+    },
+    {
+      "dePart": "Sammelband",
+      "enPart": ""
+    },
+    {
+      "dePart": "Güteklasse",
+      "enPart": ""
+    },
+    {
+      "dePart": "Besetzung",
+      "enPart": ""
+    },
+    {
+      "dePart": "Sortiment",
+      "enPart": ""
+    },
+    {
+      "dePart": "Selektion",
+      "enPart": ""
+    },
+    {
+      "dePart": "Sortiment",
+      "enPart": ""
+    },
+    {
+      "dePart": "Präferenz",
+      "enPart": ""
+    },
+    {
+      "dePart": "Sammlung",
+      "enPart": ""
+    },
+    {
+      "dePart": "Spektrum",
+      "enPart": ""
+    },
+    {
+      "dePart": "Aufgebot",
+      "enPart": ""
+    },
+    {
+      "dePart": "Sammlung",
+      "enPart": ""
+    },
+    {
+      "dePart": "Abstract",
+      "enPart": ""
+    },
+    {
+      "dePart": "Konspekt",
+      "enPart": ""
+    },
+    {
+      "dePart": "Palette",
+      "enPart": ""
+    },
+    {
+      "dePart": "Auslese",
+      "enPart": ""
+    },
+    {
+      "dePart": "Auswahl",
+      "enPart": ""
+    },
+    {
+      "dePart": "Auswahl",
+      "enPart": ""
+    },
+    {
+      "dePart": "Auswahl",
+      "enPart": ""
+    },
+    {
+      "dePart": "Auslese",
+      "enPart": ""
+    },
+    {
+      "dePart": "Exzerpt",
+      "enPart": ""
+    },
+    {
+      "dePart": "Bestand",
+      "enPart": ""
+    },
+    {
+      "dePart": "Auswahl",
+      "enPart": ""
+    },
+    {
+      "dePart": "Auswahl",
+      "enPart": ""
+    },
+    {
+      "dePart": "Auswahl",
+      "enPart": ""
+    },
+    {
+      "dePart": "Auswahl",
+      "enPart": ""
+    },
+    {
+      "dePart": "Auswahl",
+      "enPart": ""
+    },
+    {
+      "dePart": "Epitome",
+      "enPart": ""
+    },
+    {
+      "dePart": "Auslese",
+      "enPart": ""
+    },
+    {
+      "dePart": "Auswahl",
+      "enPart": ""
+    },
+    {
+      "dePart": "Auswahl",
+      "enPart": ""
+    },
+    {
+      "dePart": "Abrégé",
+      "enPart": ""
+    },
+    {
+      "dePart": "Auszug",
+      "enPart": ""
+    },
+    {
+      "dePart": "Fundus",
+      "enPart": ""
+    },
+    {
+      "dePart": "Digest",
+      "enPart": ""
+    },
+    {
+      "dePart": "Spanne",
+      "enPart": ""
+    },
+    {
+      "dePart": "Kader",
+      "enPart": ""
+    },
+    {
+      "dePart": "Skala",
+      "enPart": ""
+    },
+    {
+      "dePart": "Range",
+      "enPart": ""
+    },
+    {
+      "dePart": "Elite",
+      "enPart": ""
+    },
+    {
+      "dePart": "Team",
+      "enPart": ""
+    },
+    {
+      "dePart": "Wahl",
+      "enPart": ""
+    }
+  ],
+  "synonymFifth": [
+    {
+      "dePart": "Range (fachsprachlich)",
+      "enPart": ""
+    },
+    {
+      "dePart": "Nationalmannschaft",
+      "enPart": ""
+    },
+    {
+      "dePart": "Warenangebot",
+      "enPart": ""
+    },
+    {
+      "dePart": "Bevorzugung",
+      "enPart": ""
+    },
+    {
+      "dePart": "Güteklasse",
+      "enPart": ""
+    },
+    {
+      "dePart": "Grundstock",
+      "enPart": ""
+    },
+    {
+      "dePart": "Mannschaft",
+      "enPart": ""
+    },
+    {
+      "dePart": "Erwählung",
+      "enPart": ""
+    },
+    {
+      "dePart": "Selektion",
+      "enPart": ""
+    },
+    {
+      "dePart": "Sortiment",
+      "enPart": ""
+    },
+    {
+      "dePart": "Sammlung",
+      "enPart": ""
+    },
+    {
+      "dePart": "Auslese",
+      "enPart": ""
+    },
+    {
+      "dePart": "Auswahl",
+      "enPart": ""
+    },
+    {
+      "dePart": "Bestand",
+      "enPart": ""
+    },
+    {
+      "dePart": "Fundus",
+      "enPart": ""
+    },
+    {
+      "dePart": "Team",
+      "enPart": ""
+    }
+  ],
+  "synonymSixth": [
+    {
+      "dePart": "stellenbewerber für auswahlverfahren",
+      "enPart": ""
+    },
+    {
+      "dePart": "auswahlverfahren für stellenbewerber",
+      "enPart": ""
+    },
+    {
+      "dePart": "artikelnummer bzw. bestell.-",
+      "enPart": ""
+    },
+    {
+      "dePart": "mit einer gewohnheit brechen",
+      "enPart": ""
+    },
+    {
+      "dePart": "sich einer sache bemächtigen",
+      "enPart": ""
+    },
+    {
+      "dePart": "von einer gewohnheit abgehen",
+      "enPart": ""
+    },
+    {
+      "dePart": "zu seinem eigentum machen",
+      "enPart": ""
+    },
+    {
+      "dePart": "... haben ich will dieses",
+      "enPart": ""
+    },
+    {
+      "dePart": "sich frei entscheiden für",
+      "enPart": ""
+    },
+    {
+      "dePart": "durch das sieb schütten",
+      "enPart": ""
+    },
+    {
+      "dePart": "bestimmen auswahl durch",
+      "enPart": ""
+    },
+    {
+      "dePart": "ausscheidungswettkampf",
+      "enPart": ""
+    },
+    {
+      "dePart": "sich etwas abgewöhnen",
+      "enPart": ""
+    },
+    {
+      "dePart": "außer betrieb setzen",
+      "enPart": ""
+    },
+    {
+      "dePart": "vorstellungsgespräch",
+      "enPart": ""
+    },
+    {
+      "dePart": "sich schenken lassen",
+      "enPart": ""
+    },
+    {
+      "dePart": "sich entscheiden für",
+      "enPart": ""
+    },
+    {
+      "dePart": "... heißt wahl meine",
+      "enPart": ""
+    },
+    {
+      "dePart": "criterion selection",
+      "enPart": ""
+    },
+    {
+      "dePart": "procedure selection",
+      "enPart": ""
+    },
+    {
+      "dePart": "nationalmannschaft",
+      "enPart": ""
+    },
+    {
+      "dePart": "in die hand nehmen",
+      "enPart": ""
+    },
+    {
+      "dePart": "auswahlmöglichkeit",
+      "enPart": ""
+    },
+    {
+      "dePart": "ausscheidungsspiel",
+      "enPart": ""
+    },
+    {
+      "dePart": "seine stimme geben",
+      "enPart": ""
+    },
+    {
+      "dePart": "auswahl der besten",
+      "enPart": ""
+    },
+    {
+      "dePart": "besten der auswahl",
+      "enPart": ""
+    },
+    {
+      "dePart": "ausscheidungskampf",
+      "enPart": ""
+    },
+    {
+      "dePart": "eine wahl treffen",
+      "enPart": ""
+    },
+    {
+      "dePart": "in besitz bringen",
+      "enPart": ""
+    },
+    {
+      "dePart": "assessment center",
+      "enPart": ""
+    },
+    {
+      "dePart": "jemanden erwählen",
+      "enPart": ""
+    },
+    {
+      "dePart": "selection address",
+      "enPart": ""
+    },
+    {
+      "dePart": "crème de la crème",
+      "enPart": ""
+    },
+    {
+      "dePart": "center assessment",
+      "enPart": ""
+    },
+    {
+      "dePart": "auswahlmannschaft",
+      "enPart": ""
+    },
+    {
+      "dePart": "sich einverleiben",
+      "enPart": ""
+    },
+    {
+      "dePart": "selection account",
+      "enPart": ""
+    },
+    {
+      "dePart": "auswahlverfahren",
+      "enPart": ""
+    },
+    {
+      "dePart": "type recommended",
+      "enPart": ""
+    },
+    {
+      "dePart": "besitz ergreifen",
+      "enPart": ""
+    },
+    {
+      "dePart": "assessmentcenter",
+      "enPart": ""
+    },
+    {
+      "dePart": "in besitz nehmen",
+      "enPart": ""
+    },
+    {
+      "dePart": "auflage erteilen",
+      "enPart": ""
+    },
+    {
+      "dePart": "sich entscheiden",
+      "enPart": ""
+    },
+    {
+      "dePart": "sich bemächtigen",
+      "enPart": ""
+    },
+    {
+      "dePart": "auswahlinterview",
+      "enPart": ""
+    },
+    {
+      "dePart": "auswahlkriterium",
+      "enPart": ""
+    },
+    {
+      "dePart": "musterkollektion",
+      "enPart": ""
+    },
+    {
+      "dePart": "einhalt gebieten",
+      "enPart": ""
+    },
+    {
+      "dePart": "kontrollkästchen",
+      "enPart": ""
+    },
+    {
+      "dePart": "zusammenstellung",
+      "enPart": ""
+    },
+    {
+      "dePart": "auswahlgespräch",
+      "enPart": ""
+    },
+    {
+      "dePart": "wahlmöglichkeit",
+      "enPart": ""
+    },
+    {
+      "dePart": "wohnungsaufgabe",
+      "enPart": ""
+    },
+    {
+      "dePart": "selector camera",
+      "enPart": ""
+    },
+    {
+      "dePart": "multiple choice",
+      "enPart": ""
+    },
+    {
+      "dePart": "sich abgewöhnen",
+      "enPart": ""
+    },
+    {
+      "dePart": "markierungsfeld",
+      "enPart": ""
+    },
+    {
+      "dePart": "auswählen etwas",
+      "enPart": ""
+    },
+    {
+      "dePart": "jemanden wählen",
+      "enPart": ""
+    },
+    {
+      "dePart": "auswahlschalter",
+      "enPart": ""
+    },
+    {
+      "dePart": "table selection",
+      "enPart": ""
+    },
+    {
+      "dePart": "mehrfachauswahl",
+      "enPart": ""
+    },
+    {
+      "dePart": "zu sich nehmen",
+      "enPart": ""
+    },
+    {
+      "dePart": "selection head",
+      "enPart": ""
+    },
+    {
+      "dePart": "warensortiment",
+      "enPart": ""
+    },
+    {
+      "dePart": "an sich reißen",
+      "enPart": ""
+    },
+    {
+      "dePart": "entgegennehmen",
+      "enPart": ""
+    },
+    {
+      "dePart": "an sich nehmen",
+      "enPart": ""
+    },
+    {
+      "dePart": "bundestagswahl",
+      "enPart": ""
+    },
+    {
+      "dePart": "administrieren",
+      "enPart": ""
+    },
+    {
+      "dePart": "fördern zutage",
+      "enPart": ""
+    },
+    {
+      "dePart": "selektionieren",
+      "enPart": ""
+    },
+    {
+      "dePart": "abkommandieren",
+      "enPart": ""
+    },
+    {
+      "dePart": "auswahltabelle",
+      "enPart": ""
+    },
+    {
+      "dePart": "führerschicht",
+      "enPart": ""
+    },
+    {
+      "dePart": "niederstellen",
+      "enPart": ""
+    },
+    {
+      "dePart": "herausfischen",
+      "enPart": ""
+    },
+    {
+      "dePart": "lieber wählen",
+      "enPart": ""
+    },
+    {
+      "dePart": "herausstellen",
+      "enPart": ""
+    },
+    {
+      "dePart": "mustersendung",
+      "enPart": ""
+    },
+    {
+      "dePart": "sich aneignen",
+      "enPart": ""
+    },
+    {
+      "dePart": "herausklauben",
+      "enPart": ""
+    },
+    {
+      "dePart": "kontenauswahl",
+      "enPart": ""
+    },
+    {
+      "dePart": "aufräumen mit",
+      "enPart": ""
+    },
+    {
+      "dePart": "kameraauswahl",
+      "enPart": ""
+    },
+    {
+      "dePart": "adressauswahl",
+      "enPart": ""
+    },
+    {
+      "dePart": "abstimmen für",
+      "enPart": ""
+    },
+    {
+      "dePart": "plädieren für",
+      "enPart": ""
+    },
+    {
+      "dePart": "ausscheidung",
+      "enPart": ""
+    },
+    {
+      "dePart": "herausnehmen",
+      "enPart": ""
+    },
+    {
+      "dePart": "kontrollfeld",
+      "enPart": ""
+    },
+    {
+      "dePart": "durchforsten",
+      "enPart": ""
+    },
+    {
+      "dePart": "durchstöbern",
+      "enPart": ""
+    },
+    {
+      "dePart": "einstreichen",
+      "enPart": ""
+    },
+    {
+      "dePart": "aussortieren",
+      "enPart": ""
+    },
+    {
+      "dePart": "jobinterview",
+      "enPart": ""
+    },
+    {
+      "dePart": "ausschließen",
+      "enPart": ""
+    },
+    {
+      "dePart": "vorauswählen",
+      "enPart": ""
+    },
+    {
+      "dePart": "favorisieren",
+      "enPart": ""
+    },
+    {
+      "dePart": "warenauswahl",
+      "enPart": ""
+    },
+    {
+      "dePart": "lieber mögen",
+      "enPart": ""
+    },
+    {
+      "dePart": "ausmusterung",
+      "enPart": ""
+    },
+    {
+      "dePart": "einkassieren",
+      "enPart": ""
+    },
+    {
+      "dePart": "niedersetzen",
+      "enPart": ""
+    },
+    {
+      "dePart": "preselection",
+      "enPart": ""
+    },
+    {
+      "dePart": "aussonderung",
+      "enPart": ""
+    },
+    {
+      "dePart": "heraussuchen",
+      "enPart": ""
+    },
+    {
+      "dePart": "votieren für",
+      "enPart": ""
+    },
+    {
+      "dePart": "preselect to",
+      "enPart": ""
+    },
+    {
+      "dePart": "große anzahl",
+      "enPart": ""
+    },
+    {
+      "dePart": "herauspicken",
+      "enPart": ""
+    },
+    {
+      "dePart": "entscheidung",
+      "enPart": ""
+    },
+    {
+      "dePart": "warenangebot",
+      "enPart": ""
+    },
+    {
+      "dePart": "auslese top",
+      "enPart": ""
+    },
+    {
+      "dePart": "durchsuchen",
+      "enPart": ""
+    },
+    {
+      "dePart": "herauslösen",
+      "enPart": ""
+    },
+    {
+      "dePart": "ausgliedern",
+      "enPart": ""
+    },
+    {
+      "dePart": "ausdünstung",
+      "enPart": ""
+    },
+    {
+      "dePart": "ausscheiden",
+      "enPart": ""
+    },
+    {
+      "dePart": "erforschung",
+      "enPart": ""
+    },
+    {
+      "dePart": "abscheidung",
+      "enPart": ""
+    },
+    {
+      "dePart": "ausplündern",
+      "enPart": ""
+    },
+    {
+      "dePart": "komposition",
+      "enPart": ""
+    },
+    {
+      "dePart": "selektieren",
+      "enPart": ""
+    },
+    {
+      "dePart": "entscheiden",
+      "enPart": ""
+    },
+    {
+      "dePart": "oberschicht",
+      "enPart": ""
+    },
+    {
+      "dePart": "bevorzugung",
+      "enPart": ""
+    },
+    {
+      "dePart": "bemächtigen",
+      "enPart": ""
+    },
+    {
+      "dePart": "traubenlese",
+      "enPart": ""
+    },
+    {
+      "dePart": "beschließen",
+      "enPart": ""
+    },
+    {
+      "dePart": "ausspielung",
+      "enPart": ""
+    },
+    {
+      "dePart": "niederlegen",
+      "enPart": ""
+    },
+    {
+      "dePart": "begünstigen",
+      "enPart": ""
+    },
+    {
+      "dePart": "eliminieren",
+      "enPart": ""
+    },
+    {
+      "dePart": "auswahlband",
+      "enPart": ""
+    },
+    {
+      "dePart": "stimmabgabe",
+      "enPart": ""
+    },
+    {
+      "dePart": "kopfauswahl",
+      "enPart": ""
+    },
+    {
+      "dePart": "assortiment",
+      "enPart": ""
+    },
+    {
+      "dePart": "durchsieben",
+      "enPart": ""
+    },
+    {
+      "dePart": "möglichkeit",
+      "enPart": ""
+    },
+    {
+      "dePart": "stimmen für",
+      "enPart": ""
+    },
+    {
+      "dePart": "durchseihen",
+      "enPart": ""
+    },
+    {
+      "dePart": "auserwählen",
+      "enPart": ""
+    },
+    {
+      "dePart": "protegieren",
+      "enPart": ""
+    },
+    {
+      "dePart": "auszeichnen",
+      "enPart": ""
+    },
+    {
+      "dePart": "alternative",
+      "enPart": ""
+    },
+    {
+      "dePart": "repertoire",
+      "enPart": ""
+    },
+    {
+      "dePart": "gesamtheit",
+      "enPart": ""
+    },
+    {
+      "dePart": "besten die",
+      "enPart": ""
+    },
+    {
+      "dePart": "auswählend",
+      "enPart": ""
+    },
+    {
+      "dePart": "eklektisch",
+      "enPart": ""
+    },
+    {
+      "dePart": "auflistung",
+      "enPart": ""
+    },
+    {
+      "dePart": "beseitigen",
+      "enPart": ""
+    },
+    {
+      "dePart": "ausersehen",
+      "enPart": ""
+    },
+    {
+      "dePart": "fortwerfen",
+      "enPart": ""
+    },
+    {
+      "dePart": "buchhandel",
+      "enPart": ""
+    },
+    {
+      "dePart": "selegieren",
+      "enPart": ""
+    },
+    {
+      "dePart": "bestätigen",
+      "enPart": ""
+    },
+    {
+      "dePart": "seligieren",
+      "enPart": ""
+    },
+    {
+      "dePart": "blütenlese",
+      "enPart": ""
+    },
+    {
+      "dePart": "abstimmung",
+      "enPart": ""
+    },
+    {
+      "dePart": "ausfiltern",
+      "enPart": ""
+    },
+    {
+      "dePart": "ausklauben",
+      "enPart": ""
+    },
+    {
+      "dePart": "ausmustern",
+      "enPart": ""
+    },
+    {
+      "dePart": "aussondern",
+      "enPart": ""
+    },
+    {
+      "dePart": "bestimmung",
+      "enPart": ""
+    },
+    {
+      "dePart": "bevorzugen",
+      "enPart": ""
+    },
+    {
+      "dePart": "grundstock",
+      "enPart": ""
+    },
+    {
+      "dePart": "deponieren",
+      "enPart": ""
+    },
+    {
+      "dePart": "einstecken",
+      "enPart": ""
+    },
+    {
+      "dePart": "mannschaft",
+      "enPart": ""
+    },
+    {
+      "dePart": "auswahltyp",
+      "enPart": ""
+    },
+    {
+      "dePart": "güteklasse",
+      "enPart": ""
+    },
+    {
+      "dePart": "überordnen",
+      "enPart": ""
+    },
+    {
+      "dePart": "ausschnitt",
+      "enPart": ""
+    },
+    {
+      "dePart": "anthologie",
+      "enPart": ""
+    },
+    {
+      "dePart": "hinstellen",
+      "enPart": ""
+    },
+    {
+      "dePart": "vorauswahl",
+      "enPart": ""
+    },
+    {
+      "dePart": "selektiert",
+      "enPart": ""
+    },
+    {
+      "dePart": "kollektion",
+      "enPart": ""
+    },
+    {
+      "dePart": "verdunkeln",
+      "enPart": ""
+    },
+    {
+      "dePart": "ausfingern",
+      "enPart": ""
+    },
+    {
+      "dePart": "die besten",
+      "enPart": ""
+    },
+    {
+      "dePart": "garagieren",
+      "enPart": ""
+    },
+    {
+      "dePart": "einsetzen",
+      "enPart": ""
+    },
+    {
+      "dePart": "auswerfen",
+      "enPart": ""
+    },
+    {
+      "dePart": "abtrennen",
+      "enPart": ""
+    },
+    {
+      "dePart": "auslosung",
+      "enPart": ""
+    },
+    {
+      "dePart": "reportoir",
+      "enPart": ""
+    },
+    {
+      "dePart": "isolieren",
+      "enPart": ""
+    },
+    {
+      "dePart": "aussieben",
+      "enPart": ""
+    },
+    {
+      "dePart": "entnehmen",
+      "enPart": ""
+    },
+    {
+      "dePart": "entfernen",
+      "enPart": ""
+    },
+    {
+      "dePart": "mitnehmen",
+      "enPart": ""
+    },
+    {
+      "dePart": "wettkampf",
+      "enPart": ""
+    },
+    {
+      "dePart": "selection",
+      "enPart": ""
+    },
+    {
+      "dePart": "entschluß",
+      "enPart": ""
+    },
+    {
+      "dePart": "besetzung",
+      "enPart": ""
+    },
+    {
+      "dePart": "grapschen",
+      "enPart": ""
+    },
+    {
+      "dePart": "gesichtet",
+      "enPart": ""
+    },
+    {
+      "dePart": "wegwerfen",
+      "enPart": ""
+    },
+    {
+      "dePart": "eruierung",
+      "enPart": ""
+    },
+    {
+      "dePart": "erwählung",
+      "enPart": ""
+    },
+    {
+      "dePart": "filterung",
+      "enPart": ""
+    },
+    {
+      "dePart": "einnehmen",
+      "enPart": ""
+    },
+    {
+      "dePart": "weinernte",
+      "enPart": ""
+    },
+    {
+      "dePart": "aussuchen",
+      "enPart": ""
+    },
+    {
+      "dePart": "zugreifen",
+      "enPart": ""
+    },
+    {
+      "dePart": "bestimmen",
+      "enPart": ""
+    },
+    {
+      "dePart": "sortiment",
+      "enPart": ""
+    },
+    {
+      "dePart": "beispiele",
+      "enPart": ""
+    },
+    {
+      "dePart": "auswählen",
+      "enPart": ""
+    },
+    {
+      "dePart": "vorziehen",
+      "enPart": ""
+    },
+    {
+      "dePart": "ernennung",
+      "enPart": ""
+    },
+    {
+      "dePart": "vergleich",
+      "enPart": ""
+    },
+    {
+      "dePart": "schnappen",
+      "enPart": ""
+    },
+    {
+      "dePart": "ausmarsch",
+      "enPart": ""
+    },
+    {
+      "dePart": "ausräumen",
+      "enPart": ""
+    },
+    {
+      "dePart": "abstimmen",
+      "enPart": ""
+    },
+    {
+      "dePart": "ermitteln",
+      "enPart": ""
+    },
+    {
+      "dePart": "sehr fein",
+      "enPart": ""
+    },
+    {
+      "dePart": "ausmessen",
+      "enPart": ""
+    },
+    {
+      "dePart": "entreißen",
+      "enPart": ""
+    },
+    {
+      "dePart": "rosenzeit",
+      "enPart": ""
+    },
+    {
+      "dePart": "enteignen",
+      "enPart": ""
+    },
+    {
+      "dePart": "ergreifen",
+      "enPart": ""
+    },
+    {
+      "dePart": "übersicht",
+      "enPart": ""
+    },
+    {
+      "dePart": "überblick",
+      "enPart": ""
+    },
+    {
+      "dePart": "bestellen",
+      "enPart": ""
+    },
+    {
+      "dePart": "passieren",
+      "enPart": ""
+    },
+    {
+      "dePart": "urnengang",
+      "enPart": ""
+    },
+    {
+      "dePart": "selektion",
+      "enPart": ""
+    },
+    {
+      "dePart": "denken an",
+      "enPart": ""
+    },
+    {
+      "dePart": "vorsehen",
+      "enPart": ""
+    },
+    {
+      "dePart": "erfassen",
+      "enPart": ""
+    },
+    {
+      "dePart": "berauben",
+      "enPart": ""
+    },
+    {
+      "dePart": "sammlung",
+      "enPart": ""
+    },
+    {
+      "dePart": "eruieren",
+      "enPart": ""
+    },
+    {
+      "dePart": "schöpfen",
+      "enPart": ""
+    },
+    {
+      "dePart": "almanach",
+      "enPart": ""
+    },
+    {
+      "dePart": "zumachen",
+      "enPart": ""
+    },
+    {
+      "dePart": "scheiden",
+      "enPart": ""
+    },
+    {
+      "dePart": "ernennen",
+      "enPart": ""
+    },
+    {
+      "dePart": "optieren",
+      "enPart": ""
+    },
+    {
+      "dePart": "erkiesen",
+      "enPart": ""
+    },
+    {
+      "dePart": "hinlegen",
+      "enPart": ""
+    },
+    {
+      "dePart": "ablassen",
+      "enPart": ""
+    },
+    {
+      "dePart": "absetzen",
+      "enPart": ""
+    },
+    {
+      "dePart": "zudenken",
+      "enPart": ""
+    },
+    {
+      "dePart": "aufgeben",
+      "enPart": ""
+    },
+    {
+      "dePart": "annehmen",
+      "enPart": ""
+    },
+    {
+      "dePart": "erwählen",
+      "enPart": ""
+    },
+    {
+      "dePart": "jahrbuch",
+      "enPart": ""
+    },
+    {
+      "dePart": "kalender",
+      "enPart": ""
+    },
+    {
+      "dePart": "aufhören",
+      "enPart": ""
+    },
+    {
+      "dePart": "wahlgang",
+      "enPart": ""
+    },
+    {
+      "dePart": "auslesen",
+      "enPart": ""
+    },
+    {
+      "dePart": "ermessen",
+      "enPart": ""
+    },
+    {
+      "dePart": "abnehmen",
+      "enPart": ""
+    },
+    {
+      "dePart": "belieben",
+      "enPart": ""
+    },
+    {
+      "dePart": "programm",
+      "enPart": ""
+    },
+    {
+      "dePart": "eingeben",
+      "enPart": ""
+    },
+    {
+      "dePart": "spektrum",
+      "enPart": ""
+    },
+    {
+      "dePart": "vielfalt",
+      "enPart": ""
+    },
+    {
+      "dePart": "repetoir",
+      "enPart": ""
+    },
+    {
+      "dePart": "selektiv",
+      "enPart": ""
+    },
+    {
+      "dePart": "beispiel",
+      "enPart": ""
+    },
+    {
+      "dePart": "bestand",
+      "enPart": ""
+    },
+    {
+      "dePart": "ersehen",
+      "enPart": ""
+    },
+    {
+      "dePart": "brevier",
+      "enPart": ""
+    },
+    {
+      "dePart": "sondern",
+      "enPart": ""
+    },
+    {
+      "dePart": "auslese",
+      "enPart": ""
+    },
+    {
+      "dePart": "absagen",
+      "enPart": ""
+    },
+    {
+      "dePart": "angebot",
+      "enPart": ""
+    },
+    {
+      "dePart": "fördern",
+      "enPart": ""
+    },
+    {
+      "dePart": "stellen",
+      "enPart": ""
+    },
+    {
+      "dePart": "analyse",
+      "enPart": ""
+    },
+    {
+      "dePart": "abjagen",
+      "enPart": ""
+    },
+    {
+      "dePart": "erlesen",
+      "enPart": ""
+    },
+    {
+      "dePart": "ablegen",
+      "enPart": ""
+    },
+    {
+      "dePart": "extrakt",
+      "enPart": ""
+    },
+    {
+      "dePart": "erküren",
+      "enPart": ""
+    },
+    {
+      "dePart": "exzerpt",
+      "enPart": ""
+    },
+    {
+      "dePart": "greifen",
+      "enPart": ""
+    },
+    {
+      "dePart": "palette",
+      "enPart": ""
+    },
+    {
+      "dePart": "berufen",
+      "enPart": ""
+    },
+    {
+      "dePart": "entwurf",
+      "enPart": ""
+    },
+    {
+      "dePart": "filtern",
+      "enPart": ""
+    },
+    {
+      "dePart": "elektiv",
+      "enPart": ""
+    },
+    {
+      "dePart": "bewegen",
+      "enPart": ""
+    },
+    {
+      "dePart": "sichten",
+      "enPart": ""
+    },
+    {
+      "dePart": "digest",
+      "enPart": ""
+    },
+    {
+      "dePart": "seihen",
+      "enPart": ""
+    },
+    {
+      "dePart": "wählen",
+      "enPart": ""
+    },
+    {
+      "dePart": "nehmen",
+      "enPart": ""
+    },
+    {
+      "dePart": "parken",
+      "enPart": ""
+    },
+    {
+      "dePart": "lagern",
+      "enPart": ""
+    },
+    {
+      "dePart": "fundus",
+      "enPart": ""
+    },
+    {
+      "dePart": "sieben",
+      "enPart": ""
+    },
+    {
+      "dePart": "klären",
+      "enPart": ""
+    },
+    {
+      "dePart": "equipe",
+      "enPart": ""
+    },
+    {
+      "dePart": "szenen",
+      "enPart": ""
+    },
+    {
+      "dePart": "angeln",
+      "enPart": ""
+    },
+    {
+      "dePart": "auszug",
+      "enPart": ""
+    },
+    {
+      "dePart": "option",
+      "enPart": ""
+    },
+    {
+      "dePart": "fangen",
+      "enPart": ""
+    },
+    {
+      "dePart": "wegzug",
+      "enPart": ""
+    },
+    {
+      "dePart": "geruch",
+      "enPart": ""
+    },
+    {
+      "dePart": "packen",
+      "enPart": ""
+    },
+    {
+      "dePart": "muster",
+      "enPart": ""
+    },
+    {
+      "dePart": "raffen",
+      "enPart": ""
+    },
+    {
+      "dePart": "fassen",
+      "enPart": ""
+    },
+    {
+      "dePart": "votum",
+      "enPart": ""
+    },
+    {
+      "dePart": "anbot",
+      "enPart": ""
+    },
+    {
+      "dePart": "fülle",
+      "enPart": ""
+    },
+    {
+      "dePart": "range",
+      "enPart": ""
+    },
+    {
+      "dePart": "summe",
+      "enPart": ""
+    },
+    {
+      "dePart": "reihe",
+      "enPart": ""
+    },
+    {
+      "dePart": "elite",
+      "enPart": ""
+    },
+    {
+      "dePart": "küren",
+      "enPart": ""
+    },
+    {
+      "dePart": "aroma",
+      "enPart": ""
+    },
+    {
+      "dePart": "beste",
+      "enPart": ""
+    },
+    {
+      "dePart": "blüte",
+      "enPart": ""
+    },
+    {
+      "dePart": "wahl",
+      "enPart": ""
+    },
+    {
+      "dePart": "duft",
+      "enPart": ""
+    },
+    {
+      "dePart": "odor",
+      "enPart": ""
+    },
+    {
+      "dePart": "team",
+      "enPart": ""
+    },
+    {
+      "dePart": "pool",
+      "enPart": ""
+    }
+  ],
+  "synonymSeventh": [
+    {
+      "dePart": "Auswahl",
+      "enPart": "selection"
+    },
+    {
+      "dePart": "Selektion",
+      "enPart": "selection"
+    },
+    {
+      "dePart": "Wahl",
+      "enPart": "selection"
+    },
+    {
+      "dePart": "Auslese",
+      "enPart": "selection"
+    },
+    {
+      "dePart": "Auswählen",
+      "enPart": "selection"
+    },
+    {
+      "dePart": "Tipp",
+      "enPart": "selection"
+    },
+    {
+      "dePart": "Wahl",
+      "enPart": "choice"
+    },
+    {
+      "dePart": "Auswahl",
+      "enPart": "choice"
+    },
+    {
+      "dePart": "Auslese",
+      "enPart": "choice"
+    },
+    {
+      "dePart": "Auswahl",
+      "enPart": "pick"
+    },
+    {
+      "dePart": "Plektrum",
+      "enPart": "pick"
+    },
+    {
+      "dePart": "Spitzhacke",
+      "enPart": "pick"
+    },
+    {
+      "dePart": "Pickel",
+      "enPart": "pick"
+    },
+    {
+      "dePart": "Picke",
+      "enPart": "pick"
+    },
+    {
+      "dePart": "Beste",
+      "enPart": "pick"
+    },
+    {
+      "dePart": "Reichweite",
+      "enPart": "range"
+    },
+    {
+      "dePart": "Palette",
+      "enPart": "range"
+    },
+    {
+      "dePart": "Reihe",
+      "enPart": "range"
+    },
+    {
+      "dePart": "Angebot",
+      "enPart": "range"
+    },
+    {
+      "dePart": "Sortiment",
+      "enPart": "range"
+    },
+    {
+      "dePart": "Auswahl",
+      "enPart": "range"
+    },
+    {
+      "dePart": "Vielfalt",
+      "enPart": "variety"
+    },
+    {
+      "dePart": "Auswahl",
+      "enPart": "variety"
+    },
+    {
+      "dePart": "Sorte",
+      "enPart": "variety"
+    },
+    {
+      "dePart": "Abwechslung",
+      "enPart": "variety"
+    },
+    {
+      "dePart": "Varietät",
+      "enPart": "variety"
+    },
+    {
+      "dePart": "Art",
+      "enPart": "variety"
+    },
+    {
+      "dePart": "Sortiment",
+      "enPart": "assortment"
+    },
+    {
+      "dePart": "Auswahl",
+      "enPart": "assortment"
+    },
+    {
+      "dePart": "Mischung",
+      "enPart": "assortment"
+    },
+    {
+      "dePart": "Sample",
+      "enPart": "sample"
+    },
+    {
+      "dePart": "Probe",
+      "enPart": "sample"
+    },
+    {
+      "dePart": "Beispiel",
+      "enPart": "sample"
+    },
+    {
+      "dePart": "Stichprobe",
+      "enPart": "sample"
+    },
+    {
+      "dePart": "Muster",
+      "enPart": "sample"
+    },
+    {
+      "dePart": "Auswahl",
+      "enPart": "sample"
+    },
+    {
+      "dePart": "Auswahl",
+      "enPart": "cull"
+    },
+    {
+      "dePart": "Redaktionsabschuss",
+      "enPart": "cull"
+    },
+    {
+      "dePart": "Auswahlmannschaft",
+      "enPart": "representative team"
+    },
+    {
+      "dePart": "Auswahl",
+      "enPart": "representative team"
+    },
+    {
+      "dePart": "Sammelband",
+      "enPart": "miscellany"
+    },
+    {
+      "dePart": "Gemisch",
+      "enPart": "miscellany"
+    },
+    {
+      "dePart": "Sammlung",
+      "enPart": "miscellany"
+    },
+    {
+      "dePart": "vermischte Schriften",
+      "enPart": "miscellany"
+    },
+    {
+      "dePart": "buntes Gemisch",
+      "enPart": "miscellany"
+    },
+    {
+      "dePart": "Auswahl",
+      "enPart": "miscellany"
+    }
+  ]
+}

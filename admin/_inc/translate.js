@@ -25,116 +25,108 @@ var deEnTimerAsync = function () {
                     case 5:
                         local = _context.sent;
 
-                        console.timeEnd("mixed");
                         willReturn.deEnFirst = local.translation;
-                        console.time("deEnThird");
-                        _context.next = 11;
-                        return deEnThird(word);
-
-                    case 11:
-                        willReturn.deEnThird = _context.sent;
-
-                        console.timeEnd("deEnThird");
+                        console.timeEnd("mixed");
                         console.time("phraseFirst");
-                        _context.next = 16;
+                        _context.next = 11;
                         return phraseFirst(word);
 
-                    case 16:
+                    case 11:
                         willReturn.phraseFirst = _context.sent;
 
                         console.timeEnd("phraseFirst");
                         console.time("phraseSecond");
-                        _context.next = 21;
+                        _context.next = 16;
                         return phraseSecond(word);
 
-                    case 21:
+                    case 16:
                         willReturn.phraseSecond = _context.sent;
 
                         console.timeEnd("phraseSecond");
                         console.time("phraseThird");
-                        _context.next = 26;
+                        _context.next = 21;
                         return phraseThird(word);
 
-                    case 26:
+                    case 21:
                         willReturn.phraseThird = _context.sent;
 
                         console.timeEnd("phraseThird");
                         console.time("phraseFourth");
-                        _context.next = 31;
+                        _context.next = 26;
                         return phraseFourth(word);
 
-                    case 31:
+                    case 26:
                         willReturn.phraseFourth = _context.sent;
 
                         console.timeEnd("phraseFourth");
                         console.time("phraseFifth");
-                        _context.next = 36;
+                        _context.next = 31;
                         return phraseFifth(word);
 
-                    case 36:
+                    case 31:
                         willReturn.phraseFifth = _context.sent;
 
                         console.timeEnd("phraseFifth");
                         console.time("phraseSixth");
-                        _context.next = 41;
+                        _context.next = 36;
                         return phraseSixth(word);
 
-                    case 41:
+                    case 36:
                         willReturn.phraseSixth = _context.sent;
 
                         console.timeEnd("phraseSixth");
                         console.time("synonymFirst");
-                        _context.next = 46;
+                        _context.next = 41;
                         return synonymFirst(word);
 
-                    case 46:
+                    case 41:
                         willReturn.synonymFirst = _context.sent;
 
                         console.timeEnd("synonymFirst");
                         console.time("synonymSecond");
-                        _context.next = 51;
+                        _context.next = 46;
                         return synonymSecond(word);
 
-                    case 51:
+                    case 46:
                         willReturn.synonymSecond = _context.sent;
 
                         console.timeEnd("synonymSecond");
                         console.time("synonymThird");
-                        _context.next = 56;
+                        _context.next = 51;
                         return synonymThird(word);
 
-                    case 56:
+                    case 51:
                         willReturn.synonymThird = _context.sent;
 
                         console.timeEnd("synonymThird");
                         console.time("synonymFourth");
-                        _context.next = 61;
+                        _context.next = 56;
                         return synonymFourth(word);
 
-                    case 61:
+                    case 56:
                         willReturn.synonymFourth = _context.sent;
 
                         console.timeEnd("synonymFourth");
                         console.time("synonymFifth");
-                        _context.next = 66;
+                        _context.next = 61;
                         return synonymFifth(word);
 
-                    case 66:
+                    case 61:
                         willReturn.synonymFifth = _context.sent;
 
                         console.timeEnd("synonymFifth");
                         console.time("synonymSixth");
-                        _context.next = 71;
+                        _context.next = 66;
                         return synonymSixth(word);
 
-                    case 71:
+                    case 66:
                         willReturn.synonymSixth = _context.sent;
 
                         console.timeEnd("synonymSixth");
                         willReturn.synonymSeventh = local.related;
                         return _context.abrupt("return", willReturn);
 
-                    case 75:
+                    case 70:
                     case "end":
                         return _context.stop();
                 }
@@ -163,75 +155,70 @@ var deEnAsync = function () {
 
                         willReturn.deEnFirst = local.translation;
                         _context2.next = 8;
-                        return deEnThird(word);
-
-                    case 8:
-                        willReturn.deEnThird = _context2.sent;
-                        _context2.next = 11;
                         return phraseFirst(word);
 
-                    case 11:
+                    case 8:
                         willReturn.phraseFirst = _context2.sent;
-                        _context2.next = 14;
+                        _context2.next = 11;
                         return phraseSecond(word);
 
-                    case 14:
+                    case 11:
                         willReturn.phraseSecond = _context2.sent;
-                        _context2.next = 17;
+                        _context2.next = 14;
                         return phraseThird(word);
 
-                    case 17:
+                    case 14:
                         willReturn.phraseThird = _context2.sent;
-                        _context2.next = 20;
+                        _context2.next = 17;
                         return phraseFourth(word);
 
-                    case 20:
+                    case 17:
                         willReturn.phraseFourth = _context2.sent;
-                        _context2.next = 23;
+                        _context2.next = 20;
                         return phraseFifth(word);
 
-                    case 23:
+                    case 20:
                         willReturn.phraseFifth = _context2.sent;
-                        _context2.next = 26;
+                        _context2.next = 23;
                         return phraseSixth(word);
 
-                    case 26:
+                    case 23:
                         willReturn.phraseSixth = _context2.sent;
-                        _context2.next = 29;
+                        _context2.next = 26;
                         return synonymFirst(word);
 
-                    case 29:
+                    case 26:
                         willReturn.synonymFirst = _context2.sent;
-                        _context2.next = 32;
+                        _context2.next = 29;
                         return synonymSecond(word);
 
-                    case 32:
+                    case 29:
                         willReturn.synonymSecond = _context2.sent;
-                        _context2.next = 35;
+                        _context2.next = 32;
                         return synonymThird(word);
 
-                    case 35:
+                    case 32:
                         willReturn.synonymThird = _context2.sent;
-                        _context2.next = 38;
+                        _context2.next = 35;
                         return synonymFourth(word);
 
-                    case 38:
+                    case 35:
                         willReturn.synonymFourth = _context2.sent;
-                        _context2.next = 41;
+                        _context2.next = 38;
                         return synonymFifth(word);
 
-                    case 41:
+                    case 38:
                         willReturn.synonymFifth = _context2.sent;
-                        _context2.next = 44;
+                        _context2.next = 41;
                         return synonymSixth(word);
 
-                    case 44:
+                    case 41:
                         willReturn.synonymSixth = _context2.sent;
 
                         willReturn.synonymSeventh = local.related;
                         return _context2.abrupt("return", willReturn);
 
-                    case 47:
+                    case 44:
                     case "end":
                         return _context2.stop();
                 }

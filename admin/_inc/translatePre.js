@@ -544,11 +544,8 @@ async function deEnTimerAsync(wordRaw) {
     let word = wordRaw.trim().toLowerCase()
     console.time("mixed")
     let local = await mixed(word)
-    console.timeEnd("mixed")
     willReturn.deEnFirst = local.translation
-    console.time("deEnThird")
-    willReturn.deEnThird = await deEnThird(word)
-    console.timeEnd("deEnThird")
+    console.timeEnd("mixed")
     console.time("phraseFirst")
     willReturn.phraseFirst = await phraseFirst(word)
     console.timeEnd("phraseFirst")
@@ -594,7 +591,6 @@ async function deEnAsync(wordRaw) {
     let word = wordRaw.trim().toLowerCase()
     let local = await mixed(word)
     willReturn.deEnFirst = local.translation
-    willReturn.deEnThird = await deEnThird(word)
     willReturn.phraseFirst = await phraseFirst(word)
     willReturn.phraseSecond = await phraseSecond(word)
     willReturn.phraseThird = await phraseThird(word)

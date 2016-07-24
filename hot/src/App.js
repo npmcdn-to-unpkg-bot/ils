@@ -9,10 +9,10 @@ function nextWord(){
     let willReturn
     let flag = true
     J.shuffle(words).map(val=>{
-        if(flag&&val.trim().indexOf(store.words)!==-1){
-            willReturn = val.trim()
+        if(flag&&val.indexOf(store.words)!==-1){
+            willReturn = val
             flag = false
-            store.words.push(val.trim())
+            store.words.push(val)
         }
     })
     return willReturn
@@ -20,42 +20,33 @@ function nextWord(){
 let initOnce = R.once(()=>{
     J.emitter.emit("init")
 })
-
-// no length beyond 72
+let initData = {
+    deEn: {
+        dePart:"",
+        enPart: ""
+    },
+    phrase: [],
+    phraseTranslated: [],
+    synonym: [],
+    synonymTranslated: []
+}
 export default class App extends Component {
     constructor (props) {
         super(props)
         this.state = {
-            globalIndex: 0,
-            globalData: [],
-            data: [],
-            answer: "",
-            textTop: "",
-            textBottom: "",
-            inputFieldSize:20,
-            inputFieldClassName:"inputField",
-            buttonText: J.buttonTextShowAnswer,
-            buttonClassName: J.bulButtonInit
+            data: initData,
+            willSend: {}
         }
         this.handleAnswerInput = this.handleAnswerInput.bind(this)
-        this.handleButtonClick = this.handleButtonClick.bind(this)
     }
     componentDidMount(){
         J.emitter.on("init", ()=>{
             J.log(`${J.host}/readDataFile/${nextWord()}`)
-            J.getData(`${J.host}/readDataFile/${nextWord()}`,incoming=>{
-                J.log(incoming)
+            J.getData(`${J.host}/readDataFile/${nextWord()}`).then(data=>{
+                this.setState({data})
             })
         })
         initOnce()
-    }
-    handleButtonClick(event){
-        J.log(this.state.buttonText)
-        if (this.state.buttonText === "Show Answer") {
-            J.emitter.emit("change button")
-        } else if (this.state.buttonText === "Next") {
-            J.emitter.emit("next")
-        }
     }
     handleAnswerInput (event) {
         if(event.key==="Enter"){

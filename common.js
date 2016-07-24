@@ -24,6 +24,9 @@ const logger = new (winston.Logger)({
             name: "error-file",
             filename: "zErrorLog.log",
             level: "error"
+        }),
+        new (winston.transports.Console)({
+            level: "debug"
         })
     ]
 })
