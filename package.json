@@ -91,6 +91,7 @@
     "istanbul": "*",
     "karma-mocha": "^1.1.1",
     "lwip": "0.0.9",
+    "meme-maker": "^2.1.2",
     "node-bing-api": "^2.4.1",
     "probe-image-size": "^2.0.1",
     "ramda-fantasy": "*",

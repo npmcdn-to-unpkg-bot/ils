@@ -120,25 +120,28 @@ var willUpdate = function () {
 
 var learningMeme = function () {
     var ref = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee3(data) {
-        var imageSrc;
+        var uploadImageResult, imageSrc, imageName;
         return _regenerator2.default.wrap(function _callee3$(_context3) {
             while (1) {
                 switch (_context3.prev = _context3.next) {
                     case 0:
                         _context3.next = 2;
-                        return uploadImage.main(data.imageSrc);
+                        return uploadImage.main(data);
 
                     case 2:
-                        imageSrc = _context3.sent;
+                        uploadImageResult = _context3.sent;
+                        imageSrc = uploadImageResult.imageSrc;
+                        imageName = uploadImageResult.imageName;
 
                         J.log(imageSrc);
-                        _context3.next = 6;
-                        return proudDb.save("data", "" + data.id, R.merge(data, { imageSrc: imageSrc }));
+                        J.log(imageName);
+                        _context3.next = 9;
+                        return proudDb.save("data", "" + data.id, R.merge(data, { imageSrc: imageSrc, imageName: imageName }));
 
-                    case 6:
+                    case 9:
                         return _context3.abrupt("return", _context3.sent);
 
-                    case 7:
+                    case 10:
                     case "end":
                         return _context3.stop();
                 }
@@ -390,6 +393,7 @@ var bringOrderTranslation = require("../_inc/bringOrderTranslation");
 var uploadImage = require("../_inc/uploadImage");
 var searchImage = require("../_inc/searchImage");
 var proudDb = require("../_inc/proud-db");
+var dataFile = require("../../hapi/public/data.json");
 var twoLevelUp = R.compose(R.join("/"), R.dropLast(2), R.split("/"));
 
 var getPredraftCategory = R.compose(R.filter(function (val) {
@@ -416,6 +420,9 @@ router.get("/read/:parent", function (req, res) {
     proudDb.loadParent(req.params.parent).then(function (data) {
         res.send(data);
     });
+});
+router.get("/readDataFile/:parent", function (req, res) {
+    res.send(dataFile[req.params.parent]);
 });
 router.post("/uploadImage", function (req, res) {
     uploadImage.main(req.body.imageUrl).then(function (incoming) {

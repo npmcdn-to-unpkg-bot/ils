@@ -20,8 +20,10 @@ initData
 searchImageKeyword
 dataFuture
 dataHolder
+dataObj
 notificationMessage
 rawSelectionShort
+srcPath
 .commonInput
 ```
 - "main" - if JSON act as a holder for array of objects, then use "main" as the single object property

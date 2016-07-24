@@ -1044,12 +1044,6 @@
       "category": "preDraft",
       "id": 198
     },
-    "199": {
-      "dePart": "Trage immer einen grünen Zweig im Herzen, es wird sich ein Singvogel darauf niederlassen.",
-      "enPart": "",
-      "category": "preDraft",
-      "id": 199
-    },
     "200": {
       "dePart": "Die Weisheit des Lebens besteht im Ausschalten der unwesentlichen Dinge.",
       "enPart": "",
@@ -1481,12 +1475,6 @@
       "enPart": "",
       "category": "preDraft",
       "id": 272
-    },
-    "273": {
-      "dePart": "Für die Welt bist du irgendjemand, aber für irgendjemand bist du die Welt.",
-      "enPart": "",
-      "category": "preDraft",
-      "id": 273
     },
     "274": {
       "dePart": "Laute Freunde sind oft leise Feinde.",
@@ -6697,10 +6685,15 @@
       "id": 1159
     },
     "1160": {
-      "dePart": "Heut morgen bin ich aufgewacht und habe gleich an Dich gedacht.",
-      "enPart": "",
-      "category": "preDraft",
-      "id": 1160
+      "category": "quotes",
+      "childSafetyFlag": true,
+      "dePart": "Heute morgen bin ich aufgewacht und habe gleich an Dich gedacht.",
+      "deWord": "aufgewacht",
+      "enPart": "I woke up today and immediately though about you.",
+      "enWord": "woke up",
+      "id": 1160,
+      "imageSrc": "http://i.imgur.com/ebfmyXe.jpg",
+      "imageName": "today-though-about-immediately"
     },
     "1161": {
       "dePart": "In der Hingabe, liegt der Keim zur großen Liebe.",
@@ -14230,12 +14223,6 @@
       "category": "preDraft",
       "id": 2426
     },
-    "2427": {
-      "dePart": "Was für ein Los wir fürchten müssen,sagt uns das eigene Gewissen.",
-      "enPart": "",
-      "category": "preDraft",
-      "id": 2427
-    },
     "2428": {
       "dePart": "Jeder ist ein Trottel, nur auf jeweils auf einem anderen Gebiet.",
       "enPart": "",
@@ -16540,12 +16527,6 @@
       "category": "preDraft",
       "id": 2813
     },
-    "2814": {
-      "dePart": "Wenn wir einmal nicht grausam sind, dann glauben wir gleich, wir seien gut",
-      "enPart": "",
-      "category": "preDraft",
-      "id": 2814
-    },
     "2815": {
       "dePart": "Lebenskünstler leben nicht länger,aber mehr.",
       "enPart": "",
@@ -16749,12 +16730,6 @@
       "enPart": "",
       "category": "preDraft",
       "id": 2848
-    },
-    "2849": {
-      "dePart": "Wenn du kein Kompliment bekommen kannst - mach dir selbst eines!",
-      "enPart": "",
-      "category": "preDraft",
-      "id": 2849
     },
     "2850": {
       "dePart": "Gewisse Stubenhocker sind gewohnt, alles zu bezweifeln, weil sie nichts sehen",
@@ -17884,12 +17859,6 @@
       "category": "preDraft",
       "id": 3039
     },
-    "3040": {
-      "dePart": "Ein Geheimnis haben, macht einen schrecklich einsam.",
-      "enPart": "",
-      "category": "preDraft",
-      "id": 3040
-    },
     "3041": {
       "dePart": "Schenkt Worten keinen Glauben, wenn nicht Werke dahinter stehen.",
       "enPart": "",
@@ -18377,12 +18346,6 @@
       "enPart": "",
       "category": "preDraft",
       "id": 3122
-    },
-    "3123": {
-      "dePart": "Es ist kein Winkerl im Haus, in dem man nicht Gutes tun kann,wenn man nur will.",
-      "enPart": "",
-      "category": "preDraft",
-      "id": 3123
     },
     "3124": {
       "dePart": "Besser in der Hölle herrschen, als im Himmel dienen.",
@@ -20220,12 +20183,6 @@
       "category": "preDraft",
       "id": 3439
     },
-    "3440": {
-      "dePart": "Das Leben ist eine Quarantäne für das Paradies",
-      "enPart": "",
-      "category": "preDraft",
-      "id": 3440
-    },
     "3441": {
       "dePart": "Wer im Leben keine Richter hat, dem zahlt der Tod seine Missetat.",
       "enPart": "",
@@ -20378,9 +20335,13 @@
     },
     "3466": {
       "dePart": "Zu den gewandtesten Advokaten dieser Welt gehört das Gewissen.",
-      "enPart": "",
-      "category": "preDraft",
-      "id": 3466
+      "enPart": "The conscience is one of the smartest lawyers.",
+      "category": "quotes",
+      "id": 3466,
+      "childSafetyFlag": true,
+      "imageSrc": "http://i.imgur.com/eJUdMKE.jpg",
+      "deWord": "das Gewissen",
+      "enWord": "the conscience"
     },
     "3467": {
       "dePart": "Zu den schlechtesten Logikern gehören Furcht und Hoffnung.",
@@ -20393,12 +20354,6 @@
       "enPart": "",
       "category": "preDraft",
       "id": 3468
-    },
-    "3469": {
-      "dePart": "Unsere Jugend sammelt nur Seufzer für das Alter",
-      "enPart": "",
-      "category": "preDraft",
-      "id": 3469
     },
     "3470": {
       "dePart": "Der betrauert die Toten, der nach ihrem Wunsche lebt.",

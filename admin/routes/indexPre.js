@@ -10,6 +10,7 @@ const bringOrderTranslation = require("../_inc/bringOrderTranslation")
 const uploadImage = require("../_inc/uploadImage")
 const searchImage = require("../_inc/searchImage")
 const proudDb = require("../_inc/proud-db")
+const dataFile = require("../../hapi/public/data.json")
 let twoLevelUp = R.compose(R.join("/"), R.dropLast(2), R.split("/"))
 async function willTranslate(word) {
     let translated = await translate.deEn(word)
@@ -24,9 +25,11 @@ async function willUpdate(parent, data) {
     return iMeanNothing
 }
 async function learningMeme(data) {
-    let imageSrc = await uploadImage.main(data.imageSrc)
+    let uploadImageResult = await uploadImage.main(data)
+    let {imageSrc, imageName} = uploadImageResult
     J.log(imageSrc)
-    return await proudDb.save("data", `${data.id}`, R.merge(data, {imageSrc}))
+    J.log(imageName)
+    return await proudDb.save("data", `${data.id}`, R.merge(data, {imageSrc, imageName}))
 }
 async function willUpdateSingle(data) {
     return await proudDb.save("data", `${data.id}`, data)
@@ -90,6 +93,9 @@ router.get("/read/:parent", (req, res) =>{
     proudDb.loadParent(req.params.parent).then((data)=>{
         res.send(data)
     })
+})
+router.get("/readDataFile/:parent", (req, res) =>{
+    res.send(dataFile[ req.params.parent ])
 })
 router.post("/uploadImage", (req, res) =>{
     uploadImage.main(req.body.imageUrl).then(incoming=>{

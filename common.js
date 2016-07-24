@@ -8,7 +8,7 @@ const fs = require("fs-extra")
 const reqwest = require("reqwest")
 const winston = require("winston")
 let store = {endMarker: "default"}
-function timer(startMarker="default"){
+function timer(startMarker = "default") {
     console.timeEnd(store.endMarker)
     console.time(startMarker)
     store.endMarker = startMarker
@@ -113,10 +113,11 @@ function shuffle(array) {
     }
     return array
 }
+let removePunctuation = R.compose(R.replace(/\.|\!|\,|\-|\?/, ""))
 let takeName = R.compose(R.takeLast(1), R.split("/"))
 let anyRaw = R.flip(R.any)
 let anyFn = R.curry(anyRaw)
-
+module.exports.removePunctuation = removePunctuation
 module.exports.timer = timer
 module.exports.logger = logger
 module.exports.shuffle = shuffle
