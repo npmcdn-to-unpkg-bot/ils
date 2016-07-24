@@ -1,0 +1,952 @@
+{
+  "auswahl": {
+    "synonym": [
+      {
+        "dePart": "Range (fachsprachlich)",
+        "enPart": ""
+      },
+      {
+        "dePart": "Range (fachsprachlich)",
+        "enPart": ""
+      },
+      {
+        "dePart": "Abriss (eines Buches)",
+        "enPart": ""
+      },
+      {
+        "dePart": "Kurzzusammenfassung",
+        "enPart": ""
+      },
+      {
+        "dePart": "Nationalmannschaft",
+        "enPart": ""
+      },
+      {
+        "dePart": "Nationalmannschaft",
+        "enPart": ""
+      },
+      {
+        "dePart": "Leistungsportfolio",
+        "enPart": ""
+      },
+      {
+        "dePart": "Nationalmannschaft",
+        "enPart": ""
+      },
+      {
+        "dePart": "Körung (Tierzucht)",
+        "enPart": ""
+      },
+      {
+        "dePart": "Equipe (Reitsport)",
+        "enPart": ""
+      },
+      {
+        "dePart": "(die) erste Garde",
+        "enPart": ""
+      },
+      {
+        "dePart": "Leistungsspektrum",
+        "enPart": ""
+      },
+      {
+        "dePart": "Angebotsportfolio",
+        "enPart": ""
+      },
+      {
+        "dePart": "Riege (Turnsport)",
+        "enPart": ""
+      },
+      {
+        "dePart": "Angebotsvielfalt",
+        "enPart": ""
+      },
+      {
+        "dePart": "Inhaltsübersicht",
+        "enPart": ""
+      },
+      {
+        "dePart": "Angebotsspektrum",
+        "enPart": ""
+      },
+      {
+        "dePart": "Produktsortiment",
+        "enPart": ""
+      },
+      {
+        "dePart": "Musterkollektion",
+        "enPart": ""
+      },
+      {
+        "dePart": "Zusammenstellung",
+        "enPart": ""
+      },
+      {
+        "dePart": "Leistungsangebot",
+        "enPart": ""
+      },
+      {
+        "dePart": "Produktportfolio",
+        "enPart": ""
+      },
+      {
+        "dePart": "Zusammenfassung",
+        "enPart": ""
+      },
+      {
+        "dePart": "Produktauswahl",
+        "enPart": ""
+      },
+      {
+        "dePart": "Produktpalette",
+        "enPart": ""
+      },
+      {
+        "dePart": "Produktangebot",
+        "enPart": ""
+      },
+      {
+        "dePart": "Warensortiment",
+        "enPart": ""
+      },
+      {
+        "dePart": "Inhaltsangabe",
+        "enPart": ""
+      },
+      {
+        "dePart": "Bestenauslese",
+        "enPart": ""
+      },
+      {
+        "dePart": "Warenspektrum",
+        "enPart": ""
+      },
+      {
+        "dePart": "Gurkentruppe",
+        "enPart": ""
+      },
+      {
+        "dePart": "(die) Besten",
+        "enPart": ""
+      },
+      {
+        "dePart": "Warenangebot",
+        "enPart": ""
+      },
+      {
+        "dePart": "Warenangebot",
+        "enPart": ""
+      },
+      {
+        "dePart": "Warenangebot",
+        "enPart": ""
+      },
+      {
+        "dePart": "Warenangebot",
+        "enPart": ""
+      },
+      {
+        "dePart": "Bevorzugung",
+        "enPart": ""
+      },
+      {
+        "dePart": "Assortiment",
+        "enPart": ""
+      },
+      {
+        "dePart": "Bevorzugung",
+        "enPart": ""
+      },
+      {
+        "dePart": "Klappentext",
+        "enPart": ""
+      },
+      {
+        "dePart": "Bevorzugung",
+        "enPart": ""
+      },
+      {
+        "dePart": "Bevorzugung",
+        "enPart": ""
+      },
+      {
+        "dePart": "Nationalelf",
+        "enPart": ""
+      },
+      {
+        "dePart": "Ausschnitt",
+        "enPart": ""
+      },
+      {
+        "dePart": "Güteklasse",
+        "enPart": ""
+      },
+      {
+        "dePart": "Sammelband",
+        "enPart": ""
+      },
+      {
+        "dePart": "Grundstock",
+        "enPart": ""
+      },
+      {
+        "dePart": "Anthologie",
+        "enPart": ""
+      },
+      {
+        "dePart": "Breviarium",
+        "enPart": ""
+      },
+      {
+        "dePart": "Güteklasse",
+        "enPart": ""
+      },
+      {
+        "dePart": "Grundstock",
+        "enPart": ""
+      },
+      {
+        "dePart": "Grundstock",
+        "enPart": ""
+      },
+      {
+        "dePart": "Mannschaft",
+        "enPart": ""
+      },
+      {
+        "dePart": "Bandbreite",
+        "enPart": ""
+      },
+      {
+        "dePart": "Blütenlese",
+        "enPart": ""
+      },
+      {
+        "dePart": "Kollektion",
+        "enPart": ""
+      },
+      {
+        "dePart": "Güteklasse",
+        "enPart": ""
+      },
+      {
+        "dePart": "Grundstock",
+        "enPart": ""
+      },
+      {
+        "dePart": "Mannschaft",
+        "enPart": ""
+      },
+      {
+        "dePart": "Sortiment",
+        "enPart": ""
+      },
+      {
+        "dePart": "Präferenz",
+        "enPart": ""
+      },
+      {
+        "dePart": "Sortiment",
+        "enPart": ""
+      },
+      {
+        "dePart": "Erwählung",
+        "enPart": ""
+      },
+      {
+        "dePart": "Sortiment",
+        "enPart": ""
+      },
+      {
+        "dePart": "Besetzung",
+        "enPart": ""
+      },
+      {
+        "dePart": "Sortiment",
+        "enPart": ""
+      },
+      {
+        "dePart": "Besetzung",
+        "enPart": ""
+      },
+      {
+        "dePart": "Präferenz",
+        "enPart": ""
+      },
+      {
+        "dePart": "Selektion",
+        "enPart": ""
+      },
+      {
+        "dePart": "Sortiment",
+        "enPart": ""
+      },
+      {
+        "dePart": "Selektion",
+        "enPart": ""
+      },
+      {
+        "dePart": "Erwählung",
+        "enPart": ""
+      },
+      {
+        "dePart": "Selektion",
+        "enPart": ""
+      },
+      {
+        "dePart": "Sortiment",
+        "enPart": ""
+      },
+      {
+        "dePart": "Selektion",
+        "enPart": ""
+      },
+      {
+        "dePart": "Selektion",
+        "enPart": ""
+      },
+      {
+        "dePart": "Aufgebot",
+        "enPart": ""
+      },
+      {
+        "dePart": "Sammlung",
+        "enPart": ""
+      },
+      {
+        "dePart": "Abstract",
+        "enPart": ""
+      },
+      {
+        "dePart": "Konspekt",
+        "enPart": ""
+      },
+      {
+        "dePart": "Sammlung",
+        "enPart": ""
+      },
+      {
+        "dePart": "Almanach",
+        "enPart": ""
+      },
+      {
+        "dePart": "Sammlung",
+        "enPart": ""
+      },
+      {
+        "dePart": "Sammlung",
+        "enPart": ""
+      },
+      {
+        "dePart": "Sammlung",
+        "enPart": ""
+      },
+      {
+        "dePart": "Spektrum",
+        "enPart": ""
+      },
+      {
+        "dePart": "Sammlung",
+        "enPart": ""
+      },
+      {
+        "dePart": "Auswahl",
+        "enPart": ""
+      },
+      {
+        "dePart": "Palette",
+        "enPart": ""
+      },
+      {
+        "dePart": "Auswahl",
+        "enPart": ""
+      },
+      {
+        "dePart": "Auswahl",
+        "enPart": ""
+      },
+      {
+        "dePart": "Auswahl",
+        "enPart": ""
+      },
+      {
+        "dePart": "Exzerpt",
+        "enPart": ""
+      },
+      {
+        "dePart": "Bestand",
+        "enPart": ""
+      },
+      {
+        "dePart": "Auswahl",
+        "enPart": ""
+      },
+      {
+        "dePart": "Auswahl",
+        "enPart": ""
+      },
+      {
+        "dePart": "Auswahl",
+        "enPart": ""
+      },
+      {
+        "dePart": "Auswahl",
+        "enPart": ""
+      },
+      {
+        "dePart": "Auswahl",
+        "enPart": ""
+      },
+      {
+        "dePart": "Epitome",
+        "enPart": ""
+      },
+      {
+        "dePart": "Auswahl",
+        "enPart": ""
+      },
+      {
+        "dePart": "Auswahl",
+        "enPart": ""
+      },
+      {
+        "dePart": "Auswahl",
+        "enPart": ""
+      },
+      {
+        "dePart": "Bestand",
+        "enPart": ""
+      },
+      {
+        "dePart": "Bestand",
+        "enPart": ""
+      },
+      {
+        "dePart": "Palette",
+        "enPart": ""
+      },
+      {
+        "dePart": "Bestand",
+        "enPart": ""
+      },
+      {
+        "dePart": "Angebot",
+        "enPart": ""
+      },
+      {
+        "dePart": "Auslese",
+        "enPart": ""
+      },
+      {
+        "dePart": "Auszug",
+        "enPart": ""
+      },
+      {
+        "dePart": "Fundus",
+        "enPart": ""
+      },
+      {
+        "dePart": "Fundus",
+        "enPart": ""
+      },
+      {
+        "dePart": "Spanne",
+        "enPart": ""
+      },
+      {
+        "dePart": "Digest",
+        "enPart": ""
+      },
+      {
+        "dePart": "Fundus",
+        "enPart": ""
+      },
+      {
+        "dePart": "Abrégé",
+        "enPart": ""
+      },
+      {
+        "dePart": "Muster",
+        "enPart": ""
+      },
+      {
+        "dePart": "Fundus",
+        "enPart": ""
+      },
+      {
+        "dePart": "Elite",
+        "enPart": ""
+      },
+      {
+        "dePart": "Range",
+        "enPart": ""
+      },
+      {
+        "dePart": "Skala",
+        "enPart": ""
+      },
+      {
+        "dePart": "Range",
+        "enPart": ""
+      },
+      {
+        "dePart": "Kader",
+        "enPart": ""
+      },
+      {
+        "dePart": "Wahl",
+        "enPart": ""
+      },
+      {
+        "dePart": "Wahl",
+        "enPart": ""
+      },
+      {
+        "dePart": "Wahl",
+        "enPart": ""
+      },
+      {
+        "dePart": "Team",
+        "enPart": ""
+      },
+      {
+        "dePart": "Team",
+        "enPart": ""
+      }
+    ],
+    "synonymTranslated": [
+      {
+        "dePart": "vermischte Schriften",
+        "enPart": "miscellany"
+      },
+      {
+        "dePart": "Redaktionsabschuss",
+        "enPart": "cull"
+      },
+      {
+        "dePart": "Auswahlmannschaft",
+        "enPart": "representative team"
+      },
+      {
+        "dePart": "buntes Gemisch",
+        "enPart": "miscellany"
+      },
+      {
+        "dePart": "Abwechslung",
+        "enPart": "variety"
+      },
+      {
+        "dePart": "Sammelband",
+        "enPart": "miscellany"
+      },
+      {
+        "dePart": "Spitzhacke",
+        "enPart": "pick"
+      },
+      {
+        "dePart": "Stichprobe",
+        "enPart": "sample"
+      },
+      {
+        "dePart": "Reichweite",
+        "enPart": "range"
+      },
+      {
+        "dePart": "Sortiment",
+        "enPart": "assortment"
+      },
+      {
+        "dePart": "Auswählen",
+        "enPart": "selection"
+      },
+      {
+        "dePart": "Sortiment",
+        "enPart": "range"
+      },
+      {
+        "dePart": "Selektion",
+        "enPart": "selection"
+      },
+      {
+        "dePart": "Plektrum",
+        "enPart": "pick"
+      },
+      {
+        "dePart": "Vielfalt",
+        "enPart": "variety"
+      },
+      {
+        "dePart": "Varietät",
+        "enPart": "variety"
+      },
+      {
+        "dePart": "Sammlung",
+        "enPart": "miscellany"
+      },
+      {
+        "dePart": "Beispiel",
+        "enPart": "sample"
+      },
+      {
+        "dePart": "Mischung",
+        "enPart": "assortment"
+      },
+      {
+        "dePart": "Auswahl",
+        "enPart": "selection"
+      },
+      {
+        "dePart": "Auslese",
+        "enPart": "selection"
+      },
+      {
+        "dePart": "Gemisch",
+        "enPart": "miscellany"
+      },
+      {
+        "dePart": "Palette",
+        "enPart": "range"
+      },
+      {
+        "dePart": "Auslese",
+        "enPart": "choice"
+      },
+      {
+        "dePart": "Angebot",
+        "enPart": "range"
+      },
+      {
+        "dePart": "Sample",
+        "enPart": "sample"
+      },
+      {
+        "dePart": "Muster",
+        "enPart": "sample"
+      },
+      {
+        "dePart": "Pickel",
+        "enPart": "pick"
+      },
+      {
+        "dePart": "Picke",
+        "enPart": "pick"
+      },
+      {
+        "dePart": "Probe",
+        "enPart": "sample"
+      },
+      {
+        "dePart": "Beste",
+        "enPart": "pick"
+      },
+      {
+        "dePart": "Reihe",
+        "enPart": "range"
+      },
+      {
+        "dePart": "Sorte",
+        "enPart": "variety"
+      },
+      {
+        "dePart": "Wahl",
+        "enPart": "choice"
+      },
+      {
+        "dePart": "Tipp",
+        "enPart": "selection"
+      },
+      {
+        "dePart": "Wahl",
+        "enPart": "selection"
+      },
+      {
+        "dePart": "Art",
+        "enPart": "variety"
+      }
+    ],
+    "phrase": [
+      {
+        "dePart": "Man muss nicht nur mehr Ideen haben als andere, sondern auch die Fähigkeit besitzen, zu entscheiden, welche dieser Ideen gut sind.",
+        "enPart": ""
+      },
+      {
+        "dePart": "Dies führt im Ergebnis zu einem eingeschränkten Wettbewerb, einer geringeren Auswahl für die Verbraucher und zu hohen Preisen.",
+        "enPart": ""
+      },
+      {
+        "dePart": "Man sollte eigentlich im Leben niemals die gleiche Dummheit zweimal machen, denn die Auswahl ist so groß.",
+        "enPart": ""
+      },
+      {
+        "dePart": "(sich lesen wie ein) Who is who (von)",
+        "enPart": ""
+      },
+      {
+        "dePart": "eine große Auswahl an Strickwolle",
+        "enPart": ""
+      },
+      {
+        "dePart": "die Auswahl und Pflege der Links",
+        "enPart": ""
+      },
+      {
+        "dePart": "eine reiche Auswahl an Speisen",
+        "enPart": ""
+      },
+      {
+        "dePart": "eine beschränkte Auswahl",
+        "enPart": ""
+      },
+      {
+        "dePart": "die freie Auswahl haben",
+        "enPart": ""
+      },
+      {
+        "dePart": "Auswahl von Mustern",
+        "enPart": ""
+      },
+      {
+        "dePart": "große Auswahl",
+        "enPart": ""
+      }
+    ],
+    "phraseTranslated": [
+      {
+        "dePart": "die Auswahl unter verschiedenen Möglichkeiten haben",
+        "enPart": "to be able to choose from various possibilities"
+      },
+      {
+        "dePart": "eine reiche (reichhaltige) Auswahl anetwas haben",
+        "enPart": "to have a great variety (oder|or od wide range) ofetwas|something sth to choose fromto have a great variety (wide range) ofto choose from"
+      },
+      {
+        "dePart": "Auswahl aufheben [Kontrollkästchen \"abwählen\"]",
+        "enPart": "comp. to uncheck (a checkbox)"
+      },
+      {
+        "dePart": "Auswahl {f} [kurz für: Auswahlmannschaft]",
+        "enPart": "sports representative team"
+      },
+      {
+        "dePart": "geschichtete Auswahl {f} [Stichprobe]",
+        "enPart": "stat. stratified sampling"
+      },
+      {
+        "dePart": "eine Auswahl aus (von) Goethes Werken",
+        "enPart": "selections from Goethe"
+      },
+      {
+        "dePart": "jdm drei Sachen zur Auswahl vorlegen",
+        "enPart": "to offer sb a choice of three things"
+      },
+      {
+        "dePart": "(jemandem) etwas zur Auswahl stellen",
+        "enPart": "to offer (jemand|somebody sb ) the choice ofetwas|something sth to offer () the choice of"
+      },
+      {
+        "dePart": "eine schöne Auswahl an Schallplatten",
+        "enPart": "a fine selection of records"
+      },
+      {
+        "dePart": "jemandem etwas zur Auswahl vorlegen",
+        "enPart": "to presentjemand|somebody sb with etwas|something sth to choose fromto presentwith to choose from"
+      },
+      {
+        "dePart": "eine sorgfältige Auswahl treffen",
+        "enPart": "to choose carefully"
+      },
+      {
+        "dePart": "drei Bewerber stehen zur Auswahl",
+        "enPart": "there are three applicants to choose from"
+      },
+      {
+        "dePart": "bewusste [geschichtete] Auswahl",
+        "enPart": "purposive [stratified] sample"
+      },
+      {
+        "dePart": "zehn Bücher stehen zur Auswahl",
+        "enPart": "there are ten books to choose from"
+      },
+      {
+        "dePart": "eine Auswahl zusammenstellen",
+        "enPart": "to compile a selection [an anthology]"
+      },
+      {
+        "dePart": "Auswahl {f} [das Auswählen]",
+        "enPart": "selecting"
+      },
+      {
+        "dePart": "hier gibt es keine Auswahl",
+        "enPart": "there is no choice"
+      },
+      {
+        "dePart": "eine Auswahl von Gedichten",
+        "enPart": "an anthology of poems"
+      },
+      {
+        "dePart": "viel/eine reiche Auswahl",
+        "enPart": "a large/wide selection"
+      },
+      {
+        "dePart": "Schuhe in großer Auswahl",
+        "enPart": "a large assortment of shoes"
+      },
+      {
+        "dePart": "willkürliche Auswahl {f}",
+        "enPart": "stat. convenience sample / sampling"
+      },
+      {
+        "dePart": "willkürliche Auswahl {f}",
+        "enPart": "random selection"
+      },
+      {
+        "dePart": "reichliche Auswahl {f}",
+        "enPart": "ample choice"
+      },
+      {
+        "dePart": "reichliche Auswahl {f}",
+        "enPart": "idiom plenty of choices"
+      },
+      {
+        "dePart": "künstliche Auswahl {f}",
+        "enPart": "artificial selection"
+      },
+      {
+        "dePart": "überreiche Auswahl {f}",
+        "enPart": "embarrassment of riches"
+      },
+      {
+        "dePart": "natürliche Auswahl {f}",
+        "enPart": "biol. natural selection"
+      },
+      {
+        "dePart": "verzerrte Auswahl {f}",
+        "enPart": "math. stat. selection bias"
+      },
+      {
+        "dePart": "zufällige Auswahl {f}",
+        "enPart": "chance selection"
+      },
+      {
+        "dePart": "besondere Auswahl {f}",
+        "enPart": "particular choice"
+      },
+      {
+        "dePart": "zufällige Auswahl {f}",
+        "enPart": "random selection"
+      },
+      {
+        "dePart": "die Auswahl begrenzen",
+        "enPart": "to narrow down the choice"
+      },
+      {
+        "dePart": "eine Auswahl anbieten",
+        "enPart": "to offer a choice"
+      },
+      {
+        "dePart": "eine Auswahl gewinnen",
+        "enPart": "idiom  Unverified to make the cut for sth. [coll.] [person or team] [meet a certain standard or requirement]"
+      },
+      {
+        "dePart": "Baustein-Auswahl {f}",
+        "enPart": "chip-select"
+      },
+      {
+        "dePart": "negative Auswahl {f}",
+        "enPart": "adverse selection"
+      },
+      {
+        "dePart": "sexuelle Auswahl {f}",
+        "enPart": "biol. sexual selection"
+      },
+      {
+        "dePart": "eine Auswahl treffen",
+        "enPart": "to select (from), to make a selection (from), to make one’s choice (of)to select (from), to make a selection (from), to make one’s choice (of)"
+      },
+      {
+        "dePart": "bewusste Auswahl {f}",
+        "enPart": "sociol. stat. purposive sample"
+      },
+      {
+        "dePart": "keine Auswahl haben",
+        "enPart": "to have no option"
+      },
+      {
+        "dePart": "falsche Auswahl {f}",
+        "enPart": "faulty selection"
+      },
+      {
+        "dePart": "engere Auswahl {f}",
+        "enPart": "short list"
+      },
+      {
+        "dePart": "eigene Auswahl {f}",
+        "enPart": "self-selection"
+      },
+      {
+        "dePart": "eine Auswahl haben",
+        "enPart": "to have an option"
+      },
+      {
+        "dePart": "große Auswahl {f}",
+        "enPart": "large choice"
+      },
+      {
+        "dePart": "freie Auswahl {f}",
+        "enPart": "free choice"
+      },
+      {
+        "dePart": "große Auswahl {f}",
+        "enPart": "wide choice"
+      },
+      {
+        "dePart": "zufällige Auswahl",
+        "enPart": "random sampling"
+      },
+      {
+        "dePart": "große Auswahl {f}",
+        "enPart": "idiom plenty of choice"
+      },
+      {
+        "dePart": "Chip-Auswahl {f}",
+        "enPart": "chip-select"
+      },
+      {
+        "dePart": "Auswahl {f} von",
+        "enPart": "assortment of"
+      },
+      {
+        "dePart": "B-Auswahl {f}",
+        "enPart": "sports second-string side"
+      },
+      {
+        "dePart": "A-Auswahl {f}",
+        "enPart": "sports (national) A team [A-team]"
+      },
+      {
+        "dePart": "6Auswahl {f}",
+        "enPart": "digest [of book, facts]"
+      },
+      {
+        "dePart": "0Auswahl {f}",
+        "enPart": "repertory"
+      },
+      {
+        "dePart": "Auswahl {f}",
+        "enPart": "assorted samples {pl}"
+      },
+      {
+        "dePart": "zur Auswahl",
+        "enPart": "to choose from"
+      },
+      {
+        "dePart": "zur Auswahl",
+        "enPart": "at choice"
+      }
+    ],
+    "deEn": {
+      "dePart": "auswahl",
+      "enPart": "pick,cull,range,choice,sample,variety,selection,assortment,miscellany,representative team"
+    }
+  }
+}
