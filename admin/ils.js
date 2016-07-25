@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 
-var app = require("./app.js")
+var app = require("./ilsApp.js")
 var http = require("http")
 
-var port = 8081
+var port = 3001
 app.set("port", port)
 
 /**

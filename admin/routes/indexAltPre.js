@@ -7,7 +7,6 @@ const envHelper = require("dotenv-helper")
 const J = require("../../common.js")
 const translate = require("../_inc/translate")
 const bringOrderTranslation = require("../_inc/bringOrderTranslation")
-const uploadImage = require("../_inc/uploadImage")
 const searchImage = require("../_inc/searchImage")
 const proudDb = require("../_inc/proud-db")
 const dataFile = require("../../hapi/public/data.json")
@@ -23,13 +22,6 @@ async function willUpdate(parent, data) {
         J.log(iMeanNothing)
     }
     return iMeanNothing
-}
-async function learningMeme(data) {
-    let uploadImageResult = await uploadImage.main(data)
-    let {imageSrc, imageName} = uploadImageResult
-    J.log(imageSrc)
-    J.log(imageName)
-    return await proudDb.save("data", `${data.id}`, R.merge(data, {imageSrc, imageName}))
 }
 async function willAddDraft(data) {
     return await proudDb.save("data", `${data.id}`, data)
@@ -90,6 +82,7 @@ router.get("/db", (req, res) => {
     res.render("db")
 })
 router.get("/translateBulk", (req, res) => {
+    J.logger.debug(req.ip)
     res.render("translateBulk")
 })
 router.get("/learningMeme", (req, res) => {
@@ -130,11 +123,6 @@ router.post("/remove/:parent", (req, res) =>{
 })
 router.post("/updateSingle", (req, res) =>{
     willUpdateSingle(JSON.parse(req.body.data).data).then(()=>{
-        res.send("done")
-    })
-})
-router.post("/learningMeme", (req, res) =>{
-    learningMeme(JSON.parse(req.body.data).data).then(()=>{
         res.send("done")
     })
 })
