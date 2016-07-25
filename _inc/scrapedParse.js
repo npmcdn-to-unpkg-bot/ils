@@ -3,7 +3,7 @@ const R = require("ramda")
 
 function pluckFn(prop, obj) {
     return R.compose(R.flatten, R.filter(val=>val !== false), R.values, R.mapObjIndexed((val, key)=>{
-        if (key.includes(prop)&&val) {
+        if (key.includes(prop) && val) {
             return val
         } else {return false}
     }))(obj)
@@ -13,19 +13,19 @@ function sortFn(prop, obj) {
         return R.prop(prop, a).length - R.prop(prop, b).length
     }))(obj)
 }
-function uniq(arr,prop){
+function uniq(arr, prop) {
     let willReturn = []
-    return R.compose(R.sort((a,b)=>b.dePart.length-a.dePart.length),R.filter(val=>{
-        if(R.indexOf(val[prop], willReturn)&&val[prop].length>2){
-            willReturn.push(val[prop])
+    return R.compose(R.sort((a, b)=>b.dePart.length - a.dePart.length), R.filter(val=>{
+        if (R.indexOf(val[ prop ], willReturn) === -1 && val[ prop ].length > 2) {
+            willReturn.push(val[ prop ])
             return true
-        }else{return false}
-    }),R.map(val=>{
-        return R.merge(val,{dePart: R.replace(/[0-9]/,"",val.dePart)})
+        } else {return false}
+    }), R.map(val=>{
+        return R.merge(val, {dePart: R.replace(/[0-9]/, "", val.dePart)})
     }))(arr)
 }
 
-function main(word,translated) {
+function main(translated) {
     let willSave = {}
     willSave.synonym = []
     willSave.synonymTranslated = []
@@ -34,11 +34,11 @@ function main(word,translated) {
     let deEnArr = pluckFn("deEn", translated)
     let synonymArr = pluckFn("synonym", translated)
     let phraseArr = pluckFn("phrase", translated)
-    willSave.deEn = {dePart: word,
+    willSave.deEn = {dePart: translated.word,
 enPart: R.compose(R.join(","), R.uniq, R.sort((a, b)=>a.length - b.length), R.pluck("enPart"))(deEnArr)}
 
     R.map(val =>{
-        if (val&&val.enPart && val.enPart.length > 0) {
+        if (val && val.enPart && val.enPart.length > 0) {
             if (val.dePart.length > 30) {
                 willSave.phraseTranslated.push(val)
             } else {
@@ -54,16 +54,16 @@ enPart: R.compose(R.join(","), R.uniq, R.sort((a, b)=>a.length - b.length), R.pl
     }, synonymArr)
 
     R.map(val =>{
-        if (val&&val.enPart && val.enPart.length > 0) {
+        if (val && val.enPart && val.enPart.length > 0) {
             willSave.phraseTranslated.push(val)
         } else {
             willSave.phrase.push(val)
         }
     }, phraseArr)
     willSave.synonym = uniq(willSave.synonym, "dePart")
-    willSave.synonymTranslated = uniq(willSave.synonymTranslated,"dePart")
-    willSave.phrase = uniq(willSave.phrase,"dePart")
-    willSave.phraseTranslated = uniq(willSave.phraseTranslated,"dePart")
+    willSave.synonymTranslated = uniq(willSave.synonymTranslated, "dePart")
+    willSave.phrase = uniq(willSave.phrase, "dePart")
+    willSave.phraseTranslated = uniq(willSave.phraseTranslated, "dePart")
     return willSave
 }
 module.exports.main = main

@@ -31,6 +31,9 @@ async function learningMeme(data) {
     J.log(imageName)
     return await proudDb.save("data", `${data.id}`, R.merge(data, {imageSrc, imageName}))
 }
+async function willAddDraft(data) {
+    return await proudDb.save("data", `${data.id}`, data)
+}
 async function willUpdateSingle(data) {
     return await proudDb.save("data", `${data.id}`, data)
 }
@@ -86,6 +89,12 @@ router.get("/", (req, res) => {
 router.get("/db", (req, res) => {
     res.render("db")
 })
+router.get("/translateBulk", (req, res) => {
+    J.log(1)
+    J.logger.debug(req.ip)
+    J.logger.debug(`${req.url} 77`)
+    res.render("translateBulk")
+})
 router.get("/learningMeme", (req, res) => {
     res.render("learningMeme")
 })
@@ -104,6 +113,11 @@ router.post("/uploadImage", (req, res) =>{
 })
 router.post("/update/:parent", (req, res) =>{
     willUpdate(req.params.parent, JSON.parse(req.body.data)).then(()=>{
+        res.send("done")
+    })
+})
+router.post("/newEntry", (req, res) =>{
+    willAddEntry("data", JSON.parse(req.body.data)).then(()=>{
         res.send("done")
     })
 })

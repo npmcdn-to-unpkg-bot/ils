@@ -189,6 +189,12 @@ function addFullstop(str) {
 function removePunctuation(str) {
     return {cleanStr: R.replace(/\.|\!|\,|\-|\?/, "", str), removedChar:  R.match(/\.|\!|\,|\-|\?/, str)}
 }
+function addWhitespace(str, length) {
+    if (str.length < length) {
+        return `${str}${R.compose(R.join(""), R.repeat("_"))(length - str.length)}|`
+    } else {return str}
+}
+module.exports.addWhitespace = addWhitespace
 module.exports.removePunctuation = removePunctuation
 module.exports.addFullstop = addFullstop
 module.exports.stopWordsFilter = stopWordsFilter

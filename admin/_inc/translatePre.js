@@ -583,6 +583,7 @@ async function deEnTimerAsync(wordRaw) {
     willReturn.synonymSixth = await synonymSixth(word)
     console.timeEnd("synonymSixth")
     willReturn.synonymSeventh = local.related
+    willReturn.word = word
     return willReturn
 }
 
@@ -604,6 +605,7 @@ async function deEnAsync(wordRaw) {
     willReturn.synonymFifth = await synonymFifth(word)
     willReturn.synonymSixth = await synonymSixth(word)
     willReturn.synonymSeventh = local.related
+    willReturn.word = word
     return willReturn
 }
 async function deEnShortAsync(wordRaw) {
@@ -620,6 +622,7 @@ async function deEnShortAsync(wordRaw) {
     willReturn.phraseThird = await phraseThird(word)
     willReturn.phraseFourth = await phraseFourth(word)
     willReturn.phraseSixth = await phraseSixth(word)
+    willReturn.word = word
     return willReturn
 }
 async function deEnArrAsync(arr) {

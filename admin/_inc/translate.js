@@ -124,9 +124,10 @@ var deEnTimerAsync = function () {
 
                         console.timeEnd("synonymSixth");
                         willReturn.synonymSeventh = local.related;
+                        willReturn.word = word;
                         return _context.abrupt("return", willReturn);
 
-                    case 70:
+                    case 71:
                     case "end":
                         return _context.stop();
                 }
@@ -216,9 +217,10 @@ var deEnAsync = function () {
                         willReturn.synonymSixth = _context2.sent;
 
                         willReturn.synonymSeventh = local.related;
+                        willReturn.word = word;
                         return _context2.abrupt("return", willReturn);
 
-                    case 44:
+                    case 45:
                     case "end":
                         return _context2.stop();
                 }
@@ -288,9 +290,11 @@ var deEnShortAsync = function () {
 
                     case 30:
                         willReturn.phraseSixth = _context3.sent;
+
+                        willReturn.word = word;
                         return _context3.abrupt("return", willReturn);
 
-                    case 32:
+                    case 33:
                     case "end":
                         return _context3.stop();
                 }

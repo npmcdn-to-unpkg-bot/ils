@@ -1,5 +1,10 @@
+@import url(https://fonts.googleapis.com/css?family=Josefin+Sans:600);
 @backgroundMeme: #ffffff;
 @textColorMeme: #1A237E;
+@text: #212121;
+@firstText: #3a707f;
+@secondText: #424242;
+@thirdText: #263238;
 @morfAnimationDuration: 1s;
 @atentionAnimationDuration: 0.5s;
 @memeImageWidth: 50%;
@@ -12,6 +17,41 @@
 @correctSecond: #A5D6A7;
 @wrongFirst: #E57373;
 @wrongSecond: #EC407A;
+.icon{
+    margin-right: 5px;
+}
+.row(){
+    height: 20px;
+    line-height: 1.5;
+    font-size: 14px;
+    text-overflow: clip;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.firstRow{
+    .row;
+    color: @text;
+    font-family: 'Josefin Sans', sans-serif;
+}
+.firstRowOdd{
+    .row();
+    color: @firstText;
+    font-family: 'Josefin Sans', sans-serif;
+}
+.secondRow{
+    .row;
+    color: @secondText;
+    background-color: #E0FFF9;
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 600;
+}
+.secondRowOdd{
+    .row;
+    background-color: #F7F3F3;
+    color: @thirdText;
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 600;
+}
 .commonInput{
     padding: 5px;
 }
