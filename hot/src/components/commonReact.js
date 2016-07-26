@@ -222,8 +222,8 @@ module.exports.getWidthPx = getWidthPx
 module.exports.randomSeed = randomSeed
 module.exports.winWidthIs = winWidthIs
 module.exports.winHeightIs = winHeightIs
-module.exports.host = "http://localhost:3001"
-module.exports.ils = ""
+//module.exports.host = "http://localhost:3001"
+module.exports.host = ""
 
 module.exports.bulButtonInit = "button"
 module.exports.categoryOptions = [
