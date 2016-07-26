@@ -130,10 +130,16 @@ function shuffle(array) {
     return array
 }
 function start() {
+    J.log("start")
     return new Promise(resolve=>{
+        J.log("start")
         willRunFixedCommand("git pull")
         .then(()=>{
-            willRunFixedCommand("pm2 start admin/ils.js").then(resolve)
+            J.log("start")
+            willRunFixedCommand("pm2 start admin/ils.js").then(()=>{
+                J.log("start")
+                resolve(true)
+            })
         })
     })
 }
