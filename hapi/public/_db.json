@@ -21094,7 +21094,17 @@
         "enPart": ""
       },
       "id": 3589
+    },
+    "3590": {
+      "data": {
+        "category": "draft",
+        "deWord": "ausstieg",
+        "enWord": "",
+        "dePart": "der Beschluss zum Ausstieg aus der Kernenergie.",
+        "enPart": "the decision to opt out of nuclear energy."
+      },
+      "id": 3590
     }
   },
-  "nextIndex": 3590
+  "nextIndex": 3591
 }
