@@ -94,6 +94,6 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var J = require("./common");
 
-var commands = ["pm2 kill", "git pull", "pm2 start hapi/start.js -i max", "pm2 status"];
+var commands = ["pm2 kill", "git pull", "pm2 start admin/ils.js", "pm2 start hapi/start.js -i max", "pm2 status"];
 
 mainAsync().then(J.lg);

@@ -24,10 +24,6 @@ router.get("/run/:command", (req, res) =>{
             J.stop().then(()=>{
                 res.send("done")
             })
-        } else if (command === "start") {
-            J.start().then(()=>{
-                res.send("done")
-            })
         } else {
             res.send("?!")
         }

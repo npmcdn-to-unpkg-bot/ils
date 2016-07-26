@@ -129,21 +129,11 @@ function shuffle(array) {
     }
     return array
 }
-function start() {
-    return new Promise(resolve=>{
-        willRunFixedCommand("git pull")
-        .then(()=>{
-            willRunFixedCommand("forever start admin/ils.js").then(()=>{
-                resolve(true)
-            })
-        })
-    })
-}
 function stop() {
     return new Promise(resolve=>{
         willRunFixedCommand("npm stop")
         .then(()=>{
-            willRunFixedCommand("pm2 stop 1").then(resolve)
+            resolve(true)
         })
     })
 }
@@ -152,7 +142,6 @@ let takeName = R.compose(R.takeLast(1), R.split("/"))
 let anyRaw = R.flip(R.any)
 let anyFn = R.curry(anyRaw)
 module.exports.twoLevelUp = R.compose(R.join("/"), R.dropLast(2), R.split("/"))
-module.exports.start = start
 module.exports.stop = stop
 module.exports.auth = auth
 module.exports.removePunctuation = removePunctuation
