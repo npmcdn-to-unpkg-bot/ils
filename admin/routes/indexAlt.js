@@ -380,6 +380,7 @@ var bringOrderTranslation = require("../_inc/bringOrderTranslation");
 var searchImage = require("../_inc/searchImage");
 var proudDb = require("../_inc/proud-db");
 var dataFile = require("../../hapi/public/data.json");
+J.log(dataFile.length);
 var twoLevelUp = R.compose(R.join("/"), R.dropLast(2), R.split("/"));
 
 var getPredraftCategory = R.compose(R.filter(function (val) {
@@ -411,6 +412,7 @@ router.get("/read/:parent", function (req, res) {
     });
 });
 router.get("/readDataFile/:parent", function (req, res) {
+    J.log(1);
     res.send(dataFile[req.params.parent]);
 });
 router.post("/uploadImage", function (req, res) {

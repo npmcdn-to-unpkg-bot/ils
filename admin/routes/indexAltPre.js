@@ -10,6 +10,7 @@ const bringOrderTranslation = require("../_inc/bringOrderTranslation")
 const searchImage = require("../_inc/searchImage")
 const proudDb = require("../_inc/proud-db")
 const dataFile = require("../../hapi/public/data.json")
+J.log(dataFile.length)
 let twoLevelUp = R.compose(R.join("/"), R.dropLast(2), R.split("/"))
 async function willTranslate(word) {
     let translated = await translate.deEn(word)
@@ -92,6 +93,7 @@ router.get("/read/:parent", (req, res) =>{
     })
 })
 router.get("/readDataFile/:parent", (req, res) =>{
+    J.log(1)
     res.send(dataFile[ req.params.parent ])
 })
 router.post("/uploadImage", (req, res) =>{

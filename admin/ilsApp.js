@@ -8,11 +8,13 @@ const mainRoute = require("./routes/indexAlt.js")
 let app = express()
 app.use((req, res, next) =>{
     if (!J.auth(req.ip)) {
+        J.log(req.ip)
         res.send("No")
     }
     if (req.body) {
         J.logger.debug(`${req.url} ${req.body}`)
     } else {
+        J.log(7)
         J.logger.debug(`${req.url}`)
     }
     res.header("Access-Control-Allow-Origin", "*")
