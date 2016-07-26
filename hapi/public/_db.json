@@ -21084,7 +21084,17 @@
         "enPart": ""
       },
       "id": 3588
+    },
+    "3589": {
+      "data": {
+        "category": "draft",
+        "deWord": "sauer",
+        "enWord": "",
+        "dePart": "Für die Frau bedeutet Liebe Macht, für den Mann Unterwerfung.",
+        "enPart": ""
+      },
+      "id": 3589
     }
   },
-  "nextIndex": 3589
+  "nextIndex": 3590
 }
