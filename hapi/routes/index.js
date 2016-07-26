@@ -5,6 +5,7 @@ const J = require("../../common")
 const dailyTask = require("../_inc/dailyTask")
 const R = require("ramda")
 const moment = require("moment")
+const jwt = require("jwt-simple")
 const env = require("dotenv-helper")
 
 let router = express.Router()
@@ -13,8 +14,12 @@ let oneLevelUp = R.compose(R.join("/"), R.init, R.split("/"))
 let titleFn = R.compose(R.trim, R.last, R.split("-"), R.head, R.match(/\/\/(\s)?title.{1,70}/gm))
 //let categoryFn = R.compose(R.trim,R.last,R.split("-"),R.head,R.match(/\/\/(\s)?category.{1,70}/gm))
 let cleanFn = R.compose(R.replace(/\/(.|\n)+(?=#)/gm, ""))
-
+function setCookie(res, key, value) {
+    res.append("Set-Cookie", `${key}=${value}`)
+}
 router.get("/", (req, res) =>{
+    console.log("Cookies: ", req.cookies.foo)
+    setCookie(res)
     res.render("index")
 })
 router.get("/run/:command", (req, res) =>{
@@ -29,6 +34,17 @@ router.get("/run/:command", (req, res) =>{
         }
     } else {res.send("No")}
 })
+router.post("/run", (req, res) =>{
+    if (req.body.password === env.getEnv("mainPassword")) {
+        dailyTask.deploy().then(()=>{
+            J.logger.debug("daily task")
+        })
+        res.send("success")
+    } else {
+        res.send("fail")
+    }
+})
+
 router.get("/redux", (req, res) =>{
     res.render("redux")
 })
@@ -55,18 +71,6 @@ router.get("/orderSentenceMobile", (req, res) =>{
 })
 router.get("/test", (req, res) =>{
     res.render("test")
-})
-router.post("/catchDailyHook", (req, res)=> {
-    let currentTime = moment().format("MMMM Do h:mm")
-    J.postData(env.getEnv("zapierLogData"), {logData: `iLs dailyTask ${currentTime}`}).then(J.log)
-    if (req.body.password === env.getEnv("mainPassword")) {
-        dailyTask.deploy().then(()=>{
-            J.postData(env.getEnv("zapierLogData"), {logData: `iLs dailyTask ${currentTime}`}).then(J.log)
-        })
-        res.send("success")
-    } else {
-        res.send("fail")
-    }
 })
 router.post("/catchDailyHookRoot", (req, res) =>{
     let currentTime = moment().format("MMMM Do h:mm")

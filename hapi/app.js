@@ -13,7 +13,7 @@ let routes = require("./routes/index.js")
 let app = express()
 app.use(responseTime((req, res, time)=>{
     if (time > 500) {
-        J.logger.info(`${time} ${req.method} ${req.url} ${J.log(req.ip)}`)
+        J.logger.info(`${time} ${req.method} ${req.url} ${req.ip}`)
     }
 }))
 app.use(helmet())
@@ -39,7 +39,7 @@ app.engine("jsx", require("express-react-views").createEngine())
 app.use(favicon(__dirname + "/public/favicon.ico"))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
-//app.use(cookieParser())
+app.use(cookieParser())
 app.use(minify({cache:`${__dirname}/cache`}))
 app.use(express.static(path.join(__dirname, "public")))
 app.use("/", routes)

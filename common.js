@@ -21,24 +21,23 @@ function auth(ip) {
             flag = true
         }
     })
-    if (flag === false) {
-        J.box(ip)
-    }
     return flag
 }
 const logger = new (winston.Logger)({
     transports: [
         new (winston.transports.File)({
             name: "info-file",
-            filename: "zMainLog.log",
+            filename: `zMainLog${env.getEnv("hostTag")}.log`,
             level: "info"
         }),
         new (winston.transports.File)({
             name: "error-file",
-            filename: "zErrorLog.log",
+            filename: `zErrorLog${env.getEnv("hostTag")}.log`,
             level: "error"
         }),
-        new (winston.transports.Console)({
+        new (winston.transports.File)({
+            name: "debug-file",
+            filename: `zDebugLog${env.getEnv("hostTag")}.log`,
             level: "debug"
         })
     ]

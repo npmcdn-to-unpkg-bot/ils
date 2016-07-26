@@ -1,7 +1,7 @@
 "use strict"
 const J = require("./common")
 
-let commands = ["pm2 kill", "git pull", "pm2 start admin/ils.js", "pm2 start hapi/start.js -i max", "pm2 status"]
+let commands = ["pm2 kill", "git pull", "pm2 start admin/start.js", "pm2 start hapi/start.js -i max", "pm2 status"]
 
 async function mainAsync() {
     let awaited

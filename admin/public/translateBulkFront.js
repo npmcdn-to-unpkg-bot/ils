@@ -371,7 +371,7 @@ var App = function (_Component) {
             dePart: "",
             paginationIndex: 0,
             paginationLimit: 0,
-            paginationPerPageCount: 11
+            paginationPerPageCount: 15
         };
         _this.handleDeInput = _this.handleDeInput.bind(_this);
         _this.handleEnInput = _this.handleEnInput.bind(_this);
