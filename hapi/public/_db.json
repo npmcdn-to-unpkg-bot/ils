@@ -21074,7 +21074,17 @@
         "enPart": "I almost died with fear, I was scared half to death."
       },
       "id": 3587
+    },
+    "3588": {
+      "data": {
+        "category": "draft",
+        "deWord": "vorwerfen",
+        "enWord": "accuse",
+        "dePart": "Wenn du alles gibst, kannst du dir nichts vorwerfen.",
+        "enPart": ""
+      },
+      "id": 3588
     }
   },
-  "nextIndex": 3588
+  "nextIndex": 3589
 }

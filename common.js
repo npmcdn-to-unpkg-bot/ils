@@ -126,10 +126,28 @@ function shuffle(array) {
     }
     return array
 }
+function start() {
+    return new Promise(resolve=>{
+        willRunFixedCommand("git pull")
+        .then(()=>{
+            willRunFixedCommand("pm2 start admin/ils.js").then(resolve)
+        })
+    })
+}
+function stop() {
+    return new Promise(resolve=>{
+        willRunFixedCommand("npm stop")
+        .then(()=>{
+            willRunFixedCommand("pm2 stop 1").then(resolve)
+        })
+    })
+}
 let removePunctuation = R.compose(R.replace(/\.|\!|\,|\-|\?/, ""))
 let takeName = R.compose(R.takeLast(1), R.split("/"))
 let anyRaw = R.flip(R.any)
 let anyFn = R.curry(anyRaw)
+module.exports.start = start
+module.exports.stop = stop
 module.exports.auth = auth
 module.exports.removePunctuation = removePunctuation
 module.exports.timer = timer

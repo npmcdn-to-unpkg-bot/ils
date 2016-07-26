@@ -438,11 +438,7 @@ router.get("/db", function (req, res) {
     res.render("db");
 });
 router.get("/translateBulk", function (req, res) {
-    if (J.auth(req.ip)) {
-        res.render("translateBulk");
-    } else {
-        res.send("No");
-    }
+    res.render("translateBulk");
 });
 router.get("/learningMeme", function (req, res) {
     res.render("learningMeme");

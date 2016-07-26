@@ -7,6 +7,10 @@ const bodyParser = require("body-parser")
 const mainRoute = require("./routes/indexAlt.js")
 let app = express()
 app.use((req, res, next) =>{
+    if (J.auth(req.ip)) {
+        J.log("No", req.ip)
+        res.send("No")
+    }
     if (req.body) {
         J.logger.debug(`${req.url} ${req.body}`)
     } else {
@@ -25,7 +29,6 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(express.static(path.join(__dirname, "public")))
 app.use("/", mainRoute)
 app.use(function (req, res) {
-    //res.status(err.status || 500)
     res.send({
         message: "more"
     })

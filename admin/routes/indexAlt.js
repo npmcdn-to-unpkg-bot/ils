@@ -302,67 +302,65 @@ var willBulkRemove = function () {
 
                     case 42:
                         if (_iteratorNormalCompletion3 = (_step3 = _iterator3.next()).done) {
-                            _context6.next = 51;
+                            _context6.next = 50;
                             break;
                         }
 
                         updateValue = _step3.value;
-
-                        J.log(updateValue, "update");
-                        _context6.next = 47;
+                        _context6.next = 46;
                         return proudDb.save("data", "" + updateValue.id, updateValue);
 
-                    case 47:
+                    case 46:
                         iMeanNothing = _context6.sent;
 
-                    case 48:
+                    case 47:
                         _iteratorNormalCompletion3 = true;
                         _context6.next = 42;
                         break;
 
-                    case 51:
-                        _context6.next = 57;
+                    case 50:
+                        _context6.next = 56;
                         break;
 
-                    case 53:
-                        _context6.prev = 53;
+                    case 52:
+                        _context6.prev = 52;
                         _context6.t1 = _context6["catch"](40);
                         _didIteratorError3 = true;
                         _iteratorError3 = _context6.t1;
 
-                    case 57:
+                    case 56:
+                        _context6.prev = 56;
                         _context6.prev = 57;
-                        _context6.prev = 58;
 
                         if (!_iteratorNormalCompletion3 && _iterator3.return) {
                             _iterator3.return();
                         }
 
-                    case 60:
-                        _context6.prev = 60;
+                    case 59:
+                        _context6.prev = 59;
 
                         if (!_didIteratorError3) {
-                            _context6.next = 63;
+                            _context6.next = 62;
                             break;
                         }
 
                         throw _iteratorError3;
 
+                    case 62:
+                        return _context6.finish(59);
+
                     case 63:
-                        return _context6.finish(60);
+                        return _context6.finish(56);
 
                     case 64:
-                        return _context6.finish(57);
-
-                    case 65:
                         return _context6.abrupt("return", iMeanNothing);
 
-                    case 66:
+                    case 65:
                     case "end":
                         return _context6.stop();
                 }
             }
-        }, _callee6, this, [[11, 25, 29, 37], [30,, 32, 36], [40, 53, 57, 65], [58,, 60, 64]]);
+        }, _callee6, this, [[11, 25, 29, 37], [30,, 32, 36], [40, 52, 56, 64], [57,, 59, 63]]);
     }));
     return function willBulkRemove(_x8) {
         return ref.apply(this, arguments);
@@ -402,11 +400,7 @@ router.get("/db", function (req, res) {
     res.render("db");
 });
 router.get("/translateBulk", function (req, res) {
-    if (J.auth(req.ip)) {
-        res.render("translateBulk");
-    } else {
-        res.send("No");
-    }
+    res.render("translateBulk");
 });
 router.get("/learningMeme", function (req, res) {
     res.render("learningMeme");
@@ -430,7 +424,8 @@ router.post("/update/:parent", function (req, res) {
     });
 });
 router.post("/newEntry", function (req, res) {
-    willAddEntry("data", JSON.parse(req.body.data)).then(function () {
+    willAddEntry("data", JSON.parse(req.body.data)).then(function (incoming) {
+        J.log(incoming);
         res.send("done");
     });
 });

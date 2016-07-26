@@ -9,15 +9,15 @@ var _reactDom = require("react-dom");
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _translateBulk = require("../../hot/src/translateBulk.js");
+var _translateBulkIls = require("../../hot/src/translateBulkIls.js");
 
-var _translateBulk2 = _interopRequireDefault(_translateBulk);
+var _translateBulkIls2 = _interopRequireDefault(_translateBulkIls);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-_reactDom2.default.render(_react2.default.createElement(_translateBulk2.default, null), document.getElementById("reactHook"));
+_reactDom2.default.render(_react2.default.createElement(_translateBulkIls2.default, null), document.getElementById("reactHook"));
 
-},{"../../hot/src/translateBulk.js":5,"react":178,"react-dom":36}],2:[function(require,module,exports){
+},{"../../hot/src/translateBulkIls.js":5,"react":178,"react-dom":36}],2:[function(require,module,exports){
 "use strict";
 
 var R = require("ramda");
@@ -252,6 +252,7 @@ module.exports.randomSeed = randomSeed;
 module.exports.winWidthIs = winWidthIs;
 module.exports.winHeightIs = winHeightIs;
 module.exports.host = "http://localhost:3001";
+module.exports.ils = "http://ilearnsmarter:3001";
 
 module.exports.bulButtonInit = "button";
 module.exports.categoryOptions = [{ value: "quotes", label: "quotes" },
@@ -390,8 +391,8 @@ var App = function (_Component) {
             var _this2 = this;
 
             _commonReact2.default.emitter.on("init", function () {
-                _commonReact2.default.log(_commonReact2.default.host + "/readDataFile/" + nextWord());
-                _commonReact2.default.getData(_commonReact2.default.host + "/readDataFile/" + nextWord()).then(function (data) {
+                _commonReact2.default.log(_commonReact2.default.ils + "/readDataFile/" + nextWord());
+                _commonReact2.default.getData(_commonReact2.default.ils + "/readDataFile/" + nextWord()).then(function (data) {
                     var dataFuture = {};
                     var enWord = "";
                     var dePart = "";
@@ -412,7 +413,8 @@ var App = function (_Component) {
                 willSend.enWord = _this2.state.enWord.trim();
                 willSend.dePart = _commonReact2.default.addFullstop(_this2.state.dePart.trim());
                 willSend.enPart = _commonReact2.default.addFullstop(_this2.state.enPart.trim());
-                _commonReact2.default.postData(_commonReact2.default.host + "/newEntry", JSON.stringify({ data: willSend })).then(function (incoming) {
+                _commonReact2.default.postData(_commonReact2.default.ils + "/newEntry", JSON.stringify({ data: willSend })).then(function (incoming) {
+                    _commonReact2.default.log(incoming);
                     _commonReact2.default.emitter.emit("init");
                 });
             });

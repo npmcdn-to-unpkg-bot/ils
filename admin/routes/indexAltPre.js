@@ -63,7 +63,6 @@ async function willBulkRemove(marker) {
         iMeanNothing = await proudDb.remove("data", `${removeMarker}`)
     }
     for (let updateValue of willChangeCategoryArr) {
-        J.log(updateValue, "update")
         iMeanNothing = await proudDb.save("data", `${updateValue.id}`, updateValue)
     }
     return iMeanNothing
@@ -82,9 +81,7 @@ router.get("/db", (req, res) => {
     res.render("db")
 })
 router.get("/translateBulk", (req, res) => {
-    if (J.auth(req.ip)) {
-        res.render("translateBulk")
-    } else {res.send("No")}
+    res.render("translateBulk")
 })
 router.get("/learningMeme", (req, res) => {
     res.render("learningMeme")
@@ -108,7 +105,8 @@ router.post("/update/:parent", (req, res) =>{
     })
 })
 router.post("/newEntry", (req, res) =>{
-    willAddEntry("data", JSON.parse(req.body.data)).then(()=>{
+    willAddEntry("data", JSON.parse(req.body.data)).then(incoming=>{
+        J.log(incoming)
         res.send("done")
     })
 })
