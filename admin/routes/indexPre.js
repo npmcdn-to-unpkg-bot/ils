@@ -11,10 +11,6 @@ const uploadImage = require("../_inc/uploadImage")
 const searchImage = require("../_inc/searchImage")
 const proudDb = require("../_inc/proud-db")
 const dataFile = require("../../hapi/public/data.json")
-for (let prop in dataFile) {
-    J.log(prop)
-}
-
 let twoLevelUp = R.compose(R.join("/"), R.dropLast(2), R.split("/"))
 async function willTranslate(word) {
     let translated = await translate.deEn(word)

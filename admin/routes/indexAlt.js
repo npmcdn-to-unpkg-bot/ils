@@ -380,9 +380,6 @@ var bringOrderTranslation = require("../_inc/bringOrderTranslation");
 var searchImage = require("../_inc/searchImage");
 var proudDb = require("../_inc/proud-db");
 var dataFile = require("../../hapi/public/data.json");
-for (var prop in dataFile) {
-    J.log(prop);
-}
 var twoLevelUp = R.compose(R.join("/"), R.dropLast(2), R.split("/"));
 
 var getPredraftCategory = R.compose(R.filter(function (val) {
