@@ -17,13 +17,13 @@ function timer(startMarker = "default") {
 function auth(ip) {
     let flag = false
     env.getEnv("adminIp").map(val=>{
-        J.log(val, typeof val)
-        J.log(ip, typeof ip)
-        J.log(ip.includes(val))
         if (ip.includes(val)) {
             flag = true
         }
     })
+    if (flag === false) {
+        J.box(ip)
+    }
     return flag
 }
 const logger = new (winston.Logger)({

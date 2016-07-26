@@ -7,8 +7,7 @@ const bodyParser = require("body-parser")
 const mainRoute = require("./routes/indexAlt.js")
 let app = express()
 app.use((req, res, next) =>{
-    if (J.auth(req.ip)) {
-        J.log("No", req.ip)
+    if (!J.auth(req.ip)) {
         res.send("No")
     }
     if (req.body) {
