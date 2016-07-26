@@ -17,6 +17,9 @@ function timer(startMarker = "default") {
 function auth(ip) {
     let flag = false
     env.getEnv("adminIp").map(val=>{
+        log(val, typeof val)
+        log(ip, typeof ip)
+        log(ip.includes(val))
         if (ip.includes(val)) {
             flag = true
         }
