@@ -252,7 +252,7 @@ module.exports.randomSeed = randomSeed;
 module.exports.winWidthIs = winWidthIs;
 module.exports.winHeightIs = winHeightIs;
 module.exports.host = "http://localhost:3001";
-module.exports.ils = "http://ilearnsmarter:3001";
+module.exports.ils = "";
 
 module.exports.bulButtonInit = "button";
 module.exports.categoryOptions = [{ value: "quotes", label: "quotes" },
