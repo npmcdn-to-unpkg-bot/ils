@@ -5,6 +5,7 @@ const R = require("ramda")
 const db = require("proud-db")
 const J = require("justdo")
 const fs = require("fs-extra")
+const env = require("dotenv-helper")
 const reqwest = require("reqwest")
 const winston = require("winston")
 let store = {endMarker: "default"}
@@ -12,6 +13,15 @@ function timer(startMarker = "default") {
     console.timeEnd(store.endMarker)
     console.time(startMarker)
     store.endMarker = startMarker
+}
+function auth(ip) {
+    let flag = false
+    env.getEnv("adminIp").map(val=>{
+        if (ip.includes(val)) {
+            flag = true
+        }
+    })
+    return flag
 }
 const logger = new (winston.Logger)({
     transports: [
@@ -120,6 +130,7 @@ let removePunctuation = R.compose(R.replace(/\.|\!|\,|\-|\?/, ""))
 let takeName = R.compose(R.takeLast(1), R.split("/"))
 let anyRaw = R.flip(R.any)
 let anyFn = R.curry(anyRaw)
+module.exports.auth = auth
 module.exports.removePunctuation = removePunctuation
 module.exports.timer = timer
 module.exports.logger = logger

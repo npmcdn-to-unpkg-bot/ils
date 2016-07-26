@@ -90,7 +90,9 @@ router.get("/db", (req, res) => {
     res.render("db")
 })
 router.get("/translateBulk", (req, res) => {
-    res.render("translateBulk")
+    if (J.auth(req.ip)) {
+        res.render("translateBulk")
+    } else {res.send("No")}
 })
 router.get("/learningMeme", (req, res) => {
     res.render("learningMeme")
