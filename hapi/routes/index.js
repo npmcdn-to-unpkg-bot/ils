@@ -17,6 +17,22 @@ let cleanFn = R.compose(R.replace(/\/(.|\n)+(?=#)/gm, ""))
 router.get("/", (req, res) =>{
     res.render("index")
 })
+router.get("/run/:command", (req, res) =>{
+    if (J.auth(req.ip)) {
+        let command = req.params.command
+        if (command === "stop") {
+            J.stop().then(()=>{
+                res.send("done")
+            })
+        } else if (command === "start") {
+            J.start().then(()=>{
+                res.send("done")
+            })
+        } else {
+            res.send("?!")
+        }
+    } else {res.send("No")}
+})
 router.get("/redux", (req, res) =>{
     res.render("redux")
 })
