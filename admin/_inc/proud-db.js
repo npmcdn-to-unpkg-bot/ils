@@ -1,8 +1,6 @@
 "use strict"
 const J = require("../../common")
 const db = `${J.twoLevelUp(__dirname)}/hapi/public/_db.json`
-J.log(db)
-//const db = "/home/just/ils/hapi/public/_dbBackup.json"
 const fs = require("fs-extra")
 const R = require("ramda")
 
