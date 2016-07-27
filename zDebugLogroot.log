@@ -1,1 +1,14 @@
 {"level":"info","message":"3424.630648 GET / ::ffff:127.0.0.1","timestamp":"2016-07-26T23:58:44.968Z"}
+{"level":"info","message":"609.2339029999999 GET / ::ffff:127.0.0.1","timestamp":"2016-07-27T00:18:04.592Z"}
+{"level":"info","message":"736.216952 GET /orderSentenceMobile ::ffff:127.0.0.1","timestamp":"2016-07-27T00:21:01.776Z"}
+{"level":"info","message":"653.441838 GET /orderSentenceMobile ::ffff:127.0.0.1","timestamp":"2016-07-27T00:21:42.495Z"}
+{"level":"info","message":"626.761041 GET /orderSentenceMobile ::ffff:127.0.0.1","timestamp":"2016-07-27T00:23:13.745Z"}
+{"level":"info","message":"652.011668 GET /orderSentenceMobile ::ffff:127.0.0.1","timestamp":"2016-07-27T00:24:17.385Z"}
+{"level":"info","message":"608.473798 GET /orderSentenceMobile ::ffff:127.0.0.1","timestamp":"2016-07-27T00:25:32.166Z"}
+{"level":"info","message":"626.857856 GET /orderSentenceMobile ::ffff:127.0.0.1","timestamp":"2016-07-27T00:27:38.721Z"}
+{"level":"info","message":"601.744679 GET /orderSentenceMobile ::ffff:127.0.0.1","timestamp":"2016-07-27T00:30:22.523Z"}
+{"level":"info","message":"622.0970599999999 GET /orderSentenceMobile ::ffff:127.0.0.1","timestamp":"2016-07-27T00:31:09.280Z"}
+{"level":"error","message":"200 /orderSentenceFront.css development","timestamp":"2016-07-27T00:32:14.563Z"}
+{"level":"info","message":"740.3958339999999 GET /orderSentence ::ffff:127.0.0.1","timestamp":"2016-07-27T00:33:28.772Z"}
+{"level":"error","message":"200 /orderSentenceFront.css development","timestamp":"2016-07-27T00:33:29.163Z"}
+{"level":"error","message":"200 /writeSentenceLiteFront.css development","timestamp":"2016-07-27T00:34:05.995Z"}

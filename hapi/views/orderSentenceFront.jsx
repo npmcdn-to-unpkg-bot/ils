@@ -108,7 +108,7 @@ class Only extends Component {
 			error:  (err) => { console.log(err)},
 			success: (incoming) => {
                 this.setState({
-                    globalData: shuffle(R.filter(isUniq, R.values(incoming.data)))
+                    globalData: shuffle(R.compose(R.filter(val=> R.prop("enPart",val)!==undefined&&val.enPart.length>10),R.values)(incoming.data))
                 },()=>{
                     console.log(this.state)
                 })

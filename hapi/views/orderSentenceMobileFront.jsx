@@ -4,15 +4,12 @@ import ReactDOM from "react-dom"
 import R from "ramda"
 import reqwest from "reqwest"
 import FlipMove from "react-flip-move"
-
-import J from "./components/commonReact.js"
-
+//import J from "./components/commonReact.js"
+import J from "../../hot/src/components/commonReact.js"
 let initOnce = R.once(()=>{
     J.emitter.emit("init")
 })
-
 let currentId
-
 class App extends Component {
     constructor (props) {
         super(props)
@@ -132,8 +129,9 @@ class App extends Component {
 			method:  "get",
 			error: (err) => { console.log(err)},
 			success: (incoming)=> {
+                J.log(R.compose(R.filter(val=> R.prop("enPart",val)!==undefined&&val.enPart.length>10),R.values)(incoming.data))
                 this.setState({
-                    globalData: J.shuffle(R.filter(J.isUniq, R.values(incoming.data)))
+                    globalData: J.shuffle(R.compose(R.filter(val=> R.prop("enPart",val)!==undefined&&val.enPart.length>10),R.values)(incoming.data))
                 }, ()=>{
                     initOnce()
                 })
