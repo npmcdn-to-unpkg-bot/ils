@@ -9,15 +9,15 @@ var _reactDom = require("react-dom");
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _translateBulk = require("../../hot/src/translateBulk.js");
+var _translateBulkRoot = require("../../hot/src/translateBulkRoot.js");
 
-var _translateBulk2 = _interopRequireDefault(_translateBulk);
+var _translateBulkRoot2 = _interopRequireDefault(_translateBulkRoot);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-_reactDom2.default.render(_react2.default.createElement(_translateBulk2.default, null), document.getElementById("reactHook"));
+_reactDom2.default.render(_react2.default.createElement(_translateBulkRoot2.default, null), document.getElementById("reactHook"));
 
-},{"../../hot/src/translateBulk.js":5,"react":178,"react-dom":36}],2:[function(require,module,exports){
+},{"../../hot/src/translateBulkRoot.js":5,"react":178,"react-dom":36}],2:[function(require,module,exports){
 "use strict";
 
 var R = require("ramda");
@@ -371,7 +371,7 @@ var App = function (_Component) {
             dePart: "",
             paginationIndex: 0,
             paginationLimit: 0,
-            paginationPerPageCount: 18
+            paginationPerPageCount: 11
         };
         _this.handleDeInput = _this.handleDeInput.bind(_this);
         _this.handleEnInput = _this.handleEnInput.bind(_this);

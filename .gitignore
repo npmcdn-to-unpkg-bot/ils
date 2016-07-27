@@ -1,7 +1,6 @@
 node_modules/
 .env
 npm-debug.log
-*.log
 znote.md
 tmp
 cache/

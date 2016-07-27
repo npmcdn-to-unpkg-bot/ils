@@ -440,6 +440,9 @@ router.get("/db", function (req, res) {
 router.get("/translateBulk", function (req, res) {
     res.render("translateBulk");
 });
+router.get("/translateBulkRoot", function (req, res) {
+    res.render("translateBulkRoot");
+});
 router.get("/learningMeme", function (req, res) {
     res.render("learningMeme");
 });

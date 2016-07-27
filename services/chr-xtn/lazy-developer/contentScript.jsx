@@ -3,7 +3,6 @@ import * as R   from"ramda"
 const reqwest  = require("reqwest")
 const request  = require("request")
 const cheerio  = require("cheerio")
-const bringOrderTranslation  = require("./bringOrderTranslation")
 import React,{ Component } from"react"
 const ReactDOM     = require("react-dom")
 const Griddle = require("griddle-react")
@@ -15,14 +14,27 @@ const heightIs = window.innerHeight * 1
 const widthIs = window.innerWidth * 1
 const heightState = Math.floor(heightIs / 100)
 const widthState = Math.floor(widthIs / 100)
-
 let displayFlag = false
+let flag = false
 let messageState = ""
 let dataState = {}
 let wordState = ""
-function getData(url) {
+function uniq(arr, flag) {
+    let holder = []
+    return R.compose(R.sort((a, b)=> b.enPart.length - a.enPart.length), R.filter(val=>{
+        if (val.dePart!==undefined&&val.enPart!==undefined&&
+            R.indexOf(val.dePart, holder) === -1 && val.dePart.length > 2&&
+            val.dePart.length < 100&&R.indexOf("�",val.dePart) === -1) {
+            holder.push(val.dePart)
+            return true
+        } else {return false}
+    }), R.map(val=>{
+        return R.merge(val, {dePart: R.replace(/[0-9]/g, "", val.dePart)})
+    }))(arr)
+}
+function willRequest(url) {
     return new Promise((resolve) => {
-        willRequest("https://allorigins.pw/get?url=" + encodeURIComponent(url)).then(function (incoming) {
+        requestFn(`http://allorigins.pw/get?url=${encodeURIComponent(url)}`).then(function (incoming) {
             let willSend = JSON.parse(incoming)
             if (willSend.contents) {
                 resolve(willSend.contents)
@@ -32,7 +44,7 @@ function getData(url) {
         })
     })
 }
-function willRequest(url) {
+function requestFn(url) {
     return new Promise((resolve, reject) => {
         request({
             url: url,
@@ -46,89 +58,11 @@ function willRequest(url) {
         })
     })
 }
-function test(wordRaw) {
+function first(wordRaw) {
     let word = wordRaw.trim().toLowerCase()
     return new Promise((resolve) => {
-        willRequest(`http://www.fremdwort.de/suchen/synonym/${word}`).then(function(data) {
-            if(data) {
-                let willReturn = []
-                let $ = cheerio.load(data)
-                let selector = "#content .section ul li"
-                $(selector).each(function(i) {
-                    let localWord = $(this).text().trim()
-                    willReturn.push({
-                        dePart: localWord,
-                        enPart: word
-                    })
-                })
-                resolve(willReturn)
-            } else{resolve(null)}
-        }).catch((error) => {
-            console.log(error)
-            resolve(null)
-        })
-    })
-}
-function testt(wordRaw) {
-    let word = wordRaw.trim().toLowerCase()
-    return new Promise((resolve) => {
-        willRequest(`http://www.fremdwort.de/suchen/synonym/${word}`).then(function(data) {
-            if(data) {
-                let willReturn = []
-                let $ = cheerio.load(data)
-                let selector = "#content .section ul li"
-                $(selector).each(function(i) {
-                    let localWord = $(this).text().trim()
-                    willReturn.push({
-                        dePart: localWord,
-                        enPart: word
-                    })
-                })
-                resolve(willReturn)
-            } else{resolve(null)}
-        }).catch((error) => {
-            console.log(error)
-            resolve(null)
-        })
-    })
-}
-function phraseFirst(wordRaw) {
-    let word = wordRaw.trim().toLowerCase()
-    return new Promise((resolve) => {
-        let flag = false
-        let willReturn = []
-        let willReturnDe= []
-        let willReturnKeys= []
-        let dePart
-        let url = `http://de.langenscheidt.com/deutsch-englisch/${word}`
-        willRequest(url).then((data)=>{
-            let $ = cheerio.load(data)
-            let selector = ".row-fluid .lkgEx"
-            $(selector).each(function(i) {
-                let localWord = $(this).text().trim()
-                if(localWord.length > 0 && localWord.length < 70) {
-                    willReturnDe.push(localWord)
-                    willReturnKeys.push(i)
-                }
-            })
-            selector = ".row-fluid .lkgExNormal"
-            $(selector).each(function(i) {
-                let localWord = $(this).text().trim()
-                if(willReturnKeys.indexOf(i)!==-1){
-                    willReturn.push({
-                        dePart: willReturnDe[i],
-                        enPart: localWord
-                    })
-                }
-            })
-            resolve(willReturn)
-        })
-    })
-}
-function phraseThird(wordRaw) {
-    let word = wordRaw.trim().toLowerCase()
-    return new Promise((resolve) => {
-        willRequest(`http://www.phrasen.com/index.php?do=suche&q=${word}`).then(function(data) {
+        willRequest(`http://www.phrasen.com/index.php?do=suche&q=${word}`).then((data)=>{
+            if (data) {
                 let willReturn = []
                 let $ = cheerio.load(data)
                 let selector = "a.zeile"
@@ -144,54 +78,112 @@ function phraseThird(wordRaw) {
                     let localWord = $(this).text().trim()
                     willReturn.push({
                         dePart: localWord,
-                        enPart: word
+                        enPart: ""
                     })
                 })
-                let sortByLength = R.sortBy(R.compose((a)=>{return-a.length},R.prop("dePart")))
-                let sortByLengthLess = R.sortBy(R.compose((a)=>{return a.length},R.prop("dePart")))
-                let local = R.take(20,sortByLength(willReturn))
-                let localSecond = R.take(10,sortByLengthLess(willReturn))
-                resolve(R.flatten([local,localSecond]))
+                let sortByLength = R.sortBy(R.compose((a)=>{return -a.length}, R.prop("dePart")))
+                let sortByLengthLess = R.sortBy(R.compose((a)=>{return a.length}, R.prop("dePart")))
+                let local = R.take(20, sortByLength(willReturn))
+                let localSecond = R.take(10, sortByLengthLess(willReturn))
+                resolve(R.flatten([local, localSecond]))
+            } else {resolve(null)}
         }).catch((error) => {
             console.log(error)
             resolve(null)
         })
     })
 }
-function mixed(wordRaw) {
-    let word = wordRaw.trim().toLowerCase()
-    return new Promise((resolve)=>{
-        let url = `https://clients5.google.com/translate_a/t?client=dict-chrome-ex&sl=de&tl=en&q=${word}`
-        willRequest(url).then((data)=>{
-            let willReturn = {}
-            let willReturnTranslation = []
-            let willReturnRelated = []
-            if(R.prop("dict",data) && R.prop("dict",data).length > 0) {
-                let state = R.prop("dict",data)[ 0 ]
-                if(R.prop("terms",state)) {
-                    let local = R.prop("terms",state)
-                    local.map((localState)=>{
-                        willReturnTranslation.push({
-                            dePart: word,
-                            enPart: localState
+function second(word) {
+    return new Promise((resolve) => {
+        willRequest(`http://www.dict.cc/?s=${word}`).then(function(data) {
+            if (data) {
+                let $ = cheerio.load(data)
+                let willReturn = []
+                let selector = "tr"
+                let flagNumber = 0
+                let enPart
+                $(selector).each(function(i) {
+                    let state = $(this).text().trim()
+                    if (state.includes("Andere")) {
+                        flagNumber = i - 4
+                    }
+                })
+                selector = "td.td7nl"
+                $(selector).each(function(i) {
+                    let state = $(this).text().trim()
+                    if (flagNumber <= i && i % 2 === 0) {
+                        enPart = state
+                    }
+                    if (flagNumber <= i && i % 2 === 1) {
+                        willReturn.push({
+                            dePart: state,
+                            enPart: enPart
                         })
+                    }
+                })
+                resolve(willReturn)
+            } else {resolve(null)}
+        }).catch((error) => {
+            console.log(error)
+            resolve(null)
+        })
+    })
+}
+function third(word) {
+    return new Promise((resolve) => {
+        willRequest(`http://zitate.net/zitate/suche.html?query=${word}`).then(function(data) {
+            if (data) {
+                let $ = cheerio.load(data)
+                let willReturn = []
+                let selector = "span.quote"
+                $(selector).each(function(i) {
+                    let state = $(this).text().trim()
+                    willReturn.push({
+                        dePart: state,
+                        enPart: ""
                     })
-                }
-                if(R.prop("entry",state)) {
-                    let local = R.prop("entry",state)
-                    local.map((val)=>{
-                        val.reverse_translation.map((value)=>{
-                            willReturnRelated.push({
-                                dePart: value,
-                                enPart: val.word
-                            })
-                        })
-                    })
-                }
-            }
-            willReturn.translation = willReturnTranslation
-            willReturn.related = willReturnRelated
-            resolve(willReturn)
+                })
+
+                resolve(willReturn)
+            } else {resolve(null)}
+        }).catch((error) => {
+            console.log(error)
+            resolve(null)
+        })
+    })
+}
+function fourth(word) {
+    return new Promise((resolve) => {
+        willRequest(`http://www.uitmuntend.de/woerterbuch/${word}/`).then(function(data) {
+            if (data) {
+                let $ = cheerio.load(data)
+                let willReturn = []
+                let trimFn = R.compose(R.trim, R.head, R.split("["))
+                let filterFn = R.compose(R.uniq, R.filter(val=>{
+                    return val.length > 3 && val.length < 130
+                }), R.map(val => trimFn(val)))
+                let id = 0
+                let flag = false
+                let selector = "tr"
+                $(selector).each(function(i) {
+                    let state = $(this).text().trim()
+                    switch (state) {
+                    case "Zusammensetzungen":
+                    case "Sprichwörter & Zitate":
+                    case "Beispiele":
+                        flag = true
+                        break
+                    case "Title":
+                        flag = false
+                        break
+                    }
+                    if (flag) {
+                        willReturn.push($(this).find("td[lang=\"de\"]").text().trim())
+                    }
+                })
+                willReturn = R.sort((a, b)=>a.length - b.length, filterFn(willReturn))
+                resolve(R.map(val =>{return {dePart: val, enPart:""}}, willReturn))
+            } else {resolve(null)}
         }).catch((error) => {
             console.log(error)
             resolve(null)
@@ -199,7 +191,6 @@ function mixed(wordRaw) {
     })
 }
 
-chrome.storage.local.get(function (data) {
 	let selector = "[data-reactroot], [data-reactid]"
 	let flagReact    = !!document.querySelector(selector)
 	if(!flagReact) {
@@ -261,17 +252,12 @@ chrome.storage.local.get(function (data) {
 		class GermanOverall extends Component {
 		    constructor (props) {
 		        super(props)
-		        this.willHandleClick = this.willHandleClick.bind(this)
 		    }
 		    static get defaultProps () {
 		        return{
 					incomingData: {}
 		        }
 		    }
-			willHandleClick(){
-				displayFlag = false
-				ReactDOM.unmountComponentAtNode(document.getElementById("reactContainer"))
-			}
 			render(){
 				let containerStyle = {
 					position:        "fixed",
@@ -284,23 +270,12 @@ chrome.storage.local.get(function (data) {
 				}
 				let innerStyle = {
 					color: "#263238",
-					marginLeft: "3%",
-					marginTop: "3%"
-				}
-				let buttonStyle = {
-					right:   "3%",
-					zIndex:  "100",
-					display: "inline"
+					margin: "3vh"
 				}
 				return(
 					<div style={containerStyle}>
-					<div style={buttonStyle}>
-						<button onClick={this.willHandleClick}>
-							close
-						</button>
-					</div>
 						<div style={innerStyle}>
-							<Griddle results={this.props.incomingData} tableClassName="table" resultsPerPage={15} columns={["dePart","enPart"]}/>
+							<Griddle results={this.props.incomingData} tableClassName="table" resultsPerPage={20} columns={["dePart","enPart"]}/>
 						</div>
 					</div>
 				)
@@ -313,15 +288,15 @@ chrome.storage.local.get(function (data) {
 			ReactDOM.render(<WillNotify message={messageState}/>,document.getElementById("reactContainerNotify"))
 		})
 		emitter.on("translate",()=>{
-            let willDisplay = {}
-            console.log(wordState)
-            test(wordState).then((incoming)=>{
-                console.log(incoming)
-				//displayFlag = true
-				//ReactDOM.render(<GermanOverall incomingData={incoming}/>,document.getElementById("reactContainer"))
-			})
+            Promise.all([first(wordState), second(wordState), third(wordState), fourth(wordState)])
+            .then(incoming => {
+                let willDisplay = uniq(R.flatten([incoming]))
+                dataState = willDisplay
+                displayFlag = true
+                ReactDOM.render(<GermanOverall incomingData={willDisplay}/>,document.getElementById("reactContainer"))
+            })
 		})
-        keyHandler.simple_combo("ctrl alt q", ()=>{
+        keyHandler.simple_combo("alt w", ()=>{
             ReactDOM.unmountComponentAtNode(document.getElementById("reactContainer"))
 			displayFlag = false
         })
@@ -330,57 +305,33 @@ chrome.storage.local.get(function (data) {
 			displayFlag = true
         })
 	}
-})
+
 keyHandler.simple_combo("alt q", ()=>{
-    messageState = "GermanOverall is turned on"
-	emitter.emit("notify")
-	document.ondblclick = function () {
-	   let word = (document.selection && document.selection.createRange().text) ||
-	             (window.getSelection && window.getSelection().toString())
-	   if(word.trim().length>40){
-		   console.log("this is long")
-		   console.log(R.take(40),word.trim())
-	   } else{
-		   if(displayFlag){
-			   ReactDOM.unmountComponentAtNode(document.getElementById("reactContainer"))
-		   }
-		   wordState = word.trim().toLowerCase()
-		   messageState = word.trim().toLowerCase()
-		   emitter.emit("notify")
-		   emitter.emit("translate")
-	   }
-	}
+    if(flag){
+        messageState = "Extended German-English Translation is turned OFF"
+    }else{
+        messageState = "Extended German-English Translation is turned ON"
+    }
+    flag = !flag
+    emitter.emit("notify")
 })
-
-function requestTranslation (word) {
-	return new Promise((resolve)=>{
-		let willSend = {
-			word: word
-		}
-		reqwest({
-			url:     "http://localhost:3001/detoen",
-			method:  "post",
-			data:    willSend,
-			error: function (err) { console.log(err)},
-			success: function (resp) {
-				resolve(resp)
-			}
-		})
-	})
-}
-
-function posting (url,data) {
-	return new Promise((resolve)=>{
-		reqwest({
-			url:     url,
-			method:  "post",
-			data:    data,
-			error: function (err) { console.log(err)},
-			success: function (resp) {
-				resolve(resp)
-			}
-		})
-	})
+document.ondblclick = function () {
+    if(flag){
+        let word = (document.selection && document.selection.createRange().text) ||
+                  (window.getSelection && window.getSelection().toString())
+        if(word.trim().length>40){
+            console.log("this is long")
+            console.log(R.take(40),word.trim())
+        } else{
+            if(displayFlag){
+                ReactDOM.unmountComponentAtNode(document.getElementById("reactContainer"))
+            }
+            wordState = word.trim().toLowerCase()
+            messageState = word.trim().toLowerCase()
+            emitter.emit("notify")
+            emitter.emit("translate")
+        }
+    }
 }
 
 function Events(target){

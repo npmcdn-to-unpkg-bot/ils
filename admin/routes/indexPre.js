@@ -92,6 +92,9 @@ router.get("/db", (req, res) => {
 router.get("/translateBulk", (req, res) => {
     res.render("translateBulk")
 })
+router.get("/translateBulkRoot", (req, res) => {
+    res.render("translateBulkRoot")
+})
 router.get("/learningMeme", (req, res) => {
     res.render("learningMeme")
 })

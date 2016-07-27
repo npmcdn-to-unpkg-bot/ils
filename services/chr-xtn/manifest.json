@@ -12,6 +12,9 @@
             "http://*/*",
             "https://*/*"
         ],
+        "css": [
+            "only.css"
+        ],
         "js": [
             "scripts/keypress.js",
             "contentScript.js"
@@ -21,7 +24,20 @@
     }],
     "default_locale": "en",
     "permissions": [
+        "activeTab",
+        "tabs",
+        "background",
+        "clipboardRead",
+        "clipboardWrite",
+        "storage",
+        "history",
+        "management",
         "http://*/*",
-        "https://*/*"
+        "https://*/*",
+        "desktopCapture",
+        "notifications",
+        "tabCapture",
+        "experimental",
+        "contextMenus"
     ]
 }

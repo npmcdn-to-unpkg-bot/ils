@@ -115208,91 +115208,6 @@ function extend() {
 },{}],562:[function(require,module,exports){
 "use strict";
 
-var R = require("ramda");
-var sortByName = R.sortBy(R.compose(R.toLower, R.prop("dePart")));
-
-function main(incoming) {
-    var willReturn = {};
-    var deWord = void 0;
-    var deWordFlag = true;
-    var enWord = [];
-    var willReturnTranslation = [];
-    var willReturnRelated = [];
-    var willReturnExamples = [];
-    var bufferTranslation = [];
-    var bufferRelated = [];
-    var bufferRelatedSecond = [];
-    var bufferExamples = [];
-    for (var stateKey in incoming) {
-        var stateValue = incoming[stateKey];
-        if (stateKey.includes("deEn") && isClean(stateValue)) {
-            stateValue.map(function (state) {
-                if (isClean(state)) {
-                    if (!R.contains(state.enPart.trim(), bufferTranslation)) {
-                        bufferTranslation.push(state.enPart.trim());
-                        if (deWordFlag) {
-                            deWordFlag = false;
-                            deWord = state.dePart;
-                        }
-                        enWord.push(state.enPart.trim());
-                    }
-                }
-            });
-        }
-        if (stateKey.includes("synonym") && isClean(stateValue) && !stateKey.includes("Fourth")) {
-            stateValue.map(function (state) {
-                if (isClean(state)) {
-                    if (!R.contains(state.dePart, bufferRelated)) {
-                        bufferRelated.push(state.dePart);
-                        willReturnRelated.push({
-                            dePart: state.enPart,
-                            enPart: state.dePart
-                        });
-                    }
-                }
-            });
-        }
-        if (stateKey === "synonymFourth" && isClean(stateValue)) {
-            stateValue.map(function (state) {
-                if (isClean(state)) {
-                    if (!R.contains(state.dePart, bufferRelatedSecond)) {
-                        bufferRelatedSecond.push(state.dePart);
-                        willReturnRelated.push({
-                            dePart: state.dePart,
-                            enPart: state.enPart
-                        });
-                    }
-                }
-            });
-        }
-        if (stateKey.includes("phrase") && isClean(stateValue)) {
-            stateValue.map(function (state) {
-                if (isClean(state)) {
-                    if (!R.contains(state.dePart, bufferExamples)) {
-                        bufferExamples.push(state.dePart);
-                        willReturnExamples.push({
-                            dePart: state.dePart,
-                            enPart: state.enPart
-                        });
-                    }
-                }
-            });
-        }
-    }
-    willReturn.translation = [{ dePart: deWord, enPart: R.join(", ", enWord) }];
-    willReturn.related = sortByName(willReturnRelated);
-    willReturn.examples = sortByName(willReturnExamples);
-    return willReturn;
-}
-
-function isClean(question) {
-    return !R.isEmpty(question) && question !== null;
-}
-module.exports.main = main;
-
-},{"ramda":339}],563:[function(require,module,exports){
-"use strict";
-
 var _classCallCheck2 = require("babel-runtime/helpers/classCallCheck");
 
 var _classCallCheck3 = _interopRequireDefault(_classCallCheck2);
@@ -115336,7 +115251,6 @@ function _interopRequireDefault(obj) {
 var reqwest = require("reqwest");
 var request = require("request");
 var cheerio = require("cheerio");
-var bringOrderTranslation = require("./bringOrderTranslation");
 
 var ReactDOM = require("react-dom");
 var Griddle = require("griddle-react");
@@ -115348,14 +115262,29 @@ var heightIs = window.innerHeight * 1;
 var widthIs = window.innerWidth * 1;
 var heightState = Math.floor(heightIs / 100);
 var widthState = Math.floor(widthIs / 100);
-
 var displayFlag = false;
+var flag = false;
 var messageState = "";
 var dataState = {};
 var wordState = "";
-function getData(url) {
+function uniq(arr, flag) {
+    var holder = [];
+    return R.compose(R.sort(function (a, b) {
+        return b.enPart.length - a.enPart.length;
+    }), R.filter(function (val) {
+        if (val.dePart !== undefined && val.enPart !== undefined && R.indexOf(val.dePart, holder) === -1 && val.dePart.length > 2 && val.dePart.length < 100 && R.indexOf("�", val.dePart) === -1) {
+            holder.push(val.dePart);
+            return true;
+        } else {
+            return false;
+        }
+    }), R.map(function (val) {
+        return R.merge(val, { dePart: R.replace(/[0-9]/g, "", val.dePart) });
+    }))(arr);
+}
+function willRequest(url) {
     return new Promise(function (resolve) {
-        willRequest("https://allorigins.pw/get?url=" + encodeURIComponent(url)).then(function (incoming) {
+        requestFn("http://allorigins.pw/get?url=" + encodeURIComponent(url)).then(function (incoming) {
             var willSend = JSON.parse(incoming);
             if (willSend.contents) {
                 resolve(willSend.contents);
@@ -115365,7 +115294,7 @@ function getData(url) {
         });
     });
 }
-function willRequest(url) {
+function requestFn(url) {
     return new Promise(function (resolve, reject) {
         request({
             url: url,
@@ -115379,164 +115308,158 @@ function willRequest(url) {
         });
     });
 }
-function test(wordRaw) {
-    var word = wordRaw.trim().toLowerCase();
-    return new Promise(function (resolve) {
-        willRequest("http://www.fremdwort.de/suchen/synonym/" + word).then(function (data) {
-            if (data) {
-                (function () {
-                    var willReturn = [];
-                    var $ = cheerio.load(data);
-                    var selector = "#content .section ul li";
-                    $(selector).each(function (i) {
-                        var localWord = $(this).text().trim();
-                        willReturn.push({
-                            dePart: localWord,
-                            enPart: word
-                        });
-                    });
-                    resolve(willReturn);
-                })();
-            } else {
-                resolve(null);
-            }
-        }).catch(function (error) {
-            console.log(error);
-            resolve(null);
-        });
-    });
-}
-function testt(wordRaw) {
-    var word = wordRaw.trim().toLowerCase();
-    return new Promise(function (resolve) {
-        willRequest("http://www.fremdwort.de/suchen/synonym/" + word).then(function (data) {
-            if (data) {
-                (function () {
-                    var willReturn = [];
-                    var $ = cheerio.load(data);
-                    var selector = "#content .section ul li";
-                    $(selector).each(function (i) {
-                        var localWord = $(this).text().trim();
-                        willReturn.push({
-                            dePart: localWord,
-                            enPart: word
-                        });
-                    });
-                    resolve(willReturn);
-                })();
-            } else {
-                resolve(null);
-            }
-        }).catch(function (error) {
-            console.log(error);
-            resolve(null);
-        });
-    });
-}
-function phraseFirst(wordRaw) {
-    var word = wordRaw.trim().toLowerCase();
-    return new Promise(function (resolve) {
-        var flag = false;
-        var willReturn = [];
-        var willReturnDe = [];
-        var willReturnKeys = [];
-        var dePart = void 0;
-        var url = "http://de.langenscheidt.com/deutsch-englisch/" + word;
-        willRequest(url).then(function (data) {
-            var $ = cheerio.load(data);
-            var selector = ".row-fluid .lkgEx";
-            $(selector).each(function (i) {
-                var localWord = $(this).text().trim();
-                if (localWord.length > 0 && localWord.length < 70) {
-                    willReturnDe.push(localWord);
-                    willReturnKeys.push(i);
-                }
-            });
-            selector = ".row-fluid .lkgExNormal";
-            $(selector).each(function (i) {
-                var localWord = $(this).text().trim();
-                if (willReturnKeys.indexOf(i) !== -1) {
-                    willReturn.push({
-                        dePart: willReturnDe[i],
-                        enPart: localWord
-                    });
-                }
-            });
-            resolve(willReturn);
-        });
-    });
-}
-function phraseThird(wordRaw) {
+function first(wordRaw) {
     var word = wordRaw.trim().toLowerCase();
     return new Promise(function (resolve) {
         willRequest("http://www.phrasen.com/index.php?do=suche&q=" + word).then(function (data) {
-            var willReturn = [];
-            var $ = cheerio.load(data);
-            var selector = "a.zeile";
-            $(selector).each(function (i) {
-                var localWord = $(this).text().trim();
-                willReturn.push({
-                    dePart: localWord,
-                    enPart: word
-                });
-            });
-            selector = "a.zeile1";
-            $(selector).each(function (i) {
-                var localWord = $(this).text().trim();
-                willReturn.push({
-                    dePart: localWord,
-                    enPart: word
-                });
-            });
-            var sortByLength = R.sortBy(R.compose(function (a) {
-                return -a.length;
-            }, R.prop("dePart")));
-            var sortByLengthLess = R.sortBy(R.compose(function (a) {
-                return a.length;
-            }, R.prop("dePart")));
-            var local = R.take(20, sortByLength(willReturn));
-            var localSecond = R.take(10, sortByLengthLess(willReturn));
-            resolve(R.flatten([local, localSecond]));
-        }).catch(function (error) {
-            console.log(error);
-            resolve(null);
-        });
-    });
-}
-function mixed(wordRaw) {
-    var word = wordRaw.trim().toLowerCase();
-    return new Promise(function (resolve) {
-        var url = "https://clients5.google.com/translate_a/t?client=dict-chrome-ex&sl=de&tl=en&q=" + word;
-        willRequest(url).then(function (data) {
-            var willReturn = {};
-            var willReturnTranslation = [];
-            var willReturnRelated = [];
-            if (R.prop("dict", data) && R.prop("dict", data).length > 0) {
-                var state = R.prop("dict", data)[0];
-                if (R.prop("terms", state)) {
-                    var local = R.prop("terms", state);
-                    local.map(function (localState) {
-                        willReturnTranslation.push({
-                            dePart: word,
-                            enPart: localState
+            if (data) {
+                (function () {
+                    var willReturn = [];
+                    var $ = cheerio.load(data);
+                    var selector = "a.zeile";
+                    $(selector).each(function (i) {
+                        var localWord = $(this).text().trim();
+                        willReturn.push({
+                            dePart: localWord,
+                            enPart: word
                         });
                     });
-                }
-                if (R.prop("entry", state)) {
-                    var _local = R.prop("entry", state);
-                    _local.map(function (val) {
-                        val.reverse_translation.map(function (value) {
-                            willReturnRelated.push({
-                                dePart: value,
-                                enPart: val.word
-                            });
+                    selector = "a.zeile1";
+                    $(selector).each(function (i) {
+                        var localWord = $(this).text().trim();
+                        willReturn.push({
+                            dePart: localWord,
+                            enPart: ""
                         });
                     });
-                }
+                    var sortByLength = R.sortBy(R.compose(function (a) {
+                        return -a.length;
+                    }, R.prop("dePart")));
+                    var sortByLengthLess = R.sortBy(R.compose(function (a) {
+                        return a.length;
+                    }, R.prop("dePart")));
+                    var local = R.take(20, sortByLength(willReturn));
+                    var localSecond = R.take(10, sortByLengthLess(willReturn));
+                    resolve(R.flatten([local, localSecond]));
+                })();
+            } else {
+                resolve(null);
             }
-            willReturn.translation = willReturnTranslation;
-            willReturn.related = willReturnRelated;
-            resolve(willReturn);
+        }).catch(function (error) {
+            console.log(error);
+            resolve(null);
+        });
+    });
+}
+function second(word) {
+    return new Promise(function (resolve) {
+        willRequest("http://www.dict.cc/?s=" + word).then(function (data) {
+            if (data) {
+                (function () {
+                    var $ = cheerio.load(data);
+                    var willReturn = [];
+                    var selector = "tr";
+                    var flagNumber = 0;
+                    var enPart = void 0;
+                    $(selector).each(function (i) {
+                        var state = $(this).text().trim();
+                        if (state.includes("Andere")) {
+                            flagNumber = i - 4;
+                        }
+                    });
+                    selector = "td.td7nl";
+                    $(selector).each(function (i) {
+                        var state = $(this).text().trim();
+                        if (flagNumber <= i && i % 2 === 0) {
+                            enPart = state;
+                        }
+                        if (flagNumber <= i && i % 2 === 1) {
+                            willReturn.push({
+                                dePart: state,
+                                enPart: enPart
+                            });
+                        }
+                    });
+                    resolve(willReturn);
+                })();
+            } else {
+                resolve(null);
+            }
+        }).catch(function (error) {
+            console.log(error);
+            resolve(null);
+        });
+    });
+}
+function third(word) {
+    return new Promise(function (resolve) {
+        willRequest("http://zitate.net/zitate/suche.html?query=" + word).then(function (data) {
+            if (data) {
+                (function () {
+                    var $ = cheerio.load(data);
+                    var willReturn = [];
+                    var selector = "span.quote";
+                    $(selector).each(function (i) {
+                        var state = $(this).text().trim();
+                        willReturn.push({
+                            dePart: state,
+                            enPart: ""
+                        });
+                    });
+
+                    resolve(willReturn);
+                })();
+            } else {
+                resolve(null);
+            }
+        }).catch(function (error) {
+            console.log(error);
+            resolve(null);
+        });
+    });
+}
+function fourth(word) {
+    return new Promise(function (resolve) {
+        willRequest("http://www.uitmuntend.de/woerterbuch/" + word + "/").then(function (data) {
+            if (data) {
+                (function () {
+                    var $ = cheerio.load(data);
+                    var willReturn = [];
+                    var trimFn = R.compose(R.trim, R.head, R.split("["));
+                    var filterFn = R.compose(R.uniq, R.filter(function (val) {
+                        return val.length > 3 && val.length < 130;
+                    }), R.map(function (val) {
+                        return trimFn(val);
+                    }));
+                    var id = 0;
+                    var flag = false;
+                    var selector = "tr";
+                    $(selector).each(function (i) {
+                        var state = $(this).text().trim();
+                        switch (state) {
+                            case "Zusammensetzungen":
+                            case "Sprichwörter & Zitate":
+                            case "Beispiele":
+                                flag = true;
+                                break;
+                            case "Title":
+                                flag = false;
+                                break;
+                        }
+                        if (flag) {
+                            willReturn.push($(this).find("td[lang=\"de\"]").text().trim());
+                        }
+                    });
+                    willReturn = R.sort(function (a, b) {
+                        return a.length - b.length;
+                    }, filterFn(willReturn));
+                    resolve(R.map(function (val) {
+                        return { dePart: val, enPart: "" };
+                    }, willReturn));
+                })();
+            } else {
+                resolve(null);
+            }
         }).catch(function (error) {
             console.log(error);
             resolve(null);
@@ -115544,153 +115467,144 @@ function mixed(wordRaw) {
     });
 }
 
-chrome.storage.local.get(function (data) {
-    var selector = "[data-reactroot], [data-reactid]";
-    var flagReact = !!document.querySelector(selector);
-    if (!flagReact) {
-        (function () {
-            var divFirst = document.createElement("div");
-            var divSecond = document.createElement("div");
-            divFirst.id = "reactContainer";
-            divSecond.id = "reactContainerNotify";
-            document.body.appendChild(divFirst);
-            document.body.appendChild(divSecond);
+var selector = "[data-reactroot], [data-reactid]";
+var flagReact = !!document.querySelector(selector);
+if (!flagReact) {
+    (function () {
+        var divFirst = document.createElement("div");
+        var divSecond = document.createElement("div");
+        divFirst.id = "reactContainer";
+        divSecond.id = "reactContainerNotify";
+        document.body.appendChild(divFirst);
+        document.body.appendChild(divSecond);
 
-            var WillNotify = function (_Component) {
-                (0, _inherits3.default)(WillNotify, _Component);
+        var WillNotify = function (_Component) {
+            (0, _inherits3.default)(WillNotify, _Component);
 
-                function WillNotify(props) {
-                    (0, _classCallCheck3.default)(this, WillNotify);
-                    return (0, _possibleConstructorReturn3.default)(this, Object.getPrototypeOf(WillNotify).call(this, props));
+            function WillNotify(props) {
+                (0, _classCallCheck3.default)(this, WillNotify);
+                return (0, _possibleConstructorReturn3.default)(this, Object.getPrototypeOf(WillNotify).call(this, props));
+            }
+
+            (0, _createClass3.default)(WillNotify, [{
+                key: "componentDidMount",
+                value: function componentDidMount() {
+                    setTimeout(function () {
+                        ReactDOM.unmountComponentAtNode(document.getElementById("reactContainerNotify"));
+                    }, this.props.duration * 1);
                 }
-
-                (0, _createClass3.default)(WillNotify, [{
-                    key: "componentDidMount",
-                    value: function componentDidMount() {
-                        setTimeout(function () {
-                            ReactDOM.unmountComponentAtNode(document.getElementById("reactContainerNotify"));
-                        }, this.props.duration * 1);
-                    }
-                }, {
-                    key: "render",
-                    value: function render() {
-                        var containerStyle = {
-                            position: "fixed",
-                            zIndex: "90",
-                            width: widthIs + "px",
-                            height: heightState * 17 + "px",
-                            backgroundColor: "#f8f8f8",
-                            left: "0px",
-                            top: "0px"
-                        };
-                        var innerStyle = {
-                            color: "#332120",
-                            marginLeft: widthState * 20 + "px",
-                            marginTop: heightState * 3 + "px",
-                            padding: "20px"
-                        };
-                        var buttonStyle = {
-                            marginLeft: "5px !important",
-                            paddingLeft: "10px !important",
-                            paddingRight: "10px !important",
-                            zIndex: "100",
-                            display: "inline"
-                        };
-                        return _react2.default.createElement("div", null, _react2.default.createElement("div", { style: containerStyle }, _react2.default.createElement("div", { style: innerStyle }, this.props.message)));
-                    }
-                }], [{
-                    key: "defaultProps",
-                    get: function get() {
-                        return {
-                            "message": "dummy message",
-                            "duration": 1000
-                        };
-                    }
-                }]);
-                return WillNotify;
-            }(_react.Component);
-
-            var GermanOverall = function (_Component2) {
-                (0, _inherits3.default)(GermanOverall, _Component2);
-
-                function GermanOverall(props) {
-                    (0, _classCallCheck3.default)(this, GermanOverall);
-
-                    var _this2 = (0, _possibleConstructorReturn3.default)(this, Object.getPrototypeOf(GermanOverall).call(this, props));
-
-                    _this2.willHandleClick = _this2.willHandleClick.bind(_this2);
-                    return _this2;
+            }, {
+                key: "render",
+                value: function render() {
+                    var containerStyle = {
+                        position: "fixed",
+                        zIndex: "90",
+                        width: widthIs + "px",
+                        height: heightState * 17 + "px",
+                        backgroundColor: "#f8f8f8",
+                        left: "0px",
+                        top: "0px"
+                    };
+                    var innerStyle = {
+                        color: "#332120",
+                        marginLeft: widthState * 20 + "px",
+                        marginTop: heightState * 3 + "px",
+                        padding: "20px"
+                    };
+                    var buttonStyle = {
+                        marginLeft: "5px !important",
+                        paddingLeft: "10px !important",
+                        paddingRight: "10px !important",
+                        zIndex: "100",
+                        display: "inline"
+                    };
+                    return _react2.default.createElement("div", null, _react2.default.createElement("div", { style: containerStyle }, _react2.default.createElement("div", { style: innerStyle }, this.props.message)));
                 }
+            }], [{
+                key: "defaultProps",
+                get: function get() {
+                    return {
+                        "message": "dummy message",
+                        "duration": 1000
+                    };
+                }
+            }]);
+            return WillNotify;
+        }(_react.Component);
 
-                (0, _createClass3.default)(GermanOverall, [{
-                    key: "willHandleClick",
-                    value: function willHandleClick() {
-                        displayFlag = false;
-                        ReactDOM.unmountComponentAtNode(document.getElementById("reactContainer"));
-                    }
-                }, {
-                    key: "render",
-                    value: function render() {
-                        var containerStyle = {
-                            position: "fixed",
-                            zIndex: "90",
-                            width: "100%",
-                            height: "100%",
-                            backgroundColor: "#B0BEC5",
-                            left: "0%",
-                            top: "0%"
-                        };
-                        var innerStyle = {
-                            color: "#263238",
-                            marginLeft: "3%",
-                            marginTop: "3%"
-                        };
-                        var buttonStyle = {
-                            right: "3%",
-                            zIndex: "100",
-                            display: "inline"
-                        };
-                        return _react2.default.createElement("div", { style: containerStyle }, _react2.default.createElement("div", { style: buttonStyle }, _react2.default.createElement("button", { onClick: this.willHandleClick }, "close")), _react2.default.createElement("div", { style: innerStyle }, _react2.default.createElement(Griddle, { results: this.props.incomingData, tableClassName: "table", resultsPerPage: 15, columns: ["dePart", "enPart"] })));
-                    }
-                }], [{
-                    key: "defaultProps",
-                    get: function get() {
-                        return {
-                            incomingData: {}
-                        };
-                    }
-                }]);
-                return GermanOverall;
-            }(_react.Component);
+        var GermanOverall = function (_Component2) {
+            (0, _inherits3.default)(GermanOverall, _Component2);
 
-            emitter.on("removeGermanOverall", function () {
-                ReactDOM.unmountComponentAtNode(document.getElementById("reactContainer"));
-            });
-            emitter.on("notify", function () {
-                ReactDOM.render(_react2.default.createElement(WillNotify, { message: messageState }), document.getElementById("reactContainerNotify"));
-            });
-            emitter.on("translate", function () {
-                var willDisplay = {};
-                console.log(wordState);
-                test(wordState).then(function (incoming) {
-                    console.log(incoming);
-                });
-            });
-            keyHandler.simple_combo("ctrl alt q", function () {
-                ReactDOM.unmountComponentAtNode(document.getElementById("reactContainer"));
-                displayFlag = false;
-            });
-            keyHandler.simple_combo("alt r", function () {
-                ReactDOM.render(_react2.default.createElement(GermanOverall, { incomingData: dataState }), document.getElementById("reactContainer"));
+            function GermanOverall(props) {
+                (0, _classCallCheck3.default)(this, GermanOverall);
+                return (0, _possibleConstructorReturn3.default)(this, Object.getPrototypeOf(GermanOverall).call(this, props));
+            }
+
+            (0, _createClass3.default)(GermanOverall, [{
+                key: "render",
+                value: function render() {
+                    var containerStyle = {
+                        position: "fixed",
+                        zIndex: "90",
+                        width: "100%",
+                        height: "100%",
+                        backgroundColor: "#B0BEC5",
+                        left: "0%",
+                        top: "0%"
+                    };
+                    var innerStyle = {
+                        color: "#263238",
+                        margin: "3vh"
+                    };
+                    return _react2.default.createElement("div", { style: containerStyle }, _react2.default.createElement("div", { style: innerStyle }, _react2.default.createElement(Griddle, { results: this.props.incomingData, tableClassName: "table", resultsPerPage: 20, columns: ["dePart", "enPart"] })));
+                }
+            }], [{
+                key: "defaultProps",
+                get: function get() {
+                    return {
+                        incomingData: {}
+                    };
+                }
+            }]);
+            return GermanOverall;
+        }(_react.Component);
+
+        emitter.on("removeGermanOverall", function () {
+            ReactDOM.unmountComponentAtNode(document.getElementById("reactContainer"));
+        });
+        emitter.on("notify", function () {
+            ReactDOM.render(_react2.default.createElement(WillNotify, { message: messageState }), document.getElementById("reactContainerNotify"));
+        });
+        emitter.on("translate", function () {
+            Promise.all([first(wordState), second(wordState), third(wordState), fourth(wordState)]).then(function (incoming) {
+                var willDisplay = uniq(R.flatten([incoming]));
+                dataState = willDisplay;
                 displayFlag = true;
+                ReactDOM.render(_react2.default.createElement(GermanOverall, { incomingData: willDisplay }), document.getElementById("reactContainer"));
             });
-        })();
-    }
-});
+        });
+        keyHandler.simple_combo("alt w", function () {
+            ReactDOM.unmountComponentAtNode(document.getElementById("reactContainer"));
+            displayFlag = false;
+        });
+        keyHandler.simple_combo("alt r", function () {
+            ReactDOM.render(_react2.default.createElement(GermanOverall, { incomingData: dataState }), document.getElementById("reactContainer"));
+            displayFlag = true;
+        });
+    })();
+}
+
 keyHandler.simple_combo("alt q", function () {
-    messageState = "GermanOverall is turned on";
+    if (flag) {
+        messageState = "Extended German-English Translation is turned OFF";
+    } else {
+        messageState = "Extended German-English Translation is turned ON";
+    }
+    flag = !flag;
     emitter.emit("notify");
-    document.ondblclick = function () {
+});
+document.ondblclick = function () {
+    if (flag) {
         var word = document.selection && document.selection.createRange().text || window.getSelection && window.getSelection().toString();
         if (word.trim().length > 40) {
             console.log("this is long");
@@ -115704,43 +115618,8 @@ keyHandler.simple_combo("alt q", function () {
             emitter.emit("notify");
             emitter.emit("translate");
         }
-    };
-});
-
-function requestTranslation(word) {
-    return new Promise(function (resolve) {
-        var willSend = {
-            word: word
-        };
-        reqwest({
-            url: "http://localhost:3001/detoen",
-            method: "post",
-            data: willSend,
-            error: function error(err) {
-                console.log(err);
-            },
-            success: function success(resp) {
-                resolve(resp);
-            }
-        });
-    });
-}
-
-function posting(url, data) {
-    return new Promise(function (resolve) {
-        reqwest({
-            url: url,
-            method: "post",
-            data: data,
-            error: function error(err) {
-                console.log(err);
-            },
-            success: function success(resp) {
-                resolve(resp);
-            }
-        });
-    });
-}
+    }
+};
 
 function Events(target) {
     var events = {},
@@ -115768,4 +115647,4 @@ function Events(target) {
     };
 }
 
-},{"./bringOrderTranslation":562,"babel-runtime/helpers/classCallCheck":16,"babel-runtime/helpers/createClass":17,"babel-runtime/helpers/inherits":18,"babel-runtime/helpers/possibleConstructorReturn":19,"cheerio":36,"griddle-react":207,"ramda":339,"react":482,"react-dom":340,"request":493,"reqwest":509}]},{},[563]);
+},{"babel-runtime/helpers/classCallCheck":16,"babel-runtime/helpers/createClass":17,"babel-runtime/helpers/inherits":18,"babel-runtime/helpers/possibleConstructorReturn":19,"cheerio":36,"griddle-react":207,"ramda":339,"react":482,"react-dom":340,"request":493,"reqwest":509}]},{},[562]);

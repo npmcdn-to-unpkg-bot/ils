@@ -498,6 +498,7 @@ function phraseSixth(word) {
         })
     })
 }
+
 function mixed(wordRaw) {
     let word = wordRaw.trim().toLowerCase()
     return new Promise((resolve)=>{
