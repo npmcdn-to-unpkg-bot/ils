@@ -115254,10 +115254,8 @@ var cheerio = require("cheerio");
 
 var ReactDOM = require("react-dom");
 var Griddle = require("griddle-react");
-
 var keyHandler = new window.keypress.Listener();
 var emitter = new Events();
-
 var heightIs = window.innerHeight * 1;
 var widthIs = window.innerWidth * 1;
 var heightState = Math.floor(heightIs / 100);
@@ -115267,6 +115265,19 @@ var flag = false;
 var messageState = "";
 var dataState = {};
 var wordState = "";
+function returnOldStyleGerman(keyIs) {
+    if (keyIs === "ä") {
+        return "ae";
+    } else if (keyIs === "ö") {
+        return "oe";
+    } else if (keyIs === "ü") {
+        return "ue";
+    } else if (keyIs === "ß") {
+        return "ss";
+    } else {
+        return keyIs;
+    }
+}
 function uniq(arr, flag) {
     var holder = [];
     return R.compose(R.sort(function (a, b) {
@@ -115284,7 +115295,9 @@ function uniq(arr, flag) {
 }
 function willRequest(url) {
     return new Promise(function (resolve) {
-        requestFn("http://allorigins.pw/get?url=" + encodeURIComponent(url)).then(function (incoming) {
+        var urlValue = "http://allorigins.pw/get?url=" + encodeURIComponent(url);
+        console.log(urlValue);
+        requestFn(urlValue).then(function (incoming) {
             var willSend = JSON.parse(incoming);
             if (willSend.contents) {
                 resolve(willSend.contents);
@@ -115308,8 +115321,7 @@ function requestFn(url) {
         });
     });
 }
-function first(wordRaw) {
-    var word = wordRaw.trim().toLowerCase();
+function first(word) {
     return new Promise(function (resolve) {
         willRequest("http://www.phrasen.com/index.php?do=suche&q=" + word).then(function (data) {
             if (data) {
@@ -115406,7 +115418,6 @@ function third(word) {
                             enPart: ""
                         });
                     });
-
                     resolve(willReturn);
                 })();
             } else {
@@ -115420,7 +115431,7 @@ function third(word) {
 }
 function fourth(word) {
     return new Promise(function (resolve) {
-        willRequest("http://www.uitmuntend.de/woerterbuch/" + word + "/").then(function (data) {
+        willRequest("http://www.uitmuntend.de/woerterbuch/" + word).then(function (data) {
             if (data) {
                 (function () {
                     var $ = cheerio.load(data);
@@ -115466,10 +115477,10 @@ function fourth(word) {
         });
     });
 }
-
 var selector = "[data-reactroot], [data-reactid]";
 var flagReact = !!document.querySelector(selector);
-if (!flagReact) {
+
+if (true) {
     (function () {
         var divFirst = document.createElement("div");
         var divSecond = document.createElement("div");
@@ -115543,6 +115554,8 @@ if (!flagReact) {
             (0, _createClass3.default)(GermanOverall, [{
                 key: "render",
                 value: function render() {
+                    var willDisplay = R.splitEvery(Math.floor(this.props.incomingData.length / 2), this.props.incomingData);
+                    var rows = Math.round(heightIs / 80);
                     var containerStyle = {
                         position: "fixed",
                         zIndex: "90",
@@ -115554,15 +115567,18 @@ if (!flagReact) {
                     };
                     var innerStyle = {
                         color: "#263238",
-                        margin: "3vh"
+                        marginTop: "1vh",
+                        marginLeft: "6vh",
+                        marginRight: "6vh",
+                        marginBottom: "3vh"
                     };
-                    return _react2.default.createElement("div", { style: containerStyle }, _react2.default.createElement("div", { style: innerStyle }, _react2.default.createElement(Griddle, { results: this.props.incomingData, tableClassName: "table", resultsPerPage: 20, columns: ["dePart", "enPart"] })));
+                    return _react2.default.createElement("div", { style: containerStyle }, _react2.default.createElement("div", { style: innerStyle }, _react2.default.createElement(Griddle, { results: willDisplay[0], tableClassName: "table", resultsPerPage: rows, columns: ["dePart", "enPart"] }), _react2.default.createElement(Griddle, { results: willDisplay[1], tableClassName: "table", resultsPerPage: rows, columns: ["dePart", "enPart"] })));
                 }
             }], [{
                 key: "defaultProps",
                 get: function get() {
                     return {
-                        incomingData: {}
+                        incomingData: []
                     };
                 }
             }]);
@@ -115578,12 +115594,21 @@ if (!flagReact) {
         emitter.on("translate", function () {
             Promise.all([first(wordState), second(wordState), third(wordState), fourth(wordState)]).then(function (incoming) {
                 var willDisplay = uniq(R.flatten([incoming]));
-                dataState = willDisplay;
-                displayFlag = true;
-                ReactDOM.render(_react2.default.createElement(GermanOverall, { incomingData: willDisplay }), document.getElementById("reactContainer"));
+                if (willDisplay.length > 0) {
+                    dataState = willDisplay;
+                    displayFlag = true;
+                    ReactDOM.render(_react2.default.createElement(GermanOverall, { incomingData: willDisplay }), document.getElementById("reactContainer"));
+                } else {
+                    messageState = "No Results!";
+                    emitter.emit("notify");
+                }
             });
         });
         keyHandler.simple_combo("alt w", function () {
+            ReactDOM.unmountComponentAtNode(document.getElementById("reactContainer"));
+            displayFlag = false;
+        });
+        keyHandler.simple_combo("esc", function () {
             ReactDOM.unmountComponentAtNode(document.getElementById("reactContainer"));
             displayFlag = false;
         });
@@ -115613,8 +115638,11 @@ document.ondblclick = function () {
             if (displayFlag) {
                 ReactDOM.unmountComponentAtNode(document.getElementById("reactContainer"));
             }
-            wordState = word.trim().toLowerCase();
-            messageState = word.trim().toLowerCase();
+            var wordStateFuture = R.compose(R.join(""), R.map(function (val) {
+                return returnOldStyleGerman(val);
+            }), R.splitEvery(1), R.toLower, R.trim)(word);
+            wordState = wordStateFuture;
+            messageState = wordStateFuture;
             emitter.emit("notify");
             emitter.emit("translate");
         }

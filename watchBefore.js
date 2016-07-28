@@ -68,9 +68,11 @@ async function processFn(filepath) {
         iMeanNothing = await willRunFixedCommand(commands.removeMob)
         return iMeanNothing
 
-    } else if (filepath.includes(".jsx") && (filepath.includes("services") || filepath.includes("hot"))) {
-        J.log("babelify")
+    } else if (filepath.includes(".jsx") && (filepath.includes("services"))) {
+        J.log("babelify lint")
+        J.log(commands.lintReact)
         J.log(commands.babelify)
+        iMeanNothing = await willRunFixedCommand(commands.lintReact)
         iMeanNothing = await willRunFixedCommand(commands.babelify)
         return iMeanNothing
 
@@ -81,7 +83,8 @@ async function processFn(filepath) {
 
     } else if (filepath.includes(".jsx")) {
         J.log("lint react")
-        iMeanNothing = await willRunFixedCommand(commands.lint)
+        J.lg(commands.lintReact)
+        iMeanNothing = await willRunFixedCommand(commands.lintReact)
         return iMeanNothing
 
     } else if (filepath.includes("Pre.js")) {
@@ -121,7 +124,7 @@ function factoryCommands(src) {
     let presentsProd = "-t [ babelify --presets [ react  es2015 stage-1 stage-3 stage-2 stage-0 ] ] -t [ envify --NODE_ENV production ]"
     let eslintConfigOverkill = "--fix --debug --max-warnings 100 -o tmp/eslint.txt --no-ignore --cache --cache-location tmp --config"
     let eslintConfig = "--fix --max-warnings 500 --no-ignore --cache --cache-location tmp"
-    willReturn.lintReact = `eslint ${src} ${eslintConfig} .eslintrcReact.json`
+    willReturn.lintReact = `eslint ${src} ${eslintConfig} -c .eslintrcReact.json`
     willReturn.lint = `eslint ${src} ${eslintConfig}`
     willReturn.less = `lessc ${src} ${outputCss}`
     willReturn.ts = `tsc ${src}`

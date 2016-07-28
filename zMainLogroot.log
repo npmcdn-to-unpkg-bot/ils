@@ -12,3 +12,113 @@
 {"level":"info","message":"740.3958339999999 GET /orderSentence ::ffff:127.0.0.1","timestamp":"2016-07-27T00:33:28.770Z"}
 {"level":"error","message":"200 /orderSentenceFront.css development","timestamp":"2016-07-27T00:33:29.163Z"}
 {"level":"error","message":"200 /writeSentenceLiteFront.css development","timestamp":"2016-07-27T00:34:05.995Z"}
+{"level":"info","message":"951.784421 GET / ::ffff:127.0.0.1","timestamp":"2016-07-27T11:59:27.967Z"}
+{"level":"info","message":"639.161205 GET / ::ffff:127.0.0.1","timestamp":"2016-07-27T11:59:45.556Z"}
+{"level":"info","message":"653.666078 GET / ::ffff:127.0.0.1","timestamp":"2016-07-27T12:00:20.259Z"}
+{"level":"info","message":"638.278899 GET / ::ffff:127.0.0.1","timestamp":"2016-07-27T12:05:50.871Z"}
+{"level":"info","message":"638.382612 GET / ::ffff:127.0.0.1","timestamp":"2016-07-27T12:08:05.517Z"}
+{"level":"info","message":"596.86835 GET / ::ffff:127.0.0.1","timestamp":"2016-07-27T12:10:49.897Z"}
+{"level":"info","message":"635.5748609999999 GET / ::ffff:127.0.0.1","timestamp":"2016-07-27T12:12:24.859Z"}
+{"level":"info","message":"651.127135 GET / ::ffff:127.0.0.1","timestamp":"2016-07-27T12:13:20.795Z"}
+{"level":"info","message":"646.549387 GET / ::ffff:127.0.0.1","timestamp":"2016-07-27T12:14:17.124Z"}
+{"level":"info","message":"626.552358 GET / ::ffff:127.0.0.1","timestamp":"2016-07-27T12:14:34.185Z"}
+{"level":"info","message":"603.396528 GET / ::ffff:127.0.0.1","timestamp":"2016-07-27T12:15:45.114Z"}
+{"level":"info","message":"625.7788029999999 GET / ::ffff:127.0.0.1","timestamp":"2016-07-27T12:16:35.665Z"}
+{"level":"info","message":"634.9734599999999 GET / ::ffff:127.0.0.1","timestamp":"2016-07-27T12:17:15.380Z"}
+{"level":"info","message":"649.271019 GET / ::ffff:127.0.0.1","timestamp":"2016-07-27T12:18:28.871Z"}
+{"level":"info","message":"641.301338 GET / ::ffff:127.0.0.1","timestamp":"2016-07-27T12:19:09.320Z"}
+{"level":"info","message":"636.606875 GET / ::ffff:127.0.0.1","timestamp":"2016-07-27T12:20:36.272Z"}
+{"level":"info","message":"654.766589 GET / ::ffff:127.0.0.1","timestamp":"2016-07-27T12:22:25.566Z"}
+{"level":"info","message":"699.495945 GET / ::ffff:127.0.0.1","timestamp":"2016-07-27T12:23:31.899Z"}
+{"level":"info","message":"666.561339 GET / ::ffff:127.0.0.1","timestamp":"2016-07-27T12:24:39.415Z"}
+{"level":"info","message":"657.8800299999999 GET / ::ffff:127.0.0.1","timestamp":"2016-07-27T12:26:09.961Z"}
+{"level":"info","message":"670.687003 GET / ::ffff:127.0.0.1","timestamp":"2016-07-27T12:26:23.381Z"}
+{"level":"info","message":"652.762242 GET / ::ffff:127.0.0.1","timestamp":"2016-07-27T12:27:52.210Z"}
+{"level":"info","message":"648.6882019999999 GET / ::ffff:127.0.0.1","timestamp":"2016-07-27T12:29:35.128Z"}
+{"level":"info","message":"651.323837 GET / ::ffff:127.0.0.1","timestamp":"2016-07-27T12:31:19.924Z"}
+{"level":"info","message":"662.257299 GET / ::ffff:127.0.0.1","timestamp":"2016-07-27T12:32:17.991Z"}
+{"level":"info","message":"652.945398 GET / ::ffff:127.0.0.1","timestamp":"2016-07-27T12:33:12.663Z"}
+{"level":"info","message":"669.887157 GET / ::ffff:127.0.0.1","timestamp":"2016-07-27T12:33:45.783Z"}
+{"level":"info","message":"634.433463 GET / ::ffff:127.0.0.1","timestamp":"2016-07-27T12:34:44.003Z"}
+{"level":"info","message":"663.7118479999999 GET /test/dsad ::ffff:127.0.0.1","timestamp":"2016-07-27T12:42:36.184Z"}
+{"level":"info","message":"659.2582669999999 GET / ::ffff:127.0.0.1","timestamp":"2016-07-27T12:44:57.837Z"}
+{"level":"info","message":"585.645387 GET /test/ff/dssdas ::ffff:127.0.0.1","timestamp":"2016-07-27T12:48:06.176Z"}
+{"level":"info","message":"631.216372 GET / ::ffff:127.0.0.1","timestamp":"2016-07-27T13:17:54.881Z"}
+{"level":"info","message":"650.621486 GET / ::ffff:127.0.0.1","timestamp":"2016-07-27T13:18:34.716Z"}
+{"level":"info","message":"663.220644 GET /test/dsds/fdfd ::ffff:127.0.0.1","timestamp":"2016-07-27T13:19:31.898Z"}
+{"level":"info","message":"619.456138 GET /test/userId/me ::ffff:127.0.0.1","timestamp":"2016-07-27T13:20:49.806Z"}
+{"level":"info","message":"632.541063 GET / ::ffff:127.0.0.1","timestamp":"2016-07-27T13:27:51.067Z"}
+{"level":"info","message":"640.7051399999999 GET /test/fdfd/dsasd ::ffff:127.0.0.1","timestamp":"2016-07-27T13:29:55.550Z"}
+{"level":"info","message":"632.754507 GET / ::ffff:127.0.0.1","timestamp":"2016-07-27T13:33:32.775Z"}
+{"level":"info","message":"636.171166 GET / ::ffff:127.0.0.1","timestamp":"2016-07-27T13:34:42.478Z"}
+{"level":"info","message":"652.288129 GET / ::ffff:127.0.0.1","timestamp":"2016-07-27T13:38:22.033Z"}
+{"level":"info","message":"648.358761 GET / ::ffff:127.0.0.1","timestamp":"2016-07-27T14:02:52.616Z"}
+{"level":"info","message":"811.909142 GET /login ::ffff:127.0.0.1","timestamp":"2016-07-27T14:44:56.786Z"}
+{"level":"info","message":"818.099648 GET /login/twitter ::ffff:127.0.0.1","timestamp":"2016-07-27T14:44:59.813Z"}
+{"level":"info","message":"619.489277 GET /login/twitter ::ffff:127.0.0.1","timestamp":"2016-07-27T14:45:19.948Z"}
+{"level":"info","message":"568.185642 GET /login/twitter ::ffff:127.0.0.1","timestamp":"2016-07-27T14:45:38.787Z"}
+{"level":"info","message":"642.1840169999999 GET /login/twitter ::ffff:127.0.0.1","timestamp":"2016-07-27T14:46:34.829Z"}
+{"level":"info","message":"610.724355 GET /login ::ffff:127.0.0.1","timestamp":"2016-07-27T14:51:55.925Z"}
+{"level":"info","message":"858.2555249999999 GET /login/twitter ::ffff:127.0.0.1","timestamp":"2016-07-27T14:51:59.076Z"}
+{"level":"info","message":"572.106753 GET /login ::ffff:127.0.0.1","timestamp":"2016-07-27T14:53:47.291Z"}
+{"level":"info","message":"1872.274743 GET /login/twitter ::ffff:127.0.0.1","timestamp":"2016-07-27T14:53:52.031Z"}
+{"level":"info","message":"662.490219 GET /login ::ffff:127.0.0.1","timestamp":"2016-07-27T14:57:32.433Z"}
+{"level":"info","message":"908.363339 GET /login/twitter ::ffff:127.0.0.1","timestamp":"2016-07-27T14:57:35.043Z"}
+{"level":"info","message":"649.5608569999999 GET /login ::ffff:127.0.0.1","timestamp":"2016-07-27T14:58:29.525Z"}
+{"level":"info","message":"843.402914 GET /login/twitter ::ffff:127.0.0.1","timestamp":"2016-07-27T14:58:31.572Z"}
+{"level":"info","message":"1063.398878 GET /login/twitter ::ffff:127.0.0.1","timestamp":"2016-07-27T15:00:10.007Z"}
+{"level":"info","message":"642.1507439999999 GET /login/ ::ffff:127.0.0.1","timestamp":"2016-07-27T15:02:02.493Z"}
+{"level":"error","message":"200 /login/bulma.css development","timestamp":"2016-07-27T15:02:02.806Z"}
+{"level":"error","message":"200 /login/empty.css development","timestamp":"2016-07-27T15:02:02.873Z"}
+{"level":"error","message":"200 /login/empty.js development","timestamp":"2016-07-27T15:02:02.933Z"}
+{"level":"error","message":"200 /login/analitycs.js development","timestamp":"2016-07-27T15:02:02.984Z"}
+{"level":"error","message":"200 /login/logo.jpg development","timestamp":"2016-07-27T15:02:03.019Z"}
+{"level":"info","message":"854.7587279999999 GET /login/twitter ::ffff:127.0.0.1","timestamp":"2016-07-27T15:02:05.759Z"}
+{"level":"info","message":"1588.147258 GET /login/twitter/return?oauth_token=r6z0hQAAAAAAj_w9AAABVizggAE&oauth_verifier=jEf309RoX5wD69Be1Wf6a2uh8Iqopzxk ::ffff:127.0.0.1","timestamp":"2016-07-27T15:02:08.625Z"}
+{"level":"info","message":"1038.578728 GET /login ::ffff:127.0.0.1","timestamp":"2016-07-27T17:35:18.929Z"}
+{"level":"info","message":"1157.759231 GET /login/twitter ::ffff:127.0.0.1","timestamp":"2016-07-27T17:35:22.061Z"}
+{"level":"info","message":"830.3640849999999 GET /login/twitter ::ffff:127.0.0.1","timestamp":"2016-07-27T17:37:44.656Z"}
+{"level":"info","message":"645.106851 GET /login ::ffff:127.0.0.1","timestamp":"2016-07-27T17:38:00.272Z"}
+{"level":"info","message":"592.904686 GET /login/twitter ::ffff:127.0.0.1","timestamp":"2016-07-27T17:38:03.559Z"}
+{"level":"info","message":"869.624789 GET /login/twitter ::ffff:127.0.0.1","timestamp":"2016-07-27T17:38:47.230Z"}
+{"level":"info","message":"628.975479 GET / ::ffff:127.0.0.1","timestamp":"2016-07-27T17:39:25.973Z"}
+{"level":"info","message":"653.755019 GET /login/twitter ::ffff:127.0.0.1","timestamp":"2016-07-27T17:39:34.355Z"}
+{"level":"info","message":"1627.531563 GET /login/twitter/return?oauth_token=MsMkPwAAAAAAj_w9AAABVi1wrKE&oauth_verifier=3UNbsYwA30cX6vQSxpXepxS7LfVzHCvZ ::ffff:127.0.0.1","timestamp":"2016-07-27T17:39:37.499Z"}
+{"level":"info","message":"671.200595 GET /login/ ::ffff:127.0.0.1","timestamp":"2016-07-27T17:40:00.961Z"}
+{"level":"error","message":"200 /login/bulma.css development","timestamp":"2016-07-27T17:40:01.291Z"}
+{"level":"error","message":"200 /login/empty.css development","timestamp":"2016-07-27T17:40:01.361Z"}
+{"level":"error","message":"200 /login/empty.js development","timestamp":"2016-07-27T17:40:01.419Z"}
+{"level":"error","message":"200 /login/analitycs.js development","timestamp":"2016-07-27T17:40:01.477Z"}
+{"level":"error","message":"200 /login/logo.jpg development","timestamp":"2016-07-27T17:40:01.510Z"}
+{"level":"info","message":"874.254056 GET /login/twitter ::ffff:127.0.0.1","timestamp":"2016-07-27T17:40:05.995Z"}
+{"level":"info","message":"1563.914493 GET /login/twitter/return?oauth_token=KY6fpQAAAAAAj_w9AAABVi1xKC0&oauth_verifier=TwZusVxZXP5s8MdZCC0T1OyegVQCdTLf ::ffff:127.0.0.1","timestamp":"2016-07-27T17:40:09.217Z"}
+{"level":"info","message":"606.0966999999999 GET /login ::ffff:127.0.0.1","timestamp":"2016-07-27T17:40:24.769Z"}
+{"level":"info","message":"856.616506 GET /login/twitter ::ffff:127.0.0.1","timestamp":"2016-07-27T17:40:28.375Z"}
+{"level":"info","message":"1543.59196 GET /login/twitter/return?oauth_token=BlCZdAAAAAAAj_w9AAABVi1xf5c&oauth_verifier=YR8fOTWc7aUjJRQqcUxz6qmjNeYhAaNH ::ffff:127.0.0.1","timestamp":"2016-07-27T17:40:31.605Z"}
+{"level":"info","message":"1139.691571 GET /login/twitter ::ffff:127.0.0.1","timestamp":"2016-07-27T20:59:43.139Z"}
+{"level":"info","message":"1521.7948769999998 GET /login/twitter/return?oauth_token=fhQYkQAAAAAAj_w9AAABVi4n6dI&oauth_verifier=WKsA5U6ZaJ0eGhNNdkoZfoH6Kb7A8l8Z ::ffff:127.0.0.1","timestamp":"2016-07-27T20:59:46.834Z"}
+{"level":"info","message":"736.0163249999999 GET / ::ffff:127.0.0.1","timestamp":"2016-07-27T20:59:47.606Z"}
+{"level":"info","message":"623.739252 GET / ::ffff:127.0.0.1","timestamp":"2016-07-27T21:00:38.703Z"}
+{"level":"info","message":"863.5062889999999 GET /login/twitter ::ffff:127.0.0.1","timestamp":"2016-07-27T21:00:46.563Z"}
+{"level":"info","message":"1674.566261 GET /login/twitter/return?oauth_token=zXXhPQAAAAAAj_w9AAABVi4o4aM&oauth_verifier=8eK5wIjZU0gNh07waJEeLXy5bGziZemF ::ffff:127.0.0.1","timestamp":"2016-07-27T21:00:55.638Z"}
+{"level":"info","message":"626.2995579999999 GET / ::ffff:127.0.0.1","timestamp":"2016-07-27T21:01:27.099Z"}
+{"level":"info","message":"610.991033 GET / ::ffff:127.0.0.1","timestamp":"2016-07-27T21:04:10.759Z"}
+{"level":"error","message":"200 /login/empty.css development","timestamp":"2016-07-27T21:04:16.759Z"}
+{"level":"error","message":"200 /login/bulma.css development","timestamp":"2016-07-27T21:04:16.844Z"}
+{"level":"error","message":"200 /login/empty.js development","timestamp":"2016-07-27T21:04:16.889Z"}
+{"level":"error","message":"200 /login/analitycs.js development","timestamp":"2016-07-27T21:04:17.071Z"}
+{"level":"error","message":"200 /login/logo.jpg development","timestamp":"2016-07-27T21:04:17.120Z"}
+{"level":"info","message":"844.730339 GET /login/twitter ::ffff:127.0.0.1","timestamp":"2016-07-27T21:04:20.250Z"}
+{"level":"info","message":"1572.98594 GET /login/twitter/return?oauth_token=HBaIQQAAAAAAj_w9AAABVi4sJF4&oauth_verifier=cStt4Geum4JlhecyHqk4BF4LmYHVV1k4 ::ffff:127.0.0.1","timestamp":"2016-07-27T21:04:23.313Z"}
+{"level":"info","message":"912.1007609999999 GET / ::ffff:127.0.0.1","timestamp":"2016-07-27T21:28:21.634Z"}
+{"level":"info","message":"916.595614 GET / ::ffff:127.0.0.1","timestamp":"2016-07-27T21:28:50.542Z"}
+{"level":"info","message":"922.552408 GET / ::ffff:127.0.0.1","timestamp":"2016-07-27T21:29:45.761Z"}
+{"level":"info","message":"930.972988 GET / ::ffff:127.0.0.1","timestamp":"2016-07-27T21:30:24.266Z"}
+{"level":"info","message":"832.2542679999999 GET /login/twitter ::ffff:127.0.0.1","timestamp":"2016-07-27T21:30:38.266Z"}
+{"level":"info","message":"1521.1620309999998 GET /login/twitter/return?oauth_token=woTWtQAAAAAAj_w9AAABVi5EOIo&oauth_verifier=3bPqLWggN9peoOuPX9aXGAWr0PyLYQNx ::ffff:127.0.0.1","timestamp":"2016-07-27T21:30:41.881Z"}
+{"level":"info","message":"931.628102 GET / ::ffff:127.0.0.1","timestamp":"2016-07-27T21:31:20.348Z"}
+{"level":"info","message":"822.584083 GET /login/twitter ::ffff:127.0.0.1","timestamp":"2016-07-27T21:31:39.469Z"}
+{"level":"info","message":"1586.993472 GET /login/twitter/return?oauth_token=CHqpwAAAAAAAj_w9AAABVi5FJ58&oauth_verifier=6PELsB6JtJTSQ4EavEBLQNA3tUBUwgdP ::ffff:127.0.0.1","timestamp":"2016-07-27T21:31:42.722Z"}
+{"level":"info","message":"627.717438 GET /login ::ffff:127.0.0.1","timestamp":"2016-07-27T21:32:35.033Z"}
+{"level":"info","message":"785.519962 GET /login/twitter ::ffff:127.0.0.1","timestamp":"2016-07-27T21:32:37.841Z"}
+{"level":"info","message":"1593.989867 GET /login/twitter/return?oauth_token=cfMI0wAAAAAAj_w9AAABVi5GC6A&oauth_verifier=nVoUkLUTPuNCUXQr47BycrOePw9sZDbo ::ffff:127.0.0.1","timestamp":"2016-07-27T21:32:41.133Z"}

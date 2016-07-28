@@ -77,101 +77,108 @@ var processFn = function () {
                         return _context.abrupt("return", iMeanNothing);
 
                     case 36:
-                        if (!(filepath.includes(".jsx") && (filepath.includes("services") || filepath.includes("hot")))) {
-                            _context.next = 45;
+                        if (!(filepath.includes(".jsx") && filepath.includes("services"))) {
+                            _context.next = 49;
                             break;
                         }
 
-                        J.log("babelify");
+                        J.log("babelify lint");
+                        J.log(commands.lintReact);
                         J.log(commands.babelify);
-                        _context.next = 41;
-                        return willRunFixedCommand(commands.babelify);
+                        _context.next = 42;
+                        return willRunFixedCommand(commands.lintReact);
 
-                    case 41:
+                    case 42:
                         iMeanNothing = _context.sent;
-                        return _context.abrupt("return", iMeanNothing);
+                        _context.next = 45;
+                        return willRunFixedCommand(commands.babelify);
 
                     case 45:
+                        iMeanNothing = _context.sent;
+                        return _context.abrupt("return", iMeanNothing);
+
+                    case 49:
                         if (!(filepath.includes(".jsx") && filepath.includes("fth"))) {
-                            _context.next = 53;
+                            _context.next = 57;
                             break;
                         }
 
                         J.log("babelify");
-                        _context.next = 49;
+                        _context.next = 53;
                         return willRunFixedCommand(commands.babelify);
 
-                    case 49:
+                    case 53:
                         iMeanNothing = _context.sent;
                         return _context.abrupt("return", iMeanNothing);
 
-                    case 53:
+                    case 57:
                         if (!filepath.includes(".jsx")) {
-                            _context.next = 61;
+                            _context.next = 66;
                             break;
                         }
 
                         J.log("lint react");
-                        _context.next = 57;
-                        return willRunFixedCommand(commands.lint);
+                        J.lg(commands.lintReact);
+                        _context.next = 62;
+                        return willRunFixedCommand(commands.lintReact);
 
-                    case 57:
+                    case 62:
                         iMeanNothing = _context.sent;
                         return _context.abrupt("return", iMeanNothing);
 
-                    case 61:
+                    case 66:
                         if (!filepath.includes("Pre.js")) {
-                            _context.next = 72;
+                            _context.next = 77;
                             break;
                         }
 
                         J.log("babel lint");
-                        _context.next = 65;
+                        _context.next = 70;
                         return willRunFixedCommand(commands.babel);
 
-                    case 65:
+                    case 70:
                         iMeanNothing = _context.sent;
-                        _context.next = 68;
+                        _context.next = 73;
                         return willRunFixedCommand(commands.lint);
 
-                    case 68:
+                    case 73:
                         iMeanNothing = _context.sent;
                         return _context.abrupt("return", iMeanNothing);
 
-                    case 72:
+                    case 77:
                         if (!filepath.includes(".less")) {
-                            _context.next = 81;
+                            _context.next = 86;
                             break;
                         }
 
                         J.log("less");
                         J.box(commands.less);
-                        _context.next = 77;
+                        _context.next = 82;
                         return willRunFixedCommand(commands.less);
 
-                    case 77:
+                    case 82:
                         iMeanNothing = _context.sent;
                         return _context.abrupt("return", iMeanNothing);
 
-                    case 81:
+                    case 86:
                         if (!(filepath.includes(".js") && !filepath.includes("Front"))) {
-                            _context.next = 89;
+                            _context.next = 94;
                             break;
                         }
 
                         J.log("lint");
-                        _context.next = 85;
+                        _context.next = 90;
                         return willRunFixedCommand(commands.lint);
 
-                    case 85:
+                    case 90:
                         iMeanNothing = _context.sent;
                         return _context.abrupt("return", iMeanNothing);
 
-                    case 89:
+                    case 94:
                         J.lg("in else " + filepath);
                         return _context.abrupt("return", false);
 
-                    case 91:
+                    case 96:
                     case "end":
                         return _context.stop();
                 }
@@ -235,7 +242,7 @@ function factoryCommands(src) {
     var presentsProd = "-t [ babelify --presets [ react  es2015 stage-1 stage-3 stage-2 stage-0 ] ] -t [ envify --NODE_ENV production ]";
     var eslintConfigOverkill = "--fix --debug --max-warnings 100 -o tmp/eslint.txt --no-ignore --cache --cache-location tmp --config";
     var eslintConfig = "--fix --max-warnings 500 --no-ignore --cache --cache-location tmp";
-    willReturn.lintReact = "eslint " + src + " " + eslintConfig + " .eslintrcReact.json";
+    willReturn.lintReact = "eslint " + src + " " + eslintConfig + " -c .eslintrcReact.json";
     willReturn.lint = "eslint " + src + " " + eslintConfig;
     willReturn.less = "lessc " + src + " " + outputCss;
     willReturn.ts = "tsc " + src;

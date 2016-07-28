@@ -3,6 +3,37 @@ import React,{ Component } from "react"
 import R from "ramda"
 import J from "./components/commonReact.js"
 import words from "./components/words.js"
+var AC = "AudioContext" in window ? AudioContext : "webkitAudioContext" in window ? webkitAudioContext : document.write("Web Audio not supported");
+var audioContext = new AC()
+var source = audioContext.createBufferSource();
+var xhr = new XMLHttpRequest();
+
+//xhr.open("GET", "http://www.oskareriksson.se/shed/assets/gitarrkompet.mp3");
+xhr.open("GET", `${J.admin}/payback.mp3`);
+xhr.responseType = "arraybuffer";
+xhr.onload = function(e) {
+    audioContext.decodeAudioData(e.target.response, function(b) {
+        source.buffer = b;
+    })
+}
+xhr.send(null)
+
+var tuna = new Tuna(audioContext);
+   //create a new Tuna delay instance
+   let delay = new tuna.Delay({
+       feedback: 0.45,
+       delayTime: 70, //this will create a short "slap back" delay
+       wetLevel: 0.7,
+       dryLevel: 1,
+       cutoff: 5000,
+       bypass: false
+   });
+   //connect the source to the input property of the Tuna delay
+   source.connect(delay.input);
+   //connect delay as a standard web audio node to the audio context destination
+   delay.connect(audioContext.destination);
+   //start playing!
+   source.start(audioContext.currentTime);
 let wordsArr = []
 const sourceWords = J.shuffle(words)
 function nextWord(){
@@ -67,8 +98,8 @@ export default class App extends Component {
     }
     componentDidMount(){
         J.emitter.on("init", ()=>{
-            J.log(`${J.host}/readDataFile/${nextWord()}`)
-            J.getData(`${J.host}/readDataFile/${nextWord()}`).then(data=>{
+            J.log(`${J.admin}/readDataFile/${nextWord()}`)
+            J.getData(`${J.admin}/readDataFile/${nextWord()}`).then(data=>{
                 let dataFuture = {}
                 let enWord = ""
                 let dePart = ""
@@ -89,7 +120,7 @@ export default class App extends Component {
             willSend.enWord = this.state.enWord.trim()
             willSend.dePart = J.addFullstop(this.state.dePart.trim())
             willSend.enPart = J.addFullstop(this.state.enPart.trim())
-            J.postData(`${J.host}/newEntry`, JSON.stringify({data: willSend})).then(incoming =>{
+            J.postData(`${J.admin}/newEntry`, JSON.stringify({data: willSend})).then(incoming =>{
                 J.emitter.emit("init")
             })
         })

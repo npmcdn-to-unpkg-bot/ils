@@ -1,6 +1,8 @@
 "use strict"
 const J = require("./common")
 const R = require("ramda")
+const K = require("kefir")
+const Observable = require("zen-observable")
 const RFantasy = require("ramda-fantasy")
 const fs = require("fs-extra")
 const Either = RFantasy.Either
@@ -8,10 +10,76 @@ const Future = RFantasy.Future
 const Identity = RFantasy.Identity
 const Maybe = RFantasy.Maybe
 const Just = RFantasy.Just
-function nameFn(str) {
-    return R.compose(R.toLower, R.join("-"), R.take(4), J.shuffle, R.filter(val=>val.length > 2), R.split(" "), J.removePunctuation)(str)
+function returnOldStyleGerman(keyIs) {
+    if (keyIs === "ä") {
+        return "ae"
+    } else if (keyIs === "ö") {
+        return "oe"
+    } else if (keyIs === "ü") {
+        return "ue"
+    } else if (keyIs === "ß") {
+        return "ss"
+    } else {
+        return keyIs
+    }
 }
-J.log(nameFn("I have been there but alse, some the time."))
+var observed = K.fromESObservable(new Observable(observer => {
+    let willReturn = Math.random() * 10
+    delay().then(()=>{
+        willReturn = Math.random() * 100
+        observer.next(willReturn)
+        willReturn = Math.random() * 100
+        delay().then(()=>{
+            observer.next(willReturn)
+            willReturn = Math.random() * 100
+            delay().then(()=>{
+                willReturn = Math.random() * 100
+                observer.next(willReturn)
+                willReturn = Math.random() * 100
+                delay().then(()=>{
+                    willReturn = Math.random() * 100
+                    observer.complete(willReturn)
+                })
+            })
+        })
+    })
+}))
+var observedSecond = K.fromESObservable(new Observable(observer => {
+    let willReturn = Math.random() * 100 > 500 ? true : false
+    delay(2000).then(()=>{
+        observer.next(true)
+        willReturn = Math.random() * 100 > 500 ? true : false
+        delay(2000).then(()=>{
+            observer.next(false)
+            willReturn = Math.random() * 100 > 500 ? true : false
+            delay(2000).then(()=>{
+                observer.next(false)
+                delay().then(()=>{
+                    observer.complete(willReturn)
+                })
+            })
+        })
+    })
+}))
+let wordStateFuture = R.compose(R.join(""), R.map(val=>returnOldStyleGerman(val)), R.splitEvery(1), R.toLower, R.trim)("  Auflösend ")
+let just = R.compose(R.toLower, R.trim)("  Auflösend ")
+J.log(wordStateFuture)
+//let result = K.combine([observed, observedSecond], (a, b)=> `here ${a} ${b}`)
+//result.log()
+function delay(ms = 1000) {
+    return new Promise(resolve=>{
+        setTimeout(()=>{
+            resolve(Math.random() * ms)
+        }, ms)
+    })
+}
+function delayFn(ms = 1000) {
+    return new Promise(resolve=>{
+        setTimeout(()=>{
+            if ((Math.random() * ms) > 500) {resolve(true)} else {resolve(false)}
+        }, ms)
+    })
+}
 //fs.writeFileSync("temp3.txt", JSON.stringify(R.flatten([arr, arr2])))
 function* nums() {
     console.log("starting")

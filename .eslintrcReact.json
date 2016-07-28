@@ -1,0 +1,55 @@
+{
+"parser": "babel-eslint",
+"rules": {
+  "react/jsx-no-undef": 1,
+  "jsx-quotes": 1,
+  "react/no-danger": 1,
+  "react/no-did-mount-set-state": 1,
+  "react/no-did-update-set-state": 1,
+  "react/no-direct-mutation-state": 1,
+  "react/no-multi-comp": 1,
+  "react/no-set-state": 1,
+  "react/no-unknown-property": 1,
+  "react/prefer-es6-class": 0,
+  "react/prop-types": 0,
+  "react/react-in-jsx-scope": 1,
+  "react/require-extension": 1,
+  "react/self-closing-comp": 1,
+  "react/sort-comp": 0,
+    "no-console": 0,
+    "strict": 0,
+    "no-unused-vars": 0,
+    "no-undef": 0,
+    "linebreak-style": 0,
+    "lno-console": 0,
+    "no-constant-condition": 0,
+    "no-trailing-spaces": 1,
+    "no-whitespace-before-property": 1,
+    "no-mixed-spaces-and-tabs": 1,
+    "no-spaced-func": 1,
+    "space-before-blocks": 1,
+    "space-unary-ops": 1,
+    "space-infix-ops": 1,
+    "no-multi-spaces": 1,
+    "indent": [1, 4],
+    "space-in-parens": [1, "never"],
+    "spaced-comment": [1, "never"],
+    "comma-spacing": [1, {"before": false, "after": true}],
+    "keyword-spacing": [1, {"before": true, "after": true}],
+    "computed-property-spacing": [1, "always"],
+    "quotes": [1,"double"],
+    "semi": [1, "never"]
+},
+"plugins": ["react"],
+"settings": {
+  "react": {
+    "pragma": "React",
+    "version": "0.15.0"
+  }
+},
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  }
+}

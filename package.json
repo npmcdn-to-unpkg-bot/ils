@@ -25,6 +25,7 @@
   "dependencies": {
     "body-parser": "*",
     "compression": "*",
+    "connect-ensure-login": "^0.1.1",
     "cookie-parser": "*",
     "dotenv-helper": "*",
     "express": "*",
@@ -37,6 +38,7 @@
     "mobx": "^2.3.3",
     "mobx-react": "^3.4.0",
     "moment": "^2.14.1",
+    "passport": "^0.3.2",
     "proud-db": "*",
     "ramda": "*",
     "react": "*",

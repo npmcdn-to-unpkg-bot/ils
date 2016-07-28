@@ -4,23 +4,43 @@ const fs = require("fs-extra")
 const J = require("../../common")
 const dailyTask = require("../_inc/dailyTask")
 const R = require("ramda")
-const moment = require("moment")
-const jwt = require("jwt-simple")
 const env = require("dotenv-helper")
-
+const db = require("proud-db")
+const passport = require("passport")
+const Strategy = require("passport-twitter").Strategy
 let router = express.Router()
-
+passport.use(new Strategy({
+    consumerKey: env.getEnv("twitterKey"),
+    consumerSecret: env.getEnv("twitterSecret"),
+    callbackURL: "http://127.0.0.1:3000/login/twitter/return"
+}, (token, tokenSecret, profile, cb) =>{
+    return cb(null, profile)
+}))
+passport.serializeUser((user, cb)=>{
+    cb(null, user)
+})
+passport.deserializeUser((obj, cb)=>{
+    cb(null, obj)
+})
 let oneLevelUp = R.compose(R.join("/"), R.init, R.split("/"))
 let titleFn = R.compose(R.trim, R.last, R.split("-"), R.head, R.match(/\/\/(\s)?title.{1,70}/gm))
 //let categoryFn = R.compose(R.trim,R.last,R.split("-"),R.head,R.match(/\/\/(\s)?category.{1,70}/gm))
 let cleanFn = R.compose(R.replace(/\/(.|\n)+(?=#)/gm, ""))
-function setCookie(res, key, value) {
+function setCookie(key, value, res) {
     res.append("Set-Cookie", `${key}=${value}`)
 }
 router.get("/", (req, res) =>{
-    console.log("Cookies: ", req.cookies.foo)
-    setCookie(res)
+    J.box(R.type(req.user))
     res.render("index")
+})
+router.get("/login", (req, res)=>{
+    res.render("login")
+})
+router.get("/login/twitter", passport.authenticate("twitter"))
+router.get("/login/twitter/return", passport.authenticate("twitter", { failureRedirect: "/login" }), (req, res)=>{
+    J.box(R.type(req.user))
+    //res.redirect("/settings")
+    res.redirect("/")
 })
 router.get("/run/:command", (req, res) =>{
     if (J.auth(req.ip)) {
@@ -44,14 +64,14 @@ router.post("/run", (req, res) =>{
         res.send("fail")
     }
 })
-
-router.get("/redux", (req, res) =>{
-    res.render("redux")
-})
+//router.get("/redux", (req, res) =>{
+//res.render("redux")
+//})
 router.get("/aboutOrderSentence", (req, res)=> {
     res.render("aboutOrderSentence")
 })
 router.get("/about", (req, res) =>{
+    J.box(R.type(req.user))
     res.render("about")
 })
 router.get("/writeSentenceLite", (req, res) =>{
@@ -71,18 +91,6 @@ router.get("/orderSentenceMobile", (req, res) =>{
 })
 router.get("/test", (req, res) =>{
     res.render("test")
-})
-router.post("/catchDailyHookRoot", (req, res) =>{
-    let currentTime = moment().format("MMMM Do h:mm")
-    J.postData(env.getEnv("zapierLogData"), {logData: `root dailyTask ${currentTime}`}).then(J.log)
-    if (req.body.password === env.getEnv("mainPassword")) {
-        dailyTask.deployRoot().then(()=>{
-            J.postData(env.getEnv("zapierLogData"), {logData: `root dailyTask ${currentTime}`}).then(J.log)
-        })
-        res.send("success")
-    } else {
-        res.send("fail")
-    }
 })
 router.get("/blog-*", (req, res) => {
     let keyword = req.params[ 0 ]

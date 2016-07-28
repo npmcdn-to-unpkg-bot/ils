@@ -4,8 +4,6 @@ import ReactDOM from "react-dom"
 import R from "ramda"
 import reqwest from "reqwest"
 import FlipMove from "react-flip-move"
-import {observable} from "mobx"
-import {observer} from "mobx-react"
 import J from "./components/commonReact.js"
 
 let initOnce = R.once(()=>{
@@ -15,7 +13,6 @@ let initOnce = R.once(()=>{
 let currentId
 @observer
 class App extends Component {
-    @observable posts = []
     constructor (props) {
         super(props)
         this.state = {

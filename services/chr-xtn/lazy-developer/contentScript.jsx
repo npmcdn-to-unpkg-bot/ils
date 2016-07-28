@@ -1,15 +1,13 @@
 "use strict"
-import * as R   from"ramda"
-const reqwest  = require("reqwest")
-const request  = require("request")
-const cheerio  = require("cheerio")
-import React,{ Component } from"react"
-const ReactDOM     = require("react-dom")
+import * as R from "ramda"
+const reqwest = require("reqwest")
+const request = require("request")
+const cheerio = require("cheerio")
+import React, { Component } from "react"
+const ReactDOM = require("react-dom")
 const Griddle = require("griddle-react")
-
 let keyHandler = new window.keypress.Listener()
 let emitter = new Events()
-
 const heightIs = window.innerHeight * 1
 const widthIs = window.innerWidth * 1
 const heightState = Math.floor(heightIs / 100)
@@ -19,12 +17,25 @@ let flag = false
 let messageState = ""
 let dataState = {}
 let wordState = ""
+function returnOldStyleGerman(keyIs) {
+    if (keyIs === "ä") {
+        return "ae"
+    } else if (keyIs === "ö") {
+        return "oe"
+    } else if (keyIs === "ü") {
+        return "ue"
+    } else if (keyIs === "ß") {
+        return "ss"
+    } else {
+        return keyIs
+    }
+}
 function uniq(arr, flag) {
     let holder = []
     return R.compose(R.sort((a, b)=> b.enPart.length - a.enPart.length), R.filter(val=>{
-        if (val.dePart!==undefined&&val.enPart!==undefined&&
-            R.indexOf(val.dePart, holder) === -1 && val.dePart.length > 2&&
-            val.dePart.length < 100&&R.indexOf("�",val.dePart) === -1) {
+        if (val.dePart !== undefined && val.enPart !== undefined &&
+            R.indexOf(val.dePart, holder) === -1 && val.dePart.length > 2 &&
+            val.dePart.length < 100 && R.indexOf("�", val.dePart) === -1) {
             holder.push(val.dePart)
             return true
         } else {return false}
@@ -34,7 +45,9 @@ function uniq(arr, flag) {
 }
 function willRequest(url) {
     return new Promise((resolve) => {
-        requestFn(`http://allorigins.pw/get?url=${encodeURIComponent(url)}`).then(function (incoming) {
+        let urlValue = `http://allorigins.pw/get?url=${encodeURIComponent(url)}`
+        console.log(urlValue)
+        requestFn(urlValue).then(function (incoming) {
             let willSend = JSON.parse(incoming)
             if (willSend.contents) {
                 resolve(willSend.contents)
@@ -58,8 +71,7 @@ function requestFn(url) {
         })
     })
 }
-function first(wordRaw) {
-    let word = wordRaw.trim().toLowerCase()
+function first(word) {
     return new Promise((resolve) => {
         willRequest(`http://www.phrasen.com/index.php?do=suche&q=${word}`).then((data)=>{
             if (data) {
@@ -143,7 +155,6 @@ function third(word) {
                         enPart: ""
                     })
                 })
-
                 resolve(willReturn)
             } else {resolve(null)}
         }).catch((error) => {
@@ -154,7 +165,7 @@ function third(word) {
 }
 function fourth(word) {
     return new Promise((resolve) => {
-        willRequest(`http://www.uitmuntend.de/woerterbuch/${word}/`).then(function(data) {
+        willRequest(`http://www.uitmuntend.de/woerterbuch/${word}`).then(function(data) {
             if (data) {
                 let $ = cheerio.load(data)
                 let willReturn = []
@@ -190,164 +201,178 @@ function fourth(word) {
         })
     })
 }
-
-	let selector = "[data-reactroot], [data-reactid]"
-	let flagReact    = !!document.querySelector(selector)
-	if(!flagReact) {
-		let divFirst  = document.createElement("div")
-		let divSecond = document.createElement("div")
-		divFirst.id   = "reactContainer"
-		divSecond.id  = "reactContainerNotify"
-		document.body.appendChild(divFirst)
-		document.body.appendChild(divSecond)
-		class WillNotify extends Component {
-		    constructor (props) {
-		        super(props)
-		    }
-		    static get defaultProps () {
-		        return{
-		            "message": "dummy message",
-					"duration": 1000
-		        }
-		    }
-		    componentDidMount () {
-				setTimeout(()=>{
-					ReactDOM.unmountComponentAtNode(document.getElementById("reactContainerNotify"))
-				},this.props.duration*1)
-		    }
-			render(){
-				let containerStyle = {
-					position:        "fixed",
-					zIndex:          "90",
-					width:           `${widthIs}px`,
-					height:          `${heightState*17}px`,
-					backgroundColor: "#f8f8f8",
-					left:            "0px",
-					top:             "0px"
-				}
-				let innerStyle = {
-					color: "#332120",
-					marginLeft: `${widthState*20}px`,
-					marginTop: `${heightState*3}px`,
-					padding: "20px"
-				}
-				let buttonStyle = {
-					marginLeft:   "5px !important",
-					paddingLeft:  "10px !important",
-					paddingRight: "10px !important",
-					zIndex:       "100",
-					display:      "inline"
-				}
-				return(
-					<div>
-						<div style={containerStyle}>
-							<div style={innerStyle}>
-								{this.props.message}
-							</div>
-						</div>
-					</div>
-				)
-			}
-		}
-		class GermanOverall extends Component {
-		    constructor (props) {
-		        super(props)
-		    }
-		    static get defaultProps () {
-		        return{
-					incomingData: {}
-		        }
-		    }
-			render(){
-				let containerStyle = {
-					position:        "fixed",
-					zIndex:          "90",
-					width:           "100%",
-					height:          "100%",
-					backgroundColor: "#B0BEC5",
-					left:            "0%",
-					top:             "0%"
-				}
-				let innerStyle = {
-					color: "#263238",
-					margin: "3vh"
-				}
-				return(
-					<div style={containerStyle}>
-						<div style={innerStyle}>
-							<Griddle results={this.props.incomingData} tableClassName="table" resultsPerPage={20} columns={["dePart","enPart"]}/>
-						</div>
-					</div>
-				)
-			}
-		}
-		emitter.on("removeGermanOverall",function () {
-			ReactDOM.unmountComponentAtNode(document.getElementById("reactContainer"))
-		})
-		emitter.on("notify",()=>{
-			ReactDOM.render(<WillNotify message={messageState}/>,document.getElementById("reactContainerNotify"))
-		})
-		emitter.on("translate",()=>{
-            Promise.all([first(wordState), second(wordState), third(wordState), fourth(wordState)])
+let selector = "[data-reactroot], [data-reactid]"
+let flagReact = !!document.querySelector(selector)
+//if (!flagReact) {
+if (true) {
+    let divFirst = document.createElement("div")
+    let divSecond = document.createElement("div")
+    divFirst.id = "reactContainer"
+    divSecond.id = "reactContainerNotify"
+    document.body.appendChild(divFirst)
+    document.body.appendChild(divSecond)
+    class WillNotify extends Component {
+        constructor (props) {
+            super(props)
+        }
+        static get defaultProps () {
+            return {
+                "message": "dummy message",
+                "duration": 1000
+            }
+        }
+        componentDidMount () {
+            setTimeout(()=>{
+                ReactDOM.unmountComponentAtNode(document.getElementById("reactContainerNotify"))
+            }, this.props.duration * 1)
+        }
+        render() {
+            let containerStyle = {
+                position:        "fixed",
+                zIndex:          "90",
+                width:           `${widthIs}px`,
+                height:          `${heightState * 17}px`,
+                backgroundColor: "#f8f8f8",
+                left:            "0px",
+                top:             "0px"
+            }
+            let innerStyle = {
+                color: "#332120",
+                marginLeft: `${widthState * 20}px`,
+                marginTop: `${heightState * 3}px`,
+                padding: "20px"
+            }
+            let buttonStyle = {
+                marginLeft:   "5px !important",
+                paddingLeft:  "10px !important",
+                paddingRight: "10px !important",
+                zIndex:       "100",
+                display:      "inline"
+            }
+            return (
+        <div>
+            <div style={containerStyle}>
+                <div style={innerStyle}>
+                {this.props.message}
+                </div>
+            </div>
+        </div>
+        )}
+    }
+    class GermanOverall extends Component {
+        constructor (props) {
+            super(props)
+        }
+        static get defaultProps () {
+            return {
+                incomingData: []
+            }
+        }
+        render() {
+            let willDisplay = R.splitEvery(Math.floor(this.props.incomingData.length / 2), this.props.incomingData)
+            let rows = Math.round(heightIs / 80)
+            let containerStyle = {
+                position:        "fixed",
+                zIndex:          "90",
+                width:           "100%",
+                height:          "100%",
+                backgroundColor: "#B0BEC5",
+                left:            "0%",
+                top:             "0%"
+            }
+            let innerStyle = {
+                color: "#263238",
+                marginTop: "1vh",
+                marginLeft: "6vh",
+                marginRight: "6vh",
+                marginBottom: "3vh"
+            }
+            return (
+        <div style={containerStyle}>
+            <div style={innerStyle}>
+                <Griddle results={willDisplay[ 0 ]} tableClassName="table" resultsPerPage={rows} columns={["dePart", "enPart"]}/>
+                <Griddle results={willDisplay[ 1 ]} tableClassName="table" resultsPerPage={rows} columns={["dePart", "enPart"]}/>
+            </div>
+        </div>
+    )}
+    }
+    emitter.on("removeGermanOverall", function () {
+        ReactDOM.unmountComponentAtNode(document.getElementById("reactContainer"))
+    })
+    emitter.on("notify", ()=>{
+        ReactDOM.render(<WillNotify message={messageState}/>, document.getElementById("reactContainerNotify"))
+    })
+    emitter.on("translate", ()=>{
+        Promise.all([first(wordState), second(wordState), third(wordState), fourth(wordState)])
             .then(incoming => {
                 let willDisplay = uniq(R.flatten([incoming]))
-                dataState = willDisplay
-                displayFlag = true
-                ReactDOM.render(<GermanOverall incomingData={willDisplay}/>,document.getElementById("reactContainer"))
+                if (willDisplay.length > 0) {
+                    dataState = willDisplay
+                    displayFlag = true
+                    ReactDOM.render(<GermanOverall incomingData={willDisplay}/>, document.getElementById("reactContainer"))
+                } else {
+                    messageState = "No Results!"
+                    emitter.emit("notify")
+                }
             })
-		})
-        keyHandler.simple_combo("alt w", ()=>{
-            ReactDOM.unmountComponentAtNode(document.getElementById("reactContainer"))
-			displayFlag = false
-        })
-        keyHandler.simple_combo("alt r", ()=>{
-            ReactDOM.render(<GermanOverall incomingData={dataState}/>,document.getElementById("reactContainer"))
-			displayFlag = true
-        })
-	}
+    })
+    keyHandler.simple_combo("alt w", ()=>{
+        ReactDOM.unmountComponentAtNode(document.getElementById("reactContainer"))
+        displayFlag = false
+    })
+    keyHandler.simple_combo("esc", ()=>{
+        ReactDOM.unmountComponentAtNode(document.getElementById("reactContainer"))
+        displayFlag = false
+    })
+    keyHandler.simple_combo("alt r", ()=>{
+        ReactDOM.render(<GermanOverall incomingData={dataState}/>, document.getElementById("reactContainer"))
+        displayFlag = true
+    })
+}
 
 keyHandler.simple_combo("alt q", ()=>{
-    if(flag){
+    if (flag) {
         messageState = "Extended German-English Translation is turned OFF"
-    }else{
+    } else {
         messageState = "Extended German-English Translation is turned ON"
     }
     flag = !flag
     emitter.emit("notify")
 })
 document.ondblclick = function () {
-    if(flag){
+    if (flag) {
         let word = (document.selection && document.selection.createRange().text) ||
                   (window.getSelection && window.getSelection().toString())
-        if(word.trim().length>40){
+        if (word.trim().length > 40) {
             console.log("this is long")
-            console.log(R.take(40),word.trim())
-        } else{
-            if(displayFlag){
+            console.log(R.take(40), word.trim())
+        } else {
+            if (displayFlag) {
                 ReactDOM.unmountComponentAtNode(document.getElementById("reactContainer"))
             }
-            wordState = word.trim().toLowerCase()
-            messageState = word.trim().toLowerCase()
+            let wordStateFuture = R.compose(R.join(""), R.map(val=>returnOldStyleGerman(val)), R.splitEvery(1), R.toLower, R.trim)(word)
+            wordState = wordStateFuture
+            messageState = wordStateFuture
             emitter.emit("notify")
             emitter.emit("translate")
         }
     }
 }
 
-function Events(target){
-  let events = {},empty = []
-  target = target || this
-  target.on = function(type,func,ctx){
-    (events[ type ] = events[ type ] || []).push([func,ctx])
-  }
-  target.off = function(type,func){
-    type || (events = {})
-    var list = events[ type ] || empty,
-        i = list.length = func ? list.length : 0
-    while(i--) func == list[ i ][ 0 ] && list.splice(i,1)
-  }
-  target.emit = function(type){
-    let e = events[ type ] || empty,list = e.length > 0 ? e.slice(0,e.length) : e,i=0,j
-    while(j=list[ i++ ]) j[ 0 ].apply(j[ 1 ],empty.slice.call(arguments,1))
-  }
+function Events(target) {
+    let events = {}, empty = []
+    target = target || this
+    target.on = function(type, func, ctx) {
+        (events[ type ] = events[ type ] || []).push([func, ctx])
+    }
+    target.off = function(type, func) {
+        type || (events = {})
+        var list = events[ type ] || empty,
+            i = list.length = func ? list.length : 0
+        while (i--) func == list[ i ][ 0 ] && list.splice(i, 1)
+    }
+    target.emit = function(type) {
+        let e = events[ type ] || empty, list = e.length > 0 ? e.slice(0, e.length) : e, i = 0, j
+        while (j = list[ i++ ]) j[ 0 ].apply(j[ 1 ], empty.slice.call(arguments, 1))
+    }
 }
