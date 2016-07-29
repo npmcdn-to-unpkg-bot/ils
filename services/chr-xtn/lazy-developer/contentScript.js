@@ -115278,20 +115278,39 @@ function returnOldStyleGerman(keyIs) {
         return keyIs;
     }
 }
+var sortDeFn = R.sortBy(R.compose(function (val) {
+    if (val === undefined) {
+        return 0;
+    } else {
+        return -val.length;
+    }
+}, R.prop("dePart")));
+var sortEnFn = R.sortBy(R.compose(function (val) {
+    if (val === undefined) {
+        return 0;
+    } else {
+        return -val.length;
+    }
+}, R.prop("enPart")));
 function uniq(arr, flag) {
     var holder = [];
-    return R.compose(R.sort(function (a, b) {
-        return b.enPart.length - a.enPart.length;
+    var state = R.compose(R.map(function (val) {
+        return R.merge(val, { dePart: R.replace(/[0-9]/g, "", val.dePart) });
     }), R.filter(function (val) {
-        if (val.dePart !== undefined && val.enPart !== undefined && R.indexOf(val.dePart, holder) === -1 && val.dePart.length > 2 && val.dePart.length < 100 && R.indexOf("�", val.dePart) === -1) {
+        if (val !== null && val !== undefined && R.indexOf(val.dePart, holder) === -1 && val.dePart.length > 2 && val.dePart.length < 100 && R.indexOf("�", val.dePart) === -1) {
             holder.push(val.dePart);
             return true;
         } else {
             return false;
         }
-    }), R.map(function (val) {
-        return R.merge(val, { dePart: R.replace(/[0-9]/g, "", val.dePart) });
     }))(arr);
+    var dePart = R.compose(sortDeFn, R.filter(function (val) {
+        return val.enPart === "";
+    }))(state);
+    var enPart = R.compose(sortEnFn, R.filter(function (val) {
+        return val.enPart !== "";
+    }))(state);
+    return { dePart: dePart, enPart: enPart };
 }
 function willRequest(url) {
     return new Promise(function (resolve) {
@@ -115321,6 +115340,143 @@ function requestFn(url) {
         });
     });
 }
+function eighth(word) {
+    return new Promise(function (resolve) {
+        willRequest("http://ein.anderes-wort.de/fuer/" + word).then(function (data) {
+            if (data) {
+                (function () {
+                    var $ = cheerio.load(data);
+                    var willReturn = [];
+                    var id = 0;
+                    var flag = false;
+                    var selector = "li a";
+                    $(selector).each(function (i) {
+                        var state = $(this).text().trim();
+                        willReturn.push(state);
+                    });
+                    if (willReturn.length > 11) {
+                        resolve(R.compose(R.map(function (val) {
+                            return { dePart: val, enPart: "" };
+                        }), R.filter(function (val) {
+                            return val.length > 3;
+                        }), R.sort(function (a, b) {
+                            return b.length - a.length;
+                        }), R.drop(2), R.dropLast(9))(willReturn));
+                    } else {
+                        resolve(null);
+                    }
+                })();
+            } else {
+                resolve(null);
+            }
+        }).catch(function (error) {
+            console.log(error);
+            resolve(null);
+        });
+    });
+}
+function seventh(word) {
+    return new Promise(function (resolve) {
+        willRequest("http://ein-anderes-wort.com/ein_anderes_wort_fuer_" + word + ".html").then(function (data) {
+            if (data) {
+                (function () {
+                    var $ = cheerio.load(data);
+                    var willReturn = [];
+                    var id = 0;
+                    var flag = false;
+                    var selector = "a";
+                    $(selector).each(function (i) {
+                        var state = $(this).text().trim();
+                        willReturn.push(state);
+                    });
+                    if (willReturn.length > 44) {
+                        resolve(R.compose(R.map(function (val) {
+                            return { dePart: val, enPart: "" };
+                        }), R.filter(function (val) {
+                            return R.indexOf("(", val) === -1 && R.indexOf(")", val) === -1 && val.length > 3;
+                        }), R.sort(function (a, b) {
+                            return b.length - a.length;
+                        }), R.drop(10), R.dropLast(33))(willReturn));
+                    } else {
+                        resolve(null);
+                    }
+                })();
+            } else {
+                resolve(null);
+            }
+        }).catch(function (error) {
+            console.log(error);
+            resolve(null);
+        });
+    });
+}
+function sixth(word) {
+    return new Promise(function (resolve) {
+        willRequest("http://de.langenscheidt.com/deutsch-englisch/" + word).then(function (data) {
+            if (data) {
+                (function () {
+                    var willReturn = [];
+                    var $ = cheerio.load(data);
+                    var selector = ".lemma-example .col1 span span.text";
+                    $(selector).each(function (i) {
+                        var localWord = $(this).text().trim();
+                        willReturn.push({
+                            dePart: localWord.trim(),
+                            enPart: ""
+                        });
+                    });
+                    resolve(willReturn);
+                })();
+            } else {
+                resolve(null);
+            }
+        }).catch(function (error) {
+            console.log(error);
+            resolve(null);
+        });
+    });
+}
+function fifth(word) {
+    return new Promise(function (resolve) {
+        willRequest("http://www.collinsdictionary.com/dictionary/german-english/" + word).then(function (data) {
+            if (data) {
+                (function () {
+                    var willReturn = [];
+                    var holderDePart = [];
+                    var holderEnPart = [];
+                    var $ = cheerio.load(data);
+                    var selector = ".cit-type-example .orth";
+                    $(selector).each(function (key) {
+                        var localWord = $(this).text().trim();
+                        localWord = R.replace("⇒", "", localWord);
+                        holderDePart.push({ val: localWord.trim(), key: key });
+                    });
+                    selector = ".cit-type-example .cit-type-translation";
+                    $(selector).each(function (key) {
+                        var localWord = $(this).text().trim();
+                        holderEnPart.push({ val: localWord, key: key });
+                    });
+                    holderDePart.map(function (val) {
+                        var found = R.find(R.propEq("key", val.key))(holderEnPart);
+                        if (found !== undefined) {
+                            willReturn.push({
+                                dePart: val.val,
+                                enPart: found.val
+                            });
+                        }
+                    });
+                    resolve(willReturn);
+                })();
+            } else {
+                resolve(null);
+            }
+        }).catch(function (error) {
+            console.log(error);
+            resolve(null);
+        });
+    });
+}
+
 function first(word) {
     return new Promise(function (resolve) {
         willRequest("http://www.phrasen.com/index.php?do=suche&q=" + word).then(function (data) {
@@ -115333,7 +115489,7 @@ function first(word) {
                         var localWord = $(this).text().trim();
                         willReturn.push({
                             dePart: localWord,
-                            enPart: word
+                            enPart: ""
                         });
                     });
                     selector = "a.zeile1";
@@ -115554,8 +115710,16 @@ if (true) {
             (0, _createClass3.default)(GermanOverall, [{
                 key: "render",
                 value: function render() {
-                    var willDisplay = R.splitEvery(Math.floor(this.props.incomingData.length / 2), this.props.incomingData);
-                    var rows = Math.round(heightIs / 80);
+                    var willDisplay = void 0;
+                    if (R.isEmpty(this.props.incomingData.dePart)) {
+                        willDisplay = [{ longPart: "", shortPart: "" }];
+                    } else {
+                        var state = R.splitEvery(Math.round(this.props.incomingData.dePart.length / 2), this.props.incomingData.dePart);
+                        willDisplay = R.zipWith(function (longPart, shortPart) {
+                            return { longPart: longPart.dePart, shortPart: shortPart.dePart };
+                        }, state[0], state[1]);
+                    }
+                    var rows = Math.round(heightIs / 77);
                     var containerStyle = {
                         position: "fixed",
                         zIndex: "90",
@@ -115572,7 +115736,7 @@ if (true) {
                         marginRight: "6vh",
                         marginBottom: "3vh"
                     };
-                    return _react2.default.createElement("div", { style: containerStyle }, _react2.default.createElement("div", { style: innerStyle }, _react2.default.createElement(Griddle, { results: willDisplay[0], tableClassName: "table", resultsPerPage: rows, columns: ["dePart", "enPart"] }), _react2.default.createElement(Griddle, { results: willDisplay[1], tableClassName: "table", resultsPerPage: rows, columns: ["dePart", "enPart"] })));
+                    return _react2.default.createElement("div", { style: containerStyle }, _react2.default.createElement("div", { style: innerStyle }, _react2.default.createElement(Griddle, { results: this.props.incomingData.enPart, tableClassName: "table", resultsPerPage: rows, columns: ["dePart", "enPart"] }), _react2.default.createElement(Griddle, { results: willDisplay, tableClassName: "tableSecond", resultsPerPage: rows, columns: ["longPart", "shortPart"] })));
                 }
             }], [{
                 key: "defaultProps",
@@ -115592,9 +115756,9 @@ if (true) {
             ReactDOM.render(_react2.default.createElement(WillNotify, { message: messageState }), document.getElementById("reactContainerNotify"));
         });
         emitter.on("translate", function () {
-            Promise.all([first(wordState), second(wordState), third(wordState), fourth(wordState)]).then(function (incoming) {
+            Promise.all([first(wordState), second(wordState), third(wordState), fourth(wordState), fifth(wordState), sixth(wordState), seventh(wordState), eighth(wordState)]).then(function (incoming) {
                 var willDisplay = uniq(R.flatten([incoming]));
-                if (willDisplay.length > 0) {
+                if (incoming.length > 0) {
                     dataState = willDisplay;
                     displayFlag = true;
                     ReactDOM.render(_react2.default.createElement(GermanOverall, { incomingData: willDisplay }), document.getElementById("reactContainer"));

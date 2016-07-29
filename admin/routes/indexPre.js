@@ -3,7 +3,8 @@ const express = require("express")
 const router = express.Router()
 const fs = require("fs-extra")
 const R = require("ramda")
-const envHelper = require("dotenv-helper")
+const recursive = require("recursive-readdir")
+const env = require("dotenv-helper")
 const J = require("../../common.js")
 const translate = require("../_inc/translate")
 const bringOrderTranslation = require("../_inc/bringOrderTranslation")
@@ -85,6 +86,36 @@ function willPublish(keyword, content) {
 }
 router.get("/", (req, res) => {
     res.render("index")
+})
+router.get("/file/:name", function (req, res, next) {
+    //if (env.getEnv("host") === "root") {
+    let options = {
+        root: "/home/just/Downloads/mp3",
+        dotfiles: "deny",
+        headers: {
+            "x-timestamp": Date.now(),
+            "x-sent": true
+        }
+    }
+    let fileName = req.params.name
+    res.sendFile(fileName, options, function (err) {
+        if (err) {
+            console.log(err)
+            res.status(err.status).end()
+        }
+        else {
+            console.log("Sent:", fileName)
+        }
+    })
+    //} else {res.send("No")}
+})
+router.get("/files", function (req, res, next) {
+    if (env.getEnv("hostTag") === "root") {
+        recursive("/home/just/Downloads/mp3", function (err, files) {
+            console.log(files)
+            res.send(files)
+        })
+    } else {res.send("No")}
 })
 router.get("/db", (req, res) => {
     res.render("db")

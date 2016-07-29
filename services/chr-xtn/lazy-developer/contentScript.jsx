@@ -30,23 +30,33 @@ function returnOldStyleGerman(keyIs) {
         return keyIs
     }
 }
+let sortDeFn = R.sortBy(R.compose(val=>{
+    if (val === undefined) {
+        return 0
+    } else {return -val.length}
+}, R.prop("dePart")))
+let sortEnFn = R.sortBy(R.compose(val=>{
+    if (val === undefined) {
+        return 0
+    } else {return -val.length}
+}, R.prop("enPart")))
 function uniq(arr, flag) {
     let holder = []
-    return R.compose(R.sort((a, b)=> b.enPart.length - a.enPart.length), R.filter(val=>{
-        if (val.dePart !== undefined && val.enPart !== undefined &&
-            R.indexOf(val.dePart, holder) === -1 && val.dePart.length > 2 &&
-            val.dePart.length < 100 && R.indexOf("�", val.dePart) === -1) {
+    let state = R.compose(R.map(val=>{
+        return R.merge(val, {dePart: R.replace(/[0-9]/g, "", val.dePart)})
+    }), R.filter(val=>{
+        if (val !== null && val !== undefined && R.indexOf(val.dePart, holder) === -1 && val.dePart.length > 2 && val.dePart.length < 100 && R.indexOf("�", val.dePart) === -1) {
             holder.push(val.dePart)
             return true
         } else {return false}
-    }), R.map(val=>{
-        return R.merge(val, {dePart: R.replace(/[0-9]/g, "", val.dePart)})
     }))(arr)
+    let dePart = R.compose(sortDeFn, R.filter(val=>{return val.enPart === ""}))(state)
+    let enPart = R.compose(sortEnFn, R.filter(val=>{return val.enPart !== ""}))(state)
+    return {dePart, enPart}
 }
 function willRequest(url) {
     return new Promise((resolve) => {
         let urlValue = `http://allorigins.pw/get?url=${encodeURIComponent(url)}`
-        console.log(urlValue)
         requestFn(urlValue).then(function (incoming) {
             let willSend = JSON.parse(incoming)
             if (willSend.contents) {
@@ -71,6 +81,118 @@ function requestFn(url) {
         })
     })
 }
+function eighth(word) {
+    return new Promise((resolve) => {
+        willRequest(`http://ein.anderes-wort.de/fuer/${word}`).then(function(data) {
+            if (data) {
+                let $ = cheerio.load(data)
+                let willReturn = []
+                let id = 0
+                let flag = false
+                let selector = "li a"
+                $(selector).each(function(i) {
+                    let state = $(this).text().trim()
+                    willReturn.push(state)
+                })
+                if (willReturn.length > 11) {
+                    resolve(R.compose(R.map(val=>{return {dePart:val, enPart:""}}), R.filter(val=> val.length > 3), R.sort((a, b)=>{return b.length - a.length}), R.drop(2), R.dropLast(9))(willReturn))
+                } else {
+                    resolve(null)
+                }
+            } else {resolve(null)}
+        }).catch((error) => {
+            console.log(error)
+            resolve(null)
+        })
+    })
+}
+function seventh(word) {
+    return new Promise((resolve) => {
+        willRequest(`http://ein-anderes-wort.com/ein_anderes_wort_fuer_${word}.html`)
+        .then(function(data) {
+            if (data) {
+                let $ = cheerio.load(data)
+                let willReturn = []
+                let id = 0
+                let flag = false
+                let selector = "a"
+                $(selector).each(function(i) {
+                    let state = $(this).text().trim()
+                    willReturn.push(state)
+                })
+                if (willReturn.length > 44) {
+                    resolve(R.compose(R.map(val=>{return {dePart:val, enPart:""}}), R.filter(val=> R.indexOf("(", val) === -1 && R.indexOf(")", val) === -1 && val.length > 3), R.sort((a, b)=>{return b.length - a.length}), R.drop(10), R.dropLast(33))(willReturn))
+                } else {
+                    resolve(null)
+                }
+            } else {resolve(null)}
+        }).catch((error) => {
+            console.log(error)
+            resolve(null)
+        })
+    })
+}
+function sixth(word) {
+    return new Promise((resolve) => {
+        willRequest(`http://de.langenscheidt.com/deutsch-englisch/${word}`)
+        .then((data)=>{
+            if (data) {
+                let willReturn = []
+                let $ = cheerio.load(data)
+                let selector = ".lemma-example .col1 span span.text"
+                $(selector).each(function(i) {
+                    let localWord = $(this).text().trim()
+                    willReturn.push({
+                        dePart: localWord.trim(),
+                        enPart: ""
+                    })
+                })
+                resolve(willReturn)
+            } else {resolve(null)}
+        }).catch((error) => {
+            console.log(error)
+            resolve(null)
+        })
+    })
+}
+function fifth(word) {
+    return new Promise((resolve) => {
+        willRequest(`http://www.collinsdictionary.com/dictionary/german-english/${word}`)
+        .then((data)=>{
+            if (data) {
+                let willReturn = []
+                let holderDePart = []
+                let holderEnPart = []
+                let $ = cheerio.load(data)
+                let selector = ".cit-type-example .orth"
+                $(selector).each(function(key) {
+                    let localWord = $(this).text().trim()
+                    localWord = R.replace("⇒", "", localWord)
+                    holderDePart.push({val: localWord.trim(), key})
+                })
+                selector = ".cit-type-example .cit-type-translation"
+                $(selector).each(function(key) {
+                    let localWord = $(this).text().trim()
+                    holderEnPart.push({val: localWord, key})
+                })
+                holderDePart.map(val=>{
+                    let found = R.find(R.propEq("key", val.key))(holderEnPart)
+                    if (found !== undefined) {
+                        willReturn.push({
+                            dePart: val.val,
+                            enPart: found.val
+                        })
+                    }
+                })
+                resolve(willReturn)
+            } else {resolve(null)}
+        }).catch((error) => {
+            console.log(error)
+            resolve(null)
+        })
+    })
+}
+
 function first(word) {
     return new Promise((resolve) => {
         willRequest(`http://www.phrasen.com/index.php?do=suche&q=${word}`).then((data)=>{
@@ -82,7 +204,7 @@ function first(word) {
                     let localWord = $(this).text().trim()
                     willReturn.push({
                         dePart: localWord,
-                        enPart: word
+                        enPart: ""
                     })
                 })
                 selector = "a.zeile1"
@@ -269,8 +391,17 @@ if (true) {
             }
         }
         render() {
-            let willDisplay = R.splitEvery(Math.floor(this.props.incomingData.length / 2), this.props.incomingData)
-            let rows = Math.round(heightIs / 80)
+            let willDisplay
+            if (R.isEmpty(this.props.incomingData.dePart)) {
+                willDisplay = [{longPart:"", shortPart:""}]
+            } else {
+                let state = R.splitEvery(Math.round(this.props.incomingData.dePart.length / 2),
+                this.props.incomingData.dePart)
+                willDisplay = R.zipWith((longPart, shortPart)=>{
+                    return {longPart: longPart.dePart, shortPart: shortPart.dePart}
+                }, state[ 0 ], state[ 1 ])
+            }
+            let rows = Math.round(heightIs / 77)
             let containerStyle = {
                 position:        "fixed",
                 zIndex:          "90",
@@ -290,8 +421,8 @@ if (true) {
             return (
         <div style={containerStyle}>
             <div style={innerStyle}>
-                <Griddle results={willDisplay[ 0 ]} tableClassName="table" resultsPerPage={rows} columns={["dePart", "enPart"]}/>
-                <Griddle results={willDisplay[ 1 ]} tableClassName="table" resultsPerPage={rows} columns={["dePart", "enPart"]}/>
+                <Griddle results={this.props.incomingData.enPart} tableClassName="table" resultsPerPage={rows} columns={["dePart", "enPart"]}/>
+                <Griddle results={willDisplay} tableClassName="tableSecond" resultsPerPage={rows} columns={["longPart", "shortPart"]}/>
             </div>
         </div>
     )}
@@ -303,10 +434,10 @@ if (true) {
         ReactDOM.render(<WillNotify message={messageState}/>, document.getElementById("reactContainerNotify"))
     })
     emitter.on("translate", ()=>{
-        Promise.all([first(wordState), second(wordState), third(wordState), fourth(wordState)])
+        Promise.all([first(wordState), second(wordState), third(wordState), fourth(wordState), fifth(wordState), sixth(wordState), seventh(wordState), eighth(wordState)])
             .then(incoming => {
                 let willDisplay = uniq(R.flatten([incoming]))
-                if (willDisplay.length > 0) {
+                if (incoming.length > 0) {
                     dataState = willDisplay
                     displayFlag = true
                     ReactDOM.render(<GermanOverall incomingData={willDisplay}/>, document.getElementById("reactContainer"))

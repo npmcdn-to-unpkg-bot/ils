@@ -338,6 +338,7 @@ function phraseSecond(wordRaw) {
         })
     })
 }
+
 function phraseThird(wordRaw) {
     let word = wordRaw.trim().toLowerCase()
     return new Promise((resolve) => {

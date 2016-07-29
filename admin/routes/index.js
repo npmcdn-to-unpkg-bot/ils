@@ -410,7 +410,8 @@ var express = require("express");
 var router = express.Router();
 var fs = require("fs-extra");
 var R = require("ramda");
-var envHelper = require("dotenv-helper");
+var recursive = require("recursive-readdir");
+var env = require("dotenv-helper");
 var J = require("../../common.js");
 var translate = require("../_inc/translate");
 var bringOrderTranslation = require("../_inc/bringOrderTranslation");
@@ -433,6 +434,37 @@ function willPublish(keyword, content) {
 }
 router.get("/", function (req, res) {
     res.render("index");
+});
+router.get("/file/:name", function (req, res, next) {
+    //if (env.getEnv("host") === "root") {
+    var options = {
+        root: "/home/just/Downloads/mp3",
+        dotfiles: "deny",
+        headers: {
+            "x-timestamp": Date.now(),
+            "x-sent": true
+        }
+    };
+    var fileName = req.params.name;
+    res.sendFile(fileName, options, function (err) {
+        if (err) {
+            console.log(err);
+            res.status(err.status).end();
+        } else {
+            console.log("Sent:", fileName);
+        }
+    });
+    //} else {res.send("No")}
+});
+router.get("/files", function (req, res, next) {
+    if (env.getEnv("hostTag") === "root") {
+        recursive("/home/just/Downloads/mp3", function (err, files) {
+            console.log(files);
+            res.send(files);
+        });
+    } else {
+        res.send("No");
+    }
 });
 router.get("/db", function (req, res) {
     res.render("db");

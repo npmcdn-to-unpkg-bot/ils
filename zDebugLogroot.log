@@ -122,3 +122,6 @@
 {"level":"info","message":"627.717438 GET /login ::ffff:127.0.0.1","timestamp":"2016-07-27T21:32:35.034Z"}
 {"level":"info","message":"785.519962 GET /login/twitter ::ffff:127.0.0.1","timestamp":"2016-07-27T21:32:37.841Z"}
 {"level":"info","message":"1593.989867 GET /login/twitter/return?oauth_token=cfMI0wAAAAAAj_w9AAABVi5GC6A&oauth_verifier=nVoUkLUTPuNCUXQr47BycrOePw9sZDbo ::ffff:127.0.0.1","timestamp":"2016-07-27T21:32:41.133Z"}
+{"level":"info","message":"1716.5661599999999 GET /css/admin.css ::ffff:127.0.0.1","timestamp":"2016-07-28T22:37:03.984Z"}
+{"level":"info","message":"2402.243828 GET /css/admin.css ::ffff:127.0.0.1","timestamp":"2016-07-28T22:37:38.075Z"}
+{"level":"info","message":"765.038314 GET /css/admin.css ::ffff:127.0.0.1","timestamp":"2016-07-29T00:47:07.031Z"}

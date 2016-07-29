@@ -720,6 +720,7 @@ function phraseSecond(wordRaw) {
         });
     });
 }
+
 function phraseThird(wordRaw) {
     var word = wordRaw.trim().toLowerCase();
     return new Promise(function (resolve) {
@@ -906,6 +907,7 @@ function phraseSixth(word) {
         });
     });
 }
+
 function mixed(wordRaw) {
     var word = wordRaw.trim().toLowerCase();
     return new Promise(function (resolve) {
