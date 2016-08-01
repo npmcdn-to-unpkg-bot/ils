@@ -120,6 +120,9 @@ router.get("/files", function (req, res, next) {
 router.get("/db", (req, res) => {
     res.render("db")
 })
+router.get("/tunaPlayer", (req, res) => {
+    res.render("tunaPlayer")
+})
 router.get("/translateBulk", (req, res) => {
     res.render("translateBulk")
 })

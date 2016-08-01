@@ -469,6 +469,9 @@ router.get("/files", function (req, res, next) {
 router.get("/db", function (req, res) {
     res.render("db");
 });
+router.get("/tunaPlayer", function (req, res) {
+    res.render("tunaPlayer");
+});
 router.get("/translateBulk", function (req, res) {
     res.render("translateBulk");
 });

@@ -1,4 +1,9 @@
 @import url(https://fonts.googleapis.com/css?family=Josefin+Sans:600);
+#marginlessTuna {
+  margin: 0 !important;
+  padding: 5px;
+  max-height: 9vh;
+}
 .icon {
   margin-right: 5px;
 }

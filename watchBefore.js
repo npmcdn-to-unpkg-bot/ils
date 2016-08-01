@@ -20,7 +20,6 @@ watcher.watchFiles(["**/*.jsx", "**/*.js", "**/*.less"], (ev, filepath) => {
     if (filterFn((negativeWord)=>{
         return filepath.includes(negativeWord)
     })) {
-        J.lg("will return null")
         return null
     } else {
         if (mainFlag === true) {
