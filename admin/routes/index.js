@@ -435,26 +435,33 @@ function willPublish(keyword, content) {
 router.get("/", function (req, res) {
     res.render("index");
 });
+router.get("/test", function (req, res) {
+    res.render("test");
+});
 router.get("/file/:name", function (req, res, next) {
-    //if (env.getEnv("host") === "root") {
-    var options = {
-        root: "/home/just/Downloads/mp3",
-        dotfiles: "deny",
-        headers: {
-            "x-timestamp": Date.now(),
-            "x-sent": true
-        }
-    };
-    var fileName = req.params.name;
-    res.sendFile(fileName, options, function (err) {
-        if (err) {
-            console.log(err);
-            res.status(err.status).end();
-        } else {
-            console.log("Sent:", fileName);
-        }
-    });
-    //} else {res.send("No")}
+    if (env.getEnv("host") === "root") {
+        (function () {
+            var options = {
+                root: "/home/just/Downloads/mp3",
+                dotfiles: "deny",
+                headers: {
+                    "x-timestamp": Date.now(),
+                    "x-sent": true
+                }
+            };
+            var fileName = req.params.name;
+            res.sendFile(fileName, options, function (err) {
+                if (err) {
+                    console.log(err);
+                    res.status(err.status).end();
+                } else {
+                    console.log("Sent:", fileName);
+                }
+            });
+        })();
+    } else {
+        res.send("No");
+    }
 });
 router.get("/files", function (req, res, next) {
     if (env.getEnv("hostTag") === "root") {

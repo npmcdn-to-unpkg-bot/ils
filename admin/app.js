@@ -1,4 +1,6 @@
 "use strict"
+const mongooseData = require("./_inc/mongooseData.js")
+mongooseData.init("mongodb://localhost/ils")
 const J = require("../common")
 const express = require("express")
 const path = require("path")

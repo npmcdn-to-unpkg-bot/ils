@@ -38,6 +38,7 @@
     "mobx": "^2.3.3",
     "mobx-react": "^3.4.0",
     "moment": "^2.14.1",
+    "mongoose": "^4.5.8",
     "passport": "^0.3.2",
     "proud-db": "*",
     "ramda": "*",

@@ -95,9 +95,14 @@ function isUniq(obj) {
     return R.uniq(arr).length === arr.length
 }
 function log(data) {
-    if (typeof data === "string") {
+    switch (R.type(data)) {
+    case "String":
         console.log(`||| ${data} |||`)
-    } else {
+        break
+    case "Object":
+        console.dir(data)
+        break
+    default:
         console.log(data)
     }
 }

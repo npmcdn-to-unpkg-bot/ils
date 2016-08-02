@@ -87,27 +87,30 @@ function willPublish(keyword, content) {
 router.get("/", (req, res) => {
     res.render("index")
 })
+router.get("/test", (req, res)=>{
+    res.render("test")
+})
 router.get("/file/:name", function (req, res, next) {
-    //if (env.getEnv("host") === "root") {
-    let options = {
-        root: "/home/just/Downloads/mp3",
-        dotfiles: "deny",
-        headers: {
-            "x-timestamp": Date.now(),
-            "x-sent": true
+    if (env.getEnv("host") === "root") {
+        let options = {
+            root: "/home/just/Downloads/mp3",
+            dotfiles: "deny",
+            headers: {
+                "x-timestamp": Date.now(),
+                "x-sent": true
+            }
         }
-    }
-    let fileName = req.params.name
-    res.sendFile(fileName, options, function (err) {
-        if (err) {
-            console.log(err)
-            res.status(err.status).end()
-        }
-        else {
-            console.log("Sent:", fileName)
-        }
-    })
-    //} else {res.send("No")}
+        let fileName = req.params.name
+        res.sendFile(fileName, options, function (err) {
+            if (err) {
+                console.log(err)
+                res.status(err.status).end()
+            }
+            else {
+                console.log("Sent:", fileName)
+            }
+        })
+    } else {res.send("No")}
 })
 router.get("/files", function (req, res, next) {
     if (env.getEnv("hostTag") === "root") {
