@@ -239,36 +239,20 @@ router.post("/update/:model", (req, res) =>{
         })
     } else {res.send("Unauthorized Access!")}
 })
+router.get("/read/:id", (req, res) =>{
+    J.logger.debug(`read db | ip ${req.ip}`)
+    mongoose.model("Main").findOne({id: req.params.id * 1}, (error, incoming)=>{
+        res.send(incoming)
+    })
+})
 router.post("/read/:model", (req, res) =>{
-    if (R.indexOf(req.params.model, ["main", "counter", "draft"]) !== -1) {
+    if (req.body.password === env.getEnv("mainPassword")) {
         J.logger.debug(`model ${req.params.model} ip ${req.ip}`)
-        mongoose.model(J.firstLetterCapital(req.params.model)).findOne({id: req.body.id * 1}, (error, incoming)=>{
+        let obj = {}
+        obj[ req.body.key ] = req.body.keyValue
+        mongoose.model(J.firstLetterCapital(req.params.model)).findOne(obj, (error, incoming)=>{
             res.send(incoming)
         })
     } else {res.send("Unauthorized Access!")}
-})
-router.get("/populate/:index", (req, res) =>{
-    let dataFileArr = R.compose(R.map(val=>{
-        return R.merge(val, {word: val.deEn.dePart})
-    }), R.values)(dataFile)
-    let just = R.splitEvery(100, dataFileArr)[ req.params.index ]
-    mongoose.model("TranslateDraft").insertMany(just, (error, incoming)=>{
-        J.lg(error)
-    })
-    res.send("done")
-})
-router.get("/populateMain", (req, res) =>{
-    mongoose.model("Counter").create({counter: 3591}, function(error, incoming) {})
-    let dbArr = R.compose(R.map(val=>{
-        if (val.category === "derProcess") {
-            return R.merge(val, {category: "plain"})
-        } else {
-            return val
-        }
-    }), R.values)(db.data)
-    mongoose.model("Main").insertMany(dbArr, (error, incoming)=>{
-        J.lg(error)
-    })
-    res.send("done")
 })
 module.exports = router
