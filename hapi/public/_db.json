@@ -12318,6 +12318,8 @@
       "id": 2105
     },
     "2106": {
+      "deWord": "das Wissen",
+      "enWord": "the knowledge",
       "dePart": "Wissen ist das Kind der Erfahrung.",
       "enPart": "Knowledge is the child of the experience.",
       "category": "quotes",
@@ -21026,83 +21028,67 @@
       "id": 3582
     },
     "3583": {
-      "data": {
         "category": "draft",
         "deWord": "belohnt",
         "enWord": "repay reward",
         "dePart": "Ausdauer wird früher oder später belohnt – meistens aber später.",
-        "enPart": ""
-      },
+        "enPart": "",
       "id": 3583
     },
     "3584": {
-      "data": {
         "category": "draft",
         "deWord": "geringste",
         "enWord": "least",
         "dePart": "Ich habe nicht die geringste Ahnung, was dieses Bild bedeuten soll.",
-        "enPart": ""
-      },
+        "enPart": "",
       "id": 3584
     },
     "3585": {
-      "data": {
         "category": "draft",
         "deWord": "vergeblich",
         "enWord": "useless",
         "dePart": "es wäre vergeblich, sie um Hilfe zu bitten.",
-        "enPart": "it would be useless to ask her for help."
-      },
+        "enPart": "it would be useless to ask her for help.",
       "id": 3585
     },
     "3586": {
-      "data": {
         "category": "draft",
         "deWord": "beizubringen",
         "enWord": "get to understand",
         "dePart": "ich versuchte ihm beizubringen, dass er nicht willkommen sei.",
-        "enPart": "I tried to make him understand that he was not welcome."
-      },
+        "enPart": "I tried to make him understand that he was not welcome.",
       "id": 3586
     },
     "3587": {
-      "data": {
         "category": "draft",
         "deWord": "beinahe",
         "enWord": "near,much,almost,nearly",
         "dePart": "ich wäre vor Angst beinahe gestorben.",
-        "enPart": "I almost died with fear, I was scared half to death."
-      },
+        "enPart": "I almost died with fear, I was scared half to death.",
       "id": 3587
     },
     "3588": {
-      "data": {
         "category": "draft",
         "deWord": "vorwerfen",
         "enWord": "accuse",
         "dePart": "Wenn du alles gibst, kannst du dir nichts vorwerfen.",
-        "enPart": ""
-      },
+        "enPart": "",
       "id": 3588
     },
     "3589": {
-      "data": {
         "category": "draft",
         "deWord": "sauer",
         "enWord": "",
         "dePart": "Für die Frau bedeutet Liebe Macht, für den Mann Unterwerfung.",
-        "enPart": ""
-      },
+        "enPart": "",
       "id": 3589
     },
     "3590": {
-      "data": {
         "category": "draft",
         "deWord": "ausstieg",
         "enWord": "",
         "dePart": "der Beschluss zum Ausstieg aus der Kernenergie.",
-        "enPart": "the decision to opt out of nuclear energy."
-      },
+        "enPart": "the decision to opt out of nuclear energy.",
       "id": 3590
     }
   },

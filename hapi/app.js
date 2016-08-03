@@ -14,6 +14,7 @@ const env = require("dotenv-helper")
 const J = require("../common")
 let routes = require("./routes/index.js")
 let app = express()
+
 app.use(responseTime((req, res, time)=>{
     if (time > 500) {
         J.logger.info(`${time} ${req.method} ${req.url} ${req.ip}`)
@@ -52,6 +53,6 @@ app.use("/", routes)
 //console.log(app.get("env"))
 app.use((req, res) =>{
     J.logger.error(`${res.statusCode} ${req.url} ${app.get("env")}`)
-    res.render("index")
+    res.render("error")
 })
 module.exports = app

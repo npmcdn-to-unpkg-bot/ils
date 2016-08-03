@@ -9,7 +9,7 @@ var _asyncToGenerator2 = require("babel-runtime/helpers/asyncToGenerator");
 var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
 
 var willTranslate = function () {
-    var ref = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee(word) {
+    var _ref = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee(word) {
         var translated;
         return _regenerator2.default.wrap(function _callee$(_context) {
             while (1) {
@@ -29,13 +29,14 @@ var willTranslate = function () {
             }
         }, _callee, this);
     }));
+
     return function willTranslate(_x) {
-        return ref.apply(this, arguments);
+        return _ref.apply(this, arguments);
     };
 }();
 
 var willUpdate = function () {
-    var ref = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee2(parent, data) {
+    var _ref2 = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee2(parent, data) {
         var iMeanNothing, _iteratorNormalCompletion, _didIteratorError, _iteratorError, _iterator, _step, val;
 
         return _regenerator2.default.wrap(function _callee2$(_context2) {
@@ -113,13 +114,14 @@ var willUpdate = function () {
             }
         }, _callee2, this, [[4, 17, 21, 29], [22,, 24, 28]]);
     }));
+
     return function willUpdate(_x2, _x3) {
-        return ref.apply(this, arguments);
+        return _ref2.apply(this, arguments);
     };
 }();
 
 var learningMeme = function () {
-    var ref = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee3(data) {
+    var _ref3 = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee3(data) {
         var uploadImageResult, imageSrc, imageName;
         return _regenerator2.default.wrap(function _callee3$(_context3) {
             while (1) {
@@ -148,13 +150,14 @@ var learningMeme = function () {
             }
         }, _callee3, this);
     }));
+
     return function learningMeme(_x4) {
-        return ref.apply(this, arguments);
+        return _ref3.apply(this, arguments);
     };
 }();
 
 var willAddDraft = function () {
-    var ref = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee4(data) {
+    var _ref4 = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee4(data) {
         return _regenerator2.default.wrap(function _callee4$(_context4) {
             while (1) {
                 switch (_context4.prev = _context4.next) {
@@ -172,13 +175,14 @@ var willAddDraft = function () {
             }
         }, _callee4, this);
     }));
+
     return function willAddDraft(_x5) {
-        return ref.apply(this, arguments);
+        return _ref4.apply(this, arguments);
     };
 }();
 
 var willUpdateSingle = function () {
-    var ref = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee5(data) {
+    var _ref5 = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee5(data) {
         return _regenerator2.default.wrap(function _callee5$(_context5) {
             while (1) {
                 switch (_context5.prev = _context5.next) {
@@ -196,13 +200,14 @@ var willUpdateSingle = function () {
             }
         }, _callee5, this);
     }));
+
     return function willUpdateSingle(_x6) {
-        return ref.apply(this, arguments);
+        return _ref5.apply(this, arguments);
     };
 }();
 
 var willAddEntry = function () {
-    var ref = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee6(parent, dataRaw) {
+    var _ref6 = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee6(parent, dataRaw) {
         var indexFuture, data, iMeanNothing;
         return _regenerator2.default.wrap(function _callee6$(_context6) {
             while (1) {
@@ -233,13 +238,14 @@ var willAddEntry = function () {
             }
         }, _callee6, this);
     }));
+
     return function willAddEntry(_x7, _x8) {
-        return ref.apply(this, arguments);
+        return _ref6.apply(this, arguments);
     };
 }();
 
 var willBulkRemove = function () {
-    var ref = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee7(marker) {
+    var _ref7 = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee7(marker) {
         var dataState, predraftCategory, willRemoveIndexArr, dropByIndex, willChangeCategoryArr, iMeanNothing, _iteratorNormalCompletion2, _didIteratorError2, _iteratorError2, _iterator2, _step2, removeMarker, _iteratorNormalCompletion3, _didIteratorError3, _iteratorError3, _iterator3, _step3, updateValue;
 
         return _regenerator2.default.wrap(function _callee7$(_context7) {
@@ -399,8 +405,9 @@ var willBulkRemove = function () {
             }
         }, _callee7, this, [[11, 25, 29, 37], [30,, 32, 36], [40, 53, 57, 65], [58,, 60, 64]]);
     }));
+
     return function willBulkRemove(_x9) {
-        return ref.apply(this, arguments);
+        return _ref7.apply(this, arguments);
     };
 }();
 
@@ -419,6 +426,7 @@ var uploadImage = require("../_inc/uploadImage");
 var searchImage = require("../_inc/searchImage");
 var proudDb = require("../_inc/proud-db");
 var dataFile = require("../../hapi/public/data.json");
+var db = require("../../hapi/public/_db.json");
 var twoLevelUp = R.compose(R.join("/"), R.dropLast(2), R.split("/"));
 
 var getPredraftCategory = R.compose(R.filter(function (val) {
@@ -573,7 +581,59 @@ router.post("/deEn", function (req, res) {
         res.send(incoming);
     });
 });
-router.get("/test", function (req, res) {
-    res.send("more");
+router.post("/remove/:model", function (req, res) {
+    if (req.body.password === env.getEnv("mainPassword")) {
+        mongoose.model(J.firstLetterCapital(req.params.model)).remove({ id: req.body.id * 1 }, function (error, incoming) {
+            res.send(incoming);
+        });
+    } else {
+        res.send("Unauthorized Access!");
+    }
+});
+router.post("/update/:model", function (req, res) {
+    if (req.body.password === env.getEnv("mainPassword")) {
+        var obj = {};
+        obj[req.body.key] = req.body.value;
+        mongoose.model(J.firstLetterCapital(req.params.model)).findOneAndUpdate({ id: req.body.id * 1 }, obj, function (error, incoming) {
+            J.lg(error, incoming);
+            res.send(incoming);
+        });
+    } else {
+        res.send("Unauthorized Access!");
+    }
+});
+router.post("/read/:model", function (req, res) {
+    if (R.indexOf(req.params.model, ["main", "counter", "draft"]) !== -1) {
+        J.logger.debug("model " + req.params.model + " ip " + req.ip);
+        mongoose.model(J.firstLetterCapital(req.params.model)).findOne({ id: req.body.id * 1 }, function (error, incoming) {
+            res.send(incoming);
+        });
+    } else {
+        res.send("Unauthorized Access!");
+    }
+});
+router.get("/populate", function (req, res) {
+    var dataFileArr = R.compose(R.map(function (val) {
+        return R.merge(val, { word: val.deEn.dePart });
+    }), R.values)(dataFile);
+    var TranslateDraft = mongoose.model("TranslateDraft");
+    TranslateDraft.insertMany(dataFileArr, function (error, incoming) {
+        J.lg(error);
+    });
+    res.send("done");
+});
+router.get("/populateMain", function (req, res) {
+    mongoose.model("Counter").create({ counter: 3591 }, function (error, incoming) {});
+    var dbArr = R.compose(R.map(function (val) {
+        if (val.category === "derProcess") {
+            return R.merge(val, { category: "plain" });
+        } else {
+            return val;
+        }
+    }), R.values)(db.data);
+    mongoose.model("Main").insertMany(dbArr, function (error, incoming) {
+        J.lg(error);
+    });
+    res.send("done");
 });
 module.exports = router;

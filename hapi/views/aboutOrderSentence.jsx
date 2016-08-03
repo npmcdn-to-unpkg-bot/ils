@@ -1,10 +1,10 @@
 "use strict"
-import React,{ Component } from"react"
-var DefaultLayout = require("./default.jsx")
+import React, { Component } from "react"
+var DefaultLayout = require("./default/plain.jsx")
 
 class Only extends Component {
     render() {
-        return(
+        return (
             <div className="columns">
                  <div className="column is-10 is-offset-1">
                       <div className="content">
@@ -25,7 +25,7 @@ class Only extends Component {
 
 let WillExport = React.createClass({
     render: function() {
-        return<DefaultLayout><Only /></DefaultLayout>
+        return <DefaultLayout><Only /></DefaultLayout>
     }
 })
 

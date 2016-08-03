@@ -3,9 +3,8 @@ import React, {Component} from "react"
 import ReactDOM from "react-dom"
 import R from "ramda"
 import ReactPlayer from 'react-player'
-import { Router, Route, Link, browserHistory } from 'react-router'
 
-class Only extends Component {
+class App extends Component {
     constructor (props) {
         super(props)
         this.state = {
@@ -36,17 +35,6 @@ class Only extends Component {
         <div className="box has-text-centered">
         </div>
 	</div>
-    )}
-}
-class App extends Component {
-    render () {
-        return (
-        <Router history={browserHistory}>
-        <Route path="/" component={Only}>
-          <Route path="about" component={Only}/>
-          <Route path="*" component={Only}/>
-        </Route>
-      </Router>
     )}
 }
 

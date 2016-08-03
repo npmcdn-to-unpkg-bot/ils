@@ -1,13 +1,13 @@
 "use strict"
-import React,{ Component } from"react"
-var DefaultLayout = require("./default.jsx")
+import React, { Component } from "react"
+var DefaultLayout = require("./default/plain.jsx")
 
 class About extends Component {
     render() {
         let imageStyle = {
-            width: "30%"
+            width: "30vw"
         }
-        return(
+        return (
             <div className="columns">
                  <div className="column is-10 is-offset-1">
                       <div className="content">
@@ -52,7 +52,7 @@ class About extends Component {
                         <h2>Final words</h2>
                         <p>I wish if I could expand "ilearnsmarter.com" to assist in learning other languages besides German, but for the time being it is as it is.</p>
                     <p>I'd love to hear you positive or negative feedback. You can find me at Twitter as @self_refactor</p>
-                    <p><img style={imageStyle} src="dejanToteff.jpg"/></p>
+                    <p className="has-text-centered"><img style={imageStyle} src="dejanToteff.jpg"/></p>
                      </div>
                       </div>
                   </div>
@@ -60,10 +60,10 @@ class About extends Component {
     }
 }
 
-let WillExport = React.createClass({
+let App = React.createClass({
     render: function() {
-        return<DefaultLayout><About /></DefaultLayout>
+        return <DefaultLayout><About /></DefaultLayout>
     }
 })
 
-module.exports = WillExport
+module.exports = App

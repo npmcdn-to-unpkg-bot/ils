@@ -1,106 +1,252 @@
 "use strict"
-import React, { Component } from "react"
+import React,{ Component } from "react"
 import R from "ramda"
 import J from "./components/commonReact.js"
-import ReactPlayer from 'react-player'
-import { Router, Route, Link, browserHistory } from 'react-router'
+import words from "./components/words.js"
 screenLog.init()
+let wordsArr = []
+const sourceWords = J.shuffle(words)
+function nextWord(){
+    let willReturn
+    let flag = true
+    sourceWords.map(val=>{
+        if(flag&&R.indexOf(val, wordsArr)===-1){
+            willReturn = val
+            flag = false
+            wordsArr.push(val)
+        }
+    })
+    return willReturn
+}
+function uniq(arr,prop){
+    let willReturn = []
+    return R.compose(R.sort((a,b)=>b.dePart.length-a.dePart.length),R.filter(val=>{
+        if(R.indexOf(val[prop], willReturn)===-1&&val[prop].length>2){
+            willReturn.push(val[prop])
+            return true
+        }else{return false}
+    }),R.map(val=>{
+        return R.merge(val,{dePart: R.replace(/[0-9]/g,"",val.dePart)})
+    }))(arr)
+}
 let initOnce = R.once(()=>{
     J.emitter.emit("init")
 })
-//console.trace()
-//console.table([{a,b},{a,b}])
-//console.profile("marker")
-//console.profileEnd("marker")
-let obj
+let initData = {
+    deEn: {
+        dePart:"",
+        enPart: ""
+    },
+    phrase: [],
+    phraseTranslated: [],
+    synonym: [],
+    synonymTranslated: []
+}
+
 export default class App extends Component {
     constructor (props) {
         super(props)
         this.state = {
-            startMarker: 0,
-            endMarker: 0,
-            duration: 0,
-            stepDuration: 0,
-            bufferDuration: 0,
-            loopCounter: 1,
-            playing: false,
-            url: "https://soundcloud.com/dw-learngerman/02082016-langsam-gesprochene-nachrichten-c1c2",
-        //    url: "https://soundcloud.com/david-thamm-1/james-brown-mind-power",
-            flag: true
+            data: initData,
+            deWord: "",
+            enWord: "",
+            enPart: "",
+            dePart: "",
+            paginationIndex: 0,
+            paginationLimit: 0,
+            paginationPerPageCount: 11
         }
-        this.handleProgress = this.handleProgress.bind(this)
+        this.handleDePartInput = this.handleDePartInput.bind(this)
+        this.handleEnPartInput = this.handleEnPartInput.bind(this)
+        this.handleDeWordInput = this.handleDeWordInput.bind(this)
+        this.handleEnWordInput = this.handleEnWordInput.bind(this)
+        this.handleAdd = this.handleAdd.bind(this)
         this.handleReady = this.handleReady.bind(this)
-        this.handleNext = this.handleNext.bind(this)
-        this.handleDuration = this.handleDuration.bind(this)
+        this.handlePrevNavigation = this.handlePrevNavigation.bind(this)
+        this.handleNextNavigation = this.handleNextNavigation.bind(this)
+        this.handleRequestNext = this.handleRequestNext.bind(this)
     }
-    static get defaultProps () {
-        return {
-            "message": "dummy"
+    componentDidMount(){
+        J.emitter.on("init", ()=>{
+            J.log(`${J.admin}/readDataFile/${nextWord()}`)
+            J.getData(`${J.admin}/readDataFile/${nextWord()}`).then(data=>{
+                let dataFuture = {}
+                let enWord = ""
+                let dePart = ""
+                let enPart = ""
+                dataFuture.deEn = data.deEn
+                dataFuture.phrase = uniq(data.phrase,"dePart")
+                dataFuture.synonym = uniq(data.synonym,"dePart")
+                dataFuture.phraseTranslated = uniq(data.phraseTranslated,"dePart")
+                dataFuture.synonymTranslated = uniq(data.synonymTranslated,"dePart")
+                let paginationLimit = R.apply(Math.max, [dataFuture.phrase.length, dataFuture.synonym.length, dataFuture.phraseTranslated.length, dataFuture.synonymTranslated.length])
+                this.setState({data: dataFuture, deWord: data.deEn.dePart, paginationLimit, enWord, dePart, enPart})
+            })
+        })
+        J.emitter.on("ready", ()=>{
+            let willSend = {}
+            willSend.category = "draft"
+            willSend.deWord = this.state.deWord.trim()
+            willSend.enWord = this.state.enWord.trim()
+            willSend.dePart = J.addFullstop(this.state.dePart.trim())
+            willSend.enPart = J.addFullstop(this.state.enPart.trim())
+            J.postData(`${J.admin}/newEntry`, JSON.stringify({data: willSend})).then(incoming =>{
+                J.emitter.emit("init")
+            })
+        })
+        initOnce()
+    }
+    handleReady (event) {
+        J.emitter.emit("ready")
+    }
+    handleAdd (value, event) {
+        let obj = {}
+        obj["dePart"] = value["dePart"]
+        if(event==="both"){
+            obj["enPart"] = value["enPart"]
         }
+        this.setState(obj)
     }
-    componentDidMount() {
-        J.emitter.on("next", ()=>{
-            let playing = true
-            let loopCounter = 1
-            let startMarker = this.state.startMarker+this.state.stepDuration-this.state.bufferDuration
-            let endMarker = startMarker + this.state.stepDuration
-            this.refs.player.seekTo(startMarker)
-            this.setState({playing,loopCounter,startMarker,endMarker})
+    handleDeWordInput (event) {
+        if (event.key === "Enter") {
+            J.emitter.emit("ready")
+        }
+        this.setState({
+            deWord: event.target.value
+        })
+
+    }
+    handleEnWordInput (event) {
+        if (event.key === "Enter") {
+            J.emitter.emit("ready")
+        }
+        this.setState({
+            enWord: event.target.value
         })
     }
-    handleInput(event){}
-    handleReady (event) {
-        this.setState({playing: true})
-    }
-    handleNext(){
-        J.emitter.emit("next")
-    }
-    handleProgress(progress){
-        if(this.state.playing){
-            if(progress.played>this.state.endMarker){
-                if(this.state.loopCounter!==0){
-                    let loopCounter = this.state.loopCounter-1
-                    this.setState({loopCounter},()=>{
-                        this.refs.player.seekTo(this.state.startMarker)
-                    })
-                }else{
-                    this.setState({playing: false})
-                }
-            }
+    handleDePartInput (event) {
+        if (event.key === "Enter") {
+            J.emitter.emit("ready")
+        }
+        this.setState({
+            dePart: event.target.value
+        })
+        if(event.target.value.length>68){
+            console.log(`TOO LONG - ${event.target.value.length}`, 5)
         }
     }
-    handleDuration(duration){
-        if(this.state.flag){
-            this.setState({flag:false, duration},()=>{
-                let skipDuration = 15
-                let stepDurationValue = 7
-                let bufferDurationValue = 2
-                let seekMarker = parseFloat(skipDuration/duration)
-                let stepDuration = parseFloat(stepDurationValue/duration)
-                let bufferDuration = parseFloat(bufferDurationValue/duration)
-                this.refs.player.seekTo(seekMarker)
-                this.setState({
-                    duration,
-                    stepDuration,
-                    bufferDuration,
-                    startMarker:seekMarker,
-                    endMarker: seekMarker+stepDuration
-                })
+    handleEnPartInput (event) {
+        if (event.key === "Enter") {
+            J.emitter.emit("ready")
+        }
+        this.setState({
+            enPart: event.target.value
+        })
+        if(event.target.value.length>68){
+            console.log(`TOO LONG - ${event.target.value.length}`, 5)
+        }
+    }
+    handleNextNavigation() {
+        if ((this.state.paginationIndex + this.state.paginationPerPageCount) < this.state.paginationLimit) {
+            this.setState({
+                paginationIndex: this.state.paginationIndex + this.state.paginationPerPageCount
             })
         }
     }
+    handlePrevNavigation() {
+        if ((this.state.paginationIndex - this.state.paginationPerPageCount) >= 0) {
+            this.setState({
+                paginationIndex: this.state.paginationIndex - this.state.paginationPerPageCount
+            })
+        }
+    }
+    handleRequestNext() {
+        J.emitter.emit("init")
+    }
     render () {
-        return (
+        return(
     <div>
-        <div className="box">
-            <a className="button is-warning is-inverted" onClick={this.handleReady} >ready</a>
-            <a className="button is-warning is-inverted" onClick={this.handleNext} >next</a>
-            <input type="text" onChange={this.handleInput} autoFocus={this.state.autofocus}/>
+        <div className="columns box has-text-centered is-fullwidth is-gapless is-narrow is-marginless">
+            <div className="column is-2 is-fullwidth">
+                <input className="deWordInput" type="text" value={this.state.deWord} placeholder="deWord" spellCheck="true" size={this.state.deWord.length>10?this.state.deWord.length:10} onChange={this.handleDeWordInput} onKeyPress={this.handleDeWordInput}/>
+            </div>
+            <div className="column is-2 is-marginless">
+                <input className="enWordInput" type="text" value={this.state.enWord} placeholder="enWord" spellCheck="true" size={this.state.enWord.length>10?this.state.enWord.length:10} onChange={this.handleEnWordInput} onKeyPress={this.handleEnWordInput}/>
+            </div>
+            <div className="column is-4 is-marginless">
+                <input className="deWordInput" type="text" value={this.state.dePart} placeholder="dePart" spellCheck="true" size={this.state.dePart.length>10?this.state.dePart.length:10} onChange={this.handleDePartInput} onKeyPress={this.handleDePartInput}/>
+            </div>
+            <div className="column is-4 is-marginless">
+                <input className="enWordInput" type="text" value={this.state.enPart} placeholder="enPart" spellCheck="true" size={this.state.enPart.length>10?this.state.enPart.length:10} onChange={this.handleEnPartInput} onKeyPress={this.handleEnPartInput}/>
+            </div>
         </div>
-        <div className="box has-text-centered">
-            <ReactPlayer ref='player' onDuration={this.handleDuration} onProgress={this.handleProgress} height={0} width={0} progressFrequency={500} url={this.state.url} playing={this.state.playing} />
+        <div className="columns box has-text-centered is-fullwidth is-gapless is-narrow is-marginless">
+            <div className="column is-2">
+                <a className="button is-small is-primary is-inverted" onClick={this.handleRequestNext}><span className="icon"><i className="fa fa-step-forward"></i></span></a>
+                <a className="button is-primary is-inverted is-small" onClick={this.handleReady}><span className="icon"><i className="fa fa-check"></i></span></a>
+                <a className="button is-success is-inverted is-small" onClick={this.handlePrevNavigation}><span className="icon"><i className="fa fa-chevron-left"></i></span></a>
+                <a className="button is-success is-inverted is-small" onClick={this.handleNextNavigation}><span className="icon"><i className="fa fa-chevron-right"></i></span></a>
+            </div>
+            <div className="column is-2 secondRow">
+                {this.state.data.deEn.dePart}
+            </div>
+            <div className="column is-6 secondRow">
+                {`${R.compose(R.join(","),R.take(6),R.split(","))(this.state.data.deEn.enPart)}|${R.compose(R.join(","),R.takeLast(6),R.split(","))(this.state.data.deEn.enPart)}`}
+            </div>
         </div>
-        <div className="box has-text-centered">
+        <div className="columns box has-text-centered is-fullwidth is-gapless is-narrow is-marginless">
+            <div className="column is-8 has-text-left">
+            {R.values(this.state.data.phrase).map((val,key)=>{
+                if(R.gt(key,this.state.paginationIndex)&&R.lte(key,this.state.paginationIndex+this.state.paginationPerPageCount)){
+                    return <div className={`secondRow${key%2===0?"Odd":""}`} key={`${key}-phraseTranslatedDePart`}>
+                    <a onClick={()=>{this.handleAdd(val)}}><span className="icon is-small"><i className="fa fa-check"></i></span></a>
+                    {`${R.take(140,val.dePart)}`}</div>
+                }
+            })}
+            </div>
+            <div className="column is-2 has-text-left">
+            {R.values(this.state.data.synonymTranslated).map((val,key)=>{
+                if(R.gt(key,this.state.paginationIndex)&&R.lte(key,this.state.paginationIndex+this.state.paginationPerPageCount)){
+                    return <div className={`secondRow${key%2===0?"Odd":""}`} key={`${key}-phraseTranslatedEnPart`}>
+                    {`${R.take(50,val.dePart)}`}</div>
+                }
+            })}
+            </div>
+            <div className="column is-2 has-text-left">
+            {R.values(this.state.data.synonymTranslated).map((val,key)=>{
+                if(R.gt(key,this.state.paginationIndex)&&R.lte(key,this.state.paginationIndex+this.state.paginationPerPageCount)){
+                    return <div className={`secondRow${key%2===0?"Odd":""}`} key={`${key}-phraseTranslatedEnPart`}>
+                    {`${R.take(50,val.enPart)}`}</div>
+                }
+            })}
+            </div>
+        </div>
+        <div className="columns box is-fullwidth">
+            <div className="column is-2 has-text-left">
+            {R.values(this.state.data.synonym).map((val,key)=>{
+                if(R.gt(key,this.state.paginationIndex)&&R.lte(key,this.state.paginationIndex+this.state.paginationPerPageCount)){
+                    return <div className={`firstRow${key%2===0?"Odd":""}`} key={`${key}-synonym`}>
+                    {`${R.take(34,val.dePart)}`}</div>
+                }
+            })}
+            </div>
+            <div className="column is-5 has-text-right">
+            {R.values(this.state.data.phraseTranslated).map((val,key)=>{
+                if(R.gt(key,this.state.paginationIndex)&&R.lte(key,this.state.paginationIndex+this.state.paginationPerPageCount)){
+                    return <div className={`secondRow${key%2===0?"Odd":""}`} key={`${key}-phraseTranslatedDePart`}>
+                    <a onClick={()=>{this.handleAdd(val,"both")}}><span className="icon is-small"><i className="fa fa-check"></i></span></a>
+                    {`${R.take(92,val.dePart)}`}</div>
+                }
+            })}
+            </div>
+            <div className="column is-5 has-text-left">
+            {R.values(this.state.data.phraseTranslated).map((val,key)=>{
+                if(R.gt(key,this.state.paginationIndex)&&R.lte(key,this.state.paginationIndex+this.state.paginationPerPageCount)){
+                    return <div className={`secondRow${key%2===0?"Odd":""}`} key={`${key}-phraseTranslatedEnPart`}>
+                    {`${R.take(92,val.enPart)}`}</div>
+                }
+            })}
+            </div>
         </div>
 	</div>
     )}

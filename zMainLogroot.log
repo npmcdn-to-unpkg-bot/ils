@@ -128,3 +128,46 @@
 {"level":"info","message":"2800.303068 GET /css/admin.css ::ffff:127.0.0.1","timestamp":"2016-08-02T02:32:08.395Z"}
 {"level":"info","message":"4771.642397 GET /css/admin.css ::ffff:127.0.0.1","timestamp":"2016-08-02T03:04:31.736Z"}
 {"level":"info","message":"682.9808969999999 GET /css/slider.css ::ffff:127.0.0.1","timestamp":"2016-08-02T18:39:23.738Z"}
+{"level":"info","message":"1440.291749 GET / ::ffff:127.0.0.1","timestamp":"2016-08-02T22:52:29.509Z"}
+{"level":"info","message":"1114.866663 GET /about ::ffff:127.0.0.1","timestamp":"2016-08-02T22:53:08.872Z"}
+{"level":"info","message":"1185.990239 GET /about ::ffff:127.0.0.1","timestamp":"2016-08-02T22:54:19.409Z"}
+{"level":"info","message":"1144.030285 GET /about ::ffff:127.0.0.1","timestamp":"2016-08-02T22:55:31.891Z"}
+{"level":"info","message":"925.10343 GET /about ::ffff:127.0.0.1","timestamp":"2016-08-02T22:57:16.335Z"}
+{"level":"info","message":"927.6809129999999 GET /about ::ffff:127.0.0.1","timestamp":"2016-08-02T22:57:31.421Z"}
+{"level":"info","message":"930.31179 GET /about ::ffff:127.0.0.1","timestamp":"2016-08-02T22:58:20.777Z"}
+{"level":"info","message":"957.612634 GET /about ::ffff:127.0.0.1","timestamp":"2016-08-02T22:58:44.654Z"}
+{"level":"info","message":"992.474255 GET / ::ffff:127.0.0.1","timestamp":"2016-08-02T23:01:07.982Z"}
+{"level":"info","message":"916.236905 GET /learningMeme ::ffff:127.0.0.1","timestamp":"2016-08-02T23:07:08.390Z"}
+{"level":"info","message":"1169.49973 GET /learningMeme ::ffff:127.0.0.1","timestamp":"2016-08-02T23:07:41.373Z"}
+{"level":"info","message":"1001.677665 GET /learningMeme ::ffff:127.0.0.1","timestamp":"2016-08-02T23:09:12.961Z"}
+{"level":"info","message":"707.498151 GET /learningMeme ::ffff:127.0.0.1","timestamp":"2016-08-02T23:15:35.477Z"}
+{"level":"info","message":"2137.520154 GET / ::ffff:127.0.0.1","timestamp":"2016-08-03T02:16:42.748Z"}
+{"level":"info","message":"807.82376 GET /learningMeme ::ffff:127.0.0.1","timestamp":"2016-08-03T02:16:44.056Z"}
+{"level":"info","message":"1118.637151 GET /orderSentenceMobile ::ffff:127.0.0.1","timestamp":"2016-08-03T02:16:44.368Z"}
+{"level":"error","message":"200 /writeSentenceLiteFront.css development","timestamp":"2016-08-03T02:16:45.521Z"}
+{"level":"error","message":"200 /orderSentenceFront.css development","timestamp":"2016-08-03T02:16:45.564Z"}
+{"level":"error","message":"200 /writeSentenceLiteFront.css development","timestamp":"2016-08-03T02:16:54.366Z"}
+{"level":"error","message":"200 /writeSentenceFront.css development","timestamp":"2016-08-03T02:16:55.291Z"}
+{"level":"error","message":"200 /orderSentenceFront.css development","timestamp":"2016-08-03T02:16:55.350Z"}
+{"level":"error","message":"200 /writeSentenceFront.css development","timestamp":"2016-08-03T02:16:58.335Z"}
+{"level":"error","message":"200 /writeSentenceLiteFront.css development","timestamp":"2016-08-03T02:18:45.106Z"}
+{"level":"error","message":"200 /orderSentenceFront.css development","timestamp":"2016-08-03T02:19:05.740Z"}
+{"level":"info","message":"651.499521 GET / ::ffff:127.0.0.1","timestamp":"2016-08-03T02:20:19.802Z"}
+{"level":"info","message":"634.098341 GET /learningMeme ::ffff:127.0.0.1","timestamp":"2016-08-03T02:22:14.999Z"}
+{"level":"info","message":"642.987663 GET / ::ffff:127.0.0.1","timestamp":"2016-08-03T02:22:44.860Z"}
+{"level":"info","message":"514.055044 GET /writeSentence ::ffff:127.0.0.1","timestamp":"2016-08-03T02:22:47.474Z"}
+{"level":"error","message":"200 /writeSentenceFront.css development","timestamp":"2016-08-03T02:22:47.626Z"}
+{"level":"info","message":"799.132629 GET / ::ffff:127.0.0.1","timestamp":"2016-08-03T02:25:49.288Z"}
+{"level":"info","message":"520.308779 GET /orderSentenceMobile ::ffff:127.0.0.1","timestamp":"2016-08-03T02:25:50.140Z"}
+{"level":"info","message":"748.62739 GET /orderSentence ::ffff:127.0.0.1","timestamp":"2016-08-03T02:25:50.369Z"}
+{"level":"info","message":"826.338166 GET / ::ffff:127.0.0.1","timestamp":"2016-08-03T02:25:50.449Z"}
+{"level":"error","message":"200 /writeSentenceLiteFront.css development","timestamp":"2016-08-03T02:26:13.393Z"}
+{"level":"error","message":"200 /orderSentenceFront.css development","timestamp":"2016-08-03T02:26:13.427Z"}
+{"level":"error","message":"200 /writeSentenceLiteFront.css development","timestamp":"2016-08-03T02:26:16.465Z"}
+{"level":"error","message":"200 /writeSentenceFront.css development","timestamp":"2016-08-03T02:26:17.416Z"}
+{"level":"error","message":"200 /orderSentenceFront.css development","timestamp":"2016-08-03T02:26:17.807Z"}
+{"level":"error","message":"200 /writeSentenceFront.css development","timestamp":"2016-08-03T02:26:20.675Z"}
+{"level":"error","message":"200 /dsds development","timestamp":"2016-08-03T02:29:35.561Z"}
+{"level":"info","message":"850.52098 GET /dsds ::ffff:127.0.0.1","timestamp":"2016-08-03T02:29:36.388Z"}
+{"level":"info","message":"2005.891372 GET /de.json ::ffff:127.0.0.1","timestamp":"2016-08-03T19:58:50.909Z"}
+{"level":"info","message":"661.357091 GET /favicon.ico ::ffff:127.0.0.1","timestamp":"2016-08-03T19:58:54.328Z"}

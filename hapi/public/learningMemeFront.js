@@ -128,10 +128,15 @@ function isUniq(obj) {
     return R.uniq(arr).length === arr.length;
 }
 function log(data) {
-    if (typeof data === "string") {
-        console.log("||| " + data + " |||");
-    } else {
-        console.log(data);
+    switch (R.type(data)) {
+        case "String":
+            console.log("||| " + data + " |||");
+            break;
+        case "Object":
+            console.dir(data);
+            break;
+        default:
+            console.log(data);
     }
 }
 function addProp(singleProp, defaultValue, arr) {
@@ -216,6 +221,14 @@ function addFullstop(str) {
 function removePunctuation(str) {
     return { cleanStr: R.replace(/\.|\!|\,|\-|\?/, "", str), removedChar: R.match(/\.|\!|\,|\-|\?/, str) };
 }
+function addWhitespace(str, length) {
+    if (str.length < length) {
+        return "" + str + R.compose(R.join(""), R.repeat("_"))(length - str.length) + "|";
+    } else {
+        return str;
+    }
+}
+module.exports.addWhitespace = addWhitespace;
 module.exports.removePunctuation = removePunctuation;
 module.exports.addFullstop = addFullstop;
 module.exports.stopWordsFilter = stopWordsFilter;
@@ -244,6 +257,8 @@ module.exports.randomSeed = randomSeed;
 module.exports.winWidthIs = winWidthIs;
 module.exports.winHeightIs = winHeightIs;
 module.exports.host = "http://localhost:3001";
+module.exports.admin = "http://localhost:3001";
+//module.exports.host = ""
 
 module.exports.bulButtonInit = "button";
 module.exports.categoryOptions = [{ value: "quotes", label: "quotes" },
@@ -444,7 +459,6 @@ var App = function (_Component) {
     }, {
         key: "handleButtonClick",
         value: function handleButtonClick(event) {
-            _commonReact2.default.log(this.state.buttonText);
             if (this.state.buttonText === "Show Answer") {
                 _commonReact2.default.emitter.emit("change button");
             } else if (this.state.buttonText === "Next") {

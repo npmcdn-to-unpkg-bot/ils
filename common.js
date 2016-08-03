@@ -23,6 +23,9 @@ function auth(ip) {
     })
     return flag
 }
+function firstLetterCapital(str) {
+    return `${R.compose(R.toUpper, R.head)(str)}${R.tail(str)}`
+}
 const logger = new (winston.Logger)({
     transports: [
         new (winston.transports.File)({
@@ -141,6 +144,7 @@ let takeName = R.compose(R.takeLast(1), R.split("/"))
 let anyRaw = R.flip(R.any)
 let anyFn = R.curry(anyRaw)
 module.exports.twoLevelUp = R.compose(R.join("/"), R.dropLast(2), R.split("/"))
+module.exports.firstLetterCapital = firstLetterCapital
 module.exports.stop = stop
 module.exports.auth = auth
 module.exports.removePunctuation = removePunctuation

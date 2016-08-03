@@ -129,7 +129,6 @@ export default class App extends Component {
         initOnce()
     }
     handleButtonClick(event) {
-        J.log(this.state.buttonText)
         if (this.state.buttonText === "Show Answer") {
             J.emitter.emit("change button")
         } else if (this.state.buttonText === "Next") {

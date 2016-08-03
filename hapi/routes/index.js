@@ -30,7 +30,6 @@ function setCookie(key, value, res) {
     res.append("Set-Cookie", `${key}=${value}`)
 }
 router.get("/", (req, res) =>{
-    J.box(R.type(req.user))
     res.render("index")
 })
 router.get("/login", (req, res)=>{
