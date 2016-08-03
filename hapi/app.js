@@ -1,4 +1,6 @@
 "use strict"
+const mongooseData = require("./_inc/mongooseData.js")
+mongooseData.init("mongodb://localhost/ils")
 const express = require("express")
 const minify = require("express-minify")
 const helmet = require("helmet")

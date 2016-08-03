@@ -5,7 +5,7 @@ const J = require("../../common")
 const dailyTask = require("../_inc/dailyTask")
 const R = require("ramda")
 const env = require("dotenv-helper")
-const db = require("proud-db")
+const mongoose = require("mongoose")
 const passport = require("passport")
 const Strategy = require("passport-twitter").Strategy
 let router = express.Router()
@@ -63,9 +63,6 @@ router.post("/run", (req, res) =>{
         res.send("fail")
     }
 })
-//router.get("/redux", (req, res) =>{
-//res.render("redux")
-//})
 router.get("/aboutOrderSentence", (req, res)=> {
     res.render("aboutOrderSentence")
 })
@@ -100,6 +97,39 @@ router.get("/blog-*", (req, res) => {
             res.render("index")
         }
     })
+})
+router.post("/remove/:model", (req, res) =>{
+    if (req.body.password === env.getEnv("mainPassword")) {
+        mongoose.model(J.firstLetterCapital(req.params.model)).remove({id: req.body.id * 1}, (error, incoming)=>{
+            res.send(incoming)
+        })
+    } else {res.send("Unauthorized Access!")}
+})
+router.post("/update/:model", (req, res) =>{
+    if (req.body.password === env.getEnv("mainPassword")) {
+        let obj = {}
+        obj[ req.body.key ] = req.body.value
+        mongoose.model(J.firstLetterCapital(req.params.model)).findOneAndUpdate({id: req.body.id * 1}, obj, (error, incoming)=>{
+            J.lg(error, incoming)
+            res.send(incoming)
+        })
+    } else {res.send("Unauthorized Access!")}
+})
+router.get("/read/:id", (req, res) =>{
+    J.logger.debug(`read db | ip ${req.ip}`)
+    mongoose.model("Main").findOne({id: req.params.id * 1}, (error, incoming)=>{
+        res.send(incoming)
+    })
+})
+router.post("/read/:model", (req, res) =>{
+    if (req.body.password === env.getEnv("mainPassword")) {
+        J.logger.debug(`model ${req.params.model} ip ${req.ip}`)
+        let obj = {}
+        obj[ req.body.key ] = req.body.keyValue
+        mongoose.model(J.firstLetterCapital(req.params.model)).findOne(obj, (error, incoming)=>{
+            res.send(incoming)
+        })
+    } else {res.send("Unauthorized Access!")}
 })
 function getMarkdownData(fileName) {
     let fileIs = `${oneLevelUp(__dirname)}/blog/${fileName}.md`

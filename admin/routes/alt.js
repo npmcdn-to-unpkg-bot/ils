@@ -36,14 +36,6 @@ router.post("/update/:model", (req, res) =>{
         })
     } else {res.send("Unauthorized Access!")}
 })
-router.post("/read/:model", (req, res) =>{
-    if (R.indexOf(req.params.model, ["main", "counter", "draft"]) !== -1) {
-        J.logger.debug(`model ${req.params.model} ip ${req.ip}`)
-        mongoose.model(J.firstLetterCapital(req.params.model)).findOne({id: req.body.id * 1}, (error, incoming)=>{
-            res.send(incoming)
-        })
-    } else {res.send("Unauthorized Access!")}
-})
 router.get("/populate", (req, res) =>{
     let dataFileArr = R.compose(R.map(val=>{
         return R.merge(val, {word: val.deEn.dePart})
