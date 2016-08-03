@@ -613,12 +613,12 @@ router.post("/read/:model", function (req, res) {
         res.send("Unauthorized Access!");
     }
 });
-router.get("/populate", function (req, res) {
+router.get("/populate/:index", function (req, res) {
     var dataFileArr = R.compose(R.map(function (val) {
         return R.merge(val, { word: val.deEn.dePart });
     }), R.values)(dataFile);
-    var TranslateDraft = mongoose.model("TranslateDraft");
-    TranslateDraft.insertMany(dataFileArr, function (error, incoming) {
+    var just = R.splitEvery(100, dataFileArr)[req.params.index];
+    mongoose.model("TranslateDraft").insertMany(just, function (error, incoming) {
         J.lg(error);
     });
     res.send("done");

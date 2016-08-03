@@ -247,12 +247,12 @@ router.post("/read/:model", (req, res) =>{
         })
     } else {res.send("Unauthorized Access!")}
 })
-router.get("/populate", (req, res) =>{
+router.get("/populate/:index", (req, res) =>{
     let dataFileArr = R.compose(R.map(val=>{
         return R.merge(val, {word: val.deEn.dePart})
     }), R.values)(dataFile)
-    let TranslateDraft = mongoose.model("TranslateDraft")
-    TranslateDraft.insertMany(dataFileArr, (error, incoming)=>{
+    let just = R.splitEvery(100, dataFileArr)[ req.params.index ]
+    mongoose.model("TranslateDraft").insertMany(just, (error, incoming)=>{
         J.lg(error)
     })
     res.send("done")
