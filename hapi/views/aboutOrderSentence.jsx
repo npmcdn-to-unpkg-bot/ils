@@ -2,7 +2,7 @@
 import React, { Component } from "react"
 var DefaultLayout = require("./default/plain.jsx")
 
-class Only extends Component {
+class App extends Component {
     render() {
         return (
             <div className="columns">
@@ -25,7 +25,7 @@ class Only extends Component {
 
 let WillExport = React.createClass({
     render: function() {
-        return <DefaultLayout><Only /></DefaultLayout>
+        return <DefaultLayout><App /></DefaultLayout>
     }
 })
 

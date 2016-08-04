@@ -52,10 +52,9 @@ class Exported extends Component {
                      {this.props.children}
                      <div id="reactHook"></div>
                 </div>
-                    <script src={`${this.props.keyword}.js`} ></script>
                     <script src="analitycs.js" ></script>
                 </body>
-            </html>)
-    }
+            </html>
+        )}
 }
 module.exports = Exported

@@ -39,6 +39,7 @@ export default class App extends Component {
     componentDidMount() {
         J.emitter.on("once init", ()=>{
             //J.getData(`${J.host}/read/data`).then(incoming =>{
+            //J.getData("/_db.json").then(incoming =>{
             J.getData("/_db.json").then(incoming =>{
                 let globalDataFuture = R.compose(R.filter(val=>{
                     return R.type(val.imageSrc) === "String" && val.dePart.length < 73 && val.enPart.length < 73

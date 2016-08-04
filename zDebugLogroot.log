@@ -2,3 +2,6 @@
 {"level":"info","message":"5800.760394 POST /test ::ffff:127.0.0.1","timestamp":"2016-08-04T01:42:29.354Z"}
 {"level":"info","message":"5379.552901 POST /test ::ffff:127.0.0.1","timestamp":"2016-08-04T01:43:47.458Z"}
 {"level":"info","message":"5031.856726 POST /test ::ffff:127.0.0.1","timestamp":"2016-08-04T01:44:22.102Z"}
+{"level":"info","message":"2097.698361 GET / ::ffff:127.0.0.1","timestamp":"2016-08-04T02:54:41.478Z"}
+{"level":"info","message":"731.315742 GET /css/slider.css ::ffff:127.0.0.1","timestamp":"2016-08-04T20:44:58.960Z"}
+{"level":"info","message":"2196.530053 POST /learningMeme ::ffff:127.0.0.1","timestamp":"2016-08-04T21:50:39.324Z"}

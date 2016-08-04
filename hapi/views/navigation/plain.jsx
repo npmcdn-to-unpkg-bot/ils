@@ -8,7 +8,7 @@ export default class Navigation extends Component {
                   <span className="is-text-centered navItem"><a className="button is-normal" href="/" rel="nofollow">Home</a></span>
                   <span className="is-text-centered navItem"><a className="button is-normal" href="/#" rel="nofollow">Blog</a></span>
                   <span className="is-text-centered navItem">
-                          <a href="/"><img width="10%" height="10%" src="logo.jpg" alt="logo" /></a>
+                          <a href="/"><img width="10%" height="10%" src="images/logo.jpg" alt="logo" /></a>
                   </span>
                   <span className="is-text-centered navItem"><a className="button is-normal" href="/about" rel="nofollow">About</a></span>
                   <span className="is-text-centered navItem"><a className="button is-normal" href="/#" rel="nofollow">Instructions</a></span>

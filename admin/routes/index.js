@@ -448,7 +448,8 @@ router.get("/test", function (req, res) {
     res.render("test");
 });
 router.get("/file/:name", function (req, res, next) {
-    if (env.getEnv("host") === "root") {
+    J.log(env.getEnv("host"));
+    if (env.getEnv("hostTag") === "root") {
         (function () {
             var options = {
                 root: "/home/just/Downloads/mp3",
@@ -475,7 +476,6 @@ router.get("/file/:name", function (req, res, next) {
 router.get("/files", function (req, res, next) {
     if (env.getEnv("hostTag") === "root") {
         recursive("/home/just/Downloads/mp3", function (err, files) {
-            console.log(files);
             res.send(files);
         });
     } else {
@@ -567,58 +567,11 @@ router.post("/searchImageFirst", function (req, res) {
         res.send(incoming);
     });
 });
-router.post("/deEnShort", function (req, res) {
-    var password = req.body.password;
-    var word = req.body.word;
-    J.log(word, "word");
-    willTranslate(word).then(function (result) {
-        res.send(result);
-    });
-});
 router.post("/deEn", function (req, res) {
     var word = JSON.parse(req.body.data).word;
     J.log(word, "word");
     willTranslate(word).then(function (incoming) {
         res.send(incoming);
     });
-});
-router.post("/remove/:model", function (req, res) {
-    if (req.body.password === env.getEnv("mainPassword")) {
-        mongoose.model(J.firstLetterCapital(req.params.model)).remove({ id: req.body.id * 1 }, function (error, incoming) {
-            res.send(incoming);
-        });
-    } else {
-        res.send("Unauthorized Access!");
-    }
-});
-router.post("/update/:model", function (req, res) {
-    if (req.body.password === env.getEnv("mainPassword")) {
-        var obj = {};
-        obj[req.body.key] = req.body.value;
-        mongoose.model(J.firstLetterCapital(req.params.model)).findOneAndUpdate({ id: req.body.id * 1 }, obj, function (error, incoming) {
-            J.lg(error, incoming);
-            res.send(incoming);
-        });
-    } else {
-        res.send("Unauthorized Access!");
-    }
-});
-router.get("/read/:id", function (req, res) {
-    J.logger.debug("read db | ip " + req.ip);
-    mongoose.model("Main").findOne({ id: req.params.id * 1 }, function (error, incoming) {
-        res.send(incoming);
-    });
-});
-router.post("/read/:model", function (req, res) {
-    if (req.body.password === env.getEnv("mainPassword")) {
-        J.logger.debug("model " + req.params.model + " ip " + req.ip);
-        var obj = {};
-        obj[req.body.key] = req.body.keyValue;
-        mongoose.model(J.firstLetterCapital(req.params.model)).findOne(obj, function (error, incoming) {
-            res.send(incoming);
-        });
-    } else {
-        res.send("Unauthorized Access!");
-    }
 });
 module.exports = router;

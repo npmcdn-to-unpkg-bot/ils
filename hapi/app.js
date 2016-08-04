@@ -16,12 +16,16 @@ const env = require("dotenv-helper")
 const J = require("../common")
 let routes = require("./routes/index.js")
 let app = express()
-
 app.use(responseTime((req, res, time)=>{
     if (time > 500) {
         J.logger.info(`${time} ${req.method} ${req.url} ${req.ip}`)
     }
 }))
+app.use((req, res, next) =>{
+    res.header("Access-Control-Allow-Origin", "*")
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
+    next()
+})
 app.use(helmet())
 app.get("/*", (request, response, next) => {
     let headerHost = request.headers.host
@@ -36,7 +40,6 @@ app.get("/*", (request, response, next) => {
         next()
     }
 })
-
 app.use(compression())
 app.set("view cache", true)
 app.set("views", __dirname + "/views")

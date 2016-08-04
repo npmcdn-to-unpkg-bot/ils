@@ -14,15 +14,9 @@ passport.use(new Strategy({
     consumerKey: env.getEnv("twitterKey"),
     consumerSecret: env.getEnv("twitterSecret"),
     callbackURL: "http://127.0.0.1:3000/login/twitter/return"
-}, (token, tokenSecret, profile, cb) =>{
-    return cb(null, profile)
-}))
-passport.serializeUser((user, cb)=>{
-    cb(null, user)
-})
-passport.deserializeUser((obj, cb)=>{
-    cb(null, obj)
-})
+}, (token, tokenSecret, profile, cb) =>{return cb(null, profile)}))
+passport.serializeUser((user, cb)=>{cb(null, user)})
+passport.deserializeUser((obj, cb)=>{cb(null, obj)})
 let oneLevelUp = R.compose(R.join("/"), R.init, R.split("/"))
 let titleFn = R.compose(R.trim, R.last, R.split("-"), R.head, R.match(/\/\/(\s)?title.{1,70}/gm))
 //let categoryFn = R.compose(R.trim,R.last,R.split("-"),R.head,R.match(/\/\/(\s)?category.{1,70}/gm))
@@ -30,12 +24,8 @@ let cleanFn = R.compose(R.replace(/\/(.|\n)+(?=#)/gm, ""))
 function setCookie(key, value, res) {
     res.append("Set-Cookie", `${key}=${value}`)
 }
-router.get("/", (req, res) =>{
-    res.render("index")
-})
-router.get("/login", (req, res)=>{
-    res.render("login")
-})
+router.get("/", (req, res) =>{res.render("index")})
+router.get("/login", (req, res)=>{res.render("login")})
 router.get("/login/twitter", passport.authenticate("twitter"))
 router.get("/login/twitter/return", passport.authenticate("twitter", { failureRedirect: "/login" }), (req, res)=>{
     J.box(R.type(req.user))
@@ -64,34 +54,25 @@ router.post("/run", (req, res) =>{
         res.send("fail")
     }
 })
-router.get("/aboutOrderSentence", (req, res)=> {
-    res.render("aboutOrderSentence")
-})
+router.get("/aboutOrderSentence", (req, res)=> {res.render("aboutOrderSentence")})
 router.get("/about", (req, res) =>{
-    J.box(R.type(req.user))
+    //J.box(R.type(req.user))
     res.render("about")
 })
-router.get("/writeSentenceLite", (req, res) =>{
-    res.render("writeSentenceLite")
-})
-router.get("/learningMeme", (req, res) =>{
-    res.render("learningMeme")
-})
-router.get("/writeSentence", (req, res)=> {
-    res.render("writeSentence")
-})
-router.get("/orderSentence", (req, res) =>{
-    res.render("orderSentence")
-})
-router.get("/orderSentenceMobile", (req, res) =>{
-    res.render("orderSentenceMobile")
-})
-router.get("/test", (req, res) =>{
-    res.render("test")
-})
+router.get("/writeSentenceLite", (req, res) =>{res.render("writeSentenceLite")})
+router.get("/learningMeme", (req, res) =>{res.render("learningMeme")})
+router.get("/writeSentence", (req, res)=> {res.render("writeSentence")})
+router.get("/orderSentence", (req, res) =>{res.render("orderSentence")})
+router.get("/orderSentenceMobile", (req, res) =>{res.render("orderSentenceMobile")})
+router.get("/test", (req, res) =>{res.render("test")})
 router.post("/ready", (req, res) =>{
     J.logger.debug(`read ready | ip ${req.ip}`)
     mongoose.model("Main").find({$where: "this.enPart.length>1"}, (error, incoming)=>{
+        res.send(R.values(incoming))
+    })
+})
+router.post("/learningMeme", (req, res) =>{
+    mongoose.model("Main").find({$where: "this.imageSrc!==undefined&&this.imageSrc!==false"}, (error, incoming)=>{
         res.send(R.values(incoming))
     })
 })

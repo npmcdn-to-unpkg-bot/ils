@@ -93,7 +93,8 @@ router.get("/test", (req, res)=>{
     res.render("test")
 })
 router.get("/file/:name", function (req, res, next) {
-    if (env.getEnv("host") === "root") {
+    J.log(env.getEnv("host"))
+    if (env.getEnv("hostTag") === "root") {
         let options = {
             root: "/home/just/Downloads/mp3",
             dotfiles: "deny",
@@ -117,7 +118,6 @@ router.get("/file/:name", function (req, res, next) {
 router.get("/files", function (req, res, next) {
     if (env.getEnv("hostTag") === "root") {
         recursive("/home/just/Downloads/mp3", function (err, files) {
-            console.log(files)
             res.send(files)
         })
     } else {res.send("No")}
@@ -207,52 +207,11 @@ router.post("/searchImageFirst", (req, res) =>{
         res.send(incoming)
     })
 })
-router.post("/deEnShort", (req, res)=>{
-    let password = req.body.password
-    let word = req.body.word
-    J.log(word, "word")
-    willTranslate(word).then((result)=>{
-        res.send(result)
-    })
-})
 router.post("/deEn", (req, res)=>{
     let word = JSON.parse(req.body.data).word
     J.log(word, "word")
     willTranslate(word).then((incoming)=>{
         res.send(incoming)
     })
-})
-router.post("/remove/:model", (req, res) =>{
-    if (req.body.password === env.getEnv("mainPassword")) {
-        mongoose.model(J.firstLetterCapital(req.params.model)).remove({id: req.body.id * 1}, (error, incoming)=>{
-            res.send(incoming)
-        })
-    } else {res.send("Unauthorized Access!")}
-})
-router.post("/update/:model", (req, res) =>{
-    if (req.body.password === env.getEnv("mainPassword")) {
-        let obj = {}
-        obj[ req.body.key ] = req.body.value
-        mongoose.model(J.firstLetterCapital(req.params.model)).findOneAndUpdate({id: req.body.id * 1}, obj, (error, incoming)=>{
-            J.lg(error, incoming)
-            res.send(incoming)
-        })
-    } else {res.send("Unauthorized Access!")}
-})
-router.get("/read/:id", (req, res) =>{
-    J.logger.debug(`read db | ip ${req.ip}`)
-    mongoose.model("Main").findOne({id: req.params.id * 1}, (error, incoming)=>{
-        res.send(incoming)
-    })
-})
-router.post("/read/:model", (req, res) =>{
-    if (req.body.password === env.getEnv("mainPassword")) {
-        J.logger.debug(`model ${req.params.model} ip ${req.ip}`)
-        let obj = {}
-        obj[ req.body.key ] = req.body.keyValue
-        mongoose.model(J.firstLetterCapital(req.params.model)).findOne(obj, (error, incoming)=>{
-            res.send(incoming)
-        })
-    } else {res.send("Unauthorized Access!")}
 })
 module.exports = router

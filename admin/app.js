@@ -1,13 +1,10 @@
 "use strict"
-const mongooseData = require("./_inc/mongooseData.js")
-mongooseData.init("mongodb://localhost/ils")
 const J = require("../common")
 const express = require("express")
 const path = require("path")
 const favicon = require("serve-favicon")
 const bodyParser = require("body-parser")
 const mainRoute = require("./routes/index.js")
-const altRoute = require("./routes/alt.js")
 let app = express()
 app.use((req, res, next) =>{
     res.header("Access-Control-Allow-Origin", "*")
@@ -28,7 +25,6 @@ app.use((req, res, next) =>{
     next()
 })
 app.use("/", mainRoute)
-app.use("/alt", altRoute)
 app.use(function (req, res) {
     res.send({
         message: "more"

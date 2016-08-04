@@ -7,7 +7,8 @@ const reqwest = require("reqwest")
 reqwest({
     //url:  "http://ilearnsmarter.com/read/translateDraft",
     //url:  "http://localhost:3000/updateMany/main",
-    url:  "http://localhost:3000/readRandom/counter",
+    //url:  "http://localhost:3000/readRandom/counter",
+    url:  "http://ilearnsmarter.com/readRandom/counter",
     data: {
         password: env.getEnv("mainPassword"),
         id: 2,
