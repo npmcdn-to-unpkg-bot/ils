@@ -5,3 +5,6 @@
 {"level":"info","message":"2097.698361 GET / ::ffff:127.0.0.1","timestamp":"2016-08-04T02:54:41.478Z"}
 {"level":"info","message":"731.315742 GET /css/slider.css ::ffff:127.0.0.1","timestamp":"2016-08-04T20:44:58.960Z"}
 {"level":"info","message":"2196.530053 POST /learningMeme ::ffff:127.0.0.1","timestamp":"2016-08-04T21:50:39.324Z"}
+{"level":"info","message":"661.96952 GET / ::ffff:127.0.0.1","timestamp":"2016-08-04T21:57:32.094Z"}
+{"level":"info","message":"603.769364 GET /learningMeme ::ffff:127.0.0.1","timestamp":"2016-08-04T21:57:35.916Z"}
+{"level":"info","message":"1230.024688 GET /learningMeme ::ffff:127.0.0.1","timestamp":"2016-08-04T21:58:43.085Z"}

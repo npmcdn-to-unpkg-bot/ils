@@ -38,12 +38,8 @@ export default class App extends Component {
     }
     componentDidMount() {
         J.emitter.on("once init", ()=>{
-            //J.getData(`${J.host}/read/data`).then(incoming =>{
-            //J.getData("/_db.json").then(incoming =>{
-            J.postData("http://localhost:3000/learningMeme",{}).then(incoming =>{
-                let globalDataFuture = R.compose(R.filter(val=>{
-                    return R.type(val.imageSrc) === "String" && val.dePart.length < 73 && val.enPart.length < 73
-                }), R.values)(incoming.data)
+            J.postData("/learningMeme",{}).then(incoming =>{
+            //J.postData("http://ilearnsmarter.com/learningMeme",{}).then(incoming =>{
                 let globalData = J.shuffle(incoming)
                 this.setState({
                     data: globalData[ 0 ],
