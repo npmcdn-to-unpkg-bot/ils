@@ -1,1 +1,4 @@
 {"level":"debug","message":"main ::ffff:127.0.0.1","timestamp":"2016-08-03T21:42:55.532Z"}
+{"level":"info","message":"5800.760394 POST /test ::ffff:127.0.0.1","timestamp":"2016-08-04T01:42:29.354Z"}
+{"level":"info","message":"5379.552901 POST /test ::ffff:127.0.0.1","timestamp":"2016-08-04T01:43:47.458Z"}
+{"level":"info","message":"5031.856726 POST /test ::ffff:127.0.0.1","timestamp":"2016-08-04T01:44:22.102Z"}

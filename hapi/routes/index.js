@@ -2,6 +2,7 @@
 const express = require("express")
 const fs = require("fs-extra")
 const J = require("../../common")
+const config = require("../_inc/config")
 const dailyTask = require("../_inc/dailyTask")
 const R = require("ramda")
 const env = require("dotenv-helper")
@@ -88,6 +89,17 @@ router.get("/orderSentenceMobile", (req, res) =>{
 router.get("/test", (req, res) =>{
     res.render("test")
 })
+router.post("/ready", (req, res) =>{
+    J.logger.debug(`read ready | ip ${req.ip}`)
+    mongoose.model("Main").find({$where: "this.enPart.length>1"}, (error, incoming)=>{
+        res.send(R.values(incoming))
+    })
+})
+router.post("/counter", (req, res) =>{
+    mongoose.model("Counter").find({}, (error, incoming)=>{
+        res.send(`${incoming[ 0 ].counter}`)
+    })
+})
 router.get("/blog-*", (req, res) => {
     let keyword = req.params[ 0 ]
     getMarkdownData(keyword).then((incoming)=>{
@@ -98,9 +110,16 @@ router.get("/blog-*", (req, res) => {
         }
     })
 })
+router.post("/removeMain", (req, res) =>{
+    if (req.body.password === env.getEnv("mainPassword")) {
+        mongoose.model("Main").remove({id: req.body.id * 1}, (error, incoming)=>{
+            res.send(incoming)
+        })
+    } else {res.send("Unauthorized Access!")}
+})
 router.post("/remove/:model", (req, res) =>{
     if (req.body.password === env.getEnv("mainPassword")) {
-        mongoose.model(J.firstLetterCapital(req.params.model)).remove({id: req.body.id * 1}, (error, incoming)=>{
+        mongoose.model(J.firstLetterCapital(req.params.model)).remove({_id: req.body._id * 1}, (error, incoming)=>{
             res.send(incoming)
         })
     } else {res.send("Unauthorized Access!")}
@@ -115,13 +134,21 @@ router.post("/update/:model", (req, res) =>{
         })
     } else {res.send("Unauthorized Access!")}
 })
-router.get("/read/:id", (req, res) =>{
+router.post("/updateMany/:model", (req, res) =>{
+    if (req.body.password === env.getEnv("mainPassword")) {
+        let obj = JSON.parse(req.body.obj)
+        mongoose.model(J.firstLetterCapital(req.params.model)).findOneAndUpdate({id: req.body.id * 1}, obj, (error, incoming)=>{
+            res.send(incoming)
+        })
+    } else {res.send("Unauthorized Access!")}
+})
+router.post("/read/:id", (req, res) =>{
     J.logger.debug(`read db | ip ${req.ip}`)
     mongoose.model("Main").findOne({id: req.params.id * 1}, (error, incoming)=>{
         res.send(incoming)
     })
 })
-router.post("/read/:model", (req, res) =>{
+router.post("/readModel/:model", (req, res) =>{
     if (req.body.password === env.getEnv("mainPassword")) {
         J.logger.debug(`model ${req.params.model} ip ${req.ip}`)
         let obj = {}
@@ -130,6 +157,18 @@ router.post("/read/:model", (req, res) =>{
             res.send(incoming)
         })
     } else {res.send("Unauthorized Access!")}
+})
+router.post("/readRandom/:model", (req, res) =>{
+    if (R.indexOf(req.params.model), config.models) {
+        mongoose.model(J.firstLetterCapital(req.params.model)).count().exec(function(err, count) {
+            let random = Math.floor(Math.random() * count)
+            mongoose.model(J.firstLetterCapital(req.params.model)).findOne().skip(random).exec((err, result)=>{
+                res.send(result)
+            })
+        })
+    } else {
+        res.send(config.badQuery)
+    }
 })
 function getMarkdownData(fileName) {
     let fileIs = `${oneLevelUp(__dirname)}/blog/${fileName}.md`

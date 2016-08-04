@@ -171,3 +171,6 @@
 {"level":"info","message":"850.52098 GET /dsds ::ffff:127.0.0.1","timestamp":"2016-08-03T02:29:36.388Z"}
 {"level":"info","message":"2005.891372 GET /de.json ::ffff:127.0.0.1","timestamp":"2016-08-03T19:58:50.909Z"}
 {"level":"info","message":"661.357091 GET /favicon.ico ::ffff:127.0.0.1","timestamp":"2016-08-03T19:58:54.328Z"}
+{"level":"info","message":"5800.760394 POST /test ::ffff:127.0.0.1","timestamp":"2016-08-04T01:42:29.351Z"}
+{"level":"info","message":"5379.552901 POST /test ::ffff:127.0.0.1","timestamp":"2016-08-04T01:43:47.454Z"}
+{"level":"info","message":"5031.856726 POST /test ::ffff:127.0.0.1","timestamp":"2016-08-04T01:44:22.097Z"}
