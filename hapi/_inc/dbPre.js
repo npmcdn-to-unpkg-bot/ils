@@ -59,6 +59,6 @@ async function addMain(saveData = {}) {
     return willReturn.main
 }
 module.exports.addMain = (data)=>{return addMain(data)}
-module.exports.random = ()=>{return random()}
+module.exports.random = (data)=>{return random(data)}
 module.exports.counter = counter
 module.exports.increaseCounter = ()=>{return increaseCounter()}

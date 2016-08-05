@@ -2,22 +2,9 @@
 import React,{ Component } from "react"
 import R from "ramda"
 import J from "./components/commonReact.js"
-import words from "./components/words.js"
+import Perf from 'react-addons-perf'
 screenLog.init()
-let wordsArr = []
-const sourceWords = J.shuffle(words)
-function nextWord(){
-    let willReturn
-    let flag = true
-    sourceWords.map(val=>{
-        if(flag&&R.indexOf(val, wordsArr)===-1){
-            willReturn = val
-            flag = false
-            wordsArr.push(val)
-        }
-    })
-    return willReturn
-}
+Perf.start()
 function uniq(arr,prop){
     let willReturn = []
     return R.compose(R.sort((a,b)=>b.dePart.length-a.dePart.length),R.filter(val=>{
@@ -42,7 +29,6 @@ let initData = {
     synonym: [],
     synonymTranslated: []
 }
-
 export default class App extends Component {
     constructor (props) {
         super(props)
@@ -69,7 +55,6 @@ export default class App extends Component {
     componentDidMount(){
         J.emitter.on("init", ()=>{
             J.postData(`${J.hapi}/readRandom/translateDraft`).then(data=>{
-                J.log(data)
                 let dataFuture = {}
                 let enWord = ""
                 let dePart = ""
@@ -80,20 +65,27 @@ export default class App extends Component {
                 dataFuture.phraseTranslated = uniq(data.phraseTranslated,"dePart")
                 dataFuture.synonymTranslated = uniq(data.synonymTranslated,"dePart")
                 let paginationLimit = R.apply(Math.max, [dataFuture.phrase.length, dataFuture.synonym.length, dataFuture.phraseTranslated.length, dataFuture.synonymTranslated.length])
-                this.setState({data: dataFuture, deWord: data.deEn.dePart, paginationLimit, enWord, dePart, enPart})
+                this.setState({data: dataFuture, deWord: data.deEn.dePart, paginationLimit, enWord, dePart, enPart},()=>{
+                    Perf.stop()
+                    Perf.printInclusive()
+                })
             })
         })
         J.emitter.on("ready", ()=>{
-            let willSend = {}
-            willSend.category = "draft"
-            willSend.deWord = this.state.deWord.trim()
-            willSend.enWord = this.state.enWord.trim()
-            willSend.dePart = J.addFullstop(this.state.dePart.trim())
-            willSend.enPart = J.addFullstop(this.state.enPart.trim())
-            //J.postData(`${J.admin}/newEntry`, JSON.stringify({data: willSend})).then(incoming =>{
-            J.postData(`${J.hapi}/test`, willSend).then(incoming =>{
-                J.emitter.emit("init")
-            })
+            if(this.state.dePart.length>3&&this.state.enPart.length>3&&this.state.deWord.length>3&&this.state.enWord.length>3){
+                let willSend = {}
+                willSend.category = "draft"
+                willSend.deWord = this.state.deWord.trim()
+                willSend.enWord = this.state.enWord.trim()
+                willSend.dePart = J.addFullstop(this.state.dePart.trim())
+                willSend.enPart = J.addFullstop(this.state.enPart.trim())
+                J.postData(`${J.hapi}/addMain`, willSend).then(incoming =>{
+                    console.log(incoming)
+                    J.emitter.emit("init")
+                })
+            }else{
+                console.log("SOMETHING AMISS!")
+            }
         })
         initOnce()
     }

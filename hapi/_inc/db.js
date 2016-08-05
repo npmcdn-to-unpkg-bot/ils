@@ -169,8 +169,8 @@ function increaseCounterFn(counterValue) {
 module.exports.addMain = function (data) {
     return addMain(data);
 };
-module.exports.random = function () {
-    return random();
+module.exports.random = function (data) {
+    return random(data);
 };
 module.exports.counter = counter;
 module.exports.increaseCounter = function () {

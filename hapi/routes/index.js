@@ -8,6 +8,7 @@ const env = require("dotenv-helper")
 const mongoose = require("mongoose")
 let router = express.Router()
 router.get("/", (req, res) =>{res.render("index")})
+router.get("/test", (req, res) =>{res.render("test")})
 router.get("/aboutOrderSentence", (req, res)=> {res.render("aboutOrderSentence")})
 router.get("/about", (req, res) =>{res.render("about")})
 router.get("/writeSentenceLite", (req, res) =>{res.render("writeSentenceLite")})
@@ -103,10 +104,9 @@ router.post("/readRandom/:model", (req, res) =>{
         res.send(config.badQuery)
     }
 })
-router.post("/test", (req, res) =>{
-    db.addMain({dePart:"nicht"}).then(incoming=>{
-        J.log(incoming, "122")
+router.post("/addMain", (req, res) =>{
+    db.addMain(req.body).then(incoming=>{
+        res.send(incoming)
     })
-    res.send("incoming")
 })
 module.exports = router

@@ -20,12 +20,10 @@ class App extends Component {
                     <meta httpEquiv="X-UA-Compatible" content="IE=edge"/>
                     <meta httpEquiv="Content-Type" content="text/html; charset=utf-8"/>
                     <meta name="viewport" content="width=device-width"/>
+                    <meta name="application-name" content={this.props.title}/>
                     <meta name="description" content={this.props.description}/>
-                    <meta name="author" content="Dejan Toteff"/>
                     <meta name="copyright" content="&copy; Copyright (c) Dejan Toteff - ilearnsmarter.com" />
                     <meta name="robots" content="index,follow" />
-                    <meta name="language" content="en"/>
-                    <meta name="page-topic" content="Education" />
                     <link rel="shortcut icon" href="http://ilearnsmarter.com/favicon.ico" />
                     <link rel="stylesheet" href={config.bulma}/>
                     <link rel="stylesheet" href="css/admin.css"/>
