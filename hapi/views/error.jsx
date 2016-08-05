@@ -1,6 +1,6 @@
 "use strict"
 import React, { Component } from "react"
-const DefaultLayout = require("./default/plain.jsx")
+const DefaultLayout = require("./base/basic.jsx")
 
 class IndexContainer extends Component {
     render() {

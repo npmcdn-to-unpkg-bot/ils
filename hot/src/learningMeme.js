@@ -39,7 +39,6 @@ export default class App extends Component {
     componentDidMount() {
         J.emitter.on("once init", ()=>{
             J.postData("/learningMeme",{}).then(incoming =>{
-            //J.postData("http://ilearnsmarter.com/learningMeme",{}).then(incoming =>{
                 let globalData = J.shuffle(incoming)
                 this.setState({
                     data: globalData[ 0 ],

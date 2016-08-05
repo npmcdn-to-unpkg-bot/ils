@@ -1,6 +1,6 @@
 "use strict"
 import React, { Component } from "react"
-var DefaultLayout = require("./default/plain.jsx")
+var DefaultLayout = require("./base/basic.jsx")
 
 class About extends Component {
     render() {

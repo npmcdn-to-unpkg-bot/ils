@@ -1,6 +1,6 @@
 "use strict"
 import React, { Component } from "react"
-const DefaultLayout = require("./default.jsx")
+const DefaultLayout = require("./base/basic.jsx")
 
 class IndexContainer extends Component {
     render() {
@@ -17,10 +17,10 @@ class IndexContainer extends Component {
     }
 }
 
-let WillExport = React.createClass({
+let App = React.createClass({
     render: function() {
         return <DefaultLayout><IndexContainer /></DefaultLayout>
     }
 })
 
-module.exports = WillExport
+module.exports = App

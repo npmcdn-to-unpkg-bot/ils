@@ -40,8 +40,8 @@ function getData(url) {
 function postData(url, data) {
     return new Promise((resolve)=>{
         reqwest({
-            url:  url,
-            data: {data: data},
+            url,
+            data,
             method:  "post",
             error: (err) => {
                 console.log(err)
@@ -227,6 +227,7 @@ module.exports.getWidthPx = getWidthPx
 module.exports.randomSeed = randomSeed
 module.exports.winWidthIs = winWidthIs
 module.exports.winHeightIs = winHeightIs
+module.exports.hapi = "http://localhost:3000"
 module.exports.host = "http://localhost:3001"
 module.exports.admin = "http://localhost:3001"
 //module.exports.host = ""
