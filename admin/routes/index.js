@@ -134,16 +134,13 @@ var learningMeme = function () {
                         uploadImageResult = _context3.sent;
                         imageSrc = uploadImageResult.imageSrc;
                         imageName = uploadImageResult.imageName;
-
-                        J.log(imageSrc);
-                        J.log(imageName);
-                        _context3.next = 9;
+                        _context3.next = 7;
                         return proudDb.save("data", "" + data.id, R.merge(data, { imageSrc: imageSrc, imageName: imageName }));
 
-                    case 9:
+                    case 7:
                         return _context3.abrupt("return", _context3.sent);
 
-                    case 10:
+                    case 8:
                     case "end":
                         return _context3.stop();
                 }
@@ -415,6 +412,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var express = require("express");
 var router = express.Router();
+
 var fs = require("fs-extra");
 var R = require("ramda");
 var mongoose = require("mongoose");
@@ -426,8 +424,6 @@ var bringOrderTranslation = require("../_inc/bringOrderTranslation");
 var uploadImage = require("../_inc/uploadImage");
 var searchImage = require("../_inc/searchImage");
 var proudDb = require("../_inc/proud-db");
-var dataFile = require("../../hapi/public/data.json");
-var db = require("../../hapi/public/_db.json");
 var twoLevelUp = R.compose(R.join("/"), R.dropLast(2), R.split("/"));
 
 var getPredraftCategory = R.compose(R.filter(function (val) {
@@ -488,11 +484,8 @@ router.get("/db", function (req, res) {
 router.get("/tunaPlayer", function (req, res) {
     res.render("tunaPlayer");
 });
-router.get("/translateBulk", function (req, res) {
+router.get("/translateDraft", function (req, res) {
     res.render("translateBulk");
-});
-router.get("/translateBulkRoot", function (req, res) {
-    res.render("translateBulkRoot");
 });
 router.get("/learningMeme", function (req, res) {
     res.render("learningMeme");
@@ -501,9 +494,6 @@ router.get("/read/:parent", function (req, res) {
     proudDb.loadParent(req.params.parent).then(function (data) {
         res.send(data);
     });
-});
-router.get("/readDataFile/:parent", function (req, res) {
-    res.send(dataFile[req.params.parent]);
 });
 router.post("/uploadImage", function (req, res) {
     uploadImage.main(req.body.imageUrl).then(function (incoming) {

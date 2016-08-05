@@ -1,6 +1,6 @@
 "use strict"
 const J = require("../../common")
-const db = `${J.twoLevelUp(__dirname)}/hapi/public/_db.json`
+const db = `${J.twoLevelUp(__dirname)}/hapi/public/de.json`
 const fs = require("fs-extra")
 const R = require("ramda")
 

@@ -24,6 +24,7 @@ dataObj
 notificationMessage
 rawSelectionShort
 srcPath
+saveData
 .commonInput
 ```
 - "main" - if JSON act as a holder for array of objects, then use "main" as the single object property

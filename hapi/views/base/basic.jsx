@@ -8,7 +8,7 @@ class Exported extends Component {
     static get defaultProps() {
         return {
             keyword: "",
-            title: "i learn smarter applications",
+            title: "I Learn Smarter | Free Educational Applications",
             description: "i learn smarter content"
         }
     }

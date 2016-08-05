@@ -52,7 +52,7 @@ class About extends Component {
                         <h2>Final words</h2>
                         <p>I wish if I could expand "ilearnsmarter.com" to assist in learning other languages besides German, but for the time being it is as it is.</p>
                     <p>I'd love to hear you positive or negative feedback. You can find me at Twitter as @self_refactor</p>
-                    <p className="has-text-centered"><img style={imageStyle} src="dejanToteff.jpg"/></p>
+                    <p className="has-text-centered"><img style={imageStyle} src="images/dejanToteff.jpg"/></p>
                      </div>
                       </div>
                   </div>

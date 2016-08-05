@@ -1,6 +1,7 @@
 "use strict"
 const express = require("express")
 const router = express.Router()
+
 const fs = require("fs-extra")
 const R = require("ramda")
 const mongoose = require("mongoose")
@@ -12,8 +13,6 @@ const bringOrderTranslation = require("../_inc/bringOrderTranslation")
 const uploadImage = require("../_inc/uploadImage")
 const searchImage = require("../_inc/searchImage")
 const proudDb = require("../_inc/proud-db")
-const dataFile = require("../../hapi/public/data.json")
-const db = require("../../hapi/public/_db.json")
 let twoLevelUp = R.compose(R.join("/"), R.dropLast(2), R.split("/"))
 async function willTranslate(word) {
     let translated = await translate.deEn(word)
@@ -30,8 +29,6 @@ async function willUpdate(parent, data) {
 async function learningMeme(data) {
     let uploadImageResult = await uploadImage.main(data)
     let {imageSrc, imageName} = uploadImageResult
-    J.log(imageSrc)
-    J.log(imageName)
     return await proudDb.save("data", `${data.id}`, R.merge(data, {imageSrc, imageName}))
 }
 async function willAddDraft(data) {
@@ -122,28 +119,14 @@ router.get("/files", function (req, res, next) {
         })
     } else {res.send("No")}
 })
-router.get("/db", (req, res) => {
-    res.render("db")
-})
-router.get("/tunaPlayer", (req, res) => {
-    res.render("tunaPlayer")
-})
-router.get("/translateBulk", (req, res) => {
-    res.render("translateBulk")
-})
-router.get("/translateBulkRoot", (req, res) => {
-    res.render("translateBulkRoot")
-})
-router.get("/learningMeme", (req, res) => {
-    res.render("learningMeme")
-})
+router.get("/db", (req, res) => {res.render("db")})
+router.get("/tunaPlayer", (req, res) => {res.render("tunaPlayer")})
+router.get("/translateDraft", (req, res) => {res.render("translateBulk")})
+router.get("/learningMeme", (req, res) => {res.render("learningMeme")})
 router.get("/read/:parent", (req, res) =>{
     proudDb.loadParent(req.params.parent).then((data)=>{
         res.send(data)
     })
-})
-router.get("/readDataFile/:parent", (req, res) =>{
-    res.send(dataFile[ req.params.parent ])
 })
 router.post("/uploadImage", (req, res) =>{
     uploadImage.main(req.body.imageUrl).then(incoming=>{

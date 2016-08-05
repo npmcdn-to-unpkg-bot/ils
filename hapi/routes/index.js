@@ -2,6 +2,7 @@
 const express = require("express")
 const J = require("../../common")
 const config = require("../_inc/config")
+const db = require("../_inc/db")
 const R = require("ramda")
 const env = require("dotenv-helper")
 const mongoose = require("mongoose")
@@ -83,9 +84,9 @@ router.post("/readModel/:model", (req, res) =>{
         })
     } else {res.send("Unauthorized Access!")}
 })
-router.post("/readRandom/:model", (req, res) =>{
+router.post("/readRandomm/:model", (req, res) =>{
     if (R.indexOf(req.params.model), config.models) {
-        mongoose.model(J.firstLetterCapital(req.params.model)).count().exec(function(err, count) {
+        mongoose.model(J.firstLetterCapital(req.params.model)).count().exec((err, count) =>{
             let random = Math.floor(Math.random() * count)
             mongoose.model(J.firstLetterCapital(req.params.model)).findOne().skip(random).exec((err, result)=>{
                 res.send(result)
@@ -94,5 +95,18 @@ router.post("/readRandom/:model", (req, res) =>{
     } else {
         res.send(config.badQuery)
     }
+})
+router.post("/readRandom/:model", (req, res) =>{
+    if (R.indexOf(req.params.model, config.models)) {
+        db.random(J.firstLetterCapital(req.params.model)).then(incoming=>{res.send(incoming)})
+    } else {
+        res.send(config.badQuery)
+    }
+})
+router.post("/test", (req, res) =>{
+    db.addMain({dePart:"nicht"}).then(incoming=>{
+        J.log(incoming, "122")
+    })
+    res.send("incoming")
 })
 module.exports = router

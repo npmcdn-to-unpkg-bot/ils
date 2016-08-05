@@ -23,12 +23,6 @@ let initSchemas = ()=>{
         phrase: [{dePart: String, enPart: String}],
         phraseTranslated: [{dePart: String, enPart: String}]
     })
-    // translateDraftSchema.post("init", function(doc) {
-    //     console.log(`${doc._id} has been initialized from the db`)
-    // })
-    // translateDraftSchema.post("save", function(doc) {
-    //     console.log(`${doc._id} has been saved`)
-    // })
     let mainSchema = new Schema({
         id: {type: Number, required: true},
         dePart: {type: String, required: false},
@@ -39,9 +33,7 @@ let initSchemas = ()=>{
         childSafetyFlag: {type: Boolean, required: false},
         imageSrc: {type: Schema.Types.Mixed, required: false}
     })
-    let counterSchema = new Schema({
-        counter: {type: Number, required: true}
-    })
+    let counterSchema = new Schema({counter: Number})
     mongoose.model("TranslateDraft", translateDraftSchema)
     mongoose.model("Main", mainSchema)
     mongoose.model("Counter", counterSchema)

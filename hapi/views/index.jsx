@@ -35,7 +35,7 @@ class IndexContainer extends Component {
 
 let App = React.createClass({
     render: function() {
-        return <DefaultLayout><IndexContainer/></DefaultLayout>
+        return <DefaultLayout description="Node.js and React.js based application for learning German language"><IndexContainer/></DefaultLayout>
     }
 })
 

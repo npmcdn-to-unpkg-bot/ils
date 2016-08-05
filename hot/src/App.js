@@ -68,8 +68,8 @@ export default class App extends Component {
     }
     componentDidMount(){
         J.emitter.on("init", ()=>{
-            J.log(`${J.admin}/readDataFile/${nextWord()}`)
-            J.getData(`${J.admin}/readDataFile/${nextWord()}`).then(data=>{
+            J.postData(`${J.hapi}/readRandom/translateDraft`).then(data=>{
+                J.log(data)
                 let dataFuture = {}
                 let enWord = ""
                 let dePart = ""
@@ -90,7 +90,8 @@ export default class App extends Component {
             willSend.enWord = this.state.enWord.trim()
             willSend.dePart = J.addFullstop(this.state.dePart.trim())
             willSend.enPart = J.addFullstop(this.state.enPart.trim())
-            J.postData(`${J.admin}/newEntry`, JSON.stringify({data: willSend})).then(incoming =>{
+            //J.postData(`${J.admin}/newEntry`, JSON.stringify({data: willSend})).then(incoming =>{
+            J.postData(`${J.hapi}/test`, willSend).then(incoming =>{
                 J.emitter.emit("init")
             })
         })
