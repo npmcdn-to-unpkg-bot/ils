@@ -23,10 +23,11 @@ class App extends Component {
               </head>
               <body>
                     <div>
+                    a
                         {this.props.children}
                     </div>
                     <div id="reactHook"></div>
-                    <script src={config.screenLog} ></script>
+                    <script src={config.screenLog}></script>
                     <script src={`${this.props.keyword}Front.js`} ></script>
                 </body>
             </html>
