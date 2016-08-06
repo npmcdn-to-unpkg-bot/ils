@@ -23,7 +23,6 @@ class App extends Component {
               </head>
               <body>
                     <div>
-                    a
                         {this.props.children}
                     </div>
                     <div id="reactHook"></div>
