@@ -2,9 +2,7 @@
 import React,{ Component } from "react"
 import R from "ramda"
 import J from "./components/commonReact.js"
-import Perf from 'react-addons-perf'
 screenLog.init()
-Perf.start()
 function uniq(arr,prop){
     let willReturn = []
     return R.compose(R.sort((a,b)=>b.dePart.length-a.dePart.length),R.filter(val=>{
@@ -16,9 +14,6 @@ function uniq(arr,prop){
         return R.merge(val,{dePart: R.replace(/[0-9]/g,"",val.dePart)})
     }))(arr)
 }
-let initOnce = R.once(()=>{
-    J.emitter.emit("init")
-})
 let initData = {
     deEn: {
         dePart:"",
@@ -29,9 +24,13 @@ let initData = {
     synonym: [],
     synonymTranslated: []
 }
+let initOnce = R.once(()=>{
+    J.emitter.emit("init")
+})
 export default class App extends Component {
     constructor (props) {
         super(props)
+        let paginationPerPageCount = J.winHeightIs < 700 ? 11 : 17
         this.state = {
             data: initData,
             deWord: "",
@@ -40,7 +39,7 @@ export default class App extends Component {
             dePart: "",
             paginationIndex: 0,
             paginationLimit: 0,
-            paginationPerPageCount: 11
+            paginationPerPageCount
         }
         this.handleDePartInput = this.handleDePartInput.bind(this)
         this.handleEnPartInput = this.handleEnPartInput.bind(this)
@@ -54,7 +53,7 @@ export default class App extends Component {
     }
     componentDidMount(){
         J.emitter.on("init", ()=>{
-            J.postData(`${J.hapi}/readRandom/translateDraft`).then(data=>{
+            J.postData(`${J.ils}/readRandom/translateDraft`).then(data=>{
                 let dataFuture = {}
                 let enWord = ""
                 let dePart = ""
@@ -65,10 +64,7 @@ export default class App extends Component {
                 dataFuture.phraseTranslated = uniq(data.phraseTranslated,"dePart")
                 dataFuture.synonymTranslated = uniq(data.synonymTranslated,"dePart")
                 let paginationLimit = R.apply(Math.max, [dataFuture.phrase.length, dataFuture.synonym.length, dataFuture.phraseTranslated.length, dataFuture.synonymTranslated.length])
-                this.setState({data: dataFuture, deWord: data.deEn.dePart, paginationLimit, enWord, dePart, enPart},()=>{
-                    Perf.stop()
-                    Perf.printInclusive()
-                })
+                this.setState({data: dataFuture, deWord: data.deEn.dePart, paginationLimit, enWord, dePart, enPart})
             })
         })
         J.emitter.on("ready", ()=>{
@@ -79,7 +75,7 @@ export default class App extends Component {
                 willSend.enWord = this.state.enWord.trim()
                 willSend.dePart = J.addFullstop(this.state.dePart.trim())
                 willSend.enPart = J.addFullstop(this.state.enPart.trim())
-                J.postData(`${J.hapi}/addMain`, willSend).then(incoming =>{
+                J.postData(`${J.ils}/addMain`, willSend).then(incoming =>{
                     console.log(incoming)
                     J.emitter.emit("init")
                 })

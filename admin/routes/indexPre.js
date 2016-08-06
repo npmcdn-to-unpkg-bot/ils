@@ -1,13 +1,12 @@
 "use strict"
 const express = require("express")
 const router = express.Router()
-
 const fs = require("fs-extra")
 const R = require("ramda")
-const mongoose = require("mongoose")
 const recursive = require("recursive-readdir")
 const env = require("dotenv-helper")
 const J = require("../../common.js")
+const config = require("../../hapi/_inc/config")
 const translate = require("../_inc/translate")
 const bringOrderTranslation = require("../_inc/bringOrderTranslation")
 const uploadImage = require("../_inc/uploadImage")
@@ -87,10 +86,13 @@ router.get("/", (req, res) => {
     res.render("index")
 })
 router.get("/test", (req, res)=>{
-    res.render("test")
+    if (J.auth(req.ip)) {
+        res.render("test")
+    } else {
+        res.send(config.badQuery)
+    }
 })
 router.get("/file/:name", function (req, res, next) {
-    J.log(env.getEnv("host"))
     if (env.getEnv("hostTag") === "root") {
         let options = {
             root: "/home/just/Downloads/mp3",
@@ -120,6 +122,10 @@ router.get("/files", function (req, res, next) {
     } else {res.send("No")}
 })
 router.get("/db", (req, res) => {res.render("db")})
+router.get("/test", (req, res) => {
+    if (R.indexOf)
+        res.render("test")
+})
 router.get("/tunaPlayer", (req, res) => {res.render("tunaPlayer")})
 router.get("/translateDraft", (req, res) => {res.render("translateBulk")})
 router.get("/learningMeme", (req, res) => {res.render("learningMeme")})

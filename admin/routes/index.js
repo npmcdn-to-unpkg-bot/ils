@@ -412,13 +412,12 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var express = require("express");
 var router = express.Router();
-
 var fs = require("fs-extra");
 var R = require("ramda");
-var mongoose = require("mongoose");
 var recursive = require("recursive-readdir");
 var env = require("dotenv-helper");
 var J = require("../../common.js");
+var config = require("../../hapi/_inc/config");
 var translate = require("../_inc/translate");
 var bringOrderTranslation = require("../_inc/bringOrderTranslation");
 var uploadImage = require("../_inc/uploadImage");
@@ -441,10 +440,13 @@ router.get("/", function (req, res) {
     res.render("index");
 });
 router.get("/test", function (req, res) {
-    res.render("test");
+    if (J.auth(req.ip)) {
+        res.render("test");
+    } else {
+        res.send(config.badQuery);
+    }
 });
 router.get("/file/:name", function (req, res, next) {
-    J.log(env.getEnv("host"));
     if (env.getEnv("hostTag") === "root") {
         (function () {
             var options = {
@@ -480,6 +482,9 @@ router.get("/files", function (req, res, next) {
 });
 router.get("/db", function (req, res) {
     res.render("db");
+});
+router.get("/test", function (req, res) {
+    if (R.indexOf) res.render("test");
 });
 router.get("/tunaPlayer", function (req, res) {
     res.render("tunaPlayer");
