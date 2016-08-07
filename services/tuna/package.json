@@ -1,0 +1,23 @@
+{
+  "name": "tuna-player",
+  "productName": "Tuna Player",
+  "version": "0.1.0",
+  "main": "main.js",
+  "license": "MIT",
+  "repository": "selfrefactor/tuna-player",
+  "scripts": {
+    "start": "electron .",
+    "de": "git add . --all&&git commit -m update&&git push"
+  },
+  "dependencies": {
+    "babel-preset-es2015": "*",
+    "babel-preset-react": "*",
+    "babel-register": "*",
+    "express": "*",
+    "react": "*",
+    "react-dom": "*"
+  },
+  "devDependencies": {
+    "electron-prebuilt": "*"
+  }
+}

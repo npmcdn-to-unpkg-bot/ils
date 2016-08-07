@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Tuna Player</title>
+        <script>
+        let link = document.createElement('link')
+        let linkSecond = document.createElement('link')
+        let linkThird = document.createElement('link')
+        let linkFourth = document.createElement('link')
+        let linkFifth = document.createElement('link')
+    link.setAttribute('rel', 'stylesheet')
+    linkSecond.setAttribute('rel', 'stylesheet')
+    linkThird.setAttribute('rel', 'stylesheet')
+    linkFourth.setAttribute('rel', 'stylesheet')
+    linkFifth.setAttribute('rel', 'stylesheet')
+    link.setAttribute('href', "https://cdnjs.cloudflare.com/ajax/libs/bulma/0.1.0/css/bulma.min.css")
+    linkSecond.setAttribute('href', require('path').join(__dirname, '', 'reactSlider.css'))
+    linkThird.setAttribute('href', "https://cdnjs.cloudflare.com/ajax/libs/react-select/0.9.1/react-select.min.css")
+    linkFourth.setAttribute('href', "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css")
+    linkFifth.setAttribute('href',require('path').join(__dirname, '', 'admin.css'))
+    document.head.appendChild(linkFifth)
+    document.head.appendChild(link)
+    document.head.appendChild(linkSecond)
+    document.head.appendChild(linkThird)
+    document.head.appendChild(linkFourth)
+        require('babel-register')
+        require('./renderer')
+        </script>
+    </head>
+    <body>
+        <div id="reactHook"/>
+    </body>
+</html>

@@ -1,0 +1,8 @@
+#marginlessTuna {
+  margin: 0 !important;
+  padding: 5px;
+  max-height: 10vh;
+}
+#reactHook{
+    padding: 3vw;
+}

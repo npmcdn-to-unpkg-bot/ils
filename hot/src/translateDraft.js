@@ -157,7 +157,6 @@ export default class App extends Component {
     <div>
         <div className="columns box has-text-centered is-fullwidth is-gapless is-narrow is-marginless">
             <div className="column is-2 is-fullwidth">
-            <input type="file" id="ctrl" />
                 <input className="deWordInput" type="text" value={this.state.deWord} placeholder="deWord" spellCheck="true" size={this.state.deWord.length>10?this.state.deWord.length:10} onChange={this.handleDeWordInput} onKeyPress={this.handleDeWordInput}/>
             </div>
             <div className="column is-2 is-marginless">

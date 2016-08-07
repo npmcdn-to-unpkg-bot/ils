@@ -1,9 +1,13 @@
-"use strict"
+'use babel'
+const Tuna = require("./tuna.js")
 import React, { Component } from "react"
 import R from "ramda"
 import Select from "react-select"
-import J from "./components/commonReact.js"
+import { Notification } from "react-notification"
+import J from "./commonReact.js"
 const Slider = require("rc-slider")
+const {dialog} = require('electron').remote
+dialog.showOpenDialog({properties: ['openFile', 'openDirectory', 'multiSelections']})
 let initOnce = R.once(()=>{
     J.emitter.emit("once init")
 })
@@ -13,6 +17,8 @@ export default class App extends Component {
     constructor (props) {
         super(props)
         this.state = {
+            notificationState: false,
+            notificationMessage: "",
             audioContext: null,
             song: "OutOfSight",
             songs: [],
@@ -117,18 +123,50 @@ export default class App extends Component {
         this.handleNext = this.handleNext.bind(this)
         this.handleSelect = this.handleSelect.bind(this)
     }
+    static get defaultProps () {
+        return {
+            "port": "3002",
+            "fn": ()=>{
+                console.log(1)
+            }
+        }
+    }
+    log(msg, seconds = 2){
+        let notificationMessage = R.type(msg)==="String"?msg:JSON.stringify(msg)
+        this.setState({
+            notificationMessage: "",
+            notificationState: false
+        },()=>{
+            this.setState({
+                notificationMessage,
+                notificationState: true
+            })
+        })
+        setTimeout(()=>{
+            this.setState({
+                notificationState: false
+            })
+        },seconds*1000)
+    }
     componentDidMount() {
         J.emitter.on("once init", ()=>{
-            J.getData(`${J.admin}/files`).then(files=>{
-                let filterFn = R.compose(R.replace(".mp3", ""), R.last, R.split("/"))
-                let songs = J.shuffle(R.map(filterFn, files))
-                let selectArr = R.map(val=>{
-                    return {value: val, label: R.take(22, val)}
-                })(songs)
-                let song = songs[ this.state.index ]
-                this.setState({song, songs, selectArr}, ()=>{
-                    J.emitter.emit("init")
-                })
+            J.getData(`http://localhost:${this.props.port}/files`).then(files=>{
+                if(files===false){
+                    log(`Empty MP3 Folder!
+                        Please click eject button to load MP3 folder!`)
+                }else{
+                    console.log(this.props.fn)
+                    this.props.fn()
+                    let filterFn = R.compose(R.replace(".mp3", ""), R.last, R.split("/"))
+                    let songs = J.shuffle(R.map(filterFn, files))
+                    let selectArr = R.map(val=>{
+                        return {value: val, label: R.take(22, val)}
+                    })(songs)
+                    let song = songs[ this.state.index ]
+                    this.setState({song, songs, selectArr}, ()=>{
+                        J.emitter.emit("init")
+                    })
+                }
             })
         })
         J.emitter.on("init", ()=>{
@@ -138,7 +176,7 @@ export default class App extends Component {
             let audioContext = new AC()
             let source = audioContext.createBufferSource()
             let xhr = new XMLHttpRequest()
-            xhr.open("GET", `${J.admin}/file/${this.state.song}.mp3`)
+            xhr.open("GET", `http://localhost:${this.props.port}/file/${this.state.song}.mp3`)
             xhr.responseType = "arraybuffer"
             let self = this
             xhr.onload = function(e) {
@@ -607,7 +645,7 @@ export default class App extends Component {
                     <Slider min={0} max={1} step={1} value={this.state.tunaPingPongDelay.flag} onChange={(val)=>{this.handleChange(val, "tunaPingPongDelay", "flag")}} /></label>
                 </div>
             </div>
-
+            <Notification isActive={this.state.notificationState} message={this.state.notificationMessage} />
         </div>
 	</div>
     )}
