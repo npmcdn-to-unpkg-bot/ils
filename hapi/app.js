@@ -1,6 +1,7 @@
 "use strict"
+const J = require("../common")
 const mongooseData = require("./_inc/mongooseData.js")
-mongooseData.init("mongodb://localhost/ils")
+mongooseData.init(J.config.mongooseConnection)
 const express = require("express")
 const minify = require("express-minify")
 const helmet = require("helmet")
@@ -9,7 +10,6 @@ const compression = require("compression")
 const favicon = require("serve-favicon")
 const bodyParser = require("body-parser")
 const env = require("dotenv-helper")
-const J = require("../common")
 let routes = require("./routes/index.js")
 let app = express()
 app.use((req, res, next) =>{

@@ -1,0 +1,27 @@
+2016-08-03T02:26:11.019Z - info: [sitespeed] OS: 'linux 4.4.0-30-generic', Node.js: 'v6.3.1', sitespeed.io: '3.11.7', PhantomJS: '2.1.1', java: '1.7.0_95', browsertime: '0.12.3'
+2016-08-03T02:26:11.075Z - info: [sitespeed] Will crawl from start point http://localhost:3000 with crawl depth 1
+2016-08-03T02:26:12.835Z - info: [sitespeed] Will analyze 7 pages
+2016-08-03T02:26:12.840Z - info: [sitespeed] Running YSlow for http://localhost:3000 [phantomjs]
+2016-08-03T02:26:12.845Z - info: [sitespeed] Running YSlow for http://localhost:3000/orderSentence [phantomjs]
+2016-08-03T02:26:12.851Z - info: [sitespeed] Running YSlow for http://localhost:3000/learningMeme [phantomjs]
+2016-08-03T02:26:12.858Z - info: [sitespeed] Running YSlow for http://localhost:3000/writeSentenceLite [phantomjs]
+2016-08-03T02:26:12.864Z - info: [sitespeed] Running YSlow for http://localhost:3000/orderSentenceMobile [phantomjs]
+2016-08-03T02:26:17.107Z - info: [sitespeed] Running YSlow for http://localhost:3000/about [phantomjs]
+2016-08-03T02:26:17.112Z - info: [sitespeed] Running YSlow for http://localhost:3000/writeSentence [phantomjs]
+2016-08-03T02:26:21.980Z - info: [sitespeed] Done analyzing urls
+2016-08-03T02:26:22.436Z - info: [sitespeed] Wrote file errors.html
+2016-08-03T02:26:22.436Z - info: [sitespeed] Wrote file assets.html
+2016-08-03T02:26:22.436Z - info: [sitespeed] Wrote file pages.html
+2016-08-03T02:26:22.436Z - info: [sitespeed] Wrote file hotlist.html
+2016-08-03T02:26:22.437Z - info: [sitespeed] Wrote file rules.html
+2016-08-03T02:26:22.437Z - info: [sitespeed] Wrote file index.html
+2016-08-03T02:26:22.437Z - info: [sitespeed] Wrote file detailed-site-summary.html
+2016-08-03T02:26:22.437Z - info: [sitespeed] Wrote file localhost-writeSentenceLite.html
+2016-08-03T02:26:22.438Z - info: [sitespeed] Wrote file localhost.html
+2016-08-03T02:26:22.438Z - info: [sitespeed] Wrote file localhost-learningMeme.html
+2016-08-03T02:26:22.439Z - info: [sitespeed] Wrote file localhost-orderSentence.html
+2016-08-03T02:26:22.439Z - info: [sitespeed] Wrote file localhost-orderSentenceMobile.html
+2016-08-03T02:26:22.439Z - info: [sitespeed] Wrote file localhost-about.html
+2016-08-03T02:26:22.439Z - info: [sitespeed] Wrote file localhost-writeSentence.html
+2016-08-03T02:26:22.464Z - info: [sitespeed] Wrote results to /home/just/ils/tests/sitespeed-result/localhost/2016-08-03-05-26-10
+2016-08-03T02:26:22.470Z - info: [sitespeed] The analyze took a few seconds (11 seconds)

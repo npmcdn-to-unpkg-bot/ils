@@ -1,0 +1,7 @@
+http://localhost:3000
+http://localhost:3000/orderSentence
+http://localhost:3000/learningMeme
+http://localhost:3000/writeSentenceLite
+http://localhost:3000/orderSentenceMobile
+http://localhost:3000/about
+http://localhost:3000/writeSentence

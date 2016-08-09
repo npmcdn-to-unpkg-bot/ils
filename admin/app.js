@@ -4,7 +4,8 @@ const express = require("express")
 const path = require("path")
 const favicon = require("serve-favicon")
 const bodyParser = require("body-parser")
-const mainRoute = require("./routes/index.js")
+const route = require("./routes/alt.js")
+//const route = require("./routes/index.js")
 let app = express()
 app.use((req, res, next) =>{
     res.header("Access-Control-Allow-Origin", "*")
@@ -12,22 +13,13 @@ app.use((req, res, next) =>{
     next()
 })
 app.set("views", __dirname + "/views")
-app.set("view engine", "jsx")
-app.engine("jsx", require("express-react-views").createEngine())
+app.set("view engine", "pug")
 app.use(favicon(__dirname + "/public/favicon.ico"))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(express.static(path.join(__dirname, "public")))
-app.use((req, res, next) =>{
-    if (!J.auth(req.ip)) {
-        res.send("No")
-    }
-    next()
-})
-app.use("/", mainRoute)
-app.use(function (req, res) {
-    res.send({
-        message: "more"
-    })
+app.use("/", route)
+app.use((req, res)=>{
+    res.send("ERROR!!")
 })
 module.exports = app

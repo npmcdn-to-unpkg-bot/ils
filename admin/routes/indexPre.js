@@ -82,9 +82,8 @@ function willPublish(keyword, content) {
         })
     })
 }
-router.get("/", (req, res) => {
-    res.render("index")
-})
+router.get("/", (req, res) => {res.render("index")})
+router.get("/db", (req, res) => {res.render("db")})
 router.get("/test", (req, res)=>{
     if (J.auth(req.ip)) {
         res.render("test")
@@ -92,41 +91,7 @@ router.get("/test", (req, res)=>{
         res.send(config.badQuery)
     }
 })
-router.get("/file/:name", function (req, res, next) {
-    if (env.getEnv("hostTag") === "root") {
-        let options = {
-            root: "/home/just/Downloads/mp3",
-            dotfiles: "deny",
-            headers: {
-                "x-timestamp": Date.now(),
-                "x-sent": true
-            }
-        }
-        let fileName = req.params.name
-        res.sendFile(fileName, options, function (err) {
-            if (err) {
-                console.log(err)
-                res.status(err.status).end()
-            }
-            else {
-                console.log("Sent:", fileName)
-            }
-        })
-    } else {res.send("No")}
-})
-router.get("/files", function (req, res, next) {
-    if (env.getEnv("hostTag") === "root") {
-        recursive("/home/just/Downloads/mp3", function (err, files) {
-            res.send(files)
-        })
-    } else {res.send("No")}
-})
-router.get("/db", (req, res) => {res.render("db")})
-router.get("/test", (req, res) => {
-    if (R.indexOf)
-        res.render("test")
-})
-router.get("/tunaPlayer", (req, res) => {res.render("tunaPlayer")})
+router.get("/test", (req, res) => {res.render("test")})
 router.get("/translateDraft", (req, res) => {res.render("translateBulk")})
 router.get("/learningMeme", (req, res) => {res.render("learningMeme")})
 router.get("/read/:parent", (req, res) =>{

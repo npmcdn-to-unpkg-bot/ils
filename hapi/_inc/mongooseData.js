@@ -1,20 +1,32 @@
 "use strict"
-var mongoose = require("mongoose")
-
-var initConnection = (connectionString)=>{
+let mongoose = require("mongoose")
+let initConnection = (connectionString)=>{
     mongoose.connect(connectionString)
     let db = mongoose.connection
-    db.on("error", function(err) {
+    db.on("error", (err)=>{
         console.error("mongo connection error: ", err)
     })
-    db.once("open", function() {
-        console.info("mongo connection open")
+    db.once("open", ()=>{
+        console.info("Mongoose Connection Established")
+    })
+}
+let initTestConnection = (connectionString)=>{
+    return new Promise(resolve=>{
+        mongoose.connect(connectionString)
+        let db = mongoose.connection
+        db.on("error", (err)=>{
+            console.error("mongo connection error: ", err)
+            resolve(null)
+        })
+        db.once("open", ()=>{
+            console.info("Mongoose Connection Established")
+            resolve(true)
+        })
     })
 }
 
 let initSchemas = ()=>{
-    const Schema = mongoose.Schema
-
+    let Schema = mongoose.Schema
     let translateDraftSchema = new Schema({
         word: {type: String, required: true},
         deEn: {dePart: String, enPart: String},
@@ -43,5 +55,15 @@ let init = (connectionString)=>{
     initConnection(connectionString)
     initSchemas()
 }
+let initTest = (connectionString)=>{
+    return new Promise(resolve=>{
+        initTestConnection(connectionString).then(data=>{
+            initSchemas()
+            resolve(data)
+        })
+    })
+}
 
 module.exports.init = init
+module.exports.initTest = initTest
+module.exports.initSchemas = initSchemas

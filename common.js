@@ -1,4 +1,5 @@
 "use strict"
+const config = require("./_inc/config")
 const exec = require("child_process").exec
 const request = require("request")
 const R = require("ramda")
@@ -167,3 +168,4 @@ module.exports.load = db.load
 module.exports.loadParent = db.loadParent
 module.exports.remove = db.remove
 module.exports.removeParent = db.removeParent
+module.exports.config = config

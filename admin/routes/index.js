@@ -439,6 +439,9 @@ function willPublish(keyword, content) {
 router.get("/", function (req, res) {
     res.render("index");
 });
+router.get("/db", function (req, res) {
+    res.render("db");
+});
 router.get("/test", function (req, res) {
     if (J.auth(req.ip)) {
         res.render("test");
@@ -446,48 +449,8 @@ router.get("/test", function (req, res) {
         res.send(config.badQuery);
     }
 });
-router.get("/file/:name", function (req, res, next) {
-    if (env.getEnv("hostTag") === "root") {
-        (function () {
-            var options = {
-                root: "/home/just/Downloads/mp3",
-                dotfiles: "deny",
-                headers: {
-                    "x-timestamp": Date.now(),
-                    "x-sent": true
-                }
-            };
-            var fileName = req.params.name;
-            res.sendFile(fileName, options, function (err) {
-                if (err) {
-                    console.log(err);
-                    res.status(err.status).end();
-                } else {
-                    console.log("Sent:", fileName);
-                }
-            });
-        })();
-    } else {
-        res.send("No");
-    }
-});
-router.get("/files", function (req, res, next) {
-    if (env.getEnv("hostTag") === "root") {
-        recursive("/home/just/Downloads/mp3", function (err, files) {
-            res.send(files);
-        });
-    } else {
-        res.send("No");
-    }
-});
-router.get("/db", function (req, res) {
-    res.render("db");
-});
 router.get("/test", function (req, res) {
-    if (R.indexOf) res.render("test");
-});
-router.get("/tunaPlayer", function (req, res) {
-    res.render("tunaPlayer");
+    res.render("test");
 });
 router.get("/translateDraft", function (req, res) {
     res.render("translateBulk");
