@@ -2,10 +2,12 @@
 import React, { Component } from "react"
 import R from "ramda"
 import Select from "react-select"
+import { Notification } from "react-notification"
 import J from "./components/commonReact.js"
 const Slider = require("rc-slider")
 let initOnce = R.once(()=>{
-    J.emitter.emit("once init")
+    J.emitter.emit("init")
+    //J.emitter.emit("once init")
 })
 let filterArr = ["lowpass", "highpass", "bandpass", "lowshelf", "highshelf", "peaking", "notch", "allpass"]
 let bufferSizeArr = [256, 512, 2048, 4096, 8192, 16384]
@@ -13,10 +15,12 @@ export default class App extends Component {
     constructor (props) {
         super(props)
         this.state = {
+            notificationMessage: "",
+            notificationState: false,
             audioContext: null,
-            song: "OutOfSight",
+            song: "Demo Song",
             songs: [],
-            selectArr: [],
+            selectArr: [{value: "Demo Song", label: "Demo Song"}],
             index: 0,
             flagLoop: false,
             duration: null,
@@ -67,11 +71,11 @@ export default class App extends Component {
             },
             tunaFilter: {
                 frequency: 440, //20 to 22050
-                Q: 1, //0.001 to 100
+                Q: 22, //0.001 to 100
                 gain: 0, //-40 to 40
-                filterType: 0,
+                filterType: 3,
                 bypass: 1,
-                flag: 0
+                flag: 1
             },
             tunaTremolo: {
                 intensity: 0.3,    //0 to 1
@@ -117,6 +121,23 @@ export default class App extends Component {
         this.handleNext = this.handleNext.bind(this)
         this.handleSelect = this.handleSelect.bind(this)
     }
+    log(msg, seconds = 5) {
+        let message = R.type(msg) === "String" ? msg : JSON.stringify(msg)
+        this.setState({
+            notificationMessage: "",
+            notificationState: false
+        }, ()=>{
+            this.setState({
+                notificationMessage: message,
+                notificationState: true
+            })
+        })
+        setTimeout(()=>{
+            this.setState({
+                notificationState: false
+            })
+        }, seconds * 1000)
+    }
     componentDidMount() {
         J.emitter.on("once init", ()=>{
             J.getData(`${J.admin}/files`).then(files=>{
@@ -138,7 +159,7 @@ export default class App extends Component {
             let audioContext = new AC()
             let source = audioContext.createBufferSource()
             let xhr = new XMLHttpRequest()
-            xhr.open("GET", `${J.admin}/file/${this.state.song}.mp3`)
+            xhr.open("GET", "http://www.oskareriksson.se/shed/assets/gitarrkompet.mp3")
             xhr.responseType = "arraybuffer"
             let self = this
             xhr.onload = function(e) {
@@ -252,19 +273,9 @@ export default class App extends Component {
             })
         })
         initOnce()
-        let currentTime
-        setInterval(()=>{
-            if (this.state.flagLoop) {
-                currentTime = this.state.audioContext.currentTime
-                if (currentTime > this.state.duration) {
-                    this.setState({
-                        flagLoop: false
-                    }, ()=>{
-                        J.emitter.emit("next")
-                    })
-                }
-            }
-        }, 1000)
+        this.log("Change some settings!", 4)
+        setTimeout(()=>{this.log("Press CHECK icon to confirm", 3)}, 4200)
+        setTimeout(()=>{this.log("Can you feel the difference?", 3)}, 8000)
     }
     handleStart () {
         this.state.audioContext.close().then(()=>{
@@ -298,10 +309,10 @@ export default class App extends Component {
     render () {
         return (
     <div>
-        <div className="tile is-ancestor">
+    <Notification isActive={this.state.notificationState} message={this.state.notificationMessage} />
+        <div className="tile is-ancestor is-marginless is-fullwidth">
             <div className="tile has-text-centered is-2 is-vertical is-parent">
                 <div>
-                    <hr/>
                     <a className="button is-primary is-inverted is-small" onClick={this.handleStart}><span className="icon"><i className="fa fa-check"></i></span></a>
                     <a className="button is-success is-inverted is-small" onClick={this.handleStop}><span className="icon"><i className="fa fa-pause-circle-o t"></i></span></a>
                     <a className="button is-success is-inverted is-small" onClick={this.handlePlay}><span className="icon"><i className="fa fa-play-circle-o"></i></span></a>
@@ -316,8 +327,11 @@ export default class App extends Component {
                 </div>
             </div>
             <div className="tile is-2 is-vertical is-parent">
+                <div id="marginlessTuna" className="has-text-centered">
+                    CHORUS
+                </div>
                 <div id="marginlessTuna" className="tile is-child box">
-                    <label>CHORUS||Feedback
+                    <label>Feedback
                     <Slider min={0} max={0.95} step={0.05} value={this.state.tunaChorus.feedback} onChange={(val)=>{this.handleChange(val, "tunaChorus", "feedback")}} /></label>
                 </div>
                 <div id="marginlessTuna" className="tile is-child box">
@@ -342,8 +356,11 @@ export default class App extends Component {
                 </div>
             </div>
             <div className="tile is-2 is-vertical is-parent">
+                <div id="marginlessTuna" className="has-text-centered">
+                    DELAY
+                </div>
                 <div id="marginlessTuna" className="tile is-child box">
-                    <label>DELAY||Delay Time
+                    <label>Delay Time
                     <Slider min={20} max={1000} step={20} value={this.state.tunaDelay.delayTime} onChange={(val)=>{this.handleChange(val, "tunaDelay", "delayTime")}} /></label>
                 </div>
                 <div id="marginlessTuna"className="tile is-child box">
@@ -368,8 +385,11 @@ export default class App extends Component {
                 </div>
             </div>
             <div className="tile is-2 is-vertical is-parent">
+                <div id="marginlessTuna" className="has-text-centered">
+                    PHASER
+                </div>
                 <div id="marginlessTuna" className="tile is-child box">
-                    <label>PHASER||Rate
+                    <label>Rate
                     <Slider min={0} max={8} step={0.1} value={this.state.tunaPhaser.rate} onChange={(val)=>{this.handleChange(val, "tunaPhaser", "rate")}} /></label>
                 </div>
                 <div id="marginlessTuna" className="tile is-child box">
@@ -377,15 +397,15 @@ export default class App extends Component {
                     <Slider min={0} max={1} step={0.05} value={this.state.tunaPhaser.depth} onChange={(val)=>{this.handleChange(val, "tunaPhaser", "depth")}} /></label>
                 </div>
                 <div id="marginlessTuna" className="tile is-child box">
-                    <label>feedback
+                    <label>Feedback
                     <Slider min={0} max={1} step={0.05} value={this.state.tunaPhaser.feedback} onChange={(val)=>{this.handleChange(val, "tunaPhaser", "feedback")}} /></label>
                 </div>
                 <div id="marginlessTuna" className="tile is-child box">
-                    <label>stereoPhase
+                    <label>Stereo Phase
                     <Slider min={0} max={180} step={10} value={this.state.tunaPhaser.stereoPhase} onChange={(val)=>{this.handleChange(val, "tunaPhaser", "stereoPhase")}} /></label>
                 </div>
                 <div id="marginlessTuna" className="tile is-child box">
-                    <label>baseModulationFrequency
+                    <label>Base Modulation Frequency
                     <Slider min={500} max={1500} step={100} value={this.state.tunaPhaser.baseModulationFrequency} onChange={(val)=>{this.handleChange(val, "tunaPhaser", "baseModulationFrequency")}} /></label>
                 </div>
                 <div id="marginlessTuna" className="tile is-child box">
@@ -394,8 +414,11 @@ export default class App extends Component {
                 </div>
             </div>
             <div className="tile is-2 is-vertical is-parent">
+                <div id="marginlessTuna" className="has-text-centered">
+                    OVERDRIVE
+                </div>
                 <div id="marginlessTuna" className="tile is-child box">
-                    <label>OVERDRIVE||Drive
+                    <label>Drive
                     <Slider min={0} max={1} step={0.05} value={this.state.tunaOverdrive.drive} onChange={(val)=>{this.handleChange(val, "tunaOverdrive", "drive")}} /></label>
                 </div>
                 <div id="marginlessTuna" className="tile is-child box">
@@ -403,11 +426,11 @@ export default class App extends Component {
                     <Slider min={0} max={1} step={0.05} value={this.state.tunaOverdrive.outputGain} onChange={(val)=>{this.handleChange(val, "tunaOverdrive", "outputGain")}} /></label>
                 </div>
                 <div id="marginlessTuna" className="tile is-child box">
-                    <label>curveAmount
+                    <label>Curve Amount
                     <Slider min={0} max={1} step={0.05} value={this.state.tunaOverdrive.curveAmount} onChange={(val)=>{this.handleChange(val, "tunaOverdrive", "curveAmount")}} /></label>
                 </div>
                 <div id="marginlessTuna" className="tile is-child box">
-                    <label>algorithm Index
+                    <label>Algorithm Index
                     <Slider min={0} max={5} step={1} value={this.state.tunaOverdrive.algorithmIndex} onChange={(val)=>{this.handleChange(val, "tunaOverdrive", "algorithmIndex")}} /></label>
                 </div>
                 <div id="marginlessTuna"className="tile is-child box">
@@ -420,36 +443,39 @@ export default class App extends Component {
                 </div>
             </div>
             <div className="tile is-2 is-vertical is-parent">
+                <div id="marginlessTuna" className="has-text-centered">
+                    COMPRESSOR
+                </div>
                 <div id="marginlessTuna" className="tile is-child box">
-                    <label>COMPRESSOR||threshold
+                    <label>Threshold
                     <Slider min={-60} max={0} step={5} value={this.state.tunaCompressor.threshold} onChange={(val)=>{this.handleChange(val, "tunaCompressor", "threshold")}} /></label>
                 </div>
                 <div id="marginlessTuna"className="tile is-child box">
-                    <label>release
+                    <label>Release
                     <Slider min={50} max={2000} step={50} value={this.state.tunaCompressor.release} onChange={(val)=>{this.handleChange(val, "tunaCompressor", "release")}} /></label>
                 </div>
                 <div id="marginlessTuna" className="tile is-child box">
-                    <label>makeupGain
+                    <label>Makeup Gain
                     <Slider min={1} max={100} step={1} value={this.state.tunaCompressor.makeupGain} onChange={(val)=>{this.handleChange(val, "tunaCompressor", "makeupGain")}} /></label>
                 </div>
                 <div id="marginlessTuna" className="tile is-child box">
-                    <label>attack
+                    <label>Attack
                     <Slider min={0} max={1000} step={20} value={this.state.tunaCompressor.attack} onChange={(val)=>{this.handleChange(val, "tunaCompressor", "attack")}} /></label>
                 </div>
                 <div id="marginlessTuna" className="tile is-child box">
-                    <label>ratio
+                    <label>Ratio
                     <Slider min={1} max={50} step={1} value={this.state.tunaCompressor.ratio} onChange={(val)=>{this.handleChange(val, "tunaCompressor", "ratio")}} /></label>
                 </div>
                 <div id="marginlessTuna" className="tile is-child box">
-                    <label>knee
+                    <label>Knee
                     <Slider min={0} max={40} step={1} value={this.state.tunaCompressor.knee} onChange={(val)=>{this.handleChange(val, "tunaCompressor", "knee")}} /></label>
                 </div>
                 <div id="marginlessTuna" className="tile is-child box">
-                    <label>automakeup
+                    <label>Automakeup
                     <Slider min={0} max={1} step={1} value={this.state.tunaCompressor.automakeup} onChange={(val)=>{this.handleChange(val, "tunaCompressor", "automakeup")}} /></label>
                 </div>
                 <div id="marginlessTuna" className="tile is-child box">
-                    <label>bypass
+                    <label>Bypass
                     <Slider min={0} max={1} step={1} value={this.state.tunaCompressor.bypass} onChange={(val)=>{this.handleChange(val, "tunaCompressor", "bypass")}} /></label>
                 </div>
                 <div id="marginlessTuna" className="tile is-child box">
@@ -458,10 +484,13 @@ export default class App extends Component {
                 </div>
             </div>
         </div>
-        <div className="tile is-ancestor">
+        <div className="tile is-ancestoris-marginless is-fullwidth">
             <div className="tile is-2 is-vertical is-parent">
+                <div id="marginlessTuna" className="has-text-centered">
+                    FILTER
+                </div>
                 <div id="marginlessTuna" className="tile is-child box">
-                    <label>FILTER||frequency
+                    <label>Frequency
                     <Slider min={50} max={22050} step={50} value={this.state.tunaFilter.frequency} onChange={(val)=>{this.handleChange(val, "tunaFilter", "frequency")}} /></label>
                 </div>
                 <div id="marginlessTuna" className="tile is-child box">
@@ -469,11 +498,11 @@ export default class App extends Component {
                     <Slider min={0.5} max={100} step={0.5} value={this.state.tunaFilter.Q} onChange={(val)=>{this.handleChange(val, "tunaFilter", "Q")}} /></label>
                 </div>
                 <div id="marginlessTuna" className="tile is-child box">
-                    <label>gain
+                    <label>Gain
                     <Slider min={-40} max={40} step={2} value={this.state.tunaFilter.gain} onChange={(val)=>{this.handleChange(val, "tunaFilter", "gain")}} /></label>
                 </div>
                 <div id="marginlessTuna" className="tile is-child box">
-                    <label>filter type {filterArr[ this.state.tunaFilter.filterType ]}
+                    <label>Filter Type - {filterArr[ this.state.tunaFilter.filterType ]}
                     <Slider min={0} max={7} step={1} value={this.state.tunaFilter.filterType} onChange={(val)=>{this.handleChange(val, "tunaFilter", "filterType")}} /></label>
                 </div>
                 <div id="marginlessTuna" className="tile is-child box">
@@ -486,16 +515,19 @@ export default class App extends Component {
                 </div>
             </div>
             <div className="tile is-2 is-vertical is-parent">
+                <div id="marginlessTuna" className="has-text-centered">
+                    TREMOLO
+                </div>
                 <div id="marginlessTuna" className="tile is-child box">
-                    <label>TREMOLO||intensity
+                    <label>Intensity
                     <Slider min={0} max={1} step={0.05} value={this.state.tunaTremolo.intensity} onChange={(val)=>{this.handleChange(val, "tunaTremolo", "intensity")}} /></label>
                 </div>
                 <div id="marginlessTuna" className="tile is-child box">
-                    <label>stereoPhase
+                    <label>Stereo Phase
                     <Slider min={0} max={180} step={10} value={this.state.tunaTremolo.stereoPhase} onChange={(val)=>{this.handleChange(val, "tunaTremolo", "stereoPhase")}} /></label>
                 </div>
                 <div id="marginlessTuna" className="tile is-child box">
-                    <label>rate
+                    <label>Rate
                     <Slider min={0.2} max={11} step={0.2} value={this.state.tunaTremolo.rate} onChange={(val)=>{this.handleChange(val, "tunaTremolo", "rate")}} /></label>
                 </div>
                 <div id="marginlessTuna"className="tile is-child box">
@@ -508,28 +540,31 @@ export default class App extends Component {
                 </div>
             </div>
             <div className="tile is-2 is-vertical is-parent">
+                <div id="marginlessTuna" className="has-text-centered">
+                    WAHWAH
+                </div>
                 <div id="marginlessTuna" className="tile is-child box">
-                    <label>WAHWAH||automode
+                    <label>Automode
                     <Slider min={0} max={1} step={1} value={this.state.tunaWahWah.automode} onChange={(val)=>{this.handleChange(val, "tunaWahWah", "automode")}} /></label>
                 </div>
                 <div id="marginlessTuna"className="tile is-child box">
-                    <label>baseFrequency
+                    <label>Base Frequency
                     <Slider min={0} max={1} step={0.05} value={this.state.tunaWahWah.baseFrequency} onChange={(val)=>{this.handleChange(val, "tunaWahWah", "baseFrequency")}} /></label>
                 </div>
                 <div id="marginlessTuna" className="tile is-child box">
-                    <label>excursionOctaves
+                    <label>Excursion Octaves
                     <Slider min={1} max={6} step={0.25} value={this.state.tunaWahWah.excursionOctaves} onChange={(val)=>{this.handleChange(val, "tunaWahWah", "excursionOctaves")}} /></label>
                 </div>
                 <div id="marginlessTuna" className="tile is-child box">
-                    <label>sweep
+                    <label>Sweep
                     <Slider min={0} max={1} step={0.05} value={this.state.tunaWahWah.sweep} onChange={(val)=>{this.handleChange(val, "tunaWahWah", "sweep")}} /></label>
                 </div>
                 <div id="marginlessTuna" className="tile is-child box">
-                    <label>resonance
+                    <label>Resonance
                     <Slider min={5} max={100} step={5} value={this.state.tunaWahWah.resonance} onChange={(val)=>{this.handleChange(val, "tunaWahWah", "resonance")}} /></label>
                 </div>
                 <div id="marginlessTuna" className="tile is-child box">
-                    <label>sensitivity
+                    <label>Sensitivity
                     <Slider min={-1} max={1} step={0.1} value={this.state.tunaWahWah.sensitivity} onChange={(val)=>{this.handleChange(val, "tunaWahWah", "sensitivity")}} /></label>
                 </div>
                 <div id="marginlessTuna" className="tile is-child box">
@@ -542,20 +577,23 @@ export default class App extends Component {
                 </div>
             </div>
             <div className="tile is-2 is-vertical is-parent">
+                <div id="marginlessTuna" className="has-text-centered">
+                    BITCRUSHER
+                </div>
                 <div id="marginlessTuna" className="tile is-child box">
-                    <label>BITCRUSHER||bits
+                    <label>Bits
                     <Slider min={1} max={16} step={1} value={this.state.tunaBitcrusher.bits} onChange={(val)=>{this.handleChange(val, "tunaBitcrusher", "bits")}} /></label>
                 </div>
                 <div id="marginlessTuna" className="tile is-child box">
-                    <label>bufferSize
+                    <label>Buffer Size
                     <Slider min={0} max={5} step={1} value={this.state.tunaBitcrusher.bufferSize} onChange={(val)=>{this.handleChange(val, "tunaBitcrusher", "bufferSize")}} /></label>
                 </div>
                 <div id="marginlessTuna" className="tile is-child box">
-                    <label>normfreq
+                    <label>Normfreq
                     <Slider min={0.0025} max={1} step={0.0025} value={this.state.tunaBitcrusher.normfreq} onChange={(val)=>{this.handleChange(val, "tunaBitcrusher", "normfreq")}} /></label>
                 </div>
                 <div id="marginlessTuna" className="tile is-child box">
-                    <label>bypass
+                    <label>Bypass
                     <Slider min={0} max={1} step={1} value={this.state.tunaBitcrusher.bypass} onChange={(val)=>{this.handleChange(val, "tunaBitcrusher", "bypass")}} /></label>
                 </div>
                 <div id="marginlessTuna" className="tile is-child box">
@@ -564,16 +602,19 @@ export default class App extends Component {
                 </div>
             </div>
             <div className="tile is-2 is-vertical is-parent">
+                <div id="marginlessTuna" className="has-text-centered">
+                    MOOG FILTER
+                </div>
                 <div id="marginlessTuna" className="tile is-child box">
-                    <label>MOOG FILTER||bufferSize
+                    <label>Buffer Size
                     <Slider min={0} max={5} step={1} value={this.state.tunaMoogFilter.bufferSize} onChange={(val)=>{this.handleChange(val, "tunaMoogFilter", "bufferSize")}} /></label>
                 </div>
                 <div id="marginlessTuna" className="tile is-child box">
-                    <label>cutoff
+                    <label>Cutoff
                     <Slider min={0.005} max={1} step={0.005} value={this.state.tunaMoogFilter.cutoff} onChange={(val)=>{this.handleChange(val, "tunaMoogFilter", "cutoff")}} /></label>
                 </div>
                 <div id="marginlessTuna" className="tile is-child box">
-                    <label>resonance
+                    <label>Resonance
                     <Slider min={0} max={4} step={0.2} value={this.state.tunaMoogFilter.resonance} onChange={(val)=>{this.handleChange(val, "tunaMoogFilter", "resonance")}} /></label>
                 </div>
                 <div id="marginlessTuna"className="tile is-child box">
@@ -586,20 +627,23 @@ export default class App extends Component {
                 </div>
             </div>
             <div className="tile is-2 is-vertical is-parent">
+                <div id="marginlessTuna" className="has-text-centered">
+                    PING PONG
+                </div>
                 <div id="marginlessTuna" className="tile is-child box">
-                    <label>PING PONG||feedback
+                    <label>Feedback
                     <Slider min={0} max={1} step={0.05} value={this.state.tunaPingPongDelay.feedback} onChange={(val)=>{this.handleChange(val, "tunaPingPongDelay", "feedback")}} /></label>
                 </div>
                 <div id="marginlessTuna" className="tile is-child box">
-                    <label>wetLevel
+                    <label>Wet Level
                     <Slider min={0} max={1} step={0.05} value={this.state.tunaPingPongDelay.wetLevel} onChange={(val)=>{this.handleChange(val, "tunaPingPongDelay", "wetLevel")}} /></label>
                 </div>
                 <div id="marginlessTuna" className="tile is-child box">
-                    <label>delayTimeLeft
+                    <label>Delay Time Left
                     <Slider min={50} max={10000} step={50} value={this.state.tunaPingPongDelay.delayTimeLeft} onChange={(val)=>{this.handleChange(val, "tunaPingPongDelay", "delayTimeLeft")}} /></label>
                 </div>
                 <div id="marginlessTuna"className="tile is-child box">
-                    <label>delayTimeRight
+                    <label>Delay Time Right
                     <Slider min={50} max={10000} step={50} value={this.state.tunaPingPongDelay.delayTimeRight} onChange={(val)=>{this.handleChange(val, "tunaPingPongDelay", "delayTimeRight")}} /></label>
                 </div>
                 <div id="marginlessTuna" className="tile is-child box">
@@ -607,7 +651,6 @@ export default class App extends Component {
                     <Slider min={0} max={1} step={1} value={this.state.tunaPingPongDelay.flag} onChange={(val)=>{this.handleChange(val, "tunaPingPongDelay", "flag")}} /></label>
                 </div>
             </div>
-
         </div>
 	</div>
     )}

@@ -199,3 +199,11 @@
 {"level":"info","message":"6323.180306 GET / ::ffff:127.0.0.1","timestamp":"2016-08-05T06:53:02.782Z"}
 {"level":"info","message":"914.769676 GET /learningMeme ::ffff:127.0.0.1","timestamp":"2016-08-05T07:05:47.823Z"}
 {"level":"info","message":"1086.760782 GET /learningMeme ::ffff:127.0.0.1","timestamp":"2016-08-05T07:06:20.659Z"}
+{"level":"error","message":"200 /inc/react-select.css development","timestamp":"2016-08-09T13:57:37.500Z"}
+{"level":"error","message":"200 /inc/react-select.css development","timestamp":"2016-08-09T13:57:49.689Z"}
+{"level":"error","message":"200 /inc/react-select.css development","timestamp":"2016-08-09T13:59:15.239Z"}
+{"level":"error","message":"200 /inc/react-select.css development","timestamp":"2016-08-09T13:59:47.108Z"}
+{"level":"error","message":"200 /inc/react-select.css development","timestamp":"2016-08-09T14:03:48.699Z"}
+{"level":"error","message":"200 /inc/react-select.css development","timestamp":"2016-08-09T14:04:00.888Z"}
+{"level":"error","message":"200 /inc/react-select.css development","timestamp":"2016-08-09T14:04:53.472Z"}
+{"level":"error","message":"200 /inc/react-select.css development","timestamp":"2016-08-09T14:21:01.138Z"}
