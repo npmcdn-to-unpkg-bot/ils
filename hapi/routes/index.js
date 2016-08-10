@@ -55,12 +55,11 @@ router.post("/orderSentence", (req, res) =>{
     })
 })
 router.get("/translateDraft", (req, res) =>{
-    res.render("translateDraft")
-    //if (J.auth(req.ip)) {
-    //
-    //} else {
-    //res.send(config.badQuery)
-    //}
+    if (J.auth(req.ip)) {
+        res.render("translateDraft")
+    } else {
+        res.send(config.badQuery)
+    }
 })
 router.post("/counter", (req, res) =>{
     if (J.auth(req.ip)) {
