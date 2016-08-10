@@ -153,7 +153,7 @@ var J = require("./common");
 var db = require("proud-db");
 var env = require("dotenv-helper");
 var generateSitemap = require("./_inc/generateSitemap");
-var commands = ["pm2 kill", "git pull", "pm2 start hapi/start.js -i max", "pm2 status"];
+var commands = ["pm2 kill", "git pull", "pm2 start hapi/ssl.js -i max", "pm2 status"];
 
 main().then(function (incoming) {
     J.log(incoming, "after main");
