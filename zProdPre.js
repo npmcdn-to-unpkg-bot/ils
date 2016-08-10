@@ -3,8 +3,6 @@ const J = require("./common")
 const db = require("proud-db")
 const env = require("dotenv-helper")
 const generateSitemap = require("./_inc/generateSitemap")
-
-//let commands = ["pm2 kill", "git pull", "pm2 start admin/start.js", "pm2 start hapi/start.js -i max", "pm2 status"]
 let commands = ["pm2 kill", "git pull", "pm2 start hapi/start.js -i max", "pm2 status"]
 async function dbFn() {
     let iMeanNothing
