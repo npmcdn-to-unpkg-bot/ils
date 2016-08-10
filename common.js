@@ -16,6 +16,7 @@ function timer(startMarker = "default") {
     store.endMarker = startMarker
 }
 function auth(ip) {
+    J.lg(ip)
     let flag = false
     env.getEnv("adminIp").map(val=>{
         if (ip.includes(val)) {
