@@ -143,11 +143,13 @@ export default class App extends Component {
             }
         })
         J.emitter.on("remove",()=>{
-            let willSend = JSON.stringify({id: this.state.data.id})
             J.log(this.state.data.id)
             this.log(this.state.data.id)
-            J.postData(`${J.host}/removeSingle`,willSend).then(() =>{this.log("removed")})
-            J.emitter.emit("next")
+            J.postData(`http://ilearnsmarter.com/removeMain`,{id: this.state.data.id})
+            .then(()=>{
+                this.log("removed")
+            })
+            J.emitter.emit("init")
         })
         J.emitter.on("searchImage", ()=>{
             let searchImageKeyword = this.state.searchImageKeyword

@@ -33,14 +33,15 @@ router.get("/orderSentence", (req, res) =>{res.render("orderSentence")})
 router.get("/orderSentenceMobile", (req, res) =>{res.render("orderSentenceMobile")})
 router.post("/read/:id", (req, res) =>{
     J.logger.debug(`read db | ip ${req.ip}`)
-    mongoose.model("Main").findOne({id: req.params.id * 1}, (error, incoming)=>{
-        res.send(incoming)
+    mongoose.model("Main").findOne({id: req.params.id * 1}, (error, data)=>{
+        J.log(error, data)
+        res.send(data)
     })
 })
 router.post("/ready", (req, res) =>{
     J.logger.debug(`read ready | ip ${req.ip}`)
     mongoose.model("Main").find({$where: "this.enPart.length>1"}, (error, incoming)=>{
-        res.send(R.values(incoming))
+        res.send(incoming)
     })
 })
 router.post("/learningMeme", (req, res) =>{
