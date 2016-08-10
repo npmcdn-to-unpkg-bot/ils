@@ -55,3 +55,6 @@
 {"level":"debug","message":"read db | ip ::ffff:127.0.0.1","timestamp":"2016-08-10T18:06:22.164Z"}
 {"level":"debug","message":"read db | ip ::ffff:127.0.0.1","timestamp":"2016-08-10T18:06:26.424Z"}
 {"level":"debug","message":"read db | ip ::ffff:127.0.0.1","timestamp":"2016-08-10T18:06:55.752Z"}
+{"level":"error","message":"200 /translateDraft development","timestamp":"2016-08-10T19:00:48.738Z"}
+{"level":"error","message":"200 /inc/react-select.css development","timestamp":"2016-08-10T19:08:12.886Z"}
+{"level":"error","message":"200 /inc/react-select.css development","timestamp":"2016-08-10T19:10:59.018Z"}
