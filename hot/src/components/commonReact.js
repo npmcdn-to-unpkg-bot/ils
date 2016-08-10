@@ -227,6 +227,7 @@ module.exports.getWidthPx = getWidthPx
 module.exports.randomSeed = randomSeed
 module.exports.winWidthIs = winWidthIs
 module.exports.winHeightIs = winHeightIs
+module.exports.httpsFn = R.replace("http://", "https://", R.__)
 module.exports.hapi = "http://localhost:3000"
 module.exports.admin = "http://localhost:3001"
 module.exports.ils = "http://ilearnsmarter.com"

@@ -97,6 +97,7 @@
     "istanbul": "*",
     "jsdom": "*",
     "karma-mocha": "*",
+    "kefir": "^3.3.0",
     "lwip": "*",
     "meme-maker": "*",
     "mocha": "*",
@@ -123,7 +124,8 @@
     "victory": "*",
     "webpack": "*",
     "webpack-dev-server": "*",
-    "winston": "*"
+    "winston": "*",
+    "zen-observable": "^0.3.0"
   },
   "browserify": {
     "transform": [

@@ -1,7 +1,6 @@
 "use strict"
 import React, { Component } from "react"
 import R from "ramda"
-import LazyLoad from "react-lazyload"
 import J from "./components/commonReact.js"
 
 let initOnce = R.once(()=>{
@@ -38,7 +37,7 @@ export default class App extends Component {
     }
     componentDidMount() {
         J.emitter.on("once init", ()=>{
-            J.postData("/learningMeme",{}).then(incoming =>{
+            J.postData("/learningMeme", {}).then(incoming =>{
                 let globalData = J.shuffle(incoming)
                 this.setState({
                     data: globalData[ 0 ],
@@ -165,7 +164,7 @@ export default class App extends Component {
             width: `${memeWidth}px`,
             height: `${memeHeight}px`,
             backgroundSize: "cover",
-            backgroundImage: `url(${this.state.data.imageSrc})`
+            backgroundImage: `url(${J.httpsFn(this.state.data.imageSrc)})`
         }
         let memeTextTop = {
             top: "0px",

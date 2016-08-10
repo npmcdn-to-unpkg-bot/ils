@@ -10,19 +10,10 @@ const Future = RFantasy.Future
 const Identity = RFantasy.Identity
 const Maybe = RFantasy.Maybe
 const Just = RFantasy.Just
-function returnOldStyleGerman(keyIs) {
-    if (keyIs === "ä") {
-        return "ae"
-    } else if (keyIs === "ö") {
-        return "oe"
-    } else if (keyIs === "ü") {
-        return "ue"
-    } else if (keyIs === "ß") {
-        return "ss"
-    } else {
-        return keyIs
-    }
-}
+let httpsFn = R.replace("http://", "https://", R.__)
+J.log(httpsFn("http://some.jpg"))
+
+
 var observed = K.fromESObservable(new Observable(observer => {
     let willReturn = Math.random() * 10
     delay().then(()=>{
@@ -61,9 +52,6 @@ var observedSecond = K.fromESObservable(new Observable(observer => {
         })
     })
 }))
-let wordStateFuture = R.compose(R.join(""), R.map(val=>returnOldStyleGerman(val)), R.splitEvery(1), R.toLower, R.trim)("  Auflösend ")
-let just = R.compose(R.toLower, R.trim)("  Auflösend ")
-J.log(wordStateFuture)
 //let result = K.combine([observed, observedSecond], (a, b)=> `here ${a} ${b}`)
 //result.log()
 function delay(ms = 1000) {
@@ -80,7 +68,6 @@ function delayFn(ms = 1000) {
         }, ms)
     })
 }
-//fs.writeFileSync("temp3.txt", JSON.stringify(R.flatten([arr, arr2])))
 function* nums() {
     console.log("starting")
     yield 1
@@ -91,7 +78,6 @@ function* nums() {
     console.log("yielded 3")
 }
 var generator = nums()
-
 generator.next()  //{ value: 1, done: false }
 //"starting"
 generator.next()  //{ value: 2, done: false }
