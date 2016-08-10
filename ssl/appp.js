@@ -19,10 +19,10 @@ httpApp.get("*", function (req, res, next) {
 // all environments
 app.set('port', 443);
 app.enable('trust proxy');
-app.use(express.favicon());
-app.use(express.bodyParser());
-app.use(express.methodOverride());
-app.use(app.router);
+//app.use(express.favicon());
+//app.use(express.bodyParser());
+//app.use(express.methodOverride());
+//app.use(app.router);
 
 app.get('/', (req,res)=>{
     res.send("done")
