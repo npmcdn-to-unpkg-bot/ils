@@ -54,18 +54,19 @@ app.use((req, res) =>{
 let httpApp = express()
 var httpsOptions = {
     key: fs.readFileSync("/etc/letsencrypt/live/ilearnsmarter.com/privkey.pem"),
-    cert: fs.readFileSync("/etc/letsencrypt/live/ilearnsmarter.com/fullchain.pem")
+    cert: fs.readFileSync("/etc/letsencrypt/live/ilearnsmarter.com/fullchain.pem"),
+    ca: fs.readFileSync("/etc/letsencrypt/live/ilearnsmarter.com/chain.pem")
 }
 const port = 3000
-httpApp.set('port', port)
-httpApp.get("*",  (req, res, next)=>{
-    res.redirect("https://" + req.headers.host + "/" + req.path);
+httpApp.set("port", port)
+httpApp.get("*", (req, res, next)=>{
+    res.redirect("https://" + req.headers.host + "/" + req.path)
 })
 app.set("port", 443)
 app.enable("trust proxy")
-http.createServer(httpApp).listen(httpApp.get('port'), () =>{
+http.createServer(httpApp).listen(httpApp.get("port"), () =>{
     console.log(`Express HTTP server listening on port ${httpApp.get("port")}`)
 })
-https.createServer(httpsOptions, app).listen(app.get('port'), ()=> {
-    console.log(`Express HTTPS server listening on port ${app.get("port")}`);
+https.createServer(httpsOptions, app).listen(app.get("port"), ()=> {
+    console.log(`Express HTTPS server listening on port ${app.get("port")}`)
 })

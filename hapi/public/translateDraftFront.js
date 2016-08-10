@@ -670,11 +670,9 @@ var Image = function (_Component) {
         value: function render() {
             var numberIs = 15;
             var imageStyle = {
-                //minWidth: `${J.getWidthPx(numberIs)}px`,
                 minWidth: numberIs + "vw",
                 height: "auto",
                 maxHeight: numberIs - 2 + "vh"
-                //maxHeight: `${J.getHeightPx(numberIs-2)}px`
             };
             return _react2.default.createElement("span", { className: "column", onClick: this.props.handleImageClick }, _react2.default.createElement(_reactLazyload2.default, { height: 200, once: true }, _react2.default.createElement("img", { src: this.props.imageSrc, style: imageStyle, className: this.props.className })));
         }
@@ -754,7 +752,7 @@ var App = function (_Component2) {
             var _this4 = this;
 
             _commonReact2.default.emitter.on("init", function () {
-                _commonReact2.default.postData("http://ilearnsmarter.com/imageless", {}).then(function (data) {
+                _commonReact2.default.postData("https://ilearnsmarter.com/imageless", {}).then(function (data) {
                     data = _commonReact2.default.addSingleProp("childSafetyFlag", true, data);
                     data = _commonReact2.default.addSingleProp("imageSrc", false, data);
                     var searchImageKeywordArr = _commonReact2.default.stopWordsFilter(data.dePart);
@@ -794,7 +792,7 @@ var App = function (_Component2) {
                 if (data !== false) {
                     if (_ramda2.default.type(data.imageSrc) === "String") {
                         _commonReact2.default.log(data);
-                        _commonReact2.default.postData("http://ilearnsmarter.com/learningMemePublish", { data: data }).then(function (response) {
+                        _commonReact2.default.postData("https://ilearnsmarter.com/learningMemePublish", { data: data }).then(function (response) {
                             if (response === null) {
                                 _this4.log("FAIL learningMemePublish!!");
                             } else {
@@ -812,14 +810,14 @@ var App = function (_Component2) {
             _commonReact2.default.emitter.on("remove", function () {
                 _commonReact2.default.log(_this4.state.data.id);
                 _this4.log(_this4.state.data.id);
-                _commonReact2.default.postData("http://ilearnsmarter.com/removeMain", { id: _this4.state.data.id }).then(function () {
+                _commonReact2.default.postData("https://ilearnsmarter.com/removeMain", { id: _this4.state.data.id }).then(function () {
                     _this4.log("removed");
                 });
                 _commonReact2.default.emitter.emit("init");
             });
             _commonReact2.default.emitter.on("searchImage", function () {
                 var searchImageKeyword = _this4.state.searchImageKeyword;
-                _commonReact2.default.postData("http://ilearnsmarter.com/searchImage", { searchImageKeyword: searchImageKeyword }).then(function (data) {
+                _commonReact2.default.postData("https://ilearnsmarter.com/searchImage", { searchImageKeyword: searchImageKeyword }).then(function (data) {
                     data = _ramda2.default.filter(function (val) {
                         return val.imageSrc.includes(".jpg") || val.imageSrc.includes(".png");
                     }, data);
@@ -828,7 +826,7 @@ var App = function (_Component2) {
             });
             _commonReact2.default.emitter.on("searchImageFast", function () {
                 var searchImageKeyword = _this4.state.searchImageKeyword;
-                _commonReact2.default.postData("http://ilearnsmarter.com/searchImageFast", { searchImageKeyword: searchImageKeyword }).then(function (data) {
+                _commonReact2.default.postData("https://ilearnsmarter.com/searchImageFast", { searchImageKeyword: searchImageKeyword }).then(function (data) {
                     _this4.setState({ searchImageResult: _commonReact2.default.addProp("className", "unselectedImage", data) });
                 });
             });

@@ -28,11 +28,9 @@ class Image extends Component {
     render () {
         let numberIs = 15
         let imageStyle = {
-            //minWidth: `${J.getWidthPx(numberIs)}px`,
             minWidth: `${numberIs}vw`,
             height: "auto",
-            maxHeight: `${numberIs-2}vh`
-            //maxHeight: `${J.getHeightPx(numberIs-2)}px`
+            maxHeight: `${numberIs - 2}vh`
         }
         return (
             <span className="column" onClick={this.props.handleImageClick}>
@@ -69,12 +67,12 @@ export default class App extends Component {
         this.handleDeWordInput = this.handleDeWordInput.bind(this)
         this.handleEnWordInput = this.handleEnWordInput.bind(this)
     }
-    log(msg, seconds = 2){
-        let message = R.type(msg)==="String"?msg:JSON.stringify(msg)
+    log(msg, seconds = 2) {
+        let message = R.type(msg) === "String" ? msg : JSON.stringify(msg)
         this.setState({
             notificationMessage: "",
             notificationState: false
-        },()=>{
+        }, ()=>{
             this.setState({
                 notificationMessage: message,
                 notificationState: true
@@ -84,67 +82,67 @@ export default class App extends Component {
             this.setState({
                 notificationState: false
             })
-        },seconds*1000)
+        }, seconds * 1000)
     }
     componentDidMount() {
         J.emitter.on("init", ()=>{
-            J.postData(`http://ilearnsmarter.com/imageless`,{}).then(data => {
-                    data = J.addSingleProp("childSafetyFlag", true, data)
-                    data = J.addSingleProp("imageSrc", false, data)
-                    let searchImageKeywordArr = J.stopWordsFilter(data.dePart)
-                    searchImageKeywordArr = R.sort((a,b)=>{return a.length-b.length},searchImageKeywordArr)
-                    if(searchImageKeywordArr.length>0){
-                        this.setState({
-                            data,
-                            searchImageKeyword: J.removePunctuation(R.last(searchImageKeywordArr)).cleanStr,
-                            deWord: "",
-                            enWord: ""
-                        },()=>{
-                            this.log(this.state.data.dePart.length,3)
-                            if(this.state.data.dePart.length>70){
-                                this.log("TOO LONG!!")
-                            }
-                            J.emitter.emit("searchImageFast")
-                            setTimeout(()=>{
-                                this.setState({searchImageKeyword: ""})
-                            },1000)
-                        })
-                    }else{
-                        this.setState({
-                            data,
-                            searchImageKeyword: "",
-                            deWord: "",
-                            enWord: ""
-                        })
-                    }
+            J.postData("https://ilearnsmarter.com/imageless", {}).then(data => {
+                data = J.addSingleProp("childSafetyFlag", true, data)
+                data = J.addSingleProp("imageSrc", false, data)
+                let searchImageKeywordArr = J.stopWordsFilter(data.dePart)
+                searchImageKeywordArr = R.sort((a, b)=>{return a.length - b.length}, searchImageKeywordArr)
+                if (searchImageKeywordArr.length > 0) {
+                    this.setState({
+                        data,
+                        searchImageKeyword: J.removePunctuation(R.last(searchImageKeywordArr)).cleanStr,
+                        deWord: "",
+                        enWord: ""
+                    }, ()=>{
+                        this.log(this.state.data.dePart.length, 3)
+                        if (this.state.data.dePart.length > 70) {
+                            this.log("TOO LONG!!")
+                        }
+                        J.emitter.emit("searchImageFast")
+                        setTimeout(()=>{
+                            this.setState({searchImageKeyword: ""})
+                        }, 1000)
+                    })
+                } else {
+                    this.setState({
+                        data,
+                        searchImageKeyword: "",
+                        deWord: "",
+                        enWord: ""
+                    })
+                }
             })
         })
         J.emitter.on("ready", ()=>{
             J.log("ready")
             let dataHolder = this.state.data
             let data = this.normalizeData(this.state.data)
-            if(data!==false){
-                if(R.type(data.imageSrc)==="String"){
+            if (data !== false) {
+                if (R.type(data.imageSrc) === "String") {
                     J.log(data)
-                    J.postData(`http://ilearnsmarter.com/learningMemePublish`, {data}).then(response =>{
-                        if(response===null){
+                    J.postData("https://ilearnsmarter.com/learningMemePublish", {data}).then(response =>{
+                        if (response === null) {
                             this.log("FAIL learningMemePublish!!")
-                        }else{
+                        } else {
                             J.log("learningMemePublish is done")
                         }
                     })
                     J.emitter.emit("init")
-                }else{
+                } else {
                     this.log("Something is amiss!!")
                 }
-            }else{
+            } else {
                 this.log("Something is amiss!!")
             }
         })
-        J.emitter.on("remove",()=>{
+        J.emitter.on("remove", ()=>{
             J.log(this.state.data.id)
             this.log(this.state.data.id)
-            J.postData(`http://ilearnsmarter.com/removeMain`,{id: this.state.data.id})
+            J.postData("https://ilearnsmarter.com/removeMain", {id: this.state.data.id})
             .then(()=>{
                 this.log("removed")
             })
@@ -152,36 +150,36 @@ export default class App extends Component {
         })
         J.emitter.on("searchImage", ()=>{
             let searchImageKeyword = this.state.searchImageKeyword
-            J.postData(`http://ilearnsmarter.com/searchImage`, {searchImageKeyword}).then(data =>{
+            J.postData("https://ilearnsmarter.com/searchImage", {searchImageKeyword}).then(data =>{
                 data = R.filter(val=>{
-                    return val.imageSrc.includes(".jpg")||val.imageSrc.includes(".png")
-                },data)
+                    return val.imageSrc.includes(".jpg") || val.imageSrc.includes(".png")
+                }, data)
                 this.setState({searchImageResult: J.addProp("className", "unselectedImage", data)})
             })
         })
         J.emitter.on("searchImageFast", ()=>{
             let searchImageKeyword = this.state.searchImageKeyword
-            J.postData(`http://ilearnsmarter.com/searchImageFast`, {searchImageKeyword}).then(data =>{
+            J.postData("https://ilearnsmarter.com/searchImageFast", {searchImageKeyword}).then(data =>{
                 this.setState({searchImageResult: J.addProp("className", "unselectedImage", data)})
             })
         })
         initOnce()
     }
-    normalizeData(data){
+    normalizeData(data) {
         let willReturn = data
         willReturn.dePart = J.addFullstop(willReturn.dePart)
         willReturn.enPart = J.addFullstop(willReturn.enPart)
-        if(willReturn.category==="preDraft"&&willReturn.enPart!==""){
+        if (willReturn.category === "preDraft" && willReturn.enPart !== "") {
             willReturn.category = "quotes"
         }
-        if(willReturn.category==="draft"&&willReturn.enPart.length>5){
+        if (willReturn.category === "draft" && willReturn.enPart.length > 5) {
             willReturn.category = "quotes"
         }
-        if(this.state.deWord.length>2){
+        if (this.state.deWord.length > 2) {
             willReturn.deWord = this.state.deWord
             willReturn.enWord = this.state.enWord
             return willReturn
-        }else{
+        } else {
             return false
         }
     }
@@ -193,14 +191,14 @@ export default class App extends Component {
         if (className === "unselectedImage") {
             className = "selectedImage"
             this.setState({
-                data: R.merge(this.state.data,{
-                    imageSrc: this.state.searchImageResult[index].imageSrc
+                data: R.merge(this.state.data, {
+                    imageSrc: this.state.searchImageResult[ index ].imageSrc
                 })
             })
         } else {
             className = "unselectedImage"
             this.setState({
-                data: R.merge(this.state.data,{imageSrc: false})
+                data: R.merge(this.state.data, {imageSrc: false})
             })
         }
         searchImageResult[ index ] = R.merge(searchImageResult[ index ], {className})
@@ -208,7 +206,7 @@ export default class App extends Component {
     }
     handleReady() {J.emitter.emit("ready")}
     handleRemove() {J.emitter.emit("remove")}
-    handleToggle(){
+    handleToggle() {
         this.setState({
             data: R.set(R.lensProp("childSafetyFlag"), R.not(this.state.data.childSafetyFlag), this.state.data)
         })
@@ -257,9 +255,9 @@ export default class App extends Component {
             J.emitter.emit("ready")
         }
         this.setState({
-            data: R.merge(this.state.data,{dePart: event.target.value})
+            data: R.merge(this.state.data, {dePart: event.target.value})
         })
-        if(event.target.value.length>68){
+        if (event.target.value.length > 68) {
             this.log(`TOO LONG - ${event.target.value.length}`, 5)
         }
     }
@@ -268,9 +266,9 @@ export default class App extends Component {
             J.emitter.emit("ready")
         }
         this.setState({
-            data: R.merge(this.state.data,{enPart: event.target.value})
+            data: R.merge(this.state.data, {enPart: event.target.value})
         })
-        if(event.target.value.length>68){
+        if (event.target.value.length > 68) {
             this.log(`TOO LONG - ${event.target.value.length}`, 5)
         }
     }
@@ -283,16 +281,16 @@ export default class App extends Component {
                 <a className="button" onClick={this.handleNextNavigation}><span className="icon"><i className="fa fa-arrow-circle-right"></i></span></a>
                 <a className="button is-primary is-inverted" onClick={this.handleReady}><span className="icon"><i className="fa fa-check"></i></span></a>
                 <a className="button is-primary is-inverted" onClick={this.handleRemove}><span className="icon"><i className="fa fa-remove"></i></span></a>
-                <a id="toggleId" className={`button ${this.state.data.childSafetyFlag?"is-success":"is-danger"} is-inverted`} onClick={this.handleToggle}><span className="icon"><i className="fa fa-child"></i></span></a>
+                <a id="toggleId" className={`button ${this.state.data.childSafetyFlag ? "is-success" : "is-danger"} is-inverted`} onClick={this.handleToggle}><span className="icon"><i className="fa fa-child"></i></span></a>
             </div>
             <div className="column is-2">
-                <input autoFocus={false} className="searchImageKeyword" type="search" value={this.state.searchImageKeyword} size={this.state.searchImageKeyword.length>10?this.state.searchImageKeyword.length:10} onChange={this.handleSearchInput} onKeyPress={this.handleSearchInput}/>
+                <input autoFocus={false} className="searchImageKeyword" type="search" value={this.state.searchImageKeyword} size={this.state.searchImageKeyword.length > 10 ? this.state.searchImageKeyword.length : 10} onChange={this.handleSearchInput} onKeyPress={this.handleSearchInput}/>
             </div>
             <div className="column is-3">
-                <input className="deWordInput" type="text" value={this.state.deWord} placeholder="deWord" spellCheck="true" size={this.state.deWord.length>10?this.state.deWord.length:10} onChange={this.handleDeWordInput} onKeyPress={this.handleDeWordInput}/>
+                <input className="deWordInput" type="text" value={this.state.deWord} placeholder="deWord" spellCheck="true" size={this.state.deWord.length > 10 ? this.state.deWord.length : 10} onChange={this.handleDeWordInput} onKeyPress={this.handleDeWordInput}/>
             </div>
             <div className="column is-3">
-                <input className="enWordInput" type="text" value={this.state.enWord} placeholder="enWord" spellCheck="true" size={this.state.enWord.length>10?this.state.enWord.length:10} onChange={this.handleEnWordInput} onKeyPress={this.handleEnWordInput}/>
+                <input className="enWordInput" type="text" value={this.state.enWord} placeholder="enWord" spellCheck="true" size={this.state.enWord.length > 10 ? this.state.enWord.length : 10} onChange={this.handleEnWordInput} onKeyPress={this.handleEnWordInput}/>
             </div>
         </div>
         <div className="columns box">
@@ -305,7 +303,7 @@ export default class App extends Component {
         </div>
         <div className="columns is-multiline box has-text-centered">
         {this.state.searchImageResult.map((val, index)=>{
-            if(R.gt(index,this.state.paginationIndex)&&R.lte(index,this.state.paginationIndex+this.state.paginationPerPageCount)){
+            if (R.gt(index, this.state.paginationIndex) && R.lte(index, this.state.paginationIndex + this.state.paginationPerPageCount)) {
                 return <Image key={index} className={`${val.className} ${index}`} handleImageClick={this.handleImageClick} imageSrc={val.imageThumb} />
             }
         })}
