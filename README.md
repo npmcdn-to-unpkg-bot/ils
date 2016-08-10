@@ -1,6 +1,18 @@
 # i-learn-smarter
 The current code base of my project in progress
 
+# Naming convention patterns as functions
+```
+function learningMemePublish(data) {
+    return new Promise(resolve=>{
+        uploadImage.main(data).then(uploadImageData=>{
+            resolve(uploadImageData)
+        })
+    })
+}
+```
+
+
 # Naming convention patterns
 - common names
 ```

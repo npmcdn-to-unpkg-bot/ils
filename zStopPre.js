@@ -13,21 +13,16 @@ async function shadowProcess() {
         J.box("5th time")
         state = await generateSitemap.main()
     }
-    J.lg(state)
-    J.lg(counter)
     return state
 }
 
 async function mainProcess() {
     let state
     for (let singleCommand of commands) {
-        J.log(singleCommand)
         state = await J.willRunFixedCommand(singleCommand)
-        J.log(state)
     }
     return state
 }
 mainProcess().then(incoming=>{
-    J.log(incoming, "after main")
     shadowProcess().then(console.log)
 })

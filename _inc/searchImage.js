@@ -1,10 +1,9 @@
 "use strict"
-const fs = require("fs-extra")
 const scrapeIt = require("scrape-it")
 const cheerio = require("cheerio")
 const fetch = require("node-fetch")
 const request = require("request")
-const J = require("../../common.js")
+const J = require("../common.js")
 const R = require("ramda")
 const env = require("dotenv-helper")
 const Bing = require("node-bing-api")({ accKey: env.getEnv("bing") })
@@ -25,8 +24,6 @@ function imageFirst(keyword, searchLimit = 40) {
                     willReturn.push({
                         imageThumb: val.MediaUrl,
                         imageSrc: val.MediaUrl
-                        //width: val.Width,
-                        //height: val.Height
                     })
                 })
                 resolve(willReturn)
@@ -98,7 +95,6 @@ function imageThird(keyword) {
         })
     })
 }
-
 function main(keyword) {
     J.box(keyword)
     return new Promise(resolve=>{
@@ -111,8 +107,6 @@ function main(keyword) {
         })
     })
 }
-
-
 module.exports.main = main
 module.exports.imageFirst = imageFirst
 module.exports.imageSecond = imageSecond

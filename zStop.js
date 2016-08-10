@@ -41,11 +41,9 @@ var shadowProcess = function () {
                         state = _context.sent;
 
                     case 13:
-                        J.lg(state);
-                        J.lg(counter);
                         return _context.abrupt("return", state);
 
-                    case 16:
+                    case 14:
                     case "end":
                         return _context.stop();
                 }
@@ -75,69 +73,65 @@ var mainProcess = function () {
 
                     case 6:
                         if (_iteratorNormalCompletion = (_step = _iterator.next()).done) {
-                            _context2.next = 16;
+                            _context2.next = 14;
                             break;
                         }
 
                         singleCommand = _step.value;
-
-                        J.log(singleCommand);
-                        _context2.next = 11;
+                        _context2.next = 10;
                         return J.willRunFixedCommand(singleCommand);
 
-                    case 11:
+                    case 10:
                         state = _context2.sent;
 
-                        J.log(state);
-
-                    case 13:
+                    case 11:
                         _iteratorNormalCompletion = true;
                         _context2.next = 6;
                         break;
 
-                    case 16:
-                        _context2.next = 22;
+                    case 14:
+                        _context2.next = 20;
                         break;
 
-                    case 18:
-                        _context2.prev = 18;
+                    case 16:
+                        _context2.prev = 16;
                         _context2.t0 = _context2["catch"](4);
                         _didIteratorError = true;
                         _iteratorError = _context2.t0;
 
-                    case 22:
-                        _context2.prev = 22;
-                        _context2.prev = 23;
+                    case 20:
+                        _context2.prev = 20;
+                        _context2.prev = 21;
 
                         if (!_iteratorNormalCompletion && _iterator.return) {
                             _iterator.return();
                         }
 
-                    case 25:
-                        _context2.prev = 25;
+                    case 23:
+                        _context2.prev = 23;
 
                         if (!_didIteratorError) {
-                            _context2.next = 28;
+                            _context2.next = 26;
                             break;
                         }
 
                         throw _iteratorError;
 
+                    case 26:
+                        return _context2.finish(23);
+
+                    case 27:
+                        return _context2.finish(20);
+
                     case 28:
-                        return _context2.finish(25);
-
-                    case 29:
-                        return _context2.finish(22);
-
-                    case 30:
                         return _context2.abrupt("return", state);
 
-                    case 31:
+                    case 29:
                     case "end":
                         return _context2.stop();
                 }
             }
-        }, _callee2, this, [[4, 18, 22, 30], [23,, 25, 29]]);
+        }, _callee2, this, [[4, 16, 20, 28], [21,, 23, 27]]);
     }));
 
     return function mainProcess() {
@@ -154,6 +148,5 @@ var generateSitemap = require("./_inc/generateSitemap");
 var commands = ["git add . --all", "git commit -m \"" + new Date().toGMTString() + "\"", "git push"];
 
 mainProcess().then(function (incoming) {
-    J.log(incoming, "after main");
     shadowProcess().then(console.log);
 });

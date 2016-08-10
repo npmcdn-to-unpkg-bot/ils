@@ -15,6 +15,7 @@ let initData = {
     "dePart": "",
     "enPart": ""
 }
+
 class Image extends Component {
     constructor (props) {
         super(props)
@@ -50,7 +51,7 @@ export default class App extends Component {
             enWord: "",
             searchImageKeyword: "",
             data: initData,
-            dataHolder: [],
+            dataHolder: null,
             searchImageResult: [],
             paginationIndex: 0,
             paginationPerPageCount: 20,
@@ -86,46 +87,26 @@ export default class App extends Component {
             })
         },seconds*1000)
     }
-    lg(msg, seconds = 2){
-        let message = R.type(msg)==="String"?msg:JSON.stringify(msg)
-        setTimeout(()=>{
-            this.setState({
-                notificationMessage: "",
-                notificationState: false
-            },()=>{
-                this.setState({
-                    notificationMessage: message,
-                    notificationState: true
-                })
-            })
-        },seconds*1000)
-        setTimeout(()=>{
-            this.setState({
-                notificationState: false
-            })
-        },seconds*1000+2000)
-    }
     componentDidMount() {
         J.emitter.on("init", ()=>{
-            J.postData(`${J.hapi}/imageless`,{}).then(incoming => {
-                    let data = J.addSingleProp("childSafetyFlag", true, incoming)
+            J.postData(`${J.hapi}/imageless`,{}).then(data => {
+                    data = J.addSingleProp("childSafetyFlag", true, data)
                     data = J.addSingleProp("imageSrc", false, data)
                     let searchImageKeywordArr = J.stopWordsFilter(data.dePart)
                     searchImageKeywordArr = R.sort((a,b)=>{return a.length-b.length},searchImageKeywordArr)
                     if(searchImageKeywordArr.length>0){
                         this.setState({
                             data,
-                            searchImageKeyword: R.last(searchImageKeywordArr),
+                            searchImageKeyword: J.removePunctuation(R.last(searchImageKeywordArr)).cleanStr,
                             deWord: "",
                             enWord: ""
                         },()=>{
                             this.log(this.state.data.dePart.length,3)
                             if(this.state.data.dePart.length>70){
-                                this.lg("TOO LONG!!")
+                                this.log("TOO LONG!!")
                             }
-                            J.emitter.emit("searchImageFirst")
+                            J.emitter.emit("searchImageFast")
                             setTimeout(()=>{
-                                J.log(searchImageKeywordArr)
                                 this.setState({searchImageKeyword: ""})
                             },1000)
                         })
@@ -141,47 +122,45 @@ export default class App extends Component {
         })
         J.emitter.on("ready", ()=>{
             J.log("ready")
-            if(!R.equals(this.state.data,this.state.dataHolder)){
-                this.log(this.normalizeData())
-                J.log(this.normalizeData())
-                let willSend = JSON.stringify({data: this.state.data})
-                if(R.type(this.state.data.imageSrc)==="String"){
-                    J.postData(`${J.hapi}/learningMeme`, willSend).then(() =>{
-                        this.lg("learningMeme")
+            let data = this.normalizeData(this.state.data)
+            if(data===false){
+                if(R.type(data.imageSrc)!=="String"){
+                    J.postData(`${J.hapi}/learningMemePublish`, {data}).then(() =>{
+                        J.log("learningMemePublish is done")
                     })
+                    J.emitter.emit("init")
                 }else{
-                    J.postData(`${J.hapi}/updateSingle`, willSend).then(() =>{
-                        this.lg("updated")
-                    })
+                    this.log("Something is amiss!!")
                 }
             }else{
-                this.log("nothing changed")
+                this.log("Something is amiss!!")
             }
-            J.emitter.emit("init")
         })
         J.emitter.on("remove",()=>{
             let willSend = JSON.stringify({id: this.state.data.id})
             J.log(this.state.data.id)
             this.log(this.state.data.id)
-            J.postData(`${J.host}/removeSingle`,willSend).then(() =>{this.lg("removed")})
+            J.postData(`${J.host}/removeSingle`,willSend).then(() =>{this.log("removed")})
             J.emitter.emit("next")
         })
         J.emitter.on("searchImage", ()=>{
-            J.log("searchImage")
-            this.log("searchImage",1)
-            J.postData(`${J.host}/searchImage`, JSON.stringify({searchImageKeyword: this.state.searchImageKeyword})).then(incoming =>{
-                this.setState({searchImageResult: J.addProp("className", "unselectedImage", incoming)})
+            let searchImageKeyword = this.state.searchImageKeyword
+            J.log(searchImageKeyword)
+            J.postData(`${J.hapi}/searchImage`, {searchImageKeyword}).then(data =>{
+                this.setState({searchImageResult: J.addProp("className", "unselectedImage", data)})
             })
         })
-        J.emitter.on("searchImageFirst", ()=>{
-            J.postData(`${J.host}/searchImageFirst`, JSON.stringify({searchImageKeyword: this.state.searchImageKeyword})).then(incoming =>{
-                this.setState({searchImageResult: J.addProp("className", "unselectedImage", incoming)})
+        J.emitter.on("searchImageFast", ()=>{
+            let searchImageKeyword = this.state.searchImageKeyword
+            J.log(searchImageKeyword)
+            J.postData(`${J.hapi}/searchImageFast`, {searchImageKeyword}).then(data =>{
+                this.setState({searchImageResult: J.addProp("className", "unselectedImage", data)})
             })
         })
         initOnce()
     }
-    normalizeData(){
-        let willReturn = this.state.data
+    normalizeData(data){
+        let willReturn = data
         willReturn.dePart = J.addFullstop(willReturn.dePart)
         willReturn.enPart = J.addFullstop(willReturn.enPart)
         if(willReturn.category==="preDraft"&&willReturn.enPart!==""){
@@ -193,8 +172,10 @@ export default class App extends Component {
         if(this.state.deWord.length>2){
             willReturn.deWord = this.state.deWord
             willReturn.enWord = this.state.enWord
+            return willReturn
+        }else{
+            return false
         }
-        return willReturn
     }
     handleImageClick(event) {
         let searchImageResult = this.state.searchImageResult
@@ -295,8 +276,6 @@ export default class App extends Component {
                 <a className="button is-primary is-inverted" onClick={this.handleReady}><span className="icon"><i className="fa fa-check"></i></span></a>
                 <a className="button is-primary is-inverted" onClick={this.handleRemove}><span className="icon"><i className="fa fa-remove"></i></span></a>
                 <a id="toggleId" className={`button ${this.state.data.childSafetyFlag?"is-success":"is-danger"} is-inverted`} onClick={this.handleToggle}><span className="icon"><i className="fa fa-child"></i></span></a>
-                <a className="button is-primary is-inverted" onClick={this.handleRemove}><span className="icon"><i className="fa fa-flag-o"></i></span></a>
-                <a className="button is-primary is-inverted" onClick={this.handleRemove}><span className="icon"><i className="fa fa-flag"></i></span></a>
             </div>
             <div className="column is-2">
                 <input autoFocus={false} className="searchImageKeyword" type="search" value={this.state.searchImageKeyword} size={this.state.searchImageKeyword.length>10?this.state.searchImageKeyword.length:10} onChange={this.handleSearchInput} onKeyPress={this.handleSearchInput}/>

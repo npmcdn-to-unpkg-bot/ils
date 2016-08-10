@@ -2,11 +2,20 @@
 const express = require("express")
 const J = require("../../common")
 const config = require("../_inc/config")
-const db = require("../_inc/db")
+const db = require("../../_inc/db")
+const searchImage = require("../../_inc/searchImage")
+const uploadImage = require("../../_inc/uploadImage")
 const R = require("ramda")
 const env = require("dotenv-helper")
 const mongoose = require("mongoose")
 let router = express.Router()
+function learningMemePublish(data) {
+    return new Promise(resolve=>{
+        uploadImage.main(data).then(uploadImageData=>{
+
+        })
+    })
+}
 router.get("/", (req, res) =>{res.render("index")})
 router.get("/test", (req, res) =>{res.render("test")})
 router.get("/tunaPlayerDemo", (req, res) =>{res.render("tunaPlayerDemo")})
@@ -89,7 +98,6 @@ router.post("/updateMany/:model", (req, res) =>{
         res.send(config.badQuery)
     }
 })
-
 router.post("/readModel/:model", (req, res) =>{
     if (J.auth(req.ip) && R.indexOf(req.params.model, config.models) !== -1) {
         J.logger.debug(`model ${req.params.model} ip ${req.ip}`)
@@ -113,6 +121,33 @@ router.post("/imageless", (req, res) =>{
     if (J.auth(req.ip)) {
         db.randomCondition().then(incoming=>{
             res.send(incoming)
+        })
+    } else {
+        res.send(config.badQuery)
+    }
+})
+router.post("/searchImage", (req, res) =>{
+    if (J.auth(req.ip)) {
+        searchImage.main(req.body.searchImageKeyword).then(incoming =>{
+            res.send(incoming)
+        })
+    } else {
+        res.send(config.badQuery)
+    }
+})
+router.post("/searchImageFast", (req, res) =>{
+    if (J.auth(req.ip)) {
+        searchImage.imageFirst(req.body.searchImageKeyword).then(incoming =>{
+            res.send(incoming)
+        })
+    } else {
+        res.send(config.badQuery)
+    }
+})
+router.post("/learningMemePublish", (req, res) =>{
+    if (J.auth(req.ip)) {
+        learningMemePublish(req.body.data).then(data=>{
+            res.send(data)
         })
     } else {
         res.send(config.badQuery)
