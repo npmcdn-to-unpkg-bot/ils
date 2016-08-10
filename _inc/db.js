@@ -194,6 +194,13 @@ function findOneSkipCondition() {
         });
     });
 }
+function findOneAndUpdateMain(data) {
+    return new Promise(function (resolve) {
+        mongoose.model("Main").findOneAndUpdate({ id: data.id }, data, { new: true }).exec(function (err, result) {
+            resolve(result);
+        });
+    });
+}
 function counter() {
     return new Promise(function (resolve) {
         mongoose.model("Counter").find({}, function (error, incoming) {
@@ -232,6 +239,7 @@ module.exports.randomCondition = function (modelName, condition) {
 module.exports.increaseCounter = function () {
     return increaseCounter();
 };
+module.exports.findOneAndUpdateMain = findOneAndUpdateMain;
 module.exports.findOneSkip = findOneSkip;
 module.exports.findOneSkipCondition = findOneSkipCondition;
 module.exports.count = count;

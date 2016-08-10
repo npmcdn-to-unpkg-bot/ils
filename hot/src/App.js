@@ -15,7 +15,6 @@ let initData = {
     "dePart": "",
     "enPart": ""
 }
-
 class Image extends Component {
     constructor (props) {
         super(props)
@@ -30,9 +29,11 @@ class Image extends Component {
     render () {
         let numberIs = 15
         let imageStyle = {
-            minWidth: `${J.getWidthPx(numberIs)}px`,
+            //minWidth: `${J.getWidthPx(numberIs)}px`,
+            minWidth: `${numberIs}vw`,
             height: "auto",
-            maxHeight: `${J.getHeightPx(numberIs-2)}px`
+            maxHeight: `${numberIs-2}vh`
+            //maxHeight: `${J.getHeightPx(numberIs-2)}px`
         }
         return (
             <span className="column" onClick={this.props.handleImageClick}>
@@ -123,8 +124,8 @@ export default class App extends Component {
         J.emitter.on("ready", ()=>{
             J.log("ready")
             let data = this.normalizeData(this.state.data)
-            if(data===false){
-                if(R.type(data.imageSrc)!=="String"){
+            if(data!==false){
+                if(R.type(data.imageSrc)==="String"){
                     J.postData(`${J.hapi}/learningMemePublish`, {data}).then(() =>{
                         J.log("learningMemePublish is done")
                     })

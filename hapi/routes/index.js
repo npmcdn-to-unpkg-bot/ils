@@ -12,12 +12,15 @@ let router = express.Router()
 function learningMemePublish(data) {
     return new Promise(resolve=>{
         uploadImage.main(data).then(uploadImageData=>{
-
+            console.log(uploadImageData)
+            let obj = R.merge(data, {imageSrc:uploadImageData})
+            db.findOneAndUpdateMain(obj).then(updateData=>{
+                res.send(updateData)
+            })
         })
     })
 }
 router.get("/", (req, res) =>{res.render("index")})
-router.get("/test", (req, res) =>{res.render("test")})
 router.get("/tunaPlayerDemo", (req, res) =>{res.render("tunaPlayerDemo")})
 router.get("/aboutOrderSentence", (req, res)=> {res.render("aboutOrderSentence")})
 router.get("/about", (req, res) =>{res.render("about")})

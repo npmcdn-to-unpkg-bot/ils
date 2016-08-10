@@ -51,13 +51,13 @@ function main(data) {
         let height
         if (!imageSrc.includes(".jpg") && !imageSrc.includes(".png")) {resolve(null)}
         imageSize(imageSrc, (err, result) =>{
-            console.log(result)
             if (result === undefined) {return resolve(false)}
             width = result.width
             height = result.height
             download(imageSrc).then(imageData=>{
                 let currentDestination = imageDestination(imageSrc, `${newImageName}Pre`)
                 let finalDestination = imageDestination(imageSrc, newImageName)
+                let memeDestination = imageDestination(imageSrc, `${newImageName}Meme`)
                 console.log(width, height,currentDestination, finalDestination, memeDestination)
                 fs.writeFileSync(currentDestination, imageData)
                 lwip.open(currentDestination, (err, lwipImage)=>{
@@ -66,9 +66,14 @@ function main(data) {
                         .contain(1000, 750, {r: 176, g: 190, b: 197, a: 100})
                         .writeFile(finalDestination, (err)=>{
                             uploadImgur(finalDestination).then(imageSrc =>{
-                                resolve({imageSrc, originalSrc: data.imageSrc, name: newImageName})
-                                fs.removeSync(currentDestination)
-                                fs.removeSync(finalDestination)
+                                createMeme(finalDestination, memeDestination, data.enPart, data.dePart).then(()=>{
+                                    uploadImgur(memeDestination).then(memeSrc =>{
+                                        resolve({imageSrc, memeSrc, originalSrc: data.imageSrc, name: newImageName})
+                                        fs.removeSync(currentDestination)
+                                        fs.removeSync(finalDestination)
+                                        fs.removeSync(memeDestination)
+                                    })
+                                })
                             })
                         })
                     } else {
@@ -80,9 +85,14 @@ function main(data) {
                             .contain(1000, 750, {r: 176, g: 190, b: 197, a: 100})
                             .writeFile(finalDestination, (err)=>{
                                 uploadImgur(finalDestination).then(imageSrc =>{
-                                    resolve({imageSrc, originalSrc: data.imageSrc, name: newImageName})
-                                    fs.removeSync(currentDestination)
-                                    fs.removeSync(finalDestination)
+                                    createMeme(finalDestination, memeDestination, data.enPart, data.dePart).then(()=>{
+                                        uploadImgur(memeDestination).then(memeSrc =>{
+                                            resolve({imageSrc, memeSrc, originalSrc: data.imageSrc, name: newImageName})
+                                            fs.removeSync(currentDestination)
+                                            fs.removeSync(finalDestination)
+                                            fs.removeSync(memeDestination)
+                                        })
+                                    })
                                 })
                             })
                         } else {
@@ -91,9 +101,14 @@ function main(data) {
                             .contain(1000, 750, {r: 176, g: 190, b: 197, a: 100})
                             .writeFile(finalDestination, (err)=>{
                                 uploadImgur(finalDestination).then(imageSrc =>{
-                                    resolve({imageSrc, originalSrc: data.imageSrc, name: newImageName})
-                                    fs.removeSync(currentDestination)
-                                    fs.removeSync(finalDestination)
+                                    createMeme(finalDestination, memeDestination, data.enPart, data.dePart).then(()=>{
+                                        uploadImgur(memeDestination).then(memeSrc =>{
+                                            resolve({imageSrc, memeSrc, originalSrc: data.imageSrc, name: newImageName})
+                                            fs.removeSync(currentDestination)
+                                            fs.removeSync(finalDestination)
+                                            fs.removeSync(memeDestination)
+                                        })
+                                    })
                                 })
                             })
                         }
@@ -103,5 +118,30 @@ function main(data) {
         })
     })
 }
+function test(data) {
+    let imageSrc = data.imageSrc
+    let newImageName = nameFn(data.enPart)
+    return new Promise(resolve =>{
+        let width
+        let height
+        if (!imageSrc.includes(".jpg") && !imageSrc.includes(".png")) {resolve(null)}
+        imageSize(imageSrc, (err, result) =>{
+            if (result === undefined) {return resolve(false)}
+            width = result.width
+            height = result.height
+            download(imageSrc).then(imageData=>{
+                let currentDestination = imageDestination(imageSrc, `${newImageName}Pre`)
+                let finalDestination = imageDestination(imageSrc, newImageName)
+                let memeDestination = imageDestination(imageSrc, `${newImageName}Meme`)
+                console.log(width, height,currentDestination, finalDestination, memeDestination)
+                fs.writeFile("test.jpg", imageData,(err)=>{
+                    console.log(err)
+                    resolve(err)
+                })
+            })
+        })
+    })
+}
 
+module.exports.test = test
 module.exports.main = main

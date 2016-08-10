@@ -44,6 +44,13 @@ function findOneSkipCondition(modelName = "Main", skipValue = 0, condition) {
         })
     })
 }
+function findOneAndUpdateMain(data) {
+    return new Promise(resolve=>{
+        mongoose.model("Main").findOneAndUpdate({id: data.id}, data, {new: true}).exec((err, result)=>{
+            resolve(result)
+        })
+    })
+}
 function counter() {
     return new Promise(resolve=>{
         mongoose.model("Counter").find({}, (error, incoming)=>{
@@ -83,6 +90,7 @@ module.exports.addMain = (data)=>{return addMain(data)}
 module.exports.random = (modelName)=>{return random(modelName)}
 module.exports.randomCondition = (modelName, condition)=>{return randomCondition(modelName, condition)}
 module.exports.increaseCounter = ()=>{return increaseCounter()}
+module.exports.findOneAndUpdateMain = findOneAndUpdateMain
 module.exports.findOneSkip = findOneSkip
 module.exports.findOneSkipCondition = findOneSkipCondition
 module.exports.count = count
