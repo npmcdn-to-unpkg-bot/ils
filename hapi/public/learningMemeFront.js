@@ -648,6 +648,7 @@ var App = function (_Component) {
                 backgroundSize: "cover",
                 backgroundImage: "url(" + _commonReact2.default.httpsFn(this.state.data.imageSrc) + ")"
             };
+            _commonReact2.default.log(memeContainer);
             var memeTextTop = {
                 top: "0px",
                 fontWeight: "700",

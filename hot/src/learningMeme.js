@@ -166,6 +166,7 @@ export default class App extends Component {
             backgroundSize: "cover",
             backgroundImage: `url(${J.httpsFn(this.state.data.imageSrc)})`
         }
+        J.log(memeContainer)
         let memeTextTop = {
             top: "0px",
             fontWeight: "700",
