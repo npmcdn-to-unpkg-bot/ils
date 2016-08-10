@@ -2,7 +2,7 @@ var express = require('express')
 var fs = require('fs')
 var https = require('https')
 
-var ports =  [80, 443]
+var ports =  [3001, 443]
 
 var app = express()
 
@@ -18,5 +18,8 @@ server.listen(ports[1])
 app.listen(ports[0])
 
 app.use('/', (req, res) => {
+  res.end('Hi')
+})
+app.use('/test', (req, res) => {
   res.end('Hi')
 })
