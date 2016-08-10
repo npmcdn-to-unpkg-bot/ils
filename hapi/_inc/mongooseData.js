@@ -1,6 +1,7 @@
 "use strict"
 let mongoose = require("mongoose")
 let initConnection = (connectionString)=>{
+    mongoose.Promise = global.Promise
     mongoose.connect(connectionString)
     let db = mongoose.connection
     db.on("error", (err)=>{
@@ -12,6 +13,7 @@ let initConnection = (connectionString)=>{
 }
 let initTestConnection = (connectionString)=>{
     return new Promise(resolve=>{
+        mongoose.Promise = global.Promise
         mongoose.connect(connectionString)
         let db = mongoose.connection
         db.on("error", (err)=>{
@@ -46,6 +48,7 @@ let initSchemas = ()=>{
         imageSrc: {type: Schema.Types.Mixed, required: false}
     })
     let counterSchema = new Schema({counter: Number})
+
     mongoose.model("TranslateDraft", translateDraftSchema)
     mongoose.model("Main", mainSchema)
     mongoose.model("Counter", counterSchema)

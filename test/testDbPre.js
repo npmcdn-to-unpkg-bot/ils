@@ -5,7 +5,6 @@ const sinon = require("sinon")
 var mongoose = require("mongoose")
 var mockgoose = require("mockgoose")
 const db = require("../hapi/_inc/db")
-//mockgoose(mongoose)
 let testModel
 const mongooseData = require("../hapi/_inc/mongooseData")
 describe("mongoose", ()=>{

@@ -6,7 +6,6 @@ var sinon = require("sinon");
 var mongoose = require("mongoose");
 var mockgoose = require("mockgoose");
 var db = require("../hapi/_inc/db");
-//mockgoose(mongoose)
 var testModel = void 0;
 var mongooseData = require("../hapi/_inc/mongooseData");
 describe("mongoose", function () {

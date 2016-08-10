@@ -1,7 +1,8 @@
+coverage/
 node_modules/
 .env
 npm-debug.log
 znote.md
 tmp
 cache/
-tests/sitespeed-result/
+test/sitespeed-result/

@@ -144,6 +144,7 @@ let removePunctuation = R.compose(R.replace(/\.|\!|\,|\-|\?/, ""))
 let takeName = R.compose(R.takeLast(1), R.split("/"))
 let anyRaw = R.flip(R.any)
 let anyFn = R.curry(anyRaw)
+module.exports.oneLevelUp = R.compose(R.join("/"), R.dropLast(1), R.split("/"))
 module.exports.twoLevelUp = R.compose(R.join("/"), R.dropLast(2), R.split("/"))
 module.exports.firstLetterCapital = firstLetterCapital
 module.exports.stop = stop

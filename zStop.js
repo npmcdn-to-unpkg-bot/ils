@@ -8,38 +8,44 @@ var _asyncToGenerator2 = require("babel-runtime/helpers/asyncToGenerator");
 
 var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
 
-var dbFn = function () {
+var shadowProcess = function () {
     var _ref = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee() {
-        var iMeanNothing, counter;
+        var state, counter;
         return _regenerator2.default.wrap(function _callee$(_context) {
             while (1) {
                 switch (_context.prev = _context.next) {
                     case 0:
-                        iMeanNothing = void 0;
-                        counter = void 0;
-                        _context.next = 4;
+                        state = void 0;
+                        _context.next = 3;
                         return db.loadParent("counter");
 
-                    case 4:
-                        iMeanNothing = _context.sent;
-
-                        if (iMeanNothing === undefined) {
-                            counter = 0;
-                        } else {
-                            counter = iMeanNothing + 1;
-                        }
-                        _context.next = 8;
+                    case 3:
+                        state = _context.sent;
+                        counter = state === undefined ? counter = 0 : state + 1;
+                        _context.next = 7;
                         return db.saveParent("counter", counter);
 
-                    case 8:
-                        iMeanNothing = _context.sent;
+                    case 7:
+                        state = _context.sent;
 
-                        if (counter % 5 === 0 && env.getEnv("hostTag") === "root") {
-                            J.box("5th time");
+                        if (!(counter % 5 === 0 && env.getEnv("hostTag") === "root")) {
+                            _context.next = 13;
+                            break;
                         }
-                        return _context.abrupt("return", iMeanNothing);
 
-                    case 11:
+                        J.box("5th time");
+                        _context.next = 12;
+                        return generateSitemap.main();
+
+                    case 12:
+                        state = _context.sent;
+
+                    case 13:
+                        J.lg(state);
+                        J.lg(counter);
+                        return _context.abrupt("return", state);
+
+                    case 16:
                     case "end":
                         return _context.stop();
                 }
@@ -47,20 +53,20 @@ var dbFn = function () {
         }, _callee, this);
     }));
 
-    return function dbFn() {
+    return function shadowProcess() {
         return _ref.apply(this, arguments);
     };
 }();
 
-var main = function () {
+var mainProcess = function () {
     var _ref2 = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee2() {
-        var awaited, _iteratorNormalCompletion, _didIteratorError, _iteratorError, _iterator, _step, singleCommand;
+        var state, _iteratorNormalCompletion, _didIteratorError, _iteratorError, _iterator, _step, singleCommand;
 
         return _regenerator2.default.wrap(function _callee2$(_context2) {
             while (1) {
                 switch (_context2.prev = _context2.next) {
                     case 0:
-                        awaited = void 0;
+                        state = void 0;
                         _iteratorNormalCompletion = true;
                         _didIteratorError = false;
                         _iteratorError = undefined;
@@ -69,68 +75,72 @@ var main = function () {
 
                     case 6:
                         if (_iteratorNormalCompletion = (_step = _iterator.next()).done) {
-                            _context2.next = 14;
+                            _context2.next = 16;
                             break;
                         }
 
                         singleCommand = _step.value;
-                        _context2.next = 10;
+
+                        J.log(singleCommand);
+                        _context2.next = 11;
                         return J.willRunFixedCommand(singleCommand);
 
-                    case 10:
-                        awaited = _context2.sent;
-
                     case 11:
+                        state = _context2.sent;
+
+                        J.log(state);
+
+                    case 13:
                         _iteratorNormalCompletion = true;
                         _context2.next = 6;
                         break;
 
-                    case 14:
-                        _context2.next = 20;
+                    case 16:
+                        _context2.next = 22;
                         break;
 
-                    case 16:
-                        _context2.prev = 16;
+                    case 18:
+                        _context2.prev = 18;
                         _context2.t0 = _context2["catch"](4);
                         _didIteratorError = true;
                         _iteratorError = _context2.t0;
 
-                    case 20:
-                        _context2.prev = 20;
-                        _context2.prev = 21;
+                    case 22:
+                        _context2.prev = 22;
+                        _context2.prev = 23;
 
                         if (!_iteratorNormalCompletion && _iterator.return) {
                             _iterator.return();
                         }
 
-                    case 23:
-                        _context2.prev = 23;
+                    case 25:
+                        _context2.prev = 25;
 
                         if (!_didIteratorError) {
-                            _context2.next = 26;
+                            _context2.next = 28;
                             break;
                         }
 
                         throw _iteratorError;
 
-                    case 26:
-                        return _context2.finish(23);
-
-                    case 27:
-                        return _context2.finish(20);
-
                     case 28:
-                        return _context2.abrupt("return", awaited);
+                        return _context2.finish(25);
 
                     case 29:
+                        return _context2.finish(22);
+
+                    case 30:
+                        return _context2.abrupt("return", state);
+
+                    case 31:
                     case "end":
                         return _context2.stop();
                 }
             }
-        }, _callee2, this, [[4, 16, 20, 28], [21,, 23, 27]]);
+        }, _callee2, this, [[4, 18, 22, 30], [23,, 25, 29]]);
     }));
 
-    return function main() {
+    return function mainProcess() {
         return _ref2.apply(this, arguments);
     };
 }();
@@ -140,11 +150,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var J = require("./common");
 var db = require("proud-db");
 var env = require("dotenv-helper");
+var generateSitemap = require("./_inc/generateSitemap");
+var commands = ["git add . --all", "git commit -m \"" + new Date().toGMTString() + "\"", "git push"];
 
-//let commands = ["pm2 kill", "git pull", "pm2 start admin/start.js", "pm2 start hapi/start.js -i max", "pm2 status"]
-var commands = ["pm2 kill", "git pull", "pm2 start hapi/start.js -i max", "pm2 status"];
-
-main().then(function (incoming) {
+mainProcess().then(function (incoming) {
     J.log(incoming, "after main");
-    dbFn().then(console.log);
+    shadowProcess().then(console.log);
 });
