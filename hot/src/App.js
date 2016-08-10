@@ -52,7 +52,6 @@ export default class App extends Component {
             enWord: "",
             searchImageKeyword: "",
             data: initData,
-            dataHolder: null,
             searchImageResult: [],
             paginationIndex: 0,
             paginationPerPageCount: 20,
@@ -90,7 +89,7 @@ export default class App extends Component {
     }
     componentDidMount() {
         J.emitter.on("init", ()=>{
-            J.postData(`${J.hapi}/imageless`,{}).then(data => {
+            J.postData(`http://ilearnsmarter.com/imageless`,{}).then(data => {
                     data = J.addSingleProp("childSafetyFlag", true, data)
                     data = J.addSingleProp("imageSrc", false, data)
                     let searchImageKeywordArr = J.stopWordsFilter(data.dePart)
@@ -123,11 +122,17 @@ export default class App extends Component {
         })
         J.emitter.on("ready", ()=>{
             J.log("ready")
+            let dataHolder = this.state.data
             let data = this.normalizeData(this.state.data)
             if(data!==false){
                 if(R.type(data.imageSrc)==="String"){
-                    J.postData(`${J.hapi}/learningMemePublish`, {data}).then(() =>{
-                        J.log("learningMemePublish is done")
+                    J.log(data)
+                    J.postData(`http://ilearnsmarter.com/learningMemePublish`, {data}).then(response =>{
+                        if(response===null){
+                            this.log("FAIL learningMemePublish!!")
+                        }else{
+                            J.log("learningMemePublish is done")
+                        }
                     })
                     J.emitter.emit("init")
                 }else{
@@ -146,15 +151,16 @@ export default class App extends Component {
         })
         J.emitter.on("searchImage", ()=>{
             let searchImageKeyword = this.state.searchImageKeyword
-            J.log(searchImageKeyword)
-            J.postData(`${J.hapi}/searchImage`, {searchImageKeyword}).then(data =>{
+            J.postData(`http://ilearnsmarter.com/searchImage`, {searchImageKeyword}).then(data =>{
+                data = R.filter(val=>{
+                    return val.imageSrc.includes(".jpg")||val.imageSrc.includes(".png")
+                },data)
                 this.setState({searchImageResult: J.addProp("className", "unselectedImage", data)})
             })
         })
         J.emitter.on("searchImageFast", ()=>{
             let searchImageKeyword = this.state.searchImageKeyword
-            J.log(searchImageKeyword)
-            J.postData(`${J.hapi}/searchImageFast`, {searchImageKeyword}).then(data =>{
+            J.postData(`http://ilearnsmarter.com/searchImageFast`, {searchImageKeyword}).then(data =>{
                 this.setState({searchImageResult: J.addProp("className", "unselectedImage", data)})
             })
         })
@@ -289,11 +295,10 @@ export default class App extends Component {
             </div>
         </div>
         <div className="columns box">
-            <div className="column is-5">
+            <div className="column is-6 is-pulled-right">
                 <input autoFocus={true} spellCheck="true" type="text" size={this.state.data.dePart.length} className="commonInput" value={this.state.data.dePart} onChange={this.handleDeInput} onKeyPress={this.handleDeInput} />
             </div>
-            <div className="column is-2"></div>
-            <div className="column is-5">
+            <div className="column is-6 is-pulled-left">
                 <input autoFocus={false} spellCheck="true" type="text" size={this.state.data.enPart.length} className="commonInput" value={this.state.data.enPart} onChange={this.handleEnInput} onKeyPress={this.handleEnInput} />
             </div>
         </div>

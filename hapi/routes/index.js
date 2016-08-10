@@ -12,7 +12,9 @@ let router = express.Router()
 function learningMemePublish(data) {
     return new Promise(resolve=>{
         uploadImage.main(data).then(uploadImageData=>{
-            console.log(uploadImageData)
+            if (uploadImageData === null) {
+                uploadImageData = false
+            }
             let obj = R.merge(data, {imageSrc:uploadImageData})
             db.findOneAndUpdateMain(obj).then(updateData=>{
                 res.send(updateData)

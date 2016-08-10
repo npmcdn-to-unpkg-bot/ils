@@ -8,9 +8,11 @@ const imgur = require("imgur")
 const env = require("dotenv-helper")
 const memeMaker = require("meme-maker")
 function nameFn(str) {
-    return R.compose(R.toLower, R.join("-"), R.take(4), J.shuffle, R.filter(val=>val.length > 2), R.split(" "), J.removePunctuation)(str)
+    return R.compose(R.toLower, R.join("-"), R.take(4),
+    J.shuffle, R.map(val=>J.removePunctuation(val)),
+    R.filter(val=>val.length > 2), R.split(" "), J.removePunctuation)(str)
 }
-function createMeme(srcPath, outPath,topText, bottomText) {
+function createMeme(srcPath, outPath, topText, bottomText) {
     return new Promise(resolve =>{
         let fontSize = topText.length > 50 || bottomText.length > 50 ? 30 : 46
         let options = {
@@ -52,13 +54,13 @@ function main(data) {
         if (!imageSrc.includes(".jpg") && !imageSrc.includes(".png")) {resolve(null)}
         imageSize(imageSrc, (err, result) =>{
             console.log(result)
-            if (result === undefined) {return resolve(false)}
+            if (result === undefined) {return resolve(null)}
             width = result.width
             height = result.height
             download(imageSrc).then(imageData=>{
+                console.log(width)
                 let currentDestination = imageDestination(imageSrc, `${newImageName}Pre`)
                 let finalDestination = imageDestination(imageSrc, newImageName)
-                console.log(width, height,currentDestination, finalDestination, memeDestination)
                 fs.writeFileSync(currentDestination, imageData)
                 lwip.open(currentDestination, (err, lwipImage)=>{
                     if (width >= 1000) {
