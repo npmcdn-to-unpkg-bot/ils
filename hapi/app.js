@@ -23,7 +23,7 @@ app.get("/*", (request, response, next) => {
     let hostname = (request.headers.host.match(/:/g)) ? request.headers.host.slice(0, request.headers.host.indexOf(":")) : request.headers.host
     if (headerHost.indexOf("www") > -1) {
         response.writeHead(301, {
-            "Location": "http://ilearnsmarter.com" + request.url,
+            "Location": "https://ilearnsmarter.com" + request.url,
             "Expires": (new Date).toGMTString()
         })
         response.end()
