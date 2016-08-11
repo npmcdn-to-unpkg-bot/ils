@@ -21,8 +21,9 @@ app.use(helmet())
 app.get("/*", (request, response, next) => {
     let headerHost = request.headers.host
     let hostname = (request.headers.host.match(/:/g)) ? request.headers.host.slice(0, request.headers.host.indexOf(":")) : request.headers.host
-    J.lg(hostname)
-    J.lg(headerHost)
+    J.lg(request.url)
+    J.log(request.headers.host)
+    J.log(hostname)
     if (headerHost.indexOf("www") > -1) {
         response.writeHead(301, {
             "Location": "https://ilearnsmarter.com" + request.url,
