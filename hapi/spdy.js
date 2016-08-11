@@ -4,6 +4,8 @@
 const app = require("./app.js")
 const fs = require("fs")
 const spdy = require("spdy")
+const express = require("express")
+let httpApp = express()
 httpApp.set("port", 80)
 httpApp.get("*", (req, res, next)=>{
     console.log(req.headers.host,req.headers.path)
