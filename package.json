@@ -1,10 +1,10 @@
 {
-  "name": "i-learn-smarter",
+  "name": "ils",
   "version": "1.0.0",
   "description": "The code of the ilearnsmarter.com",
-  "main": "index.js",
+  "main": "hapi/spdy.js",
   "scripts": {
-    "start": "parallelshell \"node watch\" \"node zStart\" \"nodemon -e js,jsx,css --watch hapi hapi/start.js\" \"nodemon -e js,pug --watch hapi hapi/startAlt.js\"",
+    "start": "parallelshell \"node watch\" \"node zStart\" \"nodemon -e js,jsx,css --watch hapi hapi/start.js\"",
     "a": "babel aPre.js --out-file a.js",
     "aa": "browserify aPre.js -o a.js -t [ babelify --presets [ es2015 react stage-3 stage-2 stage-1 stage-0 ] ] -im",
     "de": "git add . --all&&git commit -m update&&git push",
@@ -12,15 +12,15 @@
     "prod": "node zProd",
     "cover": "istanbul cover node_modules/mocha/bin/_mocha test/testDb.js",
     "watch": "babel watchBefore.js --out-file watch.js",
-    "test": "mocha --timeout 15000 test.js",
+    "test": "mocha --timeout 15000 test/test.js",
     "testReact": "mocha --timeout 15000 test/setupReact.js test/testReact.js",
     "testHapi": "mocha --timeout 15000 test/testHapi.js",
     "testDb": "mocha --timeout 15000 test/testDbPre.js"
   },
-  "author": "self_refactor",
+  "author": "selfrefactor",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/selfrefactor/i-learn-smarter.git"
+    "url": "git+https://github.com/selfrefactor/ils.git"
   },
   "license": "ISC",
   "dependencies": {
@@ -95,6 +95,9 @@
     "griddle-react": "*",
     "image-size": "*",
     "imgur": "*",
+    "imagemin": "*",
+    "imagemin-mozjpeg": "*",
+    "imagemin-pngquant": "*",
     "istanbul": "*",
     "jsdom": "*",
     "karma-mocha": "*",

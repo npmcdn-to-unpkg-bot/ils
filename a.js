@@ -1,8 +1,8 @@
-var fs = require("fs")
-var imagemin = require("image-min")
-var path = require("path")
-
-var src = fs.createReadStream("img.gif")
-var ext = path.extname(src.path)
-
-src.pipe(imagemin({ ext: ext })).pipe(fs.createWriteStream("img-minified" + ext))
+const J = require("./common")
+const imgur = require("imgur")
+const env = require("dotenv-helper")
+console.log("deyan8284@gmail.com", env.getEnv("imgurPassword"), env.getEnv("imgur"))
+imgur.setCredentials("deyan8284@gmail.com", env.getEnv("imgurPassword"), env.getEnv("imgur"))
+imgur.uploadFile("test.png").then(incoming=>{
+    console.log(incoming.data.link)
+})

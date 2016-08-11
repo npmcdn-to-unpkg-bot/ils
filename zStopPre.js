@@ -12,6 +12,7 @@ async function shadowProcess() {
     if (counter % 5 === 0 && env.getEnv("hostTag") === "root") {
         J.box("5th time")
         state = await generateSitemap.main()
+        state = await J.willRunFixedCommand("npm cache clean")
     }
     return state
 }
