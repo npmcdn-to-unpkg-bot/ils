@@ -4,7 +4,7 @@
 const app = require("./app.js")
 const fs = require("fs")
 const spdy = require("spdy")
-const port = 3000
+const port = 80
 let httpsOptions = {
     key: fs.readFileSync("/etc/letsencrypt/live/ilearnsmarter.com/privkey.pem"),
     cert: fs.readFileSync("/etc/letsencrypt/live/ilearnsmarter.com/fullchain.pem"),
