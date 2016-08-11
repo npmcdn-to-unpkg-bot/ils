@@ -4,11 +4,22 @@ const J = require("../common")
 const expect = require("unexpected")
 const imagemin = require("../_inc/imagemin")
 const uploadImage = require("../_inc/uploadImage")
-describe.only("uploadImage", ()=>{
+describe("uploadImage", ()=>{
     it("should work - jpg", (done)=>{
         let obj = {
             imageSrc: "https://i.ytimg.com/vi/l8a4DDb9W3g/maxresdefault.jpg",
             enPart: "Ramda Babel React"
+        }
+        uploadImage.main(obj).then(data=>{
+            J.log(data)
+            expect(true, "to be", true)
+            done()
+        })
+    })
+    it("should work - png", (done)=>{
+        let obj = {
+            imageSrc: "http://www.laughspark.info/uploadfiles/funny-blogging-cat-meme-5669.png",
+            enPart: "Homer Babel React"
         }
         uploadImage.main(obj).then(data=>{
             J.log(data)

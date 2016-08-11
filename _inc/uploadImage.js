@@ -39,11 +39,8 @@ function main(data) {
                 let currentDestination = imageDestination(imageSrc, `${newImageName}Pre`)
                 let finalDestination = imageDestination(imageSrc, newImageName)
                 fs.writeFileSync(currentDestination, imageData)
-                console.log(7, finalDestination)
                 imagemin.main(currentDestination).then(()=>{
-                    console.log(7)
                     lwip.open(currentDestination, (err, lwipImage)=>{
-                        console.log(7, width)
                         if (width >= 1000) {
                             console.log(7, width)
                             lwipImage.batch()
