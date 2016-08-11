@@ -74,6 +74,6 @@ spdy
       console.error(error)
       return process.exit(1)
     } else {
-      console.log('Listening on port: ' + port + '.')
+      console.log('Listening on port:')
     }
   })
