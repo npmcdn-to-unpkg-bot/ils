@@ -94,6 +94,6 @@ var main = function () {
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var J = require("./common");
-var commands = ["git pull", "pm2 kill", "pm2 start hapi/spdy.js -i max", "pm2 status"];
+var commands = ["git pull", "pm2 kill", "pm2 start hapi/ssl.js -i max", "pm2 status"];
 
 main().then(J.lg);
