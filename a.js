@@ -1,7 +1,10 @@
-let uploadImage = require("./_inc/uploadImage")
-let obj = {
-    imageSrc: "http://www.katholisch.at/img/9d/ab/2784e85e93bdaeb9ad9d/Marsch_fuer_Jesus-20160618_5358-preview.jpg",
-    dePart:"mehr",
-    enPart:"more"
-}
-uploadImage.main(obj).then(console.log)
+var fs = require("fs")
+var imagemin = require("image-min")
+var path = require("path")
+
+var src = fs.createReadStream("img.gif")
+var ext = path.extname(src.path)
+
+src
+    .pipe(imagemin({ ext: ext }))
+    .pipe(fs.createWriteStream("img-minified" + ext))
