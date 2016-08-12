@@ -10,10 +10,6 @@ const Future = RFantasy.Future
 const Identity = RFantasy.Identity
 const Maybe = RFantasy.Maybe
 const Just = RFantasy.Just
-let httpsFn = R.replace("http://", "https://", R.__)
-J.log(httpsFn("http://some.jpg"))
-
-
 var observed = K.fromESObservable(new Observable(observer => {
     let willReturn = Math.random() * 10
     delay().then(()=>{
