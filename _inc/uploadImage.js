@@ -5,15 +5,15 @@ const R = require("ramda")
 const lwip = require("lwip")
 const imagemin = require("./imagemin")
 const download = require("download")
-const imgur = require("imgur")
 const env = require("dotenv-helper")
+const imageSize = require("probe-image-size")
+const imgur = require("imgur")
+imgur.setCredentials("deyan8284@gmail.com", env.getEnv("imgurPassword"), env.getEnv("imgur"))
 function nameFn(str) {
     return R.compose(R.toLower, R.join("-"), R.take(4),
     J.shuffle, R.map(val=>J.removePunctuation(val)),
     R.filter(val=>val.length > 2), R.split(" "), J.removePunctuation)(str)
 }
-const imageSize = require("probe-image-size")
-imgur.setCredentials("deyan8284@gmail.com", env.getEnv("imgurPassword"), env.getEnv("imgur"))
 function imageDestination(url, name) {
     return R.compose(R.apply(val => `${__dirname}/tmp/${name}.${val}`), R.of, R.last, R.split("."))(url)
 }
@@ -46,9 +46,7 @@ function main(data) {
                             lwipImage.batch()
                             .contain(1000, 750, {r: 176, g: 190, b: 197, a: 100})
                             .writeFile(finalDestination, (err)=>{
-                                console.log(7, finalDestination)
                                 uploadImgur(finalDestination).then(imageSrc =>{
-                                    console.log(7, finalDestination)
                                     resolve({imageSrc, originalSrc: data.imageSrc, name: newImageName})
                                     fs.removeSync(currentDestination)
                                     fs.removeSync(finalDestination)
@@ -87,5 +85,4 @@ function main(data) {
         })
     })
 }
-
 module.exports.main = main

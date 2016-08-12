@@ -61,6 +61,13 @@ router.get("/translateDraft", (req, res) =>{
         res.send(config.badQuery)
     }
 })
+router.get("/learningMemeAdmin", (req, res) =>{
+    if (J.auth(req.ip)) {
+        res.render("learningMemeAdmin")
+    } else {
+        res.send(config.badQuery)
+    }
+})
 router.post("/counter", (req, res) =>{
     if (J.auth(req.ip)) {
         mongoose.model("Counter").find({}, (error, incoming)=>{

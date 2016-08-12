@@ -7,7 +7,7 @@ function main(imagePath) {
     return new Promise(resolve=>{
         imagemin([imagePath], J.getFileDirectory(imagePath), {
             plugins: [
-                imageminMozjpeg({notrellis: true, fastcrush:true, quality:100}),
+                imageminMozjpeg({progressive: true, notrellis: true, fastcrush:true, quality:100}),
                 imageminPngquant({quality: "65-80"})
             ]
         }).then(() => {

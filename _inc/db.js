@@ -18,13 +18,13 @@ var random = function () {
                     case 0:
                         willReturn = {};
                         _context.next = 3;
-                        return countCondition(modelName, condition);
+                        return count(modelName);
 
                     case 3:
                         willReturn.count = _context.sent;
                         rand = Math.floor(Math.random() * willReturn.count);
                         _context.next = 7;
-                        return findOneSkipCondition(modelName, rand, condition);
+                        return findOneSkip(modelName, rand);
 
                     case 7:
                         willReturn.main = _context.sent;
@@ -113,8 +113,7 @@ var increaseCounter = function () {
 }();
 
 var addMain = function () {
-    var _ref4 = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee4() {
-        var saveData = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+    var _ref4 = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee4(saveData) {
         var willReturn;
         return _regenerator2.default.wrap(function _callee4$(_context4) {
             while (1) {
@@ -131,14 +130,16 @@ var addMain = function () {
 
                     case 6:
                         willReturn.main = _context4.sent;
-                        _context4.next = 9;
+
+                        J.log(willReturn.main);
+                        _context4.next = 10;
                         return increaseCounter();
 
-                    case 9:
+                    case 10:
                         willReturn.holder = _context4.sent;
                         return _context4.abrupt("return", willReturn.main);
 
-                    case 11:
+                    case 12:
                     case "end":
                         return _context4.stop();
                 }
@@ -231,7 +232,11 @@ module.exports.addMain = function (data) {
     return addMain(data);
 };
 module.exports.random = function (modelName) {
-    return random(modelName);
+    return new Promise(function (resolve) {
+        random(modelName).then(function (data) {
+            resolve(data);
+        });
+    });
 };
 module.exports.randomCondition = function (modelName, condition) {
     return randomCondition(modelName, condition);

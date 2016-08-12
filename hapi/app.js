@@ -19,11 +19,9 @@ app.use((req, res, next) =>{
 })
 app.use(helmet())
 app.get("/*", (request, response, next) => {
-    let headerHost = request.headers.host
+    //let headerHost = request.headers.host
     //let hostname = (request.headers.host.match(/:/g)) ? request.headers.host.slice(0, request.headers.host.indexOf(":")) : request.headers.host
-    J.lg(request.url)
-    J.log(request.headers.host)
-    if (headerHost.indexOf("www") > -1) {
+    if (request.headers.host.indexOf("www") > -1) {
         response.writeHead(301, {
             "Location": "https://ilearnsmarter.com" + request.url,
             "Expires": (new Date).toGMTString()

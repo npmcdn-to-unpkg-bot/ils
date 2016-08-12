@@ -53,7 +53,7 @@ export default class App extends Component {
             dePart: "",
             paginationIndex: 0,
             paginationLimit: 0,
-            paginationPerPageCount: 18
+            paginationPerPageCount: 11
         }
         this.handleDeInput = this.handleDeInput.bind(this)
         this.handleEnInput = this.handleEnInput.bind(this)

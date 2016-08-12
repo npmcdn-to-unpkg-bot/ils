@@ -69,7 +69,8 @@ function postData(url, data) {
             data: data,
             method:  "post",
             error: (err) => {
-                console.log(err)
+                console.error(err)
+                console.log("REQWEST ERROR")
                 resolve(null)
             },
             success: (incoming)=> {

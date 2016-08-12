@@ -4,9 +4,9 @@ const R = require("ramda")
 const mongoose = require("mongoose")
 async function random(modelName = "Main") {
     let willReturn = {}
-    willReturn.count = await countCondition(modelName, condition)
+    willReturn.count = await count(modelName)
     let rand = Math.floor(Math.random() * willReturn.count)
-    willReturn.main = await findOneSkipCondition(modelName, rand, condition)
+    willReturn.main = await findOneSkip(modelName, rand)
     return willReturn.main
 }
 async function randomCondition(modelName = "Main", condition = "this.imageSrc===undefined") {
@@ -79,15 +79,22 @@ async function increaseCounter() {
     willReturn.counter = await increaseCounterFn(willReturn.counterValue)
     return willReturn.counter
 }
-async function addMain(saveData = {}) {
+async function addMain(saveData) {
     let willReturn = {}
     willReturn.counter = await counter()
     willReturn.main = await save("Main", R.merge(saveData, {id: willReturn.counter}))
+    J.log(willReturn.main)
     willReturn.holder = await increaseCounter()
     return willReturn.main
 }
 module.exports.addMain = (data)=>{return addMain(data)}
-module.exports.random = (modelName)=>{return random(modelName)}
+module.exports.random = (modelName)=>{
+    return new Promise(resolve=>{
+        random(modelName).then(data=>{
+            resolve(data)
+        })
+    })
+}
 module.exports.randomCondition = (modelName, condition)=>{return randomCondition(modelName, condition)}
 module.exports.increaseCounter = ()=>{return increaseCounter()}
 module.exports.findOneAndUpdateMain = findOneAndUpdateMain

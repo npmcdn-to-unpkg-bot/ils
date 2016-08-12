@@ -28,7 +28,7 @@ app.get("/*", (request, response, next) => {
     let headerHost = request.headers.host
     if (headerHost.indexOf("www") > -1) {
         response.writeHead(301, {
-            "Location": "http://ilearnsmarter.com" + request.url,
+            "Location": "https://ilearnsmarter.com" + request.url,
             "Expires": (new Date).toGMTString()
         })
         response.end()
@@ -67,9 +67,9 @@ http.createServer(httpApp).listen(httpApp.get("port"), () =>{
 })
 spdy.createServer(httpsOptions, app).listen(443, (error) => {
     if (error) {
-      console.error(error)
-      return process.exit(1)
+        console.error(error)
+        return process.exit(1)
     } else {
-      console.log(`Listening on port 443`)
+        console.log("Listening on port 443")
     }
 })
