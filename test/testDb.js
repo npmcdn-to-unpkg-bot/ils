@@ -9,7 +9,14 @@ let testModel
 const mongooseData = require("../hapi/_inc/mongooseData")
 describe.only("mongoose", ()=>{
     it("gitHookTokenWrite", (done)=>{
-        J.postData(`${J.hapi}/gitHookTokenWrite`, {token: "gitHookTokenValueSecond"}).then(data=>{
+        J.postData(`${J.ils}/gitHookTokenWrite`, {token: "gitHookTokenValueSecond"}).then(data=>{
+            J.log(data)
+            expect(1, "to be", 1)
+            done()
+        })
+    })
+    it("gitHookTokenWrite", (done)=>{
+        J.postData(`${J.ils}/gitHookTokenRead`, {token: "gitHookTokenValueSecond"}).then(data=>{
             J.log(data)
             expect(1, "to be", 1)
             done()

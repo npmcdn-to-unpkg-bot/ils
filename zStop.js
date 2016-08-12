@@ -70,7 +70,7 @@ var mainProcess = function () {
                     case 0:
                         token = J.randomSeed();
                         _context2.next = 3;
-                        return J.postData(J.ils + "/githubToken", { token: token });
+                        return J.postData(J.ils + "/githubTokenWrite", { token: token });
 
                     case 3:
                         state = _context2.sent;
