@@ -84,11 +84,8 @@ generator.next()
 function* summer() {
     let sum = 0, value
     while (true) {
-        //receive sent value
         value = yield
         if (value === null) break
-
-        //aggregate values
         sum += value
     }
     return true
