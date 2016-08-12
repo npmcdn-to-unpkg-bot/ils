@@ -25,6 +25,14 @@ function auth(ip) {
     })
     return flag
 }
+function randomSeed(limit = 10) {
+    let willReturn = ""
+    let data = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
+    for (let i = 0; i < limit; i++) {
+        willReturn += data.charAt(Math.floor(Math.random() * data.length))
+    }
+    return willReturn
+}
 function firstLetterCapital(str) {
     return `${R.compose(R.toUpper, R.head)(str)}${R.tail(str)}`
 }
@@ -177,3 +185,6 @@ module.exports.remove = db.remove
 module.exports.removeParent = db.removeParent
 module.exports.config = config
 module.exports.getFileDirectory = R.compose(R.join("/"), R.init, R.split("/"))
+module.exports.hapi = "http://localhost:3000"
+module.exports.ils = "https://ilearnsmarter.com"
+module.exports.randomSeed = randomSeed

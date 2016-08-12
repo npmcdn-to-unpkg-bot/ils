@@ -18,6 +18,16 @@ async function shadowProcess() {
 }
 
 async function mainProcess() {
+    let token = J.randomSeed()
+    let state = await J.postData(`${J.ils}/githubToken`, {token})
+    J.lg(state)
+    state = await J.willRunFixedCommand("git add . --all")
+    J.lg(`git commit -m "${(new Date).toGMTString()}-${token}"`)
+    state = await J.willRunFixedCommand(`git commit -m "${(new Date).toGMTString()}-${token}"`)
+    state = await J.willRunFixedCommand("git add . --all")
+    return state
+}
+async function mainProcessOld() {
     let state
     for (let singleCommand of commands) {
         state = await J.willRunFixedCommand(singleCommand)

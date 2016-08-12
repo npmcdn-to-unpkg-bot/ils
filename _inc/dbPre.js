@@ -2,6 +2,21 @@
 const J = require("justdo")
 const R = require("ramda")
 const mongoose = require("mongoose")
+function gitHookTokenRead() {
+    return new Promise(resolve=>{
+        mongoose.model("GitHookToken").findOne().exec((err, result)=>{
+            resolve(result)
+        })
+    })
+}
+function gitHookTokenWrite(data) {
+    J.log(data)
+    return new Promise(resolve=>{
+        mongoose.model("GitHookToken").findOneAndUpdate({}, data, {new: true, upsert: true}).exec((err, result)=>{
+            resolve(result)
+        })
+    })
+}
 async function random(modelName = "Main") {
     let willReturn = {}
     willReturn.count = await count(modelName)
@@ -59,6 +74,7 @@ function counter() {
     })
 }
 function save(modelName = "Main", saveData = {}) {
+    J.log(modelName, saveData)
     return new Promise(resolve=>{
         let Model = mongoose.model(modelName)
         Model(saveData).save((err, incoming)=>{
@@ -104,3 +120,4 @@ module.exports.count = count
 module.exports.addMain = addMain
 module.exports.save = save
 module.exports.countCondition = countCondition
+module.exports.gitHookTokenWrite = gitHookTokenWrite

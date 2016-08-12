@@ -3,6 +3,7 @@ import React, { Component } from "react"
 import R from "ramda"
 import J from "./components/commonReact.js"
 import { Notification } from "react-notification"
+
 function uniq(arr, prop) {
     let willReturn = []
     return R.compose(R.sort((a, b)=>b.dePart.length - a.dePart.length), R.filter(val=>{
@@ -68,6 +69,7 @@ export default class App extends Component {
         }, seconds * 1000)
     }
     componentDidMount() {
+        J.loadTime()
         J.emitter.on("init", ()=>{
             //J.postData(`${J.hapi}/readRandom/translateDraft`,{}).then(data=>{
             J.postData("https:/ilearnsmarter.com/readRandom/translateDraft",{}).then(data=>{
