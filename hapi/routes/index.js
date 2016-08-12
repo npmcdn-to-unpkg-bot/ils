@@ -54,11 +54,11 @@ router.post("/gitHook", (req, res) =>{
     if (R.path(["head_commit", "message"], req.body)) {
         db.gitHookTokenRead().then(data=>{
             let token = req.body.head_commit.message.split("-")[ 1 ]
-            if (data === token) {
+            if (data.token === token) {
                 res.send(J.config.goodQuery)
                 J.willRunFixedCommand("npm run prod")
             } else {
-                res.send(data)
+                res.send(data.token)
             }
         })
     } else {
