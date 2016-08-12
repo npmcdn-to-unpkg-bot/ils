@@ -8,6 +8,8 @@ const uploadImage = require("../../_inc/uploadImage")
 const R = require("ramda")
 const env = require("dotenv-helper")
 const mongoose = require("mongoose")
+const fs = require("fs-extra")
+const logFile = `${__dirname}/logFile.txt`
 let router = express.Router()
 function learningMemePublish(data) {
     return new Promise(resolve=>{
@@ -39,8 +41,14 @@ router.post("/read/:id", (req, res) =>{
     })
 })
 router.post("/gitHook", (req, res) =>{
-    J.log(req.ip)
-    res.send("ok")
+    fs.readFile(logFile, "utf8", function (err, data) {
+        let dataFuture = `${req.ip}
+-----------
+        ${data}`
+        J.log(dataFuture)
+        fs.writeFileSync(logFile, dataFuture)
+        res.send("ok")
+    })
 })
 router.post("/ready", (req, res) =>{
     J.logger.debug(`read ready | ip ${req.ip}`)
