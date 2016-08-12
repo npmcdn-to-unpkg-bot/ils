@@ -61,6 +61,7 @@ router.post("/gitHookTokenWrite", (req, res) =>{
 })
 router.post("/gitHook", (req, res) =>{
     console.log(req.body)
+    res.send("ok")
 })
 router.post("/ready", (req, res) =>{
     J.logger.debug(`read ready | ip ${req.ip}`)
