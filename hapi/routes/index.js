@@ -1,4 +1,5 @@
 "use strict"
+
 const express = require("express")
 const J = require("../../common")
 const config = require("../_inc/config")
@@ -39,6 +40,25 @@ router.post("/read/:id", (req, res) =>{
         J.log(error, data)
         res.send(data)
     })
+})
+router.post("/gitHookTokenRead", (req, res) =>{
+    db.gitHookTokenRead().then(data=>{
+        res.send(data)
+    })
+    if (J.auth(req.ip)) {
+        J.lg(7)
+    } else {
+        res.send(J.config.badQuery)
+    }
+})
+router.post("/gitHookTokenWrite", (req, res) =>{
+    if (J.auth(req.ip)) {
+        db.gitHookTokenWrite(req.body).then(data=>{
+            res.send(data)
+        })
+    } else {
+        res.send(J.config.badQuery)
+    }
 })
 router.post("/gitHook", (req, res) =>{
     fs.readFile(logFile, "utf8", function (err, data) {

@@ -47,10 +47,12 @@ let initSchemas = ()=>{
         imageSrc: {type: Schema.Types.Mixed, required: false}
     })
     let counterSchema = new Schema({counter: Number})
+    let gitHookTokenSchema = new Schema({token: String})
 
     mongoose.model("TranslateDraft", translateDraftSchema)
     mongoose.model("Main", mainSchema)
     mongoose.model("Counter", counterSchema)
+    mongoose.model("GitHookToken", gitHookTokenSchema)
 }
 
 let init = (connectionString)=>{

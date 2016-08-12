@@ -157,6 +157,21 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var J = require("justdo");
 var R = require("ramda");
 var mongoose = require("mongoose");
+function gitHookTokenRead() {
+    return new Promise(function (resolve) {
+        mongoose.model("GitHookToken").findOne().exec(function (err, result) {
+            resolve(result);
+        });
+    });
+}
+function gitHookTokenWrite(data) {
+    J.log(data);
+    return new Promise(function (resolve) {
+        mongoose.model("GitHookToken").findOneAndUpdate({}, data, { new: true, upsert: true }).exec(function (err, result) {
+            resolve(result);
+        });
+    });
+}
 
 function count() {
     var modelName = arguments.length <= 0 || arguments[0] === undefined ? "Main" : arguments[0];
@@ -213,6 +228,7 @@ function save() {
     var modelName = arguments.length <= 0 || arguments[0] === undefined ? "Main" : arguments[0];
     var saveData = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
 
+    J.log(modelName, saveData);
     return new Promise(function (resolve) {
         var Model = mongoose.model(modelName);
         Model(saveData).save(function (err, incoming) {
@@ -251,3 +267,5 @@ module.exports.count = count;
 module.exports.addMain = addMain;
 module.exports.save = save;
 module.exports.countCondition = countCondition;
+module.exports.gitHookTokenWrite = gitHookTokenWrite;
+module.exports.gitHookTokenRead = gitHookTokenRead;

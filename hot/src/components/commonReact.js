@@ -1,4 +1,5 @@
 "use strict"
+//import partial from main common
 const R = require("ramda")
 const reqwest = require("reqwest")
 const stopWords = require("./stopWords.js")
@@ -21,6 +22,11 @@ function Events(target) {
         let e = events[ type ] || empty, list = e.length > 0 ? e.slice(0, e.length) : e, i = 0, j
         while (j = list[ i++ ]) j[ 0 ].apply(j[ 1 ], empty.slice.call(arguments, 1))
     }
+}
+function loadTime() {
+    let now = new Date().getTime()
+    let page_load_time = now - performance.timing.navigationStart
+    console.log("User-perceived page loading time: " + page_load_time)
 }
 function getData(url) {
     return new Promise((resolve)=>{
@@ -229,7 +235,6 @@ module.exports.winWidthIs = winWidthIs
 module.exports.winHeightIs = winHeightIs
 module.exports.httpsFn = R.replace("http://", "https://", R.__)
 module.exports.hapi = "http://localhost:3000"
-module.exports.admin = "http://localhost:3001"
 module.exports.ils = "http://ilearnsmarter.com"
 module.exports.bulButtonInit = "button"
 module.exports.categoryOptions = [
@@ -249,3 +254,4 @@ module.exports.bulMobileBoxHalf = "column box is-half is-offset-one-quarter is-h
 module.exports.bulBoxOuter = "columns box is-hidden-mobile"
 module.exports.bulBox = "column box"
 module.exports.bulBoxHalf = "column box is-half is-offset-one-quarter"
+module.exports.loadTime = loadTime
