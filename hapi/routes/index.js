@@ -39,7 +39,6 @@ router.post("/read/:id", (req, res) =>{
     })
 })
 router.post("/gitHook", (req, res) =>{
-    //J.log(req.body)
     J.log(req.ip)
     res.send("ok")
 })
