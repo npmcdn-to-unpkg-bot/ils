@@ -74,26 +74,24 @@ var mainProcess = function () {
 
                     case 3:
                         state = _context2.sent;
-
-                        J.lg(state);
-                        _context2.next = 7;
+                        _context2.next = 6;
                         return J.willRunFixedCommand("git add . --all");
 
-                    case 7:
+                    case 6:
                         state = _context2.sent;
-                        _context2.next = 10;
+                        _context2.next = 9;
                         return J.willRunFixedCommand("git commit -m \"" + new Date().toGMTString() + "-" + token + "\"");
 
-                    case 10:
+                    case 9:
                         state = _context2.sent;
-                        _context2.next = 13;
+                        _context2.next = 12;
                         return J.willRunFixedCommand("git push");
 
-                    case 13:
+                    case 12:
                         state = _context2.sent;
                         return _context2.abrupt("return", state);
 
-                    case 15:
+                    case 14:
                     case "end":
                         return _context2.stop();
                 }

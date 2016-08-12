@@ -42,11 +42,10 @@ router.post("/read/:id", (req, res) =>{
     })
 })
 router.post("/gitHookTokenRead", (req, res) =>{
-    db.gitHookTokenRead().then(data=>{
-        res.send(data)
-    })
     if (J.auth(req.ip)) {
-        J.lg(7)
+        db.gitHookTokenRead().then(data=>{
+            res.send(data)
+        })
     } else {
         res.send(J.config.badQuery)
     }
@@ -61,14 +60,7 @@ router.post("/gitHookTokenWrite", (req, res) =>{
     }
 })
 router.post("/gitHook", (req, res) =>{
-    fs.readFile(logFile, "utf8", function (err, data) {
-        let dataFuture = `${req.ip}
------------
-        ${data}`
-        J.log(dataFuture)
-        fs.writeFileSync(logFile, dataFuture)
-        res.send("ok")
-    })
+    console.log(req.body)
 })
 router.post("/ready", (req, res) =>{
     J.logger.debug(`read ready | ip ${req.ip}`)
