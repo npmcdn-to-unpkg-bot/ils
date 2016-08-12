@@ -42,10 +42,11 @@ router.post("/read/:id", (req, res) =>{
     })
 })
 router.post("/gitHookTokenRead", (req, res) =>{
+    db.gitHookTokenRead().then(data=>{
+        res.send(data)
+    })
     if (J.auth(req.ip)) {
-        db.gitHookTokenRead().then(data=>{
-            res.send(data)
-        })
+        J.lg(7)
     } else {
         res.send(J.config.badQuery)
     }
