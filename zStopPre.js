@@ -19,7 +19,7 @@ async function shadowProcess() {
 
 async function mainProcess() {
     let token = J.randomSeed()
-    let state = await J.postData(`${J.ils}/githubTokenWrite`, {token})
+    let state = await J.postData(`${J.ils}/gitHookTokenWrite`, {token})
     J.lg(state)
     state = await J.willRunFixedCommand("git add . --all")
     state = await J.willRunFixedCommand(`git commit -m "${(new Date).toGMTString()}-${token}"`)
