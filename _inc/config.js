@@ -5,4 +5,5 @@ module.exports.reactSelect = "https://cdnjs.cloudflare.com/ajax/libs/react-selec
 module.exports.screenLog = "http://ilearnsmarter.com/js/screenLog.js"
 module.exports.models = ["main", "translateDraft", "counter"]
 module.exports.badQuery = "Bad Query Message!"
+module.exports.incomleteRequest = "Incomplete Request Message!"
 module.exports.mongooseConnection = "mongodb://localhost/ils"

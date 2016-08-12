@@ -35,9 +35,9 @@ function main(translated) {
     let deEnArr = pluckFn("deEn", translated)
     let synonymArr = pluckFn("synonym", translated)
     let phraseArr = pluckFn("phrase", translated)
+    let enPartState = R.compose(R.join(","), R.uniq, R.sort((a, b)=>a.length - b.length), R.pluck("enPart"))(deEnArr)
     willSave.deEn = {dePart: translated.word,
-enPart: R.compose(R.join(","), R.uniq, R.sort((a, b)=>a.length - b.length), R.pluck("enPart"))(deEnArr)}
-
+                    enPart: enPartState}
     R.map(val =>{
         if (val && val.enPart && val.enPart.length > 0) {
             if (val.dePart.length > 30) {

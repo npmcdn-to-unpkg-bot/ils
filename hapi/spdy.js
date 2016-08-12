@@ -2,7 +2,7 @@
 
 "use strict"
 const J = require("../common")
-const mongooseData = require("./_inc/mongooseData.js")
+const mongooseData = require("../_inc/mongooseData.js")
 mongooseData.init(J.config.mongooseConnection)
 const express = require("express")
 const fs = require("fs")
@@ -25,8 +25,7 @@ app.use((req, res, next) =>{
     next()
 })
 app.get("/*", (request, response, next) => {
-    let headerHost = request.headers.host
-    if (headerHost.indexOf("www") > -1) {
+    if (request.headers.host.indexOf("www") > -1) {
         response.writeHead(301, {
             "Location": "https://ilearnsmarter.com" + request.url,
             "Expires": (new Date).toGMTString()

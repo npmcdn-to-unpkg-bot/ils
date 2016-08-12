@@ -1,6 +1,6 @@
 "use strict"
 const J = require("../common")
-const mongooseData = require("./_inc/mongooseData.js")
+const mongooseData = require("../_inc/mongooseData.js")
 mongooseData.init(J.config.mongooseConnection)
 const express = require("express")
 const minify = require("express-minify")

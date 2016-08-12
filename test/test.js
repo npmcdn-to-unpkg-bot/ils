@@ -6,25 +6,61 @@ const request = require("superagent")
 const imagemin = require("../_inc/imagemin")
 const uploadImage = require("../_inc/uploadImage")
 describe.only("requests", ()=>{
-    it("should work - https://ilearnsmarter.com/readRandom/main", (done)=>{
-        J.postData("https://ilearnsmarter.com/readRandom/main", {})
-        .then(res=>{
-            J.lg(res)
-            expect(true, "to be", true)
+    it.only("should emit error - localhost:3000/addMain", (done)=>{
+        request.post("http://localhost:3000/addMain")
+        .send("like a water on a party")
+        .set("Accept", "application/json")
+        .end((err, res)=>{
+            expect(res.text, "to be", J.config.incomleteRequest)
+            expect(200, "to be", 200)
             done()
         })
     })
-    //it("should work - http://localhost:3000/readRandom/translateDraft", (done)=>{
-    //request.post("https://localhost:3000/readRandom/translateDraft")
-    //.send({})
-    //.set("Accept", "application/json")
-    //.end((err, res)=>{
-    //J.log(res)
-    //J.log(err)
-    //done()
-    //})
-    //})
-    it("should work - http://localhost:3000/readRandom/translateDraft", (done)=>{
+    it("should work - localhost:3000/addMain", (done)=>{
+        let obj = {
+            dePart: "this is test dePart",
+            enPart: "this is test enPart"
+        }
+        request.post("http://localhost:3000/addMain")
+        .send(obj)
+        .set("Accept", "application/json")
+        .end((err, res)=>{
+            expect(res.body.dePart, "to be", obj.dePart)
+            expect(res.body.enPart, "to be", obj.enPart)
+            expect(res.body.id, "to be a number")
+            expect(res.status, "to be", 200)
+            done()
+        })
+    })
+    it("should work - ilearnsmarter.com/readRandom/translateDraft", (done)=>{
+        request.post("https://ilearnsmarter.com/readRandom/translateDraft")
+        .send({})
+        .set("Accept", "application/json")
+        .end((err, res)=>{
+            expect(res.status, "to be", 200)
+            expect(res.body.synonym, "to be an array")
+            expect(res.body.synonymTranslated, "to be an array")
+            expect(res.body.phrase, "to be an array")
+            expect(res.body.phraseTranslated, "to be an array")
+            expect(res.body.deEn.dePart, "to be a string")
+            expect(res.body.deEn.enPart, "to be a string")
+            done()
+        })
+    })
+    it("should work - ilearnsmarter.com/readRandom/main", (done)=>{
+        request.post("https://ilearnsmarter.com/readRandom/main")
+        .send({})
+        .set("Accept", "application/json")
+        .end((err, res)=>{
+            expect(res.status, "to be", 200)
+            expect(res.body.enPart, "to be a string")
+            expect(res.body.dePart, "to be a string")
+            expect(res.body.category, "to be a string")
+            expect(res.body.id, "to be a number")
+            done()
+        })
+    })
+    it("should work - localhost:3000/readRandom/translateDraft", (done)=>{
         request.post("http://localhost:3000/readRandom/translateDraft")
         .send({})
         .set("Accept", "application/json")

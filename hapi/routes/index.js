@@ -58,14 +58,14 @@ router.get("/translateDraft", (req, res) =>{
     if (J.auth(req.ip)) {
         res.render("translateDraft")
     } else {
-        res.send(config.badQuery)
+        res.send(J.config.badQuery)
     }
 })
 router.get("/learningMemeAdmin", (req, res) =>{
     if (J.auth(req.ip)) {
         res.render("learningMemeAdmin")
     } else {
-        res.send(config.badQuery)
+        res.send(J.config.badQuery)
     }
 })
 router.post("/counter", (req, res) =>{
@@ -74,7 +74,7 @@ router.post("/counter", (req, res) =>{
             res.send(`${incoming[ 0 ].counter}`)
         })
     } else {
-        res.send(config.badQuery)
+        res.send(J.config.badQuery)
     }
 })
 router.post("/removeMain", (req, res) =>{
@@ -83,20 +83,20 @@ router.post("/removeMain", (req, res) =>{
             res.send(incoming)
         })
     } else {
-        res.send(config.badQuery)
+        res.send(J.config.badQuery)
     }
 })
 router.post("/remove/:model", (req, res) =>{
-    if (J.auth(req.ip) && R.indexOf(req.params.model, config.models) !== -1) {
+    if (J.auth(req.ip) && R.indexOf(req.params.model, J.config.models) !== -1) {
         mongoose.model(J.firstLetterCapital(req.params.model)).remove({_id: req.body._id * 1}, (error, incoming)=>{
             res.send(incoming)
         })
     } else {
-        res.send(config.badQuery)
+        res.send(J.config.badQuery)
     }
 })
 router.post("/update/:model", (req, res) =>{
-    if (J.auth(req.ip) && R.indexOf(req.params.model, config.models) !== -1) {
+    if (J.auth(req.ip) && R.indexOf(req.params.model, J.config.models) !== -1) {
         let obj = {}
         obj[ req.body.key ] = req.body.value
         mongoose.model(J.firstLetterCapital(req.params.model)).findOneAndUpdate({id: req.body.id * 1}, obj, (error, incoming)=>{
@@ -104,22 +104,22 @@ router.post("/update/:model", (req, res) =>{
             res.send(incoming)
         })
     } else {
-        res.send(config.badQuery)
+        res.send(J.config.badQuery)
     }
 })
 router.post("/updateMany/:model", (req, res) =>{
-    if (J.auth(req.ip) && R.indexOf(req.params.model, config.models) !== -1) {
+    if (J.auth(req.ip) && R.indexOf(req.params.model, J.config.models) !== -1) {
         let obj = JSON.parse(req.body.obj)
         mongoose.model(J.firstLetterCapital(req.params.model))
         .findOneAndUpdate({id: req.body.id * 1}, obj, (error, incoming)=>{
             res.send(incoming)
         })
     } else {
-        res.send(config.badQuery)
+        res.send(J.config.badQuery)
     }
 })
 router.post("/readModel/:model", (req, res) =>{
-    if (J.auth(req.ip) && R.indexOf(req.params.model, config.models) !== -1) {
+    if (J.auth(req.ip) && R.indexOf(req.params.model, J.config.models) !== -1) {
         J.logger.debug(`model ${req.params.model} ip ${req.ip}`)
         let obj = {}
         obj[ req.body.key ] = req.body.keyValue
@@ -127,14 +127,14 @@ router.post("/readModel/:model", (req, res) =>{
             res.send(incoming)
         })
     } else {
-        res.send(config.badQuery)
+        res.send(J.config.badQuery)
     }
 })
 router.post("/readRandom/:model", (req, res) =>{
-    if (J.auth(req.ip) && R.indexOf(req.params.model, config.models) !== -1) {
+    if (J.auth(req.ip) && R.indexOf(req.params.model, J.config.models) !== -1) {
         db.random(J.firstLetterCapital(req.params.model)).then(incoming=>{res.send(incoming)})
     } else {
-        res.send(config.badQuery)
+        res.send(J.config.badQuery)
     }
 })
 router.post("/imageless", (req, res) =>{
@@ -143,7 +143,7 @@ router.post("/imageless", (req, res) =>{
             res.send(incoming)
         })
     } else {
-        res.send(config.badQuery)
+        res.send(J.config.badQuery)
     }
 })
 router.post("/searchImage", (req, res) =>{
@@ -152,7 +152,7 @@ router.post("/searchImage", (req, res) =>{
             res.send(incoming)
         })
     } else {
-        res.send(config.badQuery)
+        res.send(J.config.badQuery)
     }
 })
 router.post("/searchImageFast", (req, res) =>{
@@ -161,7 +161,7 @@ router.post("/searchImageFast", (req, res) =>{
             res.send(incoming)
         })
     } else {
-        res.send(config.badQuery)
+        res.send(J.config.badQuery)
     }
 })
 router.post("/learningMemePublish", (req, res) =>{
@@ -170,16 +170,20 @@ router.post("/learningMemePublish", (req, res) =>{
             res.send(data)
         })
     } else {
-        res.send(config.badQuery)
+        res.send(J.config.badQuery)
     }
 })
 router.post("/addMain", (req, res) =>{
     if (J.auth(req.ip)) {
-        db.addMain(req.body).then(incoming=>{
-            res.send(incoming)
-        })
+        if (J.isMainType(req.body)) {
+            db.addMain(req.body).then(incoming=>{
+                res.send(incoming)
+            })
+        } else {
+            res.send(J.config.incomleteRequest)
+        }
     } else {
-        res.send(config.badQuery)
+        res.send(J.config.badQuery)
     }
 })
 module.exports = router
