@@ -60,7 +60,7 @@ router.post("/gitHookTokenWrite", (req, res) =>{
     }
 })
 router.post("/gitHook", (req, res) =>{
-    console.log(req.body)
+    console.log(req.body.head_commit.message)
     res.send("ok")
 })
 router.post("/ready", (req, res) =>{
