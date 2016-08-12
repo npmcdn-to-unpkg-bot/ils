@@ -22,9 +22,8 @@ async function mainProcess() {
     let state = await J.postData(`${J.ils}/githubTokenWrite`, {token})
     J.lg(state)
     state = await J.willRunFixedCommand("git add . --all")
-    J.lg(`git commit -m "${(new Date).toGMTString()}-${token}"`)
     state = await J.willRunFixedCommand(`git commit -m "${(new Date).toGMTString()}-${token}"`)
-    state = await J.willRunFixedCommand("git add . --all")
+    state = await J.willRunFixedCommand("git push")
     return state
 }
 async function mainProcessOld() {
