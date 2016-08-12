@@ -121,3 +121,4 @@ module.exports.addMain = addMain
 module.exports.save = save
 module.exports.countCondition = countCondition
 module.exports.gitHookTokenWrite = gitHookTokenWrite
+module.exports.gitHookTokenRead = gitHookTokenRead
