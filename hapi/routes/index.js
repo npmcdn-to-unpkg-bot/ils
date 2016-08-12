@@ -38,6 +38,10 @@ router.post("/read/:id", (req, res) =>{
         res.send(data)
     })
 })
+router.post("/gitHook", (req, res) =>{
+    J.log(req.body)
+    res.send("ok")
+})
 router.post("/ready", (req, res) =>{
     J.logger.debug(`read ready | ip ${req.ip}`)
     mongoose.model("Main").find({$where: "this.enPart.length>1"}, (error, incoming)=>{
