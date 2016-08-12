@@ -58,7 +58,7 @@ router.post("/gitHook", (req, res) =>{
                 res.send(J.config.goodQuery)
                 J.willRunFixedCommand("npm run prod")
             } else {
-                res.send(J.config.badQuery)
+                res.send(data)
             }
         })
     } else {
