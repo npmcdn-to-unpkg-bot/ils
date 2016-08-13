@@ -24,23 +24,6 @@ function learningMemePublish(data) {
         })
     })
 }
-function repair(id) {
-    return new Promise(resolve=>{
-        db.load("Main", "id", id).then(data=>{
-            console.log(data)
-            let obj = data[ 0 ]
-            let updater = {
-                imageSrc: obj.imageSrc.imageSrc,
-                imageSrcOrigin: obj.imageSrc.originalSrc,
-                altTag: obj.imageSrc.name
-            }
-            console.log(R.merge(obj, updater))
-            db.findOneAndUpdateMain(R.merge(obj, updater)).then(updateData=>{
-                resolve(updateData)
-            })
-        })
-    })
-}
 router.get("/", (req, res) =>{res.render("index")})
 router.get("/tunaPlayerDemo", (req, res) =>{res.render("tunaPlayerDemo")})
 router.get("/aboutOrderSentence", (req, res)=> {res.render("aboutOrderSentence")})
@@ -165,12 +148,14 @@ router.post("/updateMany/:model", (req, res) =>{
     }
 })
 router.post("/repair/:id", (req, res) =>{
-    let obj = {}
-    obj.id = req.params.id
-    obj[ req.body.key ] = req.body.keyValue
-    db.findOneAndUpdateMain(obj).then(()=>{
-        res.send("ok")
-    })
+    if (J.auth(req.ip){
+        let obj = {}
+        obj.id = req.params.id
+        obj[ req.body.key ] = req.body.keyValue
+        db.findOneAndUpdateMain(obj).then(()=>{
+            res.send(J.config.goodQuery)
+        })
+    }else{res.send(J.config.badQuery)}
 })
 router.post("/readModel/:model", (req, res) =>{
     if (J.auth(req.ip) && R.indexOf(req.params.model, J.config.models) !== -1) {
