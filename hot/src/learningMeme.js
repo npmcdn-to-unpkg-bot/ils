@@ -93,7 +93,6 @@ export default class App extends Component {
             let altAnswer = R.compose(R.toLower, R.join(""), R.map(val =>J.returnEasyStyleGerman(val)), R.splitEvery(1))(deWord)
             let altAnswerSecond = R.compose(R.toLower, R.join(""),
             R.map(val =>J.returnOldStyleGerman(val)), R.splitEvery(1))(deWord)
-            J.log([deWord.trim(), altAnswer.trim(), altAnswerSecond.trim()])
             if (R.any(R.equals(this.state.answer.toLowerCase()))([deWord.trim(), altAnswer.trim(), altAnswerSecond.trim()])) {
                 J.emitter.emit("correct")
             } else {
@@ -115,7 +114,6 @@ export default class App extends Component {
             } else {
                 willBeIndex = this.state.globalIndex + 1
             }
-            J.log(this.state.globalData[ willBeIndex ])
             this.setState({
                 data:this.state.globalData[ willBeIndex ],
                 globalIndex: willBeIndex

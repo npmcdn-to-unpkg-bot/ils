@@ -575,7 +575,6 @@ var App = function (_Component) {
                 var altAnswerSecond = _ramda2.default.compose(_ramda2.default.toLower, _ramda2.default.join(""), _ramda2.default.map(function (val) {
                     return _commonReact2.default.returnOldStyleGerman(val);
                 }), _ramda2.default.splitEvery(1))(deWord);
-                _commonReact2.default.log([deWord.trim(), altAnswer.trim(), altAnswerSecond.trim()]);
                 if (_ramda2.default.any(_ramda2.default.equals(_this2.state.answer.toLowerCase()))([deWord.trim(), altAnswer.trim(), altAnswerSecond.trim()])) {
                     _commonReact2.default.emitter.emit("correct");
                 } else {
@@ -597,7 +596,6 @@ var App = function (_Component) {
                 } else {
                     willBeIndex = _this2.state.globalIndex + 1;
                 }
-                _commonReact2.default.log(_this2.state.globalData[willBeIndex]);
                 _this2.setState({
                     data: _this2.state.globalData[willBeIndex],
                     globalIndex: willBeIndex
