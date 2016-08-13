@@ -163,7 +163,7 @@ router.post("/readRandom/:model", (req, res) =>{
     if (R.indexOf(req.params.model, J.config.models) !== -1) {
         db.random(J.firstLetterCapital(req.params.model)).then(incoming=>{res.send(incoming)})
     } else {
-        db.random(J.firstLetterCapital(req.params.model)).then(incoming=>{res.send(incoming)})
+        res.send(J.config.badQuery)
     }
 })
 router.post("/imageless", (req, res) =>{
