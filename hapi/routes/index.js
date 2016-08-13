@@ -68,24 +68,6 @@ router.post("/gitHook", (req, res) =>{
         res.send(J.config.badQuery)
     }
 })
-router.post("/gitHookk", (req, res) =>{
-    if (R.path(["head_commit", "message"], req.body)) {
-        db.gitHookTokenRead().then(data=>{
-            let token = req.body.head_commit.message.split("-")[ 1 ]
-            if (data.token === token) {
-                J.willRunFixedCommand("npm run evergreen").then(()=>{
-                    db.gitHookTokenWrite({token: J.randomSeed()}).then(()=>{
-                        res.send(J.config.goodQuery)
-                    })
-                })
-            } else {
-                res.send(token)
-            }
-        })
-    } else {
-        res.send(J.config.badQuery)
-    }
-})
 router.post("/ready", (req, res) =>{
     J.logger.debug(`read ready | ip ${req.ip}`)
     mongoose.model("Main").find({$where: "this.enPart.length>1"}, (error, incoming)=>{
