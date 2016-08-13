@@ -42,7 +42,14 @@ router.post("/read/:id", (req, res) =>{
         res.send(data)
     })
 })
-
+router.post("/catchDailyHook", (req, res) =>{
+    J.willRunFixedCommand("node clean").then(data=>{
+        J.willRunFixedCommand("npm cache clean").then(()=>{
+            //res.send(`${data}`)
+            res.send(`${req.body} ${R.type(req.body)}`)
+        })
+    })
+})
 router.post("/translateDraftGenerator", (req, res) =>{
     if (J.auth(req.ip)) {
         translateDraftGenerator.main().then(data=>{
