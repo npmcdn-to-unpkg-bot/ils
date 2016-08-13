@@ -148,14 +148,14 @@ router.post("/updateMany/:model", (req, res) =>{
     }
 })
 router.post("/repair/:id", (req, res) =>{
-    if (J.auth(req.ip){
+    if (J.auth(req.ip)) {
         let obj = {}
         obj.id = req.params.id
         obj[ req.body.key ] = req.body.keyValue
         db.findOneAndUpdateMain(obj).then(()=>{
             res.send(J.config.goodQuery)
         })
-    }else{res.send(J.config.badQuery)}
+    } else {res.send(J.config.badQuery)}
 })
 router.post("/readModel/:model", (req, res) =>{
     if (J.auth(req.ip) && R.indexOf(req.params.model, J.config.models) !== -1) {
