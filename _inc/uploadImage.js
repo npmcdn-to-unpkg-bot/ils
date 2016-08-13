@@ -47,7 +47,7 @@ function main(data) {
                             .contain(1000, 750, {r: 176, g: 190, b: 197, a: 100})
                             .writeFile(finalDestination, (err)=>{
                                 uploadImgur(finalDestination).then(imageSrc =>{
-                                    resolve({imageSrc, originalSrc: data.imageSrc, name: newImageName})
+                                    resolve({imageSrc, imageSrcOrigin: data.imageSrc, altTag: newImageName})
                                     fs.removeSync(currentDestination)
                                     fs.removeSync(finalDestination)
                                 })
@@ -61,7 +61,7 @@ function main(data) {
                                 .contain(1000, 750, {r: 176, g: 190, b: 197, a: 100})
                                 .writeFile(finalDestination, (err)=>{
                                     uploadImgur(finalDestination).then(imageSrc =>{
-                                        resolve({imageSrc, originalSrc: data.imageSrc, name: newImageName})
+                                        resolve({imageSrc, imageSrcOrigin: data.imageSrc, altTag: newImageName})
                                         fs.removeSync(currentDestination)
                                         fs.removeSync(finalDestination)
                                     })
@@ -72,7 +72,7 @@ function main(data) {
                                 .contain(1000, 750, {r: 176, g: 190, b: 197, a: 100})
                                 .writeFile(finalDestination, (err)=>{
                                     uploadImgur(finalDestination).then(imageSrc =>{
-                                        resolve({imageSrc, originalSrc: data.imageSrc, name: newImageName})
+                                        resolve({imageSrc, imageSrcOrigin: data.imageSrc, altTag: newImageName})
                                         fs.removeSync(currentDestination)
                                         fs.removeSync(finalDestination)
                                     })

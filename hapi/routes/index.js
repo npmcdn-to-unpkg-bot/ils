@@ -27,11 +27,16 @@ function learningMemePublish(data) {
 function repair(id) {
     return new Promise(resolve=>{
         db.load("Main", "id", id).then(data=>{
-            resolve(data)
+            let obj = data[ 0 ]
+            let updater = {
+                imageSrc: obj.imageSrc.imageSrc,
+                imageSrcOrigin: obj.imageSrc.originalSrc,
+                altTag: obj.imageSrc.name
+            }
+            db.findOneAndUpdateMain(R.merge(obj, updater)).then(updateData=>{
+                resolve(updateData)
+            })
         })
-        //db.findOneAndUpdateMain(obj).then(updateData=>{
-        //res.send(updateData)
-        //})
     })
 }
 router.get("/", (req, res) =>{res.render("index")})

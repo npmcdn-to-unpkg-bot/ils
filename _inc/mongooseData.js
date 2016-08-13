@@ -44,7 +44,9 @@ let initSchemas = ()=>{
         enWord: {type: String, required: false},
         category: {type: String, enum: ["quotes", "jokes", "draft", "preDraft", "plain"], required: false},
         childSafetyFlag: {type: Boolean, required: false},
-        imageSrc: {type: Schema.Types.Mixed, required: false}
+        imageSrc: {type: Schema.Types.Mixed, required: false},
+        imageSrcOrigin: {type: String, required: false},
+        altTag: {type: String, required: false}
     })
     let counterSchema = new Schema({counter: Number})
     let gitHookTokenSchema = new Schema({token: String})
