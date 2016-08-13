@@ -164,9 +164,12 @@ router.post("/updateMany/:model", (req, res) =>{
         res.send(J.config.badQuery)
     }
 })
-router.post("/repair/:id", (req, res) =>{
-    repair(req.params.id).then(data=>{
-        res.send(data)
+router.post("/repair/:id/:key/:keyValue", (req, res) =>{
+    let obj = {}
+    obj.id = req.params.id
+    obj[ req.params.key ] = req.params.keyValue
+    db.findOneAndUpdateMain("Main", obj).then(()=>{
+        res.send("ok")
     })
 })
 router.post("/readModel/:model", (req, res) =>{
