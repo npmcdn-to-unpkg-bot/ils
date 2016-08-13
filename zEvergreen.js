@@ -94,6 +94,6 @@ var main = function () {
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var J = require("./common");
-var commands = ["git pull", "pm2 reload spdy.js"];
+var commands = ["git pull", "pm2 reload spdy"];
 
 main().then(J.lg);
