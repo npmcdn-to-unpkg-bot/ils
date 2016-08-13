@@ -25,6 +25,7 @@ function learningMemePublish(data) {
     })
 }
 router.get("/", (req, res) =>{res.render("index")})
+router.get("/more", (req, res) =>{res.render("index")})
 router.get("/tunaPlayerDemo", (req, res) =>{res.render("tunaPlayerDemo")})
 router.get("/aboutOrderSentence", (req, res)=> {res.render("aboutOrderSentence")})
 router.get("/about", (req, res) =>{res.render("about")})
