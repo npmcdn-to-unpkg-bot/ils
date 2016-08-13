@@ -4,13 +4,37 @@ const J = require("../common")
 const expect = require("unexpected")
 const request = require("superagent")
 const imagemin = require("../_inc/imagemin")
+const imageminFuture = require("../_inc/imageminFuture")
 const uploadImage = require("../_inc/uploadImage")
-describe.only("requests", ()=>{
-    it.only("should work - localhost:3000/addTranslateDraft", (done)=>{
+const translateDraftGenerator = require("../_inc/translateDraftGenerator")
+describe("empty", ()=>{
+    it("should work", ()=>{
+        expect(true, "to be true")
+    })
+})
+describe.only("translateDraftGenerator", ()=>{
+    it("should work", (done)=>{
+        translateDraftGenerator.main().then(data=>{
+            expect(true, "to be true")
+            done()
+        })
+    })
+})
+describe("requests", ()=>{
+    it("should work - localhost:3000/addTranslateDraft", (done)=>{
         let obj = {
-
+            word: "mehr",
+            deEn: {dePart:"mehr", enPart: "more,plenty"},
+            synonym:[{dePart:"mehr", enPart: "more,plenty"}],
+            synonymTranslated:[{dePart:"mehr", enPart: "more,plenty"}],
+            phrase:[{dePart:"mehr", enPart: "more,plenty"}],
+            phraseTranslated:[{dePart:"mehr", enPart: "more,plenty"}]
         }
-        J.postData()
+        J.postData(`${J.hapi}/addTranslateDraft`, obj).then(data=>{
+            J.log(data)
+            expect(true, "to be true")
+            done()
+        })
     })
     it("should emit error - localhost:3000/addMain", (done)=>{
         request.post("http://localhost:3000/addMain")
@@ -102,6 +126,20 @@ describe("uploadImage", ()=>{
     })
 })
 describe("imagemin", ()=>{
+    it("future all - jpg", (done)=>{
+        let imagePath = `${__dirname}/inc/test.jpg`
+        imagemin.main(imagePath).then(data=>{
+            expect(data, "to be", true)
+            done()
+        })
+    })
+    it("future all - png", (done)=>{
+        let imagePath = `${__dirname}/inc/test.jpg`
+        imagemin.main(imagePath).then(data=>{
+            expect(data, "to be", true)
+            done()
+        })
+    })
     it("should work - jpg", (done)=>{
         let imagePath = `${__dirname}/inc/test.jpg`
         imagemin.main(imagePath).then(data=>{

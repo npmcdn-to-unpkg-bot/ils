@@ -65,6 +65,7 @@ function main(translated) {
     willSave.synonymTranslated = uniq(willSave.synonymTranslated, "dePart")
     willSave.phrase = uniq(willSave.phrase, "dePart")
     willSave.phraseTranslated = uniq(willSave.phraseTranslated, "dePart")
+    willSave.word = translated.word
     return willSave
 }
 module.exports.main = main

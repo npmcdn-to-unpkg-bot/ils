@@ -5,21 +5,38 @@ const R = require("ramda")
 const translate = require("./translate.js")
 const scrapedParse = require("./scrapedParse.js")
 let words = require("./translateDraftGeneratorWords")
-
-let willMap = words.map(val=>{
-    return function(callback) {
-        translate.deEnTimer(val).then(incoming=>{
-            callback(null, {word:val, data:incoming})
+function main() {
+    let willMap = words.map(val=>{
+        return function(callback) {
+            translate.deEnTimer(val).then(data=>{
+                let obj = scrapedParse.main(data)
+                callback(null, obj)
+            })
+        }
+    })
+    return new Promise(resolve=>{
+        async.series(willMap,
+        function(err, results) {
+            resolve(results)
         })
-    }
-})
-async.series(willMap,
-function(err, results) {
-    let willSave = {}
-    results.map(val=>{
-        willSave[ val.word ] = scrapedParse.main(val.word, val.data)
     })
-    fs.writeJson("dataFile.json", willSave, ()=>{
-        J.log(1)
+}
+function partial(index = 0, limit = 50) {
+    let wordsArr = R.splitEvery(limit, words)
+    let willMap = wordsArr[ index ].map(val=>{
+        return function(callback) {
+            translate.deEnTimer(val).then(data=>{
+                let obj = scrapedParse.main(data)
+                callback(null, obj)
+            })
+        }
     })
-})
+    return new Promise(resolve=>{
+        async.series(willMap,
+        function(err, results) {
+            resolve(results)
+        })
+    })
+}
+module.exports.main = main
+module.exports.partial = partial

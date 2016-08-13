@@ -4,6 +4,7 @@ const cheerio = require("cheerio")
 const fetch = require("node-fetch")
 const request = require("request")
 const R = require("ramda")
+const J = require("../common")
 function deEnFirst(wordRaw) {
     let word = wordRaw.trim().toLowerCase()
     return new Promise((resolve) => {
@@ -543,7 +544,7 @@ function mixed(wordRaw) {
 }
 async function deEnTimerAsync(wordRaw) {
     let willReturn = {}
-    let word = wordRaw.trim().toLowerCase()
+    let word = J.normalizeGermanWord(wordRaw)
     console.time("mixed")
     let local = await mixed(word)
     willReturn.deEnFirst = local.translation
@@ -585,13 +586,13 @@ async function deEnTimerAsync(wordRaw) {
     willReturn.synonymSixth = await synonymSixth(word)
     console.timeEnd("synonymSixth")
     willReturn.synonymSeventh = local.related
-    willReturn.word = word
+    willReturn.word = wordRaw
     return willReturn
 }
 
 async function deEnAsync(wordRaw) {
     let willReturn = {}
-    let word = wordRaw.trim().toLowerCase()
+    let word = J.normalizeGermanWord(wordRaw)
     let local = await mixed(word)
     willReturn.deEnFirst = local.translation
     willReturn.phraseFirst = await phraseFirst(word)
@@ -607,12 +608,12 @@ async function deEnAsync(wordRaw) {
     willReturn.synonymFifth = await synonymFifth(word)
     willReturn.synonymSixth = await synonymSixth(word)
     willReturn.synonymSeventh = local.related
-    willReturn.word = word
+    willReturn.word = wordRaw
     return willReturn
 }
 async function deEnShortAsync(wordRaw) {
     let willReturn = {}
-    let word = wordRaw.trim().toLowerCase()
+    let word = J.normalizeGermanWord(wordRaw)
     let mixedResult = await mixed(word)
     willReturn.deEnFirst = mixedResult.translation
     willReturn.synonymFirst = await synonymFirst(word)
@@ -624,7 +625,7 @@ async function deEnShortAsync(wordRaw) {
     willReturn.phraseThird = await phraseThird(word)
     willReturn.phraseFourth = await phraseFourth(word)
     willReturn.phraseSixth = await phraseSixth(word)
-    willReturn.word = word
+    willReturn.word = wordRaw
     return willReturn
 }
 async function deEnArrAsync(arr) {

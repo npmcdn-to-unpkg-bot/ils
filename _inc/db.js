@@ -147,7 +147,7 @@ var addMain = function () {
         }, _callee4, this);
     }));
 
-    return function addMain(_x14) {
+    return function addMain(_x16) {
         return _ref4.apply(this, arguments);
     };
 }();
@@ -232,6 +232,22 @@ function load(modelName, key, keyValue) {
         });
     });
 }
+function saveMany() {
+    var modelName = arguments.length <= 0 || arguments[0] === undefined ? "Main" : arguments[0];
+    var saveData = arguments.length <= 1 || arguments[1] === undefined ? [] : arguments[1];
+
+    return new Promise(function (resolve) {
+        var Model = mongoose.model(modelName);
+        Model.collection.insert(saveData, function (err, docs) {
+            if (err) {
+                console.error(err);
+            } else {
+                console.info(docs.insertedIds);
+                resolve(docs.insertedIds);
+            }
+        });
+    });
+}
 function save() {
     var modelName = arguments.length <= 0 || arguments[0] === undefined ? "Main" : arguments[0];
     var saveData = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
@@ -255,6 +271,7 @@ module.exports.addMain = function (data) {
     return addMain(data);
 };
 module.exports.random = function (modelName) {
+    //rf
     return new Promise(function (resolve) {
         random(modelName).then(function (data) {
             resolve(data);
@@ -273,6 +290,7 @@ module.exports.findOneSkipCondition = findOneSkipCondition;
 module.exports.count = count;
 module.exports.addMain = addMain;
 module.exports.save = save;
+module.exports.saveMany = saveMany;
 module.exports.load = load;
 module.exports.countCondition = countCondition;
 module.exports.gitHookTokenWrite = gitHookTokenWrite;

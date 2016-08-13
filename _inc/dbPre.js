@@ -81,6 +81,19 @@ function load(modelName, key, keyValue) {
         })
     })
 }
+function saveMany(modelName = "Main", saveData = []) {
+    return new Promise(resolve=>{
+        let Model = mongoose.model(modelName)
+        Model.collection.insert(saveData, (err, docs)=>{
+            if (err) {
+                console.error(err)
+            } else {
+                console.info(docs.insertedIds)
+                resolve(docs.insertedIds)
+            }
+        })
+    })
+}
 function save(modelName = "Main", saveData = {}) {
     return new Promise(resolve=>{
         let Model = mongoose.model(modelName)
@@ -112,6 +125,7 @@ async function addMain(saveData) {
 }
 module.exports.addMain = (data)=>{return addMain(data)}
 module.exports.random = (modelName)=>{
+    //rf
     return new Promise(resolve=>{
         random(modelName).then(data=>{
             resolve(data)
@@ -126,6 +140,7 @@ module.exports.findOneSkipCondition = findOneSkipCondition
 module.exports.count = count
 module.exports.addMain = addMain
 module.exports.save = save
+module.exports.saveMany = saveMany
 module.exports.load = load
 module.exports.countCondition = countCondition
 module.exports.gitHookTokenWrite = gitHookTokenWrite

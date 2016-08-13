@@ -5,6 +5,7 @@ const config = require("../_inc/config")
 const db = require("../../_inc/db")
 const searchImage = require("../../_inc/searchImage")
 const uploadImage = require("../../_inc/uploadImage")
+const translateDraftGenerator = require("../../_inc/translateDraftGenerator")
 const R = require("ramda")
 const env = require("dotenv-helper")
 const mongoose = require("mongoose")
@@ -40,6 +41,29 @@ router.post("/read/:id", (req, res) =>{
         J.log(error, data)
         res.send(data)
     })
+})
+
+router.post("/translateDraftGenerator", (req, res) =>{
+    if (J.auth(req.ip)) {
+        translateDraftGenerator.main().then(data=>{
+            db.saveMany("TranslateDraft", data).then(result=>{
+                res.send(result)
+            })
+        })
+    } else {
+        res.send(J.config.badQuery)
+    }
+})
+router.post("/translateDraftGeneratorPartial/:index/:limit", (req, res) =>{
+    if (J.auth(req.ip)) {
+        translateDraftGenerator.partial(req.params.index, req.params.limit).then(data=>{
+            db.saveMany("TranslateDraft", data).then(result=>{
+                res.send(result)
+            })
+        })
+    } else {
+        res.send(J.config.badQuery)
+    }
 })
 router.post("/gitHookTokenWrite", (req, res) =>{
     if (J.auth(req.ip)) {
@@ -215,13 +239,9 @@ router.post("/learningMemePublish", (req, res) =>{
 })
 router.post("/addTranslateDraft", (req, res) =>{
     if (J.auth(req.ip)) {
-        if (J.isTranslateDraftType(req.body)) {
-            db.save("TranslateDraft", req.body).then(incoming=>{
-                res.send(incoming)
-            })
-        } else {
-            res.send(J.config.incomleteRequest)
-        }
+        db.save("TranslateDraft", req.body).then(incoming=>{
+            res.send(incoming)
+        })
     } else {
         res.send(J.config.badQuery)
     }

@@ -9,14 +9,14 @@ var _asyncToGenerator2 = require("babel-runtime/helpers/asyncToGenerator");
 var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
 
 var deEnTimerAsync = function () {
-    var ref = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee(wordRaw) {
+    var _ref = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee(wordRaw) {
         var willReturn, word, local;
         return _regenerator2.default.wrap(function _callee$(_context) {
             while (1) {
                 switch (_context.prev = _context.next) {
                     case 0:
                         willReturn = {};
-                        word = wordRaw.trim().toLowerCase();
+                        word = J.normalizeGermanWord(wordRaw);
 
                         console.time("mixed");
                         _context.next = 5;
@@ -124,7 +124,7 @@ var deEnTimerAsync = function () {
 
                         console.timeEnd("synonymSixth");
                         willReturn.synonymSeventh = local.related;
-                        willReturn.word = word;
+                        willReturn.word = wordRaw;
                         return _context.abrupt("return", willReturn);
 
                     case 71:
@@ -134,20 +134,21 @@ var deEnTimerAsync = function () {
             }
         }, _callee, this);
     }));
+
     return function deEnTimerAsync(_x) {
-        return ref.apply(this, arguments);
+        return _ref.apply(this, arguments);
     };
 }();
 
 var deEnAsync = function () {
-    var ref = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee2(wordRaw) {
+    var _ref2 = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee2(wordRaw) {
         var willReturn, word, local;
         return _regenerator2.default.wrap(function _callee2$(_context2) {
             while (1) {
                 switch (_context2.prev = _context2.next) {
                     case 0:
                         willReturn = {};
-                        word = wordRaw.trim().toLowerCase();
+                        word = J.normalizeGermanWord(wordRaw);
                         _context2.next = 4;
                         return mixed(word);
 
@@ -217,7 +218,7 @@ var deEnAsync = function () {
                         willReturn.synonymSixth = _context2.sent;
 
                         willReturn.synonymSeventh = local.related;
-                        willReturn.word = word;
+                        willReturn.word = wordRaw;
                         return _context2.abrupt("return", willReturn);
 
                     case 45:
@@ -227,20 +228,21 @@ var deEnAsync = function () {
             }
         }, _callee2, this);
     }));
+
     return function deEnAsync(_x2) {
-        return ref.apply(this, arguments);
+        return _ref2.apply(this, arguments);
     };
 }();
 
 var deEnShortAsync = function () {
-    var ref = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee3(wordRaw) {
+    var _ref3 = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee3(wordRaw) {
         var willReturn, word, mixedResult;
         return _regenerator2.default.wrap(function _callee3$(_context3) {
             while (1) {
                 switch (_context3.prev = _context3.next) {
                     case 0:
                         willReturn = {};
-                        word = wordRaw.trim().toLowerCase();
+                        word = J.normalizeGermanWord(wordRaw);
                         _context3.next = 4;
                         return mixed(word);
 
@@ -291,7 +293,7 @@ var deEnShortAsync = function () {
                     case 30:
                         willReturn.phraseSixth = _context3.sent;
 
-                        willReturn.word = word;
+                        willReturn.word = wordRaw;
                         return _context3.abrupt("return", willReturn);
 
                     case 33:
@@ -301,13 +303,14 @@ var deEnShortAsync = function () {
             }
         }, _callee3, this);
     }));
+
     return function deEnShortAsync(_x3) {
-        return ref.apply(this, arguments);
+        return _ref3.apply(this, arguments);
     };
 }();
 
 var deEnArrAsync = function () {
-    var ref = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee4(arr) {
+    var _ref4 = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee4(arr) {
         var willMap, willReturn;
         return _regenerator2.default.wrap(function _callee4$(_context4) {
             while (1) {
@@ -330,8 +333,9 @@ var deEnArrAsync = function () {
             }
         }, _callee4, this);
     }));
+
     return function deEnArrAsync(_x4) {
-        return ref.apply(this, arguments);
+        return _ref4.apply(this, arguments);
     };
 }();
 
@@ -342,6 +346,7 @@ var cheerio = require("cheerio");
 var fetch = require("node-fetch");
 var request = require("request");
 var R = require("ramda");
+var J = require("../common");
 function deEnFirst(wordRaw) {
     var word = wordRaw.trim().toLowerCase();
     return new Promise(function (resolve) {
