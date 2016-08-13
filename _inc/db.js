@@ -224,6 +224,15 @@ function counter() {
         });
     });
 }
+function load(modelName, key, keyValue) {
+    return new Promise(function (resolve) {
+        var obj = {};
+        obj[key] = keyValue;
+        mongoose.model(modelName).find(obj, function (error, incoming) {
+            resolve(incoming);
+        });
+    });
+}
 function save() {
     var modelName = arguments.length <= 0 || arguments[0] === undefined ? "Main" : arguments[0];
     var saveData = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
@@ -265,6 +274,7 @@ module.exports.findOneSkipCondition = findOneSkipCondition;
 module.exports.count = count;
 module.exports.addMain = addMain;
 module.exports.save = save;
+module.exports.load = load;
 module.exports.countCondition = countCondition;
 module.exports.gitHookTokenWrite = gitHookTokenWrite;
 module.exports.gitHookTokenRead = gitHookTokenRead;

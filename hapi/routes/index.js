@@ -15,13 +15,23 @@ function learningMemePublish(data) {
     return new Promise(resolve=>{
         uploadImage.main(data).then(uploadImageData=>{
             if (uploadImageData === null) {
-                uploadImageData = false
+                uploadImageData = {imageSrc:false}
             }
-            let obj = R.merge(data, {imageSrc:uploadImageData})
+            let obj = R.merge(data, uploadImageData)
             db.findOneAndUpdateMain(obj).then(updateData=>{
                 res.send(updateData)
             })
         })
+    })
+}
+function repair(id) {
+    return new Promise(resolve=>{
+        db.load("Main", "id", id).then(data=>{
+            resolve(data)
+        })
+        //db.findOneAndUpdateMain(obj).then(updateData=>{
+        //res.send(updateData)
+        //})
     })
 }
 router.get("/", (req, res) =>{res.render("index")})
@@ -146,6 +156,11 @@ router.post("/updateMany/:model", (req, res) =>{
     } else {
         res.send(J.config.badQuery)
     }
+})
+router.post("/repair/:id", (req, res) =>{
+    repair(req.params.id).then(data=>{
+        res.send(data)
+    })
 })
 router.post("/readModel/:model", (req, res) =>{
     if (J.auth(req.ip) && R.indexOf(req.params.model, J.config.models) !== -1) {

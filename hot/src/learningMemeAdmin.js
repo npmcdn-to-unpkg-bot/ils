@@ -6,7 +6,6 @@ import LazyLoad from "react-lazyload"
 import J from "../../_inc/commonReact.js"
 import GermanOverall from "./components/germanOverall.js"
 import { Notification } from "react-notification"
-screenLog.init()
 let initOnce = R.once(()=>{
     J.emitter.emit("init")
 })
@@ -132,6 +131,9 @@ export default class App extends Component {
                         } else {
                             J.log("learningMemePublish is done")
                         }
+                    })
+                    J.postData("readModel/main", {key:"id",keyValue: data.id}).then(result=>{
+                        if(R.path(["imageSrc", "imageSrc"],result))
                     })
                     J.emitter.emit("init")
                 } else {

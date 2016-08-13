@@ -14,7 +14,7 @@ let initData = {
     "dePart": "",
     "enPart": "",
     imageSrc: "",
-    "id": 419
+    "id": 0
 }
 
 export default class App extends Component {

@@ -73,6 +73,15 @@ function counter() {
         })
     })
 }
+function load(modelName, key, keyValue) {
+    return new Promise(resolve=>{
+        let obj = {}
+        obj[ key ] = keyValue
+        mongoose.model(modelName).find(obj, (error, incoming)=>{
+            resolve(incoming)
+        })
+    })
+}
 function save(modelName = "Main", saveData = {}) {
     return new Promise(resolve=>{
         let Model = mongoose.model(modelName)
@@ -118,6 +127,7 @@ module.exports.findOneSkipCondition = findOneSkipCondition
 module.exports.count = count
 module.exports.addMain = addMain
 module.exports.save = save
+module.exports.load = load
 module.exports.countCondition = countCondition
 module.exports.gitHookTokenWrite = gitHookTokenWrite
 module.exports.gitHookTokenRead = gitHookTokenRead
