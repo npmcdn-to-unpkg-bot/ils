@@ -554,8 +554,9 @@ var App = function (_Component) {
 
             _commonReact2.default.emitter.on("init", function () {
                 //J.postData(`${J.hapi}/readRandom/translateDraft`,{}).then(data=>{
-                _commonReact2.default.postData("https:/ilearnsmarter.com/readRandom/translateDraft", {}).then(function (data) {
+                _commonReact2.default.postData("/readRandom/translateDraft", {}).then(function (data) {
                     _commonReact2.default.log(data);
+                    _commonReact2.default.log(7);
                     var dataFuture = {};
                     var enWord = "";
                     var dePart = "";
