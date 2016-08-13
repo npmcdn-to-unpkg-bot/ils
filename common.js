@@ -188,3 +188,4 @@ module.exports.getFileDirectory = R.compose(R.join("/"), R.init, R.split("/"))
 module.exports.hapi = "http://localhost:3000"
 module.exports.ils = "https://ilearnsmarter.com"
 module.exports.randomSeed = randomSeed
+module.exports.s = "S"

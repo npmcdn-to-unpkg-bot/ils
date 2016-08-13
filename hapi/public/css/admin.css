@@ -1,4 +1,16 @@
 @import url(https://fonts.googleapis.com/css?family=Josefin+Sans:600);
+.memeTextTopLeft {
+  color: #363A42;
+  letter-spacing: 0.3vw;
+}
+.memeTextTopSeparator {
+  color: #484452;
+  font-weight: 200;
+}
+.memeTextTopRight {
+  color: #484452;
+  font-weight: 200;
+}
 #marginlessTuna {
   margin: 0 !important;
   padding: 5px;

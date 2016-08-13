@@ -2,6 +2,7 @@
 import React, { Component } from "react"
 import R from "ramda"
 import J from "./components/commonReact.js"
+import Navigation from "./components/navigation.js"
 let initOnce = R.once(()=>{
     J.emitter.emit("once init")
 })
@@ -18,11 +19,11 @@ export default class App extends Component {
     constructor (props) {
         super(props)
         this.state = {
+            automatedMode: false,
             globalIndex: 0,
             globalData: [],
             data: initData,
             answer: "",
-            textTop: "",
             textTopLeft: "",
             textTopRight: "",
             textBottom: "",
@@ -35,6 +36,21 @@ export default class App extends Component {
         this.handleButtonClick = this.handleButtonClick.bind(this)
     }
     componentDidMount() {
+        let interval = setInterval(()=>{
+            if (this.state.automatedMode && this.state.textTopLeft !== "") {
+                if (this.state.answer.length < this.state.textTopLeft.length) {
+                    let answer = this.state.answer + this.state.data.deWord[ this.state.answer.length ]
+                    this.setState({answer})
+                } else {
+                    this.setState({automatedMode: false}, ()=>{
+                        J.emitter.emit("correct")
+                        setTimeout(()=>{
+                            document.getElementById("button").click()
+                        }, 4000)
+                    })
+                }
+            }
+        }, 100)
         J.emitter.on("once init", ()=>{
             J.postData(`${J.empty}/learningMeme`, {}).then(incoming =>{
                 let globalData = J.shuffle(incoming)
@@ -58,7 +74,6 @@ export default class App extends Component {
                         } else {
                             val = `${willTextTop[ key ]}${removedChar[ 0 ]}`
                         }
-
                     }
                 })
                 return val
@@ -70,6 +85,10 @@ export default class App extends Component {
                 textBottom: willTextBottom,
                 buttonText: J.buttonTextShowAnswer,
                 buttonClassName: J.bulButtonInit
+            }, ()=>{
+                setTimeout(()=>{
+                    this.setState({automatedMode: true})
+                }, 1000)
             })
         })
         J.emitter.on("correct", ()=>{
@@ -104,6 +123,7 @@ export default class App extends Component {
             this.setState({
                 buttonText: J.buttonTextNext,
                 buttonClassName: J.bulButtonNext,
+                textTop: `${this.state.data.deWord}|${this.state.data.enWord}`,
                 textTopLeft: this.state.data.deWord,
                 textBottom: this.state.data.dePart
             })
@@ -149,7 +169,7 @@ export default class App extends Component {
         })
     }
     render () {
-        let fontTextTop = J.fontValueFn(this.state.textTopLeft.length + this.state.textTopRight.length + 2)
+        let fontTextTop = J.fontValueFn(this.state.textTopLeft.length + this.state.textTopRight.length + 1)
         let fontTextBottom = J.fontValueFn(this.state.textBottom.length)
         let fontTextBottomSecond = J.fontValueFn(this.state.data.enPart.length)
         let lineHeightTextTop = J.lineHeightFn(fontTextTop)
@@ -206,7 +226,7 @@ export default class App extends Component {
             <input autoFocus className={this.state.inputFieldClassName} type="text" value={this.state.answer} size={this.state.inputFieldSize} onChange={this.handleAnswerInput} onKeyPress={this.handleAnswerInput}/>
             </div>
             <div className="column is-4">
-                <a className={this.state.buttonClassName} onClick={this.handleButtonClick}>{this.state.buttonText}</a>
+                <a id="button" className={this.state.buttonClassName} onClick={this.handleButtonClick}>{this.state.buttonText}</a>
             </div>
         </div>
         <div className="box has-text-centered is-fullwidth" style={memeContainer}>

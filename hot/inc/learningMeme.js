@@ -2,10 +2,12 @@
 import React, { Component } from "react"
 import R from "ramda"
 import J from "./components/commonReact.js"
+
 let initOnce = R.once(()=>{
     J.emitter.emit("once init")
 })
 let store = {}
+
 let initData = {
     "deWord": "",
     "enWord": "",
@@ -14,6 +16,7 @@ let initData = {
     imageSrc: "",
     "id": 0
 }
+
 export default class App extends Component {
     constructor (props) {
         super(props)
@@ -23,8 +26,6 @@ export default class App extends Component {
             data: initData,
             answer: "",
             textTop: "",
-            textTopLeft: "",
-            textTopRight: "",
             textBottom: "",
             inputFieldSize:20,
             inputFieldClassName:"inputField",
@@ -36,7 +37,7 @@ export default class App extends Component {
     }
     componentDidMount() {
         J.emitter.on("once init", ()=>{
-            J.postData(`${J.empty}/learningMeme`, {}).then(incoming =>{
+            J.postData("/learningMeme", {}).then(incoming =>{
                 let globalData = J.shuffle(incoming)
                 this.setState({
                     data: globalData[ 0 ],
@@ -65,8 +66,7 @@ export default class App extends Component {
             }), R.split(" "))(this.state.data.dePart)
             this.setState({
                 answer: "",
-                textTopLeft: R.join(" ", willTextTop),
-                textTopRight: this.state.data.enWord,
+                textTop: `${R.join(" ", willTextTop)}|${this.state.data.enWord}`,
                 textBottom: willTextBottom,
                 buttonText: J.buttonTextShowAnswer,
                 buttonClassName: J.bulButtonInit
@@ -93,8 +93,7 @@ export default class App extends Component {
             let altAnswer = R.compose(R.toLower, R.join(""), R.map(val =>J.returnEasyStyleGerman(val)), R.splitEvery(1))(deWord)
             let altAnswerSecond = R.compose(R.toLower, R.join(""),
             R.map(val =>J.returnOldStyleGerman(val)), R.splitEvery(1))(deWord)
-            J.log([deWord.trim(), altAnswer.trim(), altAnswerSecond.trim()])
-            if (R.any(R.equals(this.state.answer.toLowerCase()))([deWord.trim(), altAnswer.trim(), altAnswerSecond.trim()])) {
+            if (R.any(R.equals(this.state.answer.toLowerCase()))([deWord, altAnswer, altAnswerSecond])) {
                 J.emitter.emit("correct")
             } else {
                 J.emitter.emit("wrong")
@@ -104,7 +103,7 @@ export default class App extends Component {
             this.setState({
                 buttonText: J.buttonTextNext,
                 buttonClassName: J.bulButtonNext,
-                textTopLeft: this.state.data.deWord,
+                textTop: `${this.state.data.deWord}|${this.state.data.enWord}`,
                 textBottom: this.state.data.dePart
             })
         })
@@ -115,7 +114,6 @@ export default class App extends Component {
             } else {
                 willBeIndex = this.state.globalIndex + 1
             }
-            J.log(this.state.globalData[ willBeIndex ])
             this.setState({
                 data:this.state.globalData[ willBeIndex ],
                 globalIndex: willBeIndex
@@ -149,52 +147,48 @@ export default class App extends Component {
         })
     }
     render () {
-        let fontTextTop = J.fontValueFn(this.state.textTopLeft.length + this.state.textTopRight.length + 2)
+        let memeHeight = J.getHeightPx(70)
+        let memeWidth = memeHeight * 1.33
+        let marginValue = J.divide(100 - J.getPart(memeWidth, J.getWidthPx(100)), 2)
+        let fontTextTop = J.fontValueFn(this.state.textTop.length)
         let fontTextBottom = J.fontValueFn(this.state.textBottom.length)
         let fontTextBottomSecond = J.fontValueFn(this.state.data.enPart.length)
         let lineHeightTextTop = J.lineHeightFn(fontTextTop)
         let lineHeightTextBottom = J.lineHeightFn(fontTextBottom)
         let lineHeightTextBottomSecond = J.lineHeightFn(fontTextBottomSecond)
-        let borderRadiusValue = 5
+        let heightValue = J.getPercent(10, memeHeight)
+        let gapValue = memeHeight - (3 * heightValue)
         let memeContainer = {
-            borderRadius: `${borderRadiusValue}vh`,
             padding: "0px",
-            marginLeft: "25vw",
-            width: "50vw",
-            height: "60vh",
+            marginLeft: `${J.getWidthPx(marginValue)}px`,
+            width: `${memeWidth}px`,
+            height: `${memeHeight}px`,
             backgroundSize: "cover",
             backgroundImage: `url(${J.httpsFn(this.state.data.imageSrc)})`
         }
+        J.log(memeContainer)
         let memeTextTop = {
-            borderTopLeftRadius: `${borderRadiusValue}vh`,
-            borderTopRightRadius: `${borderRadiusValue}vh`,
             top: "0px",
             fontWeight: "700",
-            color: "#363A42",
-            fontSize: `${fontTextTop}vh`,
+            color: "#263238",
+            fontSize: `${fontTextTop}%`,
             lineHeight: `${lineHeightTextTop}`,
-            height: "10vh",
+            height: `${heightValue}px`,
             textOverflow: "ellipsis",
-            width:  "50vw",
+            width:  `${memeWidth}px`,
             backgroundColor: "#B0BEC5",
             whiteSpace: "nowrap",
             overflow: "hidden"
         }
         let gapStyle = {
-            height: "44.9vh"
+            height: `${gapValue}px`
         }
         let memeTextBottom = R.merge(memeTextTop, {
-            borderTopLeftRadius: "0px",
-            borderTopRightRadius: "0px",
-            fontSize: `${fontTextBottom}vh`,
+            fontSize: `${fontTextBottom}%`,
             lineHeight: `${lineHeightTextBottom}`
         })
         let memeTextBottomSecond = R.merge(memeTextTop, {
-            borderTopLeftRadius: "0px",
-            borderTopRightRadius: "0px",
-            borderBottomLeftRadius: `${borderRadiusValue}vh`,
-            borderBottomRightRadius: `${borderRadiusValue}vh`,
-            fontSize: `${fontTextBottomSecond}vh`,
+            fontSize: `${fontTextBottomSecond}%`,
             lineHeight: `${lineHeightTextBottomSecond}`,
             backgroundColor: "#3c5a72",
             color: "#b2d0c4"
@@ -210,11 +204,7 @@ export default class App extends Component {
             </div>
         </div>
         <div className="box has-text-centered is-fullwidth" style={memeContainer}>
-            <div style={memeTextTop}>
-                <span className="memeTextTopLeft">{this.state.textTopLeft}</span>
-                <span className="memeTextTopSeparator">- </span>
-                <span className="memeTextTopRight">{this.state.textTopRight}</span>
-            </div>
+            <div style={memeTextTop}>{this.state.textTop}</div>
             <div style={gapStyle}></div>
             <div style={memeTextBottom}>{this.state.textBottom}</div>
             <div style={memeTextBottomSecond}>{this.state.data.enPart}</div>
