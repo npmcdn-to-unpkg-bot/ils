@@ -34,7 +34,7 @@ function repair(id) {
                 imageSrcOrigin: obj.imageSrc.originalSrc,
                 altTag: obj.imageSrc.name
             }
-            console.log(updater)
+            console.log(R.merge(obj, updater))
             db.findOneAndUpdateMain(R.merge(obj, updater)).then(updateData=>{
                 resolve(updateData)
             })

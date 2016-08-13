@@ -60,6 +60,7 @@ function findOneSkipCondition(modelName = "Main", skipValue = 0, condition) {
     })
 }
 function findOneAndUpdateMain(data) {
+    console.log(data)
     return new Promise(resolve=>{
         mongoose.model("Main").findOneAndUpdate({id: data.id}, data, {new: true}).exec((err, result)=>{
             resolve(result)
