@@ -74,7 +74,6 @@ function counter() {
     })
 }
 function save(modelName = "Main", saveData = {}) {
-    J.log(modelName, saveData)
     return new Promise(resolve=>{
         let Model = mongoose.model(modelName)
         Model(saveData).save((err, incoming)=>{

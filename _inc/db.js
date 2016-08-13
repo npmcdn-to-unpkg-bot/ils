@@ -228,7 +228,6 @@ function save() {
     var modelName = arguments.length <= 0 || arguments[0] === undefined ? "Main" : arguments[0];
     var saveData = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
 
-    J.log(modelName, saveData);
     return new Promise(function (resolve) {
         var Model = mongoose.model(modelName);
         Model(saveData).save(function (err, incoming) {

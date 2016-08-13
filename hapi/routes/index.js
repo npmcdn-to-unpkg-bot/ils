@@ -25,7 +25,6 @@ function learningMemePublish(data) {
     })
 }
 router.get("/", (req, res) =>{res.render("index")})
-router.get("/go", (req, res) =>{res.render("index")})
 router.get("/tunaPlayerDemo", (req, res) =>{res.render("tunaPlayerDemo")})
 router.get("/aboutOrderSentence", (req, res)=> {res.render("aboutOrderSentence")})
 router.get("/about", (req, res) =>{res.render("about")})
@@ -199,6 +198,19 @@ router.post("/learningMemePublish", (req, res) =>{
         learningMemePublish(req.body.data).then(data=>{
             res.send(data)
         })
+    } else {
+        res.send(J.config.badQuery)
+    }
+})
+router.post("/addMain", (req, res) =>{
+    if (J.auth(req.ip)) {
+        if (J.isTranslateDraftType(req.body)) {
+            db.save("TranslateDraft", req.body).then(incoming=>{
+                res.send(incoming)
+            })
+        } else {
+            res.send(J.config.incomleteRequest)
+        }
     } else {
         res.send(J.config.badQuery)
     }

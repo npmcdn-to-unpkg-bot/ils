@@ -144,6 +144,7 @@ _reactDom2.default.render(_react2.default.createElement(_translateDraft2.default
 
 },{"../../hot/src/translateDraft.js":6,"react":185,"react-dom":35}],4:[function(require,module,exports){
 "use strict";
+//import partial from main common
 
 var R = require("ramda");
 var reqwest = require("reqwest");
@@ -175,6 +176,11 @@ function Events(target) {
             j[0].apply(j[1], empty.slice.call(arguments, 1));
         }
     };
+}
+function loadTime() {
+    var now = new Date().getTime();
+    var page_load_time = now - performance.timing.navigationStart;
+    console.log("User-perceived page loading time: " + page_load_time);
 }
 function getData(url) {
     return new Promise(function (resolve) {
@@ -383,7 +389,6 @@ module.exports.winWidthIs = winWidthIs;
 module.exports.winHeightIs = winHeightIs;
 module.exports.httpsFn = R.replace("http://", "https://", R.__);
 module.exports.hapi = "http://localhost:3000";
-module.exports.admin = "http://localhost:3001";
 module.exports.ils = "http://ilearnsmarter.com";
 module.exports.bulButtonInit = "button";
 module.exports.categoryOptions = [{ value: "quotes", label: "quotes" },
@@ -399,6 +404,7 @@ module.exports.bulMobileBoxHalf = "column box is-half is-offset-one-quarter is-h
 module.exports.bulBoxOuter = "columns box is-hidden-mobile";
 module.exports.bulBox = "column box";
 module.exports.bulBoxHalf = "column box is-half is-offset-one-quarter";
+module.exports.loadTime = loadTime;
 
 },{"./stopWords.js":5,"ramda":34,"reqwest":186}],5:[function(require,module,exports){
 "use strict";
@@ -549,6 +555,7 @@ var App = function (_Component) {
             _commonReact2.default.emitter.on("init", function () {
                 //J.postData(`${J.hapi}/readRandom/translateDraft`,{}).then(data=>{
                 _commonReact2.default.postData("https:/ilearnsmarter.com/readRandom/translateDraft", {}).then(function (data) {
+                    _commonReact2.default.log(data);
                     var dataFuture = {};
                     var enWord = "";
                     var dePart = "";

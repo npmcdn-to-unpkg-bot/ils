@@ -70,7 +70,8 @@ export default class App extends Component {
     componentDidMount() {
         J.emitter.on("init", ()=>{
             //J.postData(`${J.hapi}/readRandom/translateDraft`,{}).then(data=>{
-            J.postData("https:/ilearnsmarter.com/readRandom/translateDraft",{}).then(data=>{
+            J.postData("https:/ilearnsmarter.com/readRandom/translateDraft", {}).then(data=>{
+                J.log(data)
                 let dataFuture = {}
                 let enWord = ""
                 let dePart = ""
