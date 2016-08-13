@@ -160,7 +160,7 @@ router.post("/readModel/:model", (req, res) =>{
     }
 })
 router.post("/readRandom/:model", (req, res) =>{
-    if (R.indexOf(req.params.model, J.config.models) !== -1) {
+    if (J.auth(req.ip) && R.indexOf(req.params.model, J.config.models) !== -1) {
         db.random(J.firstLetterCapital(req.params.model)).then(incoming=>{res.send(incoming)})
     } else {
         res.send(J.config.badQuery)

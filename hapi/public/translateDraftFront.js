@@ -556,7 +556,6 @@ var App = function (_Component) {
                 //J.postData(`${J.hapi}/readRandom/translateDraft`,{}).then(data=>{
                 _commonReact2.default.postData("/readRandom/translateDraft", {}).then(function (data) {
                     _commonReact2.default.log(data);
-                    _commonReact2.default.log(7);
                     var dataFuture = {};
                     var enWord = "";
                     var dePart = "";
@@ -578,7 +577,7 @@ var App = function (_Component) {
                 willSend.dePart = _commonReact2.default.addFullstop(_this3.state.dePart.trim());
                 willSend.enPart = _commonReact2.default.addFullstop(_this3.state.enPart.trim());
                 //J.postData(`${J.hapi}/addMain`, willSend).then(data =>{
-                _commonReact2.default.postData("https:/ilearnsmarter.com/addMain", willSend).then(function (data) {
+                _commonReact2.default.postData("/addMain", willSend).then(function (data) {
                     _this3.log(data);
                     _commonReact2.default.emitter.emit("init");
                 });

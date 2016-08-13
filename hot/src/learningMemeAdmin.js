@@ -86,7 +86,7 @@ export default class App extends Component {
     }
     componentDidMount() {
         J.emitter.on("init", ()=>{
-            J.postData("https://ilearnsmarter.com/imageless", {}).then(data => {
+            J.postData("/imageless", {}).then(data => {
                 data = J.addSingleProp("childSafetyFlag", true, data)
                 data = J.addSingleProp("imageSrc", false, data)
                 let deWord = data.deWord === undefined ? "" : data.deWord
@@ -126,7 +126,7 @@ export default class App extends Component {
             if (data !== false) {
                 if (R.type(data.imageSrc) === "String") {
                     J.log(data)
-                    J.postData("https://ilearnsmarter.com/learningMemePublish", {data}).then(response =>{
+                    J.postData("/learningMemePublish", {data}).then(response =>{
                         if (response === null) {
                             this.log("FAIL learningMemePublish!!")
                         } else {
@@ -144,7 +144,7 @@ export default class App extends Component {
         J.emitter.on("remove", ()=>{
             J.log(this.state.data.id)
             this.log(this.state.data.id)
-            J.postData("https://ilearnsmarter.com/removeMain", {id: this.state.data.id})
+            J.postData("/removeMain", {id: this.state.data.id})
             .then(()=>{
                 this.log("removed")
             })
@@ -152,7 +152,7 @@ export default class App extends Component {
         })
         J.emitter.on("searchImage", ()=>{
             let searchImageKeyword = this.state.searchImageKeyword
-            J.postData("https://ilearnsmarter.com/searchImage", {searchImageKeyword}).then(data =>{
+            J.postData("/searchImage", {searchImageKeyword}).then(data =>{
                 data = R.filter(val=>{
                     return val.imageSrc.includes(".jpg") || val.imageSrc.includes(".png")
                 }, data)
@@ -161,7 +161,7 @@ export default class App extends Component {
         })
         J.emitter.on("searchImageFast", ()=>{
             let searchImageKeyword = this.state.searchImageKeyword
-            J.postData("https://ilearnsmarter.com/searchImageFast", {searchImageKeyword}).then(data =>{
+            J.postData("/searchImageFast", {searchImageKeyword}).then(data =>{
                 this.setState({searchImageResult: J.addProp("className", "unselectedImage", data)})
             })
         })

@@ -72,7 +72,6 @@ export default class App extends Component {
             //J.postData(`${J.hapi}/readRandom/translateDraft`,{}).then(data=>{
             J.postData("/readRandom/translateDraft", {}).then(data=>{
                 J.log(data)
-                J.log(7)
                 let dataFuture = {}
                 let enWord = ""
                 let dePart = ""
@@ -94,7 +93,7 @@ export default class App extends Component {
             willSend.dePart = J.addFullstop(this.state.dePart.trim())
             willSend.enPart = J.addFullstop(this.state.enPart.trim())
             //J.postData(`${J.hapi}/addMain`, willSend).then(data =>{
-            J.postData("https:/ilearnsmarter.com/addMain", willSend).then(data =>{
+            J.postData("/addMain", willSend).then(data =>{
                 this.log(data)
                 J.emitter.emit("init")
             })
