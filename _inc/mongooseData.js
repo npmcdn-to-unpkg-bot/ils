@@ -28,6 +28,12 @@ let initTestConnection = (connectionString)=>{
 }
 let initSchemas = ()=>{
     let Schema = mongoose.Schema
+    let blogSchema = new Schema({
+        canonical: {type: String, required: true},
+        title: {type: String, required: true},
+        category: {type: String, required: true},
+        content: {type: String, required: true}
+    })
     let translateDraftSchema = new Schema({
         word: {type: String, required: true},
         deEn: {dePart: String, enPart: String},
@@ -51,6 +57,7 @@ let initSchemas = ()=>{
     let counterSchema = new Schema({counter: Number})
     let gitHookTokenSchema = new Schema({token: String})
 
+    mongoose.model("Blog", blogSchema)
     mongoose.model("TranslateDraft", translateDraftSchema)
     mongoose.model("Main", mainSchema)
     mongoose.model("Counter", counterSchema)

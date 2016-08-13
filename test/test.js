@@ -6,7 +6,13 @@ const request = require("superagent")
 const imagemin = require("../_inc/imagemin")
 const uploadImage = require("../_inc/uploadImage")
 describe.only("requests", ()=>{
-    it.only("should emit error - localhost:3000/addMain", (done)=>{
+    it.only("should work - localhost:3000/addTranslateDraft", (done)=>{
+        let obj = {
+
+        }
+        J.postData()
+    })
+    it("should emit error - localhost:3000/addMain", (done)=>{
         request.post("http://localhost:3000/addMain")
         .send("like a water on a party")
         .set("Accept", "application/json")

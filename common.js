@@ -150,8 +150,29 @@ function stop() {
         })
     })
 }
+function isType(obj, arr) {
+    let willReturn = true
+    arr.map(val=>{
+        if (willReturn) {
+            willReturn = !isEmpty(R.prop(val, obj))
+        }
+    })
+    return willReturn
+}
+function isTypeLoose(obj, arr) {
+    let willReturn = true
+    arr.map(val=>{
+        if (willReturn) {
+            willReturn = R.prop(val, obj) !== undefined
+        }
+    })
+    return willReturn
+}
 function isMainType(obj) {
     return !isEmpty(R.prop("dePart", obj)) && !isEmpty(R.prop("enPart", obj))
+}
+function isTranslateDraftType(obj) {
+    return isTypeLoose(obj, ["word", "deEn", "synonym", "synonymTranslated", "phrase", "phraseTranslated"])
 }
 let removePunctuation = R.compose(R.replace(/\.|\!|\,|\-|\?/, ""))
 let takeName = R.compose(R.takeLast(1), R.split("/"))
@@ -160,6 +181,7 @@ let anyFn = R.curry(anyRaw)
 module.exports.oneLevelUp = R.compose(R.join("/"), R.dropLast(1), R.split("/"))
 module.exports.twoLevelUp = R.compose(R.join("/"), R.dropLast(2), R.split("/"))
 module.exports.isMainType = isMainType
+module.exports.isTranslateDraftType = isTranslateDraftType
 module.exports.firstLetterCapital = firstLetterCapital
 module.exports.stop = stop
 module.exports.auth = auth
@@ -188,4 +210,3 @@ module.exports.getFileDirectory = R.compose(R.join("/"), R.init, R.split("/"))
 module.exports.hapi = "http://localhost:3000"
 module.exports.ils = "https://ilearnsmarter.com"
 module.exports.randomSeed = randomSeed
-module.exports.s = "S"

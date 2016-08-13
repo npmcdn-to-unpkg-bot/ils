@@ -22,6 +22,11 @@ function Events(target) {
         while (j = list[ i++ ]) j[ 0 ].apply(j[ 1 ], empty.slice.call(arguments, 1))
     }
 }
+function loadTime() {
+    let now = new Date().getTime()
+    let page_load_time = now - performance.timing.navigationStart
+    console.log("User-perceived page loading time: " + page_load_time)
+}
 function getData(url) {
     return new Promise((resolve)=>{
         reqwest({
@@ -114,12 +119,6 @@ function addProp(singleProp, defaultValue, arr) {
         return val
     }))(arr)
 }
-function addSingleProp(singleProp, defaultValue, obj) {
-    if (obj[ singleProp ] === undefined) {
-            obj[ singleProp ] = defaultValue
-    }
-    return obj
-}
 function setProp(singleProp, value, arr) {
     return R.compose(R.map(val=>{
         val[ singleProp ] = value
@@ -127,17 +126,19 @@ function setProp(singleProp, value, arr) {
     }))(arr)
 }
 let fontValueFn = R.cond([
-    [R.gte(30), R.always(250)],
-    [R.both(R.lt(30), R.gte(48)), R.always(185)],
-    [R.T, R.always(125)]
+    [R.gte(30), R.always(5.2)],
+    [R.both(R.lt(30), R.gte(48)), R.always(3.5)],
+    [R.both(R.lt(48), R.gte(60)), R.always(3.2)],
+    [R.T, R.always(2)]
 ])
 let lineHeightFn = R.cond([
-    [R.equals(250), R.always(1.5)],
-    [R.equals(185), R.always(2)],
-    [R.T, R.always(3)]
+    [R.equals(5.2), R.always(1.8)],
+    [R.equals(3.5), R.always(2.7)],
+    [R.equals(3.2), R.always(3.1)],
+    [R.T, R.always(4.7)]
 ])
 function hideTail(str) {
-    return `${R.head(str)}${R.compose(R.join(""), R.repeat("."), R.length, R.tail)(str)}`
+    return `${R.head(str)}${R.compose(R.join(""), R.repeat("_"), R.length, R.tail)(str)}`
 }
 function easyGermanSymbol(keyIs) {
     if (keyIs === "ä") {
@@ -218,7 +219,6 @@ module.exports.fontValueFn = fontValueFn
 module.exports.lineHeightFn = lineHeightFn
 module.exports.setProp = setProp
 module.exports.addProp = addProp
-module.exports.addSingleProp = addSingleProp
 module.exports.log = log
 module.exports.getData = getData
 module.exports.postData = postData
@@ -234,9 +234,10 @@ module.exports.getWidthPx = getWidthPx
 module.exports.randomSeed = randomSeed
 module.exports.winWidthIs = winWidthIs
 module.exports.winHeightIs = winHeightIs
+module.exports.httpsFn = R.replace("http://", "https://", R.__)
 module.exports.hapi = "http://localhost:3000"
-module.exports.admin = "http://localhost:3001"
-module.exports.ils = "http://ilearnsmarter.com"
+module.exports.ils = "https://ilearnsmarter.com"
+module.exports.empty = ""
 module.exports.bulButtonInit = "button"
 module.exports.categoryOptions = [
     { value: "quotes", label: "quotes" },
@@ -255,3 +256,4 @@ module.exports.bulMobileBoxHalf = "column box is-half is-offset-one-quarter is-h
 module.exports.bulBoxOuter = "columns box is-hidden-mobile"
 module.exports.bulBox = "column box"
 module.exports.bulBoxHalf = "column box is-half is-offset-one-quarter"
+module.exports.loadTime = loadTime

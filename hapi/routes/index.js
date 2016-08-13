@@ -213,7 +213,7 @@ router.post("/learningMemePublish", (req, res) =>{
         res.send(J.config.badQuery)
     }
 })
-router.post("/addMain", (req, res) =>{
+router.post("/addTranslateDraft", (req, res) =>{
     if (J.auth(req.ip)) {
         if (J.isTranslateDraftType(req.body)) {
             db.save("TranslateDraft", req.body).then(incoming=>{

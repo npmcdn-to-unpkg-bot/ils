@@ -10,7 +10,6 @@ function gitHookTokenRead() {
     })
 }
 function gitHookTokenWrite(data) {
-    J.log(data)
     return new Promise(resolve=>{
         mongoose.model("GitHookToken").findOneAndUpdate({}, data, {new: true, upsert: true}).exec((err, result)=>{
             resolve(result)
@@ -60,7 +59,6 @@ function findOneSkipCondition(modelName = "Main", skipValue = 0, condition) {
     })
 }
 function findOneAndUpdateMain(data) {
-    console.log(data)
     return new Promise(resolve=>{
         mongoose.model("Main").findOneAndUpdate({id: data.id}, data, {new: true}).exec((err, result)=>{
             resolve(result)
