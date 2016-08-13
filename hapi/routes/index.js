@@ -168,7 +168,7 @@ router.post("/repair/:id/:key/:keyValue", (req, res) =>{
     let obj = {}
     obj.id = req.params.id
     obj[ req.params.key ] = req.params.keyValue
-    db.findOneAndUpdateMain("Main", obj).then(()=>{
+    db.findOneAndUpdateMain(obj).then(()=>{
         res.send("ok")
     })
 })
