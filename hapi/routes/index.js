@@ -51,7 +51,24 @@ router.post("/gitHookTokenWrite", (req, res) =>{
     }
 })
 router.post("/gitHook", (req, res) =>{
-    console.log(req.body.head_commit.message)
+    if (R.path(["head_commit", "message"], req.body)) {
+        db.gitHookTokenRead().then(data=>{
+            let token = req.body.head_commit.message.split("-")[ 1 ]
+            if (data.token === token) {
+                J.willRunFixedCommand("npm run evergreen").then(()=>{
+                    db.gitHookTokenWrite({token: J.randomSeed()}).then(()=>{
+                        res.send(J.config.goodQuery)
+                    })
+                })
+            } else {
+                res.send(token)
+            }
+        })
+    } else {
+        res.send(J.config.badQuery)
+    }
+})
+router.post("/gitHookk", (req, res) =>{
     if (R.path(["head_commit", "message"], req.body)) {
         db.gitHookTokenRead().then(data=>{
             let token = req.body.head_commit.message.split("-")[ 1 ]
