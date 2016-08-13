@@ -55,10 +55,13 @@ router.post("/gitHook", (req, res) =>{
         db.gitHookTokenRead().then(data=>{
             let token = req.body.head_commit.message.split("-")[ 1 ]
             if (data.token === token) {
-                res.send(J.config.goodQuery)
-                J.willRunFixedCommand("npm run prod")
+                J.willRunFixedCommand("npm run evergreen").then(()=>{
+                    db.gitHookTokenWrite({token: J.randomSeed()}).then(()=>{
+                        res.send(J.config.goodQuery)
+                    })
+                })
             } else {
-                res.send(data.token)
+                res.send(token)
             }
         })
     } else {

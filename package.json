@@ -11,6 +11,7 @@
     "de": "git add . --all&&git commit -m update&&git push",
     "stop": "node zStop",
     "prod": "node zProd",
+    "evergreen": "node zEvergreen",
     "cover": "istanbul cover node_modules/mocha/bin/_mocha test/testDb.js",
     "watch": "babel watchBefore.js --out-file watch.js",
     "test": "mocha --timeout 60000 test/test.js",
