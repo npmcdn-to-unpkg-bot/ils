@@ -4,37 +4,53 @@ const async = require("async")
 const R = require("ramda")
 const translate = require("./translate.js")
 const scrapedParse = require("./scrapedParse.js")
-let words = require("./translateDraftGeneratorWords")
-function main() {
-    let willMap = words.map(val=>{
-        return function(callback) {
-            translate.deEnTimer(val).then(data=>{
-                let obj = scrapedParse.main(data)
-                callback(null, obj)
-            })
-        }
-    })
+const LineByLineReader = require("line-by-line")
+function getWords() {
     return new Promise(resolve=>{
-        async.series(willMap,
-        function(err, results) {
-            resolve(results)
+        let willReturn = []
+        let rl = new LineByLineReader("./translateDraftGeneratorWords.txt")
+        rl.on("line", function(line, lineCount, byteCount) {
+            if (line.trim() !== "") {
+                willReturn.push(line)
+            }
+        })
+        rl.on("end", function(line, lineCount, byteCount) {
+            resolve(willReturn)
+        })
+    })
+}
+function main() {
+    return new Promise(resolve=>{
+        getWords().then(words=>{
+            let willMap = words.map(val=>{
+                return function(callback) {
+                    translate.deEnTimer(val).then(data=>{
+                        let obj = scrapedParse.main(data)
+                        callback(null, obj)
+                    })
+                }
+            })
+            async.series(willMap, (err, results)=>{
+                resolve(results)
+            })
         })
     })
 }
 function partial(index = 0, limit = 50) {
-    let wordsArr = R.splitEvery(limit, words)
-    let willMap = wordsArr[ index ].map(val=>{
-        return function(callback) {
-            translate.deEnTimer(val).then(data=>{
-                let obj = scrapedParse.main(data)
-                callback(null, obj)
-            })
-        }
-    })
     return new Promise(resolve=>{
-        async.series(willMap,
-        function(err, results) {
-            resolve(results)
+        getWords().then(words=>{
+            let wordsArr = R.splitEvery(limit, words)
+            let willMap = wordsArr[ index ].map(val=>{
+                return function(callback) {
+                    translate.deEnTimer(val).then(data=>{
+                        let obj = scrapedParse.main(data)
+                        callback(null, obj)
+                    })
+                }
+            })
+            async.series(willMap, (err, results)=>{
+                resolve(results)
+            })
         })
     })
 }

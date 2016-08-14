@@ -17,7 +17,8 @@
     "test": "mocha --timeout 60000 test/test.js",
     "testReact": "mocha --timeout 15000 test/setupReact.js test/testReact.js",
     "testHapi": "mocha --timeout 15000 test/testHapi.js",
-    "testDb": "mocha --timeout 15000 test/testDb.js"
+    "testDb": "mocha --timeout 15000 test/testDb.js",
+    "testUrl": "node test/testUrl.js"
   },
   "author": "selfrefactor",
   "repository": {
@@ -97,10 +98,10 @@
     "file-exists": "*",
     "griddle-react": "*",
     "image-size": "*",
-    "imgur": "*",
     "imagemin": "*",
     "imagemin-mozjpeg": "*",
     "imagemin-pngquant": "*",
+    "imgur": "*",
     "istanbul": "*",
     "jsdom": "*",
     "karma-mocha": "*",
@@ -132,6 +133,7 @@
     "webpack": "*",
     "webpack-dev-server": "*",
     "winston": "*",
+    "yellowlabtools": "^1.11.1",
     "zen-observable": "^0.3.0"
   },
   "browserify": {

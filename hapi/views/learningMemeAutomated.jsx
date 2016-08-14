@@ -1,6 +1,6 @@
 "use strict"
 import React, { Component } from "react"
-const DefaultLayout = require("./base/learningMeme.jsx")
+const DefaultLayout = require("./base/learningMemeAutomated.jsx")
 
 let App = React.createClass({
     render: function() {

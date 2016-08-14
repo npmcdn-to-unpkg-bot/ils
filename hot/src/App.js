@@ -3,7 +3,6 @@ import React, { Component } from "react"
 import R from "ramda"
 import J from "./components/commonReact.js"
 import Navigation from "./components/navigation.js"
-console.log(Navigation)
 let initOnce = R.once(()=>{
     J.emitter.emit("once init")
 })
@@ -15,6 +14,21 @@ let initData = {
     "enPart": "",
     imageSrc: "",
     "id": 0
+}
+function convertImgToBase64(url, callback, outputFormat){
+    var img = new Image();
+    img.crossOrigin = 'Anonymous';
+    img.onload = function(){
+        var canvas = document.createElement('CANVAS');
+        var ctx = canvas.getContext('2d');
+        canvas.height = this.height;
+        canvas.width = this.width;
+        ctx.drawImage(this,0,0);
+        var dataURL = canvas.toDataURL(outputFormat || 'image/png');
+        callback(dataURL);
+        canvas = null;
+    };
+    img.src = url;
 }
 export default class App extends Component {
     constructor (props) {
@@ -29,6 +43,7 @@ export default class App extends Component {
             textTopRight: "",
             textBottom: "",
             inputFieldSize:20,
+            imageSrcCache:"",
             inputFieldClassName:"inputField",
             buttonText: J.buttonTextShowAnswer,
             buttonClassName: J.bulButtonInit
@@ -79,17 +94,41 @@ export default class App extends Component {
                 })
                 return val
             }), R.split(" "))(this.state.data.dePart)
-            this.setState({
-                answer: "",
-                textTopLeft: R.join(" ", willTextTop),
-                textTopRight: this.state.data.enWord,
-                textBottom: willTextBottom,
-                buttonText: J.buttonTextShowAnswer,
-                buttonClassName: J.bulButtonInit
-            },()=>{
-                setTimeout(()=>{
-                    this.setState({automatedMode: true})
-                },1000)
+            localforage.getItem(this.state.data.deWord).then(data=>{
+                if(data===null){
+                    convertImgToBase64(this.state.data.imageSrc,data=>{
+                        localforage.setItem(this.state.data.deWord,data).then(()=>{
+                            this.setState({
+                                answer: "",
+                                imageSrcCache: J.httpsFn(this.state.data.imageSrc),
+                                textTopLeft: R.join(" ", willTextTop),
+                                textTopRight: this.state.data.enWord,
+                                textBottom: willTextBottom,
+                                buttonText: J.buttonTextShowAnswer,
+                                buttonClassName: J.bulButtonInit
+                            },()=>{
+                                setTimeout(()=>{
+                                    this.setState({automatedMode: true})
+                                },1000)
+                            })
+                        })
+                    })
+                }else{
+                    J.log("cache hit")
+                    this.setState({
+                        answer: "",
+                        imageSrcCache: data,
+                        textTopLeft: R.join(" ", willTextTop),
+                        textTopRight: this.state.data.enWord,
+                        textBottom: willTextBottom,
+                        buttonText: J.buttonTextShowAnswer,
+                        buttonClassName: J.bulButtonInit
+                    },()=>{
+                        setTimeout(()=>{
+                            this.setState({automatedMode: true})
+                        },1000)
+                    })
+                }
             })
         })
         J.emitter.on("correct", ()=>{
@@ -136,7 +175,6 @@ export default class App extends Component {
             } else {
                 willBeIndex = this.state.globalIndex + 1
             }
-            J.log(this.state.globalData[ willBeIndex ])
             this.setState({
                 data:this.state.globalData[ willBeIndex ],
                 globalIndex: willBeIndex
@@ -184,7 +222,7 @@ export default class App extends Component {
             width: `50vw`,
             height: `60vh`,
             backgroundSize: "cover",
-            backgroundImage: `url(${J.httpsFn(this.state.data.imageSrc)})`
+            backgroundImage: `url(${this.state.imageSrcCache})`
         }
         let memeTextTop = {
             borderTopLeftRadius: `${borderRadiusValue}vh`,

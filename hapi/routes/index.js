@@ -43,12 +43,14 @@ router.post("/read/:id", (req, res) =>{
     })
 })
 router.post("/catchDailyHook", (req, res) =>{
-    J.willRunFixedCommand("node clean").then(data=>{
-        J.willRunFixedCommand("npm cache clean").then(()=>{
-            //res.send(`${data}`)
-            res.send(`${req.body} ${R.type(req.body)}`)
+    if (req.body.password === env.getEnv("mainPassword")) {
+        J.willRunFixedCommand("node clean").then(data=>{
+            J.willRunFixedCommand("npm cache clean").then(()=>{
+                //res.send(`${data}`)
+                res.send(`${req.body} ${R.type(req.body)}`)
+            })
         })
-    })
+    } else {res.send(J.config.badQuery)}
 })
 router.post("/translateDraftGenerator", (req, res) =>{
     if (J.auth(req.ip)) {
