@@ -26,7 +26,7 @@ class Exported extends Component {
                     <meta name="robots" content="index,follow" />
                     <meta name="language" content="en"/>
                     <meta name="page-topic" content="Education" />
-                    <link rel="shortcut icon" href="http://ilearnsmarter.com/favicon.ico" />
+                    <link rel="shortcut icon" href="images/favicon.ico" />
                     <link rel="stylesheet" href="bulma.css"/>
                     <link rel="stylesheet" href={`${this.props.keyword}.css`} />
                     <link rel="canonical" href={`http://ilearnsmarter.com/${this.props.keyword}`} />

@@ -27,7 +27,7 @@ class App extends Component {
                     <meta name="robots" content="index,follow" />
                     <meta name="language" content="en"/>
                     <meta name="page-topic" content="Education" />
-                    <link rel="shortcut icon" href="http://ilearnsmarter.com/favicon.ico" />
+                    <link rel="shortcut icon" href="images/favicon.ico" />
                     <link rel="stylesheet" href={config.bulma}/>
                     <link rel="canonical" href={`http://ilearnsmarter.com/${this.props.keyword}`} />
                     <meta property="og:locale" content="en_US" />

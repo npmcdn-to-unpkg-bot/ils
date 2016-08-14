@@ -111,6 +111,7 @@
     "mocha": "*",
     "node-bing-api": "*",
     "probe-image-size": "*",
+    "psi": "^2.0.4",
     "pug": "^2.0.0-beta4",
     "ramda-fantasy": "*",
     "ramjet": "*",

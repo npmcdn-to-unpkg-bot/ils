@@ -144,7 +144,6 @@ _reactDom2.default.render(_react2.default.createElement(_translateDraft2.default
 
 },{"../../hot/src/translateDraft.js":6,"react":185,"react-dom":35}],4:[function(require,module,exports){
 "use strict";
-//import partial from main common
 
 var R = require("ramda");
 var reqwest = require("reqwest");
@@ -284,10 +283,10 @@ function setProp(singleProp, value, arr) {
         return val;
     }))(arr);
 }
-var fontValueFn = R.cond([[R.gte(30), R.always(250)], [R.both(R.lt(30), R.gte(48)), R.always(185)], [R.T, R.always(125)]]);
-var lineHeightFn = R.cond([[R.equals(250), R.always(1.5)], [R.equals(185), R.always(2)], [R.T, R.always(3)]]);
+var fontValueFn = R.cond([[R.gte(30), R.always(5.2)], [R.both(R.lt(30), R.gte(48)), R.always(3.5)], [R.both(R.lt(48), R.gte(60)), R.always(3.2)], [R.T, R.always(2)]]);
+var lineHeightFn = R.cond([[R.equals(5.2), R.always(1.8)], [R.equals(3.5), R.always(2.7)], [R.equals(3.2), R.always(3.1)], [R.T, R.always(4.7)]]);
 function hideTail(str) {
-    return "" + R.head(str) + R.compose(R.join(""), R.repeat("."), R.length, R.tail)(str);
+    return "" + R.head(str) + R.compose(R.join(""), R.repeat("_"), R.length, R.tail)(str);
 }
 function easyGermanSymbol(keyIs) {
     if (keyIs === "ä") {
@@ -389,7 +388,8 @@ module.exports.winWidthIs = winWidthIs;
 module.exports.winHeightIs = winHeightIs;
 module.exports.httpsFn = R.replace("http://", "https://", R.__);
 module.exports.hapi = "http://localhost:3000";
-module.exports.ils = "http://ilearnsmarter.com";
+module.exports.ils = "https://ilearnsmarter.com";
+module.exports.empty = "";
 module.exports.bulButtonInit = "button";
 module.exports.categoryOptions = [{ value: "quotes", label: "quotes" },
 //{ value: "jokes", label: "jokes" },
@@ -515,8 +515,8 @@ var App = function (_Component) {
             paginationLimit: 0,
             paginationPerPageCount: 11
         };
-        _this.handleDeInput = _this.handleDeInput.bind(_this);
-        _this.handleEnInput = _this.handleEnInput.bind(_this);
+        _this.handleDePartInput = _this.handleDePartInput.bind(_this);
+        _this.handleEnPartInput = _this.handleEnPartInput.bind(_this);
         _this.handleDeWordInput = _this.handleDeWordInput.bind(_this);
         _this.handleEnWordInput = _this.handleEnWordInput.bind(_this);
         _this.handleAdd = _this.handleAdd.bind(_this);
@@ -553,8 +553,7 @@ var App = function (_Component) {
             var _this3 = this;
 
             _commonReact2.default.emitter.on("init", function () {
-                //J.postData(`${J.hapi}/readRandom/translateDraft`,{}).then(data=>{
-                _commonReact2.default.postData("/readRandom/translateDraft", {}).then(function (data) {
+                _commonReact2.default.postData(_commonReact2.default.empty + "/readRandom/translateDraft", {}).then(function (data) {
                     _commonReact2.default.log(data);
                     var dataFuture = {};
                     var enWord = "";
@@ -576,8 +575,7 @@ var App = function (_Component) {
                 willSend.enWord = _this3.state.enWord.trim();
                 willSend.dePart = _commonReact2.default.addFullstop(_this3.state.dePart.trim());
                 willSend.enPart = _commonReact2.default.addFullstop(_this3.state.enPart.trim());
-                //J.postData(`${J.hapi}/addMain`, willSend).then(data =>{
-                _commonReact2.default.postData("/addMain", willSend).then(function (data) {
+                _commonReact2.default.postData(_commonReact2.default.empty + "/addMain", willSend).then(function (data) {
                     _this3.log(data);
                     _commonReact2.default.emitter.emit("init");
                 });
@@ -620,26 +618,26 @@ var App = function (_Component) {
             });
         }
     }, {
-        key: "handleDeInput",
-        value: function handleDeInput(event) {
+        key: "handleDePartInput",
+        value: function handleDePartInput(event) {
             if (event.key === "Enter") {
                 _commonReact2.default.emitter.emit("ready");
             }
             this.setState({
-                data: _ramda2.default.merge(this.state.data, { dePart: event.target.value })
+                dePart: event.target.value
             });
             if (event.target.value.length > 68) {
                 this.log("TOO LONG - " + event.target.value.length, 5);
             }
         }
     }, {
-        key: "handleEnInput",
-        value: function handleEnInput(event) {
+        key: "handleEnPartInput",
+        value: function handleEnPartInput(event) {
             if (event.key === "Enter") {
                 _commonReact2.default.emitter.emit("ready");
             }
             this.setState({
-                data: _ramda2.default.merge(this.state.data, { enPart: event.target.value })
+                enPart: event.target.value
             });
             if (event.target.value.length > 68) {
                 this.log("TOO LONG - " + event.target.value.length, 5);
@@ -673,7 +671,7 @@ var App = function (_Component) {
         value: function render() {
             var _this4 = this;
 
-            return _react2.default.createElement("div", null, _react2.default.createElement("div", { className: "columns box has-text-centered is-fullwidth is-gapless is-narrow is-marginless" }, _react2.default.createElement("div", { className: "column is-2 is-fullwidth" }, _react2.default.createElement("input", { className: "deWordInput", type: "text", value: this.state.deWord, placeholder: "deWord", spellCheck: "true", size: this.state.deWord.length > 10 ? this.state.deWord.length : 10, onChange: this.handleDeWordInput, onKeyPress: this.handleDeWordInput })), _react2.default.createElement("div", { className: "column is-2 is-marginless" }, _react2.default.createElement("input", { className: "enWordInput", type: "text", value: this.state.enWord, placeholder: "enWord", spellCheck: "true", size: this.state.enWord.length > 10 ? this.state.enWord.length : 10, onChange: this.handleEnWordInput, onKeyPress: this.handleEnWordInput })), _react2.default.createElement("div", { className: "column is-4 is-marginless" }, _react2.default.createElement("input", { className: "deWordInput", type: "text", value: this.state.dePart, placeholder: "dePart", spellCheck: "true", size: this.state.dePart.length > 10 ? this.state.dePart.length : 10, onChange: this.handleDePartInput, onKeyPress: this.handleDeWordInput })), _react2.default.createElement("div", { className: "column is-4 is-marginless" }, _react2.default.createElement("input", { className: "enWordInput", type: "text", value: this.state.enPart, placeholder: "enPart", spellCheck: "true", size: this.state.dePart.length > 10 ? this.state.dePart.length : 10, onChange: this.handleEnPartInput, onKeyPress: this.handleEnWordInput }))), _react2.default.createElement("div", { className: "columns box has-text-centered is-fullwidth is-gapless is-narrow is-marginless" }, _react2.default.createElement("div", { className: "column is-2" }, _react2.default.createElement("a", { className: "button is-small is-primary is-inverted", onClick: this.handleRequestNext }, _react2.default.createElement("span", { className: "icon" }, _react2.default.createElement("i", { className: "fa fa-step-forward" }))), _react2.default.createElement("a", { className: "button is-primary is-inverted is-small", onClick: this.handleReady }, _react2.default.createElement("span", { className: "icon" }, _react2.default.createElement("i", { className: "fa fa-check" }))), _react2.default.createElement("a", { className: "button is-success is-inverted is-small", onClick: this.handlePrevNavigation }, _react2.default.createElement("span", { className: "icon" }, _react2.default.createElement("i", { className: "fa fa-chevron-left" }))), _react2.default.createElement("a", { className: "button is-success is-inverted is-small", onClick: this.handleNextNavigation }, _react2.default.createElement("span", { className: "icon" }, _react2.default.createElement("i", { className: "fa fa-chevron-right" })))), _react2.default.createElement("div", { className: "column is-2 secondRow" }, this.state.data.deEn.dePart), _react2.default.createElement("div", { className: "column is-6 secondRow" }, _ramda2.default.compose(_ramda2.default.join(","), _ramda2.default.take(6), _ramda2.default.split(","))(this.state.data.deEn.enPart) + "|" + _ramda2.default.compose(_ramda2.default.join(","), _ramda2.default.takeLast(6), _ramda2.default.split(","))(this.state.data.deEn.enPart))), _react2.default.createElement("div", { className: "columns box has-text-centered is-fullwidth is-gapless is-narrow is-marginless" }, _react2.default.createElement("div", { className: "column is-8 has-text-left" }, _ramda2.default.values(this.state.data.phrase).map(function (val, key) {
+            return _react2.default.createElement("div", null, _react2.default.createElement("div", { className: "columns box has-text-centered is-fullwidth is-gapless is-narrow is-marginless" }, _react2.default.createElement("div", { className: "column is-2 is-fullwidth" }, _react2.default.createElement("input", { className: "deWordInput", type: "text", value: this.state.deWord, placeholder: "deWord", spellCheck: "true", size: this.state.deWord.length > 10 ? this.state.deWord.length : 10, onChange: this.handleDeWordInput, onKeyPress: this.handleDeWordInput })), _react2.default.createElement("div", { className: "column is-2 is-marginless" }, _react2.default.createElement("input", { className: "enWordInput", type: "text", value: this.state.enWord, placeholder: "enWord", spellCheck: "true", size: this.state.enWord.length > 10 ? this.state.enWord.length : 10, onChange: this.handleEnWordInput, onKeyPress: this.handleEnWordInput })), _react2.default.createElement("div", { className: "column is-4 is-marginless" }, _react2.default.createElement("input", { className: "deWordInput", type: "text", value: this.state.dePart, placeholder: "dePart", spellCheck: "true", size: this.state.dePart.length > 10 ? this.state.dePart.length : 10, onChange: this.handleDePartInput, onKeyPress: this.handleDePartInput })), _react2.default.createElement("div", { className: "column is-4 is-marginless" }, _react2.default.createElement("input", { className: "enWordInput", type: "text", value: this.state.enPart, placeholder: "enPart", spellCheck: "true", size: this.state.enPart.length > 10 ? this.state.enPart.length : 10, onChange: this.handleEnPartInput, onKeyPress: this.handleEnPartInput }))), _react2.default.createElement("div", { className: "columns box has-text-centered is-fullwidth is-gapless is-narrow is-marginless" }, _react2.default.createElement("div", { className: "column is-2" }, _react2.default.createElement("a", { className: "button is-small is-primary is-inverted", onClick: this.handleRequestNext }, _react2.default.createElement("span", { className: "icon" }, _react2.default.createElement("i", { className: "fa fa-step-forward" }))), _react2.default.createElement("a", { className: "button is-primary is-inverted is-small", onClick: this.handleReady }, _react2.default.createElement("span", { className: "icon" }, _react2.default.createElement("i", { className: "fa fa-check" }))), _react2.default.createElement("a", { className: "button is-success is-inverted is-small", onClick: this.handlePrevNavigation }, _react2.default.createElement("span", { className: "icon" }, _react2.default.createElement("i", { className: "fa fa-chevron-left" }))), _react2.default.createElement("a", { className: "button is-success is-inverted is-small", onClick: this.handleNextNavigation }, _react2.default.createElement("span", { className: "icon" }, _react2.default.createElement("i", { className: "fa fa-chevron-right" })))), _react2.default.createElement("div", { className: "column is-2 secondRow" }, this.state.data.deEn.dePart), _react2.default.createElement("div", { className: "column is-6 secondRow" }, _ramda2.default.compose(_ramda2.default.join(","), _ramda2.default.take(6), _ramda2.default.split(","))(this.state.data.deEn.enPart) + "|" + _ramda2.default.compose(_ramda2.default.join(","), _ramda2.default.takeLast(6), _ramda2.default.split(","))(this.state.data.deEn.enPart))), _react2.default.createElement("div", { className: "columns box has-text-centered is-fullwidth is-gapless is-narrow is-marginless" }, _react2.default.createElement("div", { className: "column is-8 has-text-left" }, _ramda2.default.values(this.state.data.phrase).map(function (val, key) {
                 if (_ramda2.default.gt(key, _this4.state.paginationIndex) && _ramda2.default.lte(key, _this4.state.paginationIndex + _this4.state.paginationPerPageCount)) {
                     return _react2.default.createElement("div", { className: "secondRow" + (key % 2 === 0 ? "Odd" : ""), key: key + "-phraseTranslatedDePart" }, _react2.default.createElement("a", { onClick: function onClick() {
                             _this4.handleAdd(val);

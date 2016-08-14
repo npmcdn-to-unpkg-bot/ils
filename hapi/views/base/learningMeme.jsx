@@ -24,7 +24,7 @@ class App extends Component {
                     <meta name="description" content={this.props.description}/>
                     <meta name="copyright" content="&copy; Copyright (c) Dejan Toteff - ilearnsmarter.com" />
                     <meta name="robots" content="index,follow" />
-                    <link rel="shortcut icon" href="http://ilearnsmarter.com/favicon.ico" />
+                    <link rel="shortcut icon" href="images/favicon.ico" />
                     <link rel="stylesheet" href={config.bulma}/>
                     <link rel="stylesheet" href="css/admin.css"/>
                     <link rel="canonical" href={`http://ilearnsmarter.com/${this.props.keyword}`} />

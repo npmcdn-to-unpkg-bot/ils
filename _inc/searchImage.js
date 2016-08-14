@@ -7,7 +7,7 @@ const J = require("../common.js")
 const R = require("ramda")
 const env = require("dotenv-helper")
 const Bing = require("node-bing-api")({ accKey: env.getEnv("bing") })
-function imageFirst(keyword, searchLimit = 40) {
+function imageFirst(keyword, searchLimit = 100) {
     return new Promise((resolve)=>{
         Bing.images(keyword, {
             top: searchLimit,
@@ -37,7 +37,7 @@ function imageSecond(keyword) {
     //http://images.freeimages.com/images/previews/763/sniffing-cat-1398165.jpg
     //http://images.freeimages.com/images/thumbs/763/sniffing-cat-1398165.jpg
     return new Promise((resolve) => {
-        fetch(`http://www.freeimages.com/search/${keyword}?free=1`).then((res)=>{
+        fetch(`http://www.freeimages.com/search/${encodeURI(keyword)}?free=1`).then((res)=>{
             if (res.status !== 200) {
                 console.log("response code error")
                 resolve(null)
@@ -68,7 +68,7 @@ function imageThird(keyword) {
     //https://static.pexels.com/photos/4602/jumping-cute-playing-animals-medium.jpg
     //https://static.pexels.com/photos/4602/jumping-cute-playing-animals-large.jpg
     return new Promise((resolve)=>{
-        fetch(`https://www.pexels.com/search/${keyword}`).then((res)=>{
+        fetch(`https://www.pexels.com/search/${encodeURI(keyword)}`).then((res)=>{
             if (res.status !== 200) {
                 console.log("response code error")
                 resolve(null)

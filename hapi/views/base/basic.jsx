@@ -26,7 +26,7 @@ class Exported extends Component {
                     <meta name="description" content={this.props.description}/>
                     <meta name="copyright" content="&copy; Copyright (c) Dejan Toteff - ilearnsmarter.com" />
                     <meta name="robots" content="index,follow" />
-                    <link href="http://ilearnsmarter.com/images/favicon.ico" type="image/x-icon" rel="shortcut icon"/>
+                    <link href="images/favicon.ico" type="image/x-icon" rel="shortcut icon"/>
                     <link href={config.bulma} rel="stylesheet" />
                     <link href={`http://ilearnsmarter.com/${this.props.keyword}`} rel="canonical"/>
                     <meta property="og:locale" content="en_US" />

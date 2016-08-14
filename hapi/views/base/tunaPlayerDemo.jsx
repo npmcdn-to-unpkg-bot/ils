@@ -25,7 +25,7 @@ class App extends Component {
                     <meta name="copyright" content="&copy; Copyright (c) Dejan Toteff - ilearnsmarter.com" />
                     <meta name="robots" content="index,follow" />
                     <meta name="language" content="en"/>
-                    <link rel="shortcut icon" href="http://ilearnsmarter.com/favicon.ico" />
+                    <link rel="shortcut icon" href="images/favicon.ico" />
                     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css"/>
                     <link rel="stylesheet" href="inc/react-select.css"/>
                     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/react-select/0.9.1/react-select.min.js"/>

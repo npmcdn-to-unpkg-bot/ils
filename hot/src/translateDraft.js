@@ -43,8 +43,8 @@ export default class App extends Component {
             paginationLimit: 0,
             paginationPerPageCount: 11
         }
-        this.handleDeInput = this.handleDeInput.bind(this)
-        this.handleEnInput = this.handleEnInput.bind(this)
+        this.handleDePartInput = this.handleDePartInput.bind(this)
+        this.handleEnPartInput = this.handleEnPartInput.bind(this)
         this.handleDeWordInput = this.handleDeWordInput.bind(this)
         this.handleEnWordInput = this.handleEnWordInput.bind(this)
         this.handleAdd = this.handleAdd.bind(this)
@@ -69,8 +69,7 @@ export default class App extends Component {
     }
     componentDidMount() {
         J.emitter.on("init", ()=>{
-            //J.postData(`${J.hapi}/readRandom/translateDraft`,{}).then(data=>{
-            J.postData("/readRandom/translateDraft", {}).then(data=>{
+            J.postData(`${J.empty}/readRandom/translateDraft`, {}).then(data=>{
                 J.log(data)
                 let dataFuture = {}
                 let enWord = ""
@@ -92,8 +91,7 @@ export default class App extends Component {
             willSend.enWord = this.state.enWord.trim()
             willSend.dePart = J.addFullstop(this.state.dePart.trim())
             willSend.enPart = J.addFullstop(this.state.enPart.trim())
-            //J.postData(`${J.hapi}/addMain`, willSend).then(data =>{
-            J.postData("/addMain", willSend).then(data =>{
+            J.postData(`${J.empty}/addMain`, willSend).then(data =>{
                 this.log(data)
                 J.emitter.emit("init")
             })
@@ -128,23 +126,23 @@ export default class App extends Component {
             enWord: event.target.value
         })
     }
-    handleDeInput (event) {
+    handleDePartInput (event) {
         if (event.key === "Enter") {
             J.emitter.emit("ready")
         }
         this.setState({
-            data: R.merge(this.state.data, {dePart: event.target.value})
+            dePart: event.target.value
         })
         if (event.target.value.length > 68) {
             this.log(`TOO LONG - ${event.target.value.length}`, 5)
         }
     }
-    handleEnInput (event) {
+    handleEnPartInput (event) {
         if (event.key === "Enter") {
             J.emitter.emit("ready")
         }
         this.setState({
-            data: R.merge(this.state.data, {enPart: event.target.value})
+            enPart: event.target.value
         })
         if (event.target.value.length > 68) {
             this.log(`TOO LONG - ${event.target.value.length}`, 5)
@@ -178,10 +176,10 @@ export default class App extends Component {
                 <input className="enWordInput" type="text" value={this.state.enWord} placeholder="enWord" spellCheck="true" size={this.state.enWord.length > 10 ? this.state.enWord.length : 10} onChange={this.handleEnWordInput} onKeyPress={this.handleEnWordInput}/>
             </div>
             <div className="column is-4 is-marginless">
-                <input className="deWordInput" type="text" value={this.state.dePart} placeholder="dePart" spellCheck="true" size={this.state.dePart.length > 10 ? this.state.dePart.length : 10} onChange={this.handleDePartInput} onKeyPress={this.handleDeWordInput}/>
+                <input className="deWordInput" type="text" value={this.state.dePart} placeholder="dePart" spellCheck="true" size={this.state.dePart.length > 10 ? this.state.dePart.length : 10} onChange={this.handleDePartInput} onKeyPress={this.handleDePartInput}/>
             </div>
             <div className="column is-4 is-marginless">
-                <input className="enWordInput" type="text" value={this.state.enPart} placeholder="enPart" spellCheck="true" size={this.state.dePart.length > 10 ? this.state.dePart.length : 10} onChange={this.handleEnPartInput} onKeyPress={this.handleEnWordInput}/>
+                <input className="enWordInput" type="text" value={this.state.enPart} placeholder="enPart" spellCheck="true" size={this.state.enPart.length > 10 ? this.state.enPart.length : 10} onChange={this.handleEnPartInput} onKeyPress={this.handleEnPartInput}/>
             </div>
         </div>
         <div className="columns box has-text-centered is-fullwidth is-gapless is-narrow is-marginless">

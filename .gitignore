@@ -5,4 +5,5 @@ npm-debug.log
 znote.md
 tmp
 cache/
+dist/
 test/sitespeed-result/
