@@ -191,12 +191,25 @@ router.post("/repair/:id", (req, res) =>{
         })
     } else {res.send(J.config.badQuery)}
 })
+
 router.post("/readModel/:model", (req, res) =>{
     if (J.auth(req.ip) && R.indexOf(req.params.model, J.config.models) !== -1) {
         J.logger.debug(`model ${req.params.model} ip ${req.ip}`)
         let obj = {}
         obj[ req.body.key ] = req.body.keyValue
         mongoose.model(J.firstLetterCapital(req.params.model)).findOne(obj, (error, incoming)=>{
+            res.send(incoming)
+        })
+    } else {
+        res.send(J.config.badQuery)
+    }
+})
+router.post("/readWholeModel/:model", (req, res) =>{
+    if (J.auth(req.ip) && R.indexOf(req.params.model, J.config.models) !== -1) {
+        J.logger.debug(`model ${req.params.model} ip ${req.ip}`)
+        let obj = {}
+        obj[ req.body.key ] = req.body.keyValue
+        mongoose.model(J.firstLetterCapital(req.params.model)).find(obj, (error, incoming)=>{
             res.send(incoming)
         })
     } else {

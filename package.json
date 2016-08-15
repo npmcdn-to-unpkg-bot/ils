@@ -15,6 +15,7 @@
     "cover": "istanbul cover node_modules/mocha/bin/_mocha test/testDb.js",
     "watch": "babel watchBefore.js --out-file watch.js",
     "test": "mocha --timeout 60000 test/test.js",
+    "t": "mocha --compilers js:babel-core/register --require ./services/testReact/testHelp.js --recursive ./services/testReact",
     "testReact": "mocha --timeout 15000 test/setupReact.js test/testReact.js",
     "testHapi": "mocha --timeout 15000 test/testHapi.js",
     "testDb": "mocha --timeout 15000 test/testDb.js",
