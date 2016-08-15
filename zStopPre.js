@@ -13,6 +13,7 @@ async function shadowProcess() {
         J.box("5th time")
         state = await generateSitemap.main()
         state = await J.willRunFixedCommand("npm cache clean")
+        state = await J.willRunFixedCommand("node d backup")
     }
     return state
 }

@@ -1,17 +1,22 @@
 const J = require("../../common")
 const fs = require("fs-extra")
-
+let fileLocation = `${__dirname}/db.json`
 function main(){
     return new Promise(resolve=>{
-        J.postData(`${J.ils}/imageless`,{}).then(data=>{
-            J.log(data)
-            let prevData = fs.readJsonSync('db.json').data
+        let searchObj = {
+            key:"$where",
+            keyValue: "this.imageSrc!==undefined&&this.imageSrc!==false"
+        }
+        J.postData(`${J.ils}/readWholeModel/main`,searchObj).then(data=>{
+            let prevData = fs.readJsonSync(fileLocation).data
             if(prevData.length<data.length){
-                fs.writeJsonSync('db.json', {data})
+                fs.writeJsonSync(fileLocation, {data})
+                resolve(true)
             }else{
                 resolve(false)
             }
         })
     })
 }
-main()
+
+module.exports.main = main

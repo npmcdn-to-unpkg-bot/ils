@@ -170,6 +170,16 @@ router.post("/update/:model", (req, res) =>{
         res.send(J.config.badQuery)
     }
 })
+router.post("/updateBlog", (req, res) =>{
+    if (J.auth(req.ip)) {
+        mongoose.model("Blog").findOneAndUpdate({canonical: req.body.canonical}, req.body, (error, data)=>{
+            if (error !== null) {J.log(error)}
+            res.send(data)
+        })
+    } else {
+        res.send(J.config.badQuery)
+    }
+})
 router.post("/updateMany/:model", (req, res) =>{
     if (J.auth(req.ip) && R.indexOf(req.params.model, J.config.models) !== -1) {
         let obj = JSON.parse(req.body.obj)
@@ -191,7 +201,6 @@ router.post("/repair/:id", (req, res) =>{
         })
     } else {res.send(J.config.badQuery)}
 })
-
 router.post("/readModel/:model", (req, res) =>{
     if (J.auth(req.ip) && R.indexOf(req.params.model, J.config.models) !== -1) {
         J.logger.debug(`model ${req.params.model} ip ${req.ip}`)
@@ -259,15 +268,6 @@ router.post("/learningMemePublish", (req, res) =>{
         res.send(J.config.badQuery)
     }
 })
-router.post("/addTranslateDraft", (req, res) =>{
-    if (J.auth(req.ip)) {
-        db.save("TranslateDraft", req.body).then(incoming=>{
-            res.send(incoming)
-        })
-    } else {
-        res.send(J.config.badQuery)
-    }
-})
 router.post("/addMain", (req, res) =>{
     if (J.auth(req.ip)) {
         if (J.isMainType(req.body)) {
@@ -281,4 +281,35 @@ router.post("/addMain", (req, res) =>{
         res.send(J.config.badQuery)
     }
 })
+
+router.post("/addTranslateDraft", (req, res) =>{
+    if (J.auth(req.ip)) {
+        db.save("TranslateDraft", req.body).then(incoming=>{
+            res.send(incoming)
+        })
+    } else {
+        res.send(J.config.badQuery)
+    }
+})
+router.post("/addBlog", (req, res) =>{
+    if (J.auth(req.ip)) {
+        if (J.isBlogType(req.body)) {
+            db.save("Blog", req.body).then(incoming=>{
+                res.send(incoming)
+            })
+        } else {
+            res.send(J.config.incomleteRequest)
+        }
+    } else {
+        res.send(J.config.badQuery)
+    }
+})
+router.get("/blog-*", function (req, res) {
+    let keyword = req.params[ 0 ]
+    if (J.isBlogUrl(keyword)) {
+        res.send(keyword)
+    } else {res.send(J.config.badQuery)}
+    //res.render("blog", {title: titleFn(incoming), content: cleanFn(incoming)})
+})
+
 module.exports = router

@@ -172,8 +172,29 @@ function isMainType(obj) {
     return !isEmpty(R.prop("dePart", obj)) && !isEmpty(R.prop("enPart", obj))
 }
 function isTranslateDraftType(obj) {
-    console.log(obj)
     return isType(obj, ["word", "deEn", "synonym", "synonymTranslated", "phrase", "phraseTranslated"])
+}
+function isBlogType(obj) {
+    return isType(obj, ["title", "category", "content", "canonical"])
+}
+function isBlogUrl(keyword) {
+    let countSeparator = R.unless(R.compose(R.lte(2), R.length, R.split("-")), R.F)
+    let lengthFn = R.unless(R.compose(R.gt(60), R.length, R.split("")), R.F)
+    let categoryInUrl = R.unless(R.compose(val=>{
+        return R.any(value=>{
+            return val.includes("Category") && R.replace("Category", "", val) === value
+        })(["node", "react"])
+    }, R.head, R.split("-")), R.F)
+    if (R.allPass([countSeparator, categoryInUrl, lengthFn])(keyword)) {
+        let canonical = R.replace("nodeCategory-", "", keyword)
+        if (R.compose(R.all(R.test(/[a-z]|-/)), R.split(""))(canonical)) {
+            return canonical
+        } else {
+            return false
+        }
+    } else {
+        return false
+    }
 }
 function returnOldStyleGerman(keyIs) {
     if (keyIs === "ä") {
@@ -198,6 +219,8 @@ module.exports.normalizeGermanWord = R.compose(R.join(""), R.map(val=>returnOldS
 module.exports.returnOldStyleGerman = returnOldStyleGerman
 module.exports.isMainType = isMainType
 module.exports.isTranslateDraftType = isTranslateDraftType
+module.exports.isBlogType = isBlogType
+module.exports.isBlogUrl = isBlogUrl
 module.exports.firstLetterCapital = firstLetterCapital
 module.exports.stop = stop
 module.exports.auth = auth
