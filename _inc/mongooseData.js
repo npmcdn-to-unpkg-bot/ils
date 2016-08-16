@@ -30,8 +30,8 @@ let initSchemas = ()=>{
     let Schema = mongoose.Schema
     let blogSchema = new Schema({
         canonical: {type: String, required: true},
-        title: {type: String, required: true},
         category: {type: String, required: true},
+        title: {type: String, required: true},
         content: {type: String, required: true}
     })
     let translateDraftSchema = new Schema({

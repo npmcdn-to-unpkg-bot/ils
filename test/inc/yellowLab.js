@@ -1,13 +1,14 @@
-var ylt = require('yellowlabtools');
+var ylt = require("yellowlabtools")
 
-function main(url){
+function main(url) {
     return new Promise(resolve=>{
         ylt(url).then(data=>{
             resolve(data)
         }).fail(err=>{
-            console.error(err);
-                resolve(null)
+            console.error(err)
+            resolve(null)
         })
     })
 }
 module.exports.main = main
+//https://github.com/gmetais/YellowLabTools/wiki/NodeJS-module

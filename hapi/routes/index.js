@@ -9,7 +9,7 @@ const translateDraftGenerator = require("../../_inc/translateDraftGenerator")
 const R = require("ramda")
 const env = require("dotenv-helper")
 const mongoose = require("mongoose")
-const fs = require("fs-extra")
+const routeCache = require("route-cache")
 const logFile = `${__dirname}/logFile.txt`
 let router = express.Router()
 function learningMemePublish(data) {
@@ -25,16 +25,16 @@ function learningMemePublish(data) {
         })
     })
 }
-router.get("/", (req, res) =>{res.render("index")})
-router.get("/tunaPlayerDemo", (req, res) =>{res.render("tunaPlayerDemo")})
-router.get("/aboutOrderSentence", (req, res)=> {res.render("aboutOrderSentence")})
-router.get("/about", (req, res) =>{res.render("about")})
+router.get("/", routeCache.cacheSeconds(20), (req, res) =>{res.render("index")})
+router.get("/tunaPlayerDemo", routeCache.cacheSeconds(20), (req, res) =>{res.render("tunaPlayerDemo")})
+router.get("/aboutOrderSentence", routeCache.cacheSeconds(20), (req, res)=> {res.render("aboutOrderSentence")})
+router.get("/about", routeCache.cacheSeconds(20), (req, res) =>{res.render("about")})
 router.get("/writeSentenceLite", (req, res) =>{res.render("writeSentenceLite")})
-router.get("/learningMeme", (req, res) =>{res.render("learningMeme")})
-router.get("/learningMemeAutomated", (req, res) =>{res.render("learningMemeAutomated")})
-router.get("/writeSentence", (req, res)=> {res.render("writeSentence")})
-router.get("/orderSentence", (req, res) =>{res.render("orderSentence")})
-router.get("/orderSentenceMobile", (req, res) =>{res.render("orderSentenceMobile")})
+router.get("/learningMeme", routeCache.cacheSeconds(20), (req, res) =>{res.render("learningMeme")})
+router.get("/learningMemeAutomated", routeCache.cacheSeconds(20), (req, res) =>{res.render("learningMemeAutomated")})
+router.get("/writeSentence", routeCache.cacheSeconds(20), (req, res)=> {res.render("writeSentence")})
+router.get("/orderSentence", routeCache.cacheSeconds(20), (req, res) =>{res.render("orderSentence")})
+router.get("/orderSentenceMobile", routeCache.cacheSeconds(20), (req, res) =>{res.render("orderSentenceMobile")})
 router.post("/read/:id", (req, res) =>{
     J.logger.debug(`read db | ip ${req.ip}`)
     mongoose.model("Main").findOne({id: req.params.id * 1}, (error, data)=>{
@@ -101,18 +101,18 @@ router.post("/gitHook", (req, res) =>{
         res.send(J.config.badQuery)
     }
 })
-router.post("/ready", (req, res) =>{
+router.post("/ready", routeCache.cacheSeconds(20), (req, res) =>{
     J.logger.debug(`read ready | ip ${req.ip}`)
     mongoose.model("Main").find({$where: "this.enPart.length>1"}, (error, incoming)=>{
         res.send(incoming)
     })
 })
-router.post("/learningMeme", (req, res) =>{
+router.post("/learningMeme", routeCache.cacheSeconds(20), (req, res) =>{
     mongoose.model("Main").find({$where: "this.imageSrc!==undefined&&this.imageSrc!==false"}, (error, incoming)=>{
         res.send(R.values(incoming))
     })
 })
-router.post("/orderSentence", (req, res) =>{
+router.post("/orderSentence", routeCache.cacheSeconds(20), (req, res) =>{
     mongoose.model("Main").find({$where: "this.enPart!==undefined&&this.enPart.length>5"}, (error, incoming)=>{
         res.send(incoming)
     })
@@ -284,7 +284,7 @@ router.post("/addMain", (req, res) =>{
 
 router.post("/addTranslateDraft", (req, res) =>{
     if (J.auth(req.ip)) {
-        db.save("TranslateDraft", req.body).then(incoming=>{
+        db.save("TranslateDraft", JSON.parse(req.body.stringified)).then(incoming=>{
             res.send(incoming)
         })
     } else {
@@ -304,12 +304,24 @@ router.post("/addBlog", (req, res) =>{
         res.send(J.config.badQuery)
     }
 })
-router.get("/blog-*", function (req, res) {
-    let keyword = req.params[ 0 ]
-    if (J.isBlogUrl(keyword)) {
-        res.send(keyword)
-    } else {res.send(J.config.badQuery)}
-    //res.render("blog", {title: titleFn(incoming), content: cleanFn(incoming)})
+router.post("/blogPosts", function (req, res) {
+    if (J.auth(req.ip)) {
+        db.load("Blog").then(data=>{
+            J.log(data)
+            res.send(J.config.goodQuery)
+        })
+    } else {
+        res.send(J.config.badQuery)
+    }
 })
-
+router.get("/blog-*", function (req, res) {
+    let canonical = J.isBlogUrl(req.params[ 0 ])
+    if (canonical) {
+        db.load("Blog", "canonical", canonical).then(data=>{
+            if (data.length === 0) {res.send(J.config.badQuery)} else {
+                res.render("blog", {title: data[ 0 ].title, content: data[ 0 ].content})
+            }
+        })
+    } else {res.send(J.config.badQuery)}
+})
 module.exports = router

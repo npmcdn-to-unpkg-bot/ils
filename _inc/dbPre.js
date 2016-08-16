@@ -72,10 +72,12 @@ function counter() {
         })
     })
 }
-function load(modelName, key, keyValue) {
+function load(modelName, key===null, keyValue) {
     return new Promise(resolve=>{
         let obj = {}
-        obj[ key ] = keyValue
+        if(key!==null){
+            obj[ key ] = keyValue
+        }
         mongoose.model(modelName).find(obj, (error, incoming)=>{
             resolve(incoming)
         })
