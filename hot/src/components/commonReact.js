@@ -22,6 +22,7 @@ function Events(target) {
         while (j = list[ i++ ]) j[ 0 ].apply(j[ 1 ], empty.slice.call(arguments, 1))
     }
 }
+
 function loadTime() {
     let now = new Date().getTime()
     let page_load_time = now - performance.timing.navigationStart

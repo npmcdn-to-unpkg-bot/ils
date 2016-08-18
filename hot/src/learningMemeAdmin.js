@@ -85,7 +85,9 @@ export default class App extends Component {
     }
     componentDidMount() {
         J.emitter.on("init", ()=>{
-            J.postData("/imageless", {}).then(data => {
+            J.postData(`${J.ils}/imageless`, {}).then(data => {
+                J.log(data)
+                J.log(J.addSingleProp)
                 data = J.addSingleProp("childSafetyFlag", true, data)
                 data = J.addSingleProp("imageSrc", false, data)
                 let deWord = data.deWord === undefined ? "" : data.deWord
@@ -124,17 +126,16 @@ export default class App extends Component {
             let data = this.normalizeData(this.state.data)
             if (data !== false) {
                 if (R.type(data.imageSrc) === "String") {
-                    J.log(data)
-                    J.postData("/learningMemePublish", {data}).then(response =>{
-                        if (response === null) {
-                            this.log("FAIL learningMemePublish!!")
-                        } else {
-                            J.log("learningMemePublish is done")
-                        }
-                    })
-                    J.postData("readModel/main", {key:"id",keyValue: data.id}).then(result=>{
-                        if(R.path(["imageSrc", "imageSrc"],result))
-                    })
+                    J.postData(`${J.ils}/learningMemePublish`, {data}).then(()=>{console.log("server responded")})
+                    setTimeout(()=>{
+                        J.postData(`${J.ils}/readModel/main`, {key:"id", keyValue: data.id}).then(result=>{
+                            if (result.imageSrc === false) {
+                                this.log("No image saved")
+                            } else {
+                                this.log(`${result.imageSrc} - ${data.deWord}`)
+                            }
+                        })
+                    }, 7000)
                     J.emitter.emit("init")
                 } else {
                     this.log("Something is amiss!!")
@@ -146,7 +147,7 @@ export default class App extends Component {
         J.emitter.on("remove", ()=>{
             J.log(this.state.data.id)
             this.log(this.state.data.id)
-            J.postData("/removeMain", {id: this.state.data.id})
+            J.postData(`${J.ils}/removeMain`, {id: this.state.data.id})
             .then(()=>{
                 this.log("removed")
             })
@@ -154,7 +155,7 @@ export default class App extends Component {
         })
         J.emitter.on("searchImage", ()=>{
             let searchImageKeyword = this.state.searchImageKeyword
-            J.postData("/searchImage", {searchImageKeyword}).then(data =>{
+            J.postData(`${J.ils}/searchImage`, {searchImageKeyword}).then(data =>{
                 data = R.filter(val=>{
                     return val.imageSrc.includes(".jpg") || val.imageSrc.includes(".png")
                 }, data)
@@ -163,7 +164,7 @@ export default class App extends Component {
         })
         J.emitter.on("searchImageFast", ()=>{
             let searchImageKeyword = this.state.searchImageKeyword
-            J.postData("/searchImageFast", {searchImageKeyword}).then(data =>{
+            J.postData(`${J.ils}/searchImageFast`, {searchImageKeyword}).then(data =>{
                 this.setState({searchImageResult: J.addProp("className", "unselectedImage", data)})
             })
         })

@@ -119,6 +119,13 @@ function addProp(singleProp, defaultValue, arr) {
         return val
     }))(arr)
 }
+function addSingleProp(singleProp, defaultValue, obj) {
+    if (obj.singleProp === undefined) {
+        return R.merge(obj, {singleProp:defaultValue})
+    } else {
+        return obj
+    }
+}
 function setProp(singleProp, value, arr) {
     return R.compose(R.map(val=>{
         val[ singleProp ] = value
@@ -219,6 +226,7 @@ module.exports.fontValueFn = fontValueFn
 module.exports.lineHeightFn = lineHeightFn
 module.exports.setProp = setProp
 module.exports.addProp = addProp
+module.exports.addSingleProp = addSingleProp
 module.exports.log = log
 module.exports.getData = getData
 module.exports.postData = postData
