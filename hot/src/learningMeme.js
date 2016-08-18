@@ -47,6 +47,7 @@ export default class App extends Component {
             })
         })
         J.emitter.on("init", ()=>{
+            console.log(this.state.data)
             let willTextTopRaw = R.split(" ", this.state.data.deWord)
             let willTextTop = R.compose(R.map(val=>J.hideTail(val)), R.split(" "))(this.state.data.deWord)
             let willTextBottom = R.compose(R.join(" "), R.map(val=>{

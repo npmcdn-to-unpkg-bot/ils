@@ -17,6 +17,25 @@
 @correctSecond: #A5D6A7;
 @wrongFirst: #E57373;
 @wrongSecond: #EC407A;
+.blogAdminTextarea{
+    margin-left: 2vw;
+    margin-top: 1vw;
+    margin-right: 2vw;
+    padding: 0.5vw;
+    width:46vw;
+    border: 1px solid @thirdText;
+    font-size: 1.7vh;
+}
+.blogAdminPreview{
+    .blogAdminTextarea();
+    margin-top: 0px;
+    border: 1px solid @memeTextColor;
+    border-radius: 0.2vw;
+}
+.blogAdminPreview p{
+    outline: 1px;
+    line-height: 1;
+}
 .memeTextTopLeft{
     color: #363A42;
     letter-spacing: 0.3vw;
@@ -131,20 +150,27 @@ background: linear-gradient(@learningMemeBackground, @backgroundMeme 70%, @learn
     padding: 5px;
     background-color: @mildRed;
 }
-.newEntryContainer{
-    .borderTemplate;
+.newEntry{
+    border-radius: 1.5vw;
     position:        fixed;
     z-index:          100;
-    width:           100%;
-    height:          500px;
-    left:            50px;
-    top:             50px;
+    margin-bottom: 2vw;
+    left:            3vw;
+    top:             3vh;
     background-color: @memeTextColor;
+    width: 93.5vw;
+    height: auto;
 }
-.newEntry{
-    margin-left:20%;
-    background-color: @memeTextColor;
-    width: 50%;
+.newEntry p{
+    border-radius: 1.5vw;
+    border: 1px solid #4DB6AC;
+}
+.newEntry p span{
+    margin-left:0.5vw;
+    margin-right:0.5vw;
+}
+.newEntry p:hover{
+    cursor: pointer;
 }
 .outline{
 border-radius: 25%;

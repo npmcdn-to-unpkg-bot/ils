@@ -25,26 +25,8 @@ function main() {
             let willMap = words.map(val=>{
                 return function(callback) {
                     translate.deEnTimer(val).then(data=>{
-                        let obj = scrapedParse.main(data)
-                        callback(null, obj)
-                    })
-                }
-            })
-            async.series(willMap, (err, results)=>{
-                resolve(results)
-            })
-        })
-    })
-}
-function alt() {
-    return new Promise(resolve=>{
-        getWords().then(words=>{
-            let willMap = words.map(val=>{
-                return function(callback) {
-                    translate.deEnTimer(val).then(data=>{
                         let stringified = JSON.stringify(scrapedParse.main(data))
-                        J.postData(`${J.hapi}/addTranslateDraft`, {stringified}).then(saveResult=>{
-                            J.lg(saveResult)
+                        J.postData(`${J.ils}/addTranslateDraft`, {stringified}).then(saveResult=>{
                             callback(null, obj)
                         })
                     })
@@ -56,7 +38,24 @@ function alt() {
         })
     })
 }
-function partial(index = 0, limit = 50) {
+function old() {
+    return new Promise(resolve=>{
+        getWords().then(words=>{
+            let willMap = words.map(val=>{
+                return function(callback) {
+                    translate.deEnTimer(val).then(data=>{
+                        let obj = scrapedParse.main(data)
+                        callback(null, obj)
+                    })
+                }
+            })
+            async.series(willMap, (err, results)=>{
+                resolve(results)
+            })
+        })
+    })
+}
+function oldPartial(index = 0, limit = 50) {
     return new Promise(resolve=>{
         getWords().then(words=>{
             let wordsArr = R.splitEvery(limit, words)
@@ -75,5 +74,3 @@ function partial(index = 0, limit = 50) {
     })
 }
 module.exports.main = main
-module.exports.alt = alt
-module.exports.partial = partial

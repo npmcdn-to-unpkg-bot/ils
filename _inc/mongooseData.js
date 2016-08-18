@@ -32,7 +32,8 @@ let initSchemas = ()=>{
         canonical: {type: String, required: true},
         category: {type: String, required: true},
         title: {type: String, required: true},
-        content: {type: String, required: true}
+        content: {type: String, required: true},
+        timestamp: {type: Number, required: true}
     })
     let translateDraftSchema = new Schema({
         word: {type: String, required: true},

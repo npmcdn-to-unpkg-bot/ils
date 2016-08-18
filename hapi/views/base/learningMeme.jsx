@@ -1,6 +1,6 @@
 import React, {Component} from "react"
 import Navigation from "../components/navigation.jsx"
-import config from "../../_inc/config.js"
+import config from "../../../_inc/config.js"
 
 class App extends Component {
     constructor(props) {

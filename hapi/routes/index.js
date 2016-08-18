@@ -1,7 +1,6 @@
 "use strict"
 const express = require("express")
 const J = require("../../common")
-const config = require("../_inc/config")
 const db = require("../../_inc/db")
 const searchImage = require("../../_inc/searchImage")
 const uploadImage = require("../../_inc/uploadImage")
@@ -10,7 +9,6 @@ const R = require("ramda")
 const env = require("dotenv-helper")
 const mongoose = require("mongoose")
 const routeCache = require("route-cache")
-const logFile = `${__dirname}/logFile.txt`
 let router = express.Router()
 function learningMemePublish(data) {
     return new Promise(resolve=>{
@@ -35,6 +33,26 @@ router.get("/learningMemeAutomated", routeCache.cacheSeconds(20), (req, res) =>{
 router.get("/writeSentence", routeCache.cacheSeconds(20), (req, res)=> {res.render("writeSentence")})
 router.get("/orderSentence", routeCache.cacheSeconds(20), (req, res) =>{res.render("orderSentence")})
 router.get("/orderSentenceMobile", routeCache.cacheSeconds(20), (req, res) =>{res.render("orderSentenceMobile")})
+router.get("/translateDraft", (req, res) =>{
+    if (J.auth(req.ip)) {
+        res.render("translateDraft")
+    } else {
+        res.send(J.config.badQuery)
+    }
+})
+router.get(`/translateDraft/${env.getEnv("mainPassword")}`, (req, res) =>{
+    res.render("translateDraft")
+})
+router.get("/learningMemeAdmin", (req, res) =>{
+    if (J.auth(req.ip)) {
+        res.render("learningMemeAdmin")
+    } else {
+        res.send(J.config.badQuery)
+    }
+})
+router.get(`/learningMemeAdmin/${env.getEnv("mainPassword")}`, (req, res) =>{
+    res.render("learningMemeAdmin")
+})
 router.post("/read/:id", (req, res) =>{
     J.logger.debug(`read db | ip ${req.ip}`)
     mongoose.model("Main").findOne({id: req.params.id * 1}, (error, data)=>{
@@ -51,28 +69,6 @@ router.post("/catchDailyHook", (req, res) =>{
             })
         })
     } else {res.send(J.config.badQuery)}
-})
-router.post("/translateDraftGenerator", (req, res) =>{
-    if (J.auth(req.ip)) {
-        translateDraftGenerator.main().then(data=>{
-            db.saveMany("TranslateDraft", data).then(result=>{
-                res.send(result)
-            })
-        })
-    } else {
-        res.send(J.config.badQuery)
-    }
-})
-router.post("/translateDraftGeneratorPartial/:index/:limit", (req, res) =>{
-    if (J.auth(req.ip)) {
-        translateDraftGenerator.partial(req.params.index, req.params.limit).then(data=>{
-            db.saveMany("TranslateDraft", data).then(result=>{
-                res.send(result)
-            })
-        })
-    } else {
-        res.send(J.config.badQuery)
-    }
 })
 router.post("/gitHookTokenWrite", (req, res) =>{
     if (J.auth(req.ip)) {
@@ -116,20 +112,6 @@ router.post("/orderSentence", routeCache.cacheSeconds(20), (req, res) =>{
     mongoose.model("Main").find({$where: "this.enPart!==undefined&&this.enPart.length>5"}, (error, incoming)=>{
         res.send(incoming)
     })
-})
-router.get("/translateDraft", (req, res) =>{
-    if (J.auth(req.ip)) {
-        res.render("translateDraft")
-    } else {
-        res.send(J.config.badQuery)
-    }
-})
-router.get("/learningMemeAdmin", (req, res) =>{
-    if (J.auth(req.ip)) {
-        res.render("learningMemeAdmin")
-    } else {
-        res.send(J.config.badQuery)
-    }
 })
 router.post("/counter", (req, res) =>{
     if (J.auth(req.ip)) {
@@ -281,11 +263,20 @@ router.post("/addMain", (req, res) =>{
         res.send(J.config.badQuery)
     }
 })
-
 router.post("/addTranslateDraft", (req, res) =>{
     if (J.auth(req.ip)) {
         db.save("TranslateDraft", JSON.parse(req.body.stringified)).then(incoming=>{
             res.send(incoming)
+        })
+    } else {
+        res.send(J.config.badQuery)
+    }
+})
+router.post("/translateDraftGenerator", (req, res) =>{
+    if (J.auth(req.ip)) {
+        res.send(J.config.goodQuery)
+        J.willRunFixedCommand("node d translateDraft").then(data=>{
+            J.logger.debug(`translateDraftGenerator - ip ${req.ip}`)
         })
     } else {
         res.send(J.config.badQuery)
@@ -308,7 +299,7 @@ router.post("/blogPosts", function (req, res) {
     if (J.auth(req.ip)) {
         db.load("Blog").then(data=>{
             J.log(data)
-            res.send(J.config.goodQuery)
+            res.send(data)
         })
     } else {
         res.send(J.config.badQuery)

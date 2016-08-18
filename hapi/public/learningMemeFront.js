@@ -521,6 +521,7 @@ var App = function (_Component) {
                 });
             });
             _commonReact2.default.emitter.on("init", function () {
+                console.log(_this2.state.data);
                 var willTextTopRaw = _ramda2.default.split(" ", _this2.state.data.deWord);
                 var willTextTop = _ramda2.default.compose(_ramda2.default.map(function (val) {
                     return _commonReact2.default.hideTail(val);
