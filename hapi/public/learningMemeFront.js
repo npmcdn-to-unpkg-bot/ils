@@ -124,27 +124,6 @@ process.umask = function() { return 0; };
 },{}],3:[function(require,module,exports){
 "use strict";
 
-var _react = require("react");
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactDom = require("react-dom");
-
-var _reactDom2 = _interopRequireDefault(_reactDom);
-
-var _learningMeme = require("../../hot/src/learningMeme.js");
-
-var _learningMeme2 = _interopRequireDefault(_learningMeme);
-
-function _interopRequireDefault(obj) {
-  return obj && obj.__esModule ? obj : { default: obj };
-}
-
-_reactDom2.default.render(_react2.default.createElement(_learningMeme2.default, null), document.getElementById("reactHook"));
-
-},{"../../hot/src/learningMeme.js":6,"react":180,"react-dom":35}],4:[function(require,module,exports){
-"use strict";
-
 var R = require("ramda");
 var reqwest = require("reqwest");
 var stopWords = require("./stopWords.js");
@@ -277,6 +256,13 @@ function addProp(singleProp, defaultValue, arr) {
         return val;
     }))(arr);
 }
+function addSingleProp(singleProp, defaultValue, obj) {
+    if (obj.singleProp === undefined) {
+        return R.merge(obj, { singleProp: defaultValue });
+    } else {
+        return obj;
+    }
+}
 function setProp(singleProp, value, arr) {
     return R.compose(R.map(function (val) {
         val[singleProp] = value;
@@ -358,6 +344,32 @@ function addWhitespace(str, length) {
         return str;
     }
 }
+function convertImgToBase64(url) {
+    return new Promise(function (resolve) {
+        var img = new Image();
+        img.crossOrigin = "Anonymous";
+        img.onload = function () {
+            var canvas = document.createElement("CANVAS");
+            var ctx = canvas.getContext("2d");
+            canvas.height = this.height;
+            canvas.width = this.width;
+            ctx.drawImage(this, 0, 0);
+            var dataURL = canvas.toDataURL("image/png");
+            canvas = null;
+            resolve(dataURL);
+        };
+        img.src = url;
+    });
+}
+function nextState(arr, index) {
+    if (arr.length - 1 === index + 1) {
+        return arr[0];
+    } else {
+        return arr[index + 1];
+    }
+}
+module.exports.nextState = nextState;
+module.exports.convertImgToBase64 = convertImgToBase64;
 module.exports.addWhitespace = addWhitespace;
 module.exports.removePunctuation = removePunctuation;
 module.exports.addFullstop = addFullstop;
@@ -371,6 +383,7 @@ module.exports.fontValueFn = fontValueFn;
 module.exports.lineHeightFn = lineHeightFn;
 module.exports.setProp = setProp;
 module.exports.addProp = addProp;
+module.exports.addSingleProp = addSingleProp;
 module.exports.log = log;
 module.exports.getData = getData;
 module.exports.postData = postData;
@@ -391,9 +404,7 @@ module.exports.hapi = "http://localhost:3000";
 module.exports.ils = "https://ilearnsmarter.com";
 module.exports.empty = "";
 module.exports.bulButtonInit = "button";
-module.exports.categoryOptions = [{ value: "quotes", label: "quotes" },
-//{ value: "jokes", label: "jokes" },
-{ value: "derProcess", label: "derProcess" }, { value: "draft", label: "draft" }, { value: "preDraft", label: "preDraft" }];
+module.exports.categoryOptions = [{ value: "quotes", label: "quotes" }, { value: "derProcess", label: "derProcess" }, { value: "draft", label: "draft" }, { value: "preDraft", label: "preDraft" }];
 module.exports.bulButtonNext = "button is-success";
 module.exports.buttonTextShowAnswer = "Show Answer";
 module.exports.buttonTextNext = "Next";
@@ -406,12 +417,33 @@ module.exports.bulBox = "column box";
 module.exports.bulBoxHalf = "column box is-half is-offset-one-quarter";
 module.exports.loadTime = loadTime;
 
-},{"./stopWords.js":5,"ramda":34,"reqwest":181}],5:[function(require,module,exports){
+},{"./stopWords.js":4,"ramda":34,"reqwest":181}],4:[function(require,module,exports){
 "use strict";
 
 module.exports = ["zuerst", "kleiner", "Traum", "bestimmt", "heiraten", "schicken", "schlagen", "heiß", "Menge", "großartig", "legen", "versprechen", "klingen", "kaufen", "schauen", "passen", "Sekunde", "Soll", "Bring", "Arzt", "hart", "stark", "Miss", "außer", "Bleib", "fliegen", "Schule", "dumm", "voll", "Gefühl", "irgendwas", "endlich", "Straße", "schlimm", "Scheiß", "Platz", "Nummer", "Pass", "bloß", "Fest", "eben", "geschehen", "lhnen", "reichen", "Blut", "wohin", "manchmal", "Buch", "stecken", "unserer", "Hund", "Entschuldigung", "möglich", "glücklich", "Arsch", "Bett", "fangen", "beid", "retten", "Plan", "unten", "Nachricht", "getötet", "Freundin", "verdammt", "Zimmer", "beste", "Herz", "zwischen", "erzählt", "gestern", "Vertrauen", "früh", "Ernst", "frei", "Spaß", "Dollar", "Mama", "lesen", "Schuld", "denen", "anders", "Wahrheit", "niemals", "vier", "gewesen", "während", "fünf", "Schiff", "Versuch", "erste", "nächst", "schreiben", "lernen", "verlieren", "Gesicht", "Ruhe", "etwa", "versucht", "Teil", "gekommen", "Tochter", "jeder", "führen", "Wagen", "Gefallen", "Chance", "bedeutet", "oben", "Schwester", "gerne", "lieber", "Frage", "Idee", "überhaupt", "Ahnung", "Polizei", "darum", "Woher", "verloren", "Macht", "letzte", "Wasser", "ziemlich", "sogar", "Musik", "John", "sitzen", "kümmern", "drin", "fast", "trinken", "dran", "fallen", "eigen", "ruhig", "toll", "verrückt", "Kerl", "schwer", "Seite", "rufen", "wenig", "hinter", "bereit", "Geschichte", "bald", "schlafen", "danke", "tragen", "seiner", "vorbei", "hoffen", "Glück", "Name", "verschwinden", "Film", "später", "welch", "setzen", "spät", "Monat", "kurz", "darauf", "scheinen", "wichtig", "schaffen", "Spiel", "gern", "draußen", "lang", "egal", "Eins", "Teufel", "Wort", "allein", "deiner", "bißchen", "Jungs", "Schatz", "Land", "lhre", "letzt", "verlassen", "ziehen", "falsch", "ihrer", "hoch", "Ende", "beide", "Namen", "runter", "erzählen", "nett", "eigentlich", "Grund", "Schau", "nennen", "fertig", "Hilfe", "jung", "Waffe", "Sorge", "echt", "schlecht", "kriegen", "Krieg", "Jack", "daran", "Auto", "Stadt", "dazu", "entschuldigen", "gefunden", "stellen", "darüber", "unser", "beim", "Kopf", "Junge", "seinen", "sofort", "wann", "lieben", "erinnern", "zeigen", "Baby", "Familie", "Woche", "einmal", "schnell", "wahr", "Sohn", "dabei", "sonst", "versuchen", "bevor", "weit", "eines", "Auge", "einzig", "Arbeit", "holen", "viele", "Stunde", "liegen", "wegen", "gegen", "verdammen", "suchen", "fühlen", "Moment", "getan", "Bruder", "laufen", "andere", "Fall", "Minute", "Herr", "spielen", "genug", "Brauch", "treffen", "Scheiße", "zusammen", "Angst", "Abend", "töten", "Warte", "dafür", "unter", "Hand", "drei", "rein", "Halt", "Welt", "natürlich", "davon", "vergessen", "seit", "stimmen", "Mädchen", "gleich", "Recht", "wieso", "arbeiten", "weiter", "Problem", "lange", "Ding", "heißen", "fahren", "meiner", "niemand", "essen", "besser", "gehört", "erst", "dort", "warten", "Wohl", "ihre", "Sache", "ohne", "passiert", "selbst", "sterben", "Ordnung", "Nacht", "sollte", "fragen", "bekommen", "Mutter", "klein", "Paar", "dürfen", "Mensch", "gemacht", "Liebe", "mach", "halten", "Geld", "raus", "gesehen", "Hast", "klar", "Gerade", "dachen", "sprechen", "durch", "Hallo", "Morgen", "dieser", "richtig", "Vater", "schön", "dein", "genau", "sicher", "bleiben", "helfen", "zwei", "Kind", "verstehen", "stehen", "groß", "seine", "ander", "Freund", "brauchen", "Leid", "bringen", "Leute", "kennen", "gesagt", "Haus", "reden", "damit", "zurück", "Jahr", "jemand", "heute", "deine", "Gott", "weil", "euch", "hören", "finden", "diese", "okay", "Zeit", "Frau", "einfach", "nehmen", "wirklich", "denken", "Komm", "vielleicht", "über", "denn", "viel", "Dank", "glauben", "Einer", "sehr", "einem", "mögen", "Leben", "wieder", "alles", "ganz", "immer", "keine", "ihnen", "also", "warum", "mehr", "etwas", "Mann", "meinen", "nichts", "meine", "nach", "doch", "alle", "oder", "sollen", "lassen", "Weiß", "kein", "dies", "dann", "jetzt", "auch", "geben", "schon", "wissen", "kommen", "machen", "sehen", "sich", "sagen", "noch", "nein", "müssen", "gehen", "dich", "wenn", "einen", "eine", "hier", "wollen", "aber", "dass", "mich", "mein", "können", "werden", "haben", "nicht", "sein", "aber", "als", "am", "an", "auch", "auf", "aus", "bei", "bin", "bis", "bist", "da", "dadurch", "daher", "darum", "das", "daß", "dass", "dein", "deine", "dem", "den", "der", "des", "dessen", "deshalb", "die", "dies", "dieser", "dieses", "doch", "dort", "du", "durch", "ein", "eine", "einem", "einen", "einer", "eines", "er", "es", "euer", "eure", "für", "hatte", "hatten", "hattest", "hattet", "hier", "hinter", "ich", "ihr", "ihre", "im", "in", "ist", "ja", "jede", "jedem", "jeden", "jeder", "jedes", "jener", "jenes", "jetzt", "kann", "kannst", "können", "könnt", "machen", "mein", "meine", "mit", "muß", "mußt", "musst", "müssen", "müßt", "nach", "nachdem", "nein", "nicht", "nun", "oder", "seid", "sein", "seine", "sich", "sie", "sind", "soll", "sollen", "sollst", "sollt", "sonst", "soweit", "sowie", "und", "unser", "unsere", "unter", "vom", "von", "vor", "wann", "warum", "was", "weiter", "weitere", "wenn", "wer", "werde", "werden", "werdet", "weshalb", "wie", "wieder", "wieso", "wir", "wird", "wirst", "wo", "woher", "wohin", "zu", "zum", "zur", "über", "alle", "allem", "allen", "aller", "alles", "also", "ander", "andere", "anderem", "anderen", "anderer", "anderes", "anderm", "andern", "anderr", "anders", "", "damit", "dann", "derselbe", "derselben", "denselben", "desselben", "demselben", "dieselbe", "dieselben", "dasselbe", "dazu", "deinem", "deinen", "deiner", "deines", "denn", "derer", "dich", "dir", "diese", "diesem", "diesen", "einig", "einige", "einigem", "einigen", "einiger", "einiges", "einmal", "ihn", "ihm", "etwas", "eurem", "euren", "eurer", "eures", "gegen", "gewesen", "hab", "habe", "haben", "hat", "hin", "mich", "mir", "ihrem", "ihren", "ihrer", "ihres", "euch", "indem", "ins", "jene", "jenem", "jenen", "kein", "keine", "keinem", "keinen", "keiner", "keines", "könnte", "man", "manche", "manchem", "manchen", "mancher", "manches", "meinem", "meinen", "meiner", "meines", "muss", "musste", "nichts", "noch", "nur", "ob", "ohne", "sehr", "seinem", "seinen", "seiner", "seines", "selbst", "ihnen", "so", "solche", "solchem", "solchen", "solcher", "solches", "sollte", "sondern", "um", "uns", "unse", "unsem", "unsen", "unses", "viel", "während", "war", "waren", "warst", "weg", "weil", "welche", "welchem", "welchen", "welcher", "welches", "will", "wollen", "wollte", "würde", "würden", "zwar", "zwischen", "ab", "aehnlich", "ähnlich", "allein", "allg", "allgemein", "and", "außer", "author", "autor", "been", "beim", "bereits", "besonders", "besser", "bevor", "bietet", "böden", "boeden", "bzw", "ca", "dabei", "dafuer", "daneben", "daran", "darauf", "daraus", "davon", "davor", "denen", "dennoch", "derem", "deren", "dinge", "dunklen", "eben", "eher", "eigenen", "eigenes", "eigentlich", "einfach", "erst", "erste", "erster", "etc", "etwa", "fall", "finden", "for", "ganz", "ganze", "ganzem", "ganzen", "ganzer", "ganzes", "gar", "geben", "geht", "ggf", "gibt", "gleich", "gute", "guten", "hinterher", "immer", "information", "je", "jedoch", "koennen", "koennt", "kommen", "kommt", "konnte", "langsam", "lassen", "leicht", "leider", "lesen", "lichten", "liest", "mag", "mehr", "mehrere", "meist", "möchte", "moechte", "moeglich", "möglich", "müsste", "nachher", "natürlich", "ncht", "neben", "neu", "neue", "neuem", "neuen", "neuer", "neues", "nutzung", "off", "online", "per", "schnell", "schon", "schwierig", "sehen", "sehrwohl", "seit", "seite", "seiten", "selber", "sieht", "sodaß", "solch", "sollten", "solltest", "soviel", "sowohl", "spielen", "statt", "steht", "suchen", "titel", "unseren", "unseres", "version", "viele", "vieles", "vorher", "wachen", "wenig", "wenige", "weniger", "wieviel", "wirklich", "wohl", "wurde", "wurden", "abermaliges", "abermals", "abgerufen", "abgerufene", "abgerufener", "abgerufenes", "abgesehen", "acht", "aehnliche", "aehnlichem", "aehnlichen", "aehnlicher", "aehnliches", "aehnlichste", "aehnlichstem", "aehnlichsten", "aehnlichster", "aehnlichstes", "aeusserst", "aeusserste", "aeusserstem", "aeussersten", "aeusserster", "aeusserstes", "ähnliche", "ähnlichem", "ähnlichen", "ähnlicher", "ähnliches", "ähnlichst", "ähnlichste", "ähnlichstem", "ähnlichsten", "ähnlichster", "ähnlichstes", "alleine", "allemal", "allenfalls", "allenthalben", "allerdings", "allerlei", "allesamt", "allg.", "allgemeine", "allgemeinem", "allgemeinen", "allgemeiner", "allgemeines", "allgemeinste", "allgemeinstem", "allgemeinsten", "allgemeinster", "allgemeinstes", "allmählich", "allzeit", "allzu", "alsbald", "andauernd", "andauernde", "andauerndem", "andauernden", "andauernder", "andauerndes", "anderenfalls", "andererseits", "andernfalls", "anderst", "anderweitig", "anderweitige", "anderweitigem", "anderweitigen", "anderweitiger", "anderweitiges", "anerkannt", "anerkannte", "anerkannter", "anerkanntes", "anfangen", "anfing", "angefangen", "angesetze", "angesetzt", "angesetzten", "angesetzter", "ans", "anscheinend", "ansetzen", "ansonst", "ansonsten", "anstatt", "anstelle", "arbeiten", "aufgehört", "aufgrund", "aufhören", "aufhörte", "aufzusuchen", "augenscheinlich", "augenscheinliche", "augenscheinlichem", "augenscheinlichen", "augenscheinlicher", "augenscheinliches", "augenscheinlichst", "augenscheinlichste", "augenscheinlichstem", "augenscheinlichsten", "augenscheinlichster", "augenscheinlichstes", "ausdrücken", "ausdrücklich", "ausdrückliche", "ausdrücklichem", "ausdrücklichen", "ausdrücklicher", "ausdrückliches", "ausdrückt", "ausdrückte", "ausgenommen", "ausgenommene", "ausgenommenem", "ausgenommenen", "ausgenommener", "ausgenommenes", "ausgerechnet", "ausgerechnete", "ausgerechnetem", "ausgerechneten", "ausgerechneter", "ausgerechnetes", "ausnahmslos", "ausnahmslose", "ausnahmslosem", "ausnahmslosen", "ausnahmsloser", "ausnahmsloses", "außen", "ausser", "ausserdem", "außerhalb", "äusserst", "äusserste", "äusserstem", "äussersten", "äusserster", "äusserstes", "baelde", "bald", "bälde", "bearbeite", "bearbeiten", "bearbeitete", "bearbeiteten", "bedarf", "bedürfen", "bedurfte", "befahl", "befiehlt", "befiehlte", "befohlene", "befohlens", "befragen", "befragte", "befragten", "befragter", "begann", "beginnen", "begonnen", "behalten", "behielt", "beide", "beidem", "beiden", "beider", "beiderlei", "beides", "beinahe", "beisammen", "beispielsweise", "beitragen", "beitrugen", "bekannt", "bekannte", "bekannter", "bekanntlich", "bekanntliche", "bekanntlichem", "bekanntlichen", "bekanntlicher", "bekanntliches", "bekennen", "benutzt", "berichten", "berichtet", "berichtete", "berichteten", "bessere", "besserem", "besseren", "besserer", "besseres", "bestehen", "besteht", "bestenfalls", "bestimmt", "bestimmte", "bestimmtem", "bestimmten", "bestimmter", "bestimmtes", "beträchtlich", "beträchtliche", "beträchtlichem", "beträchtlichen", "beträchtlicher", "beträchtliches", "betraechtlich", "betraechtliche", "betraechtlichem", "betraechtlichen", "betraechtlicher", "betraechtliches", "betreffend", "betreffende", "betreffendem", "betreffenden", "betreffender", "betreffendes", "bez", "bez.", "bezgl", "bezgl.", "bezueglich", "bezüglich", "bisher", "bisherige", "bisherigem", "bisherigen", "bisheriger", "bisheriges", "bislang", "bisschen", "bitte", "bleiben", "bleibt", "blieb", "bloss", "brachte", "brachten", "brauchen", "braucht", "bräuchte", "bringen", "bsp", "bsp.", "bspw", "bspw.", "bzw.", "ca.", "circa", "dafür", "dagegen", "dahin", "dahingehend", "dahingehende", "dahingehendem", "dahingehenden", "dahingehender", "dahingehendes", "dahinter", "damalige", "damaligem", "damaligen", "damaliger", "damaliges", "damals", "danach", "dank", "danke", "danken", "dannen", "darf", "darfst", "darin", "darüber", "darüberhinaus", "darueber", "darueberhinaus", "darunter", "Dat", "dazwischen", "demgegenüber", "demgegenueber", "demgemaess", "demgemäss", "demnach", "denkbar", "denkbare", "denkbarem", "denkbaren", "denkbarer", "denkbares", "derart", "derartig", "derartige", "derartigem", "derartigen", "derartiger", "derjenige", "derjenigen", "derzeit", "derzeitig", "derzeitige", "derzeitigem", "derzeitigen", "derzeitiges", "dessenungeachtet", "desto", "desungeachtet", "deswegen", "diejenige", "diejenigen", "diesseitig", "diesseitige", "diesseitigem", "diesseitigen", "diesseitiger", "diesseitiges", "diesseits", "direkt", "direkte", "direkten", "direkter", "doppelt", "dorther", "dorthin", "dran", "drauf", "drei", "dreißig", "drin", "dritte", "drüber", "drueber", "drum", "drunter", "duerfte", "duerften", "duerftest", "duerftet", "durchaus", "durchweg", "durchwegs", "dürfen", "durfte", "dürfte", "durften", "dürften", "durftest", "dürftest", "durftet", "dürftet", "ebenfalls", "ebenso", "ect", "ect.", "ehe", "eheste", "ehestem", "ehesten", "ehester", "ehestes", "eigen", "eigene", "eigenem", "eigener", "eigenst", "eigentliche", "eigentlichem", "eigentlichen", "eigentlicher", "eigentliches", "einbaün", "einerlei", "einerseits", "einführen", "einführte", "einführten", "eingesetzt", "einigermaßen", "einmalig", "einmalige", "einmaligem", "einmaligen", "einmaliger", "einmaliges", "eins", "einseitig", "einseitige", "einseitigen", "einseitiger", "einst", "einstmals", "einzig", "empfunden", "ende", "entgegen", "entlang", "entsprechend", "entsprechende", "entsprechendem", "entsprechenden", "entsprechender", "entsprechendes", "entweder", "ergänze", "ergänzen", "ergänzte", "ergänzten", "ergo", "erhält", "erhalten", "erhielt", "erhielten", "erneut", "eröffne", "eröffnen", "eröffnet", "eröffnete", "eröffnetes", "erscheinen", "erstem", "ersten", "erstere", "ersterem", "ersteren", "ersterer", "ersteres", "erstes", "etc.", "etliche", "etlichem", "etlichen", "etlicher", "etliches", "etwaige", "euretwegen", "falls", "fand", "fast", "ferner", "fertig", "finde", "findest", "findet", "folgend", "folgende", "folgendem", "folgenden", "folgender", "folgendermassen", "folgendes", "folglich", "fordern", "fordert", "forderte", "forderten", "fort", "fortsetzen", "fortsetzt", "fortsetzte", "fortsetzten", "fragte", "frau", "frei", "freie", "freier", "freies", "fuer", "fuers", "fünf", "fürs", "gab", "gaenzlich", "gaenzliche", "gaenzlichem", "gaenzlichen", "gaenzlicher", "gaenzliches", "gängig", "gängige", "gängigen", "gängiger", "gängiges", "gänzlich", "gänzliche", "gänzlichem", "gänzlichen", "gänzlicher", "gänzliches", "gbr", "geb", "geblieben", "gebracht", "gedurft", "geehrt", "geehrte", "geehrten", "geehrter", "gefallen", "gefälligst", "gefällt", "gefiel", "gegeben", "gegenüber", "gegenueber", "gehabt", "gehalten", "gehen", "gekommen", "gekonnt", "gemacht", "gemaess", "gemäss", "gemeinhin", "gemocht", "genau", "genommen", "genug", "gepriesener", "gepriesenes", "gerade", "gern", "gesagt", "gesehen", "gestern", "gestrige", "getan", "geteilt", "geteilte", "getragen", "getrennt", "gewiss", "gewisse", "gewissem", "gewissen", "gewisser", "gewissermaßen", "gewisses", "gewollt", "geworden", "ggf.", "gib", "gilt", "gleiche", "gleichem", "gleichen", "gleicher", "gleiches", "gleichsam", "gleichste", "gleichstem", "gleichsten", "gleichster", "gleichstes", "gleichwohl", "gleichzeitig", "gleichzeitige", "gleichzeitigem", "gleichzeitigen", "gleichzeitiger", "gleichzeitiges", "glücklicherweise", "gluecklicherweise", "gmbh", "gottseidank", "gratulieren", "gratuliert", "gratulierte", "groesstenteils", "grösstenteils", "gruendlich", "gründlich", "gut", "habt", "haette", "haeufig", "haeufige", "haeufigem", "haeufigen", "haeufiger", "haeufigere", "haeufigeren", "haeufigerer", "haeufigeres", "halb", "hallo", "halten", "hast", "hätt", "hätte", "hätten", "häufig", "häufige", "häufigem", "häufigen", "häufiger", "häufigere", "häufigeren", "häufigerer", "häufigeres", "hen", "her", "heraus", "herein", "herum", "heute", "heutige", "heutigem", "heutigen", "heutiger", "heutiges", "hierbei", "hiermit", "hiesige", "hiesigem", "hiesigen", "hiesiger", "hiesiges", "hindurch", "hinein", "hingegen", "hinlanglich", "hinlänglich", "hinten", "hintendran", "hinterm", "hintern", "hinunter", "hoch", "höchst", "höchstens", "http", "hundert", "igitt", "ihretwegen", "ihrige", "ihrigen", "ihriges", "immerhin", "immerwaehrend", "immerwaehrende", "immerwaehrendem", "immerwaehrenden", "immerwaehrender", "immerwaehrendes", "immerwährend", "immerwährende", "immerwährendem", "immerwährenden", "immerwährender", "immerwährendes", "immerzu", "important", "indessen", "Inf.", "info", "infolge", "infolgedessen", "innen", "innerhalb", "innerlich", "insbesondere", "insgeheim", "insgeheime", "insgeheimer", "insgesamt", "insgesamte", "insgesamter", "insofern", "inzwischen", "irgend", "irgendein", "irgendeine", "irgendeinem", "irgendeiner", "irgendeines", "irgendetwas", "irgendjemand", "irgendjemandem", "irgendwann", "irgendwas", "irgendwelche", "irgendwen", "irgendwenn", "irgendwer", "irgendwie", "irgendwo", "irgendwohin", "jaehrig", "jaehrige", "jaehrigem", "jaehrigen", "jaehriger", "jaehriges", "jährig", "jährige", "jährigem", "jährigen", "jähriges", "jedenfalls", "jederlei", "jedesmal", "jeglichem", "jeglichen", "jeglicher", "jegliches", "jemals", "jemand", "jemandem", "jemanden", "jemandes", "jenseitig", "jenseitigem", "jenseitiger", "jenseits", "jung", "junge", "jungem", "jungen", "junger", "junges", "kaeumlich", "kam", "kaum", "käumlich", "keinerlei", "keineswegs", "klar", "klare", "klaren", "klares", "klein", "kleinen", "kleiner", "kleines", "koennte", "koennten", "koenntest", "koenntet", "komme", "konkret", "konkrete", "konkreten", "konkreter", "konkretes", "könn", "konnten", "könnten", "konntest", "könntest", "konntet", "könntet", "kuenftig", "kuerzlich", "kuerzlichst", "künftig", "kürzlich", "kürzlichst", "laengst", "lag", "lagen", "längst", "längstens", "laut", "lediglich", "leer", "legen", "legte", "legten", "letze", "letzte", "letzten", "letztendlich", "letztens", "letztere", "letzterem", "letzterer", "letzteres", "letztes", "letztlich", "liegt", "links", "mache", "machst", "macht", "machte", "machten", "magst", "mal", "manch", "mancherlei", "mancherorts", "manchmal", "mann", "margin", "massgebend", "massgebende", "massgebendem", "massgebenden", "massgebender", "massgebendes", "massgeblich", "massgebliche", "massgeblichem", "massgeblichen", "massgeblicher", "mehrerer", "mehrfach", "mehrmalig", "mehrmaligem", "mehrmaliger", "mehrmaliges", "meinetwegen", "meins", "meiste", "meisten", "meistens", "meistenteils", "meta", "mindestens", "miteinander", "mitgleich", "mithin", "mitnichten", "mittels", "mittelst", "mitten", "mittig", "mitunter", "mitwohl", "mochte", "möchten", "möchtest", "moeglichst", "moeglichste", "moeglichstem", "moeglichsten", "moeglichster", "mögen", "mögliche", "möglichen", "möglicher", "möglicherweise", "möglichst", "möglichste", "möglichstem", "möglichsten", "möglichster", "morgen", "morgige", "muessen", "muesst", "muesste", "mussten", "müssten", "nacher", "nachhinein", "nächste", "nacht", "naechste", "naemlich", "nahm", "nämlich", "naturgemaess", "naturgemäss", "nebenan", "nehmen", "neuerdings", "neuerlich", "neuerliche", "neuerlichem", "neuerlicher", "neuerliches", "neulich", "neun", "nichtsdestotrotz", "nichtsdestoweniger", "nie", "niemals", "niemand", "niemandem", "niemanden", "niemandes", "nimm", "nimmer", "nimmt", "nirgends", "nirgendwo", "noetigenfalls", "nötigenfalls", "nutzen", "nutzt", "nützt", "oben", "ober", "oberen", "oberer", "oberhalb", "oberste", "obersten", "oberster", "obgleich", "obs", "obschon", "obwohl", "oefter", "oefters", "offenkundig", "offenkundige", "offenkundigem", "offenkundigen", "offenkundiger", "offenkundiges", "offensichtlich", "offensichtliche", "offensichtlichem", "offensichtlichen", "offensichtlicher", "offensichtliches", "oft", "öfter", "öfters", "oftmals", "ohnedies", "paar", "partout", "persoenlich", "persoenliche", "persoenlichem", "persoenlicher", "persoenliches", "persönlich", "persönliche", "persönlicher", "persönliches", "pfui", "ploetzlich", "ploetzliche", "ploetzlichem", "ploetzlicher", "ploetzliches", "plötzlich", "plötzliche", "plötzlichem", "plötzlicher", "plötzliches", "pro", "quasi", "reagiere", "reagieren", "reagiert", "reagierte", "recht", "rechts", "regelmäßig", "reichlich", "reichliche", "reichlichem", "reichlichen", "reichlicher", "restlos", "restlose", "restlosem", "restlosen", "restloser", "restloses", "richtiggehend", "richtiggehende", "richtiggehendem", "richtiggehenden", "richtiggehender", "richtiggehendes", "rief", "rund", "rundheraus", "rundum", "runter", "sage", "sagen", "sagt", "sagte", "sagten", "sagtest", "sagtet", "samt", "sämtliche", "sang", "sangen", "sattsam", "schätzen", "schätzt", "schätzte", "schätzten", "scheinbar", "scheinen", "schlechter", "schlicht", "schlichtweg", "schließlich", "schlussendlich", "schreibe", "schreiben", "schreibens", "schreiber", "schwerlich", "schwerliche", "schwerlichem", "schwerlichen", "schwerlicher", "schwerliches", "sechs", "sect", "sehe", "seht", "sei", "seien", "seiest", "seiet", "seitdem", "seither", "selbe", "selben", "selbstredend", "selbstredende", "selbstredendem", "selbstredenden", "selbstredender", "selbstredendes", "seltsamerweise", "senke", "senken", "senkt", "senkte", "senkten", "setzen", "setzt", "setzte", "setzten", "sicher", "sicherlich", "sieben", "siebte", "siehe", "singen", "singt", "sobald", "soeben", "sofern", "sofort", "sog", "sogar", "sogleich", "solange", "solc", "solltet", "somit", "sonstig", "sonstige", "sonstigem", "sonstiger", "sonstwo", "sooft", "sowieso", "später", "startet", "startete", "starteten", "stattdessen", "steige", "steigen", "steigt", "stellenweise", "stellenweisem", "stellenweisen", "stets", "stieg", "stiegen", "such", "tages", "tat", "tät", "tatsächlich", "tatsächlichen", "tatsächlicher", "tatsächliches", "tatsaechlich", "tatsaechlichen", "tatsaechlicher", "tatsaechliches", "tausend", "teile", "teilen", "teilte", "teilten", "tief", "toll", "total", "trage", "tragen", "trägt", "trotzdem", "trug", "tun", "tust", "tut", "txt", "übel", "überall", "überallhin", "überaus", "überdies", "überhaupt", "überll", "übermorgen", "üblicherweise", "übrig", "übrigens", "ueber", "ueberall", "ueberallhin", "ueberaus", "ueberdies", "ueberhaupt", "uebermorgen", "ueblicherweise", "uebrig", "uebrigens", "ums", "umso", "umstaendehalber", "umständehalber", "unbedingt", "unbedingte", "unbedingter", "unbedingtes", "unerhoert", "unerhoerte", "unerhoertem", "unerhoerten", "unerhoerter", "unerhoertes", "unerhört", "unerhörte", "unerhörtem", "unerhörten", "unerhörter", "unerhörtes", "ungefähr", "ungemein", "ungewoehnlich", "ungewoehnliche", "ungewoehnlichem", "ungewoehnlichen", "ungewoehnlicher", "ungewoehnliches", "ungewöhnlich", "ungewöhnliche", "ungewöhnlichem", "ungewöhnlichen", "ungewöhnlicher", "ungewöhnliches", "ungleich", "ungleiche", "ungleichem", "ungleichen", "ungleicher", "ungleiches", "unmassgeblich", "unmassgebliche", "unmassgeblichem", "unmassgeblichen", "unmassgeblicher", "unmassgebliches", "unmoeglich", "unmoegliche", "unmoeglichem", "unmoeglichen", "unmoeglicher", "unmoegliches", "unmöglich", "unmögliche", "unmöglichen", "unmöglicher", "unnötig", "unsaeglich", "unsaegliche", "unsaeglichem", "unsaeglichen", "unsaeglicher", "unsaegliches", "unsagbar", "unsagbare", "unsagbarem", "unsagbaren", "unsagbarer", "unsagbares", "unsäglich", "unsägliche", "unsäglichem", "unsäglichen", "unsäglicher", "unsägliches", "unserem", "unserer", "unserm", "unsre", "unsrem", "unsren", "unsrer", "unsres", "unstreitig", "unstreitige", "unstreitigem", "unstreitigen", "unstreitiger", "unstreitiges", "unten", "unterbrach", "unterbrechen", "untere", "unterem", "unteres", "unterhalb", "unterste", "unterster", "unterstes", "unwichtig", "unzweifelhaft", "unzweifelhafte", "unzweifelhaftem", "unzweifelhaften", "unzweifelhafter", "unzweifelhaftes", "usw", "usw.", "vergangen", "vergangene", "vergangener", "vergangenes", "vermag", "vermögen", "vermutlich", "vermutliche", "vermutlichem", "vermutlichen", "vermutlicher", "vermutliches", "veröffentlichen", "veröffentlicher", "veröffentlicht", "veröffentlichte", "veröffentlichten", "veröffentlichtes", "verrate", "verraten", "verriet", "verrieten", "versorge", "versorgen", "versorgt", "versorgte", "versorgten", "versorgtes", "vielen", "vieler", "vielerlei", "vielleicht", "vielmalig", "vielmals", "vier", "voellig", "voellige", "voelligem", "voelligen", "voelliger", "voelliges", "voelligst", "vollends", "völlig", "völlige", "völligem", "völligen", "völliger", "völliges", "völligst", "vollstaendig", "vollstaendige", "vollstaendigem", "vollstaendigen", "vollstaendiger", "vollstaendiges", "vollständig", "vollständige", "vollständigem", "vollständigen", "vollständiger", "vollständiges", "voran", "vorbei", "vorgestern", "vorherig", "vorherige", "vorherigem", "vorheriger", "vorne", "vorüber", "vorueber", "waehrend", "waehrenddessen", "waere", "währenddessen", "wär", "wäre", "wären", "wart", "weder", "wegen", "weiß", "weit", "weiterem", "weiteren", "weiterer", "weiteres", "weiterhin", "weitestgehend", "weitestgehende", "weitestgehendem", "weitestgehenden", "weitestgehender", "weitestgehendes", "weitgehend", "weitgehende", "weitgehendem", "weitgehenden", "weitgehender", "weitgehendes", "wem", "wen", "wenigstens", "wenngleich", "wessen", "weswegen", "wichtig", "wiederum", "wieviele", "wievieler", "wiewohl", "willst", "wirklichem", "wirklicher", "wirkliches", "wobei", "wodurch", "wofuer", "wofür", "wogegen", "wohingegen", "wohlgemerkt", "wohlweislich", "wolle", "wollt", "wollten", "wolltest", "wolltet", "womit", "womoeglich", "womoegliche", "womoeglichem", "womoeglichen", "womoeglicher", "womoegliches", "womöglich", "womögliche", "womöglichem", "womöglichen", "womöglicher", "womögliches", "woran", "woraufhin", "woraus", "worin", "wuerde", "wuerden", "wuerdest", "wuerdet", "wurdest", "würdest", "wurdet", "würdet", "www", "x", "z.B.", "zahlreich", "zahlreichem", "zahlreicher", "zB", "zb.", "zehn", "zeitweise", "zeitweisem", "zeitweisen", "zeitweiser", "ziehen", "zieht", "ziemlich", "ziemliche", "ziemlichem", "ziemlichen", "ziemlicher", "ziemliches", "zirka", "zog", "zogen", "zudem", "zuerst", "zufolge", "zugleich", "zuletzt", "zumal", "zumeist", "zumindest", "zunächst", "zunaechst", "zurück", "zurueck", "zusammen", "zusehends", "zuviel", "zuviele", "zuvieler", "zuweilen", "zwanzig", "zwei", "zweifelsfrei", "zweifelsfreie", "zweifelsfreiem", "zweifelsfreien", "zweifelsfreier", "zweifelsfreies", "zwölf"];
 
-},{}],6:[function(require,module,exports){
+},{}],5:[function(require,module,exports){
+"use strict";
+
+var _react = require("react");
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = require("react-dom");
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
+var _learningMeme = require("../../hot/src/learningMeme.js");
+
+var _learningMeme2 = _interopRequireDefault(_learningMeme);
+
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : { default: obj };
+}
+
+_reactDom2.default.render(_react2.default.createElement(_learningMeme2.default, null), document.getElementById("reactHook"));
+
+},{"../../hot/src/learningMeme.js":6,"react":180,"react-dom":35}],6:[function(require,module,exports){
 "use strict";
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
@@ -438,7 +470,7 @@ var _ramda = require("ramda");
 
 var _ramda2 = _interopRequireDefault(_ramda);
 
-var _commonReact = require("./components/commonReact.js");
+var _commonReact = require("../../_inc/commonReact.js");
 
 var _commonReact2 = _interopRequireDefault(_commonReact);
 
@@ -476,6 +508,7 @@ var initData = {
     imageSrc: "",
     "id": 0
 };
+var shouldComponentUpdateObj = {};
 
 var App = function (_Component) {
     _inherits(App, _Component);
@@ -494,6 +527,8 @@ var App = function (_Component) {
             textTopLeft: "",
             textTopRight: "",
             textBottom: "",
+            imageSrcConvertedCurrent: { data: false, id: false },
+            imageSrcConvertedNext: { data: false, id: false },
             inputFieldSize: 20,
             inputFieldClassName: "inputField",
             buttonText: _commonReact2.default.buttonTextShowAnswer,
@@ -543,14 +578,38 @@ var App = function (_Component) {
                     });
                     return val;
                 }), _ramda2.default.split(" "))(_this2.state.data.dePart);
-                _this2.setState({
-                    answer: "",
-                    textTopLeft: _ramda2.default.join(" ", willTextTop),
-                    textTopRight: _this2.state.data.enWord,
-                    textBottom: willTextBottom,
-                    buttonText: _commonReact2.default.buttonTextShowAnswer,
-                    buttonClassName: _commonReact2.default.bulButtonInit
-                });
+                if (_this2.state.imageSrcConvertedNext.data === false) {
+                    _this2.setState({
+                        answer: "",
+                        textTopLeft: _ramda2.default.join(" ", willTextTop),
+                        textTopRight: _this2.state.data.enWord,
+                        textBottom: willTextBottom,
+                        buttonText: _commonReact2.default.buttonTextShowAnswer,
+                        buttonClassName: _commonReact2.default.bulButtonInit
+                    }, function () {
+                        var nextState = _commonReact2.default.nextState(_this2.state.globalData, _this2.state.globalIndex);
+                        _commonReact2.default.convertImgToBase64(nextState.imageSrc).then(function (convertedImageData) {
+                            //J.log(`converting ${nextState.deWord} image is ready`)
+                            _this2.setState({ imageSrcConvertedNext: { data: convertedImageData, id: nextState.id } });
+                        });
+                    });
+                } else {
+                    _this2.setState({
+                        imageSrcConvertedCurrent: _this2.state.imageSrcConvertedNext,
+                        answer: "",
+                        textTopLeft: _ramda2.default.join(" ", willTextTop),
+                        textTopRight: _this2.state.data.enWord,
+                        textBottom: willTextBottom,
+                        buttonText: _commonReact2.default.buttonTextShowAnswer,
+                        buttonClassName: _commonReact2.default.bulButtonInit
+                    }, function () {
+                        var nextState = _commonReact2.default.nextState(_this2.state.globalData, _this2.state.globalIndex);
+                        convertImgToBase64(nextState.imageSrc).then(function (convertedImageData) {
+                            _commonReact2.default.log("converting " + nextState.deWord + " image is ready");
+                            _this2.setState({ imageSrcConvertedNext: { data: convertedImageData, id: nextState.id } });
+                        });
+                    });
+                }
             });
             _commonReact2.default.emitter.on("correct", function () {
                 var domElement = document.getElementById("animationMarker");
@@ -645,6 +704,12 @@ var App = function (_Component) {
             var lineHeightTextBottom = _commonReact2.default.lineHeightFn(fontTextBottom);
             var lineHeightTextBottomSecond = _commonReact2.default.lineHeightFn(fontTextBottomSecond);
             var borderRadiusValue = 5;
+            var backgroundImage = void 0;
+            if (this.state.imageSrcConvertedCurrent.id !== false && this.state.imageSrcConvertedCurrent.id === this.state.data.id) {
+                backgroundImage = this.state.imageSrcConvertedCurrent.data;
+            } else {
+                backgroundImage = _commonReact2.default.httpsFn(this.state.data.imageSrc);
+            }
             var memeContainer = {
                 borderRadius: borderRadiusValue + "vh",
                 padding: "0px",
@@ -652,7 +717,7 @@ var App = function (_Component) {
                 width: "50vw",
                 height: "60vh",
                 backgroundSize: "cover",
-                backgroundImage: "url(" + _commonReact2.default.httpsFn(this.state.data.imageSrc) + ")"
+                backgroundImage: "url(" + backgroundImage + ")"
             };
             var memeTextTop = {
                 borderTopLeftRadius: borderRadiusValue + "vh",
@@ -697,7 +762,7 @@ var App = function (_Component) {
 
 exports.default = App;
 
-},{"./components/commonReact.js":4,"ramda":34,"react":180}],7:[function(require,module,exports){
+},{"../../_inc/commonReact.js":3,"ramda":34,"react":180}],7:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -30739,4 +30804,4 @@ module.exports = require('./lib/React');
   return reqwest
 });
 
-},{"xhr2":1}]},{},[3]);
+},{"xhr2":1}]},{},[5]);

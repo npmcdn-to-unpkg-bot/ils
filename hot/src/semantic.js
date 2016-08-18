@@ -1,40 +1,40 @@
 "use strict"
 import React, { Component } from "react"
 import R from "ramda"
-import J from "./components/commonReact.js"
-var db = new Dexie("friend_database");
-          db.version(1).stores({
-              friends: 'name,shoeSize'
-          });
-          
-          //
-          // Open it
-          //
-          db.open().catch(function (e) {
-              alert ("Open failed: " + e);
-          });
+import J from "../../_inc/commonReact.js"
+var db = new Dexie("friend_database")
+db.version(1).stores({
+    friends: "name,shoeSize"
+})
 
           //
-          // Put some data into it
+          //Open it
           //
-          db.friends.put({name: "Nicolas", shoeSize: 8}).then (function(){
+db.open().catch(function (e) {
+    alert("Open failed: " + e)
+})
+
+          //
+          //Put some data into it
+          //
+db.friends.put({name: "Nicolas", shoeSize: 8}).then(function() {
               //
-              // Then when data is stored, read from it
+              //Then when data is stored, read from it
               //
-              return db.friends.get('Nicolas');
-          }).then(function (friend) {
+    return db.friends.get("Nicolas")
+}).then(function (friend) {
               //
-              // Display the result
+              //Display the result
               //
-              alert ("Nicolas has shoe size " + friend.shoeSize);
-          }).catch(function(error) {
+    alert("Nicolas has shoe size " + friend.shoeSize)
+}).catch(function(error) {
              //
-             // Finally don't forget to catch any error
-             // that could have happened anywhere in the
-             // code blocks above.
+             //Finally don't forget to catch any error
+             //that could have happened anywhere in the
+             //code blocks above.
              //
-             alert ("Ooops: " + error);
-          });
+    alert("Ooops: " + error)
+})
 export default class App extends Component {
     constructor (props) {
         super(props)

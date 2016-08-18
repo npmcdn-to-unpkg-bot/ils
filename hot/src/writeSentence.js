@@ -3,7 +3,7 @@ import React, { Component } from "react"
 import ReactDOM from "react-dom"
 import * as R from "ramda"
 const reqwest = require("reqwest")
-import J from "./components/commonReact.js"
+import J from "../../_inc/commonReact.js"
 const winWidthIs = window.innerWidth * 1
 const winHeightIs = window.innerHeight * 1
 const singleWidth = Math.floor(winWidthIs / 100)
@@ -87,10 +87,10 @@ export default class Only extends Component {
             })
 
             let memeStyleContainer = {
-					                                                                                                                                                                backgroundImage: `url(${imageUrl})`,
+					                                                                                                                                                                                                                                                                                                                                backgroundImage: `url(${imageUrl})`,
                 width:`${outerHalf}px`,
                 height: `${singleHeight * 40}px`
-			                                                                                                                        }
+			                                                                                                                                                                                                                                                }
             let memeStyle = {
                 fontSize: "20px",
                 backgroundColor: "#CFD8DC",

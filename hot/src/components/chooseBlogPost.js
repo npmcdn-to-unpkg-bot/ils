@@ -1,7 +1,7 @@
 "use strict"
 import React, { Component } from "react"
 import R from "ramda"
-import {randomSeed} from "./commonReact"
+import {randomSeed} from "../../../_inc/commonReact.js"
 let mockedData = [
     {title:"this 1200",category:"node",timestamp: 1200},
     {title:"this",category:"node",timestamp: 1000},

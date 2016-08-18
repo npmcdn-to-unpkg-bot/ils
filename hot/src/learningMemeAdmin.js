@@ -86,8 +86,6 @@ export default class App extends Component {
     componentDidMount() {
         J.emitter.on("init", ()=>{
             J.postData(`${J.ils}/imageless`, {}).then(data => {
-                J.log(data)
-                J.log(J.addSingleProp)
                 data = J.addSingleProp("childSafetyFlag", true, data)
                 data = J.addSingleProp("imageSrc", false, data)
                 let deWord = data.deWord === undefined ? "" : data.deWord
@@ -97,6 +95,7 @@ export default class App extends Component {
                 if (searchImageKeywordArr.length > 0) {
                     this.setState({
                         data,
+                        paginationIndex: 0,
                         searchImageKeyword: J.removePunctuation(R.last(searchImageKeywordArr)).cleanStr,
                         deWord,
                         enWord
@@ -113,6 +112,7 @@ export default class App extends Component {
                 } else {
                     this.setState({
                         data,
+                        paginationIndex: 0,
                         searchImageKeyword: "",
                         deWord,
                         enWord

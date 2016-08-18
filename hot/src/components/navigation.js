@@ -1,7 +1,7 @@
 "use strict"
 import React, { Component } from "react"
 import Select from "react-select"
-import J from "./commonReact"
+import J from "../../../_inc/commonReact.js"
 class Navigation extends Component {
     render () {
         return (

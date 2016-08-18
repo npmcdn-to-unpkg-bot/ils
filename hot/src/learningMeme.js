@@ -1,7 +1,7 @@
 "use strict"
 import React, { Component } from "react"
 import R from "ramda"
-import J from "./components/commonReact.js"
+import J from "../../_inc/commonReact.js"
 let initOnce = R.once(()=>{
     J.emitter.emit("once init")
 })
@@ -14,6 +14,7 @@ let initData = {
     imageSrc: "",
     "id": 0
 }
+let shouldComponentUpdateObj = {}
 export default class App extends Component {
     constructor (props) {
         super(props)
@@ -26,6 +27,8 @@ export default class App extends Component {
             textTopLeft: "",
             textTopRight: "",
             textBottom: "",
+            imageSrcConvertedCurrent:{data:false, id:false},
+            imageSrcConvertedNext:{data:false, id:false},
             inputFieldSize:20,
             inputFieldClassName:"inputField",
             buttonText: J.buttonTextShowAnswer,
@@ -59,19 +62,42 @@ export default class App extends Component {
                         } else {
                             val = `${willTextTop[ key ]}${removedChar[ 0 ]}`
                         }
-
                     }
                 })
                 return val
             }), R.split(" "))(this.state.data.dePart)
-            this.setState({
-                answer: "",
-                textTopLeft: R.join(" ", willTextTop),
-                textTopRight: this.state.data.enWord,
-                textBottom: willTextBottom,
-                buttonText: J.buttonTextShowAnswer,
-                buttonClassName: J.bulButtonInit
-            })
+            if (this.state.imageSrcConvertedNext.data === false) {
+                this.setState({
+                    answer: "",
+                    textTopLeft: R.join(" ", willTextTop),
+                    textTopRight: this.state.data.enWord,
+                    textBottom: willTextBottom,
+                    buttonText: J.buttonTextShowAnswer,
+                    buttonClassName: J.bulButtonInit
+                }, ()=>{
+                    let nextState = J.nextState(this.state.globalData, this.state.globalIndex)
+                    J.convertImgToBase64(nextState.imageSrc).then(convertedImageData=>{
+                        //J.log(`converting ${nextState.deWord} image is ready`)
+                        this.setState({imageSrcConvertedNext: {data:convertedImageData, id:nextState.id}})
+                    })
+                })
+            } else {
+                this.setState({
+                    imageSrcConvertedCurrent:this.state.imageSrcConvertedNext,
+                    answer: "",
+                    textTopLeft: R.join(" ", willTextTop),
+                    textTopRight: this.state.data.enWord,
+                    textBottom: willTextBottom,
+                    buttonText: J.buttonTextShowAnswer,
+                    buttonClassName: J.bulButtonInit
+                }, ()=>{
+                    let nextState = J.nextState(this.state.globalData, this.state.globalIndex)
+                    convertImgToBase64(nextState.imageSrc).then(convertedImageData=>{
+                        J.log(`converting ${nextState.deWord} image is ready`)
+                        this.setState({imageSrcConvertedNext: {data:convertedImageData, id:nextState.id}})
+                    })
+                })
+            }
         })
         J.emitter.on("correct", ()=>{
             let domElement = document.getElementById("animationMarker")
@@ -155,6 +181,12 @@ export default class App extends Component {
         let lineHeightTextBottom = J.lineHeightFn(fontTextBottom)
         let lineHeightTextBottomSecond = J.lineHeightFn(fontTextBottomSecond)
         let borderRadiusValue = 5
+        let backgroundImage
+        if (this.state.imageSrcConvertedCurrent.id !== false && this.state.imageSrcConvertedCurrent.id === this.state.data.id) {
+            backgroundImage = this.state.imageSrcConvertedCurrent.data
+        } else {
+            backgroundImage = J.httpsFn(this.state.data.imageSrc)
+        }
         let memeContainer = {
             borderRadius: `${borderRadiusValue}vh`,
             padding: "0px",
@@ -162,7 +194,7 @@ export default class App extends Component {
             width: "50vw",
             height: "60vh",
             backgroundSize: "cover",
-            backgroundImage: `url(${J.httpsFn(this.state.data.imageSrc)})`
+            backgroundImage: `url(${backgroundImage})`
         }
         let memeTextTop = {
             borderTopLeftRadius: `${borderRadiusValue}vh`,

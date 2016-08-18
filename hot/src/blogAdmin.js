@@ -4,7 +4,7 @@ import ReactDOM from "react-dom"
 //import markdown from "markdown"
 const markdown = require("markdown").markdown
 import * as R from "ramda"
-const J = require("./components/commonReact")
+import J from "../../_inc/commonReact.js"
 const ChooseBlogPost = require("./components/chooseBlogPost").main
 
 let imageSrcMock = "https://i.imgur.com/8mqZD47.jpg"

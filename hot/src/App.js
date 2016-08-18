@@ -1,7 +1,7 @@
 "use strict"
 import React, { Component } from "react"
 import R from "ramda"
-import J from "./components/commonReact.js"
+import J from "../../_inc/commonReact.js"
 import Navigation from "./components/navigation.js"
 let initOnce = R.once(()=>{
     J.emitter.emit("once init")

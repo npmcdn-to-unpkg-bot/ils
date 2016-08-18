@@ -213,6 +213,32 @@ function addWhitespace(str, length) {
         return `${str}${R.compose(R.join(""), R.repeat("_"))(length - str.length)}|`
     } else {return str}
 }
+function convertImgToBase64(url) {
+    return new Promise(resolve=>{
+        var img = new Image()
+        img.crossOrigin = "Anonymous"
+        img.onload = function() {
+            let canvas = document.createElement("CANVAS")
+            let ctx = canvas.getContext("2d")
+            canvas.height = this.height
+            canvas.width = this.width
+            ctx.drawImage(this, 0, 0)
+            let dataURL = canvas.toDataURL("image/png")
+            canvas = null
+            resolve(dataURL)
+        }
+        img.src = url
+    })
+}
+function nextState(arr, index) {
+    if (arr.length - 1 === index + 1) {
+        return arr[ 0 ]
+    } else {
+        return arr[ index + 1 ]
+    }
+}
+module.exports.nextState = nextState
+module.exports.convertImgToBase64 = convertImgToBase64
 module.exports.addWhitespace = addWhitespace
 module.exports.removePunctuation = removePunctuation
 module.exports.addFullstop = addFullstop

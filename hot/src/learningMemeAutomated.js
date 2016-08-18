@@ -1,7 +1,7 @@
 "use strict"
 import React, { Component } from "react"
 import R from "ramda"
-import J from "./components/commonReact.js"
+import J from "../../_inc/commonReact.js"
 //import Navigation from "./components/navigation.js"
 let initOnce = R.once(()=>{
     J.emitter.emit("once init")
@@ -15,7 +15,7 @@ let initData = {
     imageSrc: "",
     "id": 0
 }
-function convertImgToBase64(url, callback, outputFormat) {
+function convertImgToBase64(url, callback) {
     var img = new Image()
     img.crossOrigin = "Anonymous"
     img.onload = function() {
@@ -24,7 +24,7 @@ function convertImgToBase64(url, callback, outputFormat) {
         canvas.height = this.height
         canvas.width = this.width
         ctx.drawImage(this, 0, 0)
-        var dataURL = canvas.toDataURL(outputFormat || "image/png")
+        var dataURL = canvas.toDataURL("image/png")
         callback(dataURL)
         canvas = null
     }

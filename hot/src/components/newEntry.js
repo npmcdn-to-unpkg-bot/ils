@@ -3,7 +3,7 @@ import React, { Component } from "react"
 import ReactDOM from "react-dom"
 import R from "ramda"
 import Select from "react-select"
-import J from "./commonReact"
+import J from "../../../_inc/commonReact.js"
 const inputObjInitial = {
     id: 0,
     dePart: "",
