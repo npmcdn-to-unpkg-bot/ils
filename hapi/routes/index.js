@@ -8,7 +8,6 @@ const translateDraftGenerator = require("../../_inc/translateDraftGenerator")
 const R = require("ramda")
 const env = require("dotenv-helper")
 const mongoose = require("mongoose")
-const routeCache = require("route-cache")
 let router = express.Router()
 function learningMemePublish(data) {
     return new Promise(resolve=>{
@@ -23,16 +22,16 @@ function learningMemePublish(data) {
         })
     })
 }
-router.get("/", routeCache.cacheSeconds(20), (req, res) =>{res.render("index")})
-router.get("/tunaPlayerDemo", routeCache.cacheSeconds(20), (req, res) =>{res.render("tunaPlayerDemo")})
-router.get("/aboutOrderSentence", routeCache.cacheSeconds(20), (req, res)=> {res.render("aboutOrderSentence")})
-router.get("/about", routeCache.cacheSeconds(20), (req, res) =>{res.render("about")})
+router.get("/", (req, res) =>{res.render("index")})
+router.get("/tunaPlayerDemo", (req, res) =>{res.render("tunaPlayerDemo")})
+router.get("/aboutOrderSentence", (req, res)=> {res.render("aboutOrderSentence")})
+router.get("/about", (req, res) =>{res.render("about")})
 router.get("/writeSentenceLite", (req, res) =>{res.render("writeSentenceLite")})
-router.get("/learningMeme", routeCache.cacheSeconds(20), (req, res) =>{res.render("learningMeme")})
-router.get("/learningMemeAutomated", routeCache.cacheSeconds(20), (req, res) =>{res.render("learningMemeAutomated")})
-router.get("/writeSentence", routeCache.cacheSeconds(20), (req, res)=> {res.render("writeSentence")})
-router.get("/orderSentence", routeCache.cacheSeconds(20), (req, res) =>{res.render("orderSentence")})
-router.get("/orderSentenceMobile", routeCache.cacheSeconds(20), (req, res) =>{res.render("orderSentenceMobile")})
+router.get("/learningMeme", (req, res) =>{res.render("learningMeme")})
+router.get("/learningMemeAutomated", (req, res) =>{res.render("learningMemeAutomated")})
+router.get("/writeSentence", (req, res)=> {res.render("writeSentence")})
+router.get("/orderSentence", (req, res) =>{res.render("orderSentence")})
+router.get("/orderSentenceMobile", (req, res) =>{res.render("orderSentenceMobile")})
 router.get("/translateDraft", (req, res) =>{
     if (J.auth(req.ip)) {
         res.render("translateDraft")
@@ -97,18 +96,18 @@ router.post("/gitHook", (req, res) =>{
         res.send(J.config.badQuery)
     }
 })
-router.post("/ready", routeCache.cacheSeconds(20), (req, res) =>{
+router.post("/ready", (req, res) =>{
     J.logger.debug(`read ready | ip ${req.ip}`)
     mongoose.model("Main").find({$where: "this.enPart.length>1"}, (error, incoming)=>{
         res.send(incoming)
     })
 })
-router.post("/learningMeme", routeCache.cacheSeconds(20), (req, res) =>{
+router.post("/learningMeme", (req, res) =>{
     mongoose.model("Main").find({$where: "this.imageSrc!==undefined&&this.imageSrc!==false"}, (error, incoming)=>{
         res.send(R.values(incoming))
     })
 })
-router.post("/orderSentence", routeCache.cacheSeconds(20), (req, res) =>{
+router.post("/orderSentence", (req, res) =>{
     mongoose.model("Main").find({$where: "this.enPart!==undefined&&this.enPart.length>5"}, (error, incoming)=>{
         res.send(incoming)
     })

@@ -1,7 +1,6 @@
 import React, {Component} from "react"
 import Navigation from "../components/navigation.jsx"
 import config from "../../../_inc/config.js"
-
 class App extends Component {
     constructor(props) {
         super(props)
@@ -48,7 +47,6 @@ class App extends Component {
                      <div id="reactHook"></div>
                 </div>
                     <script src={`${this.props.keyword}Front.js`} ></script>
-                    <script src="analitycs.js" ></script>
                 </body>
             </html>)
     }
