@@ -85,4 +85,45 @@ function main(data) {
         })
     })
 }
+
+function blog(data) {
+    let imageSrc = data.imageSrc
+    let newImageName = data.altTag
+    return new Promise(resolve =>{
+        let width
+        let height
+        if (!imageSrc.includes(".jpg") && !imageSrc.includes(".png")) {resolve(null)}
+        imageSize(imageSrc, (err, result) =>{
+            if (result === undefined) {return resolve(null)}
+            width = result.width
+            height = result.height
+            download(imageSrc).then(imageData=>{
+                let currentDestination = imageDestination(imageSrc, `${newImageName}Pre`)
+                let finalDestination = imageDestination(imageSrc, newImageName)
+                fs.writeFileSync(currentDestination, imageData)
+                imagemin.main(currentDestination).then(()=>{
+                    if (width > 800) {
+                        lwip.open(currentDestination, (err, lwipImage)=>{
+                            lwipImage.batch().resize(800, Math.floor((800 / width) * height))
+                            .writeFile(finalDestination, (err)=>{
+                                uploadImgur(finalDestination).then(imageSrc =>{
+                                    resolve({imageSrc, imageSrcOrigin: data.imageSrc, altTag: newImageName})
+                                    fs.removeSync(currentDestination)
+                                    fs.removeSync(finalDestination)
+                                })
+                            })
+                        })
+                    } else {
+                        uploadImgur(currentDestination).then(imageSrc =>{
+                            resolve({imageSrc, imageSrcOrigin: data.imageSrc, altTag: newImageName})
+                            fs.removeSync(currentDestination)
+                        })
+                    }
+                })
+            })
+        })
+    })
+}
+
 module.exports.main = main
+module.exports.blog = blog

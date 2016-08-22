@@ -237,6 +237,34 @@ function nextState(arr, index) {
         return arr[ index + 1 ]
     }
 }
+function performanceMemory() {
+    console.log(performance.memory)
+}
+function performanceStats() {
+  var p = performance.getEntries();
+  for (var i=0; i < p.length; i++) {
+    console.log("PerformanceEntry[" + i + "]");
+    printPerformanceEntry(p[i]);
+  }
+}
+function printPerformanceEntry(perfEntry) {
+  var properties = ["name",
+    "entryType",
+    "startTime",
+    "duration"];
+
+  for (var i=0; i < properties.length; i++) {
+    var supported = properties[i] in perfEntry;
+    if (supported) {
+      var value = perfEntry[properties[i]];
+      console.log("... " + properties[i] + " = " + value);
+    } else {
+      console.log("... " + properties[i] + " = NOT supported");
+    }
+  }
+}
+module.exports.performanceStats= performanceStats
+module.exports.performanceMemory = performanceMemory
 module.exports.nextState = nextState
 module.exports.convertImgToBase64 = convertImgToBase64
 module.exports.addWhitespace = addWhitespace
@@ -275,8 +303,7 @@ module.exports.empty = ""
 module.exports.bulButtonInit = "button"
 module.exports.categoryOptions = [
     { value: "quotes", label: "quotes" },
-    //{ value: "jokes", label: "jokes" },
-    { value: "derProcess", label: "derProcess" },
+    { value: "plain", label: "plain" },
     { value: "draft", label: "draft" },
     { value: "preDraft", label: "preDraft" }
 ]

@@ -508,7 +508,6 @@ var initData = {
     imageSrc: "",
     "id": 0
 };
-var shouldComponentUpdateObj = {};
 
 var App = function (_Component) {
     _inherits(App, _Component);
@@ -518,6 +517,8 @@ var App = function (_Component) {
 
         var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(App).call(this, props));
 
+        _this.imageSrcConvertedCurrent = { data: false, id: false };
+        _this.imageSrcConvertedNext = { data: false, id: false };
         _this.state = {
             globalIndex: 0,
             globalData: [],
@@ -578,7 +579,7 @@ var App = function (_Component) {
                     });
                     return val;
                 }), _ramda2.default.split(" "))(_this2.state.data.dePart);
-                if (_this2.state.imageSrcConvertedNext.data === false) {
+                if (_this2.imageSrcConvertedNext.data === false) {
                     _this2.setState({
                         answer: "",
                         textTopLeft: _ramda2.default.join(" ", willTextTop),
@@ -589,13 +590,12 @@ var App = function (_Component) {
                     }, function () {
                         var nextState = _commonReact2.default.nextState(_this2.state.globalData, _this2.state.globalIndex);
                         _commonReact2.default.convertImgToBase64(nextState.imageSrc).then(function (convertedImageData) {
-                            //J.log(`converting ${nextState.deWord} image is ready`)
-                            _this2.setState({ imageSrcConvertedNext: { data: convertedImageData, id: nextState.id } });
+                            _this2.imageSrcConvertedNext = { data: convertedImageData, id: nextState.id };
                         });
                     });
                 } else {
+                    _this2.imageSrcConvertedCurrent = _this2.imageSrcConvertedNext;
                     _this2.setState({
-                        imageSrcConvertedCurrent: _this2.state.imageSrcConvertedNext,
                         answer: "",
                         textTopLeft: _ramda2.default.join(" ", willTextTop),
                         textTopRight: _this2.state.data.enWord,
@@ -604,9 +604,9 @@ var App = function (_Component) {
                         buttonClassName: _commonReact2.default.bulButtonInit
                     }, function () {
                         var nextState = _commonReact2.default.nextState(_this2.state.globalData, _this2.state.globalIndex);
-                        convertImgToBase64(nextState.imageSrc).then(function (convertedImageData) {
+                        _commonReact2.default.convertImgToBase64(nextState.imageSrc).then(function (convertedImageData) {
                             _commonReact2.default.log("converting " + nextState.deWord + " image is ready");
-                            _this2.setState({ imageSrcConvertedNext: { data: convertedImageData, id: nextState.id } });
+                            _this2.imageSrcConvertedNext = { data: convertedImageData, id: nextState.id };
                         });
                     });
                 }
@@ -705,9 +705,11 @@ var App = function (_Component) {
             var lineHeightTextBottomSecond = _commonReact2.default.lineHeightFn(fontTextBottomSecond);
             var borderRadiusValue = 5;
             var backgroundImage = void 0;
-            if (this.state.imageSrcConvertedCurrent.id !== false && this.state.imageSrcConvertedCurrent.id === this.state.data.id) {
-                backgroundImage = this.state.imageSrcConvertedCurrent.data;
+            if (this.imageSrcConvertedCurrent.id !== false && this.imageSrcConvertedCurrent.id === this.state.data.id) {
+                _commonReact2.default.log("Converted");
+                backgroundImage = this.imageSrcConvertedCurrent.data;
             } else {
+                console.log("Actual", this.state.data.imageSrc);
                 backgroundImage = _commonReact2.default.httpsFn(this.state.data.imageSrc);
             }
             var memeContainer = {

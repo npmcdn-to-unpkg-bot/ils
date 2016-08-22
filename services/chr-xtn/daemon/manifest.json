@@ -1,0 +1,30 @@
+{
+    "name": "Extended German-English Translation",
+    "version": "1.2.0",
+    "manifest_version": 2,
+    "description": "Extended German-English Translation",
+    "icons": {
+        "16": "images/de.png",
+        "128": "images/de.png"
+    },
+    "content_scripts": [{
+        "matches": [
+            "http://*/*",
+            "https://*/*"
+        ],
+        "css": [
+            "only.css"
+        ],
+        "js": [
+            "scripts/keypress.js",
+            "contentScript.js"
+        ],
+        "run_at": "document_end",
+        "all_frames": true
+    }],
+    "default_locale": "en",
+    "permissions": [
+        "http://*/*",
+        "https://*/*"
+    ]
+}

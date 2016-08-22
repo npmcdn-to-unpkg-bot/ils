@@ -12,6 +12,7 @@ const bodyParser = require("body-parser")
 const env = require("dotenv-helper")
 let routes = require("./routes/index.js")
 let app = express()
+app.use(require("express-status-monitor")()) ///status route
 app.use((req, res, next) =>{
     res.header("Access-Control-Allow-Origin", "*")
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
@@ -19,8 +20,6 @@ app.use((req, res, next) =>{
 })
 app.use(helmet())
 app.get("/*", (request, response, next) => {
-    //let headerHost = request.headers.host
-    //let hostname = (request.headers.host.match(/:/g)) ? request.headers.host.slice(0, request.headers.host.indexOf(":")) : request.headers.host
     if (request.headers.host.indexOf("www") > -1) {
         response.writeHead(301, {
             "Location": "https://ilearnsmarter.com" + request.url,

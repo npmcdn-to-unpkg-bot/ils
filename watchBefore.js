@@ -46,78 +46,63 @@ async function processFn(filepath) {
 
     let iMeanNothing
     let commands = factoryCommands(filepath)
-    if (filepath.includes("Front.jsx") && filepath.includes("admin")) {
-        J.log("babelify admin")
-        J.log(commands.babelifyHapi)
-        iMeanNothing = await willRunFixedCommand(commands.babelifyAdmin)
-        return iMeanNothing
-
-    } else if (filepath.includes("Front.jsx")) {
-        J.log("babelify hapi")
+    if (filepath.includes("Front.jsx")) {
+        J.log("Front.jsx")
         J.log(commands.babelifyHapiProd)
         iMeanNothing = await willRunFixedCommand(commands.babelifyHapi)
         return iMeanNothing
-
+    } else if (filepath.includes("Pre.jsx")) {
+        J.log("Pre.jsx")
+        J.lg(commands.babelify)
+        iMeanNothing = await willRunFixedCommand(commands.babelify)
+        iMeanNothing = await willRunFixedCommand(commands.lintReact)
+        return iMeanNothing
     } else if (filepath.includes("Mob.jsx")) {
-        J.log("babel babelify remove")
-        J.log(commands.babel)
+        J.log("Mob.jsx")
         iMeanNothing = await willRunFixedCommand(commands.babel)
-        J.log(commands.babelifyHapiMob)
         iMeanNothing = await willRunFixedCommand(commands.babelifyHapiMob)
         iMeanNothing = await willRunFixedCommand(commands.removeMob)
         return iMeanNothing
-
     } else if (filepath.includes(".jsx") && (filepath.includes("services"))) {
-        J.log("babelify lint")
-        J.log(commands.lintReact)
-        J.log(commands.babelify)
-        iMeanNothing = await willRunFixedCommand(commands.lintReact)
+        J.log("babelify services")
         iMeanNothing = await willRunFixedCommand(commands.babelify)
+        iMeanNothing = await willRunFixedCommand(commands.lintReact)
         return iMeanNothing
-
     } else if (filepath.includes(".jsx") && filepath.includes("fth")) {
-        J.log("babelify")
+        J.log("babelify fth")
         iMeanNothing = await willRunFixedCommand(commands.babelify)
         return iMeanNothing
-
     } else if (filepath.includes(".jsx")) {
-        J.log("lint react")
-        J.lg(commands.lintReact)
+        J.log("react lint")
         iMeanNothing = await willRunFixedCommand(commands.lintReact)
         return iMeanNothing
-
     } else if (filepath.includes("Pre.js")) {
         J.log("babel lint")
         iMeanNothing = await willRunFixedCommand(commands.babel)
         iMeanNothing = await willRunFixedCommand(commands.lint)
         return iMeanNothing
-
     } else if (filepath.includes(".less")) {
         J.log("less")
-        J.box(commands.less)
         iMeanNothing = await willRunFixedCommand(commands.less)
         return iMeanNothing
-
     } else if (filepath.includes(".js") && !filepath.includes("Front")) {
         J.log("lint")
         iMeanNothing = await willRunFixedCommand(commands.lint)
         return iMeanNothing
     } else {
-        J.lg(`in else ${filepath}`)
+        //J.lg(`in else ${filepath}`)
         return false
     }
 }
-
 function factoryCommands(src) {
     let willReturn = {}
     let srcMob = R.replace(".jsx", ".js", src)
-    let output = R.replace(/(Pre\.js)|(\.jsx)/g, ".js", src)
+    let output = R.replace(/(Pre\.jsx)|(Pre\.js)|(\.jsx)/g, ".js", src)
     let outputCss = R.replace(".less", ".css", src)
     let local = output.split("/")
     let name = local[ local.length - 1 ]
     let nameMob = R.replace("Mob.js", "Front.js", local[ local.length - 1 ])
     let hapiLocation = `${__dirname}/hapi/public/${name}`
-    let adminLocation = `${__dirname}/admin/public/${name}`
     let hapiMobLocation = `${__dirname}/hapi/public/${nameMob}`
     let presents = "-t [ babelify --presets [ react  es2015 stage-1 stage-3 stage-2 stage-0 ] ]"
     let presentsProd = "-t [ babelify --presets [ react  es2015 stage-1 stage-3 stage-2 stage-0 ] ] -t [ envify --NODE_ENV production ]"
@@ -132,12 +117,9 @@ function factoryCommands(src) {
     willReturn.babelify = `browserify ${src} -o ${output} ${presents}`
     willReturn.babelifyHapi = `browserify ${src} -o ${hapiLocation} ${presents}`
     willReturn.babelifyHapiProd = `browserify ${src} -o ${hapiLocation} ${presentsProd}`
-    willReturn.babelifyAdmin = `browserify ${src} -o ${adminLocation} ${presents}`
     willReturn.babelifyHapiMob = `browserify ${srcMob} -o ${hapiMobLocation} ${presents}`
-    willReturn.babelifyAdmin = `browserify ${src} -o ${adminLocation} ${presents}`
     return willReturn
 }
-
 function willRunFixedCommand(commandIs) {
     return new Promise((resolve)=>{
         let proc = exec(commandIs)

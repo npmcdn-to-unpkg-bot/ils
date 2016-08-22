@@ -14,6 +14,8 @@ async function shadowProcess() {
         state = await generateSitemap.main()
         state = await J.willRunFixedCommand("npm cache clean")
         state = await J.willRunFixedCommand("node d backup")
+        state = await J.willRunFixedCommand("npm update")
+        state = await J.willRunFixedCommand("npm update -g")
     }
     return state
 }

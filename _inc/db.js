@@ -147,7 +147,7 @@ var addMain = function () {
         }, _callee4, this);
     }));
 
-    return function addMain(_x16) {
+    return function addMain(_x17) {
         return _ref4.apply(this, arguments);
     };
 }();
@@ -209,6 +209,20 @@ function findOneSkipCondition() {
         });
     });
 }
+function findOneAndUpdateBlog(data) {
+    return new Promise(function (resolve) {
+        mongoose.model("Blog").findOneAndUpdate({ canonical: data.canonical }, data, { new: true, upsert: true }).exec(function (err, result) {
+            resolve(result);
+        });
+    });
+}
+function findOneAndUpdateLog(data) {
+    return new Promise(function (resolve) {
+        mongoose.model("Log").findOneAndUpdate({ id: data.id }, data, { new: true, upsert: true }).exec(function (err, result) {
+            resolve(result);
+        });
+    });
+}
 function findOneAndUpdateMain(data) {
     return new Promise(function (resolve) {
         mongoose.model("Main").findOneAndUpdate({ id: data.id }, data, { new: true }).exec(function (err, result) {
@@ -223,10 +237,15 @@ function counter() {
         });
     });
 }
-function load(modelName, key, keyValue) {
+function load(modelName) {
+    var key = arguments.length <= 1 || arguments[1] === undefined ? null : arguments[1];
+    var keyValue = arguments[2];
+
     return new Promise(function (resolve) {
         var obj = {};
-        obj[key] = keyValue;
+        if (key !== null) {
+            obj[key] = keyValue;
+        }
         mongoose.model(modelName).find(obj, function (error, incoming) {
             resolve(incoming);
         });
@@ -284,6 +303,8 @@ module.exports.randomCondition = function (modelName, condition) {
 module.exports.increaseCounter = function () {
     return increaseCounter();
 };
+module.exports.findOneAndUpdateBlog = findOneAndUpdateBlog;
+module.exports.findOneAndUpdateLog = findOneAndUpdateLog;
 module.exports.findOneAndUpdateMain = findOneAndUpdateMain;
 module.exports.findOneSkip = findOneSkip;
 module.exports.findOneSkipCondition = findOneSkipCondition;

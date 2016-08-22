@@ -57,12 +57,16 @@ let initSchemas = ()=>{
     })
     let counterSchema = new Schema({counter: Number})
     let gitHookTokenSchema = new Schema({token: String})
-
+    let logSchema = new Schema({
+        id:{type: String, required:true},
+        data: {type: String, required:true}
+    })
     mongoose.model("Blog", blogSchema)
     mongoose.model("TranslateDraft", translateDraftSchema)
     mongoose.model("Main", mainSchema)
     mongoose.model("Counter", counterSchema)
     mongoose.model("GitHookToken", gitHookTokenSchema)
+    mongoose.model("Log", logSchema)
 }
 
 let init = (connectionString)=>{

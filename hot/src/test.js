@@ -2,6 +2,7 @@
 import React, { Component } from "react"
 import R from "ramda"
 import J from "../../_inc/commonReact.js"
+function createMarkup() { return {__html: "First &middot;<h1>Second</h1>"} }
 
 export default class App extends Component {
     constructor (props) {
@@ -23,6 +24,7 @@ export default class App extends Component {
     render () {
         return (
         <div>
+            <div dangerouslySetInnerHTML={createMarkup()} />
             <div className="ui steps">
                 <a className="active step">
                     <i className="truck icon"></i>

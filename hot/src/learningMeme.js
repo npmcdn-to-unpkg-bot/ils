@@ -14,10 +14,11 @@ let initData = {
     imageSrc: "",
     "id": 0
 }
-let shouldComponentUpdateObj = {}
 export default class App extends Component {
     constructor (props) {
         super(props)
+        this.imageSrcConvertedCurrent = {data:false, id:false}
+        this.imageSrcConvertedNext = {data:false, id:false}
         this.state = {
             globalIndex: 0,
             globalData: [],
@@ -66,7 +67,7 @@ export default class App extends Component {
                 })
                 return val
             }), R.split(" "))(this.state.data.dePart)
-            if (this.state.imageSrcConvertedNext.data === false) {
+            if (this.imageSrcConvertedNext.data === false) {
                 this.setState({
                     answer: "",
                     textTopLeft: R.join(" ", willTextTop),
@@ -77,13 +78,12 @@ export default class App extends Component {
                 }, ()=>{
                     let nextState = J.nextState(this.state.globalData, this.state.globalIndex)
                     J.convertImgToBase64(nextState.imageSrc).then(convertedImageData=>{
-                        //J.log(`converting ${nextState.deWord} image is ready`)
-                        this.setState({imageSrcConvertedNext: {data:convertedImageData, id:nextState.id}})
+                        this.imageSrcConvertedNext = {data:convertedImageData, id:nextState.id}
                     })
                 })
             } else {
+                this.imageSrcConvertedCurrent = this.imageSrcConvertedNext
                 this.setState({
-                    imageSrcConvertedCurrent:this.state.imageSrcConvertedNext,
                     answer: "",
                     textTopLeft: R.join(" ", willTextTop),
                     textTopRight: this.state.data.enWord,
@@ -92,9 +92,9 @@ export default class App extends Component {
                     buttonClassName: J.bulButtonInit
                 }, ()=>{
                     let nextState = J.nextState(this.state.globalData, this.state.globalIndex)
-                    convertImgToBase64(nextState.imageSrc).then(convertedImageData=>{
+                    J.convertImgToBase64(nextState.imageSrc).then(convertedImageData=>{
                         J.log(`converting ${nextState.deWord} image is ready`)
-                        this.setState({imageSrcConvertedNext: {data:convertedImageData, id:nextState.id}})
+                        this.imageSrcConvertedNext = {data:convertedImageData, id:nextState.id}
                     })
                 })
             }
@@ -182,9 +182,11 @@ export default class App extends Component {
         let lineHeightTextBottomSecond = J.lineHeightFn(fontTextBottomSecond)
         let borderRadiusValue = 5
         let backgroundImage
-        if (this.state.imageSrcConvertedCurrent.id !== false && this.state.imageSrcConvertedCurrent.id === this.state.data.id) {
-            backgroundImage = this.state.imageSrcConvertedCurrent.data
+        if (this.imageSrcConvertedCurrent.id !== false && this.imageSrcConvertedCurrent.id === this.state.data.id) {
+            J.log("Converted")
+            backgroundImage = this.imageSrcConvertedCurrent.data
         } else {
+            console.log("Actual", this.state.data.imageSrc)
             backgroundImage = J.httpsFn(this.state.data.imageSrc)
         }
         let memeContainer = {

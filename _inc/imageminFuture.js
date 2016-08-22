@@ -3,9 +3,11 @@ const imageminMozjpeg = require("imagemin-mozjpeg")
 const imageminPngquant = require("imagemin-pngquant")
 const imageminJpegoptim = require("imagemin-jpegoptim")
 const imageminWebp = require("imagemin-webp")
-const imageminJpegtran = require('imagemin-jpegtran')
-const imageminOptipng = require('imagemin-optipng')
-const imageminPngcrush = require('imagemin-pngcrush')
+const imageminJpegtran = require("imagemin-jpegtran")
+const imageminOptipng = require("imagemin-optipng")
+const imageminPngcrush = require("imagemin-pngcrush")
+const execFile = require("child_process").execFile
+const cwebp = require("cwebp-bin")
 const J = require("../common")
 let defaults = {
     jpegoptim: {progressive:true, max:80, size: "80%"},
@@ -65,7 +67,15 @@ function webp(imagePath, options = defaults.webp, destination = J.getFileDirecto
         })
     })
 }
-function jpegtran(imagePath, options = defaults.jpegtran,destination = J.getFileDirectory(imagePath)) {
+function webpAlt(imagePath, name) {
+    return new Promise(resolve=>{
+        execFile(cwebp, [imagePath, "-o", `${J.getFileDirectory(imagePath)}/${name}.webp`], (err)=>{
+            if (err) {throw err}
+            resolve(true)
+        })
+    })
+}
+function jpegtran(imagePath, options = defaults.jpegtran, destination = J.getFileDirectory(imagePath)) {
     return new Promise(resolve=>{
         imagemin([imagePath], destination, {
             plugins: [
@@ -76,7 +86,7 @@ function jpegtran(imagePath, options = defaults.jpegtran,destination = J.getFile
         })
     })
 }
-function optipng(imagePath, options = defaults.optipng,destination = J.getFileDirectory(imagePath)) {
+function optipng(imagePath, options = defaults.optipng, destination = J.getFileDirectory(imagePath)) {
     return new Promise(resolve=>{
         imagemin([imagePath], destination, {
             plugins: [
@@ -87,7 +97,7 @@ function optipng(imagePath, options = defaults.optipng,destination = J.getFileDi
         })
     })
 }
-function pngcrush(imagePath, options = defaults.pngcrush,destination = J.getFileDirectory(imagePath)) {
+function pngcrush(imagePath, options = defaults.pngcrush, destination = J.getFileDirectory(imagePath)) {
     return new Promise(resolve=>{
         imagemin([imagePath], destination, {
             plugins: [
@@ -102,6 +112,7 @@ module.exports.main = main
 module.exports.all = all
 module.exports.jpegoptim = jpegoptim
 module.exports.webp = webp
+module.exports.webpAlt = webpAlt
 module.exports.jpegtran = jpegtran
 module.exports.optipng = optipng
 module.exports.pngcrush = pngcrush

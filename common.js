@@ -179,14 +179,15 @@ function isBlogType(obj) {
 }
 function isBlogUrl(keyword) {
     let countSeparator = R.unless(R.compose(R.lte(2), R.length, R.split("-")), R.F)
-    let lengthFn = R.unless(R.compose(R.gt(60), R.length, R.split("")), R.F)
+    let lengthFn = R.unless(R.compose(R.gt(80), R.length, R.split("")), R.F)
     let categoryInUrl = R.unless(R.compose(val=>{
         return R.any(value=>{
             return val.includes("Category") && R.replace("Category", "", val) === value
-        })(["node", "react"])
+        })(["nodejs", "reactjs", "javascript"])
     }, R.head, R.split("-")), R.F)
     if (R.allPass([countSeparator, categoryInUrl, lengthFn])(keyword)) {
-        let canonical = R.replace("nodeCategory-", "", keyword)
+        let canonical = R.replace(/nodejsCategory-|reactjsCategory-|javascriptCategory-/, "", keyword)
+        J.log(canonical)
         if (R.compose(R.all(R.test(/[a-z]|-/)), R.split(""))(canonical)) {
             return canonical
         } else {
@@ -209,10 +210,29 @@ function returnOldStyleGerman(keyIs) {
         return keyIs
     }
 }
+let emitter = new Events()
+function Events(target) {
+    let events = {}, empty = []
+    target = target || this
+    target.on = function(type, func, ctx) {
+        (events[ type ] = events[ type ] || []).push([func, ctx])
+    }
+    target.off = function(type, func) {
+        type || (events = {})
+        var list = events[ type ] || empty,
+            i = list.length = func ? list.length : 0
+        while (i--) func == list[ i ][ 0 ] && list.splice(i, 1)
+    }
+    target.emit = function(type) {
+        let e = events[ type ] || empty, list = e.length > 0 ? e.slice(0, e.length) : e, i = 0, j
+        while (j = list[ i++ ]) j[ 0 ].apply(j[ 1 ], empty.slice.call(arguments, 1))
+    }
+}
 let removePunctuation = R.compose(R.replace(/\.|\!|\,|\-|\?/, ""))
 let takeName = R.compose(R.takeLast(1), R.split("/"))
 let anyRaw = R.flip(R.any)
 let anyFn = R.curry(anyRaw)
+module.exports.emitter = emitter
 module.exports.oneLevelUp = R.compose(R.join("/"), R.dropLast(1), R.split("/"))
 module.exports.twoLevelUp = R.compose(R.join("/"), R.dropLast(2), R.split("/"))
 module.exports.normalizeGermanWord = R.compose(R.join(""), R.map(val=>returnOldStyleGerman(val)), R.splitEvery(1), R.toLower, R.trim)

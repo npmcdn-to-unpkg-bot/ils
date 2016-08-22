@@ -121,7 +121,6 @@ export default class App extends Component {
             })
         })
         J.emitter.on("ready", ()=>{
-            J.log("ready")
             let dataHolder = this.state.data
             let data = this.normalizeData(this.state.data)
             if (data !== false) {

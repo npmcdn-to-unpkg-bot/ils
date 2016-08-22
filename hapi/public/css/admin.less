@@ -5,6 +5,15 @@
 @firstText: #3a707f;
 @secondText: #424242;
 @thirdText: #263238;
+@dark: #424242;
+@darkSecond: #263238;
+@darkThird: #212121;
+@bright: #B0BEC5;
+@brightSecond: #CFD8DC;
+@brightThird: #fafaff;
+@red: #E57373;
+@redSecond: #EC407A;
+@redThird: #FF4081;
 @morfAnimationDuration: 1s;
 @atentionAnimationDuration: 0.5s;
 @memeImageWidth: 50%;
@@ -17,6 +26,38 @@
 @correctSecond: #A5D6A7;
 @wrongFirst: #E57373;
 @wrongSecond: #EC407A;
+h1{
+    font-size: 3.5vh;
+    font-weight: bolder;
+}
+h2{
+    font-size: 2.7vh;
+    font-weight: bold;
+}
+h3{
+    font-size: 2vh;
+    font-weight: bold;
+}
+// react alert close segment
+.s-alert-close{
+    display:none;
+}
+.imageThumb{
+    width:12vw;
+    height: auto;
+    max-height: 20vh;
+}
+.bigInput{
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 3vh;
+    font-weight: 700;
+    width: 100%;
+    padding: 1vh;
+    margin: 1vh;
+}
+.outlined{
+    outline: 2px solid #correctSecond;
+}
 .blogAdminTextarea{
     margin-left: 2vw;
     margin-top: 1vw;
@@ -162,7 +203,10 @@ background: linear-gradient(@learningMemeBackground, @backgroundMeme 70%, @learn
     height: auto;
 }
 .newEntry p{
+    background-color: @darkSecond;
+    color: @brightSecond;
     border-radius: 1.5vw;
+    padding: 1vw;
     border: 1px solid #4DB6AC;
 }
 .newEntry p span{

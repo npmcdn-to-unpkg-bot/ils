@@ -58,6 +58,22 @@ function findOneSkipCondition(modelName = "Main", skipValue = 0, condition) {
         })
     })
 }
+function findOneAndUpdateBlog(data) {
+    return new Promise(resolve=>{
+        mongoose.model("Blog")
+        .findOneAndUpdate({canonical: data.canonical}, data, {new: true, upsert: true}).exec((err, result)=>{
+            resolve(result)
+        })
+    })
+}
+function findOneAndUpdateLog(data) {
+    return new Promise(resolve=>{
+        mongoose.model("Log")
+        .findOneAndUpdate({id: data.id}, data, {new: true, upsert: true}).exec((err, result)=>{
+            resolve(result)
+        })
+    })
+}
 function findOneAndUpdateMain(data) {
     return new Promise(resolve=>{
         mongoose.model("Main").findOneAndUpdate({id: data.id}, data, {new: true}).exec((err, result)=>{
@@ -72,10 +88,10 @@ function counter() {
         })
     })
 }
-function load(modelName, key===null, keyValue) {
+function load(modelName, key = null, keyValue) {
     return new Promise(resolve=>{
         let obj = {}
-        if(key!==null){
+        if (key !== null) {
             obj[ key ] = keyValue
         }
         mongoose.model(modelName).find(obj, (error, incoming)=>{
@@ -136,6 +152,8 @@ module.exports.random = (modelName)=>{
 }
 module.exports.randomCondition = (modelName, condition)=>{return randomCondition(modelName, condition)}
 module.exports.increaseCounter = ()=>{return increaseCounter()}
+module.exports.findOneAndUpdateBlog = findOneAndUpdateBlog
+module.exports.findOneAndUpdateLog = findOneAndUpdateLog
 module.exports.findOneAndUpdateMain = findOneAndUpdateMain
 module.exports.findOneSkip = findOneSkip
 module.exports.findOneSkipCondition = findOneSkipCondition

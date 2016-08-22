@@ -9,7 +9,7 @@ var _asyncToGenerator2 = require("babel-runtime/helpers/asyncToGenerator");
 var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
 
 var mainAsync = function () {
-    var ref = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee() {
+    var _ref = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee() {
         var awaited, _iteratorNormalCompletion, _didIteratorError, _iteratorError, _iterator, _step, singleCommand;
 
         return _regenerator2.default.wrap(function _callee$(_context) {
@@ -85,8 +85,9 @@ var mainAsync = function () {
             }
         }, _callee, this, [[4, 16, 20, 28], [21,, 23, 27]]);
     }));
+
     return function mainAsync() {
-        return ref.apply(this, arguments);
+        return _ref.apply(this, arguments);
     };
 }();
 
