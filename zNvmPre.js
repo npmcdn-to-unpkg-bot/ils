@@ -1,10 +1,9 @@
 "use strict"
 const J = require("./common")
-async function mainProcess(nvmVersion) {
-    let token = J.randomSeed()
+async function mainProcess(nvmVersion, prevNvmVersion) {
     let state = await J.willRunFixedCommand(`nvm install v${nvmVersion}`)
     state = await J.willRunFixedCommand(`nvm alias default ${nvmVersion}`)
-    state = await J.willRunFixedCommand(`nvm install node --reinstall-packages-from=v${nvmVersion}`)
+    state = await J.willRunFixedCommand(`nvm install node --reinstall-packages-from=v${prevNvmVersion}`)
     return state
 }
 function main(nvmVersion) {

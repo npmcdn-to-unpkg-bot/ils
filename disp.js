@@ -27,9 +27,8 @@ function main(command) {
             })
         }
         if (command === "nvm") {
-            nvm.main(commandArgument).then(()=>{
-                resolve(true)
-            })
+            //nvm.main(commandArgument).then(()=>{resolve(true)})
+            nvm.main("6.4.0").then(()=>{resolve(true)})
         }
         if (command === "nvmAlt") {
             nvm.alt(commandArgument).then(()=>{

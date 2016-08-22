@@ -9,31 +9,30 @@ var _asyncToGenerator2 = require("babel-runtime/helpers/asyncToGenerator");
 var _asyncToGenerator3 = _interopRequireDefault(_asyncToGenerator2);
 
 var mainProcess = function () {
-    var _ref = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee(nvmVersion) {
-        var token, state;
+    var _ref = (0, _asyncToGenerator3.default)(_regenerator2.default.mark(function _callee(nvmVersion, prevNvmVersion) {
+        var state;
         return _regenerator2.default.wrap(function _callee$(_context) {
             while (1) {
                 switch (_context.prev = _context.next) {
                     case 0:
-                        token = J.randomSeed();
-                        _context.next = 3;
+                        _context.next = 2;
                         return J.willRunFixedCommand("nvm install v" + nvmVersion);
 
-                    case 3:
+                    case 2:
                         state = _context.sent;
-                        _context.next = 6;
+                        _context.next = 5;
                         return J.willRunFixedCommand("nvm alias default " + nvmVersion);
 
-                    case 6:
+                    case 5:
                         state = _context.sent;
-                        _context.next = 9;
-                        return J.willRunFixedCommand("nvm install node --reinstall-packages-from=v" + nvmVersion);
+                        _context.next = 8;
+                        return J.willRunFixedCommand("nvm install node --reinstall-packages-from=v" + prevNvmVersion);
 
-                    case 9:
+                    case 8:
                         state = _context.sent;
                         return _context.abrupt("return", state);
 
-                    case 11:
+                    case 10:
                     case "end":
                         return _context.stop();
                 }
@@ -41,7 +40,7 @@ var mainProcess = function () {
         }, _callee, this);
     }));
 
-    return function mainProcess(_x) {
+    return function mainProcess(_x, _x2) {
         return _ref.apply(this, arguments);
     };
 }();
