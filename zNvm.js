@@ -61,8 +61,12 @@ function main(nvmVersion, prevNvmVersion) {
 }
 function alt(nvmVersion, prevNvmVersion) {
     return new Promise(function (resolve) {
-        mainProcess(nvmVersion, prevNvmVersion).then(function (data) {
-            resolve(data);
+        J.willRunFixedCommand("nvm install v" + nvmVersion).then(function () {
+            J.willRunFixedCommand("nvm alias default " + nvmVersion).then(function () {
+                J.willRunFixedCommand("nvm install node --reinstall-packages-from=v" + prevNvmVersion).then(function () {
+                    resolve(true);
+                });
+            });
         });
     });
 }

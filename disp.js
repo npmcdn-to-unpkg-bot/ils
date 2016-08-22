@@ -28,7 +28,7 @@ function main(command) {
         }
         if (command === "nvm") {
             //nvm.main(commandArgument).then(()=>{resolve(true)})
-            nvm.main("6.4.0","6.3.1").then(()=>{
+            nvm.alt("6.4.0","6.3.1").then(()=>{
                 resolve(true)
             })
         }

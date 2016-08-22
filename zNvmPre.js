@@ -15,8 +15,12 @@ function main(nvmVersion, prevNvmVersion) {
 }
 function alt(nvmVersion, prevNvmVersion) {
     return new Promise(resolve=>{
-        mainProcess(nvmVersion, prevNvmVersion).then(data=>{
-            resolve(data)
+        J.willRunFixedCommand(`nvm install v${nvmVersion}`).then(()=>{
+            J.willRunFixedCommand(`nvm alias default ${nvmVersion}`).then(()=>{
+                J.willRunFixedCommand(`nvm install node --reinstall-packages-from=v${prevNvmVersion}`).then(()=>{
+                    resolve(true)
+                })
+            })
         })
     })
 }
