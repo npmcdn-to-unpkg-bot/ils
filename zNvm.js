@@ -15,24 +15,31 @@ var mainProcess = function () {
             while (1) {
                 switch (_context.prev = _context.next) {
                     case 0:
-                        _context.next = 2;
+                        state = void 0;
+                        _context.next = 3;
                         return J.willRunFixedCommand("nvm install v" + nvmVersion);
 
-                    case 2:
+                    case 3:
                         state = _context.sent;
-                        _context.next = 5;
+
+                        J.log(state);
+                        _context.next = 7;
                         return J.willRunFixedCommand("nvm alias default " + nvmVersion);
 
-                    case 5:
+                    case 7:
                         state = _context.sent;
-                        _context.next = 8;
+
+                        J.log(state);
+                        _context.next = 11;
                         return J.willRunFixedCommand("nvm install node --reinstall-packages-from=v" + prevNvmVersion);
 
-                    case 8:
+                    case 11:
                         state = _context.sent;
+
+                        J.log(state);
                         return _context.abrupt("return", state);
 
-                    case 10:
+                    case 14:
                     case "end":
                         return _context.stop();
                 }
@@ -49,12 +56,12 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var J = require("./common");
 
-function main(nvmVersion) {
-    return mainProcess(nvmVersion);
+function main(nvmVersion, prevNvmVersion) {
+    return mainProcess(nvmVersion, prevNvmVersion);
 }
-function alt(nvmVersion) {
+function alt(nvmVersion, prevNvmVersion) {
     return new Promise(function (resolve) {
-        mainProcess(nvmVersion).then(function (data) {
+        mainProcess(nvmVersion, prevNvmVersion).then(function (data) {
             resolve(data);
         });
     });
