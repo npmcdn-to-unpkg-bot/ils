@@ -6,7 +6,7 @@ const markdown = require("markdown").markdown
 import Textarea from "react-textarea-autosize"
 import * as R from "ramda"
 import J from "../../_inc/commonReact.js"
-var shallowCompare = require("react-addons-shallow-compare")
+const shallowCompare = require("react-addons-shallow-compare")
 const ChooseBlogPost = require("./components/chooseBlogPost").main
 const SearchImage = require("./components/searchImage").main
 import Select from "react-select"

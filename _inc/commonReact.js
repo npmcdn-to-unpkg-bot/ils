@@ -263,6 +263,13 @@ function printPerformanceEntry(perfEntry) {
         }
     }
 }
+function diffObject(a, b) {
+    return Object.keys(a).reduce(function(map, k) {
+        if (a[ k ] !== b[ k ]) map[ k ] = b[ k ]
+        return map
+    }, {})
+}
+module.exports.diffObject = diffObject
 module.exports.performanceStats = performanceStats
 module.exports.performanceMemory = performanceMemory
 module.exports.nextState = nextState

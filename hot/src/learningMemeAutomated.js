@@ -6,7 +6,7 @@ import J from "../../_inc/commonReact.js"
 let initOnce = R.once(()=>{
     J.emitter.emit("once init")
 })
-let store = {}
+let mainTimeoutValue = 4000
 let initData = {
     "deWord": "",
     "enWord": "",
@@ -14,21 +14,6 @@ let initData = {
     "enPart": "",
     imageSrc: "",
     "id": 0
-}
-function convertImgToBase64(url, callback) {
-    var img = new Image()
-    img.crossOrigin = "Anonymous"
-    img.onload = function() {
-        var canvas = document.createElement("CANVAS")
-        var ctx = canvas.getContext("2d")
-        canvas.height = this.height
-        canvas.width = this.width
-        ctx.drawImage(this, 0, 0)
-        var dataURL = canvas.toDataURL("image/png")
-        callback(dataURL)
-        canvas = null
-    }
-    img.src = url
 }
 export default class App extends Component {
     constructor (props) {
@@ -62,7 +47,7 @@ export default class App extends Component {
                         J.emitter.emit("correct")
                         setTimeout(()=>{
                             document.getElementById("button").click()
-                        }, 4000)
+                        }, mainTimeoutValue)
                     })
                 }
             }
@@ -71,7 +56,6 @@ export default class App extends Component {
             J.postData(`${J.ils}/learningMeme`, {}).then(incoming =>{
                 let globalData = J.shuffle(incoming)
                 J.log(globalData.length)
-                //let promisedArr = R.take(30, globalData).map(val=>{
                 let promisedArr = globalData.map(val=>{
                     return new Promise(resolve=>{
                         J.log(R.type(val.imageSrc))
@@ -139,11 +123,6 @@ export default class App extends Component {
                             this.setState({automatedMode: true})
                         }, 1000)
                     })
-                    //convertImgToBase64(this.state.data.imageSrc, data=>{
-                    //localforage.setItem(this.state.data.deWord, data).then(()=>{
-                    //
-                    //})
-                    //})
                 } else {
                     J.log("cache hit")
                     this.setState({
@@ -292,7 +271,7 @@ export default class App extends Component {
     <div>
         <div className="box has-text-centered columns">
             <div id="animationMarker" className="column is-4 is-offset-4">
-            <input autoFocus className={this.state.inputFieldClassName} type="text" value={this.state.answer} size={this.state.inputFieldSize} onChange={this.handleAnswerInput} onKeyPress={this.handleAnswerInput}/>
+            <input autoFocus id="inputFieldId" className={this.state.inputFieldClassName} type="text" value={this.state.answer} size={this.state.inputFieldSize} onChange={this.handleAnswerInput} onKeyPress={this.handleAnswerInput}/>
             </div>
             <div className="column is-4">
                 <a id="button" className={this.state.buttonClassName} onClick={this.handleButtonClick}>{this.state.buttonText}</a>
