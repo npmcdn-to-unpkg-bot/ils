@@ -10,11 +10,10 @@ var shallowCompare = require("react-addons-shallow-compare")
 const ChooseBlogPost = require("./components/chooseBlogPost").main
 const SearchImage = require("./components/searchImage").main
 import Select from "react-select"
-import { Notification } from "react-notification"
-var io = require("socket.io-client")
-var socket = io.connect("http://localhost:3001", {reconnect: true})
+let io = require("socket.io-client")
+let socket = io.connect("http://localhost:3001", {reconnect: true})
 socket.on("connect", ()=>{
-    console.log("Connected!")
+    //console.log("Connected!")
 })
 let alertModeArr = ["warning", "error", "info", "success"]
 let alertEffectArr = ["slide", "scale", "bouncyflip", "flip", "genie", "jelly", "stackslide"]
@@ -64,6 +63,8 @@ export default class App extends Component {
         this.showSearchImage = this.showSearchImage.bind(this)
         this.categorySelect = this.categorySelect.bind(this)
         this.textEffect = this.textEffect.bind(this)
+        this.insertLink = this.insertLink.bind(this)
+        this.insertInternalLink = this.insertInternalLink.bind(this)
         this.handleTitle = this.handleTitle.bind(this)
         this.handleEditor = this.handleEditor.bind(this)
         this.handleEditorClick = this.handleEditorClick.bind(this)
@@ -125,6 +126,8 @@ export default class App extends Component {
         let previewState = markdownToHtml(content)
         this.setState({content, previewState, selectionEnd})
     }
+    insertLink() {}
+    insertInternalLink() {}
     textEffect(modificator) {
         let selectionStart = document.getElementById("editorId").selectionStart
         let selectionEnd = document.getElementById("editorId").selectionEnd

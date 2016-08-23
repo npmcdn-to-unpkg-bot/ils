@@ -206,7 +206,7 @@ function addFullstop(str) {
     }
 }
 function removePunctuation(str) {
-    return {cleanStr: R.replace(/\.|\!|\,|\-|\?/, "", str), removedChar:  R.match(/\.|\!|\,|\-|\?/, str)}
+    return {cleanStr: R.replace(/\.|\!|\,|\-|\?|\"|\'/g, "", str), removedChar:  R.match(/\.|\!|\,|\-|\?|\"|\'/g, str)}
 }
 function addWhitespace(str, length) {
     if (str.length < length) {
@@ -241,29 +241,29 @@ function performanceMemory() {
     console.log(performance.memory)
 }
 function performanceStats() {
-  var p = performance.getEntries();
-  for (var i=0; i < p.length; i++) {
-    console.log("PerformanceEntry[" + i + "]");
-    printPerformanceEntry(p[i]);
-  }
+    var p = performance.getEntries()
+    for (var i = 0; i < p.length; i++) {
+        console.log("PerformanceEntry[" + i + "]")
+        printPerformanceEntry(p[ i ])
+    }
 }
 function printPerformanceEntry(perfEntry) {
-  var properties = ["name",
+    var properties = ["name",
     "entryType",
     "startTime",
-    "duration"];
+    "duration"]
 
-  for (var i=0; i < properties.length; i++) {
-    var supported = properties[i] in perfEntry;
-    if (supported) {
-      var value = perfEntry[properties[i]];
-      console.log("... " + properties[i] + " = " + value);
-    } else {
-      console.log("... " + properties[i] + " = NOT supported");
+    for (var i = 0; i < properties.length; i++) {
+        var supported = properties[ i ] in perfEntry
+        if (supported) {
+            var value = perfEntry[ properties[ i ] ]
+            console.log("... " + properties[ i ] + " = " + value)
+        } else {
+            console.log("... " + properties[ i ] + " = NOT supported")
+        }
     }
-  }
 }
-module.exports.performanceStats= performanceStats
+module.exports.performanceStats = performanceStats
 module.exports.performanceMemory = performanceMemory
 module.exports.nextState = nextState
 module.exports.convertImgToBase64 = convertImgToBase64

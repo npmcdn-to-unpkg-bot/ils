@@ -9,8 +9,8 @@ const env = require("dotenv-helper")
 const imageSize = require("probe-image-size")
 const imgur = require("imgur")
 imgur.setCredentials("deyan8284@gmail.com", env.getEnv("imgurPassword"), env.getEnv("imgur"))
-function nameFn(str) {
-    return R.compose(R.toLower, R.join("-"), R.take(4),
+function nameFn(str, glue = "-") {
+    return R.compose(R.toLower, R.join(glue), R.take(4),
     J.shuffle, R.map(val=>J.removePunctuation(val)),
     R.filter(val=>val.length > 2), R.split(" "), J.removePunctuation)(str)
 }
@@ -27,6 +27,7 @@ function uploadImgur(fileLocation) {
 function main(data) {
     let imageSrc = data.imageSrc
     let newImageName = nameFn(data.enPart)
+    let altTag = nameFn(data.enPart, " ")
     return new Promise(resolve =>{
         let width
         let height
@@ -47,7 +48,7 @@ function main(data) {
                             .contain(1000, 750, {r: 176, g: 190, b: 197, a: 100})
                             .writeFile(finalDestination, (err)=>{
                                 uploadImgur(finalDestination).then(imageSrc =>{
-                                    resolve({imageSrc, imageSrcOrigin: data.imageSrc, altTag: newImageName})
+                                    resolve({imageSrc, imageSrcOrigin: data.imageSrc, altTag})
                                     fs.removeSync(currentDestination)
                                     fs.removeSync(finalDestination)
                                 })
@@ -61,7 +62,7 @@ function main(data) {
                                 .contain(1000, 750, {r: 176, g: 190, b: 197, a: 100})
                                 .writeFile(finalDestination, (err)=>{
                                     uploadImgur(finalDestination).then(imageSrc =>{
-                                        resolve({imageSrc, imageSrcOrigin: data.imageSrc, altTag: newImageName})
+                                        resolve({imageSrc, imageSrcOrigin: data.imageSrc, altTag})
                                         fs.removeSync(currentDestination)
                                         fs.removeSync(finalDestination)
                                     })
@@ -72,7 +73,7 @@ function main(data) {
                                 .contain(1000, 750, {r: 176, g: 190, b: 197, a: 100})
                                 .writeFile(finalDestination, (err)=>{
                                     uploadImgur(finalDestination).then(imageSrc =>{
-                                        resolve({imageSrc, imageSrcOrigin: data.imageSrc, altTag: newImageName})
+                                        resolve({imageSrc, imageSrcOrigin: data.imageSrc, altTag})
                                         fs.removeSync(currentDestination)
                                         fs.removeSync(finalDestination)
                                     })

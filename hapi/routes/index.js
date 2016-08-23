@@ -83,9 +83,6 @@ router.get("/translateDraft", (req, res) => {
         res.send(J.config.badQuery)
     }
 })
-router.get(`/translateDraft/${env.getEnv("mainPassword")}`, (req, res) => {
-    res.render("translateDraft")
-})
 router.get("/learningMemeAdmin", (req, res) => {
     if (J.auth(req.ip)) {
         res.render("learningMemeAdmin")
@@ -102,6 +99,26 @@ router.get("/readLog/:id", (req, res) => {
     }, (error, data) => {
         res.send(data)
     })
+})
+router.post("/allowIp", (req, res) => {
+    J.logger.debug(`allowIp | ip ${req.ip}`)
+    if (req.body.password === env.getEnv("mainPassword")) {
+        J.willRunFixedCommand(`node disp adminIp ${req.ip}`).then(()=>{
+            res.send(J.config.goodQuery)
+        })
+    } else {
+        res.send(J.config.badQuery)
+    }
+})
+router.post("/forgetIp", (req, res) => {
+    J.logger.debug(`forgetIp | ip ${req.ip}`)
+    if (req.body.password === env.getEnv("mainPassword")) {
+        J.willRunFixedCommand(`node disp adminIp ${req.ip}`).then(()=>{
+            res.send(J.config.goodQuery)
+        })
+    } else {
+        res.send(J.config.badQuery)
+    }
 })
 router.post("/read/:id", (req, res) => {
     J.logger.debug(`read db | ip ${req.ip}`)
@@ -168,7 +185,7 @@ router.post("/ready", (req, res) => {
 })
 router.post("/learningMeme", (req, res) => {
     mongoose.model("Main").find({
-        $where: "this.imageSrc!==undefined&&this.imageSrc!==false"
+        $where: "this.imageSrc!==undefined&&this.imageSrc!==false&&this.imageSrc!==null"
     }, (error, incoming) => {
         res.send(R.values(incoming))
     })

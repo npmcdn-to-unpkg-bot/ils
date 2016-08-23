@@ -16,7 +16,6 @@ function timer(startMarker = "default") {
     store.endMarker = startMarker
 }
 function auth(ip) {
-    J.lg(ip)
     let flag = false
     env.getEnv("adminIp").map(val=>{
         if (ip.includes(val)) {
@@ -187,7 +186,6 @@ function isBlogUrl(keyword) {
     }, R.head, R.split("-")), R.F)
     if (R.allPass([countSeparator, categoryInUrl, lengthFn])(keyword)) {
         let canonical = R.replace(/nodejsCategory-|reactjsCategory-|javascriptCategory-/, "", keyword)
-        J.log(canonical)
         if (R.compose(R.all(R.test(/[a-z]|-/)), R.split(""))(canonical)) {
             return canonical
         } else {

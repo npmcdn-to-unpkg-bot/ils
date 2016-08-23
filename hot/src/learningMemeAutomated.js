@@ -68,8 +68,36 @@ export default class App extends Component {
             }
         }, 100)
         J.emitter.on("once init", ()=>{
-            J.postData(`${J.empty}/learningMeme`, {}).then(incoming =>{
+            J.postData(`${J.ils}/learningMeme`, {}).then(incoming =>{
                 let globalData = J.shuffle(incoming)
+                J.log(globalData.length)
+                //let promisedArr = R.take(30, globalData).map(val=>{
+                let promisedArr = globalData.map(val=>{
+                    return new Promise(resolve=>{
+                        J.log(R.type(val.imageSrc))
+                        if (R.type(val.imageSrc) === "Null") {
+                            J.log(val)
+                        }
+                        localforage.getItem(val.deWord).then(localforageData=>{
+                            if (localforageData === null) {
+                                J.convertImgToBase64(val.imageSrc).then(data=>{
+                                    localforage.setItem(val.deWord, data).then(()=>{
+                                        J.log("saved")
+                                        resolve("saved")
+                                    })
+                                })
+                            } else {
+                                J.log("cached")
+                                resolve("cached")
+                            }
+                        })
+
+                    })
+                })
+                Promise.all(promisedArr).then(data=>{
+                    J.log("data")
+                    J.log(data)
+                })
                 this.setState({
                     data: globalData[ 0 ],
                     globalData
@@ -79,6 +107,7 @@ export default class App extends Component {
             })
         })
         J.emitter.on("init", ()=>{
+            J.log(this.state.data)
             let willTextTopRaw = R.split(" ", this.state.data.deWord)
             let willTextTop = R.compose(R.map(val=>J.hideTail(val)), R.split(" "))(this.state.data.deWord)
             let willTextBottom = R.compose(R.join(" "), R.map(val=>{
@@ -96,23 +125,25 @@ export default class App extends Component {
             }), R.split(" "))(this.state.data.dePart)
             localforage.getItem(this.state.data.deWord).then(data=>{
                 if (data === null) {
-                    convertImgToBase64(this.state.data.imageSrc, data=>{
-                        localforage.setItem(this.state.data.deWord, data).then(()=>{
-                            this.setState({
-                                answer: "",
-                                imageSrcCache: J.httpsFn(this.state.data.imageSrc),
-                                textTopLeft: R.join(" ", willTextTop),
-                                textTopRight: this.state.data.enWord,
-                                textBottom: willTextBottom,
-                                buttonText: J.buttonTextShowAnswer,
-                                buttonClassName: J.bulButtonInit
-                            }, ()=>{
-                                setTimeout(()=>{
-                                    this.setState({automatedMode: true})
-                                }, 1000)
-                            })
-                        })
+                    J.log(J.httpsFn(this.state.data.imageSrc))
+                    this.setState({
+                        answer: "",
+                        imageSrcCache: J.httpsFn(this.state.data.imageSrc),
+                        textTopLeft: R.join(" ", willTextTop),
+                        textTopRight: this.state.data.enWord,
+                        textBottom: willTextBottom,
+                        buttonText: J.buttonTextShowAnswer,
+                        buttonClassName: J.bulButtonInit
+                    }, ()=>{
+                        setTimeout(()=>{
+                            this.setState({automatedMode: true})
+                        }, 1000)
                     })
+                    //convertImgToBase64(this.state.data.imageSrc, data=>{
+                    //localforage.setItem(this.state.data.deWord, data).then(()=>{
+                    //
+                    //})
+                    //})
                 } else {
                     J.log("cache hit")
                     this.setState({
