@@ -1,6 +1,8 @@
 "use strict"
 const R = require("ramda")
 const reqwest = require("reqwest")
+const localforage = require("localforage")
+const config = require("./config")
 const stopWords = require("./stopWords.js")
 const winWidthIs = window.innerWidth
 const winHeightIs = window.innerHeight
@@ -269,6 +271,9 @@ function diffObject(a, b) {
         return map
     }, {})
 }
+
+module.exports.getItem = localforage.getItem
+module.exports.setItem = localforage.setItem
 module.exports.diffObject = diffObject
 module.exports.performanceStats = performanceStats
 module.exports.performanceMemory = performanceMemory

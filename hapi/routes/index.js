@@ -101,9 +101,10 @@ router.get("/readLog/:id", (req, res) => {
     })
 })
 router.post("/allowIp", (req, res) => {
-    J.logger.debug(`allowIp | ip ${req.ip}`)
+    J.log(`allowIp | ip ${req.ip}`)
     if (req.body.password === env.getEnv("mainPassword")) {
-        J.willRunFixedCommand(`node disp adminIp ${req.ip}`).then(()=>{
+        let ip = R.compose(R.last, R.split(":"))(req.ip)
+        J.willRunFixedCommand(`node disp adminIp ${ip}`).then(()=>{
             res.send(J.config.goodQuery)
         })
     } else {
@@ -111,9 +112,10 @@ router.post("/allowIp", (req, res) => {
     }
 })
 router.post("/forgetIp", (req, res) => {
-    J.logger.debug(`forgetIp | ip ${req.ip}`)
+    J.log(`forgetIp | ip ${req.ip}`)
     if (req.body.password === env.getEnv("mainPassword")) {
-        J.willRunFixedCommand(`node disp adminIp ${req.ip}`).then(()=>{
+        let ip = R.compose(R.last, R.split(":"))(req.ip)
+        J.willRunFixedCommand(`node disp removeAdminIp ${ip}`).then(()=>{
             res.send(J.config.goodQuery)
         })
     } else {
@@ -136,7 +138,7 @@ router.post("/catchDailyHook", (req, res) => {
             id: "latest",
             data: message
         }).then(console.log)
-        J.willRunFixedCommand("node d spdyClean").then(data => {
+        J.willRunFixedCommand("node disp spdyClean").then(data => {
             J.willRunFixedCommand("npm cache clean").then(() => {
                 res.send(`${data}`)
                     //res.send(`${req.body} ${R.type(req.body)}`)

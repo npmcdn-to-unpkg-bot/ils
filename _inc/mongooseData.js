@@ -61,12 +61,19 @@ let initSchemas = ()=>{
         id:{type: String, required:true},
         data: {type: String, required:true}
     })
+    let debugSchema = new Schema({
+        category: {type: String, enum: ["hook", "error"], required: true},
+        ip:{type: String, required:true},
+        data: {type: String, required:true},
+        timestamp: {type: Number, required: false}
+    })
     mongoose.model("Blog", blogSchema)
     mongoose.model("TranslateDraft", translateDraftSchema)
     mongoose.model("Main", mainSchema)
     mongoose.model("Counter", counterSchema)
     mongoose.model("GitHookToken", gitHookTokenSchema)
     mongoose.model("Log", logSchema)
+    mongoose.model("Debug", debugSchema)
 }
 
 let init = (connectionString)=>{

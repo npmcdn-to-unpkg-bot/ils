@@ -1,5 +1,5 @@
-# i-learn-smarter
-The current code base of my project in progress
+# httos://ilearnsmarter.com
+The current code base of my showcase project
 
 # Naming convention patterns as functions
 ```
@@ -40,14 +40,13 @@ saveData
 .commonInput
 ```
 - "main" - if JSON act as a holder for array of objects, then use "main" as the single object property
-- width comes before height
 
 - "awaited*" - can be used in context of await keyword
 ```
 let awaited = await willRunCommand("ls")
 ```
 - "promised" - wrapped promise
-- "state" - rich man's "temp" value. Avoid use in React code
+- "promisedArr" - wrapped array of promise
 
 - "*Raw" shows that the variable will take one more step before reaching clean state
 
@@ -55,21 +54,16 @@ let awaited = await willRunCommand("ls")
 let stateRaw = JSON.parse(data)
 let state = R.replace(",","",stateRaw)
 ```
-- pagination
+- pagination values
 ```
 paginationIndex: 0,
 paginationPerPageCount: 10
 ```
 
-- "incoming"||"incoming*"||"data" - is never set, always used as single result from a function or as function argument
-data should be first to use, unless it is a async data call and thus "incoming" pattern becomes more relevant
+- "data" - is never set, always used as single result from a function
 ```
 asyncAction.then((data)=>{
 })
-//or
-function J(incoming){
-
-}
 ```
 
 - "*Async" - name function using ES7 "async" in front of them
@@ -78,30 +72,11 @@ function J(incoming){
 async function getDataAsync(){}
 ```
 
-- "im*" - immutable.js related function or variable
+- willReturn - holder for function's return value
 
-- "*Is" - used as defensive approach for not accidentally overwriting global variables
-```
-const winWidthIs = window.innerWidth
-```
-
-- willReturn - usually set inside a function, rarely as global scope variable
-
-- "will*" - when it is not "willReturn" indicates name of function
-
-- "bul*" - Bulma.css related strings
-```
-let bulMobile = "is-hidden-desktop-only is-hidden-tablet-only is-hidden-widescreen"
-```
 - *First"&&"*Second"&&...&&"*Tenth" - used when it is not that easy to came up with naming for variable or functions with similar purpose
 
 - "local*" - temp value, required to specify the type, i.e. "localStr, localObj"
-
-# Filename and directory conventions
-
-- Directory is prefixed with "_" to ensure its top IDE view
-
-- File is prefixed with "z" to ensure its bottom IDE view
 
 # Watching files
 

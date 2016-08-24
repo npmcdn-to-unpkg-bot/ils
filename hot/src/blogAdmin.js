@@ -260,6 +260,7 @@ export default class App extends Component {
                 <a className="button is-info" onClick={()=>{this.textEffect("**")}}>B</a>
                 <a className="button is-primary" onClick={()=>{this.textEffect("*")}}>I</a>
                 <a className="button is-info" onClick={()=>{this.textEffect("***")}}>IB</a>
+                <input type="file" id="fileInput" onChange={(e)=>{J.log(document.getElementById("fileInput").files[ 0 ])}}/>
             </div>
             <div className="column is-2" >
                 <input type="text" placeholder="search image" value={this.state.searchImageKeyword} onKeyPress={this.searchImageInput} onChange={this.searchImageInput} />

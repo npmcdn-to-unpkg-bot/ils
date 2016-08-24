@@ -7,6 +7,7 @@ let initOnce = R.once(()=>{
     J.emitter.emit("once init")
 })
 let mainTimeoutValue = 4000
+let secondaryTimeoutValue = 1000
 let initData = {
     "deWord": "",
     "enWord": "",
@@ -54,18 +55,14 @@ export default class App extends Component {
         }, 100)
         J.emitter.on("once init", ()=>{
             J.postData(`${J.ils}/learningMeme`, {}).then(incoming =>{
+
                 let globalData = J.shuffle(incoming)
-                J.log(globalData.length)
                 let promisedArr = globalData.map(val=>{
                     return new Promise(resolve=>{
-                        J.log(R.type(val.imageSrc))
-                        if (R.type(val.imageSrc) === "Null") {
-                            J.log(val)
-                        }
-                        localforage.getItem(val.deWord).then(localforageData=>{
+                        J.getItem(val.deWord).then(localforageData=>{
                             if (localforageData === null) {
                                 J.convertImgToBase64(val.imageSrc).then(data=>{
-                                    localforage.setItem(val.deWord, data).then(()=>{
+                                    J.setItem(`${val.id}-imageSrc`, data).then(()=>{
                                         J.log("saved")
                                         resolve("saved")
                                     })
@@ -78,10 +75,31 @@ export default class App extends Component {
 
                     })
                 })
-                Promise.all(promisedArr).then(data=>{
-                    J.log("data")
-                    J.log(data)
-                })
+                if ("requestIdleCallback" in window) {
+                    let index = 0
+                    let flag = true
+                    let myNonEssentialWork = (deadline)=>{
+                        while (deadline.timeRemaining() > 0) {
+                            if (flag) {
+                                flag = false
+                                promisedArr[ index ].then(()=>{
+                                    J.log(`myNonEssentialWork ${index}`)
+                                    index++
+                                    flag = true
+                                })
+                            }
+                        }
+                        if (index < promisedArr.length - 1) {
+                            requestIdleCallback(myNonEssentialWork)
+                        }
+                    }
+                    requestIdleCallback(myNonEssentialWork)
+                } else {
+                    Promise.all(promisedArr).then(data=>{
+                        J.log("requestIdleCallback is missing")
+                        J.log(data.length)
+                    })
+                }
                 this.setState({
                     data: globalData[ 0 ],
                     globalData
@@ -107,7 +125,7 @@ export default class App extends Component {
                 })
                 return val
             }), R.split(" "))(this.state.data.dePart)
-            localforage.getItem(this.state.data.deWord).then(data=>{
+            J.getItem(`${this.state.id}-imageSrc`).then(data=>{
                 if (data === null) {
                     J.log(J.httpsFn(this.state.data.imageSrc))
                     this.setState({
