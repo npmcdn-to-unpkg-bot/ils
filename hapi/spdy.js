@@ -17,7 +17,13 @@ const bodyParser = require("body-parser")
 const env = require("dotenv-helper")
 let routes = require("./routes/index.js")
 let app = express()
-app.use(helmet())
+app.use(helmet.contentSecurityPolicy({browserSniff: true}))
+app.use(helmet.xssFilter())
+app.use(helmet.frameguard({ action: "deny" }))
+app.use(helmet.hsts({ maxAge: 7776000000 }))
+app.use(helmet.ieNoOpen())
+app.use(helmet.noSniff())
+app.disable("x-powered-by")
 app.use(compression())
 app.use((req, res, next) =>{
     res.header("Access-Control-Allow-Origin", "*")
@@ -43,7 +49,7 @@ app.use(favicon(__dirname + "/public/favicon.ico"))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(minify({cache:`${__dirname}/cache`}))
-app.use(express.static(path.join(__dirname, "public"), { maxAge: 86400000 }))
+app.use(express.static(path.join(__dirname, "public"), { maxAge: 2592000 }))
 app.use("/", routes)
 app.use((req, res) =>{
     J.logger.error(`${res.statusCode} ${req.url} ${app.get("env")}`)
@@ -58,6 +64,7 @@ var httpsOptions = {
 const port = 3002
 httpApp.set("port", port)
 httpApp.get("*", (req, res, next)=>{
+    //set log
     res.redirect("https://" + req.headers.host + "/" + req.path)
 })
 app.enable("trust proxy")

@@ -1,5 +1,5 @@
 "use strict"
-const J = require("justdo")
+const J = require("./common")
 const R = require("ramda")
 const env = require("dotenv-helper")
 const argv = require("minimist")(process.argv.slice(2))
@@ -29,17 +29,18 @@ function main(command) {
         if (command === "adminIp") {
             let adminIpData = env.getEnvSecure("adminIp")
             env.delEnv("adminIp").then(()=>{
-                env.addEnv("adminIp",`${adminIpData},${commandArgument}`).then(data=>{
-                    resolve(data)
+                env.addEnv("adminIp", `${adminIpData},${commandArgument}`).then(data=>{
                 })
             })
         }
         if (command === "removeAdminIp") {
-            let adminIpData = R.compose(R.join(","),R.filter(val=>val!==commandArgument))(env.getEnvSecure("adminIp"))
+            let adminIpData = R.compose(R.join(","), R.filter(val=>val !== commandArgument))(env.getEnvSecure("adminIp"))
             J.log(adminIpData)
             env.delEnv("adminIp").then(()=>{
-                env.addEnv("adminIp",adminIpData).then(data=>{
-                    resolve(data)
+                env.addEnv("adminIp", adminIpData).then(data=>{
+                    reloadPm2.then(()=>{
+                        resolve(data)
+                    })
                 })
             })
         }
@@ -54,5 +55,12 @@ if (argv._.length === 2) {
     commandArgument = argv._[ 1 ]
     main(argv._[ 0 ]).then(data=>{
         J.log(data)
+    })
+}
+function reloadPm2() {
+    return new Promise(resolve=>{
+        J.willRunFixedCommand("pm2 reload spdy").then(()=>{
+            resolve(true)
+        })
     })
 }

@@ -1,5 +1,6 @@
 "use strict"
 import * as R from "ramda"
+import {getData} from "../../../common.js"
 const reqwest = require("reqwest")
 const request = require("request")
 const cheerio = require("cheerio")

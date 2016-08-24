@@ -10,8 +10,7 @@
                 "transform-regenerator",
                 ["transform-runtime", {"polyfill": false,"regenerator": true}],
                 "transform-async-to-generator",
-                "transform-do-expressions",
-                "system-import-transformer"
+                "transform-do-expressions"
             ]
         }
     },

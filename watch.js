@@ -80,102 +80,103 @@ var processFn = function () {
 
                     case 37:
                         if (!(filepath.includes(".jsx") && filepath.includes("services"))) {
-                            _context.next = 48;
+                            _context.next = 49;
                             break;
                         }
 
                         J.log("babelify services");
-                        _context.next = 41;
+                        J.log(commands.babelify);
+                        _context.next = 42;
                         return willRunFixedCommand(commands.babelify);
 
-                    case 41:
+                    case 42:
                         iMeanNothing = _context.sent;
-                        _context.next = 44;
+                        _context.next = 45;
                         return willRunFixedCommand(commands.lintReact);
 
-                    case 44:
+                    case 45:
                         iMeanNothing = _context.sent;
                         return _context.abrupt("return", iMeanNothing);
 
-                    case 48:
+                    case 49:
                         if (!(filepath.includes(".jsx") && filepath.includes("fth"))) {
-                            _context.next = 56;
+                            _context.next = 57;
                             break;
                         }
 
                         J.log("babelify fth");
-                        _context.next = 52;
+                        _context.next = 53;
                         return willRunFixedCommand(commands.babelify);
 
-                    case 52:
+                    case 53:
                         iMeanNothing = _context.sent;
                         return _context.abrupt("return", iMeanNothing);
 
-                    case 56:
+                    case 57:
                         if (!filepath.includes(".jsx")) {
-                            _context.next = 64;
+                            _context.next = 65;
                             break;
                         }
 
                         J.log("react lint");
-                        _context.next = 60;
+                        _context.next = 61;
                         return willRunFixedCommand(commands.lintReact);
 
-                    case 60:
+                    case 61:
                         iMeanNothing = _context.sent;
                         return _context.abrupt("return", iMeanNothing);
 
-                    case 64:
+                    case 65:
                         if (!filepath.includes("Pre.js")) {
-                            _context.next = 75;
+                            _context.next = 76;
                             break;
                         }
 
                         J.log("babel lint");
-                        _context.next = 68;
+                        _context.next = 69;
                         return willRunFixedCommand(commands.babel);
 
-                    case 68:
+                    case 69:
                         iMeanNothing = _context.sent;
-                        _context.next = 71;
+                        _context.next = 72;
                         return willRunFixedCommand(commands.lint);
 
-                    case 71:
+                    case 72:
                         iMeanNothing = _context.sent;
                         return _context.abrupt("return", iMeanNothing);
 
-                    case 75:
+                    case 76:
                         if (!filepath.includes(".less")) {
-                            _context.next = 83;
+                            _context.next = 84;
                             break;
                         }
 
                         J.log("less");
-                        _context.next = 79;
+                        _context.next = 80;
                         return willRunFixedCommand(commands.less);
 
-                    case 79:
+                    case 80:
                         iMeanNothing = _context.sent;
                         return _context.abrupt("return", iMeanNothing);
 
-                    case 83:
+                    case 84:
                         if (!(filepath.includes(".js") && !filepath.includes("Front"))) {
-                            _context.next = 91;
+                            _context.next = 92;
                             break;
                         }
 
                         J.log("lint");
-                        _context.next = 87;
+                        _context.next = 88;
                         return willRunFixedCommand(commands.lint);
 
-                    case 87:
+                    case 88:
                         iMeanNothing = _context.sent;
                         return _context.abrupt("return", iMeanNothing);
 
-                    case 91:
+                    case 92:
                         return _context.abrupt("return", false);
 
-                    case 92:
+                    case 93:
                     case "end":
                         return _context.stop();
                 }

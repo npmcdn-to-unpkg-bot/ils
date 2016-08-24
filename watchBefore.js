@@ -65,6 +65,7 @@ async function processFn(filepath) {
         return iMeanNothing
     } else if (filepath.includes(".jsx") && (filepath.includes("services"))) {
         J.log("babelify services")
+        J.log(commands.babelify)
         iMeanNothing = await willRunFixedCommand(commands.babelify)
         iMeanNothing = await willRunFixedCommand(commands.lintReact)
         return iMeanNothing
