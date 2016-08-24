@@ -55,22 +55,12 @@ app.use((req, res) =>{
     J.logger.error(`${res.statusCode} ${req.url} ${app.get("env")}`)
     res.render("error")
 })
-let httpApp = express()
-var httpsOptions = {
+app.enable("trust proxy")
+let httpsOptions = {
     key: fs.readFileSync("/etc/letsencrypt/live/ilearnsmarter.com/privkey.pem"),
     cert: fs.readFileSync("/etc/letsencrypt/live/ilearnsmarter.com/fullchain.pem"),
     ca: fs.readFileSync("/etc/letsencrypt/live/ilearnsmarter.com/chain.pem")
 }
-const port = 3002
-httpApp.set("port", port)
-httpApp.get("*", (req, res, next)=>{
-    //set log
-    res.redirect("https://" + req.headers.host + "/" + req.path)
-})
-app.enable("trust proxy")
-http.createServer(httpApp).listen(httpApp.get("port"), () =>{
-    console.log(`Express HTTP server listening on port ${httpApp.get("port")}`)
-})
 spdy.createServer(httpsOptions, app).listen(443, (error) => {
     if (error) {
         console.error(error)
@@ -79,3 +69,14 @@ spdy.createServer(httpsOptions, app).listen(443, (error) => {
         console.log("Listening on port 443")
     }
 })
+//let httpApp = express()
+//const port = 3002
+//httpApp.set("port", port)
+//httpApp.get("*", (req, res, next)=>{
+////set log
+//res.redirect("https://" + req.headers.host + "/" + req.path)
+//})
+//
+//http.createServer(httpApp).listen(httpApp.get("port"), () =>{
+//console.log(`Express HTTP server listening on port ${httpApp.get("port")}`)
+//})
