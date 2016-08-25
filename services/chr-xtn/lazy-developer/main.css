@@ -1,0 +1,14 @@
+@import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz&subset=latin-ext);
+@import url(https://fonts.googleapis.com/css?family=Lobster);
+tr.standard-row{
+    border-bottom: 2px solid #021430 !important;
+    font-family: 'Lobster', cursive;
+}
+tr.standard-row:nth-child(even) td{
+    font-family: 'Lobster', cursive;
+    background-color: #d8f5cd !important;
+}
+tr.standard-row:nth-child(odd) td{
+    font-family: 'Yanone Kaffeesatz', sans-serif !important;
+    background-color: #a1a1a1 !important;
+}

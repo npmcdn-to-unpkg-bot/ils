@@ -1,0 +1,47 @@
+@import "common.less";
+
+.fileInput{
+    width:10px;
+}
+input[type="file"] {
+    cursor: grab;
+    padding-top: 1.5vh;
+    padding-bottom: 1.5vh;
+    color: @red !important;
+    font-size: 0.4vh;
+}
+textarea {
+    resize: none;
+    height:  auto;
+    overflow: auto;
+}
+.buttonRed{
+    border: 0px;
+    color: @red;
+}
+.buttonGreen{
+    border: 0px;
+    color: @greenThird;
+}
+.buttonBlue{
+    border: 0px;
+    color: @blueThird;
+}
+.buttonDark{
+    border: 0px;
+    color: @darkThird;
+}
+// Variables
+@my-selector: banner;
+
+// Usage
+.@{my-selector} {
+  font-weight: bold;
+  line-height: 40px;
+  margin: 0 auto;
+}
+.@{my-selector}More {
+  font-weight: bold;
+  line-height: 40px;
+  margin: 0 auto;
+}

@@ -1,18 +1,28 @@
 "use strict"
+
 import * as R from "ramda"
-import {getData} from "../../../common.js"
 const reqwest = require("reqwest")
-const request = require("request")
 const cheerio = require("cheerio")
 import React, { Component } from "react"
 const ReactDOM = require("react-dom")
 const Griddle = require("griddle-react")
 let keyHandler = new window.keypress.Listener()
 let emitter = new Events()
-const heightIs = window.innerHeight * 1
-const widthIs = window.innerWidth * 1
-const heightState = Math.floor(heightIs / 100)
-const widthState = Math.floor(widthIs / 100)
+function getData(url) {
+    return new Promise((resolve)=>{
+        reqwest({
+            url:  url,
+            method:  "get",
+            error: (err) => {
+                console.log(err)
+                resolve(null)
+            },
+            success: (incoming)=> {
+                resolve(incoming)
+            }
+        })
+    })
+}
 let displayFlag = false
 let flag = false
 let messageState = ""
@@ -57,34 +67,14 @@ function uniq(arr, flag) {
 }
 function willRequest(url) {
     return new Promise((resolve) => {
-        let urlValue = `http://allorigins.pw/get?url=${encodeURIComponent(url)}`
-        requestFn(urlValue).then(function (incoming) {
-            let willSend = JSON.parse(incoming)
-            if (willSend.contents) {
-                resolve(willSend.contents)
-            } else {
-                resolve(null)
-            }
-        })
-    })
-}
-function requestFn(url) {
-    return new Promise((resolve, reject) => {
-        request({
-            url: url,
-            "rejectUnauthorized": false
-        }, (error, response, body) => {
-            if (response.statusCode === 200) {
-                resolve(body)
-            } else {
-                reject(error)
-            }
+        getData(`https://crossorigin.me/${url}`).then(data=>{
+            resolve(data)
         })
     })
 }
 function eighth(word) {
     return new Promise((resolve) => {
-        willRequest(`http://ein.anderes-wort.de/fuer/${word}`).then(function(data) {
+        willRequest(`http://ein.anderes-wort.de/fuer/${word}`).then((data)=>{
             if (data) {
                 let $ = cheerio.load(data)
                 let willReturn = []
@@ -353,16 +343,16 @@ if (true) {
             let containerStyle = {
                 position:        "fixed",
                 zIndex:          "90",
-                width:           `${widthIs}px`,
-                height:          `${heightState * 17}px`,
+                width:           "90vw",
+                height:          "10vh",
                 backgroundColor: "#f8f8f8",
                 left:            "0px",
                 top:             "0px"
             }
             let innerStyle = {
                 color: "#332120",
-                marginLeft: `${widthState * 20}px`,
-                marginTop: `${heightState * 3}px`,
+                marginLeft: "3vw",
+                marginTop: "3vh",
                 padding: "20px"
             }
             let buttonStyle = {
@@ -398,26 +388,29 @@ if (true) {
             } else {
                 let state = R.splitEvery(Math.round(this.props.incomingData.dePart.length / 2),
                 this.props.incomingData.dePart)
-                willDisplay = R.zipWith((longPart, shortPart)=>{
-                    return {longPart: longPart.dePart, shortPart: shortPart.dePart}
-                }, state[ 0 ], state[ 1 ])
+                console.log(state)
+                if (state[ 1 ] !== undefined) {
+                    willDisplay = R.zipWith((longPart, shortPart)=>{
+                        return {longPart: longPart.dePart, shortPart: shortPart.dePart}
+                    }, state[ 0 ], state[ 1 ])
+                } else {
+                    willDisplay = [{longPart:"", shortPart:""}]
+                }
             }
-            let rows = Math.round(heightIs / 77)
+            let rows = Math.round(window.innerHeight / 77)
             let containerStyle = {
                 position:        "fixed",
                 zIndex:          "90",
-                width:           "100%",
-                height:          "100%",
+                width:           "98vw",
+                height:          "98vh",
                 backgroundColor: "#B0BEC5",
-                left:            "0%",
-                top:             "0%"
+                left:            "0",
+                top:             "0"
             }
             let innerStyle = {
                 color: "#263238",
                 marginTop: "1vh",
-                marginLeft: "6vh",
-                marginRight: "6vh",
-                marginBottom: "3vh"
+                marginLeft: "1vw"
             }
             return (
         <div style={containerStyle}>

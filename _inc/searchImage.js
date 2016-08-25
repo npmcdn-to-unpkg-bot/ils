@@ -14,7 +14,7 @@ function imageFirst(keyword, searchLimit = 100) {
             imageFilters: {
                 size: "large",
                 color: "color",
-                style: "photo",
+        //style: "photo",
                 aspect : "wide"
             }
         }, (error, res, body)=>{

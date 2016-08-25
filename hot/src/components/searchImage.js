@@ -20,8 +20,7 @@ class App extends Component {
         }
     }
     componentDidMount() {
-        window.addEventListener("keyup", (e)=>{
-            console.log(e.key)
+        let listener = (e)=>{
             if (e.key === "ArrowLeft") {
                 this.props.emitter.emit("left")
             }
@@ -31,7 +30,8 @@ class App extends Component {
             if (e.key === "Escape") {
                 this.props.emitter.emit("esc")
             }
-        }, false)
+        }
+        window.addEventListener("keyup", listener, false)
         this.props.emitter.on("left", ()=>{
             if ((this.state.paginationIndex - this.state.paginationPerPageCount) >= 0) {
                 this.setState({
@@ -63,6 +63,7 @@ class App extends Component {
             }
         })
         this.props.emitter.on("esc", ()=>{
+            window.removeEventListener("keyup", listener)
             J.emitter.emit("unmount")
         })
         this.props.emitter.on("search image visibility", ()=>{

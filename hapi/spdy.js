@@ -69,14 +69,3 @@ spdy.createServer(httpsOptions, app).listen(443, (error) => {
         console.log("Listening on port 443")
     }
 })
-let httpApp = express()
-const port = 80
-httpApp.set("port", port)
-httpApp.get("*", (req, res, next)=>{
-    J.log("redirected")
-    res.redirect("https://" + req.headers.host + "/" + req.path)
-})
-http.createServer(httpApp).listen(httpApp.get("port"), () =>{
-    J.box("more")
-    console.log(`Express HTTP server listening on port ${httpApp.get("port")}`)
-})

@@ -1,6 +1,6 @@
 {
     "name": "Extended German-English Translation",
-    "version": "1.2.0",
+    "version": "1.5.0",
     "manifest_version": 2,
     "description": "Extended German-English Translation",
     "icons": {
@@ -13,7 +13,7 @@
             "https://*/*"
         ],
         "css": [
-            "only.css"
+            "main.css"
         ],
         "js": [
             "scripts/keypress.js",

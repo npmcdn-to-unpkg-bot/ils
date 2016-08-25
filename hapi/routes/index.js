@@ -141,7 +141,6 @@ router.post("/catchDailyHook", (req, res) => {
         J.willRunFixedCommand("node disp spdyClean").then(data => {
             J.willRunFixedCommand("npm cache clean").then(() => {
                 res.send(`${data}`)
-                    //res.send(`${req.body} ${R.type(req.body)}`)
             })
         })
     } else {
@@ -316,7 +315,7 @@ router.post("/imageless", (req, res) => {
 })
 router.post("/searchImage", (req, res) => {
     if (J.auth(req.ip)) {
-        searchImage.main(req.body.searchImageKeyword).then(incoming => {
+        searchImage.imageFirst(req.body.searchImageKeyword).then(incoming => {
             res.send(incoming)
         })
     } else {

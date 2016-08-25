@@ -1,0 +1,41 @@
+.fileInput {
+  width: 10px;
+}
+input[type="file"] {
+  cursor: grab;
+  padding-top: 1.5vh;
+  padding-bottom: 1.5vh;
+  color: #EC407A !important;
+  font-size: 0.4vh;
+}
+textarea {
+  resize: none;
+  height: auto;
+  overflow: auto;
+}
+.buttonRed {
+  border: 0px;
+  color: #EC407A;
+}
+.buttonGreen {
+  border: 0px;
+  color: #135E39;
+}
+.buttonBlue {
+  border: 0px;
+  color: #6AC1F2;
+}
+.buttonDark {
+  border: 0px;
+  color: #212121;
+}
+.banner {
+  font-weight: bold;
+  line-height: 40px;
+  margin: 0 auto;
+}
+.bannerMore {
+  font-weight: bold;
+  line-height: 40px;
+  margin: 0 auto;
+}
