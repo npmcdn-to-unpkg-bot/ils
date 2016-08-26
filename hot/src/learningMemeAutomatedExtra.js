@@ -106,7 +106,9 @@ export default class App extends Component {
                                 promisedArr[ index ].then(()=>{
                                     console.log("index", index)
                                     setTimeout(()=>{
-                                        flag = true
+                                        if (index < promisedArr.length - 1) {
+                                            flag = true
+                                        }
                                     }, 500)
                                 })
                             }
