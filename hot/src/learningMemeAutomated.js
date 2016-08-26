@@ -1,4 +1,5 @@
 "use strict"
+console.log("start".toUpperCase(), Date.now())
 import React, { Component } from "react"
 import Alert from "react-s-alert"
 import R from "ramda"
@@ -43,19 +44,22 @@ export default class App extends Component {
         this.notify = this.notify.bind(this)
     }
     componentDidMount() {
-        J.getItem("messageSeen").then(messageSeenData=>{
-            if (null === null) {
-                let messageIndex = 0
-                let messageInterval = setInterval(()=>{
-                    this.notify(J.config.learningMemeAutomatedAlert[ messageIndex ])
-                    messageIndex++
-                    if (messageIndex === J.config.learningMemeAutomatedAlert.length) {
-                        clearInterval(messageInterval)
-                        J.setItem("messageSeen", true)
-                    }
-                }, messageIntervalValue)
-            }
-        })
+        console.log("componentDidMount".toUpperCase(), Date.now())
+        setTimeout(()=>{
+            J.getItem("messageSeen").then(messageSeenData=>{
+                if (null === null) {
+                    let messageIndex = 0
+                    let messageInterval = setInterval(()=>{
+                        this.notify(J.config.learningMemeAutomatedAlert[ messageIndex ])
+                        messageIndex++
+                        if (messageIndex === J.config.learningMemeAutomatedAlert.length) {
+                            clearInterval(messageInterval)
+                            J.setItem("messageSeen", true)
+                        }
+                    }, messageIntervalValue)
+                }
+            })
+        }, 60000)
         let interval = setInterval(()=>{
             if (this.state.automatedMode && this.state.textTopLeft !== "") {
                 if (this.state.answer.length < this.state.textTopLeft.length) {
@@ -73,6 +77,7 @@ export default class App extends Component {
         }, 100)
         J.emitter.on("once init", ()=>{
             J.postData(`${J.ils}/learningMeme`, {}).then(learningMemeData =>{
+                console.log("data is here".toUpperCase(), Date.now())
                 let globalData = J.shuffle(learningMemeData)
                 let promisedArr = globalData.map(val=>{
                     return new LazyPromise(resolve=>{

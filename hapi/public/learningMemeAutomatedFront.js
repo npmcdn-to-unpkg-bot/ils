@@ -4515,6 +4515,8 @@ function _inherits(subClass, superClass) {
     }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
 }
 
+console.log("start".toUpperCase(), Date.now());
+
 //import Navigation from "./components/navigation.js"
 var LazyPromise = require("lazy-promise");
 var initOnce = _ramda2.default.once(function () {
@@ -4567,21 +4569,24 @@ var App = function (_Component) {
         value: function componentDidMount() {
             var _this2 = this;
 
-            _commonReact2.default.getItem("messageSeen").then(function (messageSeenData) {
-                if (null === null) {
-                    (function () {
-                        var messageIndex = 0;
-                        var messageInterval = setInterval(function () {
-                            _this2.notify(_commonReact2.default.config.learningMemeAutomatedAlert[messageIndex]);
-                            messageIndex++;
-                            if (messageIndex === _commonReact2.default.config.learningMemeAutomatedAlert.length) {
-                                clearInterval(messageInterval);
-                                _commonReact2.default.setItem("messageSeen", true);
-                            }
-                        }, messageIntervalValue);
-                    })();
-                }
-            });
+            console.log("componentDidMount".toUpperCase(), Date.now());
+            setTimeout(function () {
+                _commonReact2.default.getItem("messageSeen").then(function (messageSeenData) {
+                    if (null === null) {
+                        (function () {
+                            var messageIndex = 0;
+                            var messageInterval = setInterval(function () {
+                                _this2.notify(_commonReact2.default.config.learningMemeAutomatedAlert[messageIndex]);
+                                messageIndex++;
+                                if (messageIndex === _commonReact2.default.config.learningMemeAutomatedAlert.length) {
+                                    clearInterval(messageInterval);
+                                    _commonReact2.default.setItem("messageSeen", true);
+                                }
+                            }, messageIntervalValue);
+                        })();
+                    }
+                });
+            }, 60000);
             var interval = setInterval(function () {
                 if (_this2.state.automatedMode && _this2.state.textTopLeft !== "") {
                     if (_this2.state.answer.length < _this2.state.textTopLeft.length) {
@@ -4599,6 +4604,7 @@ var App = function (_Component) {
             }, 100);
             _commonReact2.default.emitter.on("once init", function () {
                 _commonReact2.default.postData(_commonReact2.default.ils + "/learningMeme", {}).then(function (learningMemeData) {
+                    console.log("data is here".toUpperCase(), Date.now());
                     var globalData = _commonReact2.default.shuffle(learningMemeData);
                     var promisedArr = globalData.map(function (val) {
                         return new LazyPromise(function (resolve) {
