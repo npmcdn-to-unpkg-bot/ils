@@ -52,9 +52,6 @@ router.get("/", (req, res) => {
 router.get("/tunaPlayerDemo", (req, res) => {
     res.render("tunaPlayerDemo")
 })
-router.get("/tunaPlayerDemoBroken", (req, res) => {
-    res.render("tunaPlayerDemoBroken")
-})
 router.get("/aboutOrderSentence", (req, res) => {
     res.render("aboutOrderSentence")
 })
