@@ -1,14 +1,17 @@
 let J = require("./common")
-var http = require("http")
-
-//Configure our HTTP server to respond with Hello World to all requests.
-var server = http.createServer(function (request, response) {
-    response.writeHead(200, {"Content-Type": "text/plain"})
-    response.end("Hello World\n")
+var memecanvas = require("./services/meme/main.js")
+memecanvas.init("./dist", "-meme")
+let path = "/home/just/ils/test/inc/images/dontMoveCat.png"
+let styleObj = {
+    fillStyle: "#333",
+    strokeStyle: "#aaa",
+    lineWidth: 6,
+    fontFamily: "Ubuntu"
+}
+memecanvas.generate(path, "dsdssds", "Bottom of Meme", styleObj, function(error, memefilename) {
+    if (error) {
+        console.log(error)
+    } else {
+        console.log(memefilename)
+    }
 })
-
-//Listen on port 8000, IP defaults to 127.0.0.1
-server.listen(3000)
-
-//Put a friendly message on the terminal
-console.log("Server running at http://127.0.0.1:8000/")

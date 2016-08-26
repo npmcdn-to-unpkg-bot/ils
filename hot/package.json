@@ -40,11 +40,10 @@
         "webpack-dev-server": "*"
     },
     "dependencies": {
+        "markdown": "*",
+        "localforage": "*",
         "react": "*",
-        "react-addons-css-transition-group": "^0.14.8",
-        "react-dom": "*",
-        "victory": "^0.5.1",
-        "response-time": "*",
-        "twit": "*"
+        "react-addons-css-transition-group": "*",
+        "react-dom": "*"
     }
 }

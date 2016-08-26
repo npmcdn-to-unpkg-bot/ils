@@ -1,13 +1,17 @@
 "use strict"
 import React, { Component } from "react"
+import Alert from "react-s-alert"
 import R from "ramda"
 import J from "../../_inc/commonReact.js"
 //import Navigation from "./components/navigation.js"
+let messageArr = ["Welcome", "The main reason is to demonstrate to features", "of the application 'LearningMeme'"]
+const LazyPromise = require("lazy-promise")
 let initOnce = R.once(()=>{
     J.emitter.emit("once init")
 })
-let mainTimeoutValue = 4000
-let secondaryTimeoutValue = 1000
+let mainIntervalValue = 4000
+let secondaryIntervalValue = 1000
+let messageIntervalValue = 2200
 let initData = {
     "deWord": "",
     "enWord": "",
@@ -20,24 +24,39 @@ export default class App extends Component {
     constructor (props) {
         super(props)
         this.state = {
+            answer: "",
             automatedMode: false,
+            buttonText: J.buttonTextShowAnswer,
+            buttonClassName: J.bulButtonInit,
+            data: initData,
             globalIndex: 0,
             globalData: [],
-            data: initData,
-            answer: "",
-            textTopLeft: "",
-            textTopRight: "",
-            textBottom: "",
             inputFieldSize:20,
             imageSrcCache:"",
             inputFieldClassName:"inputField",
-            buttonText: J.buttonTextShowAnswer,
-            buttonClassName: J.bulButtonInit
+            messageSeen: false,
+            messageIndex: 0,
+            textTopLeft: "",
+            textTopRight: "",
+            textBottom: ""
         }
         this.handleAnswerInput = this.handleAnswerInput.bind(this)
         this.handleButtonClick = this.handleButtonClick.bind(this)
+        this.notify = this.notify.bind(this)
     }
     componentDidMount() {
+        J.getItem("messageSeen").then(messageSeenData=>{})
+        let messageInterval = setInterval(()=>{
+            if (!this.state.messageSeen) {
+                this.notify(messageArr[ this.state.messageIndex ])
+                this.setState({messageIndex: this.state.messageIndex + 1}, ()=>{
+                    if (this.state.messageIndex === messageArr.length) {
+                        clearInterval(messageInterval)
+                        this.setState({messageSeen:true})
+                    }
+                })
+            }
+        }, messageIntervalValue)
         let interval = setInterval(()=>{
             if (this.state.automatedMode && this.state.textTopLeft !== "") {
                 if (this.state.answer.length < this.state.textTopLeft.length) {
@@ -48,27 +67,26 @@ export default class App extends Component {
                         J.emitter.emit("correct")
                         setTimeout(()=>{
                             document.getElementById("button").click()
-                        }, mainTimeoutValue)
+                        }, mainIntervalValue)
                     })
                 }
             }
         }, 100)
         J.emitter.on("once init", ()=>{
-            J.postData(`${J.ils}/learningMeme`, {}).then(incoming =>{
-
-                let globalData = J.shuffle(incoming)
+            J.postData(`${J.ils}/learningMeme`, {}).then(learningMemeData =>{
+                let globalData = J.shuffle(learningMemeData)
                 let promisedArr = globalData.map(val=>{
-                    return new Promise(resolve=>{
-                        J.getItem(val.deWord).then(localforageData=>{
+                    return new LazyPromise(resolve=>{
+                        J.getItem(`${val.id}-imageSrc`).then(localforageData=>{
                             if (localforageData === null) {
                                 J.convertImgToBase64(val.imageSrc).then(data=>{
                                     J.setItem(`${val.id}-imageSrc`, data).then(()=>{
-                                        J.log("saved")
+                                        J.log(`saved ${val.id}`)
                                         resolve("saved")
                                     })
                                 })
                             } else {
-                                J.log("cached")
+                                J.log(`${val.id}-imageSrc is cached`)
                                 resolve("cached")
                             }
                         })
@@ -76,21 +94,31 @@ export default class App extends Component {
                     })
                 })
                 if ("requestIdleCallback" in window) {
+                    J.log("start")
                     let index = 0
                     let flag = true
-                    let myNonEssentialWork = (deadline)=>{
-                        while (deadline.timeRemaining() > 0) {
+                    function myNonEssentialWork(deadline) {
+                        if (deadline.timeRemaining() > 0) {
+                            console.log("will try perform idle callback")
+                            console.log("flag", flag)
                             if (flag) {
+                                index++
+                                console.log("is performing idle callback")
                                 flag = false
+                                console.log("flag", flag)
                                 promisedArr[ index ].then(()=>{
-                                    J.log(`myNonEssentialWork ${index}`)
-                                    index++
-                                    flag = true
+                                    console.log("index", index)
+                                    setTimeout(()=>{
+                                        flag = true
+                                    }, 500)
                                 })
                             }
                         }
-                        if (index < promisedArr.length - 1) {
-                            requestIdleCallback(myNonEssentialWork)
+                        if (index < promisedArr.length) {
+                            console.log("will request idle callback")
+                            setTimeout(()=>{
+                                requestIdleCallback(myNonEssentialWork)
+                            }, 500)
                         }
                     }
                     requestIdleCallback(myNonEssentialWork)
@@ -125,9 +153,9 @@ export default class App extends Component {
                 })
                 return val
             }), R.split(" "))(this.state.data.dePart)
-            J.getItem(`${this.state.id}-imageSrc`).then(data=>{
+            J.getItem(`${this.state.data.id}-imageSrc`).then(data=>{
                 if (data === null) {
-                    J.log(J.httpsFn(this.state.data.imageSrc))
+                    J.log("NOT CACHE")
                     this.setState({
                         answer: "",
                         imageSrcCache: J.httpsFn(this.state.data.imageSrc),
@@ -139,7 +167,7 @@ export default class App extends Component {
                     }, ()=>{
                         setTimeout(()=>{
                             this.setState({automatedMode: true})
-                        }, 1000)
+                        }, secondaryIntervalValue)
                     })
                 } else {
                     J.log("cache hit")
@@ -154,7 +182,7 @@ export default class App extends Component {
                     }, ()=>{
                         setTimeout(()=>{
                             this.setState({automatedMode: true})
-                        }, 1000)
+                        }, secondaryIntervalValue)
                     })
                 }
             })
@@ -234,6 +262,18 @@ export default class App extends Component {
             }
         })
     }
+    notify(msg, seconds = 2, position = "top-right") {
+        if (R.type(msg) !== "String") {
+            msg = JSON.stringify(msg)
+        }
+        let settings = J.alertRandomPlain()
+        Alert[ settings.mode ](msg, {
+            position,
+            effect: settings.effect,
+            timeout: seconds * 1000,
+            offset: 100
+        })
+    }
     render () {
         let fontTextTop = J.fontValueFn(this.state.textTopLeft.length + this.state.textTopRight.length + 1)
         let fontTextBottom = J.fontValueFn(this.state.textBottom.length)
@@ -305,6 +345,7 @@ export default class App extends Component {
             <div style={memeTextBottom}>{this.state.textBottom}</div>
             <div style={memeTextBottomSecond}>{this.state.data.enPart}</div>
         </div>
+        <Alert stack={{limit:7}} />
 	</div>
     )}
 }

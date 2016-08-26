@@ -1,0 +1,18 @@
+.wrongAnswerLearningMeme{
+  animation: wrongLearningMeme 1s;
+}
+.correctAnswerLearningMeme{
+  animation: correctLearningMeme 1s;
+}
+@keyframes correctLearningMeme {
+     0% {background-color: @correctFirst;outline: 3px solid @correctSecond;}
+     33% {background-color: @correctSecond;outline: 3px solid @correctFirst;}
+     66% {background-color: @correctFirst;outline: 3px solid @correctSecond;}
+     99% {background-color: @correctSecond;outline: 3px solid @correctFirst;}
+}
+@keyframes wrongLearningMeme {
+     0% {background-color: @wrongFirst;outline: 3px solid @wrongSecond;}
+     33% {background-color: @wrongSecond;outline: 3px solid @wrongFirst;}
+     66% {background-color: @wrongFirst;outline: 3px solid @wrongSecond;}
+     99% {background-color: @wrongSecond;outline: 3px solid @wrongFirst;}
+}

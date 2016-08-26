@@ -60,7 +60,7 @@ class App extends Component {
     }
     render () {
         return (
-        <div className="newEntry columns">
+        <div className="overlay columns">
             <div className="column is-quarter">
                 {this.state.firstRowArr.map(val=>{
                     return <p key={randomSeed()} onClick={()=>{this.props.handleClick(val)}}><span>{val.title}</span></p>

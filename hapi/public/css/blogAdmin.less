@@ -1,5 +1,45 @@
+@import "mixins.less";
 @import "common.less";
-
+@import url(https://fonts.googleapis.com/css?family=Josefin+Sans:600);
+@import url(https://fonts.googleapis.com/css?family=Arvo:400&subset=latin);
+@fontFamily: 'Arvo', serif;
+.input{
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 3vh;
+    font-weight: 700;
+    width: 100%;
+    padding: 1vh;
+    margin: 1vh;
+}
+.content{
+    font-family: @fontFamily;
+    margin-left: 2vw;
+    margin-top: 1vw;
+    margin-right: 2vw;
+    padding: 0.5vw;
+    width:46vw;
+    border: 1px solid @darkblue;
+    font-size: 1.7vh;
+}
+.preview{
+    .content();
+    margin-top: 0px;
+    border: 1px solid @darkblue;
+    border-radius: 0.2vw;
+}
+.preview p{
+margin-bottom: 1vh;
+}
+#inputFieldId{
+    font-family: @fontFamily;
+    font-size: 3vh;
+    color: @red;
+    font-weight: 800;
+}
+.blogAdminPreview p {
+    outline: 1px;
+    line-height: 1;
+}
 .fileInput{
     width:10px;
 }
@@ -15,33 +55,23 @@ textarea {
     height:  auto;
     overflow: auto;
 }
-.buttonRed{
-    border: 0px;
-    color: @red;
+svg{
+    width: 3em;
+    height: 2em;
+    cursor: pointer;
 }
-.buttonGreen{
-    border: 0px;
+svg:hover{
+    cursor: pointer;
     color: @greenThird;
 }
-.buttonBlue{
-    border: 0px;
-    color: @blueThird;
-}
-.buttonDark{
-    border: 0px;
-    color: @darkThird;
-}
-// Variables
-@my-selector: banner;
-
-// Usage
-.@{my-selector} {
-  font-weight: bold;
-  line-height: 40px;
-  margin: 0 auto;
-}
-.@{my-selector}More {
-  font-weight: bold;
-  line-height: 40px;
-  margin: 0 auto;
-}
+@colors: green,red,navy,dark,lightgreen,blue;
+.for(@colors, {
+    .button-@{value} {
+        border: 0px;
+        cursor: grab;
+        color: @@value;
+    }
+    .button-@{value}:hover {
+        color: mix(@@value, @red, 50%);
+    }
+});

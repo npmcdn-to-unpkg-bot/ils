@@ -271,62 +271,72 @@ function diffObject(a, b) {
         return map
     }, {})
 }
-
-module.exports.getItem = localforage.getItem
-module.exports.setItem = localforage.setItem
-module.exports.diffObject = diffObject
-module.exports.performanceStats = performanceStats
-module.exports.performanceMemory = performanceMemory
-module.exports.nextState = nextState
-module.exports.convertImgToBase64 = convertImgToBase64
-module.exports.addWhitespace = addWhitespace
-module.exports.removePunctuation = removePunctuation
+let alertModeArr = ["warning", "error", "info", "success"]
+let alertModePlainArr = ["warning", "info", "success"]
+let alertEffectArr = ["slide", "scale", "bouncyflip", "flip", "genie", "jelly", "stackslide"]
+function alertRandom() {
+    let effect = R.head(shuffle(alertEffectArr))
+    let mode = R.head(shuffle(alertModeArr))
+    return {effect, mode}
+}
+function alertRandomPlain() {
+    let effect = R.head(shuffle(alertEffectArr))
+    let mode = R.head(shuffle(alertModePlainArr))
+    return {effect, mode}
+}
 module.exports.addFullstop = addFullstop
-module.exports.stopWordsFilter = stopWordsFilter
-module.exports.randomIndex = randomIndex
-module.exports.returnEasyStyleGerman = returnEasyStyleGerman
-module.exports.returnOldStyleGerman = returnOldStyleGerman
-module.exports.easyGermanSymbol = easyGermanSymbol
-module.exports.hideTail = hideTail
-module.exports.fontValueFn = fontValueFn
-module.exports.lineHeightFn = lineHeightFn
-module.exports.setProp = setProp
 module.exports.addProp = addProp
 module.exports.addSingleProp = addSingleProp
-module.exports.log = log
-module.exports.getData = getData
-module.exports.postData = postData
-module.exports.shuffle = shuffle
-module.exports.getPercentRaw = getPercentRaw
-module.exports.getPercent = getPercent
-module.exports.getPart = getPart
-module.exports.divide = divide
-module.exports.isUniq = isUniq
-module.exports.emitter = emitter
-module.exports.getHeightPx = getHeightPx
-module.exports.getWidthPx = getWidthPx
-module.exports.randomSeed = randomSeed
-module.exports.winWidthIs = winWidthIs
-module.exports.winHeightIs = winHeightIs
-module.exports.httpsFn = R.replace("http://", "https://", R.__)
-module.exports.hapi = "http://localhost:3000"
-module.exports.ils = "https://ilearnsmarter.com"
-module.exports.empty = ""
-module.exports.bulButtonInit = "button"
-module.exports.categoryOptions = [
-    { value: "quotes", label: "quotes" },
-    { value: "plain", label: "plain" },
-    { value: "draft", label: "draft" },
-    { value: "preDraft", label: "preDraft" }
-]
-module.exports.bulButtonNext = "button is-success"
-module.exports.buttonTextShowAnswer = "Show Answer"
-module.exports.buttonTextNext = "Next"
-module.exports.bulMobileBoxOuter = "columns box is-hidden-desktop-only is-hidden-tablet-only is-hidden-widescreen"
-module.exports.bulMobileOuter = "columns is-hidden-desktop-only is-hidden-tablet-only is-hidden-widescreen"
-module.exports.bulMobileBox = "column box is-hidden-desktop-only is-hidden-tablet-only is-hidden-widescreen"
-module.exports.bulMobileBoxHalf = "column box is-half is-offset-one-quarter is-hidden-desktop-only is-hidden-tablet-only is-hidden-widescreen"
-module.exports.bulBoxOuter = "columns box is-hidden-mobile"
+module.exports.addWhitespace = addWhitespace
+module.exports.alertRandomFn = alertRandom
+module.exports.alertRandomPlain = alertRandomPlain
 module.exports.bulBox = "column box"
 module.exports.bulBoxHalf = "column box is-half is-offset-one-quarter"
+module.exports.bulBoxOuter = "columns box is-hidden-mobile"
+module.exports.bulButtonInit = "button"
+module.exports.bulButtonNext = "button is-success"
+module.exports.bulMobileBox = "column box is-hidden-desktop-only is-hidden-tablet-only is-hidden-widescreen"
+module.exports.bulMobileBoxHalf = "column box is-half is-offset-one-quarter is-hidden-desktop-only is-hidden-tablet-only is-hidden-widescreen"
+module.exports.bulMobileBoxOuter = "columns box is-hidden-desktop-only is-hidden-tablet-only is-hidden-widescreen"
+module.exports.bulMobileOuter = "columns is-hidden-desktop-only is-hidden-tablet-only is-hidden-widescreen"
+module.exports.buttonTextNext = "Next"
+module.exports.buttonTextShowAnswer = "Show Answer"
+module.exports.categoryOptions = [{ value: "quotes", label: "quotes" }, { value: "plain", label: "plain" }, { value: "draft", label: "draft" }, { value: "preDraft", label: "preDraft" }]
+module.exports.config = config
+module.exports.convertImgToBase64 = convertImgToBase64
+module.exports.diffObject = diffObject
+module.exports.divide = divide
+module.exports.easyGermanSymbol = easyGermanSymbol
+module.exports.emitter = emitter
+module.exports.empty = ""
+module.exports.fontValueFn = fontValueFn
+module.exports.getData = getData
+module.exports.getHeightPx = getHeightPx
+module.exports.getItem = localforage.getItem
+module.exports.getPart = getPart
+module.exports.getPercent = getPercent
+module.exports.getPercentRaw = getPercentRaw
+module.exports.getWidthPx = getWidthPx
+module.exports.hapi = "http://localhost:3000"
+module.exports.hideTail = hideTail
+module.exports.httpsFn = R.replace("http://", "https://", R.__)
+module.exports.ils = "https://ilearnsmarter.com"
+module.exports.isUniq = isUniq
+module.exports.lineHeightFn = lineHeightFn
 module.exports.loadTime = loadTime
+module.exports.log = log
+module.exports.nextState = nextState
+module.exports.performanceMemory = performanceMemory
+module.exports.performanceStats = performanceStats
+module.exports.postData = postData
+module.exports.randomIndex = randomIndex
+module.exports.randomSeed = randomSeed
+module.exports.removePunctuation = removePunctuation
+module.exports.returnEasyStyleGerman = returnEasyStyleGerman
+module.exports.returnOldStyleGerman = returnOldStyleGerman
+module.exports.setItem = localforage.setItem
+module.exports.setProp = setProp
+module.exports.shuffle = shuffle
+module.exports.stopWordsFilter = stopWordsFilter
+module.exports.winHeightIs = winHeightIs
+module.exports.winWidthIs = winWidthIs

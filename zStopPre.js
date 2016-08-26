@@ -28,13 +28,6 @@ async function mainProcess() {
     state = await J.willRunFixedCommand("git push")
     return state
 }
-async function mainProcessOld() {
-    let state
-    for (let singleCommand of commands) {
-        state = await J.willRunFixedCommand(singleCommand)
-    }
-    return state
-}
 mainProcess().then(incoming=>{
     shadowProcess().then(console.log)
 })

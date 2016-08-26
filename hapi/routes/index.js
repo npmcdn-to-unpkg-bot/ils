@@ -436,7 +436,6 @@ router.post("/translateDraftGenerator", (req, res) => {
     }
 })
 router.post("/addBlog", (req, res) => {
-    J.log(req.body)
     if (J.auth(req.ip)) {
         if (J.isBlogType(req.body)) {
             db.findOneAndUpdateBlog(req.body).then(data => {
@@ -452,7 +451,6 @@ router.post("/addBlog", (req, res) => {
 router.post("/blogPosts", (req, res)=>{
     if (J.auth(req.ip)) {
         db.load("Blog").then(data => {
-            J.log(data)
             res.send(data)
         })
     } else {

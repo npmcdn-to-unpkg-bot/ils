@@ -80,7 +80,7 @@ class App extends Component {
         }
         return (
     <div style={styleObj}>
-        <div className="newEntry columns is-multiline">
+        <div className="overlay columns is-multiline">
             {this.props.data.map((val, index)=>{
                 if (R.gt(index, this.state.paginationIndex) && R.lte(index, this.state.paginationIndex + this.state.paginationPerPageCount)) {
                     return <div key={J.randomSeed()} className="column is-2">

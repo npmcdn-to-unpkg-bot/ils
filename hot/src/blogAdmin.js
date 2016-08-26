@@ -3,8 +3,9 @@ import React, { Component } from "react"
 import ReactDOM from "react-dom"
 import Alert from "react-s-alert"
 const markdown = require("markdown").markdown
-//const markdownn = require("react-log")
-//import Textarea from "react-textarea-autosize"
+let InsertLink = require("react-icons/lib/ti/attachment-outline")
+//let ShowInfo = require("react-icons/lib/ti/info-large")
+//let AddNewPost = require("react-icons/lib/ti/plus-outline")
 import * as R from "ramda"
 import J from "../../_inc/commonReact.js"
 const shallowCompare = require("react-addons-shallow-compare")
@@ -12,9 +13,9 @@ const ChooseBlogPost = require("./components/chooseBlogPost").main
 const SearchImage = require("./components/searchImage").main
 import Select from "react-select"
 let io = require("socket.io-client")
-let socket = io.connect("http://localhost:3001", {reconnect: true})
+let socket = io.connect(J.hapi, {reconnect: true})
 socket.on("connect", ()=>{
-    //console.log("Connected!")
+    console.log("Connected!")
 })
 let alertModeArr = ["warning", "error", "info", "success"]
 let alertEffectArr = ["slide", "scale", "bouncyflip", "flip", "genie", "jelly", "stackslide"]
@@ -23,13 +24,11 @@ function alertRandomFn() {
     let mode = R.head(J.shuffle(alertModeArr))
     return {effect, mode}
 }
-//socket.emit("test", "me")
 var options = [
     { value: "nodejs", label: "Node.js", searchable:false },
     { value: "reactjs", label: "React.js" },
     { value: "javascript", label: "Javascript" }
 ]
-let imageSrcMock = "https://i.imgur.com/8mqZD47.jpg"
 function markdownToHtml(markdownData) {
     let __html = markdown.toHTML(markdownData)
     return {__html}
@@ -58,6 +57,7 @@ export default class App extends Component {
             notificationState: false
         }
         this.addNewPost = this.addNewPost.bind(this)
+        this.addLine = this.addLine.bind(this)
         this.altTag = "i learn smarter"
         this.blogPostSelection = this.blogPostSelection.bind(this)
         this.categorySelect = this.categorySelect.bind(this)
@@ -162,6 +162,52 @@ export default class App extends Component {
         J.emitter.on("unmount", ()=>{
             ReactDOM.unmountComponentAtNode(document.getElementById("reactContainer"))
         })
+        let listener = (e)=>{
+            if (e.key === "Alt") {
+                let selectionEnd = document.getElementById("editorId").selectionEnd
+                let start = this.state.content.substr(0, selectionEnd)
+                let middle = "**"
+                let end = this.state.content.substr(selectionEnd)
+                let content = `${start}${middle}${end}`
+                let previewState = markdownToHtml(content)
+                this.setState({content, previewState}, ()=>{
+                    document.getElementById("editorId").selectionEnd = selectionEnd + 2
+                })
+            }
+            if (e.key === "Tab") {
+                e.preventDefault()
+                let selectionEnd = document.getElementById("editorId").selectionEnd
+                let start = this.state.content.substr(0, selectionEnd)
+                let middle = "    "
+                let end = this.state.content.substr(selectionEnd)
+                let content = `${start}${middle}${end}`
+                let previewState = markdownToHtml(content)
+                this.setState({content, previewState})
+            }
+            if (e.key === "Enter") {
+                //e.preventDefault()
+                let selectionEnd = document.getElementById("editorId").selectionEnd
+                let start = this.state.content.substr(0, selectionEnd)
+                let middle = "\n"
+                let end = this.state.content.substr(selectionEnd)
+                let content = `${start}${middle}${end}`
+                let previewState = markdownToHtml(content)
+                this.setState({content, previewState}, ()=>{
+                    document.getElementById("editorId").selectionEnd = selectionEnd + 1
+                })
+            }
+        }
+        window.addEventListener("keydown", listener, false)
+    }
+    addLine() {
+        let start = this.state.content.substr(0, this.state.selectionEnd)
+        let end = this.state.content.substr(this.state.selectionEnd)
+        let middle = `\n\n---\n`
+        let content = `${start}${middle}${end}`
+        let previewState = markdownToHtml(content)
+        this.setState({content, previewState, promptValue:"", promptCaller:"", promptIsActive:""}, ()=>{
+            J.emitter.emit("rows")
+        })
     }
     addNewPost() {
         this.setState({
@@ -201,8 +247,8 @@ export default class App extends Component {
         })
     }
     handleContextMenu(event) {
-        J.log(window.getSelection().toString())
-        event.preventDefault()
+        //J.log(window.getSelection().toString())
+        //event.preventDefault()
     }
     handleEditor(event) {
         let content = event.target.value
@@ -363,19 +409,20 @@ export default class App extends Component {
 <div>
     <div className="columns is-marginless">
             <div className="column box is-9">
-                <a className="button buttonBlue" title="chooseBlogPost" onClick={this.chooseBlogPost}><span className="icon"><i className="fa fa-hand-o-down"></i></span></a>
-                <a className="button buttonBlue" title="Show Images" onClick={this.showSearchImage}><span className="icon"><i className="fa fa-eye"></i></span></a>
-                <a className="button buttonBlue" title="Insert Image" onClick={this.handleInsertImage}><span className="icon"><i className="fa fa-picture-o"></i></span></a>
-                <a className="button buttonGreen" title="Publish" onClick={this.handlePublish}><span className="icon"><i className="fa fa-paper-plane-o"></i></span></a>
-                <a className="button buttonBlue" title="addNewPost" onClick={this.addNewPost}><span className="icon"><i className="fa fa-plus"></i></span></a>
-                <a className="button buttonRed" onClick={this.handleRemove}><span className="icon"><i className="fa fa-times"></i></span></a>
-                <a className="button buttonBlue" title="Edit Title" onClick={this.editTitle}><span className="icon"><i className="fa fa-header"></i></span></a>
-                <a className="button buttonDark" onClick={()=>{this.textEffect("**")}}><span className="icon"><i className="fa fa-bold"></i></span></a>
-                <a className="button buttonDark" onClick={()=>{this.textEffect("***")}}><span className="icon"><i className="fa fa-asterisk"></i></span></a>
-                <a className="button buttonDark" onClick={()=>{this.textEffect("*")}}><span className="icon"><i className="fa fa-italic"></i></span></a>
-                <a className="button buttonBlue" title="Link" onClick={this.insertLink}><span className="icon"><i className="fa fa-chain-broken"></i></span></a>
-                <a className="button buttonBlue" title="Internal Link" onClick={this.insertInternalLink}><span className="icon"><i className="fa fa-link"></i></span></a>
-                <a className="button buttonGreen" onClick={this.showInfo}><span className="icon"><i className="fa fa-info"></i></span></a>
+                <a className="button button-blue" title="chooseBlogPost" onClick={this.chooseBlogPost}><span className="icon"><i className="fa fa-hand-o-down"></i></span></a>
+                <a className="button button-blue" title="Show Images" onClick={this.showSearchImage}><span className="icon"><i className="fa fa-eye"></i></span></a>
+                <a className="button button-blue" title="Insert Image" onClick={this.handleInsertImage}><span className="icon"><i className="fa fa-picture-o"></i></span></a>
+                <a className="button button-green" title="Publish" onClick={this.handlePublish}><span className="icon"><i className="fa fa-paper-plane-o"></i></span></a>
+                <a className="button button-blue" title="addNewPost" onClick={this.addNewPost}><span className="icon"><i className="fa fa-plus"></i></span></a>
+                <a className="button button-red" onClick={this.handleRemove}><span className="icon"><i className="fa fa-times"></i></span></a>
+                <a className="button button-dark" onClick={this.addLine}><span className="icon"><i className="fa fa-minus"></i></span></a>
+                <a className="button button-blue" title="Edit Title" onClick={this.editTitle}><span className="icon"><i className="fa fa-header"></i></span></a>
+                <a className="button button-dark" onClick={()=>{this.textEffect("**")}}><span className="icon"><i className="fa fa-bold"></i></span></a>
+                <a className="button button-dark" onClick={()=>{this.textEffect("***")}}><span className="icon"><i className="fa fa-asterisk"></i></span></a>
+                <a className="button button-dark" onClick={()=>{this.textEffect("*")}}><span className="icon"><i className="fa fa-italic"></i></span></a>
+                <InsertLink className="button-blue" title="Link" onClick={this.insertLink}></InsertLink>
+                <a className="button button-blue" title="Internal Link" onClick={this.insertInternalLink}><span className="icon"><i className="fa fa-link"></i></span></a>
+                <a className="button button-green" onClick={this.showInfo}><span className="icon"><i className="fa fa-info"></i></span></a>
                 <input type="file" id="fileInput" size="2" onChange={this.fileUpload}/>
             </div>
             <div className="column is-3" >
@@ -384,10 +431,10 @@ export default class App extends Component {
     </div>
     <div className="columns">
         <div className="column box is-half has-text-left is-marginless">
-            <textarea className="blogAdminTextarea" autoFocus id="editorId" name="editor" onContextMenu={this.handleContextMenu} onChange={this.handleEditor} onKeyPress={this.handleEditor} onClick={this.handleEditorClick} value={this.state.content} rows={this.state.rows}></textarea>
+            <textarea className="content" autoFocus id="editorId" name="editor" onContextMenu={this.handleContextMenu} onChange={this.handleEditor} onKeyPress={this.handleEditor} onClick={this.handleEditorClick} value={this.state.content} rows={this.state.rows}></textarea>
         </div>
         <div className="column is-half has-text-left is-marginless">
-            <div className="blogAdminPreview" dangerouslySetInnerHTML={this.state.previewState}></div>
+            <div className="preview" dangerouslySetInnerHTML={this.state.previewState}></div>
         </div>
     </div>
     <Alert stack={{limit:7}} />
@@ -397,7 +444,7 @@ export default class App extends Component {
       <div className="modal-container outlined">
         <div className="modal-content outlined">
             <div className="box">
-                <input id="promptId" className="bigInput" type="text" placeholder="..." value={this.state.promptValue} onKeyPress={this.handlePrompt} onChange={this.handlePrompt}/>
+                <input id="promptId" className="input" type="text" placeholder="..." value={this.state.promptValue} onKeyPress={this.handlePrompt} onChange={this.handlePrompt}/>
             </div>
         </div>
       </div>
