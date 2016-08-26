@@ -52,6 +52,9 @@ router.get("/", (req, res) => {
 router.get("/tunaPlayerDemo", (req, res) => {
     res.render("tunaPlayerDemo")
 })
+router.get("/tunaPlayerDemoBroken", (req, res) => {
+    res.render("tunaPlayerDemoBroken")
+})
 router.get("/aboutOrderSentence", (req, res) => {
     res.render("aboutOrderSentence")
 })
@@ -66,6 +69,9 @@ router.get("/learningMeme", (req, res) => {
 })
 router.get("/learningMemeAutomated", (req, res) => {
     res.render("learningMemeAutomated")
+})
+router.get("/learningMemeAutomatedExtra", (req, res) => {
+    res.render("learningMemeAutomatedExtra")
 })
 router.get("/writeSentence", (req, res) => {
     res.render("writeSentence")

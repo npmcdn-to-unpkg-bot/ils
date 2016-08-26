@@ -10,7 +10,8 @@ let initOnce = R.once(()=>{
 })
 let mainIntervalValue = 4000
 let secondaryIntervalValue = 1000
-let messageIntervalValue = 1500
+let alertIntervalValue = 12000
+let notifyIntervalValue = 9
 let initData = {
     "deWord": "",
     "enWord": "",
@@ -32,7 +33,6 @@ export default class App extends Component {
             globalData: [],
             inputFieldSize:20,
             imageSrcCache:"",
-            inputFieldClassName:"inputField",
             textTopLeft: "",
             textTopRight: "",
             textBottom: "",
@@ -43,24 +43,31 @@ export default class App extends Component {
         this.notify = this.notify.bind(this)
     }
     componentDidMount() {
-        J.getItem("messageSeen").then(messageSeenData=>{
-            if (null === null) {
-                let messageIndex = 0
-                let messageInterval = setInterval(()=>{
-                    this.notify(J.config.learningMemeAutomatedAlert[ messageIndex ])
-                    messageIndex++
-                    if (messageIndex === J.config.learningMemeAutomatedAlert.length) {
-                        clearInterval(messageInterval)
-                        J.setItem("messageSeen", true)
-                    }
-                }, messageIntervalValue)
-            }
-        })
+        let repeated = ()=>{
+            let notifyData = J.randomIndex(this.state.globalData)
+            let notifyDataSecond = J.randomIndex(this.state.globalData)
+            this.notify(`${notifyData.deWord} - ${notifyData.enWord}`, notifyIntervalValue, "top-left", "warning")
+            this.notify(`${notifyDataSecond.deWord} - ${notifyDataSecond.enWord}`, notifyIntervalValue, "bottom-right", "warning")
+            this.notify(notifyData.dePart, notifyIntervalValue, "top-left", "success")
+            this.notify(notifyDataSecond.dePart, notifyIntervalValue, "bottom-right", "success")
+            this.notify(notifyData.enPart, notifyIntervalValue, "top-left", "info")
+            this.notify(notifyDataSecond.enPart, notifyIntervalValue, "bottom-right", "info")
+        }
+        let alertInterval = setInterval(()=>{
+            repeated()
+        }, alertIntervalValue)
+        setTimeout(()=>{
+            repeated()
+        }, 1500)
         let interval = setInterval(()=>{
             if (this.state.automatedMode && this.state.textTopLeft !== "") {
                 if (this.state.answer.length < this.state.textTopLeft.length) {
                     let answer = this.state.answer + this.state.data.deWord[ this.state.answer.length ]
-                    this.setState({answer})
+                    this.setState({answer}, ()=>{
+                        if (this.state.answer.length > this.state.inputFieldSize) {
+                            this.setState({inputFieldSize:this.state.answer.length})
+                        }
+                    })
                 } else {
                     this.setState({automatedMode: false}, ()=>{
                         J.emitter.emit("correct")
@@ -85,7 +92,6 @@ export default class App extends Component {
                                     })
                                 })
                             } else {
-                                J.log(`${val.id}-imageSrc is cached`)
                                 resolve("cached")
                             }
                         })
@@ -93,18 +99,14 @@ export default class App extends Component {
                     })
                 })
                 if ("requestIdleCallback" in window) {
-                    J.log("start")
                     let index = 0
                     let flag = true
                     function myNonEssentialWork(deadline) {
                         if (deadline.timeRemaining() > 0) {
-                            console.log("will try perform idle callback")
-                            console.log("flag", flag)
                             if (flag) {
                                 index++
                                 flag = false
                                 promisedArr[ index ].then(()=>{
-                                    console.log("index", index)
                                     setTimeout(()=>{
                                         if (index < promisedArr.length - 1) {
                                             flag = true
@@ -114,7 +116,6 @@ export default class App extends Component {
                             }
                         }
                         if (index < promisedArr.length - 1) {
-                            console.log("will request idle callback")
                             setTimeout(()=>{
                                 requestIdleCallback(myNonEssentialWork)
                             }, 500)
@@ -170,7 +171,6 @@ export default class App extends Component {
                         }, secondaryIntervalValue)
                     })
                 } else {
-                    J.log("cache hit")
                     this.setState({
                         answer: "",
                         imageSrcCache: data,
@@ -263,12 +263,12 @@ export default class App extends Component {
             }
         })
     }
-    notify(msg, seconds = 2, position = "top-right") {
+    notify(msg, seconds = 2, position = "top-right", mode) {
         if (R.type(msg) !== "String") {
             msg = JSON.stringify(msg)
         }
         let settings = J.alertRandomPlain()
-        Alert[ settings.mode ](msg, {
+        Alert[ mode ](msg, {
             position,
             effect: settings.effect,
             timeout: seconds * 1000,
@@ -328,9 +328,10 @@ export default class App extends Component {
         })
         return (
     <div>
+        <Alert stack={{limit:7}} />
         <div className="box has-text-centered columns">
             <div id="animationMarker" className="column is-4 is-offset-4">
-            <input autoFocus id="inputFieldId" className={this.state.inputFieldClassName} type="text" value={this.state.answer} size={this.state.inputFieldSize} onChange={this.handleAnswerInput} onKeyPress={this.handleAnswerInput}/>
+            <input autoFocus id="inputFieldId" className="inputField" type="text" value={this.state.answer} size={this.state.inputFieldSize} onChange={this.handleAnswerInput} onKeyPress={this.handleAnswerInput}/>
             </div>
             <div className="column is-4">
                 <a id="button" className={this.state.buttonClassName} onClick={this.handleButtonClick}>{this.state.buttonText}</a>
@@ -346,7 +347,6 @@ export default class App extends Component {
             <div style={memeTextBottom}>{this.state.textBottom}</div>
             <div style={memeTextBottomSecond}>{this.state.textBottomSecond}</div>
         </div>
-        <Alert stack={{limit:7}} />
 	</div>
     )}
 }

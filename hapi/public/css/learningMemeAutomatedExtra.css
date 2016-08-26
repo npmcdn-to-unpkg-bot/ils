@@ -1,0 +1,155 @@
+@import url(https://fonts.googleapis.com/css?family=Arvo:400&subset=latin);
+.s-alert-close {
+  display: none;
+}
+.imageThumb {
+  width: 12vw;
+  height: auto;
+  max-height: 20vh;
+}
+.paddingLR {
+  padding-left: 5px;
+  padding-right: 5px;
+  cursor: pointer;
+}
+.isHidden {
+  visibility: hidden;
+}
+.isVisible {
+  visibility: visible;
+}
+.overlay {
+  border-radius: 1.5vw;
+  position: fixed;
+  z-index: 100;
+  margin-bottom: 2vw;
+  left: 3vw;
+  top: 3vh;
+  background-color: #263238;
+  width: 93.5vw;
+  height: auto;
+}
+.overlay p {
+  background-color: #A1BC99;
+  color: #CFD8DC;
+  border-radius: 1.5vw;
+  padding: 1vw;
+  border: 1px solid #4DB6AC;
+}
+.overlay p span {
+  margin-left: 0.5vw;
+  margin-right: 0.5vw;
+}
+.overlay p:hover {
+  cursor: pointer;
+}
+h1 {
+  font-size: 3.5vh;
+  font-weight: bolder;
+}
+h2 {
+  font-size: 2.7vh;
+  font-weight: bold;
+}
+h3 {
+  font-size: 2vh;
+  font-weight: bold;
+}
+h4 {
+  font-size: 1.8vh;
+  font-weight: bold;
+}
+blockquote {
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+blockquote:before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 4em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+blockquote p {
+  display: inline;
+}
+.wrongAnswerLearningMeme {
+  animation: wrongLearningMeme 1s;
+}
+.correctAnswerLearningMeme {
+  animation: correctLearningMeme 1s;
+}
+@keyframes correctLearningMeme {
+  0% {
+    background-color: #CDFF9C;
+    outline: 3px solid #135E39;
+  }
+  33% {
+    background-color: #135E39;
+    outline: 3px solid #CDFF9C;
+  }
+  66% {
+    background-color: #CDFF9C;
+    outline: 3px solid #135E39;
+  }
+  99% {
+    background-color: #135E39;
+    outline: 3px solid #CDFF9C;
+  }
+}
+@keyframes wrongLearningMeme {
+  0% {
+    background-color: #E57373;
+    outline: 3px solid #D13C7E;
+  }
+  33% {
+    background-color: #D13C7E;
+    outline: 3px solid #E57373;
+  }
+  66% {
+    background-color: #E57373;
+    outline: 3px solid #D13C7E;
+  }
+  99% {
+    background-color: #D13C7E;
+    outline: 3px solid #E57373;
+  }
+}
+.s-alert-box {
+  max-width: 20vw !important;
+}
+.s-alert-box-inner {
+  font-family: 'Arvo', serif;
+  font-weight: bold;
+  font-size: 2vh;
+}
+.inputField,
+.inputField:focus {
+  text-align: center;
+  font-size: 2.5vh;
+  font-weight: bold;
+  font-family: 'Arvo', serif;
+  color: #EC407A;
+  outline: none;
+  padding: 0.2vw;
+  opacity: 0.5;
+  border-radius: 5%;
+  border: 1px solid #050A28;
+  background: linear-gradient(#B0BEC5, #CFD8DC 70%, #CADFEB);
+}
+.memeTextTopLeft {
+  color: #363A42;
+  letter-spacing: 0.3vw;
+}
+.memeTextTopSeparator {
+  color: #484452;
+  font-weight: 200;
+}
+.memeTextTopRight {
+  color: #484452;
+  font-weight: 200;
+}

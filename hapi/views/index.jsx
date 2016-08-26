@@ -17,15 +17,17 @@ class IndexContainer extends Component {
                           <ol>
                               <li><a href="/learningMeme">Learning Meme</a> - Meme with hidden German word, its translation and example sentence is displayed. The aim is to write the hidden word.</li>
                               <li><a href="/learningMemeAutomated">Learning Meme Automated</a> - It is the demo version of the above application. It can be used to see how the original application works.  Or just use it to watch a never ending stream of learning memes.</li>
+                              <li><a href="/learningMemeAutomatedExtra">Learning Meme Automated Extra</a> - The same as "Learning Meme Automated", but the left and the right whitespaces are filled with random instances of the database.</li>
                               <li><a href="/writeSentence">Write German Sentence</a> - You will see an English sentence and you have to write its German translation. The system will wait for correct key to be pressed and won't proceed further till that happen. Of cource, the user can just press "Enter" to see the answer, if the question is that hard. As a clue, the user can see the beginning of each word.</li>
                               <li><a href="/writeSentenceLite">Write German Sentence Lite</a> - You will see an English sentence and you have to write its translation. On every wrong input, the correct word will be displayed, as opposite to keep exppecting the right input. As a clue, the user can see the beginning of each word.</li>
                               <li><a href="/orderSentence">Order German Sentences</a> - The user see the words of a German sentence in random order. The goal is to order the words, so at the end the correct sentence is displayed.</li>
                               <li><a href="/orderSentenceMobile">Order German Sentences Mobile</a> - Same as above, but optimized for mobile users, but all other users can use it as well.</li>
+                              <li><a href="/tunaPlayerDemo">Tuna Player Demo</a> - Web demo of my "Electron/React.js" application. The applicaiton itself you can check out and download from its <a href="https://github.com/selfrefactor/tuna-player" target="_blank">Github repo</a></li>
                           </ol>
                           <h3>About</h3>
                           <p>This is project developed solely by Dejan Toteff. You can reach me out at Twitter @self_refactor in case you have some feedback or questions aboout this project.</p>
                           <h4>The Stack</h4>
-                          <p>Nodejs, Ramda, React, Bulma, Babel, Express</p>
+                          <p>Nodejs, Ramda, React, Bulma, Babel, Express, React Hot Reload</p>
                           <p>I need to mention also Ubuntu 16 Desktop Edition, as it brings such order in the dev process</p>
                       </div>
                   </div>
