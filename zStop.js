@@ -29,7 +29,7 @@ var shadowProcess = function () {
                         state = _context.sent;
 
                         if (!(counter % 5 === 0 && env.getEnv("hostTag") === "root")) {
-                            _context.next = 25;
+                            _context.next = 22;
                             break;
                         }
 
@@ -50,20 +50,15 @@ var shadowProcess = function () {
                     case 18:
                         state = _context.sent;
                         _context.next = 21;
-                        return J.willRunFixedCommand("npm update");
+                        return J.willRunFixedCommand("npm update -g");
 
                     case 21:
                         state = _context.sent;
-                        _context.next = 24;
-                        return J.willRunFixedCommand("npm update -g");
 
-                    case 24:
-                        state = _context.sent;
-
-                    case 25:
+                    case 22:
                         return _context.abrupt("return", state);
 
-                    case 26:
+                    case 23:
                     case "end":
                         return _context.stop();
                 }
