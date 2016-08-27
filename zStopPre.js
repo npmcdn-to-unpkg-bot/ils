@@ -14,6 +14,9 @@ async function shadowProcess() {
         state = await generateSitemap.main()
         state = await J.willRunFixedCommand("npm cache clean")
         state = await J.willRunFixedCommand("node d backup")
+    }
+    if (counter % 50 === 0 && env.getEnv("hostTag") === "root") {
+        J.box("5th time")
         state = await J.willRunFixedCommand("npm update -g")
     }
     return state

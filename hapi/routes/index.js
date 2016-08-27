@@ -470,6 +470,19 @@ router.post("/uploadImage/blog", (req, res)=>{
         res.send(J.config.badQuery)
     }
 })
+router.post("/test", (req, res)=>{
+    if (J.auth(req.ip)) {
+        db.load("Blog", "canonical", req.body.canonical).then(data => {
+            if (data.length === 0) {
+                res.send(J.config.badQuery)
+            } else {
+                res.send(data[ 0 ])
+            }
+        })
+    } else {
+        res.send(J.config.badQuery)
+    }
+})
 router.get("/blog-*", (req, res)=>{
     let canonical = J.isBlogUrl(req.params[ 0 ])
     J.log(req.params[ 0 ])
