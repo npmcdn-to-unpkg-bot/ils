@@ -2,6 +2,7 @@
 import React, { Component } from "react"
 import R from "ramda"
 import J from "../../_inc/commonReact.js"
+import Navigation from "./components/navigation.js"
 const markdown = require("markdown").markdown
 function markdownToHtml(markdownData) {
     let __html = markdown.toHTML(markdownData)
@@ -34,11 +35,12 @@ export default class App extends Component {
     render () {
         return (
     <div>
-        <div className="box">
-        {this.state.title}
+        <Navigation />
+        <div className="box headerBlog has-text-centered">
+            <h1>{this.state.title}</h1>
         </div>
-        <div className="box">
-            <div className="preview" dangerouslySetInnerHTML={this.state.previewState}></div>
+        <div className="box has-text-left">
+            <div className="blog" dangerouslySetInnerHTML={this.state.previewState}></div>
         </div>
 	</div>
     )}

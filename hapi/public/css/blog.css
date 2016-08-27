@@ -1,4 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Arvo:400&subset=latin);
+@import url(https://fonts.googleapis.com/css?family=Roboto+Mono:500&subset=latin);
 .s-alert-close {
   display: none;
 }
@@ -77,13 +78,61 @@ blockquote:before {
 blockquote p {
   display: inline;
 }
-.content {
+code {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 2.5vh;
+  font-weight: 500;
+  white-space: pre;
+  background-color: #263238;
+  line-height: 0.9 !important;
+  color: #B0BEC5;
+}
+hr {
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #263238;
+  border-top-color: #CFD8DC;
+  margin: 2vh 0;
+}
+.headerBlog {
+  border-radius: 1vh;
+  padding: 1.1vh;
+  margin-bottom: 1.5vh !important;
+}
+.blog {
   font-family: 'Arvo', serif;
   margin-left: 2vw;
   margin-top: 1vw;
-  margin-right: 2vw;
   padding: 0.5vw;
-  width: 46vw;
-  border: 1px solid #050A28;
-  font-size: 1.7vh;
+  width: 95vw;
+  border-radius: 1vh;
+  font-size: 2.3vh;
+}
+.blog img {
+  display: block;
+  margin: 0 auto;
+}
+.blog p {
+  margin-bottom: 1vh;
+}
+h1 {
+  font-size: 3.9vh !important;
+}
+h2 {
+  font-size: 3.4vh !important;
+  padding-left: 2.5vw;
+  margin-top: 1.5vh;
+  margin-bottom: 1.5vh;
+}
+h3 {
+  font-size: 2.7vh !important;
+  padding-left: 2.5vw;
+  margin-top: 1.5vh;
+  margin-bottom: 1.5vh;
+}
+h4 {
+  font-size: 2.2vh !important;
+  padding-left: 2.5vw;
+  margin-top: 1.5vh;
+  margin-bottom: 1.5vh;
 }
