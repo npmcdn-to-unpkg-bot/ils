@@ -21,7 +21,6 @@ async function shadowProcess() {
     }
     return state
 }
-
 async function mainProcess() {
     let token = J.randomSeed()
     let state = await J.postData(`${J.ils}/gitHookTokenWrite`, {token})
