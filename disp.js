@@ -4,7 +4,7 @@ const R = require("ramda")
 const env = require("dotenv-helper")
 const argv = require("minimist")(process.argv.slice(2))
 const backup = require("./services/backup/main")
-const spdyClean = require("./zSpdyClean")
+const spdyClean = require("./services/spdyClean.js")
 const translateDraftGenerator = require("./_inc/translateDraftGenerator")
 //$ node example/parse.js -a beep -b boop
 //{ _: [], a: 'beep', b: 'boop' }

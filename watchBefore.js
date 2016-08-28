@@ -52,7 +52,7 @@ async function processFn(filepath) {
         J.log("hot src")
         J.log(commands.babelifyHapiAlt)
         iMeanNothing = await willRunFixedCommand(commands.babelifyHapiAlt)
-        J.log(commands.babelifyHapiAlt)
+        J.log(commands.babelifyHapiAltProd)
         return iMeanNothing
     } else if (filepath.includes("hot") && filepath.includes(".less")) {
         J.log("hot less")
@@ -122,6 +122,7 @@ function factoryCommands(src) {
     willReturn.babelifyHapi = `browserify ${src} -o ${hapiLocation} ${presentsLite}`
     willReturn.babelifyHapiAlt = `browserify ${srcHot} -o ${hapiLocationAlt} ${presentsLite}`
     willReturn.babelifyHapiProd = `browserify ${src} -o ${hapiLocation} ${presentsProd}`
+    willReturn.babelifyHapiAltProd = `browserify ${srcHot} -o ${hapiLocation} ${presentsProd}`
     return willReturn
 }
 function willRunFixedCommand(commandIs) {

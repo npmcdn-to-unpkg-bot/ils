@@ -1,4 +1,7 @@
-import React, {Component} from "react"
+//import React, {Component} from "react"
+import J from "../../../_inc/commonReact.js"
+let React = J.React
+let Component = React.Component
 import config from "../../../_inc/config.js"
 class App extends Component {
     constructor(props) {
@@ -27,11 +30,10 @@ class App extends Component {
                     <meta name="language" content="en"/>
                     <link rel="shortcut icon" href="images/favicon.ico" />
                     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.css"/>
-                    <link rel="stylesheet" href="inc/react-select.css"/>
-                    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/react-select/0.9.1/react-select.min.js"/>
+                    <link rel="stylesheet" href={config.reactSelect}/>
+                    <link rel="stylesheet" href={config.bulma}/>
                     <link rel="stylesheet" href="css/admin.css"/>
                     <link rel="stylesheet" href="css/slider.css"/>
-                    <link rel="stylesheet" href={config.bulma}/>
                     <link rel="canonical" href={`http://ilearnsmarter.com/${this.props.keyword}`} />
                     <meta property="og:locale" content="en_US" />
                     <meta property="og:type" content="app" />

@@ -3,7 +3,7 @@
   z-index: 333 !important;
 }
 .tile.is-vertical > .tile.is-child:not(:last-child) {
-  margin-bottom: 0px!important;
+  margin-bottom: 0px !important;
 }
 h1 {
   font-size: 3.5vh;

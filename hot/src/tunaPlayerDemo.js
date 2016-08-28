@@ -173,7 +173,6 @@ export default class App extends Component {
             xhr.onload = function(e) {
                 audioContext.decodeAudioData(e.target.response, incoming=>{
                     duration = incoming.duration
-                    J.log(duration)
                     source.buffer = incoming
                     self.setState({flagLoop, duration})
                 })
@@ -309,6 +308,7 @@ export default class App extends Component {
         obj[ effect ] = R.merge(this.state[ effect ], propObj)
         this.setState(R.merge(this.state, obj))
     }
+
     render () {
         return (
     <div>
@@ -319,14 +319,17 @@ export default class App extends Component {
                     <a className="button is-primary is-inverted is-small" onClick={this.handleStart}><span className="icon"><i className="fa fa-check"></i></span></a>
                     <a className="button is-success is-inverted is-small" onClick={this.handleStop}><span className="icon"><i className="fa fa-pause-circle-o t"></i></span></a>
                     <a className="button is-success is-inverted is-small" onClick={this.handlePlay}><span className="icon"><i className="fa fa-play-circle-o"></i></span></a>
-                    <a className="button is-success is-inverted is-small" onClick={this.handleNext}><span className="icon"><i className="fa fa-step-forward"></i></span></a>
+                    <a className="button is-success is-inverted is-small is-disabled" onClick={this.handleNext}><span className="icon"><i className="fa fa-step-forward"></i></span></a>
                 </div>
                 <hr/>
-                <div style={marginlessTuna} className="til is-child box">
+                <div style={marginlessTuna} className="tile is-child box">
                     {this.state.song}
                 </div>
                 <div style={marginlessTuna} className="tile is-child box">
-                    <Select name="song" value={this.state.song} options={this.state.selectArr} clearable={false} searchable={false} />
+                    <Select name="song" value={this.state.song} options={this.state.selectArr} clearable={false} searchable={false}/>
+                </div>
+                <div style={marginlessTuna} className="tile is-child box">
+                    <a href="https://github.com/selfrefactor/tuna-player#downloads" target="_blank">Download "TunaPlayer" for 64bit Linux</a>
                 </div>
             </div>
             <div className="tile is-2 is-vertical is-parent">
