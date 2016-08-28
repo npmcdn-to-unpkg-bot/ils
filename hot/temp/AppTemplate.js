@@ -27,3 +27,7 @@ export default class App extends Component {
 	</div>
     )}
 }
+//const shallowCompare = require("react-addons-shallow-compare")
+//shouldComponentUpdate(nextProps, nextState) {
+//return shallowCompare(this, nextProps, nextState)
+//}

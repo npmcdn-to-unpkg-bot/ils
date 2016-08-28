@@ -7,14 +7,13 @@ const J = require("../common.js")
 const R = require("ramda")
 const env = require("dotenv-helper")
 const Bing = require("node-bing-api")({ accKey: env.getEnv("bing") })
-function imageFirst(keyword, searchLimit = 100) {
+function imageFirst(keyword, searchLimit = 30) {
     return new Promise((resolve)=>{
         Bing.images(keyword, {
             top: searchLimit,
             imageFilters: {
                 size: "large",
                 color: "color",
-        //style: "photo",
                 aspect : "wide"
             }
         }, (error, res, body)=>{
@@ -33,7 +32,31 @@ function imageFirst(keyword, searchLimit = 100) {
         })
     })
 }
-function imageSecond(keyword) {
+function imageSecond(keyword, searchLimit = 40) {
+    return new Promise((resolve)=>{
+        Bing.images(keyword, {
+            top: searchLimit,
+            imageFilters: {
+                size: "large",
+                color: "color"
+            }
+        }, (error, res, body)=>{
+            if (R.path(["d", "results"], body)) {
+                let willReturn = []
+                body.d.results.map((val)=>{
+                    willReturn.push({
+                        imageThumb: val.MediaUrl,
+                        imageSrc: val.MediaUrl
+                    })
+                })
+                resolve(willReturn)
+            } else {
+                resolve(null)
+            }
+        })
+    })
+}
+function not(keyword) {
     //http://images.freeimages.com/images/previews/763/sniffing-cat-1398165.jpg
     //http://images.freeimages.com/images/thumbs/763/sniffing-cat-1398165.jpg
     return new Promise((resolve) => {
@@ -64,7 +87,7 @@ function imageSecond(keyword) {
         })
     })
 }
-function imageThird(keyword) {
+function alsoNot(keyword) {
     //https://static.pexels.com/photos/4602/jumping-cute-playing-animals-medium.jpg
     //https://static.pexels.com/photos/4602/jumping-cute-playing-animals-large.jpg
     return new Promise((resolve)=>{
@@ -96,13 +119,10 @@ function imageThird(keyword) {
     })
 }
 function main(keyword) {
-    J.box(keyword)
     return new Promise(resolve=>{
         imageFirst(keyword).then(imageFirstData =>{
             imageSecond(keyword).then(imageSecondData=>{
-                imageThird(keyword).then(imageThirdData=>{
-                    resolve(J.shuffle(R.flatten([imageFirstData, imageSecondData, imageThirdData])))
-                })
+                resolve(J.shuffle(R.flatten([imageFirstData, imageSecondData])))
             })
         })
     })
@@ -110,4 +130,3 @@ function main(keyword) {
 module.exports.main = main
 module.exports.imageFirst = imageFirst
 module.exports.imageSecond = imageSecond
-module.exports.imageThird = imageThird

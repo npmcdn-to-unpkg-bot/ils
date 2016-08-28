@@ -1,0 +1,80 @@
+@import "mixins.less";
+@import "common.less";
+@import url(https://fonts.googleapis.com/css?family=Arvo:400&subset=latin);
+@import url(https://fonts.googleapis.com/css?family=Roboto+Mono:500&subset=latin);
+@fontFamily: 'Arvo', serif;
+@headingMargin: 1.5vh;
+@headingPadding: 2.5vw;
+@borderRadius: 1vh;
+code {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 2.5vh;
+    font-weight: 500;
+    white-space : pre;
+    background-color : @darkSecond;
+    line-height: 0.9 !important;
+    color            : @bright;
+}
+hr {
+    height: 1px;
+    border: 0;
+    border-top: 1px solid @darkSecond;
+    border-top-color: @brightSecond;
+    margin: 2vh 0;
+}
+.headerBlog{
+    border-radius: @borderRadius;
+    padding: 1.1vh;
+    margin-bottom: @headingMargin !important;
+}
+.blog{
+    font-family: @fontFamily;
+    margin-left: 2vw;
+    margin-top: 1vw;
+    padding: 0.5vw;
+    width:95vw;
+    border-radius: @borderRadius;
+    font-size: 2.3vh;
+}
+.blog img:first-child{
+display: block;
+margin: 0 auto;
+width: auto;
+max-height: 5vh;
+}
+.blog img{
+display: block;
+margin: 0 auto;
+width: auto;
+max-height: 5vh;
+}
+.blog p{
+    margin-bottom: 1vh;
+    margin-left: 1vw;
+    margin-right: 1vw;
+}
+
+.headingTemplate(){
+padding-left: @headingPadding;
+margin-top: @headingMargin;
+margin-bottom: @headingMargin;
+}
+h1{
+    &:extend(h1);
+    font-size: 3.9vh;
+}
+h2{
+    &:extend(h2);
+    font-size: 3.4vh;
+    .headingTemplate();
+}
+h3{
+    &:extend(h3);
+    font-size: 2.7vh;
+    .headingTemplate();
+}
+h4{
+    &:extend(h4);
+    font-size: 2.2vh;
+    .headingTemplate();
+}

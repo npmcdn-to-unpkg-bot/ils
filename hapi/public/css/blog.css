@@ -44,18 +44,22 @@
 .overlay p:hover {
   cursor: pointer;
 }
+h1,
 h1 {
   font-size: 3.5vh;
   font-weight: bolder;
 }
+h2,
 h2 {
   font-size: 2.7vh;
   font-weight: bold;
 }
+h3,
 h3 {
   font-size: 2vh;
   font-weight: bold;
 }
+h4,
 h4 {
   font-size: 1.8vh;
   font-weight: bold;
@@ -108,30 +112,40 @@ hr {
   border-radius: 1vh;
   font-size: 2.3vh;
 }
+.blog img:first-child {
+  display: block;
+  margin: 0 auto;
+  width: auto;
+  max-height: 5vh;
+}
 .blog img {
   display: block;
   margin: 0 auto;
+  width: auto;
+  max-height: 5vh;
 }
 .blog p {
   margin-bottom: 1vh;
+  margin-left: 1vw;
+  margin-right: 1vw;
 }
 h1 {
-  font-size: 3.9vh !important;
+  font-size: 3.9vh;
 }
 h2 {
-  font-size: 3.4vh !important;
+  font-size: 3.4vh;
   padding-left: 2.5vw;
   margin-top: 1.5vh;
   margin-bottom: 1.5vh;
 }
 h3 {
-  font-size: 2.7vh !important;
+  font-size: 2.7vh;
   padding-left: 2.5vw;
   margin-top: 1.5vh;
   margin-bottom: 1.5vh;
 }
 h4 {
-  font-size: 2.2vh !important;
+  font-size: 2.2vh;
   padding-left: 2.5vw;
   margin-top: 1.5vh;
   margin-bottom: 1.5vh;

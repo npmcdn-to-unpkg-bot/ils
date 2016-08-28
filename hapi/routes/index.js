@@ -93,8 +93,12 @@ router.get("/learningMemeAdmin", (req, res) => {
         res.send(J.config.badQuery)
     }
 })
-router.get(`/learningMemeAdmin/${env.getEnv("mainPassword")}`, (req, res) => {
-    res.render("learningMemeAdmin")
+router.get("/blogAdmin", (req, res) => {
+    if (J.auth(req.ip)) {
+        res.render("blogAdmin")
+    } else {
+        res.send(J.config.badQuery)
+    }
 })
 router.get("/readLog/:id", (req, res) => {
     mongoose.model("Log").findOne({
@@ -126,7 +130,6 @@ router.post("/forgetIp", (req, res) => {
     }
 })
 router.post("/read/:id", (req, res) => {
-    J.logger.debug(`read db | ip ${req.ip}`)
     mongoose.model("Main").findOne({
         id: req.params.id * 1
     }, (error, data) => {
@@ -180,7 +183,6 @@ router.post("/gitHook", (req, res) => {
     }
 })
 router.post("/ready", (req, res) => {
-    J.logger.debug(`read ready | ip ${req.ip}`)
     mongoose.model("Main").find({
         $where: "this.enPart.length>1"
     }, (error, incoming) => {
@@ -276,7 +278,6 @@ router.post("/repair/:id", (req, res) => {
 })
 router.post("/readModel/:model", (req, res) => {
     if (J.auth(req.ip) && R.indexOf(req.params.model, J.config.models) !== -1) {
-        J.logger.debug(`model ${req.params.model} ip ${req.ip}`)
         let obj = {}
         obj[ req.body.key ] = req.body.keyValue
         mongoose.model(J.firstLetterCapital(req.params.model)).findOne(obj, (error, incoming) => {
@@ -288,7 +289,6 @@ router.post("/readModel/:model", (req, res) => {
 })
 router.post("/readWholeModel/:model", (req, res) => {
     if (J.auth(req.ip) && R.indexOf(req.params.model, J.config.models) !== -1) {
-        J.logger.debug(`model ${req.params.model} ip ${req.ip}`)
         let obj = {}
         obj[ req.body.key ] = req.body.keyValue
         mongoose.model(J.firstLetterCapital(req.params.model)).find(obj, (error, incoming) => {
@@ -318,7 +318,7 @@ router.post("/imageless", (req, res) => {
 })
 router.post("/searchImage", (req, res) => {
     if (J.auth(req.ip)) {
-        searchImage.imageFirst(req.body.searchImageKeyword).then(incoming => {
+        searchImage.main(req.body.searchImageKeyword).then(incoming => {
             res.send(incoming)
         })
     } else {
@@ -327,7 +327,7 @@ router.post("/searchImage", (req, res) => {
 })
 router.post("/searchImageFast", (req, res) => {
     if (J.auth(req.ip)) {
-        searchImage.imageFirst(req.body.searchImageKeyword).then(incoming => {
+        searchImage.main(req.body.searchImageKeyword).then(incoming => {
             res.send(incoming)
         })
     } else {
@@ -432,7 +432,7 @@ router.post("/translateDraftGenerator", (req, res) => {
     if (J.auth(req.ip)) {
         res.send(J.config.goodQuery)
         J.willRunFixedCommand("node d translateDraft").then(data => {
-            J.logger.debug(`translateDraftGenerator - ip ${req.ip}`)
+            J.log(`translateDraftGenerator - ip ${req.ip}`)
         })
     } else {
         res.send(J.config.badQuery)

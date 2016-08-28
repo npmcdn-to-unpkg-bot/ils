@@ -1,0 +1,194 @@
+@import url(https://fonts.googleapis.com/css?family=Arvo:400&subset=latin);
+.s-alert-close {
+  display: none;
+}
+.imageThumb {
+  width: 12vw;
+  height: auto;
+  max-height: 20vh;
+}
+.paddingLR {
+  padding-left: 5px;
+  padding-right: 5px;
+  cursor: pointer;
+}
+.isHidden {
+  visibility: hidden;
+}
+.isVisible {
+  visibility: visible;
+}
+.overlay {
+  border-radius: 1.5vw;
+  position: fixed;
+  z-index: 100;
+  margin-bottom: 2vw;
+  left: 3vw;
+  top: 3vh;
+  background-color: #263238;
+  width: 93.5vw;
+  height: auto;
+}
+.overlay p {
+  background-color: #A1BC99;
+  color: #CFD8DC;
+  border-radius: 1.5vw;
+  padding: 1vw;
+  border: 1px solid #4DB6AC;
+}
+.overlay p span {
+  margin-left: 0.5vw;
+  margin-right: 0.5vw;
+}
+.overlay p:hover {
+  cursor: pointer;
+}
+h1 {
+  font-size: 3.5vh;
+  font-weight: bolder;
+}
+h2 {
+  font-size: 2.7vh;
+  font-weight: bold;
+}
+h3 {
+  font-size: 2vh;
+  font-weight: bold;
+}
+h4 {
+  font-size: 1.8vh;
+  font-weight: bold;
+}
+blockquote {
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+blockquote:before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 4em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+blockquote p {
+  display: inline;
+}
+.input {
+  font-family: 'Josefin Sans', sans-serif;
+  font-size: 3vh;
+  font-weight: 700;
+  width: 100%;
+  padding: 1vh;
+  margin: 1vh;
+}
+.content {
+  font-family: 'Arvo', serif;
+  margin-left: 2vw;
+  margin-top: 1vw;
+  margin-right: 2vw;
+  padding: 0.5vw;
+  width: 47vw;
+  border: 1px solid #050A28;
+  font-size: 1.7vh;
+}
+.preview {
+  font-family: 'Arvo', serif;
+  margin-left: 2vw;
+  margin-top: 1vw;
+  margin-right: 2vw;
+  padding: 0.5vw;
+  width: 47vw;
+  font-size: 1.7vh;
+  margin-top: 0px;
+  border: 1px solid #050A28;
+  border-radius: 0.2vw;
+}
+.preview p {
+  margin-bottom: 1vh;
+}
+#inputFieldId {
+  font-family: 'Arvo', serif;
+  font-size: 3vh;
+  color: #EC407A;
+  font-weight: 800;
+}
+.blogAdminPreview p {
+  outline: 1px;
+  line-height: 1;
+}
+.fileInput {
+  width: 10px;
+}
+input[type="file"] {
+  cursor: grab;
+  padding-top: 1.5vh;
+  padding-bottom: 1.5vh;
+  color: #EC407A !important;
+  font-size: 0.4vh;
+}
+textarea {
+  resize: none;
+  height: auto;
+  overflow: auto;
+}
+svg {
+  width: 3em;
+  height: 2em;
+  cursor: pointer;
+}
+svg:hover {
+  cursor: pointer;
+  color: #135E39;
+}
+.button-green {
+  border: 0px;
+  cursor: grab;
+  color: #CDFF9C;
+}
+.button-green:hover {
+  color: #dda08b;
+}
+.button-red {
+  border: 0px;
+  cursor: grab;
+  color: #EC407A;
+}
+.button-red:hover {
+  color: #ec407a;
+}
+.button-navy {
+  border: 0px;
+  cursor: grab;
+  color: #527672;
+}
+.button-navy:hover {
+  color: #9f5b76;
+}
+.button-dark {
+  border: 0px;
+  cursor: grab;
+  color: #424242;
+}
+.button-dark:hover {
+  color: #97415e;
+}
+.button-lightgreen {
+  border: 0px;
+  cursor: grab;
+  color: #A1BC99;
+}
+.button-lightgreen:hover {
+  color: #c77e8a;
+}
+.button-blue {
+  border: 0px;
+  cursor: grab;
+  color: #6AC1F2;
+}
+.button-blue:hover {
+  color: #ab81b6;
+}

@@ -42,7 +42,7 @@ app.use(minify({cache:`${__dirname}/cache`}))
 app.use(express.static(path.join(__dirname, "public"), { maxAge: 86400000 }))
 app.use("/", routes)
 app.use((req, res) =>{
-    J.logger.error(`${res.statusCode} ${req.url} ${app.get("env")}`)
+    J.log(`${res.statusCode} ${req.url} ${app.get("env")}`)
     res.render("error")
 })
 module.exports = app

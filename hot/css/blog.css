@@ -1,0 +1,152 @@
+@import url(https://fonts.googleapis.com/css?family=Arvo:400&subset=latin);
+@import url(https://fonts.googleapis.com/css?family=Roboto+Mono:500&subset=latin);
+.s-alert-close {
+  display: none;
+}
+.imageThumb {
+  width: 12vw;
+  height: auto;
+  max-height: 20vh;
+}
+.paddingLR {
+  padding-left: 5px;
+  padding-right: 5px;
+  cursor: pointer;
+}
+.isHidden {
+  visibility: hidden;
+}
+.isVisible {
+  visibility: visible;
+}
+.overlay {
+  border-radius: 1.5vw;
+  position: fixed;
+  z-index: 100;
+  margin-bottom: 2vw;
+  left: 3vw;
+  top: 3vh;
+  background-color: #263238;
+  width: 93.5vw;
+  height: auto;
+}
+.overlay p {
+  background-color: #A1BC99;
+  color: #CFD8DC;
+  border-radius: 1.5vw;
+  padding: 1vw;
+  border: 1px solid #4DB6AC;
+}
+.overlay p span {
+  margin-left: 0.5vw;
+  margin-right: 0.5vw;
+}
+.overlay p:hover {
+  cursor: pointer;
+}
+h1,
+h1 {
+  font-size: 3.5vh;
+  font-weight: bolder;
+}
+h2,
+h2 {
+  font-size: 2.7vh;
+  font-weight: bold;
+}
+h3,
+h3 {
+  font-size: 2vh;
+  font-weight: bold;
+}
+h4,
+h4 {
+  font-size: 1.8vh;
+  font-weight: bold;
+}
+blockquote {
+  background: #f9f9f9;
+  border-left: 10px solid #ccc;
+  margin: 1.5em 10px;
+  padding: 0.5em 10px;
+  quotes: "\201C" "\201D" "\2018" "\2019";
+}
+blockquote:before {
+  color: #ccc;
+  content: open-quote;
+  font-size: 4em;
+  line-height: 0.1em;
+  margin-right: 0.25em;
+  vertical-align: -0.4em;
+}
+blockquote p {
+  display: inline;
+}
+code {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 2.5vh;
+  font-weight: 500;
+  white-space: pre;
+  background-color: #263238;
+  line-height: 0.9 !important;
+  color: #B0BEC5;
+}
+hr {
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #263238;
+  border-top-color: #CFD8DC;
+  margin: 2vh 0;
+}
+.headerBlog {
+  border-radius: 1vh;
+  padding: 1.1vh;
+  margin-bottom: 1.5vh !important;
+}
+.blog {
+  font-family: 'Arvo', serif;
+  margin-left: 2vw;
+  margin-top: 1vw;
+  padding: 0.5vw;
+  width: 95vw;
+  border-radius: 1vh;
+  font-size: 2.3vh;
+}
+.blog img:first-child {
+  display: block;
+  margin: 0 auto;
+  width: auto;
+  max-height: 5vh;
+}
+.blog img {
+  display: block;
+  margin: 0 auto;
+  width: auto;
+  max-height: 5vh;
+}
+.blog p {
+  margin-bottom: 1vh;
+  margin-left: 1vw;
+  margin-right: 1vw;
+}
+h1 {
+  font-size: 3.9vh;
+}
+h2 {
+  font-size: 3.4vh;
+  padding-left: 2.5vw;
+  margin-top: 1.5vh;
+  margin-bottom: 1.5vh;
+}
+h3 {
+  font-size: 2.7vh;
+  padding-left: 2.5vw;
+  margin-top: 1.5vh;
+  margin-bottom: 1.5vh;
+}
+h4 {
+  font-size: 2.2vh;
+  padding-left: 2.5vw;
+  margin-top: 1.5vh;
+  margin-bottom: 1.5vh;
+}

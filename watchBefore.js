@@ -43,12 +43,25 @@ watcher.watchFiles(["**/*.jsx", "**/*.js", "**/*.less"], (ev, filepath) => {
 })
 
 async function processFn(filepath) {
-
     let iMeanNothing
     let commands = factoryCommands(filepath)
-    if (filepath.includes("Front.jsx")) {
+    if (filepath.includes("hot/src") &&
+     filepath.includes(".js") &&
+     !filepath.includes("index") &&
+     !filepath.includes("components")) {
+        J.log("hot src")
+        J.log(commands.babelifyHapiAlt)
+        iMeanNothing = await willRunFixedCommand(commands.babelifyHapiAlt)
+        J.log(commands.babelifyHapiAlt)
+        return iMeanNothing
+    } else if (filepath.includes("hot") && filepath.includes(".less")) {
+        J.log("hot less")
+        iMeanNothing = await willRunFixedCommand(commands.less)
+        iMeanNothing = await willRunFixedCommand(commands.lessHapi)
+        return iMeanNothing
+    } else if (filepath.includes("Front.jsx")) {
         J.log("Front.jsx")
-        J.log(commands.babelifyHapiProd)
+        J.log(commands.babelifyHapi)
         iMeanNothing = await willRunFixedCommand(commands.babelifyHapi)
         return iMeanNothing
     } else if (filepath.includes("Pre.jsx")) {
@@ -57,21 +70,11 @@ async function processFn(filepath) {
         iMeanNothing = await willRunFixedCommand(commands.babelify)
         iMeanNothing = await willRunFixedCommand(commands.lintReact)
         return iMeanNothing
-    } else if (filepath.includes("Mob.jsx")) {
-        J.log("Mob.jsx")
-        iMeanNothing = await willRunFixedCommand(commands.babel)
-        iMeanNothing = await willRunFixedCommand(commands.babelifyHapiMob)
-        iMeanNothing = await willRunFixedCommand(commands.removeMob)
-        return iMeanNothing
     } else if (filepath.includes(".jsx") && (filepath.includes("services"))) {
         J.log("babelify services")
         J.log(commands.babelify)
         iMeanNothing = await willRunFixedCommand(commands.babelify)
         iMeanNothing = await willRunFixedCommand(commands.lintReact)
-        return iMeanNothing
-    } else if (filepath.includes(".jsx") && filepath.includes("fth")) {
-        J.log("babelify fth")
-        iMeanNothing = await willRunFixedCommand(commands.babelify)
         return iMeanNothing
     } else if (filepath.includes(".jsx")) {
         J.log("react lint")
@@ -91,34 +94,34 @@ async function processFn(filepath) {
         iMeanNothing = await willRunFixedCommand(commands.lint)
         return iMeanNothing
     } else {
-        //J.lg(`in else ${filepath}`)
         return false
     }
 }
 function factoryCommands(src) {
     let willReturn = {}
-    let srcMob = R.replace(".jsx", ".js", src)
     let output = R.replace(/(Pre\.jsx)|(Pre\.js)|(\.jsx)/g, ".js", src)
     let outputCss = R.replace(".less", ".css", src)
-    let local = output.split("/")
-    let name = local[ local.length - 1 ]
-    let nameMob = R.replace("Mob.js", "Front.js", local[ local.length - 1 ])
+    let name = R.compose(R.last, R.split("/"))(output)
+    let nameClean = R.replace(/\.js|\.less/, "", name)
+    let srcHot = `${__dirname}/hot/front/${nameClean}.jsx`
+    let outputCssHapi = `${__dirname}/hapi/public/css/${nameClean}.css`
     let hapiLocation = `${__dirname}/hapi/public/${name}`
-    let hapiMobLocation = `${__dirname}/hapi/public/${nameMob}`
+    let hapiLocationAlt = `${__dirname}/hapi/public/${nameClean}Front.js`
     let presents = "-t [ babelify --presets [ react  es2015 stage-1 stage-3 stage-2 stage-0 ] ]"
+    let presentsLite = "-t [ babelify --presets [ react  es2015 ] ]"
     let presentsProd = "-t [ babelify --presets [ react  es2015 stage-1 stage-3 stage-2 stage-0 ] ] -t [ envify --NODE_ENV production ]"
-    let eslintConfigOverkill = "--fix --debug --max-warnings 100 -o tmp/eslint.txt --no-ignore --cache --cache-location tmp --config"
+    let eslintConfigExtra = "--fix --debug --max-warnings 100 -o tmp/eslint.txt --no-ignore --cache --cache-location tmp --config"
     let eslintConfig = "--fix --max-warnings 500 --no-ignore --cache --cache-location tmp"
-    willReturn.lintReact = `eslint ${src} ${eslintConfig} -c .eslintrcReact.json`
+    willReturn.lintReact = `eslint ${src} ${eslintConfigExtra} -c .eslintrcReact.json`
     willReturn.lint = `eslint ${src} ${eslintConfig}`
     willReturn.less = `lessc ${src} ${outputCss}`
+    willReturn.lessHapi = `lessc ${src} ${outputCssHapi}`
     willReturn.ts = `tsc ${src}`
-    willReturn.removeMob = `rm ${output}`
     willReturn.babel = `babel ${src} --out-file ${output}`
     willReturn.babelify = `browserify ${src} -o ${output} ${presents}`
-    willReturn.babelifyHapi = `browserify ${src} -o ${hapiLocation} ${presents}`
+    willReturn.babelifyHapi = `browserify ${src} -o ${hapiLocation} ${presentsLite}`
+    willReturn.babelifyHapiAlt = `browserify ${srcHot} -o ${hapiLocationAlt} ${presentsLite}`
     willReturn.babelifyHapiProd = `browserify ${src} -o ${hapiLocation} ${presentsProd}`
-    willReturn.babelifyHapiMob = `browserify ${srcMob} -o ${hapiMobLocation} ${presents}`
     return willReturn
 }
 function willRunFixedCommand(commandIs) {

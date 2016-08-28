@@ -1,5 +1,4 @@
 "use strict"
-
 import React, { Component } from "react"
 import ReactDOM from "react-dom"
 import Alert from "react-s-alert"
@@ -9,7 +8,6 @@ let InsertLink = require("react-icons/lib/ti/attachment-outline")
 //let AddNewPost = require("react-icons/lib/ti/plus-outline")
 import * as R from "ramda"
 import J from "../../_inc/commonReact.js"
-const shallowCompare = require("react-addons-shallow-compare")
 const ChooseBlogPost = require("./components/chooseBlogPost").main
 const SearchImage = require("./components/searchImage").main
 import Select from "react-select"
@@ -81,10 +79,10 @@ export default class App extends Component {
         this.showSearchImage = this.showSearchImage.bind(this)
         this.textEffect = this.textEffect.bind(this)
     }
-    shouldComponentUpdate(nextProps, nextState) {
-        return shallowCompare(this, nextProps, nextState)
-    }
     componentDidMount() {
+        setTimeout(()=>{
+            J.emitter.emit("rows")
+        }, 1000)
         J.emitter.on("clear", ()=>{
             this.setState({
                 canonical:"",
@@ -122,6 +120,8 @@ export default class App extends Component {
             })
         })
         J.emitter.on("rows", ()=>{
+            J.log(3)
+            console.log(3)
             let rows = Math.round(R.divide(this.state.content.length, 100)) + R.split("\n", this.state.content).length
             this.setState({rows})
         })
@@ -161,6 +161,8 @@ export default class App extends Component {
             }, 100)
         })
         J.emitter.on("unmount", ()=>{
+            J.log("unmount")
+            console.log("unmount")
             ReactDOM.unmountComponentAtNode(document.getElementById("reactContainer"))
         })
         let listener = (e)=>{
@@ -186,7 +188,6 @@ export default class App extends Component {
                 this.setState({content, previewState})
             }
             if (e.key === "Enter") {
-                //e.preventDefault()
                 let selectionEnd = document.getElementById("editorId").selectionEnd
                 let start = this.state.content.substr(0, selectionEnd)
                 let middle = "\n"
@@ -224,6 +225,7 @@ export default class App extends Component {
         let previewState = markdownToHtml(obj.content)
         this.setState(R.merge(obj, {previewState}), ()=>{
             J.emitter.emit("unmount")
+            ReactDOM.unmountComponentAtNode(document.getElementById("reactContainer"))
             J.emitter.emit("rows")
         })
     }
@@ -231,6 +233,8 @@ export default class App extends Component {
         this.setState({category:event.value})
     }
     chooseBlogPost() {
+        console.log(J)
+        J.log(1)
         J.postData(`${J.hapi}/blogPosts`, {}).then(data=>{
             ReactDOM.render(<ChooseBlogPost data={data} handleClick={this.blogPostSelection}/>, document.getElementById("reactContainer"))
         })
@@ -285,11 +289,13 @@ export default class App extends Component {
     handleInsertImage() {
         this.setState({promptIsActive:"is-active", promptCaller:"handleInsertImage"}, ()=>{
             this.notify("prompt focus")
+
             J.emitter.emit("prompt focus")
         })
     }
     handlePrompt(event) {
         if (event.key === "Enter") {
+            J.log("enter")
             let promptValue = event.target.value.trim()
             if (this.state.promptCaller === "handleInsertImage") {
                 if (this.state.title !== "") {

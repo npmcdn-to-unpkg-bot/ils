@@ -1,11 +1,11 @@
 "use strict"
 const R = require("ramda")
+const React = require("react")
+const ReactDOM = require("react-dom")
 const reqwest = require("reqwest")
 const localforage = require("localforage")
 const config = require("./config")
 const stopWords = require("./stopWords.js")
-const winWidthIs = window.innerWidth
-const winHeightIs = window.innerHeight
 let emitter = new Events()
 function Events(target) {
     let events = {}, empty = []
@@ -60,11 +60,11 @@ function postData(url, data) {
         })
     })
 }
-function getHeightPx(incomingPercent = 1) {
-    return Math.floor(R.divide(winHeightIs, 100) * incomingPercent)
+function getHeightPx(incomingPercent = 1, window = {}) {
+    return Math.floor(R.divide(window.innerHeight, 100) * incomingPercent)
 }
 function getWidthPx(incomingPercent = 1) {
-    return Math.floor(R.divide(winWidthIs, 100) * incomingPercent)
+    return Math.floor(R.divide(window.innerWidth, 100) * incomingPercent)
 }
 function getPercent(incomingPercent, whole) {
     return Math.floor(R.divide(whole, 100) * incomingPercent)
@@ -331,6 +331,8 @@ module.exports.performanceStats = performanceStats
 module.exports.postData = postData
 module.exports.randomIndex = randomIndex
 module.exports.randomSeed = randomSeed
+module.exports.React = React
+module.exports.ReactDOM = ReactDOM
 module.exports.removePunctuation = removePunctuation
 module.exports.returnEasyStyleGerman = returnEasyStyleGerman
 module.exports.returnOldStyleGerman = returnOldStyleGerman
@@ -338,5 +340,3 @@ module.exports.setItem = localforage.setItem
 module.exports.setProp = setProp
 module.exports.shuffle = shuffle
 module.exports.stopWordsFilter = stopWordsFilter
-module.exports.winHeightIs = winHeightIs
-module.exports.winWidthIs = winWidthIs

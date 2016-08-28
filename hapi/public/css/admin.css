@@ -1,4 +1,10 @@
 @import url(https://fonts.googleapis.com/css?family=Josefin+Sans:600);
+.notification-bar-active {
+  z-index: 333 !important;
+}
+.tile.is-vertical > .tile.is-child:not(:last-child) {
+  margin-bottom: 0px!important;
+}
 h1 {
   font-size: 3.5vh;
   font-weight: bolder;

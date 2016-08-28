@@ -8,7 +8,6 @@ const J = require("justdo")
 const fs = require("fs-extra")
 const env = require("dotenv-helper")
 const reqwest = require("reqwest")
-const winston = require("winston")
 let store = {endMarker: "default"}
 function timer(startMarker = "default") {
     console.timeEnd(store.endMarker)
@@ -35,25 +34,6 @@ function randomSeed(limit = 10) {
 function firstLetterCapital(str) {
     return `${R.compose(R.toUpper, R.head)(str)}${R.tail(str)}`
 }
-const logger = new (winston.Logger)({
-    transports: [
-        new (winston.transports.File)({
-            name: "info-file",
-            filename: `zMainLog${env.getEnv("hostTag")}.log`,
-            level: "info"
-        }),
-        new (winston.transports.File)({
-            name: "error-file",
-            filename: `zErrorLog${env.getEnv("hostTag")}.log`,
-            level: "error"
-        }),
-        new (winston.transports.File)({
-            name: "debug-file",
-            filename: `zDebugLog${env.getEnv("hostTag")}.log`,
-            level: "debug"
-        })
-    ]
-})
 function getData(url) {
     return new Promise((resolve)=>{
         reqwest({
@@ -244,7 +224,6 @@ module.exports.stop = stop
 module.exports.auth = auth
 module.exports.removePunctuation = removePunctuation
 module.exports.timer = timer
-module.exports.logger = logger
 module.exports.shuffle = shuffle
 module.exports.postData = postData
 module.exports.getData = getData

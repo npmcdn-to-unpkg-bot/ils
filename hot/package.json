@@ -3,6 +3,7 @@
     "version": "1.0.0",
     "description": "Boilerplate for ReactJS project with hot code reloading",
     "scripts": {
+        "a": "browserify /home/just/ils/hot/src/a.jsx -o /home/just/ils/hapi/public/aFront.js -t [ babelify --presets [ react  es2015 ] ] -t [ envify --NODE_ENV production ]",
         "start": "node server.js"
     },
     "repository": {
@@ -27,12 +28,12 @@
     },
     "homepage": "https://github.com/gaearon/react-hot-boilerplate",
     "devDependencies": {
-        "babel-core": "^6.0.20",
-        "babel-eslint": "^4.1.3",
-        "babel-loader": "^6.0.1",
-        "babel-preset-es2015": "^6.0.15",
-        "babel-preset-react": "^6.0.15",
-        "babel-preset-stage-0": "^6.0.15",
+        "babel-core": "*",
+        "babel-eslint": "*",
+        "babel-loader": "*",
+        "babel-preset-es2015": "*",
+        "babel-preset-react": "*",
+        "babel-preset-stage-0": "*",
         "eslint": "*",
         "eslint-plugin-react": "*",
         "react-hot-loader": "*",
@@ -40,10 +41,10 @@
         "webpack-dev-server": "*"
     },
     "dependencies": {
+        "react": "*",
+        "react-dom": "*",
         "markdown": "*",
         "localforage": "*",
-        "react": "*",
-        "react-addons-css-transition-group": "*",
-        "react-dom": "*"
+        "react-addons-css-transition-group": "*"
     }
 }

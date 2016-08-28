@@ -1,5 +1,23 @@
-@import url(https://fonts.googleapis.com/css?family=Josefin+Sans:600);
 @import url(https://fonts.googleapis.com/css?family=Arvo:400&subset=latin);
+.s-alert-close {
+  display: none;
+}
+.imageThumb {
+  width: 12vw;
+  height: auto;
+  max-height: 20vh;
+}
+.paddingLR {
+  padding-left: 5px;
+  padding-right: 5px;
+  cursor: pointer;
+}
+.isHidden {
+  visibility: hidden;
+}
+.isVisible {
+  visibility: visible;
+}
 .overlay {
   border-radius: 1.5vw;
   position: fixed;
@@ -41,14 +59,6 @@ h4 {
   font-size: 1.8vh;
   font-weight: bold;
 }
-.s-alert-close {
-  display: none;
-}
-.imageThumb {
-  width: 12vw;
-  height: auto;
-  max-height: 20vh;
-}
 blockquote {
   background: #f9f9f9;
   border-left: 10px solid #ccc;
@@ -81,7 +91,7 @@ blockquote p {
   margin-top: 1vw;
   margin-right: 2vw;
   padding: 0.5vw;
-  width: 46vw;
+  width: 47vw;
   border: 1px solid #050A28;
   font-size: 1.7vh;
 }
@@ -91,7 +101,7 @@ blockquote p {
   margin-top: 1vw;
   margin-right: 2vw;
   padding: 0.5vw;
-  width: 46vw;
+  width: 47vw;
   font-size: 1.7vh;
   margin-top: 0px;
   border: 1px solid #050A28;

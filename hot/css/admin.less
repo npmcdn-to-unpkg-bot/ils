@@ -1,0 +1,303 @@
+@import url(https://fonts.googleapis.com/css?family=Josefin+Sans:600);
+@backgroundMeme: #ffffff;
+@textColorMeme: #1A237E;
+@text: #212121;
+@firstText: #3a707f;
+@secondText: #424242;
+@thirdText: #263238;
+@dark: #424242;
+@darkSecond: #263238;
+@darkThird: #212121;
+@bright: #B0BEC5;
+@brightSecond: #CFD8DC;
+@brightThird: #fafaff;
+@red: #E57373;
+@redSecond: #EC407A;
+@redThird: #FF4081;
+@morfAnimationDuration: 1s;
+@atentionAnimationDuration: 0.5s;
+@memeImageWidth: 50%;
+@memeImageHeight: 40%;
+@memeBackgroundColor: #CFD8DC;
+@memeTextColor: #546E7A;
+@mildRed: #FF4081;
+@learningMemeBackground: #B0BEC5;
+@correctFirst: #689F38;
+@correctSecond: #A5D6A7;
+@wrongFirst: #E57373;
+@wrongSecond: #EC407A;
+.notification-bar-active{
+z-index: 333 !important;
+}
+.tile.is-vertical>.tile.is-child:not(:last-child) {
+    margin-bottom: 0px!important;
+}
+h1{
+    font-size: 3.5vh;
+    font-weight: bolder;
+}
+h2{
+    font-size: 2.7vh;
+    font-weight: bold;
+}
+h3{
+    font-size: 2vh;
+    font-weight: bold;
+}
+h4{
+    font-size: 1.8vh;
+    font-weight: bold;
+}
+#inputFieldId{
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 3vh;
+    color: @red;
+    font-weight: 800;
+}
+// react alert close segment
+.s-alert-close{
+    display:none;
+}
+.imageThumb{
+    width:12vw;
+    height: auto;
+    max-height: 20vh;
+}
+.bigInput{
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 3vh;
+    font-weight: 700;
+    width: 100%;
+    padding: 1vh;
+    margin: 1vh;
+}
+.outlined{
+    outline: 2px solid #correctSecond;
+}
+.blogAdminTextarea{
+    margin-left: 2vw;
+    margin-top: 1vw;
+    margin-right: 2vw;
+    padding: 0.5vw;
+    width:46vw;
+    border: 1px solid @thirdText;
+    font-size: 1.7vh;
+}
+.blogAdminPreview{
+    .blogAdminTextarea();
+    margin-top: 0px;
+    border: 1px solid @memeTextColor;
+    border-radius: 0.2vw;
+}
+.blogAdminPreview p{
+    outline: 1px;
+    line-height: 1;
+}
+.memeTextTopLeft{
+    color: #363A42;
+    letter-spacing: 0.3vw;
+}
+.memeTextTopSeparator{
+    color: #484452;
+    font-weight: 200;
+}
+.memeTextTopRight{
+    color: #484452;
+    font-weight: 200;
+}
+#marginlessTuna{
+    margin: 0 !important;
+    padding: 5px;
+    max-height: 9vh;
+}
+.icon{
+    margin-right: 5px;
+}
+.row(){
+    height: 20px;
+    line-height: 1.5;
+    font-size: 14px;
+    text-overflow: clip;
+    white-space: nowrap;
+    overflow: hidden;
+}
+.firstRow{
+    .row;
+    color: @text;
+    font-family: 'Josefin Sans', sans-serif;
+}
+.firstRowOdd{
+    .row();
+    color: @firstText;
+    font-family: 'Josefin Sans', sans-serif;
+}
+.secondRow{
+    .row;
+    color: @secondText;
+    background-color: #E0FFF9;
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 600;
+}
+.secondRowOdd{
+    .row;
+    background-color: #F7F3F3;
+    color: @thirdText;
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 600;
+}
+.commonInput{
+    padding: 5px;
+}
+.searchImageKeyword{
+    background-color: #FFF3E0;
+}
+.searchImageKeyword, .deWordInput, .enWordInput{
+    .commonInput;
+}
+.searchImageKeyword:focus, .deWordInput:focus, .enWordInput:focus{
+    background-color: @memeBackgroundColor;
+}
+.deWordInput{
+background-color: #E1F5FE;
+}
+.enWordInput{
+background-color: #FBE9E7;
+}
+.wrongAnswerLearningMeme{
+  animation: wrongLearningMeme 1s;
+}
+.correctAnswerLearningMeme{
+  animation: correctLearningMeme 1s;
+}
+@keyframes correctLearningMeme {
+     0% {background-color: @correctFirst;outline: 3px solid @correctSecond;}
+     33% {background-color: @correctSecond;outline: 3px solid @correctFirst;}
+     66% {background-color: @correctFirst;outline: 3px solid @correctSecond;}
+     99% {background-color: @correctSecond;outline: 3px solid @correctFirst;}
+}
+@keyframes wrongLearningMeme {
+     0% {background-color: @wrongFirst;outline: 3px solid @wrongSecond;}
+     33% {background-color: @wrongSecond;outline: 3px solid @wrongFirst;}
+     66% {background-color: @wrongFirst;outline: 3px solid @wrongSecond;}
+     99% {background-color: @wrongSecond;outline: 3px solid @wrongFirst;}
+}
+.borderTemplate(){
+    border:solid 1px #4DB6AC;
+}
+.inputField, .inputField:focus{
+text-align: center;
+font-weight:bold;
+outline: none;
+padding: 7px;
+opacity: 0.5;
+border-radius: 5%;
+border: 1px solid @learningMemeBackground;
+background: linear-gradient(@learningMemeBackground, @backgroundMeme 70%, @learningMemeBackground);
+}
+.borderBottom{
+    border-style: solid;
+    border-bottom: 5px solid @mildRed;
+}
+.unselectedImage{
+    .borderTemplate;
+    padding: 5px;
+    background-color: @memeTextColor;
+}
+.selectedImage{
+    padding: 5px;
+    background-color: @mildRed;
+}
+.newEntry{
+    border-radius: 1.5vw;
+    position:        fixed;
+    z-index:          100;
+    margin-bottom: 2vw;
+    left:            3vw;
+    top:             3vh;
+    background-color: @memeTextColor;
+    width: 93.5vw;
+    height: auto;
+}
+.newEntry p{
+    background-color: @darkSecond;
+    color: @brightSecond;
+    border-radius: 1.5vw;
+    padding: 1vw;
+    border: 1px solid #4DB6AC;
+}
+.newEntry p span{
+    margin-left:0.5vw;
+    margin-right:0.5vw;
+}
+.newEntry p:hover{
+    cursor: pointer;
+}
+.outline{
+border-radius: 25%;
+border:solid 1px #4DB6AC !important;
+}
+.Select-control {
+  max-width: 170px !important;
+}
+.Select-value:hover {
+  cursor: pointer;
+}
+.singleWord{
+    border-radius: 40%;
+    border:solid 2px #4DB6AC;
+    border-style:double;
+    padding:2px;
+    cursor: pointer;
+}
+.singleWordCorrect{
+    border-radius: 40%;
+    border:solid 2px @mildRed;
+    border-style:double;
+    padding:2px;
+    cursor: pointer;
+}
+.singleWordHalfWidth{
+    border-radius: 40%;
+    border:solid 2px #4DB6AC;
+    border-style:double;
+    width: 50%;
+    margin-left: 25%;
+    padding:2px;
+    cursor: pointer;
+}
+.buttonStyle{
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    border:solid 2px #4DB6AC;
+    border-style:single;
+}
+.wrongAnswer{
+  animation: pulse 1s;
+  text-decoration-style: double;
+  text-decoration: line-through #FF4081;
+}
+@keyframes pulse {
+    0% {opacity: 0.05;}
+     50% {opacity: 0.7;}
+     90% {opacity: 0.05;}
+     100% {opacity: 1;}
+}
+.memeContainer{
+  width: @memeImageWidth;
+  height: @memeImageHeight;
+}
+.meme{
+  background-color: @memeBackgroundColor;
+  color: @memeTextColor;
+}
+.paddingLR{
+    padding-left: 5px;
+    padding-right: 5px;
+    cursor: pointer;
+}
+.isHidden{
+  visibility: hidden;
+}
+.isVisible{
+  visibility: visible;
+}
