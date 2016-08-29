@@ -34,7 +34,7 @@ class App extends Component {
                     <link rel="stylesheet" href={config.bulma}/>
                     <link rel="stylesheet" href="css/admin.css"/>
                     <link rel="stylesheet" href="css/slider.css"/>
-                    <link rel="canonical" href={`http://ilearnsmarter.com/${this.props.keyword}`} />
+                    <link rel="canonical" href={`https://ilearnsmarter.com/${this.props.keyword}`} />
                     <meta property="og:locale" content="en_US" />
                     <meta property="og:type" content="app" />
                     <meta property="og:title" content={this.props.title} />
