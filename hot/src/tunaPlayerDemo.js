@@ -167,7 +167,7 @@ export default class App extends Component {
             let audioContext = new AC()
             let source = audioContext.createBufferSource()
             let xhr = new XMLHttpRequest()
-            xhr.open("GET", `${J.hapi}/funky.mp3`)
+            xhr.open("GET", `${J.ils}/funky.mp3`)
             xhr.responseType = "arraybuffer"
             let self = this
             xhr.onload = function(e) {

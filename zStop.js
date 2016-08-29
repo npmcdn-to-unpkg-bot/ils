@@ -56,7 +56,7 @@ var shadowProcess = function () {
                             break;
                         }
 
-                        J.box("5th time");
+                        J.box("50th time");
                         _context.next = 23;
                         return J.willRunFixedCommand("npm update -g");
 

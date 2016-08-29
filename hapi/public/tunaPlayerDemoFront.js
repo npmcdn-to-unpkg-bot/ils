@@ -6245,7 +6245,7 @@ var App = function (_Component) {
                 var audioContext = new AC();
                 var source = audioContext.createBufferSource();
                 var xhr = new XMLHttpRequest();
-                xhr.open("GET", _commonReact2.default.hapi + "/funky.mp3");
+                xhr.open("GET", _commonReact2.default.ils + "/funky.mp3");
                 xhr.responseType = "arraybuffer";
                 var self = _this3;
                 xhr.onload = function (e) {

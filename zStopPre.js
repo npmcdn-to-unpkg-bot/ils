@@ -9,6 +9,7 @@ async function shadowProcess() {
     state = await db.loadParent("counter")
     let counter = state === undefined ? counter = 0 : state + 1
     state = await db.saveParent("counter", counter)
+    J.log(counter,"counter")
     if (counter % 5 === 0 && env.getEnv("hostTag") === "root") {
         J.box("5th time")
         state = await generateSitemap.main()
@@ -16,7 +17,7 @@ async function shadowProcess() {
         state = await J.willRunFixedCommand("node d backup")
     }
     if (counter % 50 === 0 && env.getEnv("hostTag") === "root") {
-        J.box("5th time")
+        J.box("50th time")
         state = await J.willRunFixedCommand("npm update -g")
     }
     return state
