@@ -2,7 +2,6 @@ import {React} from "../../../_inc/commonReact.js"
 let Component = React.Component
 import Navigation from "../components/navigation.jsx"
 import config from "../../../_inc/config.js"
-
 class App extends Component {
     constructor(props) {
         super(props)

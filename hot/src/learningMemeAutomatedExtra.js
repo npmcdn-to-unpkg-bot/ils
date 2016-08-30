@@ -50,7 +50,6 @@ export default class App extends Component {
                 let state = J.randomIndex(this.state.globalData)
                 return `${state.deWord} - ${state.enWord}`
             }, R.range(0, 2))
-            J.log(notifyDataArr)
             let mode = modeArr[ R.modulo(counter, 3) ]
             this.notify(notifyDataArr[ 0 ], notifyIntervalValue, "top-left", mode)
             this.notify(notifyDataArr[ 1 ], notifyIntervalValue, "top-right", mode)

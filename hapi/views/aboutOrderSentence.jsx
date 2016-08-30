@@ -2,7 +2,6 @@
 import {React} from "../../_inc/commonReact.js"
 let Component = React.Component
 var DefaultLayout = require("./base/basic.jsx")
-
 class App extends Component {
     render() {
         return (
@@ -23,11 +22,9 @@ class App extends Component {
         )
     }
 }
-
 let WillExport = React.createClass({
     render: function() {
         return <DefaultLayout><App /></DefaultLayout>
     }
 })
-
 module.exports = WillExport

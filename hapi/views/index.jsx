@@ -2,7 +2,6 @@
 import {React} from "../../_inc/commonReact.js"
 let Component = React.Component
 const DefaultLayout = require("./base/basic.jsx")
-
 class IndexContainer extends Component {
     render() {
         return (
@@ -36,11 +35,9 @@ class IndexContainer extends Component {
         )
     }
 }
-
 let App = React.createClass({
     render: function() {
         return <DefaultLayout description="Node.js and React.js based application for learning German language"><IndexContainer/></DefaultLayout>
     }
 })
-
 module.exports = App

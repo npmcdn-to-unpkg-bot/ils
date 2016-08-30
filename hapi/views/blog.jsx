@@ -2,9 +2,7 @@
 import {React} from "../../_inc/commonReact.js"
 let Component = React.Component
 import ReactMarkdown from "react-markdown"
-
 const DefaultLayout = require("./base/basic.jsx")
-
 let App = React.createClass({
     render: function() {
         return
@@ -18,5 +16,4 @@ let App = React.createClass({
         </DefaultLayout>
     }
 })
-
 module.exports = App

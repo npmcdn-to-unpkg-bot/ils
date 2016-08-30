@@ -123,7 +123,9 @@ function addProp(singleProp, defaultValue, arr) {
 }
 function addSingleProp(singleProp, defaultValue, obj) {
     if (obj.singleProp === undefined) {
-        return R.merge(obj, {singleProp:defaultValue})
+        let localObj = {}
+        localObj[ singleProp ] = defaultValue
+        return R.merge(obj, localObj)
     } else {
         return obj
     }

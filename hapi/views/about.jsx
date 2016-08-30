@@ -2,7 +2,6 @@
 import {React} from "../../_inc/commonReact.js"
 let Component = React.Component
 let DefaultLayout = require("./base/basic.jsx")
-
 class About extends Component {
     render() {
         let imageStyle = {
@@ -60,11 +59,9 @@ class About extends Component {
         )
     }
 }
-
 let App = React.createClass({
     render: function() {
         return <DefaultLayout><About /></DefaultLayout>
     }
 })
-
 module.exports = App

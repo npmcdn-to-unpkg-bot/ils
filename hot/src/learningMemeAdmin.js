@@ -69,37 +69,47 @@ export default class App extends Component {
     componentDidMount() {
         J.emitter.on("init", ()=>{
             J.postData(`${J.ils}/imageless`, {}).then(data => {
-                data = J.addSingleProp("childSafetyFlag", true, data)
-                data = J.addSingleProp("imageSrc", false, data)
-                let deWord = data.deWord === undefined ? "" : data.deWord
-                let enWord = data.enWord === undefined ? "" : data.enWord
-                let searchImageKeywordArr = J.stopWordsFilter(data.dePart)
-                searchImageKeywordArr = R.sort((a, b)=>{return a.length - b.length}, searchImageKeywordArr)
-                if (searchImageKeywordArr.length > 0) {
-                    this.setState({
-                        data,
-                        paginationIndex: 0,
-                        searchImageKeyword: J.removePunctuation(R.last(searchImageKeywordArr)).cleanStr,
-                        deWord,
-                        enWord
-                    }, ()=>{
-                        if (this.state.data.dePart.length > 70) {
-                                this.notify("TOO LONG!!")
-                        }
-                        J.emitter.emit("searchImageFast")
-                        setTimeout(()=>{
-                            this.setState({searchImageKeyword: ""})
-                        }, 1000)
-                    })
-                } else {
-                    this.setState({
-                        data,
-                        paginationIndex: 0,
-                        searchImageKeyword: "",
-                        deWord,
-                        enWord
-                    })
+                if (data.dePart.length > 72) {
+                    setTimeout(()=>{
+                        J.postData(`${J.ils}/removeMain`, {id: data.id}).then(()=>{
+                            J.postData(`${J.ils}/imageless/count`, {}).then(imagelessCountData=>{
+                                this.notify(imagelessCountData)
+                                J.emitter.emit("init")
+                            })
+                        })
+                    },300)
+                }else{
+                    data = J.addSingleProp("childSafetyFlag", true, data)
+                    data = J.addSingleProp("imageSrc", false, data)
+                    J.log(data)
+                    let deWord = data.deWord === undefined ? "" : data.deWord
+                    let enWord = data.enWord === undefined ? "" : data.enWord
+                    let searchImageKeywordArr = J.stopWordsFilter(data.dePart)
+                    searchImageKeywordArr = R.sort((a, b)=>{return a.length - b.length}, searchImageKeywordArr)
+                    if (searchImageKeywordArr.length > 0) {
+                        this.setState({
+                            data,
+                            paginationIndex: 0,
+                            searchImageKeyword: J.removePunctuation(R.last(searchImageKeywordArr)).cleanStr,
+                            deWord,
+                            enWord
+                        }, ()=>{
+                            J.emitter.emit("searchImageFast")
+                            setTimeout(()=>{
+                                this.setState({searchImageKeyword: ""})
+                            }, 1000)
+                        })
+                    } else {
+                        this.setState({
+                            data,
+                            paginationIndex: 0,
+                            searchImageKeyword: "",
+                            deWord,
+                            enWord
+                        })
+                    }
                 }
+
             })
         })
         J.emitter.on("ready", ()=>{

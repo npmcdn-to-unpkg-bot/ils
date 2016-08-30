@@ -15,11 +15,9 @@ class IndexContainer extends Component {
         )
     }
 }
-
 let WillExport = React.createClass({
     render: function() {
         return <DefaultLayout><IndexContainer/></DefaultLayout>
     }
 })
-
 module.exports = WillExport

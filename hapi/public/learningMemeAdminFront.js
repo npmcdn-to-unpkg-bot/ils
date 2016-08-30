@@ -138,7 +138,9 @@ function addProp(singleProp, defaultValue, arr) {
 }
 function addSingleProp(singleProp, defaultValue, obj) {
     if (obj.singleProp === undefined) {
-        return R.merge(obj, { singleProp: defaultValue });
+        var localObj = {};
+        localObj[singleProp] = defaultValue;
+        return R.merge(obj, localObj);
     } else {
         return obj;
     }
@@ -681,38 +683,47 @@ var App = function (_Component2) {
 
             _commonReact2.default.emitter.on("init", function () {
                 _commonReact2.default.postData(_commonReact2.default.ils + "/imageless", {}).then(function (data) {
-                    data = _commonReact2.default.addSingleProp("childSafetyFlag", true, data);
-                    data = _commonReact2.default.addSingleProp("imageSrc", false, data);
-                    var deWord = data.deWord === undefined ? "" : data.deWord;
-                    var enWord = data.enWord === undefined ? "" : data.enWord;
-                    var searchImageKeywordArr = _commonReact2.default.stopWordsFilter(data.dePart);
-                    searchImageKeywordArr = _ramda2.default.sort(function (a, b) {
-                        return a.length - b.length;
-                    }, searchImageKeywordArr);
-                    if (searchImageKeywordArr.length > 0) {
-                        _this3.setState({
-                            data: data,
-                            paginationIndex: 0,
-                            searchImageKeyword: _commonReact2.default.removePunctuation(_ramda2.default.last(searchImageKeywordArr)).cleanStr,
-                            deWord: deWord,
-                            enWord: enWord
-                        }, function () {
-                            if (_this3.state.data.dePart.length > 70) {
-                                _this3.notify("TOO LONG!!");
-                            }
-                            _commonReact2.default.emitter.emit("searchImageFast");
-                            setTimeout(function () {
-                                _this3.setState({ searchImageKeyword: "" });
-                            }, 1000);
-                        });
+                    if (data.dePart.length > 72) {
+                        setTimeout(function () {
+                            _commonReact2.default.postData(_commonReact2.default.ils + "/removeMain", { id: data.id }).then(function () {
+                                _commonReact2.default.postData(_commonReact2.default.ils + "/imageless/count", {}).then(function (imagelessCountData) {
+                                    _this3.notify(imagelessCountData);
+                                    _commonReact2.default.emitter.emit("init");
+                                });
+                            });
+                        }, 300);
                     } else {
-                        _this3.setState({
-                            data: data,
-                            paginationIndex: 0,
-                            searchImageKeyword: "",
-                            deWord: deWord,
-                            enWord: enWord
-                        });
+                        data = _commonReact2.default.addSingleProp("childSafetyFlag", true, data);
+                        data = _commonReact2.default.addSingleProp("imageSrc", false, data);
+                        _commonReact2.default.log(data);
+                        var deWord = data.deWord === undefined ? "" : data.deWord;
+                        var enWord = data.enWord === undefined ? "" : data.enWord;
+                        var searchImageKeywordArr = _commonReact2.default.stopWordsFilter(data.dePart);
+                        searchImageKeywordArr = _ramda2.default.sort(function (a, b) {
+                            return a.length - b.length;
+                        }, searchImageKeywordArr);
+                        if (searchImageKeywordArr.length > 0) {
+                            _this3.setState({
+                                data: data,
+                                paginationIndex: 0,
+                                searchImageKeyword: _commonReact2.default.removePunctuation(_ramda2.default.last(searchImageKeywordArr)).cleanStr,
+                                deWord: deWord,
+                                enWord: enWord
+                            }, function () {
+                                _commonReact2.default.emitter.emit("searchImageFast");
+                                setTimeout(function () {
+                                    _this3.setState({ searchImageKeyword: "" });
+                                }, 1000);
+                            });
+                        } else {
+                            _this3.setState({
+                                data: data,
+                                paginationIndex: 0,
+                                searchImageKeyword: "",
+                                deWord: deWord,
+                                enWord: enWord
+                            });
+                        }
                     }
                 });
             });
