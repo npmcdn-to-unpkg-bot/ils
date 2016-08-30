@@ -1,4 +1,3 @@
-//import React, {Component} from "react"
 import J from "../../../_inc/commonReact.js"
 let React = J.React
 let Component = React.Component

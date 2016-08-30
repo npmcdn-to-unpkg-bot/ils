@@ -237,7 +237,7 @@ function counter() {
         });
     });
 }
-function load(modelName) {
+function find(modelName) {
     var key = arguments.length <= 1 || arguments[1] === undefined ? null : arguments[1];
     var keyValue = arguments[2];
 
@@ -289,7 +289,7 @@ function increaseCounterFn(counterValue) {
 module.exports.addMain = function (data) {
     return addMain(data);
 };
-module.exports.random = function (modelName) {
+module.exports.randomm = function (modelName) {
     //rf
     return new Promise(function (resolve) {
         random(modelName).then(function (data) {
@@ -297,22 +297,25 @@ module.exports.random = function (modelName) {
         });
     });
 };
-module.exports.randomCondition = function (modelName, condition) {
-    return randomCondition(modelName, condition);
-};
+module.exports.addMain = addMain;
+module.exports.count = count;
+module.exports.countCondition = countCondition;
 module.exports.increaseCounter = function () {
     return increaseCounter();
 };
+module.exports.find = find;
 module.exports.findOneAndUpdateBlog = findOneAndUpdateBlog;
 module.exports.findOneAndUpdateLog = findOneAndUpdateLog;
 module.exports.findOneAndUpdateMain = findOneAndUpdateMain;
 module.exports.findOneSkip = findOneSkip;
 module.exports.findOneSkipCondition = findOneSkipCondition;
-module.exports.count = count;
-module.exports.addMain = addMain;
-module.exports.save = save;
-module.exports.saveMany = saveMany;
-module.exports.load = load;
-module.exports.countCondition = countCondition;
 module.exports.gitHookTokenWrite = gitHookTokenWrite;
 module.exports.gitHookTokenRead = gitHookTokenRead;
+module.exports.save = save;
+module.exports.saveMany = saveMany;
+module.exports.random = function (modelName) {
+    return random(modelName);
+};
+module.exports.randomCondition = function (modelName, condition) {
+    return randomCondition(modelName, condition);
+};

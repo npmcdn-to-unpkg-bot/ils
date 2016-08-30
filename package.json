@@ -4,11 +4,15 @@
   "description": "The code of the ilearnsmarter.com",
   "main": "hapi/spdy.js",
   "scripts": {
-    "x": "parallelshell \"google-chrome --enable-precise-memory-info\" \"node watch\" \"node zStart\" \"webdriver-manager start\" \"nodemon -e js,jsx,css --watch hapi hapi/start.js\" \"webdriver-manager start\"",
-    "start": "parallelshell \"node watch\" \"node zStart\" \"nodemon -e js,jsx,css --watch hapi hapi/start.js\"",
+    "hapi": "nodemon -e js,jsx,css --watch hapi hapi/start.js",
+    "s:watch":"node watch",
+    "s:hot":"node zStart",
+    "extra:chrome":"google-chrome --enable-precise-memory-info",
+    "extra:webdriver":"webdriver-manager start",
+    "start":"npm-run-all --parallel hapi s:*",
     "a": "babel aPre.js --out-file a.js",
     "aa": "browserify aPre.js -o a.js -t [ babelify --presets [ es2015 react stage-3 stage-2 stage-1 stage-0 ] ] -im",
-    "b": "node benchmark.js",
+    "b": "babel-node --debug --presets stage-1 -- b.js --debug",
     "de": "git add . --all&&git commit -m update&&git push",
     "stop": "node zStop",
     "prod": "node zProd",
@@ -19,7 +23,8 @@
     "testReact": "mocha --timeout 15000 test/setupReact.js test/testReact.js",
     "testHapi": "mocha --timeout 15000 test/testHapi.js",
     "testDb": "mocha --timeout 15000 test/testDb.js",
-    "testUrl": "node test/testUrl.js"
+    "testUrl": "node test/testUrl.js",
+    "cats": "/home/just/Downloads/nw/nw /home/just/Downloads/cats-2.0.397.nw"
   },
   "author": "selfrefactor",
   "repository": {

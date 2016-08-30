@@ -326,7 +326,7 @@ export default class App extends Component {
         })
         return (
     <div>
-        <Alert stack={{limit:7}} />
+        <Alert stack={{limit:10}} />
         <div className="box has-text-centered columns">
             <div id="animationMarker" className="column is-2 is-offset-5">
             <input autoFocus id="inputFieldId" className="inputField" type="text" value={this.state.answer} size={this.state.inputFieldSize} onChange={this.handleAnswerInput} onKeyPress={this.handleAnswerInput}/>

@@ -307,6 +307,17 @@ router.post("/readRandom/:model", (req, res) => {
         res.send(J.config.badQuery)
     }
 })
+router.post("/imageless/count", (req, res) => {
+    if (J.auth(req.ip)) {
+        mongoose.model("Main").find({
+            $where: "this.imageSrc===undefined||this.imageSrc===false||this.imageSrc===null"
+        }, (error, incoming) => {
+            res.send(R.values(incoming).length + "")
+        })
+    } else {
+        res.send(J.config.badQuery)
+    }
+})
 router.post("/imageless", (req, res) => {
     if (J.auth(req.ip)) {
         db.randomCondition().then(incoming => {
@@ -388,8 +399,8 @@ router.post("/addTranslateDraft", (req, res) => {
 })
 router.post("/daemonRead", (req, res) => {
     if (J.auth(req.ip)) {
-        db.load("Log", "id", "command").then(command => {
-            db.load("Log", "id", "commandData").then(commandData => {
+        db.find("Log", "id", "command").then(command => {
+            db.find("Log", "id", "commandData").then(commandData => {
                 res.send({
                     command,
                     commandData
@@ -453,7 +464,7 @@ router.post("/addBlog", (req, res) => {
 })
 router.post("/blogPosts", (req, res)=>{
     if (J.auth(req.ip)) {
-        db.load("Blog").then(data => {
+        db.find("Blog").then(data => {
             res.send(data)
         })
     } else {
@@ -472,7 +483,7 @@ router.post("/uploadImage/blog", (req, res)=>{
 })
 router.post("/test", (req, res)=>{
     if (J.auth(req.ip)) {
-        db.load("Blog", "canonical", req.body.canonical).then(data => {
+        db.find("Blog", "canonical", req.body.canonical).then(data => {
             if (data.length === 0) {
                 res.send(J.config.badQuery)
             } else {
@@ -488,7 +499,7 @@ router.get("/blog-*", (req, res)=>{
     J.log(req.params[ 0 ])
     J.log(canonical)
     if (canonical) {
-        db.load("Blog", "canonical", canonical).then(data => {
+        db.find("Blog", "canonical", canonical).then(data => {
             if (data.length === 0) {
                 res.send(J.config.badQuery)
             } else {

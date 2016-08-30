@@ -1,11 +1,11 @@
 "use strict"
-import React, { Component } from "react"
-import ReactDOM from "react-dom"
+import {React, ReactDOM} from "../../_inc/commonReact.js"
+let Component = React.Component
 import R from "ramda"
 import LazyLoad from "react-lazyload"
 import J from "../../_inc/commonReact.js"
 import GermanOverall from "./components/germanOverall.js"
-import { Notification } from "react-notification"
+import Alert from "react-s-alert"
 let initOnce = R.once(()=>{
     J.emitter.emit("init")
 })
@@ -66,25 +66,11 @@ export default class App extends Component {
         this.handleDeWordInput = this.handleDeWordInput.bind(this)
         this.handleEnWordInput = this.handleEnWordInput.bind(this)
     }
-    log(msg, seconds = 2) {
-        let message = R.type(msg) === "String" ? msg : JSON.stringify(msg)
-        this.setState({
-            notificationMessage: "",
-            notificationState: false
-        }, ()=>{
-            this.setState({
-                notificationMessage: message,
-                notificationState: true
-            })
-        })
-        setTimeout(()=>{
-            this.setState({
-                notificationState: false
-            })
-        }, seconds * 1000)
-    }
     componentDidMount() {
         J.emitter.on("init", ()=>{
+            J.postData(`${J.ils}/imageless/count`, {}).then(data => {
+                this.notify(data)
+            })
             J.postData(`${J.ils}/imageless`, {}).then(data => {
                 data = J.addSingleProp("childSafetyFlag", true, data)
                 data = J.addSingleProp("imageSrc", false, data)
@@ -100,9 +86,8 @@ export default class App extends Component {
                         deWord,
                         enWord
                     }, ()=>{
-                        this.log(this.state.data.dePart.length, 3)
                         if (this.state.data.dePart.length > 70) {
-                            this.log("TOO LONG!!")
+                                this.notify("TOO LONG!!")
                         }
                         J.emitter.emit("searchImageFast")
                         setTimeout(()=>{
@@ -129,26 +114,25 @@ export default class App extends Component {
                     setTimeout(()=>{
                         J.postData(`${J.ils}/readModel/main`, {key:"id", keyValue: data.id}).then(result=>{
                             if (result.imageSrc === false) {
-                                this.log("No image saved")
+                                    this.notify("No image saved")
                             } else {
-                                this.log(`${result.imageSrc} - ${data.deWord}`)
+                                    this.notify(`${result.imageSrc} - ${data.deWord}`)
                             }
                         })
                     }, 7000)
                     J.emitter.emit("init")
                 } else {
-                    this.log("Something is amiss!!")
+                    this.notify("Something is amiss!!")
                 }
             } else {
-                this.log("Something is amiss!!")
+                this.notify("Something is amiss!!")
             }
         })
         J.emitter.on("remove", ()=>{
             J.log(this.state.data.id)
-            this.log(this.state.data.id)
             J.postData(`${J.ils}/removeMain`, {id: this.state.data.id})
             .then(()=>{
-                this.log("removed")
+                this.notify("removed")
             })
             J.emitter.emit("init")
         })
@@ -262,7 +246,7 @@ export default class App extends Component {
             data: R.merge(this.state.data, {dePart: event.target.value})
         })
         if (event.target.value.length > 68) {
-            this.log(`TOO LONG - ${event.target.value.length}`, 5)
+            this.notify(`TOO LONG - ${event.target.value.length}`, 5)
         }
     }
     handleEnInput (event) {
@@ -273,8 +257,20 @@ export default class App extends Component {
             data: R.merge(this.state.data, {enPart: event.target.value})
         })
         if (event.target.value.length > 68) {
-            this.log(`TOO LONG - ${event.target.value.length}`, 5)
+            this.notify(`TOO LONG - ${event.target.value.length}`, 5)
         }
+    }
+    notify(msg, seconds = 2, position = "top-right", mode) {
+        if (R.type(msg) !== "String") {
+            msg = JSON.stringify(msg)
+        }
+        let settings = J.alertRandom()
+        Alert[ settings.mode ](msg, {
+            position,
+            effect: settings.effect,
+            timeout: seconds * 1000,
+            offset: 100
+        })
     }
     render () {
         return (
@@ -312,8 +308,8 @@ export default class App extends Component {
             }
         })}
         </div>
-        <Notification isActive={this.state.notificationState} message={this.state.notificationMessage} />
         <div id="reactContainer"></div>
+        <Alert stack={{limit:5}} />
 	</div>
     )}
 }

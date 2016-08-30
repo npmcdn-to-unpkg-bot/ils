@@ -1,6 +1,6 @@
 "use strict"
-import React, { Component } from "react"
-import ReactDOM from "react-dom"
+import {React, ReactDOM} from "../../../_inc/commonReact.js"
+let Component = React.Component
 import R from "ramda"
 import Griddle from "griddle-react"
 let mockedData = { translation:

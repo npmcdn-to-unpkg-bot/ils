@@ -88,7 +88,7 @@ function counter() {
         })
     })
 }
-function load(modelName, key = null, keyValue) {
+function find(modelName, key = null, keyValue) {
     return new Promise(resolve=>{
         let obj = {}
         if (key !== null) {
@@ -142,7 +142,7 @@ async function addMain(saveData) {
     return willReturn.main
 }
 module.exports.addMain = (data)=>{return addMain(data)}
-module.exports.random = (modelName)=>{
+module.exports.randomm = (modelName)=>{
     //rf
     return new Promise(resolve=>{
         random(modelName).then(data=>{
@@ -150,18 +150,19 @@ module.exports.random = (modelName)=>{
         })
     })
 }
-module.exports.randomCondition = (modelName, condition)=>{return randomCondition(modelName, condition)}
+module.exports.addMain = addMain
+module.exports.count = count
+module.exports.countCondition = countCondition
 module.exports.increaseCounter = ()=>{return increaseCounter()}
+module.exports.find = find
 module.exports.findOneAndUpdateBlog = findOneAndUpdateBlog
 module.exports.findOneAndUpdateLog = findOneAndUpdateLog
 module.exports.findOneAndUpdateMain = findOneAndUpdateMain
 module.exports.findOneSkip = findOneSkip
 module.exports.findOneSkipCondition = findOneSkipCondition
-module.exports.count = count
-module.exports.addMain = addMain
-module.exports.save = save
-module.exports.saveMany = saveMany
-module.exports.load = load
-module.exports.countCondition = countCondition
 module.exports.gitHookTokenWrite = gitHookTokenWrite
 module.exports.gitHookTokenRead = gitHookTokenRead
+module.exports.save = save
+module.exports.saveMany = saveMany
+module.exports.random = (modelName)=>{return random(modelName)}
+module.exports.randomCondition = (modelName, condition)=>{return randomCondition(modelName, condition)}
