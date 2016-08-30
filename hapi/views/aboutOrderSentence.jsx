@@ -1,5 +1,6 @@
 "use strict"
-import React, { Component } from "react"
+import {React} from "../../_inc/commonReact.js"
+let Component = React.Component
 var DefaultLayout = require("./base/basic.jsx")
 
 class App extends Component {

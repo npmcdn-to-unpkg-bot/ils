@@ -1,6 +1,7 @@
 "use strict"
-import React, { Component } from "react"
-var DefaultLayout = require("./base/basic.jsx")
+import {React} from "../../_inc/commonReact.js"
+let Component = React.Component
+let DefaultLayout = require("./base/basic.jsx")
 
 class About extends Component {
     render() {

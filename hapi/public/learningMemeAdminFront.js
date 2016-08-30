@@ -680,9 +680,6 @@ var App = function (_Component2) {
             var _this3 = this;
 
             _commonReact2.default.emitter.on("init", function () {
-                _commonReact2.default.postData(_commonReact2.default.ils + "/imageless/count", {}).then(function (data) {
-                    _this3.notify(data);
-                });
                 _commonReact2.default.postData(_commonReact2.default.ils + "/imageless", {}).then(function (data) {
                     data = _commonReact2.default.addSingleProp("childSafetyFlag", true, data);
                     data = _commonReact2.default.addSingleProp("imageSrc", false, data);
@@ -747,7 +744,7 @@ var App = function (_Component2) {
             _commonReact2.default.emitter.on("remove", function () {
                 _commonReact2.default.log(_this3.state.data.id);
                 _commonReact2.default.postData(_commonReact2.default.ils + "/removeMain", { id: _this3.state.data.id }).then(function () {
-                    _this3.notify("removed");
+                    _commonReact2.default.postData(_commonReact2.default.ils + "/imageless/count", {}).then(_this3.notify);
                 });
                 _commonReact2.default.emitter.emit("init");
             });

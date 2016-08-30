@@ -1,6 +1,5 @@
 "use strict"
-import J from "../../_inc/commonReact.js"
-let React = J.React
+import {React} from "../../_inc/commonReact.js"
 let Component = React.Component
 const DefaultLayout = require("./base/tunaPlayerDemo.jsx")
 let App = React.createClass({

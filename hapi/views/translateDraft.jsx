@@ -1,5 +1,6 @@
 "use strict"
-import React, { Component } from "react"
+import {React} from "../../_inc/commonReact.js"
+let Component = React.Component
 const DefaultLayout = require("./base/translateDraft.jsx")
 let App = React.createClass({
     render: function() {

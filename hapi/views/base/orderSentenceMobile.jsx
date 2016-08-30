@@ -1,4 +1,5 @@
-import React, {Component} from "react"
+import {React} from "../../../_inc/commonReact.js"
+let Component = React.Component
 import Navigation from "../components/navigation.jsx"
 class Exported extends Component {
     constructor(props) {

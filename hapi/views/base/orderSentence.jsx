@@ -1,5 +1,5 @@
-import React, {Component} from "react"
-import Navigation from "../components/navigation.jsx"
+import {React} from "../../../_inc/commonReact.js"
+let Component = React.Component
 import config from "../../../_inc/config.js"
 class App extends Component {
     constructor(props) {

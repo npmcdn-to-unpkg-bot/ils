@@ -68,9 +68,6 @@ export default class App extends Component {
     }
     componentDidMount() {
         J.emitter.on("init", ()=>{
-            J.postData(`${J.ils}/imageless/count`, {}).then(data => {
-                this.notify(data)
-            })
             J.postData(`${J.ils}/imageless`, {}).then(data => {
                 data = J.addSingleProp("childSafetyFlag", true, data)
                 data = J.addSingleProp("imageSrc", false, data)
@@ -132,7 +129,7 @@ export default class App extends Component {
             J.log(this.state.data.id)
             J.postData(`${J.ils}/removeMain`, {id: this.state.data.id})
             .then(()=>{
-                this.notify("removed")
+                J.postData(`${J.ils}/imageless/count`, {}).then(this.notify)
             })
             J.emitter.emit("init")
         })

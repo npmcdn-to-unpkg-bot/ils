@@ -1,5 +1,5 @@
-import React, { Component } from "react"
-
+import {React} from "../../../_inc/commonReact.js"
+let Component = React.Component
 export default class Navigation extends Component {
     render () {
         return (

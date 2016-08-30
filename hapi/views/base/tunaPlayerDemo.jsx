@@ -1,5 +1,4 @@
-import J from "../../../_inc/commonReact.js"
-let React = J.React
+import {React} from "../../../_inc/commonReact.js"
 let Component = React.Component
 import config from "../../../_inc/config.js"
 class App extends Component {
