@@ -127,6 +127,12 @@ blockquote p {
   font-weight: bold;
   font-size: 2vh;
 }
+.s-alert-warning {
+  background-color: #050A28;
+}
+.s-alert-error {
+  background-color: #7D596C;
+}
 .inputField,
 .inputField:focus {
   text-align: center;

@@ -1,0 +1,5 @@
+monaca upload
+--------------
+[1m[33mThis operation will overwrite all remote changes that has been made.[39m[22m
+? Do you want to continue? (y/N) y
+[33D[33C[1000D[K? Do you want to continue? (y/N) y[34D[34C[1000D[K? Do you want to continue? Yes[30D[30C

@@ -1,3 +1,10 @@
+# NPM holder
+
+connect-ensure-login
+mobx
+mobx-react
+passport
+passport-twitter
 
 # Naming convention patterns as functions
 ```

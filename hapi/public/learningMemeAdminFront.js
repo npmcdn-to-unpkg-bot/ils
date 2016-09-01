@@ -917,6 +917,7 @@ var App = function (_Component2) {
             var position = arguments.length <= 2 || arguments[2] === undefined ? "top-right" : arguments[2];
             var mode = arguments[3];
 
+            _reactSAlert2.default.closeAll();
             if (_ramda2.default.type(msg) !== "String") {
                 msg = JSON.stringify(msg);
             }

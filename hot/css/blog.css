@@ -112,17 +112,18 @@ hr {
   border-radius: 1vh;
   font-size: 2.3vh;
 }
-.blog img:first-child {
+.blog div p img {
   display: block;
   margin: 0 auto;
   width: auto;
-  max-height: 5vh;
+  max-height: 20vh;
+  border-radius: 5vh;
 }
 .blog img {
   display: block;
   margin: 0 auto;
   width: auto;
-  max-height: 5vh;
+  max-height: 40vh;
 }
 .blog p {
   margin-bottom: 1vh;

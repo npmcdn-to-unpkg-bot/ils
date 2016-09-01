@@ -1,4 +1,5 @@
 #!/usr/bin/env
+
 "use strict"
 const watcher = require("ape-watching")
 const J = require("./common.js")
@@ -16,6 +17,60 @@ let negativeWordArr = [
     "cache"
 ]
 let filterFn = J.anyFn(negativeWordArr)
+async function main(filepath) {
+    let iMeanNothing
+    let command = commandFactory(filepath)
+    if (filepath.includes("hot/src") &&
+     filepath.includes(".js") &&
+     !filepath.includes("index") &&
+     !filepath.includes("components")) {
+        J.log("hot src")
+        J.log(command.babelifyHapiAlt)
+        iMeanNothing = await willRunFixedCommand(command.babelifyHapiAlt)
+        J.log(command.babelifyHapiAltProd)
+        return iMeanNothing
+    } else if (filepath.includes("hot") && filepath.includes(".less")) {
+        J.log("hot less")
+        iMeanNothing = await willRunFixedCommand(command.lessHapi)
+        return iMeanNothing
+    } else if (filepath.includes("Front.jsx")) {
+        J.log("Front.jsx")
+        J.log(command.babelifyHapi)
+        iMeanNothing = await willRunFixedCommand(command.babelifyHapi)
+        return iMeanNothing
+    } else if (filepath.includes("Pre.jsx")) {
+        J.log("Pre.jsx")
+        J.lg(command.babelify)
+        iMeanNothing = await willRunFixedCommand(command.babelify)
+        iMeanNothing = await willRunFixedCommand(command.lintReact)
+        return iMeanNothing
+    } else if (filepath.includes(".jsx") && (filepath.includes("service"))) {
+        J.log("babelify service")
+        J.log(command.babelify)
+        iMeanNothing = await willRunFixedCommand(command.babelify)
+        iMeanNothing = await willRunFixedCommand(command.lintReact)
+        return iMeanNothing
+    } else if (filepath.includes(".jsx")) {
+        J.log("react lint")
+        iMeanNothing = await willRunFixedCommand(command.lintReact)
+        return iMeanNothing
+    } else if (filepath.includes("Pre.js")) {
+        J.log("babel lint")
+        iMeanNothing = await willRunFixedCommand(command.babel)
+        iMeanNothing = await willRunFixedCommand(command.lint)
+        return iMeanNothing
+    } else if (filepath.includes(".less")) {
+        J.log("less")
+        iMeanNothing = await willRunFixedCommand(command.less)
+        return iMeanNothing
+    } else if (filepath.includes(".js") && !filepath.includes("Front")&& !filepath.includes("only")) {
+        J.log("lint")
+        iMeanNothing = await willRunFixedCommand(command.lint)
+        return iMeanNothing
+    } else {
+        return false
+    }
+}
 watcher.watchFiles(["**/*.jsx", "**/*.js", "**/*.less"], (ev, filepath) => {
     if (filterFn((negativeWord)=>{
         return filepath.includes(negativeWord)
@@ -26,14 +81,13 @@ watcher.watchFiles(["**/*.jsx", "**/*.js", "**/*.less"], (ev, filepath) => {
             mainFlag = false
             if (fileExists(filepath)) {
                 J.box(`⚡⚡⚡  ${J.takeName(filepath)} Will Start  ⚡⚡⚡`)
-                processFn(filepath).then((incoming)=>{
+                main(filepath).then((incoming)=>{
                     setTimeout(()=>{
                         mainFlag = true
                     }, 1000)
                     J.log(`💡💡💡  ${J.takeName(filepath)} Is Over  💡💡💡`)
                 })
             } else {
-                J.lg("file does not exist?!")
                 setTimeout(()=>{
                     mainFlag = true
                 }, 1000)
@@ -41,63 +95,7 @@ watcher.watchFiles(["**/*.jsx", "**/*.js", "**/*.less"], (ev, filepath) => {
         }
     }
 })
-
-async function processFn(filepath) {
-    let iMeanNothing
-    let commands = factoryCommands(filepath)
-    if (filepath.includes("hot/src") &&
-     filepath.includes(".js") &&
-     !filepath.includes("index") &&
-     !filepath.includes("components")) {
-        J.log("hot src")
-        J.log(commands.babelifyHapiAlt)
-        iMeanNothing = await willRunFixedCommand(commands.babelifyHapiAlt)
-        J.log(commands.babelifyHapiAltProd)
-        return iMeanNothing
-    } else if (filepath.includes("hot") && filepath.includes(".less")) {
-        J.log("hot less")
-        iMeanNothing = await willRunFixedCommand(commands.less)
-        iMeanNothing = await willRunFixedCommand(commands.lessHapi)
-        return iMeanNothing
-    } else if (filepath.includes("Front.jsx")) {
-        J.log("Front.jsx")
-        J.log(commands.babelifyHapi)
-        iMeanNothing = await willRunFixedCommand(commands.babelifyHapi)
-        return iMeanNothing
-    } else if (filepath.includes("Pre.jsx")) {
-        J.log("Pre.jsx")
-        J.lg(commands.babelify)
-        iMeanNothing = await willRunFixedCommand(commands.babelify)
-        iMeanNothing = await willRunFixedCommand(commands.lintReact)
-        return iMeanNothing
-    } else if (filepath.includes(".jsx") && (filepath.includes("services"))) {
-        J.log("babelify services")
-        J.log(commands.babelify)
-        iMeanNothing = await willRunFixedCommand(commands.babelify)
-        iMeanNothing = await willRunFixedCommand(commands.lintReact)
-        return iMeanNothing
-    } else if (filepath.includes(".jsx")) {
-        J.log("react lint")
-        iMeanNothing = await willRunFixedCommand(commands.lintReact)
-        return iMeanNothing
-    } else if (filepath.includes("Pre.js")) {
-        J.log("babel lint")
-        iMeanNothing = await willRunFixedCommand(commands.babel)
-        iMeanNothing = await willRunFixedCommand(commands.lint)
-        return iMeanNothing
-    } else if (filepath.includes(".less")) {
-        J.log("less")
-        iMeanNothing = await willRunFixedCommand(commands.less)
-        return iMeanNothing
-    } else if (filepath.includes(".js") && !filepath.includes("Front")) {
-        J.log("lint")
-        iMeanNothing = await willRunFixedCommand(commands.lint)
-        return iMeanNothing
-    } else {
-        return false
-    }
-}
-function factoryCommands(src) {
+function commandFactory(src) {
     let willReturn = {}
     let output = R.replace(/(Pre\.jsx)|(Pre\.js)|(\.jsx)/g, ".js", src)
     let outputCss = R.replace(".less", ".css", src)
@@ -125,6 +123,7 @@ function factoryCommands(src) {
     willReturn.babelifyHapiAltProd = `browserify ${srcHot} -o ${hapiLocation} ${presentsProd}`
     return willReturn
 }
+
 function willRunFixedCommand(commandIs) {
     return new Promise((resolve)=>{
         let proc = exec(commandIs)

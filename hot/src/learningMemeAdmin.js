@@ -268,6 +268,7 @@ export default class App extends Component {
         }
     }
     notify(msg, seconds = 2, position = "top-right", mode) {
+        Alert.closeAll()
         if (R.type(msg) !== "String") {
             msg = JSON.stringify(msg)
         }

@@ -44,13 +44,13 @@ export default class App extends Component {
     }
     componentDidMount() {
         let counter = 0
-        let modeArr = ["success", "info", "warning"]
+        let modeArr = ["success", "info", "warning","error"]
         let alertInterval = setInterval(()=>{
             let notifyDataArr = R.map(val=>{
                 let state = J.randomIndex(this.state.globalData)
-                return `${state.deWord} - ${state.enWord}`
+                return `${state.deWord.toUpperCase()} - ${state.enWord}`
             }, R.range(0, 2))
-            let mode = modeArr[ R.modulo(counter, 3) ]
+            let mode = modeArr[ R.modulo(counter, 4) ]
             this.notify(notifyDataArr[ 0 ], notifyIntervalValue, "top-left", mode)
             this.notify(notifyDataArr[ 1 ], notifyIntervalValue, "top-right", mode)
             counter++

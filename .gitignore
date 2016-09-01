@@ -1,6 +1,7 @@
 coverage/
 node_modules/
 .env
+.idea/
 npm-debug.log
 znote.md
 tmp
