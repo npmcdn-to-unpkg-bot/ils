@@ -364,6 +364,7 @@ module.exports.learningMemeAutomatedAlert = learningMemeAutomatedAlert;
 module.exports.screenLog = "http://ilearnsmarter.com/js/screenLog.js";
 module.exports.models = ["main", "translateDraft", "counter"];
 module.exports.mongooseConnection = "mongodb://localhost/ils";
+module.exports.microlight = "https://npmcdn.com/microlight@0.0.7";
 module.exports.reactSelect = "https://cdnjs.cloudflare.com/ajax/libs/react-select/0.9.1/react-select.min.css";
 module.exports.reactAlertDefault = reactAlertBase + "/dist/s-alert-default.css";
 module.exports.reactAlertSlide = reactAlertBase + "/dist/s-alert-css-effects/slide.css";
@@ -613,11 +614,11 @@ var Image = function (_Component) {
     _createClass(Image, [{
         key: "render",
         value: function render() {
-            var numberIs = 15;
+            var limit = 15;
             var imageStyle = {
-                minWidth: numberIs + "vw",
+                minWidth: limit + "vw",
                 height: "auto",
-                maxHeight: numberIs - 2 + "vh"
+                maxHeight: limit - 2 + "vh"
             };
             return _commonReact.React.createElement(
                 "span",

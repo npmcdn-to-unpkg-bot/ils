@@ -94,7 +94,7 @@ export default class App extends Component {
         })
         J.emitter.on("search image", ()=>{
             let searchImageKeyword = this.state.promptValue
-            J.postData(`${J.hapi}/searchImageFast`, {searchImageKeyword}).then(data =>{
+            J.postData(`${J.ils}/searchImageFast`, {searchImageKeyword}).then(data =>{
                 ReactDOM.render(<SearchImage data={data} emitter={J.emitter} handleClick={this.handleImageClick}/>, document.getElementById("reactContainer"))
             })
         })

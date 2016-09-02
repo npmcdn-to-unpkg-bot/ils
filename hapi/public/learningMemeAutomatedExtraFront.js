@@ -21018,12 +21018,9 @@ var initOnce = _ramda2.default.once(function () {
 });
 function insertStrFn(str, replacer, index) {
     console.log(str, replacer, index);
-    if (index === 0 || index === str.length - 1) {
+    if (index === 0) {
         return str;
     } else {
-        _commonReact2.default.log(str.substring(0, index));
-        _commonReact2.default.log(replacer);
-        _commonReact2.default.log(str.substring(index + 1));
         return "" + str.substring(0, index) + replacer + str.substring(index + 1);
     }
 }
@@ -21056,7 +21053,7 @@ var App = function (_Component) {
             data: initData,
             globalIndex: 0,
             globalData: [],
-            inputFieldSize: 5,
+            inputFieldSize: 25,
             imageSrcCache: "",
             textTopLeft: "",
             textTopRight: "",

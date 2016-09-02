@@ -10,10 +10,7 @@ let initOnce = R.once(()=>{
 })
 function insertStrFn(str,replacer,index){
     console.log(str,replacer,index)
-    if(index===0||index===str.length-1){return str}else{
-        J.log(str.substring(0,index))
-        J.log(replacer)
-        J.log(str.substring(index+1))
+    if(index===0){return str}else{
         return `${str.substring(0,index)}${replacer}${str.substring(index+1)}`
     }
 }
@@ -40,7 +37,7 @@ export default class App extends Component {
             data: initData,
             globalIndex: 0,
             globalData: [],
-            inputFieldSize:5,
+            inputFieldSize:25,
             imageSrcCache:"",
             textTopLeft: "",
             textTopRight: "",

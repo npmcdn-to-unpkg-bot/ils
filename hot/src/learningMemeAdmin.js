@@ -25,11 +25,11 @@ class Image extends Component {
         }
     }
     render () {
-        let numberIs = 15
+        let limit = 15
         let imageStyle = {
-            minWidth: `${numberIs}vw`,
+            minWidth: `${limit}vw`,
             height: "auto",
-            maxHeight: `${numberIs - 2}vh`
+            maxHeight: `${limit - 2}vh`
         }
         return (
             <span className="column" onClick={this.props.handleImageClick}>
