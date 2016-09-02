@@ -1,4 +1,4 @@
-let reactAlertBase = "https://npmcdn.com/react-s-alert@1.1.4"
+let reactAlertBase = "https://unpkg.com/react-s-alert@1.1.4"
 let learningMemeAutomatedAlert = [
     "Just a few words and I will disappear",
     "This demo shows the functionality",
@@ -31,7 +31,7 @@ module.exports.learningMemeAutomatedAlert = learningMemeAutomatedAlert
 module.exports.screenLog = "http://ilearnsmarter.com/js/screenLog.js"
 module.exports.models = ["main", "translateDraft", "counter"]
 module.exports.mongooseConnection = "mongodb://localhost/ils"
-module.exports.microlight = "https://npmcdn.com/microlight@0.0.7"
+module.exports.microlight = "https://unpkg.com/microlight@0.0.7"
 module.exports.reactSelect = "https://cdnjs.cloudflare.com/ajax/libs/react-select/0.9.1/react-select.min.css"
 module.exports.reactAlertDefault = `${reactAlertBase}/dist/s-alert-default.css`
 module.exports.reactAlertSlide = `${reactAlertBase}/dist/s-alert-css-effects/slide.css`

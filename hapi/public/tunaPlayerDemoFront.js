@@ -350,7 +350,7 @@ module.exports.stopWordsFilter = stopWordsFilter;
 },{"./config":2,"./stopWords.js":3,"localforage":186,"ramda":189,"react":364,"react-dom":216,"reqwest":365}],2:[function(require,module,exports){
 "use strict";
 
-var reactAlertBase = "https://npmcdn.com/react-s-alert@1.1.4";
+var reactAlertBase = "https://unpkg.com/react-s-alert@1.1.4";
 var learningMemeAutomatedAlert = ["Just a few words and I will disappear", "This demo shows the functionality", "of 'Learning Meme' application,", "but in some ways is much better", "than 'Learning Meme' itself.", "The loop never stops, so you can", "just leave it running as a background,", "while you are doing something else.", "It is lazy learning and it works!", "All the quotes you see are not mine", "I just translated them to English.", "As you will notice the translation", "is not always word by word.", "The image is related either to", "the sentence or to the hidden word.", "I don't claim that all the translations", "are correct as I don't speak German that well.", "Some images or quotes might be found offensive.", "Improving this weakness is part of project's roadmap.", "Enjoy the application and share if you like it!"];
 module.exports.animate = "https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.1/animate.min.css";
 module.exports.badQuery = "Bad Query Message!";
