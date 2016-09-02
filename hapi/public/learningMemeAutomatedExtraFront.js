@@ -364,6 +364,7 @@ module.exports.learningMemeAutomatedAlert = learningMemeAutomatedAlert;
 module.exports.screenLog = "http://ilearnsmarter.com/js/screenLog.js";
 module.exports.models = ["main", "translateDraft", "counter"];
 module.exports.mongooseConnection = "mongodb://localhost/ils";
+module.exports.microlight = "https://npmcdn.com/microlight@0.0.7";
 module.exports.reactSelect = "https://cdnjs.cloudflare.com/ajax/libs/react-select/0.9.1/react-select.min.css";
 module.exports.reactAlertDefault = reactAlertBase + "/dist/s-alert-default.css";
 module.exports.reactAlertSlide = reactAlertBase + "/dist/s-alert-css-effects/slide.css";
@@ -21015,7 +21016,18 @@ var LazyPromise = require("lazy-promise");
 var initOnce = _ramda2.default.once(function () {
     _commonReact2.default.emitter.emit("once init");
 });
-var mainIntervalValue = 4000;
+function insertStrFn(str, replacer, index) {
+    console.log(str, replacer, index);
+    if (index === 0 || index === str.length - 1) {
+        return str;
+    } else {
+        _commonReact2.default.log(str.substring(0, index));
+        _commonReact2.default.log(replacer);
+        _commonReact2.default.log(str.substring(index + 1));
+        return "" + str.substring(0, index) + replacer + str.substring(index + 1);
+    }
+}
+var mainIntervalValue = 5000;
 var secondaryIntervalValue = 1000;
 var alertIntervalValue = 5000;
 var notifyIntervalValue = 20;
@@ -21074,12 +21086,14 @@ var App = function (_Component) {
                 _this2.notify(notifyDataArr[1], notifyIntervalValue, "top-right", mode);
                 counter++;
             }, alertIntervalValue);
-
             var interval = setInterval(function () {
                 if (_this2.state.automatedMode && _this2.state.textTopLeft !== "") {
-                    if (_this2.state.answer.length < _this2.state.textTopLeft.length) {
-                        var answer = _this2.state.answer + _this2.state.data.deWord[_this2.state.answer.length];
-                        _this2.setState({ answer: answer }, function () {
+                    var answerIndex = _this2.state.answer.length;
+                    if (answerIndex < _this2.state.textTopLeft.length) {
+                        var willAdd = _this2.state.data.deWord[answerIndex];
+                        var answer = _this2.state.answer + willAdd;
+                        var textTopLeft = insertStrFn(_this2.state.textTopLeft, willAdd, answerIndex);
+                        _this2.setState({ answer: answer, textTopLeft: textTopLeft }, function () {
                             if (_this2.state.answer.length > _this2.state.inputFieldSize) {
                                 _this2.setState({ inputFieldSize: _this2.state.answer.length + 3 });
                             }
@@ -21093,7 +21107,7 @@ var App = function (_Component) {
                         });
                     }
                 }
-            }, 100);
+            }, 200);
             _commonReact2.default.emitter.on("once init", function () {
                 _commonReact2.default.postData(_commonReact2.default.ils + "/learningMeme", {}).then(function (learningMemeData) {
                     var globalData = _commonReact2.default.shuffle(learningMemeData);
@@ -21261,6 +21275,8 @@ var App = function (_Component) {
                 } else {
                     willBeIndex = _this2.state.globalIndex + 1;
                 }
+                _commonReact2.default.log(_this2.state.globalIndex);
+                _commonReact2.default.log(willBeIndex);
                 _this2.setState({
                     data: _this2.state.globalData[willBeIndex],
                     globalIndex: willBeIndex

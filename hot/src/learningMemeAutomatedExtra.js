@@ -8,7 +8,16 @@ const LazyPromise = require("lazy-promise")
 let initOnce = R.once(()=>{
     J.emitter.emit("once init")
 })
-let mainIntervalValue = 4000
+function insertStrFn(str,replacer,index){
+    console.log(str,replacer,index)
+    if(index===0||index===str.length-1){return str}else{
+        J.log(str.substring(0,index))
+        J.log(replacer)
+        J.log(str.substring(index+1))
+        return `${str.substring(0,index)}${replacer}${str.substring(index+1)}`
+    }
+}
+let mainIntervalValue = 5000
 let secondaryIntervalValue = 1000
 let alertIntervalValue = 5000
 let notifyIntervalValue = 20
@@ -55,12 +64,14 @@ export default class App extends Component {
             this.notify(notifyDataArr[ 1 ], notifyIntervalValue, "top-right", mode)
             counter++
         }, alertIntervalValue)
-
         let interval = setInterval(()=>{
             if (this.state.automatedMode && this.state.textTopLeft !== "") {
-                if (this.state.answer.length < this.state.textTopLeft.length) {
-                    let answer = this.state.answer + this.state.data.deWord[ this.state.answer.length ]
-                    this.setState({answer}, ()=>{
+                let answerIndex = this.state.answer.length
+                if (answerIndex < this.state.textTopLeft.length) {
+                    let willAdd = this.state.data.deWord[ answerIndex ]
+                    let answer = this.state.answer + willAdd
+                    let textTopLeft = insertStrFn(this.state.textTopLeft,willAdd,answerIndex)
+                    this.setState({answer,textTopLeft}, ()=>{
                         if (this.state.answer.length > this.state.inputFieldSize) {
                             this.setState({inputFieldSize:this.state.answer.length + 3})
                         }
@@ -74,7 +85,7 @@ export default class App extends Component {
                     })
                 }
             }
-        }, 100)
+        }, 200)
         J.emitter.on("once init", ()=>{
             J.postData(`${J.ils}/learningMeme`, {}).then(learningMemeData =>{
                 let globalData = J.shuffle(learningMemeData)
@@ -228,6 +239,8 @@ export default class App extends Component {
             } else {
                 willBeIndex = this.state.globalIndex + 1
             }
+            J.log(this.state.globalIndex)
+            J.log(willBeIndex)
             this.setState({
                 data:this.state.globalData[ willBeIndex ],
                 globalIndex: willBeIndex
